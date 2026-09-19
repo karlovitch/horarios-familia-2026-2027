@@ -120,7 +120,7 @@ required_index_tokens = {
     "cabeçalhos a 1,5x no smartphone": ".lane-head{height:46px;padding:5px 1px;font-size:.885rem",
     "mensagens abaixo do cabeçalho sem sobreposição": ".lane-message{top:58px;font-size:1.02rem",
     "escala vertical adaptativa universal": "timelineHeight=()=>adaptiveScheduleHeight()",
-    "geolocalização atual do dispositivo": "navigator.geolocation.getCurrentPosition",
+    "geolocalização atual do dispositivo": "navigator.geolocation.watchPosition",
     "fallback de localização pela rede": "https://ipwho.is/",
     "nome da localização por reverse geocoding": "https://api.bigdatacloud.net/data/reverse-geocode-client",
     "timezone meteorológica da localização atual": 'u.searchParams.set("timezone","auto")',
