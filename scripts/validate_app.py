@@ -55,6 +55,17 @@ if manifest.get("start_url") != "./":
 if manifest.get("scope") != "./":
     fail("manifest.webmanifest deve manter scope './'")
 
+manifest_icons = manifest.get("icons") or []
+manifest_icon_sources = {str(item.get("src") or "").split("?")[0] for item in manifest_icons if isinstance(item, dict)}
+for required_icon in {"icon-192.png", "icon-512.png", "icon-maskable-512.png"}:
+    if required_icon not in manifest_icon_sources:
+        fail(f"Ícone PWA em falta no manifesto: {required_icon}")
+    if not (ROOT / required_icon).exists():
+        fail(f"Ficheiro de ícone em falta: {required_icon}")
+for required_icon in ("apple-touch-icon.png", "favicon-64.png"):
+    if not (ROOT / required_icon).exists():
+        fail(f"Ficheiro de ícone em falta: {required_icon}")
+
 required_index_tokens = {
     "ocultação da agenda desportiva": 'id="sportsTabRow" class="sports-tab-row hidden"',
     "regra dinâmica da agenda desportiva": "function updateSportsTabVisibility",
@@ -87,7 +98,19 @@ required_index_tokens = {
     "cronómetro desportivo sem rerender total": "function updateSportsLiveClocks",
     "resize agrupado por animation frame": "requestAnimationFrame(()=>",
     "sincronização global do seletor de data": "function renderActiveView(){\n syncStatsControls();",
+    "faixa meteorológica sob os controlos de data": 'data-weather-strip',
+    "meteorologia Open-Meteo": "https://api.open-meteo.com/v1/forecast",
+    "classificação visual da nebulosidade": "function weatherSky(cloud)",
+    "força do vento Beaufort": "function beaufortFromKmh(kmh)",
+    "cache meteorológica de 10 minutos": 'ttl:10*60*1000',
+    "texto dos blocos duplicado no móvel": ".block{font-size:.96rem;line-height:1;padding:2px 2px}",
+    "escala vertical reforçada para texto maior": "timelineHeight=()=>isMobileTimeline()?760:850",
+    "media query reutilizada": 'const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)")',
+    "NodeList sem cópia intermédia": "qsa=s=>document.querySelectorAll(s)",
 }
+if index.count('data-weather-strip') < 4:
+    fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
+
 for label, token in required_index_tokens.items():
     if token not in index:
         fail(f"Funcionalidade em falta: {label}")
