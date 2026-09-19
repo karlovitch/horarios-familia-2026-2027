@@ -4,6 +4,7 @@ import argparse
 import calendar
 import json
 import re
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
@@ -36,24 +37,35 @@ def parse_year_text(text):
 
 def world_for(day,month):
     month_name=MONTHS[month-1]
-    title=f"{day}_de_{month_name}"
-    url=f"https://pt.wikipedia.org/wiki/{quote(title)}"
-    soup=BeautifulSoup(get(url),"html.parser")
-    marker=soup.find(id=lambda x:isinstance(x,str) and "Eventos_hist" in x)
-    if not marker:return []
-    heading=marker if marker.name in ("h2","h3") else marker.find_parent(["h2","h3"])
+    title=f"{day} de {month_name}"
+    wiki_url=f"https://pt.wikipedia.org/wiki/{quote(title.replace(' ','_'))}"
+    api="https://pt.wikipedia.org/w/api.php"
+    params={"action":"parse","page":title,"prop":"text","format":"json","formatversion":"2","redirects":"1"}
+    r=requests.get(api,params=params,headers=HEADERS,timeout=25)
+    r.raise_for_status()
+    payload=r.json()
+    html=payload.get("parse",{}).get("text","")
+    if not html:return []
+    soup=BeautifulSoup(html,"html.parser")
+    heading=None
+    for h in soup.find_all(["h2","h3"]):
+        label=unicodedata.normalize("NFKD",h.get_text(" ",strip=True)).encode("ascii","ignore").decode("ascii").lower()
+        if "eventos historicos" in label:
+            heading=h;break
     if not heading:return []
     out=[]
     node=heading.find_next_sibling()
     while node:
-        if node.name=="h2":break
-        for li in node.find_all("li") if hasattr(node,"find_all") else []:
-            item=parse_year_text(li.get_text(" ",strip=True))
-            if item and 20<=len(item["text"])<=500:
-                item["source_url"]=url
-                if item not in out:out.append(item)
+        if getattr(node,"name",None) in ("h2","h3"):break
+        if hasattr(node,"find_all"):
+            for li in node.find_all("li"):
+                item=parse_year_text(li.get_text(" ",strip=True))
+                if item and 20<=len(item["text"])<=500:
+                    item["source_url"]=wiki_url
+                    if not any(x["year"]==item["year"] and x["text"]==item["text"] for x in out):
+                        out.append(item)
         node=node.find_next_sibling()
-    return out[:18]
+    return out[:24]
 
 def portugal_for(day,month):
     url=f"https://www.e-cultura.pt/efemeridesDia/{day}-{month}"
