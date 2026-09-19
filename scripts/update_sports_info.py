@@ -25,9 +25,16 @@ CHANNELS = ["Sport TV 1","Sport TV 2","Sport TV 3","Sport TV 4","Sport TV 5","Sp
 COMP_MARKERS = ["Liga Portugal","UEFA Champions League","UEFA Liga das Nações","Allianz Cup","Amigáveis Clubes","Campeonato Placard","WSE Champions League","Taça do Minho","Taça de Portugal","Qualificação","Campeonato Europa"]
 
 def get(url):
-    r=requests.get(url,headers=HEADERS,timeout=30)
-    r.raise_for_status()
-    return r.text
+    try:
+        r=requests.get(url,headers={**HEADERS,"Accept-Language":"pt-PT,pt;q=0.9,en;q=0.7"},timeout=30)
+        r.raise_for_status()
+        return r.text
+    except Exception:
+        # Fallback de leitura pública para fontes que bloqueiam pedidos de datacenter.
+        clean=re.sub(r"^https?://","",url)
+        jr=requests.get("https://r.jina.ai/http://"+clean,headers=HEADERS,timeout=45)
+        jr.raise_for_status()
+        return jr.text
 
 def load():
     try:
