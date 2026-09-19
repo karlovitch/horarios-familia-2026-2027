@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=51">
+<link rel="manifest" href="manifest.webmanifest?v=52">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v51</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v52</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -172,6 +172,8 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
+const APP_BUILD=52;
+let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
 "2027-01-01","2027-03-26","2027-03-28","2027-04-25","2027-05-01","2027-05-27","2027-06-10","2027-08-15","2027-10-05","2027-11-01","2027-12-01","2027-12-08","2027-12-25"
@@ -1117,7 +1119,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=51",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=52",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1320,6 +1322,46 @@ function renderPerson(){
 }
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;if(SCHOOL_DAYS.includes(dayNow()))renderOverview();else show("today");renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();renderGlobalQuote();show("today");setTimeout(maybeCelebrateFamilyEvents,450);window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=51",{updateViaCache:"none"}).then(r=>r.update()));
+async function refreshCurrentView(){
+ qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());
+ await loadDailyInfo();
+ renderGlobalQuote();
+ if(view==="today")renderToday();
+ else if(view==="overview")renderOverview();
+ else if(person)renderPerson();
+}
+async function checkForNewBuild(){
+ try{
+  const r=await fetch("index.html?__version_check="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
+  if(!r.ok)return false;
+  const html=await r.text(),m=html.match(/· v(\d+)/);
+  const latest=m?Number(m[1]):APP_BUILD;
+  if(latest>APP_BUILD){
+   const u=new URL(location.href);
+   u.searchParams.set("v",String(latest));
+   u.searchParams.set("__fresh",String(Date.now()));
+   location.replace(u.toString());
+   return true;
+  }
+ }catch(e){}
+ return false;
+}
+async function refreshWhenVisible(reason="visible"){
+ if(document.visibilityState&&document.visibilityState!=="visible")return;
+ const now=Date.now();
+ if(foregroundRefreshRunning||now-lastForegroundRefresh<1200)return;
+ foregroundRefreshRunning=true;lastForegroundRefresh=now;
+ try{
+  if("serviceWorker" in navigator){
+   try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
+  }
+  const reloading=await checkForNewBuild();
+  if(!reloading)await refreshCurrentView();
+ }finally{foregroundRefreshRunning=false}
+}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
+window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
+window.addEventListener("focus",()=>refreshWhenVisible("focus"));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=52",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
