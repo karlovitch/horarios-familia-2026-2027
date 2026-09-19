@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T14:33:50.881953+00:00",
+  "generated_at": "2026-09-19T14:34:27.093482+00:00",
   "sources": {
     "world": "Wikipédia em português — secção Eventos históricos das páginas de cada data",
     "portugal": "e-Cultura / Centro Nacional de Cultura — Efemérides"
@@ -58,7 +58,128 @@
       ]
     },
     "01-05": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "Na 82ª edição do Globo de Ouro, em Los Angeles, a atriz Fernanda Torres se torna a primeira brasileira a ganhar o prêmio, por sua atuação no filme Ainda Estou Aqui, de Walter Salles.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "2023",
+          "text": "É realizado na Praça de São Pedro o funeral do Papa Bento XVI, com um público de 50 mil pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "2021",
+          "text": "Após três anos de crise diplomática, Arábia Saudita reabre sua fronteira com Catar.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "2017",
+          "text": "Formação de excepcional onda de frio afeta a Europa e causa a morte de pelo menos 60 pessoas ao longo de uma única semana.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "2014",
+          "text": "Lançamento do satélite de comunicação GSAT-14 a bordo do GSLV MK.II D5 marca o primeiro voo bem-sucedido de um motor criogênico indiano.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "2005",
+          "text": "Descoberto Éris, o segundo maior planeta anão conhecido do Sistema Solar, usando imagens originalmente realizadas em 21 de outubro de 2003, pelo Observatório Palomar.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1991",
+          "text": "Forças georgianas entram em Tskhinvali, a capital da Ossétia do Sul, dando início à Guerra da Ossétia do Sul de 1991-1992.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1991",
+          "text": "Guerra Civil da Somália: a embaixada dos Estados Unidos na Somália em Mogadíscio é evacuada por helicóptero dias após o início da violência em Mogadíscio.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1976",
+          "text": "Khmer Vermelho proclama a Constituição do Kampuchea Democrático.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1974",
+          "text": "A temperatura mais quente medida com segurança dentro do Círculo Polar Antártico, de +15 °C, é registrada na estação Vanda.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1972",
+          "text": "O presidente dos Estados Unidos, Richard Nixon, anuncia o programa do ônibus espacial.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1970",
+          "text": "O terremoto de Tonghai de 7,1 Mw sacode o condado de Tonghai, província de Iunã, China, com uma intensidade máxima de Mercalli de X. Sabe-se que entre 10 000 e 15 000 pessoas foram mortas e cerca de outras 26 000 ficaram feridas.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1969",
+          "text": "A sonda espacial Venera 5 é lançada do cosmódromo de Baikonur.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1968",
+          "text": "Alexander Dubček chega ao poder; a \"Primavera de Praga\" começa na Tchecoslováquia.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1967",
+          "text": "Revolução Cultural: a Comuna do Povo de Xangai é estabelecida após a tomada do poder das autoridades municipais locais por revolucionários, durou menos de um mês antes de ser substituído pelo governo.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1957",
+          "text": "Em discurso no Congresso dos Estados Unidos, o presidente americano, General Dwight D. Eisenhower, anuncia o estabelecimento do que mais tarde será chamado de Doutrina Eisenhower.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1953",
+          "text": "A peça de teatro Esperando Godot de Samuel Beckett estreia em Paris.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1950",
+          "text": "No desastre aéreo de Sverdlovsk, todas as 19 pessoas a bordo morrem, incluindo quase toda a equipe nacional de hóquei no gelo (VVS Moscou) da Força Aérea Soviética - 11 jogadores, bem como um médico da equipe e um massagista.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1949",
+          "text": "Harry S. Truman, presidente dos Estados Unidos, lança seu programa Fair Deal.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1945",
+          "text": "A União Soviética reconhece o novo Governo Provisório pró-soviético da República da Polônia.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1944",
+          "text": "Daily Mail se torna o primeiro jornal transoceânico.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1941",
+          "text": "A piloto de 37 anos, Amy Johnson, a primeira mulher a voar sozinha de Londres para a Austrália, desaparece depois de ter saltado de paraquedas de seu avião sobre o rio Tâmisa, e presume-se morta.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1933",
+          "text": "Início da construção da Ponte Golden Gate na Baía de São Francisco.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        },
+        {
+          "year": "1919",
+          "text": "Fundado o Partido Alemão dos Trabalhadores, que se tornaria o Partido Nazista.",
+          "source_url": "https://pt.wikipedia.org/wiki/5_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1930",
@@ -78,7 +199,128 @@
       ]
     },
     "01-03": {
-      "world": [],
+      "world": [
+        {
+          "year": "2026",
+          "text": "Início da intervenção militar dos Estados Unidos na Venezuela e a captura do presidente Nicolás Maduro em Caracas.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2024",
+          "text": "Atentados terroristas em Carmânia, Irã, resultam na morte de mais de 80 pessoas, quando uma cerimônia comemorativa marcava o assassinato de Qasem Soleimani.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "O general iraniano Qasem Soleimani é morto por um ataque aéreo americano perto do Aeroporto Internacional de Bagdá, gerando preocupações globais sobre um potencial conflito armado.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "Chang'e 4, da Administração Espacial Nacional da China (CNSA), se torna a primeira espaçonave a pousar no lado oculto da Lua.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2018",
+          "text": "Analistas informáticos relatam duas vulnerabilidades de segurança importantes, denominadas \"Meltdown\" e \"Specter\", que afetam os microprocessadores de quase todos os computadores do mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2016",
+          "text": "Como consequência da execução de Nimr al-Nimr, o Irã encerra suas relações diplomáticas com a Arábia Saudita.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2015",
+          "text": "Militantes do Boko Haram dão início ao Massacre de Baga, no nordeste da Nigéria.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2009",
+          "text": "O primeiro bloco de blockchain do sistema de pagamento descentralizado Bitcoin, chamado de bloco Gênesis, foi estabelecido pelo criador do sistema, Satoshi Nakamoto.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "Sonda Spirit aterrissa com sucesso em Marte.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "Voo Flash Airlines 604 cai no Mar Vermelho, resultando em 148 mortes, tornando-se um dos acidentes de aviação mais mortal da história egípcia.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "2000",
+          "text": "Última edição diária das tiras de banda desenhada Peanuts.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1999",
+          "text": "Lançamento da sonda espacial norte-americana Mars Polar Lander.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1993",
+          "text": "Em Moscou, Rússia, George H. W. Bush e Boris Iéltsin assinam o segundo Tratado de Redução de Armas Estratégicas (START).",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1990",
+          "text": "Invasão do Panamá pelos Estados Unidos: Manuel Noriega, ex-líder do Panamá, se rende às forças americanas.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1987",
+          "text": "O voo Varig 797 cai perto da Costa do Marfim, resultando em 50 mortes.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1980",
+          "text": "Toma posse em Portugal o VI Governo Constitucional, um governo da coligação Aliança Democrática (PPD/PSD, CDS e PPM) chefiado pelo primeiro-ministro Francisco Sá Carneiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1977",
+          "text": "Incorporada a Apple Computer (fundada em 1 de abril de 1976).",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1976",
+          "text": "Entra em vigor o Pacto Internacional dos Direitos Econômicos, Sociais e Culturais.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1962",
+          "text": "Papa João XXIII excomunga Fidel Castro.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1961",
+          "text": "Guerra Fria: após uma série de retaliações econômicas entre si, os Estados Unidos rompem relações diplomáticas com Cuba.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1961",
+          "text": "Destruído por uma explosão de vapor o reator nuclear SL-1, matando três pessoas no primeiro e único acidente com morte em uma usina nuclear americana.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1961",
+          "text": "Um protesto dos trabalhadores agrícolas na Baixa de Cassanje, Angola portuguesa, transforma-se numa revolta, abrindo a Guerra da Independência de Angola, a primeira das Guerras Coloniais Portuguesas.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1958",
+          "text": "Formada a Federação das Índias Ocidentais.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: o almirante Chester W. Nimitz é colocado no comando de todas as forças navais dos Estados Unidos em preparação para os ataques planejados contra Iwo Jima e Okinawa no Japão.",
+          "source_url": "https://pt.wikipedia.org/wiki/3_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1942",
@@ -88,15 +330,378 @@
       ]
     },
     "01-07": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "Começam os Incêndios florestais no sul da Califórnia, Estados Unidos, que deixam pelo menos 29 mortos e força a evacuação de quase 180 mil pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "2025",
+          "text": "Um terremoto de magnitude 7,1 no Tibete deixa mais de 126 pessoas mortas e centenas de feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "Publicada na revista científica Nature a descoberta por astrônomos da onda Radcliffe, a maior estrutura gasosa da Via Láctea.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "Oito soldados são presos e dois são mortos depois de um golpe fracassado contra o presidente do Gabão, Ali Bongo Ondimba.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "2015",
+          "text": "Dois homens armados cometem assassinato em massa nos escritórios da revista Charlie Hebdo em Paris, executando doze pessoas e ferindo outras onze.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1999",
+          "text": "Começa o julgamento no Senado do impeachment do presidente dos Estados Unidos, Bill Clinton.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1998",
+          "text": "Programa Discovery: lançamento do Lunar Prospector.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1993",
+          "text": "A Quarta República de Gana é inaugurada com Jerry Rawlings como presidente.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1993",
+          "text": "Guerra da Bósnia: O exército bósnio executa um ataque surpresa na aldeia de Kravica, em Srebrenica.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1991",
+          "text": "Roger Lafontant, ex-líder do Tonton Macoute no Haiti sob François Duvalier, tenta um golpe de Estado, que termina em sua prisão.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1985",
+          "text": "Agência Japonesa de Exploração Aeroespacial lança a Sakigake, a primeira nave espacial interplanetária do Japão e a primeira sonda espacial a ser lançada por qualquer país que não os Estados Unidos ou a União Soviética.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1984",
+          "text": "Brunei se torna o sexto membro da Associação de Nações do Sudeste Asiático.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1982",
+          "text": "Fundação do Museu Afro-Brasileiro, em Salvador, Bahia.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1980",
+          "text": "O presidente dos EUA, Jimmy Carter, autoriza uma legislação que concede US$ 1,5 bilhão em empréstimos para resgatar a Chrysler Corporation.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1979",
+          "text": "Terceira Guerra da Indochina: Guerra cambojana-vietnamita: Phnom Penh cai mediante o avanço das tropas vietnamitas, expulsando Pol Pot e o Khmer Vermelho.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1974",
+          "text": "Um grupo de chimpanzés do Parque Nacional de Gombe Stream ataca um macho de outro grupo, iniciando a Guerra dos Chimpanzés de Gombe.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1972",
+          "text": "O voo 602 da Iberia cai perto do aeroporto de Ibiza, matando todas as 104 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1968",
+          "text": "Programa Surveyor: Surveyor 7, a última nave espacial da série Surveyor, é lançada da Estação da Força Aérea de Cabo Canaveral.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1965",
+          "text": "Criação do Exército de Libertação Nacional da Colômbia.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1959",
+          "text": "Os Estados Unidos reconhecem o governo de Fidel Castro em Cuba, cinco dias após a tomada de Havana por um grupo de revolucionários.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1948",
+          "text": "O avião do piloto da Guarda Aérea Nacional de Kentucky, Thomas Mantell, cai enquanto perseguia um suposto OVNI.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: o general britânico Bernard Montgomery realiza uma conferência de imprensa na qual reivindica crédito pela vitória na Batalha do Bulge.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1942",
+          "text": "Segunda Guerra Mundial: começa o cerco da península de Bataan.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        },
+        {
+          "year": "1940",
+          "text": "Guerra de Inverno: Batalha da Estrada de Raate: a 9ª Divisão finlandesa finalmente derrota as forças soviéticas numericamente superiores na estrada Raate-Suomussalmi.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_janeiro"
+        }
+      ],
       "portugal": []
     },
     "01-04": {
-      "world": [],
+      "world": [
+        {
+          "year": "2019",
+          "text": "Grupo de Lima anuncia que seus países membros não reconhecerão o segundo mandato de Nicolás Maduro como Presidente da Venezuela.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "O governo federal do Brasil envia Força Nacional ao estado do Ceará após série de atentados realizados por organizações criminosas.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "2018",
+          "text": "Acidente ferroviário de Hennenman–Kroonstad: um trem de passageiros operado pela Shosholoza Meyl colide com um caminhão em uma passagem de nível na Estação de Genebra entre Hennenman e Kroonstad, Estado Livre, África do Sul. Vinte pessoas morreram e 260 ficaram feridas.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "2010",
+          "text": "Burj Khalifa, o edifício mais alto do mundo, é oficialmente inaugurado em Dubai, Emirados Árabes Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "Spirit, um astromóvel marciano da NASA, pousa com sucesso em Marte às 04h35 UTC.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "Mikheil Saakashvili é eleito Presidente da Geórgia após a Revolução das Rosas de novembro de 2003.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1990",
+          "text": "No acidente de trem mais mortal do Paquistão, um trem de passageiros sobrecarregado colide com um trem de carga vazio, resultando em 307 mortes e 700 feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1989",
+          "text": "Incidente no Golfo de Sidra: dois F-14 Tomcats da Marinha dos Estados Unidos abatem dois MiG-23 \"Floggers\" líbios.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1982",
+          "text": "Rondônia é instalada oficialmente como unidade federativa do Brasil.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1960",
+          "text": "Assinado o tratado que cria a Associação Europeia de Livre Comércio.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1959",
+          "text": "Luna 1 torna-se a primeira nave espacial a chegar à proximidade da Lua.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1958",
+          "text": "Sputnik 1, o primeiro satélite artificial da Terra, faz sua reentrada na atmosfera terrestre e é pulverizado pelo atrito.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1948",
+          "text": "Birmânia (atual Myanmar) ganha sua independência do Reino Unido.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1918",
+          "text": "Reconhecida pela Rússia, Suécia, Alemanha e França a Declaração de independência da Finlândia.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1912",
+          "text": "Incorporação por Carta Régia da The Scout Association em todo o Império Britânico.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1909",
+          "text": "O explorador Eneias Mackintosh, da Expedição Transantártica Imperial, escapa da morte fugindo através de blocos de gelo.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1903",
+          "text": "A elefanta de circo Topsy é eletrocutada em público na cidade de Nova Iorque, no que foi a primeira morte de um animal a ser filmada na história.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1885",
+          "text": "Guerra Sino-Francesa: as tropas francesas comandadas pelo General Oscar de Négrier derrotam uma força chinesa numericamente superior em Núi Bop, no norte do Vietnã.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1884",
+          "text": "Fundação da Sociedade Fabiana em Londres, Inglaterra, Reino Unido.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1878",
+          "text": "Guerra russo-turca de 1877–1878: Sófia é libertada do domínio otomano e designada a capital da Bulgária libertada.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1875",
+          "text": "É fundado o jornal O Estado de S. Paulo.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1865",
+          "text": "Bolsa de Valores de Nova Iorque inaugura sua primeira sede permanente perto da Wall Street, na cidade de Nova Iorque, Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1863",
+          "text": "Fundação da Igreja Nova Apostólica, uma igreja cristã e quiliástica, em Hamburgo, Alemanha.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        },
+        {
+          "year": "1854",
+          "text": "As Ilhas McDonald são descobertas pelo capitão William McDonald a bordo do Samarang.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_janeiro"
+        }
+      ],
       "portugal": []
     },
     "01-08": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "Terremoto de magnitude 7,1 no Tibete deixa mais de 126 pessoas mortas e centenas de feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2023",
+          "text": "Ocorre o ataque às sedes dos Três Poderes, tentativa de golpe de Estado perpretada por terroristas e apoiadores bolsonaristas que invadem o Congresso Nacional, Supremo Tribunal Federal e Palácio do Planalto na Praça dos Três Poderes em Brasília.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2023",
+          "text": "Brasília sofre intervenção federal na segurança devido aos ataques à sede dos três poderes.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2022",
+          "text": "Desabamento de rochas no município de Capitólio, em Minas Gerais, deixando dez mortos e 32 feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "O voo Ukraine International Airlines 752 cai imediatamente após a decolagem do Aeroporto de Tehran-Imam Khomeini; todas as 176 pessoas a bordo morrem. O avião foi abatido por um míssil antiaéreo iraniano.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "Forças iranianas atacam duas bases militares dos Estados Unidos no Iraque, como forma de retaliação ao ataque aéreo responsável pela morte de Qasem Soleimani.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2016",
+          "text": "Joaquín Guzmán, amplamente considerado o traficante de drogas mais poderoso do mundo, é recapturado após sua fuga de uma prisão de segurança máxima no México.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2010",
+          "text": "Homens armados de uma ramificação da Frente para a Libertação do Enclave de Cabinda atacam um ônibus que transportava a Seleção Togolesa de Futebol para o Campeonato Africano das Nações, matando três pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2009",
+          "text": "Sismo de magnitude 6,1 graus no norte da Costa Rica mata 15 pessoas e fere 32.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "O RMS Queen Mary 2, então o maior transatlântico já construído, é batizado pela neta de seu homônimo, a Rainha Elizabeth II.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "2003",
+          "text": "O voo 634 da Turkish Airlines cai perto do aeroporto de Diarbaquir, na Turquia, matando toda a tripulação e 70 dos 75 passageiros.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1994",
+          "text": "Cosmonauta russo Valeri Polyakov na Soyuz TM-18 entra na Mir. Ficaria na estação espacial até 22 de março de 1995, em um tempo recorde de 437 dias no espaço.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1989",
+          "text": "Voo British Midland 092, um Boeing 737-400, cai na autoestrada M1, matando 47 das 126 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1981",
+          "text": "Um fazendeiro local relata um avistamento de OVNI em Trans-en-Provence, na França, alegando ser \"talvez o mais completo e cuidadosamente documentado avistamento de todos os tempos\".",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1977",
+          "text": "Três bombas explodem em Moscou, Rússia, União Soviética, em 37 minutos, matando sete. Os atentados são atribuídos a um grupo separatista armênio.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1973",
+          "text": "Lançamento da missão espacial soviética Luna 21.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1973",
+          "text": "Caso Watergate: começa o julgamento dos sete homens acusados da entrada ilegal na sede do Partido Democrata em Watergate.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1972",
+          "text": "Curvando-se à pressão internacional, o presidente do Paquistão, Zulfikar Ali Bhutto, liberta da prisão o líder bengali Sheikh Mujibur Rahman, que havia sido preso após declarar a independência de Bangladesh.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1961",
+          "text": "Na França, um referendo sobre a autodeterminação promovido por Charles de Gaulle para a Argélia é aprovado.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1959",
+          "text": "Charles de Gaulle é proclamado o primeiro presidente da Quinta República Francesa.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1940",
+          "text": "Segunda Guerra Mundial: o Reino Unido introduz o racionamento de alimentos.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1936",
+          "text": "O decreto Kashf-e hijab é publicado por Reza Xá, xá (imperador) do Irã, proibindo o uso de véus islâmicos em público.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1928",
+          "text": "Fundação do Clube Atlético Bragantino (atualmente Red Bull Bragantino).",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        },
+        {
+          "year": "1926",
+          "text": "Príncipe herdeiro Nguyễn Phúc Vĩnh Thuỵ ascende ao trono, como último imperador do Vietnã.",
+          "source_url": "https://pt.wikipedia.org/wiki/8_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1951",
@@ -106,7 +711,128 @@
       ]
     },
     "01-02": {
-      "world": [],
+      "world": [
+        {
+          "year": "2022",
+          "text": "Abdalla Hamdok renuncia o cargo de Primeiro-Ministro do Sudão, em um discurso em rede de comunicação aberta.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "2022",
+          "text": "Protestos no Cazaquistão eclodem depois de um corte dos subsídios sobre derivados de petróleo. Nos confrontos morrem mais de 200 pessoas, ficam feridas mais de mil e vários milhares são presas.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "2022",
+          "text": "Fortes chuvas causam inundações na Indonésia e Malásia, atingindo a ilha de Sumatra, na Indonésia, principalmente as províncias de Achém e Jambi, onde mais de 30 000 pessoas foram deslocadas; e pelo menos duas crianças morreram. Na Malásia, as chuvas também forçaram pelo menos 13 000 pessoas a buscarem abrigos, com relatos de pelo menos 50 mortes, atingindo principalmente os estados de Selangor, Johor e Malaca.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "Bombardeio aéreo dos Estados Unidos em Bagdá, Iraque, mata general iraniano Qasem Soleimani e Abu Mahdi al-Muhandis, comandante iraquiano.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "2016",
+          "text": "Arábia Saudita executa Nimr al-Nimr por seu papel nos protestos de 2011-12.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "2004",
+          "text": "A sonda Stardust da NASA se aproxima do cometa Wild 2 para coletar amostras de poeira e obter fotos detalhadas do seu núcleo gelado.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1991",
+          "text": "Criação do Parque Estadual da Pedra Azul no Espírito Santo, Brasil.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1974",
+          "text": "O presidente dos Estados Unidos, Richard Nixon, assina um projeto de lei que reduz o limite máximo de velocidade dos EUA para 88,514 km/h, a fim de economizar gasolina durante um embargo da OPEP.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1963",
+          "text": "Guerra do Vietnã: os vietcongues conquistam sua primeira grande vitória, na Batalha de Ap Bac.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1959",
+          "text": "Luna 1, a primeira sonda espacial a chegar perto da Lua com sucesso, é lançada pela União Soviética.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1955",
+          "text": "Após o assassinato do presidente panamenho José Antonio Remón Cantera, seu vice, José Ramón Guizado, assume o poder, mas é rapidamente deposto após ser descoberto seu envolvimento na morte de Cantera.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1953",
+          "text": "Inaugurada a Base Aérea de Montijo junto ao rio Tejo, Portugal.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: Nuremberg, Alemanha, é severamente bombardeada pelas forças aliadas.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1942",
+          "text": "Segunda Guerra Mundial: Manila, capital das Filipinas, na época um território dos Estados Unidos, é capturada pelas forças japonesas.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1921",
+          "text": "Estreia mundial da peça de ficção científica R.U.R., do escritor tcheco Karel Čapek em um teatro em Hradec Králové. A peça foi responsável por popularizar a palavra robô em diversos idiomas.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1920",
+          "text": "O Departamento de Justiça dos Estados Unidos, sob a administração do presidente Woodrow Wilson, ordena a captura e prisão de suspeitos de socialismo, o que resulta na prisão de 6 000 supostos comunistas e anarquistas sem julgamento.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1905",
+          "text": "Guerra Russo-Japonesa: a guarnição russa se rende em Port Arthur, China.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1900",
+          "text": "Anúncio da Política de portas abertas pelo estadista estadunidense e diplomata John Hay para promover o comércio com a China.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1884",
+          "text": "Fundada a Federação Espírita Brasileira na cidade do Rio de Janeiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1865",
+          "text": "O Cerco de Paysandú termina quando brasileiros e uruguaios colorados capturam Paysandú, Uruguai.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1838",
+          "text": "O Arquivo Público Nacional é instituído no Rio de Janeiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1811",
+          "text": "Guerra Peninsular: fim do Cerco de Tortosa.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1777",
+          "text": "Guerra de Independência dos Estados Unidos: forças rebeldes estadunidenses sob o comando de George Washington repelem um ataque da metrópole britânica na Batalha do Assunpink Creek perto de Trenton, Nova Jérsei.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        },
+        {
+          "year": "1492",
+          "text": "Reconquista: o Reino Nacérida de Granada, a última fortaleza mourisca da Espanha, se rende.",
+          "source_url": "https://pt.wikipedia.org/wiki/2_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1923",
@@ -116,7 +842,128 @@
       ]
     },
     "01-06": {
-      "world": [],
+      "world": [
+        {
+          "year": "2021",
+          "text": "Apoiadores de Donald Trump, então presidente dos Estados Unidos, invadem o Capitólio, onde estava em andamento a certificação da vitória de seu sucessor no cargo, o presidente eleito Joe Biden, na eleição presidencial estadunidense de 2020. A rebelião resulta em cinco mortos e mais de cinquenta feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "Maomé V de Calantão renuncia ao cargo de Yang di-Pertuan Agong da Malásia, tornando-se o primeiro monarca a fazê-lo.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "2016",
+          "text": "Coreia do Norte conduz o quarto teste nuclear e alega ter usado bomba de hidrogênio.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1995",
+          "text": "Incêndio químico em um complexo de apartamentos em Manila, nas Filipinas, leva à descoberta de planos para o Projeto Bojinka, um ataque terrorista em massa.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1993",
+          "text": "Quatro pessoas morrem quando o voo 5634 da Lufthansa CityLine cai ao se aproximar do Aeroporto Charles de Gaulle, em Roissy-en-France, França.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1992",
+          "text": "O presidente da Geórgia, Zviad Gamsakhurdia, foge do país em consequência do golpe militar.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1963",
+          "text": "O referendo no Brasil de 1963 ocorreu para determinar o sistema de governo (parlamentarista ou presidencialista) do país, resultando na escolha do presidencialismo.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1960",
+          "text": "O voo National Airlines 2511 é destruído no ar pela explosão de uma bomba, durante a rota de Nova Iorque a Miami.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1951",
+          "text": "Guerra da Coreia: Início do massacre de Ganghwa, no qual cerca de 200 a 1 300 simpatizantes comunistas sul-coreanos são massacrados.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1950",
+          "text": "Reino Unido reconhece a República Popular da China. Em resposta, Taiwan rompe as relações diplomáticas com o Reino Unido.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1947",
+          "text": "A empresa aérea Pan American World Airways se torna a primeira companhia aérea comercial a oferecer uma passagem de volta ao mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1946",
+          "text": "Realizam-se as primeiras eleições gerais no Vietnã.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1941",
+          "text": "Franklin Delano Roosevelt, presidente dos Estados Unidos, faz seu discurso sobre as Quatro Liberdades no Discurso sobre o Estado da União.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1929",
+          "text": "Rei Alexandre dos sérvios, croatas e eslovenos suspende a constituição de seu país (Ditadura de 6 de Janeiro).",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1929",
+          "text": "Madre Teresa de Calcutá chega por mar a Calcutá para começar seu trabalho entre os mais pobres e doentes da Índia.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1926",
+          "text": "Fundação da Lufthansa, empresa aérea estatal alemã.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1912",
+          "text": "Alfred Wegener, geofísico alemão, apresenta pela primeira vez sua teoria da deriva continental.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1907",
+          "text": "Maria Montessori abre sua primeira escola e creche para crianças da classe trabalhadora em Roma, Itália.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1900",
+          "text": "Segunda Guerra dos Bôeres: tendo já sitiado a fortaleza em Ladysmith, as forças bôeres atacam-na, mas são repelidas pelos defensores britânicos.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1893",
+          "text": "A Catedral Nacional de Washington é licenciada pelo Congresso dos Estados Unidos. A carta é assinada pelo presidente Benjamin Harrison.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1870",
+          "text": "Inauguração do Musikverein (\"Clube da Música\") em Viena, Áustria-Hungria.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1847",
+          "text": "Samuel Colt obtém seu primeiro contrato de venda de pistolas revólveres para o governo dos Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1838",
+          "text": "Alfred Vail e colegas demonstram um sistema de telégrafo usando pontos e traços (este é o precursor do código Morse).",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        },
+        {
+          "year": "1835",
+          "text": "Início da Cabanagem, uma revolta popular e social ocorrida no Império do Brasil na antiga Província do Grão-Pará.",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1888",
@@ -131,7 +978,128 @@
       ]
     },
     "01-01": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "Um atentado durante as celebrações de Ano-Novo em Nova Orleans, Estados Unidos, deixa pelo menos 11 pessoas mortas.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2024",
+          "text": "Um terremoto de magnitude 7,5 atinge a prefeitura de Ishikawa, no litoral do Mar do Japão, causando mais de 120 mortos, 600 feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2023",
+          "text": "Toma posse no Brasil o presidente Luiz Inácio Lula da Silva, naquele que seria seu terceiro mandato.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2023",
+          "text": "Croácia junta-se à Zona Euro e ao Espaço Schengen.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2022",
+          "text": "A Parceria Regional Econômica Abrangente, a maior área de livre comércio do mundo, entra em vigor nos seguintes países: Austrália, Brunei, Camboja, China, Japão, Laos, Nova Zelândia, Singapura, Tailândia e Vietnã.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2021",
+          "text": "Entra em vigor a Zona de Comércio Livre Continental Africana.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2020",
+          "text": "Pelo menos 66 pessoas morrem e mais de 397 mil são deslocadas devido à inundações repentinas em Jacarta, capital da Indonésia.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "A sonda espacial New Horizons, da NASA, sobrevoa com sucesso o objeto transnetuniano Ultima Thule.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2019",
+          "text": "Toma posse no Brasil o presidente Jair Bolsonaro, o primeiro presidente brasileiro a não conseguir se reeleger.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2017",
+          "text": "Atentado a uma boate em Istambul, Turquia, durante as celebrações de ano-novo, mata pelo menos 39 pessoas e fere outras 60.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2017",
+          "text": "António Guterres, engenheiro e político português, é oficialmente eleito secretário-geral das Nações Unidas.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2016",
+          "text": "Acordo Ortográfico de 1990 entra em vigor no Brasil em caráter definitivo e obrigatório.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2015",
+          "text": "Entra em vigor a União Econômica Eurasiática, criando uma união política e econômica entre a Rússia, a Bielorrússia, a Armênia, o Cazaquistão e o Quirguistão.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2015",
+          "text": "Toma posse no Brasil a presidente Dilma Rousseff, naquele que seria seu segundo mandato.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2011",
+          "text": "Uma bomba explode quando cristãos coptas em Alexandria, Egito, iriam fazer a liturgia na igreja por ocasião do ano-novo, matando 23 pessoas e ferindo outras 97.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2011",
+          "text": "Estônia oficialmente adota o euro e se torna o 17.º país da Zona Euro.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2011",
+          "text": "Toma posse no Brasil a presidente Dilma Rousseff, naquele que seria seu primeiro mandato. Dilma foi a primeira mulher a ocupar o cargo de presidente da República no Brasil.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2010",
+          "text": "Entra em vigor o Tratado de Livre Comércio entre Associação de Nações do Sudeste Asiático e China, a zona de livre-comércio mais populosa já criada.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2009",
+          "text": "Sessenta e seis pessoas morrem no incêndio do Santika Club em Bangkok, Tailândia.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2007",
+          "text": "Romênia e Bulgária entram para a Comunidade Europeia.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2007",
+          "text": "Voo Adam Air 574 desaparece sobre o estreito de Sulawesi, na Indonésia, com 102 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2007",
+          "text": "Toma posse no Brasil o presidente Luiz Inácio Lula da Silva, naquele que seria seu segundo mandato.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "2003",
+          "text": "Toma posse no Brasil o presidente Luiz Inácio Lula da Silva, naquele que seria seu primeiro mandato.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        },
+        {
+          "year": "1999",
+          "text": "Introduzida a moeda do euro em onze Estados-membros da União Europeia (com exceção do Reino Unido, Dinamarca, Grécia e Suécia, posteriormente a Grécia adota o euro).",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1669",
@@ -161,7 +1129,128 @@
       ]
     },
     "01-10": {
-      "world": [],
+      "world": [
+        {
+          "year": "2013",
+          "text": "Mais de 100 pessoas são mortas e 270 feridas em várias explosões de bombas na área de Quetta, no Paquistão.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "2007",
+          "text": "Uma greve geral começa na Guiné na tentativa de fazer com que o presidente Lansana Conté renuncie.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "2000",
+          "text": "Voo Crossair 498, um avião Saab 340, cai em Niederhasli, Suíça, depois de decolar do Aeroporto de Zurique, matando 13 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1994",
+          "text": "Criação da União Econômica e Monetária do Oeste Africano.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1993",
+          "text": "Declaração da República da Chechênia.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1990",
+          "text": "Formação da Time Warner pela fusão da Time Inc. com a Warner Communications.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1988",
+          "text": "Emancipação do município brasileiro de Aliança do Tocantins, no estado do Tocantins.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1985",
+          "text": "O sandinista Daniel Ortega torna-se presidente da Nicarágua e promete continuar a transformação para o socialismo e a aliança com a União Soviética e Cuba; a política estadunidense continua apoiando os Contras em sua revolta contra o governo da Nicarágua.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1984",
+          "text": "Relações entre Estados Unidos e Santa Sé: os Estados Unidos e a Santa Sé (Cidade do Vaticano) restabelecem relações diplomáticas plenas após quase 117 anos, derrubando a proibição do Congresso dos Estados Unidos de 1867 de financiamento público para tal enviado diplomático.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1981",
+          "text": "Guerra Civil de El Salvador: a FMLN lança sua primeira grande ofensiva, ganhando o controle da maioria dos departamentos de Morazán e Chalatenango.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1980",
+          "text": "O New England Journal of Medicine publica a carta \"Vício Raro em Pacientes Tratados com Narcóticos\", que mais tarde é mal utilizada para minimizar o risco geral de dependência de opióides.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1972",
+          "text": "Sheikh Mujibur Rahman retorna a recém-independente Bangladesh como presidente depois de passar mais de nove meses na prisão no Paquistão.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1966",
+          "text": "Declaração de Tashkent, um acordo de paz assinado entre a Índia e o Paquistão termina com a Guerra Indo-Paquistanesa de 1965.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1962",
+          "text": "Programa Apollo: a NASA anuncia planos para construir o veículo de lançamento do foguete C-5, que ficou conhecido como o foguete Saturno V Lunar, que lançou todas as missões Apollo Lunar.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1954",
+          "text": "O voo BOAC 781, um de Havilland DH.106 Comet, explode e cai no mar Tirreno, matando 35 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1946",
+          "text": "Acontece em Londres a primeira Assembleia Geral das Nações Unidas. Cinquenta e uma nações estão representadas.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1946",
+          "text": "Signal Corps do Exército dos Estados Unidos conduz com sucesso o Projeto Diana, lançando ondas eletromagnéticas na direção da Lua e recebendo os sinais refletidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1941",
+          "text": "Segunda Guerra Mundial: o exército grego captura Kleisoura.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1939",
+          "text": "Criação do Parque Nacional do Iguaçu, Brasil.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1927",
+          "text": "Lançamento na Alemanha do filme futurista de Fritz Lang, Metrópolis.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1923",
+          "text": "Intervenção federal no Rio de Janeiro, instalando o interventor Aurelino Leal na chefia do poder executivo estadual.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1920",
+          "text": "Encerrada oficialmente a Primeira Guerra Mundial com a entrada em vigor do Tratado de Versalhes.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1917",
+          "text": "Expedição Transantártica Imperial: Sete sobreviventes do grupo do Mar de Ross foram resgatados depois de ficarem presos por vários meses.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        },
+        {
+          "year": "1916",
+          "text": "Primeira Guerra Mundial: na Ofensiva de Erzurum, a Rússia derrota o Império Otomano.",
+          "source_url": "https://pt.wikipedia.org/wiki/10_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1926",
@@ -171,7 +1260,128 @@
       ]
     },
     "01-09": {
-      "world": [],
+      "world": [
+        {
+          "year": "2024",
+          "text": "O Presidente Daniel Noboa declara estado de conflito armado interno no Equador contra organizações criminosas, principalmente Los Choneros.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2021",
+          "text": "Voo Sriwijaya Air 182 cai após a decolagem de Jacarta, Indonésia, com 62 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2015",
+          "text": "Um envenenamento em massa em um funeral em Moçambique envolvendo cerveja que foi contaminada com Burkholderia gladioli deixa 75 mortos e mais de 230 pessoas doentes.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2011",
+          "text": "Voo Iran Air 277 cai perto de Úrmia, no nordeste do país, matando 77 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2007",
+          "text": "O estadunidense Steve Jobs, o diretor executivo da Apple, apresenta o iPhone original em um Macworld keynote em São Francisco.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2005",
+          "text": "Movimento Popular de Libertação do Sudão e Governo do Sudão assinam o Amplo Acordo de Paz.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "2005",
+          "text": "Mahmoud Abbas vence a eleição para suceder Yasser Arafat como presidente da Autoridade Nacional Palestina, substituindo o presidente interino Rawhi Fattouh.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1996",
+          "text": "Primeira Guerra da Chechênia: separatistas chechenos lançam um ataque contra o aeródromo de helicópteros e mais tarde um hospital civil na cidade de Kizlyar, no vizinho Daguestão, que se transforma em uma enorme crise de reféns envolvendo milhares de civis.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1992",
+          "text": "As primeiras descobertas de planetas extrasolares são anunciadas pelos astrônomos Aleksander Wolszczan e Dale Frail, que descobriram dois planetas orbitando o pulsar PSR 1257 + 12.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1981",
+          "text": "Toma posse em Portugal o VII Governo Constitucional, um governo da coligação Aliança Democrática (PPD/PSD, CDS e PPM) chefiado pelo primeiro-ministro Francisco Pinto Balsemão.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1962",
+          "text": "Programa Apollo: a NASA anuncia planos para construir o veículo lançador de foguetes C-5, então conhecido como \"Saturno Avançado\", para transportar seres humanos à Lua.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1960",
+          "text": "O presidente do Egito, Gamal Abdel Nasser, dá início à construção da Represa de Assuã detonando dez toneladas de dinamite para demolir vinte toneladas de granito na margem leste do rio Nilo.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1959",
+          "text": "A barragem de Vega de Tera, Província de Zamora, Espanha, rompe, provocando uma inundação desastrosa que quase destrói a cidade de Ribadelago e mata 144 residentes.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1957",
+          "text": "Primeiro-ministro britânico, Anthony Eden, renuncia ao cargo após seu fracasso em retomar o Canal de Suez da soberania egípcia.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: começa a Invasão do Golfo de Lingayen.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1941",
+          "text": "Segunda Guerra Mundial: primeiro voo do avião Avro Lancaster.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1923",
+          "text": "O espanhol Juan de la Cierva faz o primeiro voo de autogiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1921",
+          "text": "Guerra Greco-Turca: a Primeira Batalha de İnönü, a primeira batalha da guerra, começa perto de Esquixequir, na Anatólia.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1917",
+          "text": "Primeira Guerra Mundial: a Batalha de Rafa é travada perto da fronteira egípcia com a otomana.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1916",
+          "text": "Primeira Guerra Mundial: a Batalha de Galípoli termina com uma vitória do Império Otomano e as últimas forças Aliadas são evacuadas da península.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1913",
+          "text": "Toma posse em Portugal, o 5.º governo republicano, chefiado pelo presidente do Ministério Afonso Costa.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1909",
+          "text": "Ernest Shackleton, líder da Expedição Nimrod ao Polo Sul, fixa a bandeira do Reino Unido a 180 km do Polo Sul, o ponto mais distante que alguém já havia alcançado até aquele momento.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1905",
+          "text": "Domingo Sangrento: manifestantes pacíficos marcham até o Palácio de Inverno, em São Petersburgo, para pedir uma petição ao czar (imperador) Nicolau II da Rússia e são recebidos a tiros pela Guarda Imperial.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        },
+        {
+          "year": "1881",
+          "text": "Entra em vigor, no Brasil, a Lei Saraiva que estabelece o título eleitoral, as eleições diretas, o voto secreto e o alistamento preparado pela Justiça.",
+          "source_url": "https://pt.wikipedia.org/wiki/9_de_janeiro"
+        }
+      ],
       "portugal": [
         {
           "year": "1980",
@@ -2329,7 +3539,128 @@
       "portugal": []
     },
     "07-16": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "Jennifer Simons toma posse como presidente do Suriname, sendo a primeira mulher a exercer o cargo no país.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "2019",
+          "text": "Um prédio de 100 anos em Mumbai, na Índia, desaba, matando pelo menos 10 pessoas e deixando muitas outras presas.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "Guerra Civil Síria: a Batalha de Ras al-Ayn recomeça entre as Unidades de Proteção Popular (YPG) e as forças islâmicas, iniciando o conflito Rojava-islâmico.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "2007",
+          "text": "Um terremoto de magnitude 6,8 e 6,6 ocorre na costa de Niigata, no Japão, matando oito pessoas, ferindo pelo menos 800 e danificando uma usina nuclear.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "2005",
+          "text": "Um Antonov An-24 cai perto de Baney em Bioco Norte, Guiné Equatorial, matando 60 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "2004",
+          "text": "Millennium Park, considerado o primeiro e mais ambicioso projeto arquitetônico do início do século XXI de Chicago, é aberto ao público pelo prefeito Richard M. Daley.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1994",
+          "text": "O cometa Shoemaker-Levy 9 é destruído em uma colisão frontal com Júpiter.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1990",
+          "text": "O Conselho Supremo da Ucrânia declara a soberania do Estado sobre o território da República Socialista Soviética da Ucrânia.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1981",
+          "text": "Mahathir bin Mohamad assume o cargo de primeiro-ministro da Malásia.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1979",
+          "text": "O presidente iraquiano Ahmed Hassan al-Bakr renuncia e é substituído por Saddam Hussein.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "Lançamento da missão espacial norte americana Apollo 11 no Complexo de Lançamento 39, do Centro Espacial Kennedy, (Flórida) que seria a primeira missão tripulada a chegar à Lua.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1965",
+          "text": "Aberto ao trânsito o Túnel do Monte Branco, ligando a França e a Itália.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1965",
+          "text": "O coronel sul-vietnamita Phạm Ngọc Thảo, um ex-espião comunista e agente duplo não detectado, é caçado e morto por indivíduos desconhecidos após ser condenado à morte à revelia por uma tentativa de golpe de fevereiro de 1965 contra Nguyễn Khánh.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1957",
+          "text": "O voo 844 da KLM cai nas Ilhas Schouten, na atual Indonésia (então Nova Guiné Holandesa), matando 58 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1951",
+          "text": "O rei Leopoldo III da Bélgica abdica em favor de seu filho, Balduíno I da Bélgica.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1950",
+          "text": "O Uruguai vence a Copa do Mundo FIFA pela segunda vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1948",
+          "text": "Após resistência simbólica, a cidade de Nazaré, reverenciada pelos cristãos como a cidade natal de Jesus, capitula às tropas israelenses durante a Operação Dekel na Guerra Árabe-Israelense de 1948.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1948",
+          "text": "A invasão do cockpit do hidroavião de passageiros Miss Macao, operado por uma subsidiária da Cathay Pacific Airways, marca o primeiro sequestro de um avião comercial.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: o cruzador pesado USS Indianapolis deixa São Francisco com o núcleo de urânio e outros componentes da bomba \"Little Boy\" a bordo com destino à ilha Tinian.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: Projeto Manhattan: a Era Atômica começa quando os Estados Unidos detonam com sucesso uma bomba nuclear de teste baseada em plutônio perto de Alamogordo, Novo México.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1944",
+          "text": "A primeira legião da Força Expedicionária Brasileira (FEB) desembarca na Itália e se junta aos exércitos dos Aliados da Segunda Guerra Mundial.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1942",
+          "text": "Holocausto: Rafle du Vélodrome d'Hiver: O governo de Vichy, França, ordena a prisão em massa de 13 152 judeus detidos no Vélodrome d'Hiver em Paris antes da deportação para Auschwitz.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1935",
+          "text": "O primeiro parquímetro do mundo é instalado em Oklahoma City, Oklahoma.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        },
+        {
+          "year": "1934",
+          "text": "Promulgação da Constituição brasileira de 1934.",
+          "source_url": "https://pt.wikipedia.org/wiki/16_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
@@ -2344,11 +3675,253 @@
       ]
     },
     "07-17": {
-      "world": [],
+      "world": [
+        {
+          "year": "2018",
+          "text": "Scott S. Sheppard anuncia que sua equipe descobriu uma dúzia de luas irregulares de Júpiter.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2014",
+          "text": "Queda de um Boeing 777 da Malaysia Airlines (Voo MH17) com 298 pessoas a bordo, na fronteira da Ucrânia com a Rússia.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2007",
+          "text": "Queda do Airbus A320 da companhia aérea TAM no Aeroporto de Congonhas (São Paulo), que fazia o voo 3054, com 187 pessoas a bordo. Este foi considerado o pior acidente aéreo da história brasileira, da América Latina, e o 11.º do mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2006",
+          "text": "Um sismo seguido de tsunami de 7,7 MW em Pangandaran, afeta gravemente a ilha indonésia de Java, matando 668 pessoas e deixando mais de 9 000 feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2004",
+          "text": "Toma posse em Portugal o XVI Governo Constitucional, um governo de coligação entre o Partido Social Democrata e o Partido Popular chefiado pelo primeiro-ministro Pedro Santana Lopes.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2001",
+          "text": "O Concorde é trazido de volta ao serviço quase um ano após o acidente de julho de 2000.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "2000",
+          "text": "Queda do voo Alliance Air 7412 na Índia.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1998",
+          "text": "Uma conferência diplomática adota o Estatuto de Roma, estabelecendo uma Corte Penal Internacional permanente para julgar indivíduos por genocídio, crimes contra a humanidade, crimes de guerra e crime de agressão.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1998",
+          "text": "O terremoto de 7,0 mw Papua Nova Guiné provoca um tsunami que destrói dez aldeias em Papua Nova Guiné, matando até 2 700 pessoas e deixando vários milhares de feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1996",
+          "text": "Voo TWA 800: ao largo da costa de Long Island, Nova Iorque, explode um Boeing 747 da TWA com destino a Paris, matando todas as 230 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1994",
+          "text": "O Brasil vence a Copa do Mundo FIFA pela quarta vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1989",
+          "text": "Primeiro voo do bombardeiro estratégico B-2 Spirit.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1989",
+          "text": "As relações diplomáticas entre a Santa Sé e a Polônia são restabelecidas.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1981",
+          "text": "Uma falha estrutural leva ao colapso de uma passarela no Hyatt Regency em Kansas City, Missouri, matando 114 pessoas e ferindo mais de 200.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1979",
+          "text": "o ditador da Nicarágua, general Anastasio Somoza Debayle, renuncia e foge para Miami, Flórida, Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "Timor Leste é anexado e se torna a 27.ª província da Indonésia.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1975",
+          "text": "Missão espacial Apollo-Soyuz: um módulo espacial Apollo norte-americano e um módulo Soyuz soviético acoplam em órbita da Terra.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1968",
+          "text": "Abdul Rahman Arif é tirado do poder e o Partido Baath é instalado como o poder governante no Iraque, com Ahmed Hassan al-Bakr como o novo presidente iraquiano.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1955",
+          "text": "Inauguração da Disneylândia, em Anaheim, Califórnia.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1945",
+          "text": "Segunda Guerra Mundial: os dirigentes dos Aliados vitoriosos Stalin (União Soviética), Truman (Estados Unidos), Churchill (Reino Unido) reúnem-se no primeiro dia da Conferência de Potsdam para decidir o futuro de uma Alemanha derrotada.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1936",
+          "text": "Guerra Civil Espanhola: uma rebelião das Forças Armadas contra o recém-eleito governo de esquerda da Frente Popular da Espanha inicia a guerra civil.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1934",
+          "text": "É realizada a eleição presidencial indireta. Getúlio Vargas é eleito presidente do Brasil com 173 votos pela Assembleia Constituinte, derrotando Borges de Medeiros com 59 votos.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1918",
+          "text": "O czar Nicolau II da Rússia, sua família e quatro criados são executados por tchekistas bolcheviques na Casa Ipatiev em Ecaterimburgo, Rússia.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        },
+        {
+          "year": "1918",
+          "text": "O RMS Carpathia, navio que resgatou os 705 sobreviventes do RMS Titanic, é afundado na costa da Irlanda pelo alemão SM U-55; cinco vidas são perdidas.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_julho"
+        }
+      ],
       "portugal": []
     },
     "07-19": {
-      "world": [],
+      "world": [
+        {
+          "year": "2026",
+          "text": "A Espanha vence a Copa do Mundo FIFA pela segunda vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "2024",
+          "text": "Falha em atualização de software da CrowdStrike afeta sistemas Microsoft Windows e causa apagão cibernético global.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "2018",
+          "text": "O Knesset aprova a polêmica Lei da Nacionalidade, que define o Estado de Israel como o estado-nação do povo judeu.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "Guerra Civil Síria: as Unidades de Proteção Popular capturam a cidade de Kobanî sem resistência, iniciando o conflito no Curdistão sírio no nordeste da Síria.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "2011",
+          "text": "O presidente guineense Alpha Condé sobrevive a uma tentativa de assassinato e golpe de estado em sua residência em Conakry.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1997",
+          "text": "Conflitos na Irlanda do Norte: o Exército Republicano Irlandês Provisório retoma um cessar-fogo para encerrar sua campanha paramilitar de 25 anos para acabar com o domínio britânico na Irlanda do Norte.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1989",
+          "text": "Voo United Airlines 232 cai em Sioux City, Iowa, matando 112 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1985",
+          "text": "A barragem de Val di Stava rompe matando 268 pessoas em Val di Stava, na Itália.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1979",
+          "text": "Os rebeldes sandinistas depõem o governo da família Somoza, apoiado pelos Estados Unidos, na Nicarágua.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "O primeiro sinal do Sistema de Posicionamento Global (GPS) do mundo foi transmitido do Navigation Technology Satellite 2 (NTS-2) e recebido na Rockwell Collins em Cedar Rapids, Iowa.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "Criado o Parque Nacional Sagarmatha no Nepal.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1963",
+          "text": "Joe Walker voa em um North American X-15 a uma altitude recorde de 106 010 metros (347 800 pés) no X-15 Flight 90. Excedendo uma altitude de 100 km, este voo se qualifica como um voo espacial tripulado de acordo com a convenção internacional.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1961",
+          "text": "Tunísia impõe um bloqueio à base naval francesa em Bizerta; os franceses capturariam a cidade inteira quatro dias depois.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1949",
+          "text": "O Laos torna-se independente da França.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: Roma é fortemente bombardeada por mais de 500 aviões aliados, causando milhares de baixas",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1940",
+          "text": "Cerimônia do Marechal de Campo: Primeira ocasião na Segunda Guerra Mundial em que Adolf Hitler nomeia marechais de campo devido a conquistas militares.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1936",
+          "text": "Guerra Civil Espanhola: a CNT e a UGT convocam uma greve geral na Espanha – mobilizando milícias operárias contra as forças nacionalistas.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1920",
+          "text": "É nomeado em Portugal o 26.º governo republicano, chefiado pelo presidente do Ministério António Granjo.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1916",
+          "text": "Primeira Guerra Mundial: Batalha de Fromelles: tropas britânicas e australianas atacam as trincheiras alemãs como parte da Ofensiva do Somme.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1900",
+          "text": "Entra em operação a Linha 1 do metrô de Paris.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1900",
+          "text": "Fundado o Sport Club Rio Grande, primeiro clube de futebol do Brasil.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1870",
+          "text": "Guerra Franco-Prussiana: a França declara guerra à Prússia.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1864",
+          "text": "Rebelião de Taiping: Terceira Batalha de Nanquim: A dinastia Qing finalmente derrota o Reino Celestial Taiping.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        },
+        {
+          "year": "1848",
+          "text": "Direitos da mulher: tem início uma convenção de dois dias sobre os direitos da mulher em Seneca Falls, Nova Iorque.",
+          "source_url": "https://pt.wikipedia.org/wiki/19_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
@@ -2363,7 +3936,128 @@
       ]
     },
     "07-18": {
-      "world": [],
+      "world": [
+        {
+          "year": "2019",
+          "text": "Um incêndio criminoso em um estúdio de animação em Quioto, no Japão, mata pelo menos 33 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "2014",
+          "text": "O Estado Islâmico do Iraque e do Levante exige que os cristãos aceitem o status de dhimmi, emigrem das terras do EIIL ou sejam mortos.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1996",
+          "text": "Batalha de Mullaitivu: os Tigres de Libertação de Tamil Eelam capturam a base do Exército do Sri Lanka, matando mais de 1 200 soldados.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1995",
+          "text": "Na ilha caribenha de Montserrat, o vulcão Soufrière Hills entra em erupção. Ao longo de vários anos, devasta a ilha, destruindo a capital, forçando a fuga de grande parte da população.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1994",
+          "text": "Um ataque ao prédio da Associação Mutual Israelita Argentina (AMIA) em Buenos Aires mata 85 pessoas (a maioria judia) e fere outras 300.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1994",
+          "text": "Genocídio de Ruanda: a Frente Patriótica de Ruanda assume o controle de Guissenhi e do noroeste de Ruanda, forçando o governo interino a entrar no Zaire e encerrando o genocídio.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Uma foto de Les Horribles Cernettes foi tirada, que se tornou a primeira foto postada na World Wide Web.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1984",
+          "text": "Massacre do McDonald's em San Ysidro, Califórnia: em um restaurante de fast food, James Oliver Huberty abre fogo, matando 21 pessoas e ferindo outras 19 antes de ser morto a tiros pela polícia.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1980",
+          "text": "A TV Tupi, primeira emissora latino-americana, sai do ar definitivamente.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "Nadia Comăneci torna-se a primeira pessoa na história dos Jogos Olímpicos a marcar 10 pontos perfeitos em ginástica nos Jogos Olímpicos de 1976.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1974",
+          "text": "Toma posse em Portugal o II Governo Provisório, chefiado pelo primeiro-ministro Vasco Gonçalves.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1968",
+          "text": "Intel é fundada em Mountain View, na Califórnia.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1966",
+          "text": "Voo espacial tripulado: lançamento da Gemini X do Cabo Canaveral em uma missão de 70 horas que inclui o acoplamento em órbita com um Veículo Alvo Agena.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1956",
+          "text": "Criada a Fundação Calouste Gulbenkian, em Lisboa, Portugal.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1944",
+          "text": "Segunda Guerra Mundial: Hideki Tōjō renuncia ao cargo de primeiro-ministro do Japão devido a vários contratempos no esforço de guerra.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1942",
+          "text": "Segunda Guerra Mundial: os alemães testam em voo o Messerschmitt Me-262 usando apenas os seus jatos, pela primeira vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1936",
+          "text": "Na Espanha, uma facção do exército apoiada por fascistas, se levanta contra a Segunda República Espanhola em um golpe de estado iniciando a Guerra Civil de 3 anos, resultando na mais longa ditadura na história da Europa moderna.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1925",
+          "text": "Adolf Hitler publica a Mein Kampf.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1918",
+          "text": "A Grã-Duquesa Isabel Feodorovna, outros cinco membros da família Romanov e duas pessoas ligadas a eles são executados por bolcheviques em uma mina próxima de Alapayevsk, na Rússia.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1898",
+          "text": "Marie Curie e Pierre Curie anunciam a descoberta de um novo elemento químico e propõem que se chame Polônio.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1870",
+          "text": "O Concílio Vaticano I decreta o dogma da infalibilidade papal.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1841",
+          "text": "D. Pedro II é coroado Imperador do Brasil aos 15 anos de idade.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1812",
+          "text": "Os Tratados de Orebro encerram as guerras anglo-russa e anglo-sueca.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        },
+        {
+          "year": "1806",
+          "text": "A explosão de um paiol de pólvora em Birgu, Malta, mata cerca de 200 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/18_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "1988",
@@ -2373,7 +4067,128 @@
       ]
     },
     "07-20": {
-      "world": [],
+      "world": [
+        {
+          "year": "2021",
+          "text": "O empresário norte-americano Jeff Bezos voa para o espaço a bordo do New Shepard NS-16 operado por sua empresa privada de voos espaciais Blue Origin.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2015",
+          "text": "Uma enorme explosão na cidade fronteiriça de maioria curda de Suruç, na Turquia, tendo como alvo a Federação de Associações Juvenis Socialistas, mata pelo menos 31 pessoas e fere mais de 100.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2015",
+          "text": "Os Estados Unidos e Cuba retomam relações diplomáticas após cinco décadas.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "Guerra Civil Síria: a Batalha de Ras al-Ayn termina com a expulsão das forças islâmicas da cidade pelas Unidades de Proteção Popular.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "James Holmes abre fogo dentro de um cinema em Aurora, Colorado, matando 12 e ferindo outras 70 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "Guerra Civil Síria: as Unidades de Proteção Popular capturam as cidades de Amuda e Efrîn sem resistência.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "2006",
+          "text": "A VARIG — Viação Aérea Rio Grande S.A., tradicional empresa aérea do Brasil, deixa oficialmente de operar.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1999",
+          "text": "O Partido Comunista da China inicia uma campanha de perseguição contra o Falun Gong, prendendo milhares em todo o país.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Václav Havel renuncia ao cargo de presidente da Tchecoslováquia.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Um Tupolev Tu-154 cai durante a decolagem do Aeroporto Internacional de Tbilisi, matando todos os 24 a bordo e mais quatro pessoas em solo.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1989",
+          "text": "A junta governante da Birmânia coloca a líder da oposição Aung San Suu Kyi em prisão domiciliar.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1985",
+          "text": "O governo de Aruba aprova a legislação para se separar das Antilhas Holandesas.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1981",
+          "text": "O voo 40 da Somali Airlines cai no distrito de Balad, na Somália, matando 50 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "A Agência Central de Inteligência divulga documentos sob a Lei de Liberdade de Informação revelando que havia se envolvido em experimentos de controle da mente.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "O voo B-2 da Aeroflot cai após a decolagem do Aeroporto de Vilim, na República de Sakha, matando 39 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "O lander americano Viking 1 aterrissa com sucesso em Marte.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1974",
+          "text": "Invasão turca de Chipre: forças da Turquia invadem Chipre após um golpe de Estado, organizado pelo ditador da Grécia, contra o presidente Makarios.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "Programa Apollo: a tripulação da Apollo 11 realiza com sucesso o primeiro pouso tripulado na Lua no Mar da Tranquilidade. Os americanos Neil Armstrong e Buzz Aldrin se tornam os primeiros humanos a caminhar na Lua seis horas e meia depois do pouso.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "É anunciado um cessar-fogo entre Honduras e El Salvador, seis dias após o início da \"Guerra do Futebol\".",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1968",
+          "text": "O primeiro Jogos Olímpicos de Verão da Special Olympics é realizado no Soldier Field, em Chicago, com cerca de 1 000 atletas com deficiências intelectuais.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1968",
+          "text": "Os primeiros Jogos Olímpicos Especiais Internacionais de Verão são realizados no Soldier Field, em Chicago, com cerca de 1 000 atletas com deficiência intelectual.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1960",
+          "text": "Ceilão (atual Sri Lanka) elege Sirimavo Bandaranaike como primeira-ministra, a primeira mulher eleita chefe de governo do mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1960",
+          "text": "O míssil Polaris é lançado com sucesso de um submarino, o USS George Washington, pela primeira vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        },
+        {
+          "year": "1951",
+          "text": "O rei Abdullah I da Jordânia é assassinado por um palestino enquanto participava das orações de sexta-feira em Jerusalém.",
+          "source_url": "https://pt.wikipedia.org/wiki/20_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "1772",
@@ -2398,7 +4213,128 @@
       ]
     },
     "07-22": {
-      "world": [],
+      "world": [
+        {
+          "year": "2019",
+          "text": "Chandrayaan-2, a segunda missão de exploração lunar desenvolvida pela Organização de Pesquisa Espacial Indiana depois que Chandrayaan-1 é lançada do Centro Espacial Satish Dhawan.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "O Papa Francisco chega ao Brasil para a Jornada Mundial da Juventude em sua primeira viagem internacional como papa.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "Terremotos de Dingxi: uma série de terremotos em Dingxi, China, mata pelo menos 89 pessoas e fere mais de 500 outras.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "Guerra Civil Síria: as Unidades de Proteção Popular (YPG) capturaram as cidades de Serê Kaniyê e Dirbêsiyê, durante confrontos com forças pró-governo em Al-Hasakah.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2011",
+          "text": "Atentados na Noruega: primeiro uma explosão de uma bomba que atingiu prédios do governo no centro de Oslo, seguida por um massacre em um acampamento de jovens na ilha de Utøya.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2009",
+          "text": "A Ásia acompanha o maior eclipse do século XXI.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2005",
+          "text": "Jean Charles de Menezes é morto pela Polícia Metropolitana de Londres ao ser confundido com o terrorista responsável pelos atentados de 7 de julho de 2005 em Londres.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "2003",
+          "text": "Membros de uma divisão de assalto aéreo do Exército dos Estados Unidos, auxiliados por Forças Especiais, atacam um complexo no Iraque, matando os filhos de Saddam Hussein: Uday e Qusay, juntamente com Mustapha Hussein, filho de 14 anos de Qusay, e um guarda-costas.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Perto de Medellín, o narcotraficante colombiano Pablo Escobar escapa de sua prisão de luxo temendo extradição para os Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1983",
+          "text": "A lei marcial na Polônia é oficialmente revogada.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "O líder chinês Deng Xiaoping é reintegrado ao poder.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "O Japão conclui sua última reparação às Filipinas por crimes de guerra cometidos durante a conquista imperial do país pelo Japão na Segunda Guerra Mundial.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1973",
+          "text": "O voo 816 da Pan Am cai após a decolagem do Aeroporto Internacional de Faa'a em Papeete, Polinésia Francesa, matando 78 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1963",
+          "text": "A Colônia de Sarawak ganha autogoverno.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1962",
+          "text": "Programa Mariner: a espaçonave Mariner 1 voa de forma irregular vários minutos após o lançamento e tem que ser destruída.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1946",
+          "text": "Atentado do Hotel King David: uma organização clandestina sionista, o Irgun, bombardeia o Hotel King David em Jerusalém, sede da administração civil e quartel-general militar do Mandato Britânico da Palestina, resultando em 91 mortes.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: as forças aliadas capturam Palermo durante a invasão aliada da Sicília.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: as forças de ocupação do Eixo dispersam violentamente um grande protesto em Atenas, matando 22 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1942",
+          "text": "Grossaktion Varsóvia: começa a deportação sistemática de judeus do gueto de Varsóvia.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1936",
+          "text": "Guerra Civil Espanhola: o Comitê Executivo Popular de Valência toma o poder na Comunidade Valenciana.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1935",
+          "text": "O governo Getúlio Vargas cria o Programa Nacional (atualmente A Voz do Brasil).",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1933",
+          "text": "O aviador Wiley Post retorna ao Floyd Bennett Field na cidade de Nova York, completando o primeiro voo solo ao redor do mundo em sete dias, 18 horas e 49 minutos.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1921",
+          "text": "Guerra do Rife: o exército espanhol sofre sua pior derrota militar dos tempos modernos para os berberes da região do Rife do Marrocos espanhol.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        },
+        {
+          "year": "1894",
+          "text": "Realizada na França a primeira corrida automobilística entre as cidades de Paris e Ruão.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
@@ -2408,7 +4344,128 @@
       ]
     },
     "07-24": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "O avião Antonov An-24RV cai na região de Amur, Rússia, matando todas as 48 pessoas a bordo.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2024",
+          "text": "Acidente aéreo em Catmandu, Nepal, causa 18 mortes.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2023",
+          "text": "Na Rússia, o grupo de mercenários Wagner que avançava com tropas militares em direção a Moscou recua, um dia após a rebelião contra governo de Vladmir Putin.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2014",
+          "text": "Voo Air Algérie 5017 perde contato com os controladores de tráfego aéreo 50 minutos após a decolagem. Viajava entre Ouagadougou, Burkina Faso e Argel. Os destroços são encontrados mais tarde no Mali. Todas as 116 pessoas a bordo morrem.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "Um trem a 190 km/h descarrilou na Espanha ao fazer uma curva com limite de velocidade de 80 km/h, matando 78 passageiros.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2013",
+          "text": "O Clube Atlético Mineiro conquistou pela primeira vez o título de campeão da Copa Libertadores da América, depois de derrotar o Club Olímpia.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "Guerra Civil Síria: as Unidades de Proteção Popular (YPG) capturam a cidade de Girkê Legê.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1983",
+          "text": "Começam os tumultos antitâmil do Julho Negro no Sri Lanka, matando entre 400 e 3 000 pessoas. Julho Negro é geralmente considerado como o início da Guerra civil do Sri Lanka.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1982",
+          "text": "Chuvas fortes causam um deslizamento de terra que destrói uma ponte em Nagasaki, no Japão, matando 299 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "Fim da Guerra Líbia-Egito.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "A missão Apollo 11 retorna à Terra, pousando próxima ao Havaí.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1967",
+          "text": "Durante uma visita oficial de estado ao Canadá, o presidente francês Charles de Gaulle declara a uma multidão de mais de 100 000 pessoas em Montreal: Vive le Québec libre! (\"Viva a Quebec livre!\"); a declaração irritou o governo canadense e muitos canadenses anglófonos.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1959",
+          "text": "Na abertura da Exposição Nacional Americana em Moscou, o vice-presidente americano Richard Nixon e o primeiro-ministro soviético Nikita Khrushchov têm um \"Debate da Cozinha\".",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1950",
+          "text": "A Estação da Força Espacial de Cabo Canaveral inicia suas operações com o lançamento de um foguete Bumper.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: começa a Operação Gomorra: aviões britânicos e canadenses bombardeiam Hamburgo à noite, e aviões americanos bombardeiam a cidade durante o dia. Até o final da operação, em novembro, 9 000 toneladas de explosivos terão matado mais de 30 000 pessoas e destruído 280 000 edifícios.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1935",
+          "text": "A onda de calor Dust Bowl atinge seu pico, atingindo temperaturas de 43 °C em Chicago e 40 °C em Milwaukee.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1929",
+          "text": "Entra em vigor o Pacto Kellogg-Briand, renunciando à guerra como um instrumento de política externa (é assinado pela primeira vez em Paris em 27 de agosto de 1928, pela maioria das principais potências mundiais).",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1927",
+          "text": "Inaugurada em Ypres, Bélgica, a Porta de Menin, um memorial da Primeira Guerra Mundial.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1923",
+          "text": "O Tratado de Lausanne, estabelecendo as fronteiras da Turquia moderna, é assinado na Suíça pela Grécia, Bulgária e outros países que lutaram na Primeira Guerra Mundial.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1922",
+          "text": "O projeto do Mandato Britânico da Palestina foi formalmente confirmado pelo Conselho da Liga das Nações; entrou em vigor em 26 de setembro de 1923.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1915",
+          "text": "O navio de passageiros SS Eastland vira enquanto amarrado a uma doca no rio Chicago. Um total de 844 passageiros e tripulantes são mortos no maior desastre de perda de vida de um único naufrágio nos Grandes Lagos.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1911",
+          "text": "Hiram Bingham III redescobre Machu Picchu, \"a Cidade Perdida dos Incas\".",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1910",
+          "text": "O Império Otomano captura a cidade de Shkodër, reprimindo a Revolta Albanesa de 1910.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        },
+        {
+          "year": "1875",
+          "text": "Patrice de Mac-Mahon, presidente da França decide a favor de Portugal e contra o Reino Unido sobre a posse da região sul de Moçambique.",
+          "source_url": "https://pt.wikipedia.org/wiki/24_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
@@ -2418,7 +4475,128 @@
       ]
     },
     "07-25": {
-      "world": [],
+      "world": [
+        {
+          "year": "2019",
+          "text": "É descoberto o asteroide 2019 OK, esse asteroide é grande o suficiente para destruir uma cidade e só foi detectado pro cientistas ao chegar perto da terra.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "2010",
+          "text": "WikiLeaks publica documentos classificados sobre a Guerra no Afeganistão, um dos maiores vazamentos da história militar dos Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "2002",
+          "text": "O Sistema de Vigilância da Amazônia é inaugurado em Manaus pelo presidente Fernando Henrique Cardoso.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "2000",
+          "text": "Voo Air France 4590 cai no Aeroporto de Paris-Charles de Gaulle, matando 113 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1996",
+          "text": "Em um golpe militar no Burundi, Pierre Buyoya depõe Sylvestre Ntibantunganya.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1994",
+          "text": "Israel e a Jordânia assinam a Declaração de Washington, que formalmente encerra o estado de guerra que existia entre as nações desde 1948.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1993",
+          "text": "Israel lança um ataque massivo contra o Líbano no que os israelenses chamam de Operação Responsabilidade, e os libaneses chamam de Guerra dos Sete Dias.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1984",
+          "text": "Salyut 7: a cosmonauta Svetlana Savitskaya torna-se a primeira mulher a realizar uma caminhada espacial.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1979",
+          "text": "De acordo com o tratado de paz Egito-Israel Israel inicia sua retirada da Península do Sinai.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1978",
+          "text": "Nascimento de Louise Joy Brown, o primeiro ser humano nascido após a concepção por fertilização in vitro ou FIV.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "Programa Viking: a Viking 1 tira a famosa foto Rosto de Marte.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1973",
+          "text": "Lançamento da sonda espacial soviética Marte 5.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "Guerra do Vietnã: o presidente dos Estados Unidos, Richard Nixon, declara a Doutrina Nixon, afirmando que os Estados Unidos agora esperam que seus aliados asiáticos cuidem de sua própria defesa militar. Este é o começo da \"vietnamização\" da guerra.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1966",
+          "text": "O candidato e futuro presidente do Brasil, Costa e Silva, escapa de atentado no aeroporto dos Guararapes; o ataque resultou em vários mortos e feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1961",
+          "text": "Guerra Fria: Em um discurso, John F. Kennedy enfatiza que qualquer ataque a Berlim é um ataque à OTAN.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1957",
+          "text": "Proclamada a República da Tunísia pelo presidente Habib Bourguiba.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1956",
+          "text": "Sessenta e cinco milhas ao sul da ilha de Nantucket, o transatlântico italiano SS Andrea Doria colide com o MS Stockholm em meio a uma forte neblina e afunda no dia seguinte, matando 51 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1953",
+          "text": "Criação do Ministério da Saúde brasileiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1946",
+          "text": "Teste de arma nuclear: Operação Crossroads: uma bomba atômica é detonada debaixo d'água na lagoa do Atol de Bikini.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1944",
+          "text": "Segunda Guerra Mundial: a Operação Spring é um dos dias mais sangrentos para o Primeiro Exército Canadense durante a guerra.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: Benito Mussolini é forçado a deixar o cargo pelo Rei (encorajado pelo Grande Conselho do Fascismo) e é substituído por Pietro Badoglio.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1940",
+          "text": "O general Henri Guisan ordena que o exército suíço resista à invasão alemã e torna a rendição ilegal.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1934",
+          "text": "Os nazistas assassinam o chanceler austríaco Engelbert Dollfuss em uma tentativa fracassada de golpe.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        },
+        {
+          "year": "1925",
+          "text": "Criação da Agência Telegráfica da União Soviética (TASS).",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "1511",
@@ -2428,7 +4606,128 @@
       ]
     },
     "07-21": {
-      "world": [],
+      "world": [
+        {
+          "year": "2025",
+          "text": "A aeronave de caça FT-7BGI cai em Daca, Bangladesh, matando 32 pessoas e ferindo outras 165.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2024",
+          "text": "O presidente dos EUA, Joe Biden, anuncia que não será candidato a reeleição nas eleições presidenciais de 2024, se tornando o sétimo mandatário estadunidense a não tentar se reeleger.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2024",
+          "text": "Deslizamentos de terra matam pelo menos 257 pessoas em Geze Gofa, Etiópia.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2019",
+          "text": "Ataque a Yuen Long ou \"incidente 721\" em Hong Kong. Membros da Tríade espancaram indiscriminadamente civis que voltavam de protestos, enquanto a polícia não agia.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2012",
+          "text": "Erden Eruç completa a primeira circum-navegação solo movida a energia humana do mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2011",
+          "text": "O programa do Ônibus Espacial da NASA termina com o pouso do Atlantis na missão STS-135.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "2008",
+          "text": "Ram Baran Yadav é declarado o primeiro presidente do Nepal.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1995",
+          "text": "Terceira Crise do Estreito de Taiwan: o Exército Popular de Libertação começa a disparar mísseis contra as águas ao norte de Taiwan.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1983",
+          "text": "A temperatura mais baixa do mundo em um local habitado é registrada na Estação Vostok, estação de pesquisa soviética localizada no Território Antártico Australiano (no continente da Antártida), a -89,2 °C.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1977",
+          "text": "Início da Guerra Líbia-Egito, que duraria quatro dias.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1973",
+          "text": "Em Lillehammer, na Noruega, agentes da Mossad matam um garçom que eles erroneamente pensaram estar envolvido no massacre de 1972 em Munique.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1972",
+          "text": "Conflitos na Irlanda do Norte: o Exército Republicano Irlandês detona 22 bombas no centro de Belfast, Irlanda do Norte, Reino Unido no espaço de 80 minutos, matando nove e ferindo 130.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1970",
+          "text": "Concluída a Barragem Alta de Assuã, no Egito, após 11 anos de construção.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1969",
+          "text": "Às 02h56 UTC, o astronauta Neil Armstrong se torna a primeira pessoa a caminhar na Lua.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1964",
+          "text": "Uma série de distúrbios raciais eclodem em Singapura. Nas seis semanas seguintes, 23 morreram e outros 454 ficaram feridos.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1961",
+          "text": "Projeto Mercury: missão Mercury-Redstone 4: Gus Grissom pilotando o Liberty Bell 7 torna-se o segundo americano a ir para o espaço em uma missão suborbital.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1960",
+          "text": "Sirimavo Bandaranaike é eleita primeira-ministra do Sri Lanka, tornando-se a primeira mulher chefe de governo do mundo.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1959",
+          "text": "NS Savannah, o primeiro navio de carga e passageiros movido a energia nuclear, é lançado como uma vitrine para a iniciativa \"Átomos pela Paz\" do então ex-presidente dos Estados Unidos Dwight D. Eisenhower.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1954",
+          "text": "Primeira Guerra da Indochina: a Conferência de Genebra divide o Vietnã em Vietnã do Norte e Vietnã do Sul.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1952",
+          "text": "O terremoto de 7,3 mw Kern County atinge o sul da Califórnia, nos Estados Unidos, matando 12 e ferindo centenas.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1951",
+          "text": "O voo 3505 da Canadian Pacific Air Lines desaparece enquanto voava de Vancouver para Tóquio. A aeronave e seus 37 ocupantes nunca foram encontrados.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1949",
+          "text": "O Senado dos Estados Unidos ratifica o Tratado do Atlântico Norte.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1944",
+          "text": "Segunda Guerra Mundial: naufrágio da corveta da Marinha do Brasil, C-6 Camaquã, nas costas de Pernambuco em consequência de mar agitado.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        },
+        {
+          "year": "1944",
+          "text": "Segunda Guerra Mundial: Batalha de Guam: tropas americanas desembarcam em Guam, iniciando uma batalha que terminará em 10 de agosto.",
+          "source_url": "https://pt.wikipedia.org/wiki/21_de_julho"
+        }
+      ],
       "portugal": []
     },
     "07-26": {
@@ -2436,7 +4735,128 @@
       "portugal": []
     },
     "07-23": {
-      "world": [],
+      "world": [
+        {
+          "year": "2022",
+          "text": "A Organização Mundial da Saúde (OMS) declara o surto de varíola dos macacos como Emergência de Saúde Pública de Âmbito Internacional (PHEIC).",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "2018",
+          "text": "Um incêndio florestal na Grécia mata pelo menos 102 pessoas. É o incêndio florestal mais mortal da sua história.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "2015",
+          "text": "NASA anuncia a descoberta do Kepler-452b pela sonda Kepler.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "2014",
+          "text": "O voo 222 da TransAsia Airways cai perto de Huxi, Penghu, durante a aproximação ao aeroporto de Penghu. Quarenta e oito das 58 pessoas a bordo morrem e outras cinco pessoas no solo ficam feridas.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1999",
+          "text": "O ônibus espacial Columbia é lançado na STS-93, com Eileen Collins se tornando a primeira mulher comandante do ônibus espacial. O ônibus espacial também carregou e implantou o Observatório de Raios-X Chandra.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1997",
+          "text": "Digital Equipment Corporation registra acusações antitruste contra a fabricante de chips Intel.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1995",
+          "text": "O cometa Hale-Bopp é descoberto; torna-se visível a olho nu na Terra quase um ano depois.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1993",
+          "text": "O voo 2119 da China Northwest Airlines cai durante a decolagem do aeroporto de Yinchuan Xihuayuan em Yinchuan, Ningxia, China, matando 55 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1993",
+          "text": "Oito crianças e adolescentes são mortos no centro do Rio de Janeiro, no que ficou conhecido como a Chacina da Candelária.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Abecásia declara independência da Geórgia.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1992",
+          "text": "Uma comissão do Vaticano, liderada pelo cardeal Joseph Ratzinger, estabelece que limitar certos direitos de pessoas homossexuais e casais não casados não é equivalente a discriminação com base em raça ou gênero.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1980",
+          "text": "Pham Tuan torna-se o primeiro cidadão vietnamita e o primeiro asiático no espaço quando voa a bordo da missão Soyuz 37 como um Cosmonauta de Pesquisa Intercosmos.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1976",
+          "text": "Toma posse em Portugal o I Governo Constitucional após a Revolução dos Cravos, chefiado pelo primeiro-ministro Mário Soares.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1974",
+          "text": "A junta militar grega entra em colapso, e o ex-primeiro-ministro Konstantínos Karamanlís é convidado a liderar o novo governo, iniciando a era metapolitefsi na Grécia.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1972",
+          "text": "Os Estados Unidos lançam o Landsat 1, o primeiro satélite de observação dos recursos naturais terrestres.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1970",
+          "text": "Qaboos bin Said al Said se torna o sultão de Omã após derrubar seu pai, Said bin Taimur, iniciando reformas massivas, programas de modernização e fim de uma década de guerra civil.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1968",
+          "text": "O único sequestro bem-sucedido de uma aeronave da El Al ocorre quando um Boeing 707 transportando dez tripulantes e 38 passageiros é assumido por três membros da Frente Popular para a Libertação da Palestina. A aeronave estava a caminho de Roma para Lod, Israel.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1967",
+          "text": "Distúrbios de Detroit: em Detroit, um dos piores motins da história dos Estados Unidos começa no centro da cidade predominantemente afro-americano. Em última análise, tem 43 mortes e queima milhares de edifícios.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1962",
+          "text": "Telstar retransmite o primeiro programa de televisão transatlântico ao vivo transmitido publicamente, com Walter Cronkite.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1962",
+          "text": "Assinado o Acordo Internacional sobre a Neutralidade do Laos.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1961",
+          "text": "A Frente Sandinista de Libertação Nacional é fundada na Nicarágua.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1952",
+          "text": "O General Muhammad Naguib lidera os Oficiais Livres (formados por Gamal Abdel Nasser, o verdadeiro poder por trás do golpe) na deposição do Rei Faruk do Egito.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1945",
+          "text": "Começam os processos judiciais do pós-guerra contra Philippe Pétain.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        },
+        {
+          "year": "1940",
+          "text": "O subsecretário de Estado dos Estados Unidos, Sumner Welles, emite uma declaração sobre a política norte-americana de não reconhecimento da anexação soviética e incorporação de três estados bálticos: Estônia, Letônia e Lituânia.",
+          "source_url": "https://pt.wikipedia.org/wiki/23_de_julho"
+        }
+      ],
       "portugal": [
         {
           "year": "1944",
