@@ -76,7 +76,7 @@ def _team_similarity(a,b):
     seq=SequenceMatcher(None,a,b).ratio()
     return max(token,seq)
 
-def _parse_flashscore_feed(raw):
+def _parse_flashscore_items(raw):
     rows=[]
     for item in raw.split("~"):
         if not item.strip():continue
@@ -87,9 +87,11 @@ def _parse_flashscore_feed(raw):
             if not sep:continue
             key,val=param.split(sep,1)
             if key and key not in data:data[key]=val
-        if data.get("AA") and data.get("AE") and data.get("AF"):
-            rows.append(data)
+        if data:rows.append(data)
     return rows
+
+def _parse_flashscore_feed(raw):
+    return [row for row in _parse_flashscore_items(raw) if row.get("AA") and row.get("AE") and row.get("AF")]
 
 def _football_candidate_score(event,cand):
     ch=cand.get("AE","");ca=cand.get("AF","")
@@ -131,6 +133,46 @@ def flashscore_match_url(event):
     aid=best.get("AV") or best.get("JB")
     if not all([mid,hs,aws,hid,aid]):return None
     return f"https://www.flashscore.pt/jogo/futebol/{hs}-{hid}/{aws}-{aid}/?mid={mid}"
+
+def flashscore_live_info(mid):
+    if not mid:return {}
+    try:
+        url=f"https://local-global.flashscore.ninja/2/x/feed/dc_1_{mid}"
+        r=requests.get(url,headers=FLASHSCORE_HEADERS,timeout=20)
+        r.raise_for_status()
+        rows=_parse_flashscore_items(r.text)
+        if not rows:return {}
+        d=rows[0]
+        state=d.get("DA")
+        out={"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        if d.get("DE") is not None: out["home_score"]=int(d["DE"])
+        if d.get("DF") is not None: out["away_score"]=int(d["DF"])
+        if state=="1":
+            out["status"]="scheduled"
+        elif state=="3":
+            out["status"]="finished"
+            out.pop("period_start",None)
+        elif state=="2":
+            code=d.get("DB")
+            if code=="38":
+                out["status"]="halftime";out["period"]="HT"
+            else:
+                out["status"]="live"
+                if code=="12":out["period"]="1H"
+                elif code=="13":out["period"]="2H"
+                else:out["period"]="LIVE"
+                if d.get("DD"):
+                    try:out["period_start"]=int(d["DD"])
+                    except Exception:pass
+                if d.get("DD"):
+                    try:
+                        elapsed=max(0,int(datetime.now(timezone.utc).timestamp())-int(d["DD"]))
+                        base=45 if out.get("period")=="2H" else 0
+                        out["live_minute"]=base+elapsed//60
+                    except Exception:pass
+        return out
+    except Exception:
+        return {}
 
 def _zerozero_links(page_url):
     if not page_url:return []
@@ -183,6 +225,7 @@ def is_direct_match_url(event,url):
 
 def enforce_direct_match_urls(events):
     resolved=0
+    today=datetime.now(timezone.utc).date()
     for event in events:
         sport=(event.get("sport") or "").lower()
         direct=None
@@ -195,6 +238,18 @@ def enforce_direct_match_urls(events):
         elif sport and ("futebol" in sport or "hoquei" in sport or "hóquei" in sport):
             if not is_direct_match_url(event,event.get("match_url")):
                 event["match_url"]=None
+
+        if "futebol" in sport and is_direct_match_url(event,event.get("match_url")):
+            try:
+                event_day=datetime.fromisoformat(event.get("date")).date()
+                if abs((event_day-today).days)<=1:
+                    m=re.search(r"[?&]mid=([A-Za-z0-9]+)",event["match_url"])
+                    if m:
+                        info=flashscore_live_info(m.group(1))
+                        for k,v in info.items():
+                            if v is not None:event[k]=v
+            except Exception:
+                pass
     return resolved
 
 def load():
@@ -513,7 +568,7 @@ def f1_fallback():
               "date":date_iso,"start":f"{date_iso}T{time_text}:00Z",
               "entity":"Formula 1","sport":"Automobilismo","title":f"{label} · {gp}",
               "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
-              "location":location,"channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+              "location":location,"channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
               "match_url":url,"source_url":url
             })
     return out
@@ -633,7 +688,7 @@ for event in events:
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
  "generated_at":datetime.now(timezone.utc).isoformat(),
- "timezone_note":"Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
+ "timezone_note":"Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
  "sources":[s["url"] for s in SOURCES]+["https://api.jolpi.ca/ergast/f1/2026.json","https://www.formula1.com/en/racing/2026","https://tv.fpp.pt/"],
  "source_checks":checked,
  "events":events
