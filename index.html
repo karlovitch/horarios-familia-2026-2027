@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=91">
-<link rel="icon" href="favicon-64.png?v=91" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=91" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=91" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=91">
+<link rel="manifest" href="manifest.webmanifest?v=92">
+<link rel="icon" href="favicon-64.png?v=92" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=92" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=92" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=92">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -153,14 +153,14 @@ html.tv-mode[data-tv-profile="cozinha-auto"]{font-size:clamp(16px,1.05vw,19px)}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v91</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v92</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
 <button class="main-tab" data-view="Carlos" type="button">Carlos</button><button class="main-tab" data-view="Sandra" type="button">Sandrinha</button>
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
-<div id="sportsTabRow" class="sports-tab-row hidden"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
+<div id="sportsTabRow" class="sports-tab-row"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalFamilyBanner" class="family-banner hidden"></div>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 <section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
@@ -301,7 +301,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=91;
+const APP_BUILD=92;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
@@ -1090,13 +1090,12 @@ function sportsEventsFor(iso){
  }
  return out.sort((a,b)=>(a.start||"9999").localeCompare(b.start||"9999")||(a.entity||"").localeCompare(b.entity||"","pt"));
 }
-function updateSportsTabVisibility(iso=statsIso()){
+function updateSportsTabVisibility(){
  const row=qs("#sportsTabRow");
  if(!row)return false;
- const hasEvents=sportsEventsFor(iso).length>0;
- row.classList.toggle("hidden",!hasEvents);
- row.setAttribute("aria-hidden",hasEvents?"false":"true");
- return hasEvents;
+ row.classList.remove("hidden");
+ row.setAttribute("aria-hidden","false");
+ return true;
 }
 function isDirectSportsFixture(ev,url){
  const u=(url||"").toLowerCase(),sport=(ev.sport||"").toLowerCase();
@@ -1172,7 +1171,7 @@ function updateSportsLiveClocks(){
 async function loadSportsInfo({force=false}={}){
  const state=DATA_LOAD_STATE.sports;
  if(state.promise)return state.promise;
- if(!force&&dataFresh("sports")){updateSportsTabVisibility(statsIso());return SPORTS_INFO}
+ if(!force&&dataFresh("sports")){updateSportsTabVisibility();return SPORTS_INFO}
  state.promise=(async()=>{
   try{
    SPORTS_INFO=await fetchJsonResource("sports-info.json",{ts:Date.now()});
@@ -1183,7 +1182,7 @@ async function loadSportsInfo({force=false}={}){
    if(cached){SPORTS_INFO=cached;state.loadedAt=Date.now()}
   }finally{
    state.promise=null;
-   updateSportsTabVisibility(statsIso());
+   updateSportsTabVisibility();
   }
   return SPORTS_INFO;
  })();
