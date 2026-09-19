@@ -1,9 +1,13 @@
-name: Atualizar informação diária
+name: Atualizar informação diária e calendário
 
 on:
   schedule:
     - cron: "15 4 * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - "scripts/update_daily_info.py"
+      - ".github/workflows/update-daily-info.yml"
 
 permissions:
   contents: write
@@ -24,16 +28,22 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Atualizar efemérides e liturgia
-        run: python scripts/update_daily_info.py
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python scripts/update_daily_info.py
+          else
+            python scripts/update_daily_info.py --all
+          fi
 
       - name: Guardar atualização
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add daily-info.json
+          git add daily-info.json calendar-info.json
           if git diff --cached --quiet; then
             echo "Sem alterações."
           else
-            git commit -m "Atualizar informação diária"
+            git commit -m "Atualizar informação diária e calendário"
             git push
           fi
