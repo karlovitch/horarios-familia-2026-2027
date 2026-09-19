@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T13:49:19.366885+00:00",
+  "generated_at": "2026-09-19T14:25:14.983098+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
@@ -1000,8 +1000,8 @@
       "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/",
       "home_score": 9,
       "away_score": 19,
-      "status_updated_at": "2026-09-19T13:48:44.317567+00:00",
-      "status": "scheduled"
+      "status_updated_at": "2026-09-19T14:24:33.216622+00:00",
+      "status": "live"
     },
     {
       "date": "2026-09-19",
@@ -1015,7 +1015,7 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.flashscore.pt/jogo/futebol/gil-vicente-zgCFzrVi/maritimo-rJFNYLa4/?mid=AaftdAAL",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "status_updated_at": "2026-09-19T13:48:47.655868+00:00",
+      "status_updated_at": "2026-09-19T14:24:36.405676+00:00",
       "status": "scheduled"
     },
     {
@@ -1031,7 +1031,7 @@
       "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.flashscore.pt/jogo/futebol/atl-madrid-MD0xuDx1/real-madrid-8Ubpwi7D/?mid=hGycdKve",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "status_updated_at": "2026-09-19T13:48:49.708373+00:00",
+      "status_updated_at": "2026-09-19T14:24:39.768777+00:00",
       "status": "scheduled"
     },
     {
@@ -1046,7 +1046,7 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.flashscore.pt/jogo/futebol/fc-porto-8nvBCVr2/benfica-0tRdzZz9/?mid=EeqKlS2e",
       "source_url": "https://www.fcporto.pt/pt/agenda",
-      "status_updated_at": "2026-09-19T13:48:50.369783+00:00",
+      "status_updated_at": "2026-09-19T14:24:40.755232+00:00",
       "status": "scheduled"
     },
     {
