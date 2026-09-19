@@ -16,8 +16,8 @@ DAILY_OUT = ROOT / "daily-info.json"
 CALENDAR_OUT = ROOT / "calendar-info.json"
 TZ = ZoneInfo("Europe/Lisbon")
 
-START_DATE = date(2026, 9, 14)
-END_DATE = date(2027, 6, 30)
+START_DATE = date(2026, 1, 1)
+END_DATE = date(2027, 12, 31)
 
 UN_URL = "https://www.un.org/en/observances/list-days-weeks"
 COE_URL = "https://www.coe.int/en/web/portal/international-and-european-days"
