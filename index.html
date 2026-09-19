@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v17</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v18</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -199,6 +199,23 @@ const FAMILY_EVENTS=[
  {kind:"anniversary",label:"Aniversário de namoro do Carlos e da Sandrinha",date:"2005-01-22"}
 ];
 const CORE_BIRTHDAYS=FAMILY_EVENTS.filter(e=>e.kind==="birthday"&&["Carlinhos","Leonor","Margarida","Sandrinha"].includes(e.label));
+const UN_FALLBACK={
+"09-20":["Dia Mundial da Limpeza"],"09-21":["Dia Internacional da Paz"],"09-23":["Dia Internacional das Línguas Gestuais"],"09-24":["Dia Marítimo Mundial"],"09-26":["Dia Internacional para a Eliminação Total das Armas Nucleares"],"09-27":["Dia Mundial do Turismo"],"09-28":["Dia Internacional do Acesso Universal à Informação"],"09-29":["Dia Internacional de Sensibilização para a Perda e o Desperdício de Alimentos"],"09-30":["Dia Internacional da Tradução"],
+"10-01":["Dia Internacional do Café","Dia Internacional das Pessoas Idosas"],"10-02":["Dia Internacional da Não Violência"],"10-05":["Dia Mundial dos Professores"],"10-07":["Dia Mundial do Algodão"],"10-09":["Dia Mundial dos Correios"],"10-10":["Dia Mundial da Saúde Mental"],"10-11":["Dia Internacional da Rapariga"],"10-13":["Dia Internacional para a Redução do Risco de Catástrofes"],"10-15":["Dia Internacional das Mulheres Rurais"],"10-16":["Dia Mundial da Alimentação"],"10-17":["Dia Internacional para a Erradicação da Pobreza"],"10-24":["Dia das Nações Unidas","Dia Mundial da Informação sobre o Desenvolvimento"],"10-27":["Dia Mundial do Património Audiovisual"],"10-29":["Dia Internacional dos Cuidados e Apoio"],"10-31":["Dia Mundial das Cidades"],
+"11-02":["Dia Internacional para Acabar com a Impunidade dos Crimes contra Jornalistas"],"11-05":["Dia Mundial de Sensibilização para os Tsunamis"],"11-06":["Dia Internacional para a Prevenção da Exploração do Ambiente na Guerra e nos Conflitos Armados"],"11-10":["Dia Mundial da Ciência para a Paz e o Desenvolvimento"],"11-14":["Dia Mundial da Diabetes"],"11-16":["Dia Internacional da Tolerância"],"11-18":["Dia Mundial para a Prevenção e Recuperação da Exploração, Abuso e Violência Sexual Infantil"],"11-19":["Dia Mundial da Sanita"],"11-20":["Dia Mundial da Criança"],"11-21":["Dia Mundial da Televisão","Dia Mundial da Filosofia"],"11-25":["Dia Internacional para a Eliminação da Violência contra as Mulheres"],"11-26":["Dia Mundial do Transporte Sustentável"],"11-29":["Dia Internacional de Solidariedade com o Povo Palestiniano"],
+"12-01":["Dia Mundial da SIDA"],"12-02":["Dia Internacional para a Abolição da Escravatura"],"12-03":["Dia Internacional das Pessoas com Deficiência"],"12-04":["Dia Internacional dos Bancos"],"12-05":["Dia Internacional do Voluntariado","Dia Mundial do Solo"],"12-07":["Dia Internacional da Aviação Civil"],"12-09":["Dia Internacional contra a Corrupção"],"12-10":["Dia dos Direitos Humanos"],"12-11":["Dia Internacional das Montanhas"],"12-12":["Dia Internacional da Cobertura Universal de Saúde"],"12-18":["Dia Internacional dos Migrantes","Dia da Língua Árabe"],"12-20":["Dia Internacional da Solidariedade Humana"],
+"01-04":["Dia Mundial do Braille"],"01-24":["Dia Internacional da Educação"],"01-26":["Dia Internacional da Energia Limpa"],"01-27":["Dia Internacional em Memória das Vítimas do Holocausto"],
+"02-02":["Dia Mundial das Zonas Húmidas"],"02-04":["Dia Internacional da Fraternidade Humana"],"02-06":["Dia Internacional de Tolerância Zero à Mutilação Genital Feminina"],"02-10":["Dia Mundial das Leguminosas"],"02-11":["Dia Internacional das Mulheres e Raparigas na Ciência"],"02-13":["Dia Mundial da Rádio"],"02-20":["Dia Mundial da Justiça Social"],"02-21":["Dia Internacional da Língua Materna"],
+"03-01":["Dia da Discriminação Zero"],"03-03":["Dia Mundial da Vida Selvagem"],"03-08":["Dia Internacional da Mulher"],"03-20":["Dia Internacional da Felicidade"],"03-21":["Dia Internacional das Florestas","Dia Mundial da Poesia","Dia Mundial da Síndrome de Down"],"03-22":["Dia Mundial da Água"],"03-23":["Dia Meteorológico Mundial"],"03-24":["Dia Mundial da Tuberculose"],"03-30":["Dia Internacional do Lixo Zero"],
+"04-02":["Dia Mundial da Consciencialização do Autismo"],"04-06":["Dia Internacional do Desporto para o Desenvolvimento e a Paz"],"04-07":["Dia Mundial da Saúde"],"04-12":["Dia Internacional do Voo Espacial Humano"],"04-21":["Dia Mundial da Criatividade e Inovação"],"04-22":["Dia Internacional da Mãe Terra"],"04-23":["Dia Mundial do Livro e dos Direitos de Autor"],"04-25":["Dia Mundial da Malária"],"04-26":["Dia Mundial da Propriedade Intelectual"],"04-28":["Dia Mundial da Segurança e Saúde no Trabalho"],"04-30":["Dia Internacional do Jazz"],
+"05-02":["Dia Mundial do Atum"],"05-03":["Dia Mundial da Liberdade de Imprensa"],"05-05":["Dia Mundial da Língua Portuguesa"],"05-15":["Dia Internacional das Famílias"],"05-16":["Dia Internacional da Luz"],"05-17":["Dia Mundial das Telecomunicações e da Sociedade da Informação"],"05-20":["Dia Mundial das Abelhas"],"05-21":["Dia Mundial da Diversidade Cultural para o Diálogo e o Desenvolvimento"],"05-22":["Dia Internacional da Diversidade Biológica"],"05-29":["Dia Internacional dos Capacetes Azuis das Nações Unidas"],"05-31":["Dia Mundial sem Tabaco"],
+"06-01":["Dia Mundial das Mães e dos Pais"],"06-03":["Dia Mundial da Bicicleta"],"06-05":["Dia Mundial do Ambiente"],"06-07":["Dia Mundial da Segurança Alimentar"],"06-08":["Dia Mundial dos Oceanos"],"06-12":["Dia Mundial contra o Trabalho Infantil"],"06-14":["Dia Mundial do Dador de Sangue"],"06-17":["Dia Mundial de Combate à Desertificação e à Seca"],"06-20":["Dia Mundial do Refugiado"],"06-21":["Dia Internacional do Yoga"],"06-23":["Dia das Nações Unidas para o Serviço Público"],"06-26":["Dia Internacional contra o Abuso e Tráfico Ilícito de Drogas"],"06-30":["Dia Internacional dos Asteroides","Dia Internacional do Parlamentarismo"],
+"07-11":["Dia Mundial da População"],"07-15":["Dia Mundial das Competências dos Jovens"],"07-18":["Dia Internacional Nelson Mandela"],"07-20":["Dia Internacional da Lua","Dia Mundial do Xadrez"],"07-30":["Dia Internacional da Amizade","Dia Mundial contra o Tráfico de Pessoas"],
+"08-09":["Dia Internacional dos Povos Indígenas"],"08-12":["Dia Internacional da Juventude"],"08-19":["Dia Mundial Humanitário"],"08-23":["Dia Internacional em Memória do Tráfico de Escravos e da sua Abolição"],"08-29":["Dia Internacional contra os Ensaios Nucleares"],"08-30":["Dia Internacional das Vítimas de Desaparecimentos Forçados"],"08-31":["Dia Internacional das Pessoas de Ascendência Africana"]
+};
+const EUROPE_FALLBACK={"01-28":["Dia da Proteção de Dados"],"05-05":["Dia da Europa — Conselho da Europa"],"05-09":["Dia da Europa — União Europeia"],"09-26":["Dia Europeu das Línguas"],"10-10":["Dia Europeu contra a Pena de Morte"],"10-18":["Dia Europeu contra o Tráfico de Seres Humanos"],"10-25":["Dia Europeu da Justiça"],"11-18":["Dia Europeu para a Proteção das Crianças contra a Exploração Sexual e o Abuso Sexual"]};
+const PORTUGAL_FALLBACK={"04-25":["Dia da Liberdade"],"05-06":["Dia Nacional do Azulejo"],"05-10":["Dia Nacional do Seguro"],"05-25":["Dia Nacional dos Jardins"],"06-10":["Dia de Portugal, de Camões e das Comunidades Portuguesas"],"06-22":["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],"10-05":["Implantação da República"],"11-11":["Dia Nacional das Raças Autóctones"],"12-01":["Restauração da Independência"],"12-10":["Dia Nacional dos Direitos Humanos"],"12-22":["Dia Nacional do Técnico Auxiliar de Saúde"]};
+const LOCAL_FALLBACK={"05-03":["Feriado Municipal (Festa das Cruzes)"]};
 function isoLocalDate(){const n=new Date(),y=n.getFullYear(),m=String(n.getMonth()+1).padStart(2,"0"),d=String(n.getDate()).padStart(2,"0");return y+"-"+m+"-"+d}
 function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))}
 function liturgiaUrlForDate(iso){const [y,m,d]=iso.split("-").map(Number);return "https://liturgia.pt/liturgiadiaria/dia.php?data="+y+"-"+m+"-"+d}
@@ -220,29 +237,42 @@ function daysToNextAnnual(refIso,eventDate){
 function birthdayCountdownText(iso){
  return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
 }
+function fallbackCalendarInfo(iso){
+ const mmdd=iso.slice(5);
+ return {date:iso,un_days:UN_FALLBACK[mmdd]||[],european_days:EUROPE_FALLBACK[mmdd]||[],portugal_days:PORTUGAL_FALLBACK[mmdd]||[],local_days:LOCAL_FALLBACK[mmdd]||[],liturgical_day:"",saints:[],gospel:"",liturgy_url:liturgiaUrlForDate(iso)};
+}
 function calendarInfoFor(iso){
- return CALENDAR_INFO&&CALENDAR_INFO.dates&&CALENDAR_INFO.dates[iso]?CALENDAR_INFO.dates[iso]:(DAILY_INFO&&DAILY_INFO.date===iso?DAILY_INFO:null);
+ const fb=fallbackCalendarInfo(iso);
+ const src=CALENDAR_INFO&&CALENDAR_INFO.dates&&CALENDAR_INFO.dates[iso]?CALENDAR_INFO.dates[iso]:(DAILY_INFO&&DAILY_INFO.date===iso?DAILY_INFO:null);
+ if(!src)return fb;
+ return {...fb,...src,
+  un_days:src.un_days&&src.un_days.length?src.un_days:fb.un_days,
+  european_days:src.european_days&&src.european_days.length?src.european_days:fb.european_days,
+  portugal_days:src.portugal_days&&src.portugal_days.length?src.portugal_days:fb.portugal_days,
+  local_days:src.local_days&&src.local_days.length?src.local_days:fb.local_days,
+  liturgy_url:src.liturgy_url||fb.liturgy_url
+ };
 }
 function renderDailyInfo(){
  const box=qs("#dailyInfoBody"),dateEl=qs("#dailyInfoDate"),titleEl=qs("#dailyInfoTitle"),selected=statsIso(),dt=dateFromIso(selected),x=calendarInfoFor(selected);
  titleEl.textContent=selected===isoLocalDate()?"Hoje no calendário":"Calendário da data selecionada";
  dateEl.textContent=new Intl.DateTimeFormat("pt-PT",{day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
- const missing="Dados de efemérides ainda não disponíveis para esta data";
- const un=x?listText(x.un_days,"Sem efeméride ONU assinalada nesta data"):missing;
- const eu=x?listText(x.european_days,"Sem dia europeu assinalado nesta data"):missing;
- const pt=x?listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada nesta data"):missing;
- const local=x?listText(x.local_days,"Sem efeméride local assinalada nesta data"):missing;
+ const missing="Consultar fonte para esta data";
+ const un=listText(x.un_days,"Sem efeméride ONU assinalada nesta data");
+ const eu=listText(x.european_days,"Sem dia europeu assinalado nesta data");
+ const pt=listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada nesta data");
+ const local=listText(x.local_days,"Sem efeméride local assinalada nesta data");
  const family=listText(familyEventsFor(selected),"Sem aniversário ou efeméride familiar nesta data");
  const birthdays=birthdayCountdownText(selected);
- const lit=x&&x.liturgical_day?esc(x.liturgical_day):(x?"Liturgia do dia não identificada":missing);
- const saints=x?listText(x.saints,"Sem memória/solenidade adicional indicada"):missing;
- const gospel=x&&x.gospel?esc(x.gospel):(x?"Referência não identificada":missing);
+ const lit=x.liturgical_day?esc(x.liturgical_day):"Consultar Liturgia diária";
+ const saints=listText(x.saints,"Consultar Liturgia diária");
+ const gospel=x.gospel?esc(x.gospel):"Consultar referência";
  const litUrl=x&&x.liturgy_url?x.liturgy_url:liturgiaUrlForDate(selected);
  box.innerHTML=
   '<div class="daily-row"><div class="daily-label">ONU</div><div class="daily-value">'+un+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Europa</div><div class="daily-value">'+eu+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Portugal</div><div class="daily-value">'+pt+'</div></div>'+
-  (x&&x.local_days&&x.local_days.length?'<div class="daily-row"><div class="daily-label">Barcelos</div><div class="daily-value">'+local+'</div></div>':'')+
+  (x.local_days&&x.local_days.length?'<div class="daily-row"><div class="daily-label">Barcelos</div><div class="daily-value">'+local+'</div></div>':'')+
   '<div class="daily-row"><div class="daily-label">Família</div><div class="daily-value">'+family+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Aniversários</div><div class="daily-value">'+birthdays+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Liturgia</div><div class="daily-value">'+lit+'</div></div>'+
@@ -273,6 +303,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=p;qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=17",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=18",{updateViaCache:"none"}));
 </script>
 </body></html>
