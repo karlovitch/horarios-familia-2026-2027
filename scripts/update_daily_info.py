@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from threading import local
-from urllib.parse import urljoin
+from urllib.parse import unquote, urljoin
 from zoneinfo import ZoneInfo
 
 import requests
@@ -161,15 +161,36 @@ def get_un_map() -> dict[str, list[str]]:
 
 _VATICAN_SAINT_CACHE: dict[str, list[dict[str, str]]] = {}
 
+def _saint_name_from_slug(url: str) -> str:
+    slug = unquote(url.rstrip("/").split("/")[-1])
+    slug = re.sub(r"[-_]+", " ", slug)
+    slug = re.sub(r"\s+", " ", slug).strip(" .")
+    return slug
+
+def _dedupe_hagiographies(items: list[dict[str, str]]) -> list[dict[str, str]]:
+    out: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in items:
+        url = item.get("url", "").strip()
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        out.append(item)
+    return out
+
 def get_vatican_hagiographies(day: date) -> list[dict[str, str]]:
     key = day.strftime("%m-%d")
     if key in _VATICAN_SAINT_CACHE:
         return _VATICAN_SAINT_CACHE[key]
 
     day_url = f"{VATICAN_SAINT_BASE}/{day.month:02d}/{day.day:02d}.html"
+    path_prefix = f"/pt/santo-do-dia/{day.month:02d}/{day.day:02d}/"
     out: list[dict[str, str]] = []
     try:
-        soup = BeautifulSoup(fetch(day_url), "html.parser")
+        html = fetch(day_url)
+        soup = BeautifulSoup(html, "html.parser")
+
+        # 1) Estrutura editorial normal: título do santo + ligação "Leia tudo".
         for heading in soup.find_all(["h2", "h3"]):
             name = re.sub(r"\s+", " ", heading.get_text(" ", strip=True)).strip()
             if not name or not re.match(r"^(S\.|SS\.|São|Santa|Santo|Santos|Santas)\b", name, re.I):
@@ -177,7 +198,7 @@ def get_vatican_hagiographies(day: date) -> list[dict[str, str]]:
 
             link = None
             node = heading
-            for _ in range(8):
+            for _ in range(14):
                 node = node.find_next()
                 if node is None:
                     break
@@ -190,10 +211,39 @@ def get_vatican_hagiographies(day: date) -> list[dict[str, str]]:
                         link = urljoin(day_url, href)
                         break
 
-            out.append({"name": name, "url": link or day_url})
+            if link:
+                out.append({"name": name, "url": link})
+
+        # 2) Fallback robusto: recolhe diretamente todos os artigos individuais
+        #    do dia, mesmo quando o HTML recebido não traz os cartões já renderizados.
+        for a in soup.find_all("a", href=True):
+            href = urljoin(day_url, a.get("href", ""))
+            if path_prefix not in href or href.rstrip("/") == day_url.rstrip("/"):
+                continue
+            label = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+            name = label if re.match(r"^(S\.|SS\.|São|Santa|Santo|Santos|Santas)\b", label, re.I) else _saint_name_from_slug(href)
+            out.append({"name": name, "url": href})
+
+        # 3) Último recurso: versão textual renderizada via Jina, útil quando
+        #    o portal entrega o conteúdo dos cartões apenas após JavaScript.
+        if not out:
+            clean = re.sub(r"^https?://", "", day_url)
+            rendered = fetch("https://r.jina.ai/http://" + clean)
+            current_name = ""
+            for line in rendered.splitlines():
+                heading = re.match(r"^#{1,4}\s+(S\.|SS\.|São|Santa|Santo|Santos|Santas)\s+(.+)$", line.strip(), re.I)
+                if heading:
+                    current_name = re.sub(r"^#{1,4}\s+", "", line.strip()).strip()
+                    continue
+                link = re.search(r"\[(?:Leia\s+tudo|Ler\s+mais)[^\]]*\]\((https?://[^)]+)\)", line, re.I)
+                if link:
+                    href = link.group(1)
+                    out.append({"name": current_name or _saint_name_from_slug(href), "url": href})
+
     except Exception as exc:
         print(f"Aviso Vatican News {day.isoformat()}: {exc}")
 
+    out = _dedupe_hagiographies(out)
     _VATICAN_SAINT_CACHE[key] = out
     return out
 
