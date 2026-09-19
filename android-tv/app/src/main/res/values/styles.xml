@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.HorariosTV" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#5FA6E8</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#1F2A44</item>
+    </style>
+</resources>

@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'pt.horariosfamilia.tv'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'pt.horariosfamilia.tv'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
+
+dependencies {
+}

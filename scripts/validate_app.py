@@ -40,6 +40,9 @@ daily = read_json("daily-info.json")
 sports = read_json("sports-info.json")
 history = read_json("history-info.json")
 daily_script = read_text("scripts/update_daily_info.py")
+tv_activity = read_text("android-tv/app/src/main/java/pt/horariosfamilia/tv/MainActivity.java")
+tv_manifest = read_text("android-tv/app/src/main/AndroidManifest.xml")
+tv_installer = read_text("scripts/Instalar_Horarios_Familia_Android_TV.ps1")
 sports_script = read_text("scripts/update_sports_info.py")
 
 m_app = re.search(r"const APP_BUILD=(\d+);", index)
@@ -166,6 +169,13 @@ for forbidden in (
 ):
     if forbidden in index:
         fail(f"Padrão obsoleto/genérico ainda presente em index.html: {forbidden}")
+
+if "HorariosFamiliaTV/1.0" not in tv_activity or "?tv=1&shell=1&profile=" not in tv_activity:
+    fail("Invólucro Android TV não está configurado para abrir o modo TV")
+if "LEANBACK_LAUNCHER" not in tv_manifest or "android.hardware.touchscreen" not in tv_manifest:
+    fail("Manifesto Android TV incompleto")
+if "adb -s" not in tv_installer or "HorariosFamilia-TV.apk" not in tv_installer:
+    fail("Instalador PowerShell Android TV incompleto")
 
 if "def get_passo_metadata(" not in daily_script:
     fail("O atualizador diário deve extrair o áudio direto do Passo-a-Rezar")

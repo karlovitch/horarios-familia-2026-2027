@@ -1,0 +1,66 @@
+name: Criar APK Android TV
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "android-tv/**"
+      - "icon-512.png"
+      - ".github/workflows/build-android-tv.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar plataforma Android 35
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Preparar ícone e banner TV
+        run: |
+          python -m pip install pillow
+          mkdir -p android-tv/app/src/main/res/drawable
+          cp icon-512.png android-tv/app/src/main/res/drawable/app_icon.png
+          python - <<'PY'
+          from PIL import Image
+          src=Image.open("icon-512.png").convert("RGB")
+          banner=Image.new("RGB",(320,180),(243,240,232))
+          icon=src.resize((164,164),Image.Resampling.LANCZOS)
+          banner.paste(icon,(78,8))
+          banner.save("android-tv/app/src/main/res/drawable/tv_banner.png",optimize=True)
+          PY
+
+      - name: Compilar APK
+        run: gradle -p android-tv :app:assembleDebug --no-daemon
+
+      - name: Preparar lançamento
+        run: cp android-tv/app/build/outputs/apk/debug/app-debug.apk HorariosFamilia-TV.apk
+
+      - name: Publicar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-tv-v1
+          name: Horários Família — Android TV
+          body: "Invólucro Android TV da aplicação Horários Família. O conteúdo web atualiza-se automaticamente."
+          make_latest: true
+          files: HorariosFamilia-TV.apk
