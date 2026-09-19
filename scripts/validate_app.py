@@ -104,7 +104,17 @@ required_index_tokens = {
     "força do vento Beaufort": "function beaufortFromKmh(kmh)",
     "cache meteorológica de 10 minutos": 'ttl:10*60*1000',
     "texto dos blocos duplicado no móvel": ".block{font-size:.96rem;line-height:1;padding:2px 2px}",
-    "escala vertical reforçada para texto maior": "timelineHeight=()=>isMobileTimeline()?760:850",
+    "texto dos blocos duplicado no desktop/TV": ".block{font-size:1.44rem;line-height:1.04;padding:5px 5px}",
+    "horas laterais duplicadas no desktop/TV": ".time-label{font-size:1.40rem",
+    "cabeçalhos dos horários duplicados no desktop/TV": ".lane-head{height:68px;padding:10px 4px;font-size:1.72rem",
+    "horas laterais duplicadas no smartphone": ".time-label{left:2px;font-size:.96rem}",
+    "cabeçalhos dos horários duplicados no smartphone": ".lane-head{height:60px;padding:6px 1px;font-size:1.18rem",
+    "escala vertical reforçada para texto maior": "timelineHeight=()=>isMobileTimeline()?820:920",
+    "geolocalização atual do dispositivo": "navigator.geolocation.getCurrentPosition",
+    "fallback de localização pela rede": "https://ipwho.is/",
+    "nome da localização por reverse geocoding": "https://api.bigdatacloud.net/data/reverse-geocode-client",
+    "timezone meteorológica da localização atual": 'u.searchParams.set("timezone","auto")',
+    "cache de localização deduplicada": "locationPromise:null",
     "media query reutilizada": 'const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)")',
     "NodeList sem cópia intermédia": "qsa=s=>document.querySelectorAll(s)",
 }
@@ -127,6 +137,8 @@ for forbidden in (
     '<iframe class="passo-player"',
     "passo-player-fallback",
     "www.timeanddate.com",
+    "weatherBarcelos",
+    'WEATHER_CONFIG={lat:41.5388',
     "en.wikipedia.org",
 ):
     if forbidden in index:

@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=86">
-<link rel="icon" href="favicon-64.png?v=86" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=86" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=86" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=86">
+<link rel="manifest" href="manifest.webmanifest?v=87">
+<link rel="icon" href="favicon-64.png?v=87" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=87" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=87" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=87">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -50,49 +50,65 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 .overview-week-special{color:var(--text);font-weight:750}
 @media(max-width:700px){.overview-week-cell,.overview-week-day{height:560px}}@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:560px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
 
-/* v86 · meteorologia + legibilidade dos horários */
+/* v87 · meteorologia por localização atual + texto dos horários a 2× */
 .weather-strip{display:block;width:max-content;max-width:100%;margin:0 auto 10px;padding:8px 12px;border:1px solid var(--border);border-radius:11px;background:#FFFFFF;color:var(--primary);font-size:.78rem;font-weight:800;line-height:1.25;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.weather-strip::-webkit-scrollbar{display:none}.weather-strip.is-error{font-weight:700;color:var(--muted)}.weather-strip .weather-source{font-weight:650;opacity:.66}
-.timeline{height:850px;grid-template-columns:64px repeat(4,minmax(0,1fr))}
-.person-timeline.week-view{grid-template-columns:64px repeat(5,minmax(0,1fr))}
-.time-label{font-size:.98rem;left:4px}
-.lane-head{height:44px;padding:8px 3px;font-size:1.05rem;line-height:1.05}
-.block{font-size:1.44rem;line-height:1.05;padding:5px 5px}
-.block strong{font-size:1.48rem;line-height:1.02}.block em{font-size:1.36rem;line-height:1.02}
+.weather-strip::-webkit-scrollbar{display:none}.weather-strip.is-error{font-weight:700;color:var(--muted)}.weather-strip .weather-source{font-weight:650;opacity:.72}
+
+/* A grelha cresce ligeiramente para acomodar o texto duplicado sem esmagar blocos curtos. */
+.timeline{height:920px;grid-template-columns:76px repeat(4,minmax(0,1fr))}
+.person-timeline.week-view{grid-template-columns:76px repeat(5,minmax(0,1fr))}
+.time-label{font-size:1.40rem;left:5px}
+.lane-head{height:68px;padding:10px 4px;font-size:1.72rem;line-height:1.03;white-space:normal;overflow-wrap:anywhere}
+.live-badge{font-size:1.16rem;padding:3px 6px;margin-left:5px}
+.block{font-size:1.44rem;line-height:1.04;padding:5px 5px}
+.block strong{font-size:1.48rem;line-height:1.02}.block em{font-size:1.44rem;line-height:1.02}
 .block.medium-block{font-size:1.20rem}.block.medium-block strong{font-size:1.24rem}.block.medium-block em{font-size:1.10rem}
 .block.short-block{font-size:1rem;line-height:.98}.block.short-block strong{font-size:1.04rem}.block.short-block em{font-size:.90rem}
-.now-line{left:64px}
-.overview-week-cell,.overview-week-day{height:850px}.overview-week-event{font-size:1.10rem;line-height:1.02;padding:4px 3px}.overview-week-event b{font-size:1.12rem}.overview-week-empty,.overview-week-special{font-size:1rem}
-.overview-mini-event{font-size:1.18rem}.overview-mini-event .mini-time{font-size:1.26rem}.overview-mini-event strong{font-size:1.32rem}.overview-mini-event span{font-size:1.18rem}
+.lane-message{font-size:1.36rem;line-height:1.12}.lane-message.secondary{font-size:1.24rem}
+.now-line{left:76px}
+.overview-mini-head{font-size:1.44rem;line-height:1.05}
+.overview-mini-event{font-size:1.18rem;line-height:1.08}.overview-mini-event .mini-time{font-size:1.26rem}.overview-mini-event strong{font-size:1.32rem}.overview-mini-event span{font-size:1.18rem}.overview-mini-empty{font-size:1.24rem}
+.overview-week-grid{grid-template-columns:100px repeat(4,minmax(0,1fr))}
+.overview-week-person{font-size:1.34rem;line-height:1.05}.overview-week-day{font-size:1.32rem;line-height:1.08}
+.overview-week-cell,.overview-week-day{height:920px}.overview-week-event{font-size:1.10rem;line-height:1.02;padding:4px 3px}.overview-week-event b{font-size:1.12rem}.overview-week-empty,.overview-week-special{font-size:1.06rem}
+
 @media(max-width:700px){
  .weather-strip{font-size:.74rem;padding:7px 9px;margin-bottom:8px}
- .timeline:not(.compact-overview){grid-template-columns:44px repeat(4,minmax(0,1fr));height:760px}
- .person-timeline.week-view:not(.compact-overview){grid-template-columns:44px repeat(5,minmax(0,1fr));height:760px}
- .time-label{left:2px;font-size:.72rem}
- .lane-head{height:40px;padding:5px 1px;font-size:.88rem;line-height:1}
+ .timeline:not(.compact-overview){grid-template-columns:58px repeat(4,minmax(0,1fr));height:820px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:58px repeat(5,minmax(0,1fr));height:820px}
+ .time-label{left:2px;font-size:.96rem}
+ .lane-head{height:60px;padding:6px 1px;font-size:1.18rem;line-height:1}
+ .live-badge{display:block;width:max-content;margin:2px auto 0;font-size:.86rem;padding:2px 4px}
  .block{font-size:.96rem;line-height:1;padding:2px 2px}
  .block strong{font-size:1rem;line-height:1}.block em{font-size:.90rem;line-height:1}
  .block.medium-block{font-size:.88rem}.block.medium-block strong{font-size:.90rem}.block.medium-block em{font-size:.82rem}
- .block.short-block{font-size:.80rem;line-height:.96}.block.short-block strong{font-size:.82rem}.block.short-block em{font-size:.70rem}
- .now-line{left:44px}
- .overview-week-cell,.overview-week-day{height:760px}
- .overview-week-event{font-size:.92rem;line-height:1;padding:3px 2px}.overview-week-event b{font-size:.96rem}
- .overview-week-empty,.overview-week-special{font-size:.84rem}
+ .block.short-block{font-size:.80rem;line-height:.96}.block.short-block strong{font-size:.82rem}.block.short-block em{font-size:.76rem}
+ .lane-message{font-size:1.20rem}.lane-message.secondary{font-size:1.08rem}
+ .now-line{left:58px}
+ .overview-mini-head{font-size:1.18rem}.overview-mini-event{font-size:1rem}.overview-mini-event .mini-time{font-size:1.08rem}.overview-mini-event strong{font-size:1.12rem}.overview-mini-event span{font-size:1rem}.overview-mini-empty{font-size:1rem}
+ .overview-week-grid{grid-template-columns:76px repeat(4,minmax(0,1fr));gap:4px}
+ .overview-week-person{font-size:1.12rem;padding:5px 1px}.overview-week-day{font-size:1.12rem;padding:5px 1px}
+ .overview-week-cell,.overview-week-day{height:820px}
+ .overview-week-event{font-size:.92rem;line-height:1;padding:3px 2px}.overview-week-event b{font-size:.96rem}.overview-week-empty,.overview-week-special{font-size:.92rem}
 }
 @media(max-width:420px){
- .timeline:not(.compact-overview){grid-template-columns:42px repeat(4,minmax(0,1fr));height:760px}
- .person-timeline.week-view:not(.compact-overview){grid-template-columns:42px repeat(5,minmax(0,1fr));height:760px}
- .time-label{font-size:.68rem}.lane-head{font-size:.82rem}
+ .timeline:not(.compact-overview){grid-template-columns:54px repeat(4,minmax(0,1fr));height:820px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:54px repeat(5,minmax(0,1fr));height:820px}
+ .time-label{font-size:.88rem}
+ .lane-head{font-size:1.10rem}
  .block{font-size:.90rem}.block strong{font-size:.94rem}.block em{font-size:.84rem}
  .block.medium-block{font-size:.82rem}.block.medium-block strong{font-size:.84rem}.block.medium-block em{font-size:.76rem}
- .block.short-block{font-size:.74rem}.block.short-block strong{font-size:.76rem}.block.short-block em{font-size:.66rem}
- .now-line{left:42px}
+ .block.short-block{font-size:.74rem}.block.short-block strong{font-size:.76rem}.block.short-block em{font-size:.70rem}
+ .lane-message{font-size:1.08rem}.lane-message.secondary{font-size:.96rem}
+ .now-line{left:54px}
+ .overview-week-grid{grid-template-columns:70px repeat(4,minmax(0,1fr));gap:3px}
+ .overview-week-person,.overview-week-day{font-size:1.12rem;padding:5px 1px}
+ .overview-week-event{font-size:.92rem}.overview-week-event b{font-size:.96rem}.overview-week-empty,.overview-week-special{font-size:.92rem}
 }
-
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v86</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v87</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -240,11 +256,11 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=86;
+const APP_BUILD=87;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
-const WEATHER_CONFIG={lat:41.5388,lon:-8.6151,label:"Barcelos",timezone:"Europe/Lisbon",ttl:10*60*1000};
-const WEATHER_STATE={loadedAt:0,promise:null,data:null};
+const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
+const WEATHER_STATE={loadedAt:0,promise:null,data:null,weatherKey:"",location:null,locationLoadedAt:0,locationPromise:null};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
  sports:{loadedAt:0,promise:null},
@@ -346,7 +362,7 @@ Carlos:{
 };
 let view="overview",selectedDay=null,person=null,personMode="day",overviewMode="day",statsDate=null,installPrompt=null;
 const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)");
-const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?760:850,laneHeaderHeight=()=>isMobileTimeline()?40:44,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
+const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?820:920,laneHeaderHeight=()=>isMobileTimeline()?60:68,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
 function ymdDay(s){const [y,m,d]=s.split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/MS_DAY)}
 function currentLocalDay(){const n=new Date();return Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/MS_DAY)}
 const HOLIDAY_DAYS=new Set([...NATIONAL_HOLIDAYS,...LOCAL_NO_CLASS_DAYS].map(ymdDay));
@@ -422,25 +438,97 @@ function beaufortFromKmh(kmh){
  let force=limits.findIndex(x=>v<x);if(force<0)force=12;
  return {force,label:labels[force]};
 }
-function weatherCached(){
- const cached=storageRead("weatherBarcelos",null);
- if(!cached||!cached.data||!cached.savedAt)return null;
- return cached;
+function weatherLocationKey(loc){return Number(loc.lat).toFixed(3)+","+Number(loc.lon).toFixed(3)}
+function weatherLocationCached(){
+ const cached=storageRead("weatherCurrentLocationV87",null);
+ return cached&&cached.location&&cached.savedAt?cached:null;
+}
+function weatherForecastCached(){
+ const cached=storageRead("weatherCurrentForecastV87",null);
+ return cached&&cached.data&&cached.locationKey&&cached.savedAt?cached:null;
+}
+function browserCurrentPosition(){
+ return new Promise((resolve,reject)=>{
+  if(!navigator.geolocation){reject(new Error("geolocation unavailable"));return}
+  navigator.geolocation.getCurrentPosition(
+   p=>resolve({lat:p.coords.latitude,lon:p.coords.longitude,accuracy:p.coords.accuracy||null,source:"dispositivo"}),
+   reject,
+   {enableHighAccuracy:true,timeout:WEATHER_CONFIG.geoTimeout,maximumAge:5*60*1000}
+  );
+ });
+}
+async function reverseLocationName(loc){
+ const u=new URL("https://api.bigdatacloud.net/data/reverse-geocode-client");
+ u.searchParams.set("latitude",Number(loc.lat).toFixed(5));
+ u.searchParams.set("longitude",Number(loc.lon).toFixed(5));
+ u.searchParams.set("localityLanguage","pt");
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+ try{
+  const r=await fetch(u.toString(),{cache:"no-store",signal:controller.signal});
+  if(!r.ok)throw new Error("reverse geocode HTTP "+r.status);
+  const j=await r.json();
+  const local=j.locality||j.city||j.localityInfo?.administrative?.find(x=>x.name)?.name||"";
+  const region=j.principalSubdivision||"";
+  const country=j.countryName||"";
+  const parts=[];
+  if(local)parts.push(local);
+  if(region&&region!==local)parts.push(region);
+  if(!parts.length&&country)parts.push(country);
+  return parts.join(", ")||Number(loc.lat).toFixed(3)+", "+Number(loc.lon).toFixed(3);
+ }finally{clearTimeout(timer)}
+}
+async function ipCurrentPosition(){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),7000);
+ try{
+  const r=await fetch("https://ipwho.is/",{cache:"no-store",signal:controller.signal});
+  if(!r.ok)throw new Error("IP geolocation HTTP "+r.status);
+  const j=await r.json();
+  if(j.success===false||!Number.isFinite(Number(j.latitude))||!Number.isFinite(Number(j.longitude)))throw new Error("IP geolocation invalid");
+  const parts=[j.city,j.region,j.country].filter(Boolean);
+  return {lat:Number(j.latitude),lon:Number(j.longitude),label:parts.slice(0,2).join(", ")||j.country||"Localização por rede",source:"rede"};
+ }finally{clearTimeout(timer)}
+}
+async function resolveWeatherLocation({force=false}={}){
+ const now=Date.now();
+ if(!force&&WEATHER_STATE.location&&now-WEATHER_STATE.locationLoadedAt<WEATHER_CONFIG.locationTtl)return WEATHER_STATE.location;
+ const cached=weatherLocationCached();
+ if(!force&&!WEATHER_STATE.location&&cached&&now-cached.savedAt<WEATHER_CONFIG.locationTtl){
+  WEATHER_STATE.location=cached.location;WEATHER_STATE.locationLoadedAt=cached.savedAt;return cached.location;
+ }
+ if(WEATHER_STATE.locationPromise)return WEATHER_STATE.locationPromise;
+ WEATHER_STATE.locationPromise=(async()=>{
+  let loc=null;
+  try{
+   loc=await browserCurrentPosition();
+   try{loc.label=await reverseLocationName(loc)}catch(_){loc.label=Number(loc.lat).toFixed(3)+", "+Number(loc.lon).toFixed(3)}
+  }catch(_){
+   try{loc=await ipCurrentPosition()}catch(err){
+    if(cached&&cached.location)loc=cached.location;
+    else throw err;
+   }
+  }
+  WEATHER_STATE.location=loc;WEATHER_STATE.locationLoadedAt=Date.now();
+  storageWrite("weatherCurrentLocationV87",{savedAt:WEATHER_STATE.locationLoadedAt,location:loc});
+  return loc;
+ })().finally(()=>{WEATHER_STATE.locationPromise=null});
+ return WEATHER_STATE.locationPromise;
 }
 async function loadWeather({force=false}={}){
- if(!force&&WEATHER_STATE.data&&Date.now()-WEATHER_STATE.loadedAt<WEATHER_CONFIG.ttl)return WEATHER_STATE.data;
- const cached=weatherCached();
- if(!force&&!WEATHER_STATE.data&&cached&&Date.now()-cached.savedAt<WEATHER_CONFIG.ttl){
-  WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;return cached.data;
+ const loc=await resolveWeatherLocation({force:false});
+ const key=weatherLocationKey(loc),now=Date.now();
+ if(!force&&WEATHER_STATE.data&&WEATHER_STATE.weatherKey===key&&now-WEATHER_STATE.loadedAt<WEATHER_CONFIG.ttl)return {forecast:WEATHER_STATE.data,location:loc};
+ const cached=weatherForecastCached();
+ if(!force&&!WEATHER_STATE.data&&cached&&cached.locationKey===key&&now-cached.savedAt<WEATHER_CONFIG.ttl){
+  WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;WEATHER_STATE.weatherKey=key;return {forecast:cached.data,location:loc};
  }
  if(WEATHER_STATE.promise)return WEATHER_STATE.promise;
  WEATHER_STATE.promise=(async()=>{
   const u=new URL("https://api.open-meteo.com/v1/forecast");
-  u.searchParams.set("latitude",WEATHER_CONFIG.lat);
-  u.searchParams.set("longitude",WEATHER_CONFIG.lon);
+  u.searchParams.set("latitude",Number(loc.lat).toFixed(4));
+  u.searchParams.set("longitude",Number(loc.lon).toFixed(4));
   u.searchParams.set("current","temperature_2m,cloud_cover,wind_speed_10m");
   u.searchParams.set("daily","temperature_2m_max,temperature_2m_min,cloud_cover_mean,wind_speed_10m_max");
-  u.searchParams.set("timezone",WEATHER_CONFIG.timezone);
+  u.searchParams.set("timezone","auto");
   u.searchParams.set("past_days","7");
   u.searchParams.set("forecast_days","16");
   try{
@@ -449,11 +537,14 @@ async function loadWeather({force=false}={}){
    try{r=await fetch(u.toString(),{cache:"no-store",signal:controller.signal})}finally{clearTimeout(timer)}
    if(!r.ok)throw new Error("weather HTTP "+r.status);
    const data=await r.json();
-   WEATHER_STATE.data=data;WEATHER_STATE.loadedAt=Date.now();
-   storageWrite("weatherBarcelos",{savedAt:WEATHER_STATE.loadedAt,data});
-   return data;
+   WEATHER_STATE.data=data;WEATHER_STATE.loadedAt=Date.now();WEATHER_STATE.weatherKey=key;
+   storageWrite("weatherCurrentForecastV87",{savedAt:WEATHER_STATE.loadedAt,locationKey:key,data});
+   return {forecast:data,location:loc};
   }catch(err){
-   if(cached&&cached.data){WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;return cached.data}
+   if(cached&&cached.locationKey===key&&cached.data){
+    WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;WEATHER_STATE.weatherKey=key;
+    return {forecast:cached.data,location:loc};
+   }
    throw err;
   }finally{WEATHER_STATE.promise=null}
  })();
@@ -464,28 +555,30 @@ function weatherDay(data,iso){
  const i=d.time.indexOf(iso);if(i<0)return null;
  return {max:d.temperature_2m_max?.[i],min:d.temperature_2m_min?.[i],cloud:d.cloud_cover_mean?.[i],wind:d.wind_speed_10m_max?.[i]};
 }
-function renderWeatherStrip(data,iso){
- const day=weatherDay(data,iso),today=isoLocalDate(),cur=data&&data.current;
+function renderWeatherStrip(payload,iso){
+ const data=payload&&payload.forecast,loc=payload&&payload.location,day=weatherDay(data,iso),today=isoLocalDate(),cur=data&&data.current;
  const currentTemp=Number(cur&&cur.temperature_2m),isToday=iso===today;
- const cloud=isToday?Number(cur&&cur.cloud_cover):Number(day&&day.cloud);
- const wind=isToday?Number(cur&&cur.wind_speed_10m):Number(day&&day.wind);
- const sky=weatherSky(cloud),bf=beaufortFromKmh(wind);
+ const cloud=Number(day&&day.cloud);
+ const sky=weatherSky(Number.isFinite(cloud)?cloud:Number(cur&&cur.cloud_cover));
+ const wind=Number(isToday?(cur&&cur.wind_speed_10m):(day&&day.wind));
+ const bf=beaufortFromKmh(wind);
  let text=sky.icon+" "+sky.label;
- if(Number.isFinite(currentTemp))text+=" · Agora "+Math.round(currentTemp)+"°C";
+ text+=" · Atual "+(Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—");
  if(day&&Number.isFinite(Number(day.max))&&Number.isFinite(Number(day.min)))text+=" · Máx. "+Math.round(day.max)+"° · Mín. "+Math.round(day.min)+"°";
- else if(!isToday)text+=" · Previsão ainda indisponível para esta data";
- if(Number.isFinite(wind))text+=" · "+(isToday?"Vento ":"Vento máx. ")+Math.round(wind)+" km/h · F"+bf.force+" ("+bf.label+")";
- text+=' <span class="weather-source">· '+WEATHER_CONFIG.label+"</span>";
+ else text+=" · Máx./Mín. —";
+ if(Number.isFinite(wind))text+=" · Vento F"+bf.force+" ("+bf.label+") · "+Math.round(wind)+" km/h";
+ else text+=" · Vento —";
+ text+=' <span class="weather-source">· 📍 '+esc((loc&&loc.label)||"Localização atual")+"</span>";
  qsa("[data-weather-strip]").forEach(el=>{el.classList.remove("is-error");el.innerHTML=text});
 }
 async function updateWeatherStrip(iso=statsIso()){
- qsa("[data-weather-strip]").forEach(el=>{if(!el.dataset.ready)el.textContent="🌤️ A obter previsão…"});
+ qsa("[data-weather-strip]").forEach(el=>{if(!WEATHER_STATE.data)el.textContent="🌤️ A obter previsão e localização…"});
  try{
-  const data=await loadWeather();
-  if(statsIso()===iso){renderWeatherStrip(data,iso);qsa("[data-weather-strip]").forEach(el=>el.dataset.ready="1")}
+  const payload=await loadWeather();
+  if(statsIso()===iso)renderWeatherStrip(payload,iso);
  }catch(_){
   if(statsIso()!==iso)return;
-  qsa("[data-weather-strip]").forEach(el=>{el.classList.add("is-error");el.textContent="🌤️ Previsão meteorológica temporariamente indisponível · "+WEATHER_CONFIG.label});
+  qsa("[data-weather-strip]").forEach(el=>{el.classList.add("is-error");el.textContent="🌤️ Não foi possível obter a meteorologia/localização atual."});
  }
 }
 function renderCountdowns(){
@@ -1769,7 +1862,7 @@ function renderOverviewTabs(active,referenceIso){
   overviewMode="day";
   const targetDow=SCHOOL_DAYS.indexOf(x)+1;
   statsDate=isoForWeekday(referenceIso,targetDow);
-  selectedDay=x;renderOverview();renderCountdowns();renderDailyInfo();renderGlobalQuote();
+  selectedDay=x;renderOverview();
  }));
 }
 function renderOverview(){
