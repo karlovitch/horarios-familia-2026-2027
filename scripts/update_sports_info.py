@@ -79,6 +79,15 @@ def normalize_time(date_iso,time_text):
     offset="+01:00" if 3<=month<=10 else "+00:00"
     return f"{date_iso}T{hh:02d}:{mm:02d}:00{offset}"
 
+def make_event(src,date_iso,time_text,home,away,comp,text,link=None):
+    channel=next((ch for ch in CHANNELS if ch.lower() in text.lower()),"Transmissão a confirmar")
+    return {
+      "date":date_iso,"start":normalize_time(date_iso,time_text),
+      "entity":src["entity"],"sport":src["sport"],"home":home.strip(),"away":away.strip(),
+      "competition":comp.strip() or "Competição a confirmar","location":infer_location(home),
+      "channel":channel,"match_url":link or src["url"],"source_url":src["url"]
+    }
+
 def parse_zerozero(src,html):
     soup=BeautifulSoup(html,"html.parser")
     found=[]
@@ -102,18 +111,54 @@ def parse_zerozero(src,html):
         home=re.sub(r"\s+"," ",mm.group(1)).strip(" -")
         away=re.sub(r"\s+"," ",mm.group(2)).strip(" -")
         if len(home)>80 or len(away)>80:continue
-        channel=next((ch for ch in CHANNELS if ch.lower() in text.lower()),"Transmissão a confirmar")
         link=None
         for a in row.find_all("a",href=True):
             if "/jogo/" in a["href"] or "/live-ao-minuto/" in a["href"]:
                 link=urljoin(src["url"],a["href"]);break
-        found.append({
-          "date":date_iso,"start":normalize_time(date_iso,tm.group(1) if tm else None),
-          "entity":src["entity"],"sport":src["sport"],"home":home,"away":away,
-          "competition":comp or "Competição a confirmar","location":infer_location(home),
-          "channel":channel,"match_url":link or src["url"],"source_url":src["url"]
-        })
-    return found
+        found.append(make_event(src,date_iso,tm.group(1) if tm else None,home,away,comp,text,link))
+
+    if not found:
+        for raw in html.splitlines():
+            line=re.sub(r"^[#>*\-\s]+","",raw).strip()
+            if not line:continue
+
+            if "|" in line and re.search(r"20\d{2}-\d{2}-\d{2}",line):
+                parts=[re.sub(r"Image:\s*","",p).strip() for p in line.split("|")]
+                date_i=next((n for n,p in enumerate(parts) if re.fullmatch(r"20\d{2}-\d{2}-\d{2}",p)),None)
+                if date_i is not None:
+                    date_iso=parts[date_i]
+                    time_text=next((p for p in parts[date_i+1:] if re.fullmatch(r"\d{2}:\d{2}|-:-",p)),None)
+                    side=next((p for p in parts if p in ("(C)","(F)")),None)
+                    comp=next((p for p in parts if any(m.lower() in p.lower() for m in COMP_MARKERS)),"")
+                    candidates=[p for p in parts if p and p not in ("h2h","-","(C)","(F)") and not re.fullmatch(r"20\d{2}-\d{2}-\d{2}|\d{2}:\d{2}|-:-|J\d+",p) and p!=comp and not p.lower().startswith("image:")]
+                    opponent=""
+                    for p in candidates:
+                        if p not in (src["entity"],"Gil Vicente","FC Porto","OC Barcelos") and len(p)<70:
+                            opponent=p;break
+                    if opponent and side:
+                        team={"Gil Vicente FC":"Gil Vicente","FC Porto":"FC Porto","Óquei Clube de Barcelos":"OC Barcelos"}.get(src["entity"],src["entity"])
+                        home,away=(team,opponent) if side=="(C)" else (opponent,team)
+                        found.append(make_event(src,date_iso,time_text,home,away,comp,line))
+
+            dm=re.search(r"\b(\d{2}/\d{2})\b",line)
+            tm=re.search(r"\b(\d{2}:\d{2}|-:-)\b",line)
+            if dm and " vs " in line:
+                date_iso=season_date(dm.group(1))
+                after=line[tm.end():].strip() if tm else line[dm.end():].strip()
+                positions=[after.lower().find(x.lower()) for x in COMP_MARKERS if after.lower().find(x.lower())>0]
+                marker_pos=min(positions or [len(after)])
+                match_text=after[:marker_pos].strip()
+                comp=after[marker_pos:].strip() if marker_pos<len(after) else ""
+                mm=re.search(r"(.+?)\s+vs\s+(.+)",match_text,re.I)
+                if mm and date_iso:
+                    home=re.sub(r"\s+"," ",mm.group(1)).strip(" -")
+                    away=re.sub(r"\s+"," ",mm.group(2)).strip(" -")
+                    if home and away and len(home)<80 and len(away)<80:
+                        found.append(make_event(src,date_iso,tm.group(1) if tm else None,home,away,comp,line))
+
+    out={}
+    for e in found:out[key(e)]=e
+    return list(out.values())
 
 def parse_fpf(src,html):
     soup=BeautifulSoup(html,"html.parser")
