@@ -1397,7 +1397,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 7",
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.sofascore.com/football/match/gil-vicente-cs-maritimo/hkbskkb",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
       "status": "finished",
       "home_score": 1,
@@ -1428,7 +1428,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 7",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
+      "match_url": null,
       "source_url": "https://www.fcporto.pt/pt/agenda",
       "status": "scheduled"
     },
@@ -1480,7 +1480,7 @@
       "location": "Estádio José Alvalade, Lisboa, Portugal",
       "channel": "RTP 1",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1",
-      "match_url": "https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056"
     },
     {
@@ -1517,7 +1517,7 @@
       "competition": "Qualificação Campeonato da Europa Sub-21 2027 · Grupo B",
       "location": "Bulgária · estádio/localidade a confirmar",
       "channel": "Canal 11",
-      "match_url": "https://www.sofascore.com/pt/football/match/portugal-u21-bulgaria-u21/JXbsVvc",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458"
     },
     {
