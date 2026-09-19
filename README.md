@@ -5,10 +5,10 @@ Aplicação PWA para consulta integrada dos horários familiares e da informaç�
 ## Funcionalidades
 
 - vista **Hoje**, vista de conjunto e horários individuais;
-- navegação por data, contagens do calendário escolar e interrupções;
+- navegação por data otimizada para toque, contagens do calendário escolar e interrupções;
 - efemérides, História mundial e História de Portugal;
 - astronomia, liturgia, santos do dia e Evangelho;
-- integração do **Passo-a-Rezar**;
+- integração do **Passo-a-Rezar** através de leitor de áudio direto, sem incorporar a página externa, evitando banners de cookies e promoção da app;
 - agenda desportiva apresentada apenas nas datas com eventos;
 - resultados/estado de jogos acompanhados e ligações específicas quando disponíveis;
 - instalação como PWA e funcionamento offline com service worker;
