@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-19T14:34:10.466216+00:00",
+  "generated_at": "2026-09-19T15:10:28.590870+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
-    "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+    "https://www.zerozero.pt/equipa/fc-porto/agenda",
     "https://www.zerozero.pt/equipa/gil-vicente/jogos",
     "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
     "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
@@ -16,7 +16,7 @@
   ],
   "source_checks": [
     {
-      "url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "url": "https://www.zerozero.pt/equipa/fc-porto/agenda",
       "ok": true,
       "events_found": 0
     },
@@ -71,7 +71,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -84,7 +83,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -97,7 +95,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -110,7 +107,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -123,7 +119,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -136,7 +131,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Shanghai International Circuit, Shanghai, China",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -149,7 +143,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Shanghai International Circuit, Shanghai, China",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -162,7 +155,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Shanghai International Circuit, Shanghai, China",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -175,7 +167,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Shanghai International Circuit, Shanghai, China",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -188,7 +179,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Shanghai International Circuit, Shanghai, China",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -201,7 +191,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Suzuka Circuit, Suzuka, Japão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -214,7 +203,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Suzuka Circuit, Suzuka, Japão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -227,7 +215,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Suzuka Circuit, Suzuka, Japão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -240,7 +227,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Suzuka Circuit, Suzuka, Japão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -253,7 +239,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Suzuka Circuit, Suzuka, Japão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -266,7 +251,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Miami International Autodrome, Miami, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -279,7 +263,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Miami International Autodrome, Miami, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -292,7 +275,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Miami International Autodrome, Miami, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -305,7 +287,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Miami International Autodrome, Miami, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -318,7 +299,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Miami International Autodrome, Miami, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -331,7 +311,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -344,7 +323,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -357,7 +335,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -370,7 +347,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -383,7 +359,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -396,7 +371,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Monaco, Monte Carlo, Mónaco",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -409,7 +383,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Monaco, Monte Carlo, Mónaco",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -422,7 +395,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Monaco, Monte Carlo, Mónaco",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -435,7 +407,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Monaco, Monte Carlo, Mónaco",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -448,7 +419,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Monaco, Monte Carlo, Mónaco",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -461,7 +431,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -474,7 +443,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -487,7 +455,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -500,7 +467,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -513,7 +479,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -526,7 +491,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Red Bull Ring, Spielberg, Áustria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -539,7 +503,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Red Bull Ring, Spielberg, Áustria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -552,7 +515,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Red Bull Ring, Spielberg, Áustria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -565,7 +527,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Red Bull Ring, Spielberg, Áustria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -578,7 +539,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Red Bull Ring, Spielberg, Áustria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -591,7 +551,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Silverstone Circuit, Silverstone, Reino Unido",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -604,7 +563,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Silverstone Circuit, Silverstone, Reino Unido",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -617,7 +575,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Silverstone Circuit, Silverstone, Reino Unido",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -630,7 +587,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Silverstone Circuit, Silverstone, Reino Unido",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -643,7 +599,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Silverstone Circuit, Silverstone, Reino Unido",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -656,7 +611,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -669,7 +623,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -682,7 +635,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -695,7 +647,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -708,7 +659,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -721,7 +671,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Hungaroring, Budapest, Hungria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -734,7 +683,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Hungaroring, Budapest, Hungria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -747,7 +695,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Hungaroring, Budapest, Hungria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -760,7 +707,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Hungaroring, Budapest, Hungria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -773,7 +719,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Hungaroring, Budapest, Hungria",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -851,7 +796,6 @@
       "competition": "Amigável de pré-época",
       "location": "Veltins-Arena, Gelsenkirchen, Alemanha",
       "channel": "Realmadrid TV / RM Play",
-      "stream_url": "https://play.realmadrid.com/",
       "home_score": 0,
       "away_score": 3,
       "status": "finished",
@@ -881,7 +825,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -894,7 +837,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -907,7 +849,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -920,7 +861,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -934,7 +874,6 @@
       "competition": "La Liga 2026/27 · Jornada 2",
       "location": "RCDE Stadium, Cornellà de Llobregat, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "home_score": 1,
       "away_score": 2,
       "status": "finished",
@@ -950,7 +889,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1059,7 +997,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autodromo Nazionale di Monza, Monza, Itália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1072,7 +1009,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autodromo Nazionale di Monza, Monza, Itália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1117,7 +1053,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autodromo Nazionale di Monza, Monza, Itália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1130,7 +1065,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autodromo Nazionale di Monza, Monza, Itália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1143,7 +1077,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autodromo Nazionale di Monza, Monza, Itália",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1204,7 +1137,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Madring, Madrid, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1217,7 +1149,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Madring, Madrid, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1246,7 +1177,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Madring, Madrid, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1259,7 +1189,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Madring, Madrid, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1305,7 +1234,6 @@
       "competition": "La Liga 2026/27 · Jornada 5",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "home_score": 4,
       "away_score": 1,
       "status": "finished",
@@ -1321,7 +1249,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Madring, Madrid, Espanha",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1383,7 +1310,6 @@
       "competition": "GoldenCat 2026 · Seleção AA Masculina",
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
-      "stream_url": "https://tv.fpp.pt/",
       "home_score": 5,
       "away_score": 3,
       "status": "finished",
@@ -1400,7 +1326,6 @@
       "competition": "GoldenCat 2026 · Seleção AA Masculina",
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
-      "stream_url": "https://tv.fpp.pt/",
       "home_score": 4,
       "away_score": 2,
       "status": "finished",
@@ -1417,7 +1342,6 @@
       "competition": "GoldenCat 2026 · Seleção AA Masculina",
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
-      "stream_url": "https://tv.fpp.pt/",
       "home_score": 2,
       "away_score": 7,
       "status": "finished",
@@ -1447,10 +1371,9 @@
       "competition": "GoldenCat 2026 · Seleção AA Masculina",
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
-      "stream_url": "https://tv.fpp.pt/",
       "match_url": "http://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
       "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/",
-      "status_updated_at": "2026-09-19T14:33:34.111739+00:00",
+      "status_updated_at": "2026-09-19T15:10:15.638101+00:00",
       "status": "live"
     },
     {
@@ -1465,13 +1388,13 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.flashscore.pt/jogo/futebol/gil-vicente-0/maritimo-rJFNYLa4/?mid=AaftdAAL",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "status_updated_at": "2026-09-19T14:33:36.861370+00:00",
+      "status_updated_at": "2026-09-19T15:10:17.391244+00:00",
       "status": "live",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
       "period": "1H",
       "period_start": 1789828262,
-      "live_minute": 2
+      "live_minute": 39
     },
     {
       "date": "2026-09-20",
@@ -1483,10 +1406,9 @@
       "competition": "La Liga",
       "location": "Riyadh Air Metropolitano, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.flashscore.pt/jogo/futebol/atl-madrid-MD0xuDx1/real-madrid-8Ubpwi7D/?mid=hGycdKve",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "status_updated_at": "2026-09-19T14:33:39.431970+00:00",
+      "status_updated_at": "2026-09-19T15:10:18.406147+00:00",
       "status": "scheduled"
     },
     {
@@ -1501,7 +1423,7 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.flashscore.pt/jogo/futebol/fc-porto-8nvBCVr2/benfica-0tRdzZz9/?mid=EeqKlS2e",
       "source_url": "https://www.fcporto.pt/pt/agenda",
-      "status_updated_at": "2026-09-19T14:33:40.124405+00:00",
+      "status_updated_at": "2026-09-19T15:10:18.799925+00:00",
       "status": "scheduled"
     },
     {
@@ -1526,7 +1448,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1539,7 +1460,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1566,7 +1486,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1579,7 +1498,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1605,7 +1523,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1672,7 +1589,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1685,7 +1601,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1698,7 +1613,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1711,7 +1625,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1724,7 +1637,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1764,7 +1676,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1777,7 +1688,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1803,7 +1713,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1816,7 +1725,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1843,7 +1751,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -1857,7 +1764,6 @@
       "competition": "La Liga",
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -1870,7 +1776,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -1924,8 +1829,7 @@
       "location": "Stadio Olimpico",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "stream_url": "https://www.dazn.com/pt-PT/home"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-10-14",
@@ -1950,7 +1854,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -1964,7 +1867,6 @@
       "competition": "La Liga",
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -1992,8 +1894,7 @@
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "stream_url": "https://www.dazn.com/pt-PT/home"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-10-23",
@@ -2004,7 +1905,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2017,7 +1917,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2030,7 +1929,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2056,7 +1954,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2069,7 +1966,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2083,7 +1979,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Barcelona, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2097,7 +1992,6 @@
       "competition": "La Liga",
       "location": "Spotify Camp Nou",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -2136,7 +2030,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2149,7 +2042,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2162,7 +2054,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2188,7 +2079,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2201,7 +2091,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2215,7 +2104,6 @@
       "competition": "La Liga",
       "location": "Campos de Sport de El Sardinero",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -2229,7 +2117,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2269,7 +2156,6 @@
       "competition": "UEFA Champions League",
       "location": "Local a confirmar",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2308,7 +2194,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2321,7 +2206,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2334,7 +2218,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2347,7 +2230,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2373,7 +2255,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2400,7 +2281,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2414,7 +2294,6 @@
       "competition": "La Liga",
       "location": "Estadio de Mestalla",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -2481,7 +2360,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2494,7 +2372,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2507,7 +2384,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2520,7 +2396,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2546,7 +2421,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2560,7 +2434,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2574,7 +2447,6 @@
       "competition": "La Liga",
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -2602,8 +2474,7 @@
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "stream_url": "https://www.dazn.com/pt-PT/home"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2026-11-24",
@@ -2640,7 +2511,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2653,7 +2523,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2666,7 +2535,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2679,7 +2547,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2705,7 +2572,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2745,7 +2611,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2771,7 +2636,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2784,7 +2648,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2797,7 +2660,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2810,7 +2672,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2836,7 +2697,6 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
@@ -2850,7 +2710,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2878,8 +2737,7 @@
       "location": "Emirates Stadium, Londres, Reino Unido",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "stream_url": "https://www.dazn.com/pt-PT/home"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2026-12-10",
@@ -2917,7 +2775,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2931,7 +2788,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2945,7 +2801,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2959,7 +2814,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2973,7 +2827,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -2988,8 +2841,7 @@
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "stream_url": "https://www.dazn.com/pt-PT/home"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2027-01-24",
@@ -3001,7 +2853,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3028,7 +2879,6 @@
       "competition": "UEFA Champions League",
       "location": "Local a confirmar",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3042,7 +2892,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3056,7 +2905,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3070,7 +2918,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3084,7 +2931,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3098,7 +2944,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3112,7 +2957,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3126,7 +2970,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3140,7 +2983,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3154,7 +2996,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3168,7 +3009,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3182,7 +3022,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3196,7 +3035,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3210,7 +3048,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3224,7 +3061,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3238,7 +3074,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3252,7 +3087,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
@@ -3266,7 +3100,6 @@
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     }
