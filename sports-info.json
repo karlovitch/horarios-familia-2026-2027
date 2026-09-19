@@ -1397,12 +1397,13 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 7",
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.flashscore.pt/jogo/futebol/gil-vicente-zgCFzrVi/maritimo-rJFNYLa4/?mid=AaftdAAL",
+      "match_url": "https://www.zerozero.pt/jogo/2026-09-19-gil-vicente-maritimo/12278057",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
       "status": "finished",
       "home_score": 1,
       "away_score": 1,
-      "period": "2H"
+      "period": "2H",
+      "flashscore_mid": "AaftdAAL"
     },
     {
       "date": "2026-09-20",
