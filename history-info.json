@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-09-19T14:00:00Z",
+  "sources": {
+    "world": "Wikipédia em português — páginas de efemérides por data",
+    "portugal": "e-Cultura / Centro Nacional de Cultura — Efemérides"
+  },
+  "dates": {
+    "09-19": {
+      "world": [
+        {
+          "year": "1893",
+          "text": "A Nova Zelândia torna-se o primeiro país autónomo a conceder às mulheres o direito de voto em eleições nacionais.",
+          "source_url": "https://www.history.com/this-day-in-history/september-19"
+        },
+        {
+          "year": "1985",
+          "text": "Um forte sismo atinge a Cidade do México, provocando milhares de mortos e uma vasta destruição.",
+          "source_url": "https://www.history.com/this-day-in-history/september-19"
+        }
+      ],
+      "portugal": [
+        {
+          "year": "1946",
+          "text": "A TAP inaugura a sua primeira linha comercial, ligando Lisboa a Madrid.",
+          "source_url": "https://www.infopedia.pt/artigos/pesquisa/feriados%20de%20setembro%20em%20Portugal"
+        },
+        {
+          "year": "1975",
+          "text": "Toma posse o VI Governo Provisório, chefiado pelo almirante José Pinheiro de Azevedo.",
+          "source_url": "https://memoriasdarevolucao.pt/index.php/rtp/diario-do-prec"
+        }
+      ]
+    },
+    "10-07": {
+      "world": [
+        {
+          "year": "1571",
+          "text": "A Batalha de Lepanto termina com a vitória da Liga Santa sobre a frota otomana.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_outubro"
+        },
+        {
+          "year": "1949",
+          "text": "É fundada a República Democrática Alemã na zona de ocupação soviética.",
+          "source_url": "https://pt.wikipedia.org/wiki/7_de_outubro"
+        }
+      ],
+      "portugal": [
+        {
+          "year": "1846",
+          "text": "São novamente suspensas as garantias constitucionais por 30 dias, no contexto da crise política que conduziu à Patuleia.",
+          "source_url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_da_Maria_da_Fonte"
+        }
+      ]
+    }
+  }
+}
