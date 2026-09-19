@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=35">
+<link rel="manifest" href="manifest.webmanifest?v=36">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v35</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v36</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -46,10 +46,10 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
-Segunda:[["08:25","09:55","10.º I · História A","E 8"],["10:10","11:40","10.º G · História A","E 7"],["11:50","13:20","10.º H · História A","E 14"]],
-Terça:[["08:25","09:55","10.º G · História A","E 7"],["10:10","11:40","8.º B · História","E 11"],["11:50","13:20","10.º I · História A","E 8"],["14:25","15:55","9.º B · História","D 11"]],
-Quarta:[["08:25","09:55","9.º A · História","D 8"],["10:10","11:40","10.º G · História A","E 7"],["11:50","13:20","10.º H · História A","E 9"]],Quinta:[],
-Sexta:[["08:25","09:55","10.º H · História A","E 9"],["10:55","11:40","CNL Escola","Gab. Grupo 400"],["11:50","13:20","10.º I · História A","E 8"]]}},
+Segunda:[["08:25","09:55","10.º I","E 8"],["10:10","11:40","10.º G","E 7"],["11:50","13:20","10.º H","E 14"]],
+Terça:[["08:25","09:55","10.º G","E 7"],["10:10","11:40","8.º B","E 11"],["11:50","13:20","10.º I","E 8"],["14:25","15:55","9.º B","D 11"]],
+Quarta:[["08:25","09:55","9.º A","D 8"],["10:10","11:40","10.º G","E 7"],["11:50","13:20","10.º H","E 9"]],Quinta:[],
+Sexta:[["08:25","09:55","10.º H","E 9"],["10:55","11:40","CNL Escola","Gab. Grupo 400"],["11:50","13:20","10.º I","E 8"]]}},
 Sandra:{color:"#4C7FBF",textColor:"#FFFFFF",days:{
 Segunda:[["09:00","10:30","Apoio educativo letivo",""],["11:00","13:00","Apoio educativo letivo",""],["14:30","15:30","Coordenação de escola",""],["15:30","16:00","Funções de âmbito organizacional",""],["16:00","17:00","Coordenação de escola",""]],
 Terça:[["09:00","10:30","Apoio educativo letivo",""],["11:00","13:00","Apoio educativo letivo",""],["14:30","15:30","Coordenação de escola",""],["15:30","16:00","Funções de âmbito organizacional",""],["16:00","17:00","Coordenação de escola",""]],
@@ -57,11 +57,11 @@ Quarta:[["09:00","10:30","Apoio educativo letivo",""],["11:00","12:00","Apoio ed
 Quinta:[["09:00","10:30","Apoio educativo letivo",""],["11:00","12:00","Apoio educativo letivo",""],["12:00","13:00","Coordenação de escola",""]],
 Sexta:[["09:00","10:30","Apoio educativo letivo",""],["11:00","12:00","Apoio educativo letivo",""],["12:00","13:00","Coordenação de escola",""]]}},
 Margarida:{color:"#1A1A1A",textColor:"#FFFFFF",days:{
-Segunda:[["08:20","09:50","PORT","S 8"],["10:05","11:35","MATA","S 8"],["11:45","13:15","ING_I","S 8"]],
-Terça:[["08:20","09:50","BGEO","LabBio"],["10:05","11:35","MATA","S 8"],["11:45","12:30","PORT","S 8"],["13:30","15:00","FIL","S 8"],["15:05","16:35","FQA","S 8"]],
-Quarta:[["08:20","09:50","ING_I","S 8"],["10:05","11:35","BGEO","S 8"],["11:45","13:15","FIL","S 8"]],
-Quinta:[["08:20","09:50","PORT","S 8"],["10:05","11:35","FQA","S 8"],["11:45","13:15","MATA","S 8"]],
-Sexta:[["10:05","11:35","EDF","Pav. Adães"],["11:45","12:30","EDF","Pav. Adães"],["13:30","15:00","BGEO","LabBio"],["15:05","15:50","BGEO","LabBio"],["15:50","16:35","FQA","LabFQ"],["16:45","18:15","FQA","LabFQ"]]}},
+Segunda:[["08:20","09:50","PORTUGUÊS","S 8"],["10:05","11:35","MATEMÁTICA A","S 8"],["11:45","13:15","INGLÊS","S 8"]],
+Terça:[["08:20","09:50","BIOLOGIA E GEOLOGIA","LabBio"],["10:05","11:35","MATEMÁTICA A","S 8"],["11:45","12:30","PORTUGUÊS","S 8"],["13:30","15:00","FILOSOFIA","S 8"],["15:05","16:35","FÍSICO-QUÍMICA A","S 8"]],
+Quarta:[["08:20","09:50","INGLÊS","S 8"],["10:05","11:35","BIOLOGIA E GEOLOGIA","S 8"],["11:45","13:15","FILOSOFIA","S 8"]],
+Quinta:[["08:20","09:50","PORTUGUÊS","S 8"],["10:05","11:35","FÍSICO-QUÍMICA A","S 8"],["11:45","13:15","MATEMÁTICA A","S 8"]],
+Sexta:[["10:05","11:35","EDF","Pav. Adães"],["11:45","12:30","EDF","Pav. Adães"],["13:30","15:00","BIOLOGIA E GEOLOGIA","LabBio"],["15:05","15:50","BIOLOGIA E GEOLOGIA","LabBio"],["15:50","16:35","FÍSICO-QUÍMICA A","LabFQ"],["16:45","18:15","FÍSICO-QUÍMICA A","LabFQ"]]}},
 Leonor:{color:"#C9A7F5",textColor:"#1F2A44",days:{
 Segunda:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00","Aulas",""],["15:00","16:00","Inglês","","english"]],
 Terça:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","16:00","Aulas",""],["16:30","17:30","Aulas",""]],
@@ -839,7 +839,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=35",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=36",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -861,6 +861,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const iso=statsIso()
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("today");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=35",{updateViaCache:"none"}).then(r=>r.update()));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=36",{updateViaCache:"none"}).then(r=>r.update()));
 </script>
 </body></html>
