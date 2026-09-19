@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T18:41:03.088086+00:00",
+  "generated_at": "2026-09-19T18:47:17.690Z",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1378,12 +1378,13 @@
       "competition": "GoldenCat 2026 · Seleção AA Masculina",
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
-      "match_url": "http://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
+      "match_url": "https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
       "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/",
       "status": "finished",
-      "home_score": 9,
-      "away_score": 1,
-      "result_source_url": "https://www.hoqueipatins.pt/"
+      "home_score": 3,
+      "away_score": 2,
+      "result_source_url": "https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
+      "result_source_priority": 100
     },
     {
       "date": "2026-09-19",

@@ -364,6 +364,7 @@ def zerozero_hockey_status(event):
         if score:
             out["home_score"],out["away_score"]=score
             out["result_source_url"]=url
+            out["result_source_priority"]=100
         now=datetime.now(timezone.utc)
         start=_hockey_event_start(event)
         if start and now < start:
@@ -434,7 +435,9 @@ def _score_near_teams(text,event):
     return best[1] if best else None
 
 def hockey_fallback_status(event):
-    urls=["https://www.hoqueipatins.pt/"]
+    # Nunca usa uma homepage/agregador genérico para inferir um marcador:
+    # foi assim que Portugal-França recebeu falsamente 9-1.
+    urls=[]
     entity=(event.get("entity") or "").lower()
     if "barcelos" in entity:
         urls.extend([
@@ -447,20 +450,51 @@ def hockey_fallback_status(event):
             text=" ".join(BeautifulSoup(html,"html.parser").stripped_strings)
             score=_score_near_teams(text,event)
             if score is not None:
-                return {"home_score":score[0],"away_score":score[1],"status":"finished","result_source_url":url}
+                return {"home_score":score[0],"away_score":score[1],"status":"finished","result_source_url":url,"result_source_priority":20}
         except Exception:
             pass
     return {}
 
+def hockey_result_priority(event):
+    if not event:return 0
+    explicit=event.get("result_source_priority")
+    if explicit is not None:
+        try:return int(explicit)
+        except Exception:pass
+    url=(event.get("result_source_url") or "").lower()
+    if "zerozero.pt/jogo/" in url:return 100
+    if url:return 20
+    if event.get("home_score") is not None and event.get("away_score") is not None:return 10
+    return 0
+
+def apply_hockey_result(event,info):
+    """Aplica apenas resultados de fonte igual ou mais fiável; ficha direta pode corrigir fallback."""
+    if not info:return event
+    current_priority=hockey_result_priority(event)
+    incoming_priority=hockey_result_priority(info)
+    incoming_has_score=info.get("home_score") is not None and info.get("away_score") is not None
+    current_has_score=event.get("home_score") is not None and event.get("away_score") is not None
+    if incoming_has_score and (not current_has_score or incoming_priority>=current_priority):
+        for k in ("home_score","away_score","status","result_source_url","result_source_priority"):
+            if info.get(k) is not None:event[k]=info[k]
+    else:
+        for k,v in info.items():
+            if v is None:continue
+            if k in {"home_score","away_score","status","result_source_url","result_source_priority"} and current_has_score:
+                continue
+            event[k]=v
+    return event
+
 def merge_hockey_seed(existing_event,seed_event):
-    """Atualiza calendário/base sem apagar um resultado já confirmado."""
+    """Atualiza calendário/base preservando o resultado da fonte mais fiável."""
     old=existing_event or {}
     merged={**old,**seed_event}
-    if old.get("home_score") is not None and old.get("away_score") is not None:
-        merged["home_score"]=old["home_score"];merged["away_score"]=old["away_score"]
-        if old.get("status"):merged["status"]=old["status"]
-        if old.get("result_source_url"):merged["result_source_url"]=old["result_source_url"]
-    elif old.get("status")=="awaiting_final":
+    old_has=old.get("home_score") is not None and old.get("away_score") is not None
+    seed_has=seed_event.get("home_score") is not None and seed_event.get("away_score") is not None
+    if old_has and (not seed_has or hockey_result_priority(old)>hockey_result_priority(seed_event)):
+        for k in ("home_score","away_score","status","result_source_url","result_source_priority"):
+            if old.get(k) is not None:merged[k]=old[k]
+    elif old.get("status")=="awaiting_final" and not seed_has:
         merged["status"]="awaiting_final"
     return merged
 
@@ -504,12 +538,7 @@ def enforce_direct_match_urls(events):
                         if alt:info={**info,**alt}
                     if (info.get("home_score") is None or info.get("away_score") is None) and hockey_event_overdue(event):
                         info["status"]="awaiting_final"
-                    # Nunca degrada um resultado final já confirmado.
-                    already_final=event.get("status")=="finished" and event.get("home_score") is not None and event.get("away_score") is not None
-                    for k,v in info.items():
-                        if v is None:continue
-                        if already_final and k in {"status","home_score","away_score"}:continue
-                        event[k]=v
+                    apply_hockey_result(event,info)
             except Exception:
                 pass
     return resolved
@@ -924,7 +953,8 @@ def historical_seed():
 
       {"date":"2026-09-17","start":"2026-09-17T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Angola","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":5,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/hoquei-em-patins"},
       {"date":"2026-09-18","start":"2026-09-18T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"França","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":4,"away_score":2,"status":"finished","source_url":"https://www.hoqueipatins.pt/"},
-      {"date":"2026-09-18","start":"2026-09-18T18:00:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Catalunha","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":2,"away_score":7,"status":"finished","source_url":"https://www.hoqueipatins.pt/"}
+      {"date":"2026-09-18","start":"2026-09-18T18:00:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Catalunha","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":2,"away_score":7,"status":"finished","source_url":"https://www.hoqueipatins.pt/"},
+      {"date":"2026-09-19","start":"2026-09-19T14:10:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"França","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":3,"away_score":2,"status":"finished","match_url":"https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727","result_source_url":"https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727","result_source_priority":100,"source_url":"https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"}
     ]
 
 def key(e):

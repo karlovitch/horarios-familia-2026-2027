@@ -231,6 +231,10 @@ if "def _zerozero_structured_score(html,event):" not in sports_script:
     fail("O parser ZeroZero de hóquei não pesquisa o resultado de forma robusta")
 if '"result_source_url"]=url' not in sports_script:
     fail("O resultado de hóquei obtido da ficha direta não guarda a fonte")
+if 'urls=["https://www.hoqueipatins.pt/"]' in sports_script:
+    fail("O hóquei não pode inferir resultados a partir de uma homepage agregadora genérica")
+if "def hockey_result_priority(event):" not in sports_script or "def apply_hockey_result(event,info):" not in sports_script:
+    fail("Falta prioridade de fontes para resultados de hóquei")
 if "def hockey_fallback_status(event):" not in sports_script:
     fail("O atualizador desportivo não tem fallback multi-fonte para hóquei")
 if "def merge_hockey_seed(existing_event,seed_event):" not in sports_script:
