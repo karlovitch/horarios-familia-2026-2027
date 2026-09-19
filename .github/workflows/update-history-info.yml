@@ -44,5 +44,6 @@ jobs:
             echo "Sem alterações."
           else
             git commit -m "Atualizar efemérides históricas"
+            git pull --rebase origin main
             git push
           fi
