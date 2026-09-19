@@ -1,14 +1,19 @@
 {
-  "id":"./",
-  "name":"Horários Família 2026–2027",
-  "short_name":"Horários",
-  "start_url":"./",
-  "scope":"./",
-  "display":"standalone",
-  "background_color":"#F3F4F6",
-  "theme_color":"#1F2A44",
-  "lang":"pt-PT",
-  "icons":[
-    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  "id": "./",
+  "name": "Horários Família 2026–2027",
+  "short_name": "Horários",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3F4F6",
+  "theme_color": "#1F2A44",
+  "lang": "pt-PT",
+  "icons": [
+    {
+      "src": "icon.svg?v=79",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }

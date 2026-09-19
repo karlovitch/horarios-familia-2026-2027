@@ -1,6 +1,6 @@
-const BUILD=78;
+const BUILD=79;
 const C='horarios-familia-2026-27-v'+BUILD;
-const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'icon.svg'];
+const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'icon.svg?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([
   '/index.html','/manifest.webmanifest','/daily-info.json','/calendar-info.json',
   '/sports-info.json','/history-info.json'
