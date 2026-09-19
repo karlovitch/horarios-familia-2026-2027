@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=104">
-<link rel="icon" href="favicon-64.png?v=104" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=104" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=104" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=104">
+<link rel="manifest" href="manifest.webmanifest?v=105">
+<link rel="icon" href="favicon-64.png?v=105" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=105" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=105" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=105">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -240,7 +240,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v104</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v105</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -276,7 +276,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=104"></script>
+<script src="sports-info.js?v=105"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -305,7 +305,7 @@ Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00
 };
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 const SEASON_THEMES={
- spring:{name:"Primavera",colors:["#8ED9B5","#F6E27F","#F7B7D4","#A7D8F0"]},
+ spring:{name:"Primavera",colors:["#7FBF90","#F4D35E","#8EC5E8","#F29C82"]},
  summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]},
  autumn:{name:"Outono",colors:["#E07A3F","#C9A86A","#A7B59A","#8A3A47"]},
  winter:{name:"Inverno",colors:["#1F2A44","#D1D5DB","#CFE8F9","#F3F4F6"]}
@@ -331,7 +331,7 @@ const SEASON_STARTS={
  2026:{spring:"2026-03-20",summer:"2026-06-21",autumn:"2026-09-23",winter:"2026-12-21"},
  2027:{spring:"2027-03-20",summer:"2027-06-21",autumn:"2027-09-23",winter:"2027-12-22"}
 };
-const TRIDUUM_DATES=new Set(["2026-04-02","2026-04-03","2026-04-04","2027-03-25","2027-03-26","2027-03-27"]);
+const TRIDUUM_DATES=new Set(["2026-04-02","2026-04-03","2026-04-04","2026-04-05","2027-03-25","2027-03-26","2027-03-27","2027-03-28"]);
 const ASTRONOMICAL_SPECIALS={
  "2026-03-20":{type:"springEquinox",explanation:"No equinócio, o Sol cruza o equador celeste e o dia e a noite têm durações muito semelhantes.",curiosities:["Em 2026, a primavera astronómica começa a 20 de março, antes do meio da tarde em Portugal continental.","O termo «equinócio» vem do latim e significa, aproximadamente, «noite igual»."]},
  "2026-06-21":{type:"summerSolstice",explanation:"No solstício de verão, o hemisfério norte atinge a sua maior inclinação em direção ao Sol, produzindo o dia com mais horas de luz do ano.",curiosities:["O Sol atinge a maior altura anual ao meio-dia solar, mas os dias mais quentes costumam ocorrer semanas depois.","A palavra «solstício» alude à aparente pausa do movimento anual do Sol no horizonte."]},
@@ -366,6 +366,13 @@ function themeContextForIso(iso){
 function activeThemeForIso(iso){return themeContextForIso(iso).active}
 function personMicroPalette(p,colors,themeName=""){
  const [a,b,c,d]=colors,profile=PERSON_STYLE_PROFILES[p]||PERSON_STYLE_PROFILES.Carlos;
+ // Na Primavera normal, preservar uma identidade botânica/luminosa e evitar derivações lilás/púrpura.
+ if(themeName==="Primavera"){
+  if(profile.style==="sweet")return {bg:mixHex(d,"#FFFFFF",.42),accent:mixHex(b,"#FFFFFF",.10)};
+  if(profile.style==="indie")return {bg:mixHex(c,"#172033",.36),accent:mixHex(d,"#111827",.14)};
+  if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.34),accent:mixHex(c,a,.24)};
+  return {bg:mixHex(c,"#1F2A44",.50),accent:mixHex(a,"#1F2A44",.22)};
+ }
  if(profile.style==="sweet")return {bg:mixHex(c,"#FFFFFF",.38),accent:mixHex(a,"#FFFFFF",.14)};
  if(profile.style==="indie")return {bg:mixHex(b,"#172033",.42),accent:mixHex(d,"#111827",.18)};
  if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.30),accent:mixHex(c,a,.30)};
@@ -409,7 +416,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=104;
+const APP_BUILD=105;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
