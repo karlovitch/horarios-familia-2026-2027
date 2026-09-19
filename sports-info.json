@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T12:46:27.302513+00:00",
+  "generated_at": "2026-09-19T12:48:15.624752+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
@@ -11,28 +11,28 @@
   "source_checks": [
     {
       "url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
-      "ok": false,
-      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+      "ok": true,
+      "events_found": 0
     },
     {
       "url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "ok": false,
-      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/gil-vicente/jogos"
+      "ok": true,
+      "events_found": 0
     },
     {
       "url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "ok": false,
-      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+      "ok": true,
+      "events_found": 0
     },
     {
       "url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
-      "ok": false,
-      "error": "403 Client Error: Forbidden for url: https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos"
+      "ok": true,
+      "events_found": 0
     },
     {
       "url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos",
-      "ok": false,
-      "error": "403 Client Error: Forbidden for url: https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos"
+      "ok": true,
+      "events_found": 0
     }
   ],
   "events": [
