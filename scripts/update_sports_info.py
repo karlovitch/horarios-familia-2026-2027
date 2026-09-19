@@ -60,6 +60,9 @@ def infer_location(home):
     h=home.lower()
     known=[
       ("fc porto","Estádio do Dragão, Porto, Portugal"),
+      ("atlético de madrid","Riyadh Air Metropolitano, Madrid, Espanha"),
+      ("atletico de madrid","Riyadh Air Metropolitano, Madrid, Espanha"),
+      ("real madrid","Estádio Santiago Bernabéu, Madrid, Espanha"),
       ("gil vicente","Estádio Cidade de Barcelos, Barcelos, Portugal"),
       ("oc barcelos","Pavilhão Municipal de Barcelos, Barcelos, Portugal"),
       ("portugal","Portugal · estádio/localidade a confirmar"),
@@ -307,6 +310,10 @@ def parse_realmadrid_official(src,html):
             for x in block[date_pos+1:date_pos+5]:
                 if x and not x.lower().startswith(("rueda de prensa","orange tv","movistar","dazn","realmadrid tv","más")):
                     venue=x;break
+        if re.search(r"metropolitano",venue,re.I):
+            venue="Riyadh Air Metropolitano, Madrid, Espanha"
+        elif re.search(r"santiago bernab[eé]u",venue,re.I) and "Madrid" not in venue:
+            venue=venue+", Madrid, Espanha"
         channel=portugal_channel("Real Madrid",comp," ".join(block))
         stream=None
         if comp=="La Liga":stream="https://www.dazn.com/pt-PT/home"
