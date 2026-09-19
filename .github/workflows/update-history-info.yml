@@ -37,6 +37,10 @@ jobs:
 
       - name: Guardar atualização
         run: |
+          cp history-info.json /tmp/history-info.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/history-info.json history-info.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add history-info.json
@@ -44,6 +48,5 @@ jobs:
             echo "Sem alterações."
           else
             git commit -m "Atualizar efemérides históricas"
-            git pull --rebase origin main
             git push
           fi
