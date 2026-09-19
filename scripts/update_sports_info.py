@@ -4,6 +4,7 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.parse import urljoin
 
 import requests
@@ -19,6 +20,8 @@ SOURCES = [
     {"entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","url":"https://www.zerozero.pt/equipa/oc-barcelos/agenda","kind":"zerozero"},
     {"entity":"Seleção Nacional A","sport":"Futebol","url":"https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos","kind":"fpf"},
     {"entity":"Seleção Nacional Sub-21","sport":"Futebol","url":"https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos","kind":"fpf"},
+    {"entity":"Real Madrid","sport":"Futebol","url":"https://www.laliga.com/en-ES/clubs/real-madrid/next-matches","kind":"realmadrid"},
+    {"entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","url":"https://www.zerozero.pt/competicao/mundial-hoquei-patins","kind":"portugal_hockey"},
 ]
 
 CHANNELS = ["Sport TV 1","Sport TV 2","Sport TV 3","Sport TV 4","Sport TV 5","Sport TV","RTP 1","RTP 2","Canal 11","Porto Canal","V+"]
@@ -182,6 +185,113 @@ def parse_fpf(src,html):
         })
     return found
 
+MADRID_TZ=ZoneInfo("Europe/Madrid")
+
+def iso_madrid_to_utc(date_iso,time_text):
+    if not time_text or "--" in time_text:return None
+    hh,mm=map(int,re.findall(r"\d+",time_text)[:2])
+    y,m,d=map(int,date_iso.split("-"))
+    dt=datetime(y,m,d,hh,mm,tzinfo=MADRID_TZ).astimezone(timezone.utc)
+    return dt.isoformat().replace("+00:00","Z")
+
+def portugal_channel(entity,competition,text=""):
+    low=(competition+" "+text).lower()
+    if entity=="Seleção Nacional A":return "RTP 1"
+    if entity=="Seleção Nacional Sub-21":return "Canal 11"
+    if entity=="Real Madrid":
+        if "laliga" in low or "la liga" in low:return "DAZN"
+        if "champions" in low:return "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)"
+    return next((ch for ch in CHANNELS if ch.lower() in low),"Transmissão em Portugal a confirmar")
+
+def parse_realmadrid(src,html):
+    found=[]
+    # A página LaLiga é facilmente legível em tabela, tanto em HTML como no fallback Markdown.
+    soup=BeautifulSoup(html,"html.parser")
+    rows=[]
+    for tr in soup.find_all("tr"):
+        vals=[" ".join(x.stripped_strings) for x in tr.find_all(["td","th"])]
+        if vals:rows.append(vals)
+    if not rows:
+        for raw in html.splitlines():
+            if "|" not in raw or " VS " not in raw:continue
+            vals=[re.sub(r"\s+"," ",p).strip() for p in raw.strip("| ").split("|")]
+            rows.append(vals)
+    months={}
+    for vals in rows:
+        joined=" | ".join(vals)
+        dm=re.search(r"(\d{2})[./](\d{2})[./](20\d{2})",joined)
+        tm=re.search(r"\b(\d{2}:\d{2}|--\s*:\s*--)\b",joined)
+        mm=re.search(r"([^|]{1,70}?)\s+VS\s+([^|]{1,70})",joined,re.I)
+        if not (dm and mm):continue
+        date_iso=f"{dm.group(3)}-{dm.group(2)}-{dm.group(1)}"
+        home=re.sub(r"\s+"," ",mm.group(1)).strip()
+        away=re.sub(r"\s+"," ",mm.group(2)).strip()
+        if "Real Madrid" not in home and "Real Madrid" not in away:continue
+        comp=next((v for v in vals if "LALIGA" in v.upper() or "CHAMPIONS" in v.upper()),"Competição a confirmar")
+        found.append({
+          "date":date_iso,"start":iso_madrid_to_utc(date_iso,tm.group(1) if tm else None),
+          "entity":"Real Madrid","sport":"Futebol","home":home,"away":away,
+          "competition":comp,"location":infer_location(home),
+          "channel":portugal_channel("Real Madrid",comp,joined),
+          "stream_url":"https://www.dazn.com/pt-PT/home" if "LALIGA" in comp.upper() else None,
+          "match_url":src["url"],"source_url":src["url"]
+        })
+    return found
+
+def f1_events():
+    url="https://api.jolpi.ca/ergast/f1/2026.json"
+    source="https://www.formula1.com/en/racing/2026"
+    country_pt={"Azerbaijan":"Azerbaijão","Malaysia":"Malásia","Singapore":"Singapura","USA":"Estados Unidos",
+                "Mexico":"México","Brazil":"Brasil","Qatar":"Qatar","UAE":"Emirados Árabes Unidos",
+                "Spain":"Espanha","Italy":"Itália","Netherlands":"Países Baixos","UK":"Reino Unido",
+                "Belgium":"Bélgica","Austria":"Áustria","Hungary":"Hungria","Canada":"Canadá","China":"China",
+                "Japan":"Japão","Australia":"Austrália","Monaco":"Mónaco"}
+    session_names={"FirstPractice":"Treino Livre 1","SecondPractice":"Treino Livre 2","ThirdPractice":"Treino Livre 3",
+                   "SprintQualifying":"Qualificação Sprint","Sprint":"Sprint","Qualifying":"Qualificação"}
+    out=[]
+    data=requests.get(url,headers=HEADERS,timeout=30).json()
+    races=data.get("MRData",{}).get("RaceTable",{}).get("Races",[])
+    for race in races:
+        loc=race.get("Circuit",{}).get("Location",{})
+        locality=loc.get("locality","")
+        country=country_pt.get(loc.get("country",""),loc.get("country",""))
+        place=", ".join(x for x in [race.get("Circuit",{}).get("circuitName",""),locality,country] if x)
+        gp=re.sub(r" Grand Prix$","",race.get("raceName","Grande Prémio"))
+        if gp=="Azerbaijan":gp="Azerbaijão"
+        elif gp=="United States":gp="Estados Unidos"
+        elif gp=="Mexico City":gp="Cidade do México"
+        elif gp=="Brazilian":gp="São Paulo"
+        elif gp=="Abu Dhabi":gp="Abu Dhabi"
+        gp_label="GP de "+gp
+        if "Bahrain" in gp:gp_label="GP do Barém na Malásia"
+        for field,label in session_names.items():
+            obj=race.get(field)
+            if not obj:continue
+            start=f"{obj.get('date')}T{obj.get('time','00:00:00Z')}"
+            out.append({
+              "date":obj.get("date"),"start":start,"entity":"Formula 1","sport":"Automobilismo",
+              "title":f"{label} · {gp_label}","competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
+              "location":place,"channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+              "match_url":source,"source_url":source
+            })
+        out.append({
+          "date":race.get("date"),"start":f"{race.get('date')}T{race.get('time','00:00:00Z')}",
+          "entity":"Formula 1","sport":"Automobilismo","title":f"Corrida · {gp_label}",
+          "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026","location":place,
+          "channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+          "match_url":source,"source_url":source
+        })
+    return out
+
+def portugal_hockey_seed():
+    source="https://www.zerozero.pt/competicao/mundial-hoquei-patins"
+    return [
+      {"date":"2026-09-19","start":"2026-09-19T14:10:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"França","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","stream_url":"https://tv.fpp.pt/","match_url":"https://tv.fpp.pt/","source_url":"https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"},
+      {"date":"2026-10-13","start":"2026-10-12T23:00:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Suíça","away":"Portugal","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
+      {"date":"2026-10-13","start":"2026-10-13T20:45:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Espanha","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
+      {"date":"2026-10-14","start":"2026-10-14T20:45:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Itália","away":"Portugal","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
+    ]
+
 def key(e):
     return (e.get("date"),re.sub(r"\W+","",e.get("home","").lower()),re.sub(r"\W+","",e.get("away","").lower()))
 
@@ -191,7 +301,11 @@ checked=[]
 for src in SOURCES:
     try:
         html=get(src["url"])
-        parsed=parse_zerozero(src,html) if src["kind"]=="zerozero" else parse_fpf(src,html)
+        if src["kind"]=="zerozero": parsed=parse_zerozero(src,html)
+        elif src["kind"]=="fpf": parsed=parse_fpf(src,html)
+        elif src["kind"]=="realmadrid": parsed=parse_realmadrid(src,html)
+        elif src["kind"]=="portugal_hockey": parsed=[]
+        else: parsed=[]
         for e in parsed:
             k=key(e)
             if k in existing:
@@ -206,11 +320,19 @@ for src in SOURCES:
     except Exception as exc:
         checked.append({"url":src["url"],"ok":False,"error":str(exc)[:180]})
 
+existing={k:v for k,v in existing.items() if v.get("entity")!="Formula 1"}
+try:
+    generated_f1=f1_events()
+    for e in generated_f1: existing[key(e)]=e
+    checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":True,"events_found":len(generated_f1)})
+except Exception as exc:
+    checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":False,"error":str(exc)[:180]})
+for e in portugal_hockey_seed(): existing[key(e)]=e
 events=sorted(existing.values(),key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
  "generated_at":datetime.now(timezone.utc).isoformat(),
  "timezone_note":"Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
- "sources":[s["url"] for s in SOURCES],
+ "sources":[s["url"] for s in SOURCES]+["https://api.jolpi.ca/ergast/f1/2026.json","https://www.formula1.com/en/racing/2026","https://tv.fpp.pt/"],
  "source_checks":checked,
  "events":events
 }
