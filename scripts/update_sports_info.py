@@ -650,14 +650,14 @@ def f1_events():
             out.append({
               "date":obj.get("date"),"start":start,"entity":"Formula 1","sport":"Automobilismo",
               "title":f"{label} · {gp_label}","competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
-              "location":place,"channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+              "location":place,"channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
               "match_url":source,"source_url":source
             })
         out.append({
           "date":race.get("date"),"start":f"{race.get('date')}T{race.get('time','00:00:00Z')}",
           "entity":"Formula 1","sport":"Automobilismo","title":f"Corrida · {gp_label}",
           "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026","location":place,
-          "channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+          "channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
           "match_url":source,"source_url":source
         })
     return out
