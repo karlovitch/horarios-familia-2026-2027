@@ -132,7 +132,7 @@ required_index_tokens = {
     "botão de data focável Android TV": 'data-tv-date-open="1"',
     "navegação horizontal por grupos": "function tvHorizontalTarget(current,key)",
     "navegação vertical semanal no calendário TV": "ArrowDown:7",
-    "paleta Verão exata": 'summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]}',
+    "paleta Verão exata": 'summer:{name:"Verão",colors:["#6EC6F0","#2F8FCE","#F2D16B","#F49B3F"]}',
     "perfil Leonor 9": 'Leonor:{age:9,style:"sweet"',
     "perfil Margarida 15": 'Margarida:{age:15,style:"indie"',
     "perfil Sandrinha 48": 'Sandra:{age:48,style:"serene"',
