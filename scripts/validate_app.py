@@ -137,7 +137,7 @@ required_index_tokens = {
     "check de versão leve": 'fetch("version.json?__version_check="+stamp',
     "atualização automática universal a cada minuto": "const BUILD_POLL_MS=60*1000",
     "mensagem de ativação do service worker": 'type==="BUILD_ACTIVATED"',
-    "snapshot JS da agenda": 'sports-info.js?v=94',
+    "snapshot JS da agenda": 'sports-info.js?v=',
     "merge resiliente de agenda": "function mergeSportsInfo(...sources)",
     "ambiente adaptativo universal": "function applyAdaptiveEnvironment()",
     "altura adaptativa de horários": "function adaptiveScheduleHeight()",
@@ -227,6 +227,10 @@ if not isinstance(calendar.get("dates"), dict):
     fail("calendar-info.json não contém o mapa dates")
 if not isinstance(history.get("dates"), dict):
     fail("history-info.json não contém o mapa dates")
+if "def _zerozero_structured_score(html,event):" not in sports_script:
+    fail("O parser ZeroZero de hóquei não pesquisa o resultado de forma robusta")
+if '"result_source_url"]=url' not in sports_script:
+    fail("O resultado de hóquei obtido da ficha direta não guarda a fonte")
 if "def hockey_fallback_status(event):" not in sports_script:
     fail("O atualizador desportivo não tem fallback multi-fonte para hóquei")
 if "def merge_hockey_seed(existing_event,seed_event):" not in sports_script:

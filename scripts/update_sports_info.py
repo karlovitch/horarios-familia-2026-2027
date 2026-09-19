@@ -261,30 +261,111 @@ def is_direct_match_url(event,url):
     if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
     return bool(url)
 
+def _plausible_hockey_score(a,b):
+    try:
+        a=int(a);b=int(b)
+    except Exception:
+        return None
+    if 0<=a<=30 and 0<=b<=30:
+        return (a,b)
+    return None
+
+def _zerozero_structured_score(html,event):
+    """Extrai o marcador de uma ficha ZeroZero usando várias representações da página."""
+    soup=BeautifulSoup(html,"html.parser")
+    home=_ascii_loose(event.get("home",""))
+    away=_ascii_loose(event.get("away",""))
+
+    # 1) Dados estruturados/JSON e atributos comuns de score.
+    raw=html
+    key_pairs=[
+      ("homeScore","awayScore"),("scoreHome","scoreAway"),
+      ("home_score","away_score"),("score_home","score_away"),
+      ("goalsHome","goalsAway"),("homeGoals","awayGoals"),
+    ]
+    for hk,ak in key_pairs:
+        hm=re.search(r'["\']?'+re.escape(hk)+r'["\']?\s*[:=]\s*["\']?(\d{1,2})',raw,re.I)
+        am=re.search(r'["\']?'+re.escape(ak)+r'["\']?\s*[:=]\s*["\']?(\d{1,2})',raw,re.I)
+        if hm and am:
+            score=_plausible_hockey_score(hm.group(1),am.group(1))
+            if score:return score
+
+    # 2) Meta/title e elementos cujo id/class sugere marcador/resultado.
+    candidates=[]
+    if soup.title and soup.title.string:candidates.append(str(soup.title.string))
+    for meta in soup.find_all("meta"):
+        name=" ".join([str(meta.get("name") or ""),str(meta.get("property") or "")]).lower()
+        content=meta.get("content")
+        if content and any(t in name for t in ("title","description","score","result")):
+            candidates.append(str(content))
+    for node in soup.find_all(True,attrs={"class":re.compile(r"(score|result|resultado|placar|match)",re.I)}):
+        try:candidates.append(" ".join(node.stripped_strings))
+        except Exception:pass
+    for node in soup.find_all(True,attrs={"id":re.compile(r"(score|result|resultado|placar|match)",re.I)}):
+        try:candidates.append(" ".join(node.stripped_strings))
+        except Exception:pass
+
+    # 3) Texto integral: a ficha pode mover o marcador para fora do primeiro bloco HTML.
+    page_text=" ".join(soup.stripped_strings)
+    candidates.append(page_text)
+
+    def score_from_text(value):
+        txt=_ascii_loose(value)
+        # Evita que datas sejam tratadas como marcadores.
+        txt=re.sub(r"\b20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}\b"," ",txt)
+        txt=re.sub(r"\b\d{1,2}[-/.]\d{1,2}[-/.]20\d{2}\b"," ",txt)
+
+        # Preferência: marcador situado entre os dois nomes.
+        h_positions=[m.start() for m in re.finditer(re.escape(home),txt)] if home else []
+        a_positions=[m.start() for m in re.finditer(re.escape(away),txt)] if away else []
+        ranked=[]
+        for hp in h_positions:
+            for ap in a_positions:
+                if abs(hp-ap)>700:continue
+                lo=max(0,min(hp,ap)-180);hi=min(len(txt),max(hp,ap)+320)
+                segment=txt[lo:hi]
+                for m in re.finditer(r"(?<![\d-])(\d{1,2})\s*[-–:]\s*(\d{1,2})(?![\d-])",segment):
+                    score=_plausible_hockey_score(m.group(1),m.group(2))
+                    if score:
+                        midpoint=lo+m.start()
+                        ranked.append((abs(midpoint-((hp+ap)//2)),score))
+        if ranked:
+            return min(ranked,key=lambda x:x[0])[1]
+
+        # Fallback estrito: nomes + marcador no mesmo excerto.
+        if home and away:
+            home_re=re.escape(home);away_re=re.escape(away)
+            pats=[
+              home_re+r".{0,220}?(\d{1,2})\s*[-–:]\s*(\d{1,2}).{0,220}?"+away_re,
+              away_re+r".{0,220}?(\d{1,2})\s*[-–:]\s*(\d{1,2}).{0,220}?"+home_re,
+            ]
+            for p in pats:
+                m=re.search(p,txt,re.I)
+                if m:
+                    score=_plausible_hockey_score(m.group(1),m.group(2))
+                    if score:
+                        if p.startswith(away_re):return (score[1],score[0])
+                        return score
+        return None
+
+    for candidate in candidates:
+        score=score_from_text(candidate)
+        if score:return score
+    return None
+
 def zerozero_hockey_status(event):
     url=event.get("match_url")
     if not url or "zerozero.pt/jogo/" not in url:return {}
     try:
         html=get(url)
         text=" ".join(BeautifulSoup(html,"html.parser").stripped_strings)
-        norm=unicodedata.normalize("NFKD",text).encode("ascii","ignore").decode("ascii")
-        home=_norm_name(event.get("home",""));away=_norm_name(event.get("away",""))
-        compact=_norm_name(norm)
-        hp=compact.find(home);ap=compact.find(away)
-        score=None
-        if hp>=0 and ap>=0:
-            lo=min(hp,ap);hi=max(hp,ap)
-            # Use the visible header area between both team names, where zerozero places the score.
-            raw_segment=text[:1800]
-            m=re.search(r"(?<![\d-])(\d{1,2})\s*-\s*(\d{1,2})(?![\d-])",raw_segment)
-            if m:score=(int(m.group(1)),int(m.group(2)))
+        score=_zerozero_structured_score(html,event)
         out={}
         if score:
             out["home_score"],out["away_score"]=score
+            out["result_source_url"]=url
         now=datetime.now(timezone.utc)
-        start=None
-        try:start=datetime.fromisoformat((event.get("start") or "").replace("Z","+00:00"))
-        except Exception:pass
+        start=_hockey_event_start(event)
         if start and now < start:
             out["status"]="scheduled"
         elif score:
@@ -292,12 +373,11 @@ def zerozero_hockey_status(event):
         elif start and (now-start).total_seconds() < 7200:
             out["status"]="live"
         elif hockey_event_overdue(event,now):
-            # Uma antevisão desatualizada não pode transformar um jogo antigo em "agendado".
+            # A ficha pode manter elementos de antevisão depois do jogo; nunca regride para "agendado".
             out["status"]="awaiting_final"
         return out
     except Exception:
         return {}
-
 
 def _hockey_event_start(event):
     try:
