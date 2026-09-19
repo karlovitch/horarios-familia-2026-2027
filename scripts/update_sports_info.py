@@ -11,13 +11,24 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "sports-info.json"
 
-HEADERS = {"User-Agent":"HorariosFamilia/3.0 (+GitHub Pages; atualização de agendas desportivas)"}
+HEADERS = {"User-Agent":"HorariosFamilia/4.0 (+GitHub Pages; atualização de agendas desportivas)"}
+_RETRY=Retry(
+    total=3,connect=3,read=3,backoff_factor=.5,
+    status_forcelist=(429,500,502,503,504),
+    allowed_methods=frozenset({"GET"})
+)
+HTTP=requests.Session()
+HTTP.headers.update(HEADERS)
+HTTP.mount("https://",HTTPAdapter(max_retries=_RETRY))
+HTTP.mount("http://",HTTPAdapter(max_retries=_RETRY))
 SOURCES = [
-    {"entity":"FC Porto","sport":"Futebol","url":"https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std","kind":"zerozero"},
+    {"entity":"FC Porto","sport":"Futebol","url":"https://www.zerozero.pt/equipa/fc-porto/agenda","kind":"zerozero"},
     {"entity":"Gil Vicente FC","sport":"Futebol","url":"https://www.zerozero.pt/equipa/gil-vicente/jogos","kind":"zerozero"},
     {"entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","url":"https://www.zerozero.pt/equipa/oc-barcelos/agenda","kind":"zerozero"},
     {"entity":"Seleção Nacional A","sport":"Futebol","url":"https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos","kind":"fpf"},
@@ -32,13 +43,13 @@ COMP_MARKERS = ["Liga Portugal","UEFA Champions League","UEFA Liga das Nações"
 
 def get(url):
     try:
-        r=requests.get(url,headers={**HEADERS,"Accept-Language":"pt-PT,pt;q=0.9,en;q=0.7"},timeout=30)
+        r=HTTP.get(url,headers={**HEADERS,"Accept-Language":"pt-PT,pt;q=0.9,en;q=0.7"},timeout=30)
         r.raise_for_status()
         return r.text
     except Exception:
         # Fallback de leitura pública para fontes que bloqueiam pedidos de datacenter.
         clean=re.sub(r"^https?://","",url)
-        jr=requests.get("https://r.jina.ai/http://"+clean,headers=HEADERS,timeout=45)
+        jr=HTTP.get("https://r.jina.ai/http://"+clean,headers=HEADERS,timeout=45)
         jr.raise_for_status()
         return jr.text
 
@@ -116,7 +127,7 @@ def flashscore_match_url(event):
             today=datetime.now(timezone.utc).date()
             offset=(target-today).days
             url=f"https://local-global.flashscore.ninja/2/x/feed/f_1_{offset}_3_en_1"
-            r=requests.get(url,headers=FLASHSCORE_HEADERS,timeout=25)
+            r=HTTP.get(url,headers=FLASHSCORE_HEADERS,timeout=25)
             r.raise_for_status()
             FLASHSCORE_DAILY_CACHE[date_iso]=_parse_flashscore_feed(r.text)
         except Exception:
@@ -138,7 +149,7 @@ def flashscore_live_info(mid):
     if not mid:return {}
     try:
         url=f"https://local-global.flashscore.ninja/2/x/feed/dc_1_{mid}"
-        r=requests.get(url,headers=FLASHSCORE_HEADERS,timeout=20)
+        r=HTTP.get(url,headers=FLASHSCORE_HEADERS,timeout=20)
         r.raise_for_status()
         rows=_parse_flashscore_items(r.text)
         if not rows:return {}
@@ -613,7 +624,7 @@ def f1_fallback():
               "date":date_iso,"start":f"{date_iso}T{time_text}:00Z",
               "entity":"Formula 1","sport":"Automobilismo","title":f"{label} · {gp}",
               "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
-              "location":location,"channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
+              "location":location,"channel":"DAZN 5",
               "match_url":url,"source_url":url
             })
     return out
@@ -629,7 +640,7 @@ def f1_events():
     session_names={"FirstPractice":"Treino Livre 1","SecondPractice":"Treino Livre 2","ThirdPractice":"Treino Livre 3",
                    "SprintQualifying":"Qualificação Sprint","Sprint":"Sprint","Qualifying":"Qualificação"}
     out=[]
-    data=requests.get(url,headers=HEADERS,timeout=30).json()
+    data=HTTP.get(url,headers=HEADERS,timeout=30).json()
     races=data.get("MRData",{}).get("RaceTable",{}).get("Races",[])
     for race in races:
         loc=race.get("Circuit",{}).get("Location",{})
@@ -651,14 +662,14 @@ def f1_events():
             out.append({
               "date":obj.get("date"),"start":start,"entity":"Formula 1","sport":"Automobilismo",
               "title":f"{label} · {gp_label}","competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
-              "location":place,"channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
+              "location":place,"channel":"DAZN 5",
               "match_url":source,"source_url":source
             })
         out.append({
           "date":race.get("date"),"start":f"{race.get('date')}T{race.get('time','00:00:00Z')}",
           "entity":"Formula 1","sport":"Automobilismo","title":f"Corrida · {gp_label}",
           "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026","location":place,
-          "channel":"DAZN 5","stream_url":"https://www.dazn.com/pt-PT/home",
+          "channel":"DAZN 5",
           "match_url":source,"source_url":source
         })
     return out
@@ -666,7 +677,7 @@ def f1_events():
 def portugal_hockey_seed():
     source="https://www.zerozero.pt/competicao/mundial-hoquei-patins"
     return [
-      {"date":"2026-09-19","start":"2026-09-19T14:10:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"França","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","stream_url":"https://tv.fpp.pt/","match_url":"https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727","source_url":"https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"},
+      {"date":"2026-09-19","start":"2026-09-19T14:10:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"França","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","match_url":"https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727","source_url":"https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"},
       {"date":"2026-10-13","start":"2026-10-12T23:00:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Suíça","away":"Portugal","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
       {"date":"2026-10-13","start":"2026-10-13T20:45:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Espanha","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
       {"date":"2026-10-14","start":"2026-10-14T20:45:00Z","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Itália","away":"Portugal","competition":"Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos","location":"Assunção, Paraguai","channel":"Transmissão em Portugal a confirmar","match_url":source,"source_url":source},
@@ -692,21 +703,21 @@ def historical_seed():
       {"date":"2026-09-13","start":"2026-09-13T18:00:00+01:00","entity":"Gil Vicente FC","sport":"Futebol","home":"Benfica","away":"Gil Vicente FC","competition":"Liga Portugal Betclic 2026/27 · Jornada 6","location":"Estádio da Luz, Lisboa, Portugal","channel":"Transmissão em Portugal não registada","home_score":3,"away_score":1,"status":"finished","source_url":"https://www.zerozero.pt/equipa/gil-vicente/jogos"},
 
       {"date":"2026-08-16","start":"2026-08-16T17:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Schalke 04","away":"Real Madrid","competition":"Amigável de pré-época","location":"Veltins-Arena, Gelsenkirchen, Alemanha","channel":"Realmadrid TV / RM Play","stream_url":"https://play.realmadrid.com/","home_score":0,"away_score":3,"status":"finished","source_url":"https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/el-calendario-de-este-inicio-de-temporada-09-08-2026"},
-      {"date":"2026-08-22","start":"2026-08-22T21:30:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Espanyol","away":"Real Madrid","competition":"La Liga 2026/27 · Jornada 2","location":"RCDE Stadium, Cornellà de Llobregat, Espanha","channel":"DAZN Portugal","stream_url":"https://www.dazn.com/pt-PT/home","home_score":1,"away_score":2,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
+      {"date":"2026-08-22","start":"2026-08-22T21:30:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Espanyol","away":"Real Madrid","competition":"La Liga 2026/27 · Jornada 2","location":"RCDE Stadium, Cornellà de Llobregat, Espanha","channel":"DAZN Portugal","home_score":1,"away_score":2,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
       {"date":"2026-08-26","start":"2026-08-26T21:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Madrid","away":"Real Sociedad","competition":"La Liga 2026/27 · Jornada 1","location":"Estádio Santiago Bernabéu, Madrid, Espanha","channel":"Transmissão em Portugal não registada","home_score":4,"away_score":1,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
       {"date":"2026-08-30","start":"2026-08-30T17:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Madrid","away":"Málaga CF","competition":"La Liga 2026/27 · Jornada 3","location":"Estádio Santiago Bernabéu, Madrid, Espanha","channel":"Transmissão em Portugal não registada","home_score":4,"away_score":0,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
       {"date":"2026-09-04","start":"2026-09-04T21:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Betis","away":"Real Madrid","competition":"La Liga 2026/27 · Jornada 4","location":"Sevilha, Espanha","channel":"Transmissão em Portugal não registada","home_score":1,"away_score":0,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
       {"date":"2026-09-08","start":"2026-09-08T21:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Madrid","away":"Inter","competition":"UEFA Champions League 2026/27","location":"Estádio Santiago Bernabéu, Madrid, Espanha","channel":"Transmissão em Portugal não registada","home_score":2,"away_score":1,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
-      {"date":"2026-09-12","start":"2026-09-12T21:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Madrid","away":"Rayo Vallecano","competition":"La Liga 2026/27 · Jornada 5","location":"Estádio Santiago Bernabéu, Madrid, Espanha","channel":"DAZN Portugal","stream_url":"https://www.dazn.com/pt-PT/home","home_score":4,"away_score":1,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
+      {"date":"2026-09-12","start":"2026-09-12T21:00:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Real Madrid","away":"Rayo Vallecano","competition":"La Liga 2026/27 · Jornada 5","location":"Estádio Santiago Bernabéu, Madrid, Espanha","channel":"DAZN Portugal","home_score":4,"away_score":1,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
       {"date":"2026-09-15","start":"2026-09-15T21:30:00+02:00","entity":"Real Madrid","sport":"Futebol","home":"Elche CF","away":"Real Madrid","competition":"La Liga 2026/27 · Jornada 6","location":"Estádio Martínez Valero, Elche, Espanha","channel":"Transmissão em Portugal não registada","home_score":2,"away_score":3,"status":"finished","source_url":"https://www.laliga.com/en-ES/clubs/real-madrid/results"},
 
       {"date":"2026-09-11","start":"2026-09-11T22:00:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"Riba d'Ave","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":1,"away_score":1,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
       {"date":"2026-09-12","start":"2026-09-12T19:30:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"HC Braga","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":2,"away_score":1,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
       {"date":"2026-09-13","start":"2026-09-13T17:00:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"Juventude de Viana","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":1,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
 
-      {"date":"2026-09-17","start":"2026-09-17T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Angola","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","stream_url":"https://tv.fpp.pt/","home_score":5,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/hoquei-em-patins"},
-      {"date":"2026-09-18","start":"2026-09-18T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"França","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","stream_url":"https://tv.fpp.pt/","home_score":4,"away_score":2,"status":"finished","source_url":"https://www.hoqueipatins.pt/"},
-      {"date":"2026-09-18","start":"2026-09-18T18:00:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Catalunha","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","stream_url":"https://tv.fpp.pt/","home_score":2,"away_score":7,"status":"finished","source_url":"https://www.hoqueipatins.pt/"}
+      {"date":"2026-09-17","start":"2026-09-17T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Angola","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":5,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/hoquei-em-patins"},
+      {"date":"2026-09-18","start":"2026-09-18T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"França","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":4,"away_score":2,"status":"finished","source_url":"https://www.hoqueipatins.pt/"},
+      {"date":"2026-09-18","start":"2026-09-18T18:00:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Catalunha","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":2,"away_score":7,"status":"finished","source_url":"https://www.hoqueipatins.pt/"}
     ]
 
 def key(e):
@@ -761,12 +772,21 @@ for e in portugal_hockey_seed(): existing[key(e)]=e
 for e in historical_seed(): existing[key(e)]={**existing.get(key(e),{}),**e}
 events=list(existing.values())
 direct_resolved=enforce_direct_match_urls(events)
+def valid_stream_url(url):
+    u=(url or "").strip().lower().rstrip("/")
+    if not u:return False
+    if u in {
+        "https://www.dazn.com/pt-pt/home",
+        "https://tv.fpp.pt",
+        "https://play.realmadrid.com",
+    }:return False
+    return any(token in u for token in (
+        "rtp.pt/play/direto/","tv.fpp.pt/","dazn.com/","play.realmadrid.com/",
+        "youtube.com/watch","youtu.be/","uefa.tv/","fifa.com/fifaplus/"
+    ))
+
 for event in events:
-    stream=(event.get("stream_url") or "").lower()
-    if stream and not any(token in stream for token in (
-        "rtp.pt/play/direto/","tv.fpp.pt","dazn.com","play.realmadrid.com",
-        "youtube.com","youtu.be","uefa.tv","fifa.com/fifaplus"
-    )):
+    if event.get("stream_url") and not valid_stream_url(event.get("stream_url")):
         event.pop("stream_url",None)
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
