@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=47">
+<link rel="manifest" href="manifest.webmanifest?v=48">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v47</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v48</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -927,7 +927,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=47",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=48",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -947,7 +947,7 @@ function renderOverview(){
  renderCountdowns();
  const iso=statsIso(),d=weekdayFromIso(iso);
  selectedDay=d;
- dayButtons(qs("#overviewDays"),d,x=>{selectedDay=x;renderOverview()});
+ dayButtons(qs("#overviewDays"),d,x=>{const targetDow=SCHOOL_DAYS.indexOf(x)+1;statsDate=isoForWeekday(iso,targetDow);selectedDay=x;renderOverview();renderCountdowns();renderDailyInfo();renderGlobalQuote()});
  const active=PEOPLE.filter(p=>activeEvent(p,d)),summary=qs("#activeSummary"),timeline=qs("#timeline");
  if(d===dayNow()&&active.length){summary.textContent="Agora: "+active.map(displayName).join(", ");summary.classList.remove("hidden")}else{summary.classList.add("hidden");summary.textContent=""}
  timeline.classList.remove("compact-overview");
@@ -955,38 +955,38 @@ function renderOverview(){
  for(let m=480;m<=1080;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
  h+='</div>';
  for(const p of PEOPLE){
-  const i=D[p],isActive=!!activeEvent(p,d);
+  const i=D[p],isActive=(iso===isoLocalDate())&&!!activeEvent(p,d);
   h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';
   if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
   for(const e of i.days[d]||[]){
    const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-   h+='<div class="block'+sizeClass+' '+(current(e,d)?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
+   h+='<div class="block'+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
   }
   h+='</div>';
  }
- if(d===dayNow()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()&&d===dayNow()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  timeline.innerHTML=h;
 }
 const WEEKEND_REST_POOLS={
  Leonor:{
-  openings:["hoje o despertador pode dormir mais um bocadinho","o plano oficial inclui brincadeira sem pressa","o dia pediu pijama, desenhos e gargalhadas","hoje a mochila está oficialmente de férias","o recreio dura o dia inteiro"],
-  actions:["brinca, lê, desenha ou inventa uma aventura","aproveita para estar com a família e fazer aquilo de que gostas","escolhe um jogo, uma história ou um passeio divertido","descansa e guarda energia para novas descobertas","faz uma coisa divertida só porque sim"],
-  endings:["amanhã há mais aventuras 🌈","descansar também ajuda a crescer 😴","fim de semana aprovado com distinção ⭐","hoje manda a diversão 🎈","missão do dia: sorrir muito 😄"]
+  openings:["hoje o despertador pode dormir mais um bocadinho","o plano oficial inclui brincadeira sem pressa","o dia pediu pijama, desenhos e gargalhadas","hoje a mochila está oficialmente de férias","o recreio dura o dia inteiro","hoje até os lápis podem descansar","o fim de semana chegou com licença para brincar"],
+  actions:["brinca, lê, desenha ou inventa uma aventura","aproveita para estar com a família e fazer aquilo de que gostas","escolhe um jogo, uma história ou um passeio divertido","descansa e guarda energia para novas descobertas","faz uma coisa divertida só porque sim","inventa uma brincadeira nova ou escolhe uma história favorita","aproveita para passear, criar e rir sem olhar para o relógio"],
+  endings:["amanhã há mais aventuras 🌈","descansar também ajuda a crescer 😴","fim de semana aprovado com distinção ⭐","hoje manda a diversão 🎈","missão do dia: sorrir muito 😄","hoje a diversão tem prioridade 🧸","dia livre com superpoderes de descanso ✨"]
  },
  Margarida:{
-  openings:["hoje a agenda escolar entrou em modo silencioso","o despertador perdeu temporariamente a autoridade","o plano do dia aceita música, séries e zero pressa","a mochila pode ficar sossegada num canto","o fim de semana pediu uma pausa a sério"],
-  actions:["ouve música, vê uma série, lê ou faz algo de que realmente gostes","aproveita para estar com amigas, família ou simplesmente ter tempo para ti","descansa sem culpa e deixa algum espaço para não fazer nada","troca a rotina por hobbies, conversa e um passeio","recupera energia e faz o dia ao teu ritmo"],
-  endings:["segunda-feira pode esperar 😎","bateria recarregada, missão cumprida 🔋","descansar também conta como plano ✨","hoje sem pressas, por favor 🎧","tempo livre bem usado também é produtividade 😉"]
+  openings:["hoje a agenda escolar entrou em modo silencioso","o despertador perdeu temporariamente a autoridade","o plano do dia aceita música, séries e zero pressa","a mochila pode ficar sossegada num canto","o fim de semana pediu uma pausa a sério","hoje a escola fica em modo avião","o dia combina melhor com música e tempo livre"],
+  actions:["ouve música, vê uma série, lê ou faz algo de que realmente gostes","aproveita para estar com amigas, família ou simplesmente ter tempo para ti","descansa sem culpa e deixa algum espaço para não fazer nada","troca a rotina por hobbies, conversa e um passeio","recupera energia e faz o dia ao teu ritmo","faz espaço para aquilo que te diverte sem horários","aproveita o tempo livre para recarregar mesmo"],
+  endings:["segunda-feira pode esperar 😎","bateria recarregada, missão cumprida 🔋","descansar também conta como plano ✨","hoje sem pressas, por favor 🎧","tempo livre bem usado também é produtividade 😉","hoje o ritmo és tu que escolhes 🎶","fim de semana: modo leve ativado ✨"]
  },
  Sandra:{
-  openings:["o despertador pode tirar folga","hoje o sofá ganhou estatuto de destino turístico","a agenda recebeu ordem para falar baixinho","o modo produtividade está em manutenção","o relógio pode andar sem supervisão"],
-  actions:["respira fundo, abranda e aproveita o tempo sem culpa","faz uma pausa digna desse nome e deixa as horas passarem devagar","guarda espaço para rir, conversar e fazer absolutamente nada de útil","troca notificações por uma bebida tranquila e boa companhia","faz do descanso uma tarefa concluída com distinção"],
-  endings:["amanhã o mundo continua lá 😴","a bateria humana também precisa de 100% 🔋","descansar também faz parte do trabalho bem feito 😎","o fim de semana foi inventado para isto mesmo 🛋️","hoje a palavra de ordem é: sem pressas! 🐢"]
+  openings:["o despertador pode tirar folga","hoje o sofá ganhou estatuto de destino turístico","a agenda recebeu ordem para falar baixinho","o modo produtividade está em manutenção","o relógio pode andar sem supervisão","hoje a pressa ficou à porta","o fim de semana pediu uma cadeira confortável"],
+  actions:["respira fundo, abranda e aproveita o tempo sem culpa","faz uma pausa digna desse nome e deixa as horas passarem devagar","guarda espaço para rir, conversar e fazer absolutamente nada de útil","troca notificações por uma bebida tranquila e boa companhia","faz do descanso uma tarefa concluída com distinção","reserva tempo para conversar, passear e desligar","faz menos, mas aproveita melhor"],
+  endings:["amanhã o mundo continua lá 😴","a bateria humana também precisa de 100% 🔋","descansar também faz parte do trabalho bem feito 😎","o fim de semana foi inventado para isto mesmo 🛋️","hoje a palavra de ordem é: sem pressas! 🐢","pausa merecida oficialmente autorizada ☕","fim de semana em modo tranquilo 🌿"]
  },
  Carlos:{
-  openings:["o despertador pode apresentar baixa por cansaço","o sofá voltou a ser um excelente projeto de investigação","o modo professor está temporariamente suspenso","o relógio pode ficar sem supervisão pedagógica","o fim de semana não aceita reuniões"],
-  actions:["desliga um pouco do trabalho e escolhe qualquer coisa que não tenha grelhas, testes ou horários","faz uma pausa séria, conversa, passeia ou dedica-te a um bom filme","deixa a escola quieta por umas horas e recupera energia","faz do descanso uma tarefa concluída com nota máxima","troca a produtividade por tempo tranquilo e boa companhia"],
-  endings:["segunda-feira logo se vê 😄","hoje não há sumários para ninguém 😂","descanso aprovado sem necessidade de ata 🛋️","bateria do professor em carregamento 🔋","fim de semana com avaliação: Muito Bom 😎"]
+  openings:["o despertador pode apresentar baixa por cansaço","o sofá voltou a ser um excelente projeto de investigação","o modo professor está temporariamente suspenso","o relógio pode ficar sem supervisão pedagógica","o fim de semana não aceita reuniões","hoje não há toque de entrada","o quadro ficou em branco por decisão pedagógica"],
+  actions:["desliga um pouco do trabalho e escolhe qualquer coisa que não tenha grelhas, testes ou horários","faz uma pausa séria, conversa, passeia ou dedica-te a um bom filme","deixa a escola quieta por umas horas e recupera energia","faz do descanso uma tarefa concluída com nota máxima","troca a produtividade por tempo tranquilo e boa companhia","fecha mentalmente a sala de aula e abre espaço para outra coisa","faz uma pausa sem objetivos, metas ou grelhas"],
+  endings:["segunda-feira logo se vê 😄","hoje não há sumários para ninguém 😂","descanso aprovado sem necessidade de ata 🛋️","bateria do professor em carregamento 🔋","fim de semana com avaliação: Muito Bom 😎","sumário do dia: descansar e repetir 😂","atividade letiva suspensa por excesso de sofá 🛋️"]
  }
 };
 function weekendRestPhrase(iso,p){
@@ -994,8 +994,7 @@ function weekendRestPhrase(iso,p){
  if(dow!==0&&dow!==6)return "";
  const pool=WEEKEND_REST_POOLS[p]||WEEKEND_REST_POOLS.Carlos;
  const base=ymdDay("2026-01-03"),day=ymdDay(iso),week=Math.floor((day-base)/7),dayOffset=dow===0?1:0;
- const people=["Leonor","Margarida","Sandra","Carlos"],pi=Math.max(0,people.indexOf(p));
- const n=week*8+dayOffset*4+pi;
+ const n=week*2+dayOffset;
  const i=n%pool.openings.length;
  const j=Math.floor(n/pool.openings.length)%pool.actions.length;
  const k=Math.floor(n/(pool.openings.length*pool.actions.length))%pool.endings.length;
@@ -1023,7 +1022,7 @@ function renderTodayTimeline(iso,d){
  for(let m=480;m<=1080;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
  h+='</div>';
  for(const p of ["Leonor","Margarida","Sandra","Carlos"]){
-  const i=D[p],isActive=!reason&&!weekend&&!!activeEvent(p,d);
+  const i=D[p],isActive=(iso===isoLocalDate())&&!reason&&!weekend&&!!activeEvent(p,d);
   h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';
   const rest=weekend?weekendRestPhrase(iso,p):"";
   if(reason){
@@ -1037,7 +1036,7 @@ function renderTodayTimeline(iso,d){
    if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
    for(const e of i.days[d]||[]){
     const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-    h+='<div class="block'+sizeClass+' '+(current(e,d)?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
+    h+='<div class="block'+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon"){
     const st="14:00",en="18:30";
@@ -1128,7 +1127,7 @@ function renderPerson(){
  }
 }
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
-qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("today");window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=47",{updateViaCache:"none"}).then(r=>r.update()));
+qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;if(SCHOOL_DAYS.includes(dayNow()))renderOverview();else show("today");renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();renderGlobalQuote();show("today");window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=48",{updateViaCache:"none"}).then(r=>r.update()));
 </script>
 </body></html>
