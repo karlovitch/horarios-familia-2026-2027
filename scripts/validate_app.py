@@ -142,7 +142,7 @@ required_index_tokens = {
     "confettis persistidos por evento": 'familyConfetti:"+iso+":"+e.label',
 
     "perfil TV persistente na URL": 'TV_PARAMS.get("profile")||"auto"',
-    "navegação D-pad": "function moveTvFocus(key)",
+    "navegação D-pad": "function moveTvFocus(key,root=document)",
     "foco TV visível": 'outline:5px solid #FFD54A',
     "altura TV adaptativa": "function tvTimelineHeight()",
 
