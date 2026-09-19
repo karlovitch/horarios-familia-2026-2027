@@ -138,10 +138,22 @@ def flashscore_match_url(event):
         if score>best_score:
             best,best_score=cand,score
     if not best or best_score<1.35:return None
+
+    # Exige correspondência razoável dos DOIS clubes, evitando que um nome
+    # muito parecido faça escolher outro jogo do mesmo dia.
+    direct_pair=(_team_similarity(event.get("home",""),best.get("AE","")),_team_similarity(event.get("away",""),best.get("AF","")))
+    reverse_pair=(_team_similarity(event.get("home",""),best.get("AF","")),_team_similarity(event.get("away",""),best.get("AE","")))
+    pair=direct_pair if sum(direct_pair)>=sum(reverse_pair) else reverse_pair
+    if min(pair)<.65:return None
+
     mid=best.get("AA")
     hs=best.get("WU");aws=best.get("WV")
-    hid=best.get("AU") or best.get("JA")
-    aid=best.get("AV") or best.get("JB")
+
+    # JA/JB são os identificadores codificados usados no URL público da
+    # equipa no Flashscore. AU/AV não são substitutos seguros para esse fim
+    # e originavam fichas inexistentes (nomeadamente FC Porto/Real Madrid).
+    hid=best.get("JA")
+    aid=best.get("JB")
     if not all([mid,hs,aws,hid,aid]):return None
     return f"https://www.flashscore.pt/jogo/futebol/{hs}-{hid}/{aws}-{aid}/?mid={mid}"
 
