@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import argparse
 import json
 import re
-from datetime import datetime
+import time
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -10,8 +12,12 @@ import requests
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "daily-info.json"
+DAILY_OUT = ROOT / "daily-info.json"
+CALENDAR_OUT = ROOT / "calendar-info.json"
 TZ = ZoneInfo("Europe/Lisbon")
+
+START_DATE = date(2026, 9, 14)
+END_DATE = date(2027, 6, 30)
 
 UN_URL = "https://www.un.org/en/observances/list-days-weeks"
 COE_URL = "https://www.coe.int/en/web/portal/international-and-european-days"
@@ -50,14 +56,17 @@ MONTHS = {
     1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
     7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec",
 }
-
+MONTH_BY_ABBR = {v: k for k, v in MONTHS.items()}
 HEADERS = {
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December"
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
 }
 
+SESSION = requests.Session()
+SESSION.headers.update({"User-Agent": "HorariosFamilia/2.0 (+GitHub Pages school calendar)"})
+
 def fetch(url: str) -> str:
-    r = requests.get(url, timeout=30, headers={"User-Agent": "HorariosFamilia/1.0"})
+    r = SESSION.get(url, timeout=30)
     r.raise_for_status()
     return r.text
 
@@ -65,14 +74,18 @@ def clean_un_title(value: str) -> str:
     value = re.sub(r"\s*\([^)]*(?:A/RES|Resolution|WHA|WMO|C/|Res\.)[^)]*\)\s*$", "", value)
     return re.sub(r"\s+", " ", value).strip()
 
-def get_un_days(today) -> list[str]:
-    target = f"{today.day:02d} {MONTHS[today.month]}"
+def get_un_map() -> dict[str, list[str]]:
+    out: dict[str, list[str]] = {}
     try:
         soup = BeautifulSoup(fetch(UN_URL), "html.parser")
         lines = [re.sub(r"\s+", " ", x).strip() for x in soup.stripped_strings]
-        found = []
         for i, line in enumerate(lines):
-            if line != target:
+            m = re.fullmatch(r"(\d{2}) ([A-Z][a-z]{2})", line)
+            if not m:
+                continue
+            day = int(m.group(1))
+            month = MONTH_BY_ABBR.get(m.group(2))
+            if not month:
                 continue
             j = i - 1
             while j >= 0:
@@ -80,19 +93,25 @@ def get_un_days(today) -> list[str]:
                 if candidate in HEADERS or re.fullmatch(r"\d{2} [A-Z][a-z]{2}", candidate):
                     j -= 1
                     continue
-                if candidate.lower().startswith(("view calendar", "list of international", "international days and weeks")):
+                if candidate.lower().startswith((
+                    "view calendar", "list of international", "international days and weeks",
+                    "download", "resources"
+                )):
                     j -= 1
                     continue
                 title = clean_un_title(candidate)
-                if title and title not in found:
-                    found.append(title)
+                if title:
+                    key = f"{month:02d}-{day:02d}"
+                    out.setdefault(key, [])
+                    if title not in out[key]:
+                        out[key].append(title)
                 break
-        return found
-    except Exception:
-        return []
+    except Exception as exc:
+        print("Aviso: não foi possível atualizar a ONU:", exc)
+    return out
 
-def get_liturgy(today):
-    url = f"{LITURGIA_BASE}?data={today.year}-{today.month}-{today.day}"
+def get_liturgy(day: date) -> dict:
+    url = f"{LITURGIA_BASE}?data={day.year}-{day.month}-{day.day}"
     result = {
         "liturgical_day": "",
         "saints": [],
@@ -109,7 +128,7 @@ def get_liturgy(today):
         if m:
             result["gospel"] = m.group(1).strip()
 
-        iso = today.isoformat()
+        iso = day.isoformat()
         idx = next((i for i, line in enumerate(lines) if line == iso), None)
         if idx is not None:
             following = lines[idx + 1:]
@@ -118,36 +137,90 @@ def get_liturgy(today):
 
             saints = []
             for line in following[1:]:
-                if line.startswith(("Verde", "Branco", "Vermelho", "Roxo", "L 1:", "L 2:", "Ev:", "Missa")):
+                if line.startswith((
+                    "Verde", "Branco", "Vermelho", "Roxo", "Rosa",
+                    "L 1:", "L 2:", "Ev:", "Missa", "Ofício"
+                )):
                     break
-                if re.search(r"(^|\s)(S\.|São|Santa|Santo|Nossa Senhora)", line):
+                if re.search(r"(^|\s)(S\.|São|Santa|Santo|Nossa Senhora|Santos|Santas)", line):
                     if line not in saints:
                         saints.append(line)
             result["saints"] = saints
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"Aviso liturgia {day.isoformat()}: {exc}")
     return result
 
-def main():
-    today = datetime.now(TZ).date()
-    mmdd = today.strftime("%m-%d")
-    lit = get_liturgy(today)
+def load_calendar() -> dict:
+    if CALENDAR_OUT.exists():
+        try:
+            data = json.loads(CALENDAR_OUT.read_text(encoding="utf-8"))
+            if isinstance(data, dict) and isinstance(data.get("dates"), dict):
+                return data
+        except Exception:
+            pass
+    return {"generated_at": None, "dates": {}, "sources": {}}
 
-    data = {
-        "date": today.isoformat(),
-        "un_days": get_un_days(today),
+def build_day(day: date, un_map: dict[str, list[str]]) -> dict:
+    mmdd = day.strftime("%m-%d")
+    lit = get_liturgy(day)
+    return {
+        "date": day.isoformat(),
+        "un_days": un_map.get(mmdd, []),
         "european_days": EUROPEAN_DAYS.get(mmdd, []),
         "portugal_days": PORTUGAL_DAYS.get(mmdd, []),
         "local_days": LOCAL_DAYS.get(mmdd, []),
         **lit,
-        "updated_at": datetime.now(TZ).isoformat(timespec="seconds"),
-        "sources": {
-            "un": UN_URL,
-            "europe": COE_URL,
-            "liturgy": "https://liturgia.pt/liturgiadiaria/",
-        },
     }
-    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+def date_range(a: date, b: date):
+    d = a
+    while d <= b:
+        yield d
+        d += timedelta(days=1)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--all", action="store_true", help="Gerar todo o calendário do ano letivo")
+    args = parser.parse_args()
+
+    today = datetime.now(TZ).date()
+    un_map = get_un_map()
+    calendar = load_calendar()
+
+    if args.all:
+        targets = list(date_range(START_DATE, END_DATE))
+    else:
+        targets = [today]
+
+    total = len(targets)
+    for idx, day in enumerate(targets, 1):
+        print(f"[{idx}/{total}] {day.isoformat()}")
+        calendar["dates"][day.isoformat()] = build_day(day, un_map)
+        if args.all:
+            time.sleep(0.04)
+
+    calendar["generated_at"] = datetime.now(TZ).isoformat(timespec="seconds")
+    calendar["sources"] = {
+        "un": UN_URL,
+        "europe": COE_URL,
+        "liturgy": "https://liturgia.pt/liturgiadiaria/",
+    }
+    CALENDAR_OUT.write_text(
+        json.dumps(calendar, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    today_info = calendar["dates"].get(today.isoformat())
+    if today_info:
+        daily = {
+            **today_info,
+            "updated_at": datetime.now(TZ).isoformat(timespec="seconds"),
+            "sources": calendar["sources"],
+        }
+        DAILY_OUT.write_text(
+            json.dumps(daily, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
 
 if __name__ == "__main__":
     main()
