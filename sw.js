@@ -1,4 +1,4 @@
-const BUILD=73;
+const BUILD=74;
 const C='horarios-familia-2026-27-v'+BUILD;
 const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'icon.svg'];
 const NETWORK_FIRST_PATHS=new Set([
@@ -7,10 +7,13 @@ const NETWORK_FIRST_PATHS=new Set([
 ]);
 
 function canonicalCacheKey(url){
-  const path=url.pathname;
-  if(path.endsWith('/'))return new Request(url.origin+path);
-  return new Request(url.origin+path);
+  return new Request(url.origin+url.pathname);
 }
+function isNetworkFirstPath(path){
+  for(const suffix of NETWORK_FIRST_PATHS)if(path.endsWith(suffix))return true;
+  return false;
+}
+const OFFLINE_INDEX=new Request(new URL('index.html',self.registration.scope).href);
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
@@ -36,7 +39,7 @@ self.addEventListener('fetch',event=>{
 
   const path=url.pathname;
   const isNavigation=req.mode==='navigate';
-  const networkFirst=isNavigation||[...NETWORK_FIRST_PATHS].some(p=>path.endsWith(p));
+  const networkFirst=isNavigation||isNetworkFirstPath(path);
 
   if(networkFirst){
     const key=canonicalCacheKey(url);
@@ -49,7 +52,7 @@ self.addEventListener('fetch',event=>{
           }
           return res;
         })
-        .catch(()=>caches.match(key,{ignoreSearch:true}).then(r=>r||caches.match(new Request(self.location.origin+'/index.html'),{ignoreSearch:true})))
+        .catch(()=>caches.match(key,{ignoreSearch:true}).then(r=>r||caches.match(OFFLINE_INDEX,{ignoreSearch:true})))
     );
     return;
   }
