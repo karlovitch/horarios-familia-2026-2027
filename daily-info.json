@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-19",
+  "un_days": [],
+  "european_days": [],
+  "portugal_days": [],
+  "local_days": [],
+  "liturgical_day": "Sábado da semana XXIV",
+  "saints": [
+    "Santa Maria no Sábado",
+    "S. Januário, bispo e mártir"
+  ],
+  "gospel": "Lc 8, 4-15",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-19",
+  "sources": {
+    "un": "https://www.un.org/en/observances/list-days-weeks",
+    "europe": "https://www.coe.int/en/web/portal/international-and-european-days",
+    "liturgy": "https://liturgia.pt/liturgiadiaria/"
+  }
+}
