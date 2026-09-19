@@ -1,7 +1,7 @@
 {
   "name":"Horários Família 2026–2027",
   "short_name":"Horários",
-  "start_url":"./?v=60",
+  "start_url":"./?v=61",
   "scope":"./",
   "display":"standalone",
   "background_color":"#F3F4F6",
