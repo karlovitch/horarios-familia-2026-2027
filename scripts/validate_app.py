@@ -38,6 +38,7 @@ calendar = read_json("calendar-info.json")
 daily = read_json("daily-info.json")
 sports = read_json("sports-info.json")
 history = read_json("history-info.json")
+daily_script = read_text("scripts/update_daily_info.py")
 
 m_app = re.search(r"const APP_BUILD=(\d+);", index)
 m_sw = re.search(r"const BUILD=(\d+);", service_worker)
@@ -57,11 +58,14 @@ required_index_tokens = {
     "ocultação da agenda desportiva": 'id="sportsTabRow" class="sports-tab-row hidden"',
     "regra dinâmica da agenda desportiva": "function updateSportsTabVisibility",
     "Passo-a-Rezar": "passo-a-rezar.net/reprodutor/",
+    "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
     "hagiografias": "saint_hagiographies",
     "links de santos": "function saintsHTML",
     "História em carregamento diferido": "function dateNeedsRemoteHistory",
     "fontes históricas autorizadas": "TRUSTED_HISTORY_DOMAINS",
     "ligações específicas de astronomia": "function astronomyReadMoreUrl",
+    "fonte astronómica portuguesa": "https://oal.ul.pt/",
+    "botões táteis de navegação": "min-width:50px;min-height:50px",
     "frases com normalização linguística": "function normalizeReflectionText",
 }
 for label, token in required_index_tokens.items():
@@ -75,9 +79,17 @@ for forbidden in (
     "bing.com/search",
     'stream=stream||"https://www.dazn.com/pt-PT/home"',
     'stream=stream||"https://tv.fpp.pt/"',
+    '<iframe class="passo-player"',
+    "www.timeanddate.com",
+    "en.wikipedia.org",
 ):
     if forbidden in index:
         fail(f"Padrão obsoleto/genérico ainda presente em index.html: {forbidden}")
+
+if "def get_passo_metadata(" not in daily_script:
+    fail("O atualizador diário deve extrair o áudio direto do Passo-a-Rezar")
+if "PASSO_REZAR_BASE" not in daily_script:
+    fail("Fonte Passo-a-Rezar não configurada no atualizador diário")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
