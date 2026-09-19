@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - ".icon-source/**"
+      - ".icon-source2/**"
       - ".github/workflows/generate-app-icons.yml"
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
           from pathlib import Path
           from PIL import Image
 
-          parts = sorted(Path(".icon-source").glob("part*.txt"))
+          parts = sorted(Path(".icon-source2").glob("c*.txt"))
           if not parts:
               raise SystemExit("Fonte do ícone não encontrada.")
           encoded = "".join(p.read_text(encoding="utf-8").strip() for p in parts)
