@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v29</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v30</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -631,106 +631,63 @@ async function ensureRemoteLiturgy(iso){
  finally{REMOTE_LITURGY_LOADING.delete(iso);if(statsIso()===iso)renderDailyInfo()}
 }
 
-const DAILY_QUOTES={
- learning:[
-  {text:"O sonho comanda a vida.",author:"António Gedeão",bio:"poeta, professor e químico, português",year:1956},
-  {text:"Tudo vale a pena se a alma não é pequena.",author:"Fernando Pessoa",bio:"poeta e escritor, português",year:1934},
-  {text:"Vive agora as perguntas.",author:"Rainer Maria Rilke",bio:"poeta e escritor, austro-boémio",year:1903},
-  {text:"A educação é a arma mais poderosa que podemos usar para mudar o mundo.",author:"Nelson Mandela",bio:"advogado e estadista, sul-africano",year:2003},
-  {text:"Uma criança, um professor, um livro e uma caneta podem mudar o mundo.",author:"Malala Yousafzai",bio:"ativista pela educação, paquistanesa",year:2013}
- ],
- conduct:[
-  {text:"A melhor vingança é não te tornares semelhante a quem te fez mal.",author:"Marco Aurélio",bio:"imperador e filósofo estoico, romano",year:"c. 170"},
-  {text:"Sofremos mais vezes na imaginação do que na realidade.",author:"Séneca",bio:"filósofo e estadista, romano",year:"c. 65"},
-  {text:"Não são as coisas que perturbam as pessoas, mas os juízos que fazem sobre elas.",author:"Epicteto",bio:"filósofo estoico, grego",year:"c. 125"},
-  {text:"A vida só pode ser compreendida olhando para trás; mas deve ser vivida olhando para a frente.",author:"Søren Kierkegaard",bio:"filósofo e teólogo, dinamarquês",year:1843},
-  {text:"Quando já não podemos mudar uma situação, somos desafiados a mudar-nos a nós próprios.",author:"Viktor Frankl",bio:"neurologista e psiquiatra, austríaco",year:1946}
- ],
- spiritual:[
-  {text:"O coração tem razões que a própria razão desconhece.",author:"Blaise Pascal",bio:"matemático, filósofo e teólogo, francês",year:1670},
-  {text:"O essencial é invisível aos olhos.",author:"Antoine de Saint-Exupéry",bio:"escritor e aviador, francês",year:1943},
-  {text:"Nada te perturbe, nada te espante; tudo passa.",author:"Teresa de Ávila",bio:"mística, escritora e religiosa, espanhola",year:"c. 1577"},
-  {text:"A vida boa é inspirada pelo amor e guiada pelo conhecimento.",author:"Bertrand Russell",bio:"filósofo e matemático, britânico",year:1925},
-  {text:"O céu estrelado sobre mim e a lei moral em mim.",author:"Immanuel Kant",bio:"filósofo, prussiano",year:1788}
- ],
- friendship:[
-  {text:"A única maneira de ter um amigo é ser um.",author:"Ralph Waldo Emerson",bio:"ensaísta e filósofo, norte-americano",year:1841},
-  {text:"Tu tornas-te eternamente responsável por aquilo que cativas.",author:"Antoine de Saint-Exupéry",bio:"escritor e aviador, francês",year:1943},
-  {text:"É maravilhoso que ninguém precise de esperar um só momento para começar a melhorar o mundo.",author:"Anne Frank",bio:"diarista e escritora, neerlandesa",year:1947}
- ],
- family:[
-  {text:"O essencial é invisível aos olhos.",author:"Antoine de Saint-Exupéry",bio:"escritor e aviador, francês",year:1943},
-  {text:"A vida boa é inspirada pelo amor e guiada pelo conhecimento.",author:"Bertrand Russell",bio:"filósofo e matemático, britânico",year:1925},
-  {text:"A única maneira de ter um amigo é ser um.",author:"Ralph Waldo Emerson",bio:"ensaísta e filósofo, norte-americano",year:1841}
- ],
- peace:[
-  {text:"A escuridão não pode expulsar a escuridão; só a luz o pode fazer.",author:"Martin Luther King Jr.",bio:"pastor e ativista pelos direitos civis, norte-americano",year:1963},
-  {text:"A melhor vingança é não te tornares semelhante a quem te fez mal.",author:"Marco Aurélio",bio:"imperador e filósofo estoico, romano",year:"c. 170"},
-  {text:"É maravilhoso que ninguém precise de esperar um só momento para começar a melhorar o mundo.",author:"Anne Frank",bio:"diarista e escritora, neerlandesa",year:1947}
- ],
- rights:[
-  {text:"A educação é a arma mais poderosa que podemos usar para mudar o mundo.",author:"Nelson Mandela",bio:"advogado e estadista, sul-africano",year:2003},
-  {text:"Uma criança, um professor, um livro e uma caneta podem mudar o mundo.",author:"Malala Yousafzai",bio:"ativista pela educação, paquistanesa",year:2013},
-  {text:"A escuridão não pode expulsar a escuridão; só a luz o pode fazer.",author:"Martin Luther King Jr.",bio:"pastor e ativista pelos direitos civis, norte-americano",year:1963}
- ],
- nature:[
-  {text:"Na natureza, nada existe sozinho.",author:"Rachel Carson",bio:"bióloga marinha e escritora, norte-americana",year:1962},
-  {text:"Somos uma forma de o cosmos se conhecer a si próprio.",author:"Carl Sagan",bio:"astrónomo e divulgador científico, norte-americano",year:1980},
-  {text:"O céu estrelado sobre mim e a lei moral em mim.",author:"Immanuel Kant",bio:"filósofo, prussiano",year:1788}
- ],
- astronomy:[
-  {text:"Somos uma forma de o cosmos se conhecer a si próprio.",author:"Carl Sagan",bio:"astrónomo e divulgador científico, norte-americano",year:1980},
-  {text:"O céu estrelado sobre mim e a lei moral em mim.",author:"Immanuel Kant",bio:"filósofo, prussiano",year:1788},
-  {text:"Se vi mais longe, foi por estar sobre os ombros de gigantes.",author:"Isaac Newton",bio:"físico e matemático, inglês",year:1675}
- ],
- portugal:[
-  {text:"Tudo vale a pena se a alma não é pequena.",author:"Fernando Pessoa",bio:"poeta e escritor, português",year:1934},
-  {text:"O sonho comanda a vida.",author:"António Gedeão",bio:"poeta, professor e químico, português",year:1956},
-  {text:"Mudam-se os tempos, mudam-se as vontades.",author:"Luís de Camões",bio:"poeta, português",year:1595},
-  {text:"Esta é a madrugada que eu esperava, o dia inicial inteiro e limpo.",author:"Sophia de Mello Breyner Andresen",bio:"poeta e escritora, portuguesa",year:1974}
- ],
- language:[
-  {text:"A minha pátria é a língua portuguesa.",author:"Fernando Pessoa",bio:"poeta e escritor, português",year:1982},
-  {text:"Vive agora as perguntas.",author:"Rainer Maria Rilke",bio:"poeta e escritor, austro-boémio",year:1903},
-  {text:"Tudo vale a pena se a alma não é pequena.",author:"Fernando Pessoa",bio:"poeta e escritor, português",year:1934}
- ],
- resilience:[
-  {text:"Quando já não podemos mudar uma situação, somos desafiados a mudar-nos a nós próprios.",author:"Viktor Frankl",bio:"neurologista e psiquiatra, austríaco",year:1946},
-  {text:"Sofremos mais vezes na imaginação do que na realidade.",author:"Séneca",bio:"filósofo e estadista, romano",year:"c. 65"},
-  {text:"A vida só pode ser compreendida olhando para trás; mas deve ser vivida olhando para a frente.",author:"Søren Kierkegaard",bio:"filósofo e teólogo, dinamarquês",year:1843}
- ]
-};
-function quoteSeed(iso){return [...iso].reduce((n,ch)=>n+ch.charCodeAt(0),0)}
-function quoteThemeFor(iso,x,familyEvents){
- const external=mergeUnique(x.un_days||[],x.european_days||[],x.portugal_days||[],x.history_days||[],x.astronomy_days||[]);
- const t=external.join(" ").toLowerCase();
- if((x.astronomy_days||[]).length||/astronom|eclipse|solstício|equinócio|meteoro|cosmos|lua|solar|lunar/.test(t))return "astronomy";
- if(/paz|guerra|não violência|não-violência|armas|terrorismo|desarmamento|conflito/.test(t))return "peace";
- if(/direitos|igualdade|discrimina|escrav|refugi|migrant|pobreza|justiça|tolerância|mulher|menina|criança|deficiência/.test(t))return "rights";
- if(/ambiente|natureza|água|oceano|floresta|biodivers|solo|abelha|clima|desertifica|zonas húmidas|limpeza|terra/.test(t))return "nature";
- if(/língua|lingu|livro|alfabet|educa|professor|ciência|cultura|património|tradução|poesia/.test(t))return "language";
- if(/saúde|diabetes|tuberculose|sida|cancro|dador|doente|segurança do doente/.test(t))return "resilience";
- if((x.portugal_days||[]).length||(x.history_days||[]).length)return "portugal";
- if((x.european_days||[]).length)return "friendship";
- if((x.un_days||[]).length)return "learning";
- if(familyEvents&&familyEvents.length)return "family";
- const fallback=["conduct","spiritual","learning","family","friendship","resilience"];
- return fallback[quoteSeed(iso)%fallback.length];
+const REFLECTION_OPENINGS=[
+"Escolhe agir com serenidade",
+"Procura aprender com humildade",
+"Cuida das palavras antes de as dizer",
+"Faz do teu trabalho uma forma de serviço",
+"Avança com coragem sem perder a bondade",
+"Escuta antes de julgar",
+"Protege aquilo que alimenta a tua consciência",
+"Transforma cada dificuldade numa oportunidade de crescer",
+"Valoriza as pessoas antes das coisas",
+"Permanece fiel ao que sabes ser justo",
+"Usa o conhecimento para iluminar, não para diminuir os outros",
+"Deixa espaço para o silêncio e para a gratidão",
+"Constrói o dia com pequenos gestos de bem"
+];
+const REFLECTION_CONTEXTS=[
+"mesmo quando ninguém está a observar",
+"sobretudo quando o resultado demora",
+"quando o caminho exige paciência",
+"nos momentos em que é mais fácil desistir",
+"quando uma escolha pequena pode mudar muito",
+"sem esquecer quem caminha ao teu lado",
+"com a atenção de quem sabe que o tempo é precioso",
+"aceitando que crescer também implica corrigir o rumo",
+"lembrando que aprender é também aprender a viver"
+];
+const REFLECTION_ENDINGS=[
+"porque o carácter se revela nas escolhas repetidas",
+"e faz de cada dia uma ocasião para deixar o mundo um pouco melhor",
+"porque a verdadeira força não precisa de fazer ruído",
+"e mede o sucesso pela pessoa em que te estás a tornar",
+"porque o que ofereces aos outros também transforma quem és",
+"e não troques o essencial pelo urgente",
+"porque a esperança também se pratica"
+];
+function reflectionThemeLead(x){
+ const t=mergeUnique(x.un_days||[],x.european_days||[],x.portugal_days||[],x.history_days||[],x.astronomy_days||[]).join(" ").toLowerCase();
+ if(/paz|guerra|não violência|não-violência|armas|conflito/.test(t))return "Num dia que recorda o valor da paz, ";
+ if(/direitos|igualdade|discrimina|justiça|criança|mulher|refugi|migrant/.test(t))return "Num dia dedicado à dignidade humana, ";
+ if(/ambiente|natureza|água|oceano|floresta|biodivers|terra|clima/.test(t))return "Num dia que nos liga à natureza, ";
+ if(/educa|professor|livro|língua|ciência|cultura|poesia/.test(t))return "Num dia que celebra o conhecimento e a cultura, ";
+ if((x.astronomy_days||[]).length)return "Diante da grandeza do céu, ";
+ if((x.portugal_days||[]).length||(x.history_days||[]).length)return "Ao recordar a nossa história, ";
+ return "";
 }
-function quoteForDay(iso,x,familyEvents){
- const theme=quoteThemeFor(iso,x,familyEvents),pool=DAILY_QUOTES[theme]||DAILY_QUOTES.learning;
- return pool[quoteSeed(iso)%pool.length];
-}
-function dailyQuoteHTML(iso,x,familyEvents){
- const q=quoteForDay(iso,x,familyEvents);
- return '<div class="daily-quote-text">“'+esc(q.text)+'”</div><div class="daily-quote-author">— '+esc(q.author)+' ('+esc(q.bio)+'), '+q.year+'</div>';
+function uniqueReflectionForDay(iso,x){
+ const base=ymdDay("2026-01-01"),n=Math.max(0,ymdDay(iso)-base);
+ const a=REFLECTION_OPENINGS.length,b=REFLECTION_CONTEXTS.length;
+ const i=n%a,j=Math.floor(n/a)%b,k=Math.floor(n/(a*b))%REFLECTION_ENDINGS.length;
+ const text=reflectionThemeLead(x)+REFLECTION_OPENINGS[i]+", "+REFLECTION_CONTEXTS[j]+", "+REFLECTION_ENDINGS[k]+".";
+ return {text,author:"Horários Família",bio:"projeto editorial familiar, português",year:Number(iso.slice(0,4))};
 }
 function renderGlobalQuote(){
- const iso=statsIso(),x=calendarInfoFor(iso),family=familyEventsFor(iso),q=quoteForDay(iso,x,family);
+ const iso=statsIso(),x=calendarInfoFor(iso),q=uniqueReflectionForDay(iso,x);
  qs("#globalQuoteText").textContent="“"+q.text+"”";
  qs("#globalQuoteAuthor").textContent="— "+q.author+" ("+q.bio+"), "+q.year;
 }
-
 function meaningfulLiturgicalText(v){
  const t=(v||"").trim();
  if(!t)return "";
@@ -855,7 +812,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=29",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=30",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -877,6 +834,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=29",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=30",{updateViaCache:"none"}));
 </script>
 </body></html>
