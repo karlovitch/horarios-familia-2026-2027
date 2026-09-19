@@ -191,6 +191,7 @@ def main():
     args=ap.parse_args()
     try:data=json.loads(OUT.read_text(encoding="utf-8"))
     except Exception:data={"dates":{}}
+    original_data=json.loads(json.dumps(data))
     data.setdefault("dates",{})
     targets=all_mmdd() if args.all else [datetime.now().strftime("%m-%d")]
     workers=8 if args.all else 2
@@ -202,11 +203,17 @@ def main():
             cur["world"]=merge_unique(cur.get("world",[]),result["world"])
             cur["portugal"]=merge_unique(cur.get("portugal",[]),result["portugal"])
     data["dates"]={k:data["dates"][k] for k in sorted(data["dates"])}
-    data["generated_at"]=datetime.now(timezone.utc).isoformat()
-    data["sources"]={
+    sources={
         "world":"Wikipédia em português — secção Eventos históricos das páginas de cada data",
         "portugal":"e-Cultura / Centro Nacional de Cultura — Efemérides"
     }
+    previous_payload={
+        "dates": original_data.get("dates", {}),
+        "sources": original_data.get("sources", {}),
+    }
+    payload={"dates":data["dates"],"sources":sources}
+    generated_at=original_data.get("generated_at") if previous_payload==payload else datetime.now(timezone.utc).isoformat()
+    data={"generated_at":generated_at or datetime.now(timezone.utc).isoformat(),**payload}
     OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"Efemérides atualizadas: {len(targets)} datas; total guardado: {len(data['dates'])}")
 
