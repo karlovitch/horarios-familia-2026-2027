@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v18</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v19</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -214,7 +214,33 @@ const UN_FALLBACK={
 "08-09":["Dia Internacional dos Povos Indígenas"],"08-12":["Dia Internacional da Juventude"],"08-19":["Dia Mundial Humanitário"],"08-23":["Dia Internacional em Memória do Tráfico de Escravos e da sua Abolição"],"08-29":["Dia Internacional contra os Ensaios Nucleares"],"08-30":["Dia Internacional das Vítimas de Desaparecimentos Forçados"],"08-31":["Dia Internacional das Pessoas de Ascendência Africana"]
 };
 const EUROPE_FALLBACK={"01-28":["Dia da Proteção de Dados"],"05-05":["Dia da Europa — Conselho da Europa"],"05-09":["Dia da Europa — União Europeia"],"09-26":["Dia Europeu das Línguas"],"10-10":["Dia Europeu contra a Pena de Morte"],"10-18":["Dia Europeu contra o Tráfico de Seres Humanos"],"10-25":["Dia Europeu da Justiça"],"11-18":["Dia Europeu para a Proteção das Crianças contra a Exploração Sexual e o Abuso Sexual"]};
-const PORTUGAL_FALLBACK={"04-25":["Dia da Liberdade"],"05-06":["Dia Nacional do Azulejo"],"05-10":["Dia Nacional do Seguro"],"05-25":["Dia Nacional dos Jardins"],"06-10":["Dia de Portugal, de Camões e das Comunidades Portuguesas"],"06-22":["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],"10-05":["Implantação da República"],"11-11":["Dia Nacional das Raças Autóctones"],"12-01":["Restauração da Independência"],"12-10":["Dia Nacional dos Direitos Humanos"],"12-22":["Dia Nacional do Técnico Auxiliar de Saúde"]};
+const PORTUGAL_FALLBACK={
+"01-01":["Ano Novo (Feriado Nacional)"],
+"04-25":["Dia da Liberdade (Feriado Nacional)"],
+"05-01":["Dia do Trabalhador (Feriado Nacional)"],
+"05-06":["Dia Nacional do Azulejo"],
+"05-10":["Dia Nacional do Seguro"],
+"05-25":["Dia Nacional dos Jardins"],
+"06-10":["Dia de Portugal, de Camões e das Comunidades Portuguesas (Feriado Nacional)"],
+"06-22":["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],
+"08-15":["Assunção de Nossa Senhora (Feriado Nacional)"],
+"10-05":["Implantação da República (Feriado Nacional)"],
+"11-01":["Dia de Todos os Santos (Feriado Nacional)"],
+"11-11":["Dia Nacional das Raças Autóctones"],
+"12-01":["Restauração da Independência (Feriado Nacional)"],
+"12-08":["Imaculada Conceição (Feriado Nacional)"],
+"12-10":["Dia Nacional dos Direitos Humanos"],
+"12-22":["Dia Nacional do Técnico Auxiliar de Saúde"],
+"12-25":["Natal (Feriado Nacional)"]
+};
+const PORTUGAL_MOVABLE_HOLIDAYS={
+"2026-04-03":["Sexta-Feira Santa (Feriado Nacional)"],
+"2026-04-05":["Domingo de Páscoa (Feriado Nacional)"],
+"2026-06-04":["Corpo de Deus (Feriado Nacional)"],
+"2027-03-26":["Sexta-Feira Santa (Feriado Nacional)"],
+"2027-03-28":["Domingo de Páscoa (Feriado Nacional)"],
+"2027-05-27":["Corpo de Deus (Feriado Nacional)"]
+};
 const LOCAL_FALLBACK={"05-03":["Feriado Municipal (Festa das Cruzes)"]};
 function isoLocalDate(){const n=new Date(),y=n.getFullYear(),m=String(n.getMonth()+1).padStart(2,"0"),d=String(n.getDate()).padStart(2,"0");return y+"-"+m+"-"+d}
 function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))}
@@ -239,7 +265,7 @@ function birthdayCountdownText(iso){
 }
 function fallbackCalendarInfo(iso){
  const mmdd=iso.slice(5);
- return {date:iso,un_days:UN_FALLBACK[mmdd]||[],european_days:EUROPE_FALLBACK[mmdd]||[],portugal_days:PORTUGAL_FALLBACK[mmdd]||[],local_days:LOCAL_FALLBACK[mmdd]||[],liturgical_day:"",saints:[],gospel:"",liturgy_url:liturgiaUrlForDate(iso)};
+ const pt=[...(PORTUGAL_FALLBACK[mmdd]||[]),...(PORTUGAL_MOVABLE_HOLIDAYS[iso]||[])];return {date:iso,un_days:UN_FALLBACK[mmdd]||[],european_days:EUROPE_FALLBACK[mmdd]||[],portugal_days:pt,local_days:LOCAL_FALLBACK[mmdd]||[],liturgical_day:"",saints:[],gospel:"",liturgy_url:liturgiaUrlForDate(iso)};
 }
 function calendarInfoFor(iso){
  const fb=fallbackCalendarInfo(iso);
@@ -303,6 +329,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=p;qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=18",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=19",{updateViaCache:"none"}));
 </script>
 </body></html>
