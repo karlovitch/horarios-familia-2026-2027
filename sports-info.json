@@ -1386,12 +1386,10 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.flashscore.pt/jogo/futebol/gil-vicente-zgCFzrVi/maritimo-rJFNYLa4/?mid=AaftdAAL",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "status": "live",
+      "status": "finished",
       "home_score": 1,
-      "away_score": 0,
-      "period": "2H",
-      "period_start": 1789832149,
-      "status_updated_at": 1789834474
+      "away_score": 1,
+      "period": "2H"
     },
     {
       "date": "2026-09-20",
