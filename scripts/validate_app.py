@@ -39,6 +39,7 @@ daily = read_json("daily-info.json")
 sports = read_json("sports-info.json")
 history = read_json("history-info.json")
 daily_script = read_text("scripts/update_daily_info.py")
+sports_script = read_text("scripts/update_sports_info.py")
 
 m_app = re.search(r"const APP_BUILD=(\d+);", index)
 m_sw = re.search(r"const BUILD=(\d+);", service_worker)
@@ -73,6 +74,11 @@ required_index_tokens = {
     "setas principais ampliadas": ".today-page-arrow{width:82px;height:66px",
     "seletor de data compacto": "width:clamp(118px,33vw,132px)",
     "frases com normalização linguística": "function normalizeReflectionText",
+    "horários prolongados até às 20h00": "START=480,END=1200",
+    "linha vermelha do momento atual": "background:#D71920",
+    "linha do agora na vista semanal individual": 'class="now-line contained"',
+    "linha do agora na vista semanal de conjunto": "overview-week-now-line",
+    "rótulo final das 20h visível": "m===END?\' end-label\'",
 }
 for label, token in required_index_tokens.items():
     if token not in index:
@@ -100,6 +106,11 @@ if "PASSO_REZAR_BASE" not in daily_script:
 
 if 'result = {"passo_page_url": page_url}' in daily_script:
     fail("O atualizador diário não deve expor a página externa do Passo-a-Rezar")
+
+if 'hid=best.get("JA")' not in sports_script or 'aid=best.get("JB")' not in sports_script:
+    fail("O atualizador desportivo deve usar JA/JB nos URLs públicos do Flashscore")
+if 'best.get("AU") or best.get("JA")' in sports_script or 'best.get("AV") or best.get("JB")' in sports_script:
+    fail("O atualizador desportivo ainda usa AU/AV para construir fichas Flashscore")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
