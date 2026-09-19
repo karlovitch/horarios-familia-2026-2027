@@ -57,15 +57,18 @@ if manifest.get("scope") != "./":
 required_index_tokens = {
     "ocultação da agenda desportiva": 'id="sportsTabRow" class="sports-tab-row hidden"',
     "regra dinâmica da agenda desportiva": "function updateSportsTabVisibility",
-    "Passo-a-Rezar": "passo-a-rezar.net/reprodutor/",
+    "dados de áudio direto do Passo-a-Rezar": "passo_audio_url",
     "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
     "hagiografias": "saint_hagiographies",
     "links de santos": "function saintsHTML",
     "História em carregamento diferido": "function dateNeedsRemoteHistory",
     "fontes históricas autorizadas": "TRUSTED_HISTORY_DOMAINS",
+    "preferência por ligações históricas PT-PT": "preferredPortugueseHistoryUrl",
     "ligações específicas de astronomia": "function astronomyReadMoreUrl",
     "fonte astronómica portuguesa": "https://oal.ul.pt/",
     "botões táteis de navegação": "min-width:50px;min-height:50px",
+    "setas principais ampliadas": ".today-page-arrow{width:82px;height:66px",
+    "seletor de data compacto": "width:clamp(118px,33vw,132px)",
     "frases com normalização linguística": "function normalizeReflectionText",
 }
 for label, token in required_index_tokens.items():
@@ -80,6 +83,7 @@ for forbidden in (
     'stream=stream||"https://www.dazn.com/pt-PT/home"',
     'stream=stream||"https://tv.fpp.pt/"',
     '<iframe class="passo-player"',
+    "passo-player-fallback",
     "www.timeanddate.com",
     "en.wikipedia.org",
 ):
@@ -90,6 +94,9 @@ if "def get_passo_metadata(" not in daily_script:
     fail("O atualizador diário deve extrair o áudio direto do Passo-a-Rezar")
 if "PASSO_REZAR_BASE" not in daily_script:
     fail("Fonte Passo-a-Rezar não configurada no atualizador diário")
+
+if 'result = {"passo_page_url": page_url}' in daily_script:
+    fail("O atualizador diário não deve expor a página externa do Passo-a-Rezar")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
