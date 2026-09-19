@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=100">
-<link rel="icon" href="favicon-64.png?v=100" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=100" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=100" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=100">
+<link rel="manifest" href="manifest.webmanifest?v=101">
+<link rel="icon" href="favicon-64.png?v=101" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=101" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=101" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=101">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -215,10 +215,32 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 .passo-player-error{display:block;margin-top:6px;color:#9A3412;font-size:.72rem;font-weight:700}
 .passo-fallback{display:inline-block;margin-top:7px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;color:var(--primary);font-size:.74rem;font-weight:800;text-decoration:none;background:#fff}
 .passo-fallback.is-primary{border-color:var(--primary);background:var(--primary);color:#fff}
+
+/* v101 · navegação Android TV por D-pad + calendário próprio */
+.tv-date-open{display:none}
+html.tv-mode .stats-date-input{display:none!important}
+html.tv-mode .tv-date-open{display:inline-flex;align-items:center;justify-content:center;min-width:176px;min-height:52px;border:2px solid var(--border);border-radius:12px;background:#FFFFFF;color:var(--text);font-size:1rem;font-weight:800}
+html.tv-mode #todayPageDate[data-tv-date-open="1"]{display:flex;align-items:center;justify-content:center;min-height:58px;padding:8px 14px;border:2px solid transparent;border-radius:12px;cursor:pointer}
+.tv-date-dialog{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:4vh 5vw;background:rgba(15,23,42,.72);backdrop-filter:blur(8px)}
+.tv-date-dialog.hidden{display:none}
+.tv-date-dialog-card{width:min(900px,88vw);max-height:92vh;overflow:auto;padding:22px;border:3px solid var(--border);border-radius:22px;background:var(--secondary);box-shadow:0 24px 70px rgba(0,0,0,.38)}
+.tv-date-dialog-head{display:grid;grid-template-columns:96px 1fr 96px;align-items:center;gap:14px}
+.tv-date-dialog-head h2{margin:0;text-align:center;font-size:1.65rem}
+.tv-date-dialog-head button,.tv-date-dialog-actions button{min-height:58px;font-size:1.2rem;font-weight:850}
+.tv-cal-month-label{margin:12px 0 8px;text-align:center;font-size:1.25rem;font-weight:850;color:var(--primary)}
+.tv-cal-weekdays,.tv-cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.tv-cal-weekdays{margin-bottom:6px;font-weight:800;text-align:center;color:var(--muted)}
+.tv-cal-grid{min-height:390px}
+.tv-cal-spacer{min-height:54px}
+.tv-cal-day{min-height:54px;border:2px solid var(--border);border-radius:12px;background:#FFFFFF;color:var(--text);font-size:1rem;font-weight:800}
+.tv-cal-day.is-selected{background:var(--primary);color:#FFFFFF;border-color:var(--primary)}
+.tv-cal-day.is-today{box-shadow:inset 0 0 0 3px var(--active)}
+.tv-date-dialog-actions{display:flex;justify-content:center;gap:18px;margin-top:18px}
+html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px solid #FFD54A!important;outline-offset:4px!important;box-shadow:0 0 0 4px rgba(31,42,68,.55)!important;transform:scale(1.045)}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v100</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v101</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -237,8 +259,24 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 </section>
 <section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 </main>
+<div id="tvDateDialog" class="tv-date-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="tvDateDialogTitle" aria-hidden="true">
+  <div class="tv-date-dialog-card">
+    <div class="tv-date-dialog-head">
+      <button id="tvCalPrevMonth" type="button" aria-label="Mês anterior">‹</button>
+      <h2 id="tvDateDialogTitle">Escolher data</h2>
+      <button id="tvCalNextMonth" type="button" aria-label="Mês seguinte">›</button>
+    </div>
+    <div id="tvCalMonthLabel" class="tv-cal-month-label"></div>
+    <div class="tv-cal-weekdays" aria-hidden="true"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+    <div id="tvCalGrid" class="tv-cal-grid" role="grid"></div>
+    <div class="tv-date-dialog-actions">
+      <button id="tvCalToday" type="button">Hoje</button>
+      <button id="tvCalCancel" type="button">Cancelar</button>
+    </div>
+  </div>
+</div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=100"></script>
+<script src="sports-info.js?v=101"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -268,7 +306,7 @@ Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 const SEASON_THEMES={
  spring:{name:"Primavera",colors:["#8ED9B5","#F6E27F","#F7B7D4","#A7D8F0"]},
- summer:{name:"Verão",colors:["#66BDEB","#2AB7B5","#F4D58D","#FFD95A"]},
+ summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]},
  autumn:{name:"Outono",colors:["#E07A3F","#C9A86A","#A7B59A","#8A3A47"]},
  winter:{name:"Inverno",colors:["#1F2A44","#D1D5DB","#CFE8F9","#F3F4F6"]}
 };
@@ -282,6 +320,12 @@ const ASTRONOMICAL_THEMES={
  winterSolstice:{name:"Solstício de Inverno",colors:["#142033","#E3E6EB","#AFC3D9","#7A7A7A"]},
  springEquinox:{name:"Equinócio da Primavera",colors:["#9EDC8B","#F4C4D7","#F7E58A","#BEE3F7"]},
  autumnEquinox:{name:"Equinócio do Outono",colors:["#D97A3F","#A67C52","#7F9A6A","#7A2E3A"]}
+};
+const PERSON_STYLE_PROFILES={
+ Leonor:{age:9,style:"sweet",description:"tons doces, infantis e suaves"},
+ Margarida:{age:15,style:"indie",description:"tons modernos, ligeiramente rock/indie"},
+ Sandra:{age:48,style:"serene",description:"tons serenos, profissionais e confortáveis"},
+ Carlos:{age:44,style:"editorial",description:"tons editoriais, modernos e produtivos"}
 };
 const SEASON_STARTS={
  2026:{spring:"2026-03-20",summer:"2026-06-21",autumn:"2026-09-23",winter:"2026-12-21"},
@@ -315,19 +359,17 @@ function specialThemeForIso(iso){
  if(TRIDUUM_DATES.has(iso))return FESTIVE_THEMES.triduum;
  return null;
 }
-function activeThemeForIso(iso){return specialThemeForIso(iso)||SEASON_THEMES[seasonForIso(iso)]}
+function themeContextForIso(iso){
+ const seasonKey=seasonForIso(iso),base=SEASON_THEMES[seasonKey],special=specialThemeForIso(iso);
+ return {seasonKey,base,special,active:special||base};
+}
+function activeThemeForIso(iso){return themeContextForIso(iso).active}
 function personMicroPalette(p,colors,themeName=""){
- const [a,b,c,d]=colors;
- if(themeName==="Verão"){
-  if(p==="Leonor")return {bg:mixHex(a,"#FFFFFF",.48),accent:mixHex(d,"#FFFFFF",.18)};      // céu claro + sol suave
-  if(p==="Margarida")return {bg:mixHex(b,"#17364B",.58),accent:mixHex(a,"#1A1A1A",.28)}; // mar profundo / indie
-  if(p==="Sandra")return {bg:mixHex(b,"#FFFFFF",.30),accent:mixHex(c,b,.22)};              // água serena + areia
-  return {bg:mixHex(a,"#1F2A44",.60),accent:mixHex(d,"#1F2A44",.32)};                    // azul editorial + luz
- }
- if(p==="Leonor")return {bg:mixHex(c,"#FFFFFF",.24),accent:mixHex(a,"#FFFFFF",.12)};
- if(p==="Margarida")return {bg:mixHex(b,"#1A1A1A",.46),accent:mixHex(d,"#1A1A1A",.22)};
- if(p==="Sandra")return {bg:mixHex(a,"#FFFFFF",.28),accent:mixHex(c,a,.34)};
- return {bg:mixHex(d,"#1F2A44",.58),accent:mixHex(a,"#1F2A44",.30)};
+ const [a,b,c,d]=colors,profile=PERSON_STYLE_PROFILES[p]||PERSON_STYLE_PROFILES.Carlos;
+ if(profile.style==="sweet")return {bg:mixHex(c,"#FFFFFF",.38),accent:mixHex(a,"#FFFFFF",.14)};
+ if(profile.style==="indie")return {bg:mixHex(b,"#172033",.42),accent:mixHex(d,"#111827",.18)};
+ if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.30),accent:mixHex(c,a,.30)};
+ return {bg:mixHex(d,"#1F2A44",.54),accent:mixHex(a,"#1F2A44",.26)};
 }
 function applyDistinctPersonPalettes(colors,themeName){
  const seen=new Set();
@@ -344,7 +386,7 @@ function applyDistinctPersonPalettes(colors,themeName){
  });
 }
 function applyAdaptiveTheme(iso){
- const theme=activeThemeForIso(iso),colors=theme.colors,root=document.documentElement;
+ const ctx=themeContextForIso(iso),theme=ctx.active,colors=theme.colors,root=document.documentElement;
  const lum=colors.map(x=>({x,l:luminance(x)})).sort((m,n)=>m.l-n.l),dark=lum[0].x,light=lum[lum.length-1].x;
  const primary=mixHex(dark,"#1F2A44",.42),bg=mixHex(light,"#FFFFFF",.76),secondary=mixHex(light,"#FFFFFF",.90);
  root.style.setProperty("--season-1",colors[0]);root.style.setProperty("--season-2",colors[1]);root.style.setProperty("--season-3",colors[2]);root.style.setProperty("--season-4",colors[3]);
@@ -352,7 +394,7 @@ function applyAdaptiveTheme(iso){
  root.style.setProperty("--muted",mixHex(primary,"#FFFFFF",.52));root.style.setProperty("--border",mixHex(primary,"#FFFFFF",.76));root.style.setProperty("--active",colors[0]);
  root.style.setProperty("--positive",colors[2]);root.style.setProperty("--alert",colors[1]);root.style.setProperty("--blue",colors[3]);
  applyDistinctPersonPalettes(colors,theme.name);
- document.body.dataset.theme=theme.name;return theme;
+ document.body.dataset.theme=theme.name;document.body.dataset.season=ctx.base.name;document.body.dataset.specialTheme=ctx.special?ctx.special.name:"";return theme;
 }
 function astronomicalSpecialInfo(iso){
  const x=ASTRONOMICAL_SPECIALS[iso];if(!x)return null;
@@ -367,7 +409,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=100;
+const APP_BUILD=101;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -515,6 +557,10 @@ function tvTimelineHeight(){
  const factor=TV_PROFILE==="sala40"?.70:TV_PROFILE==="quarto49"?.73:.71;
  return Math.max(620,Math.min(920,Math.round(h*factor)));
 }
+function tvFormatDate(iso){
+ const [y,m,d]=String(iso||"").split("-");
+ return d&&m&&y?d+"/"+m+"/"+y:String(iso||"");
+}
 function applyTvEnvironment(){
  if(!TV_MODE)return;
  const root=document.documentElement;
@@ -522,16 +568,42 @@ function applyTvEnvironment(){
  root.dataset.tvProfile=TV_PROFILE;
  if((screen.width||innerWidth)<=1280||(screen.height||innerHeight)<=720)root.classList.add("tv-small-screen");
  root.style.setProperty("--tv-timeline-height",tvTimelineHeight()+"px");
- document.querySelectorAll('input[type="date"]').forEach(el=>el.tabIndex=-1);
+ document.querySelectorAll(".stats-controls").forEach(group=>{
+  const input=group.querySelector('input[type="date"]');
+  if(!input)return;
+  input.tabIndex=-1;
+  if(!group.querySelector(".tv-date-open")){
+   const b=document.createElement("button");
+   b.type="button";b.className="tv-date-open";b.dataset.tvDateOpen="1";b.dataset.tvDateControl="1";
+   b.textContent=tvFormatDate(input.value||input.getAttribute("value")||"");
+   b.setAttribute("aria-label","Escolher uma data específica");
+   input.insertAdjacentElement("afterend",b);
+  }
+ });
+ const pageDate=document.querySelector("#todayPageDate");
+ if(pageDate){pageDate.tabIndex=0;pageDate.setAttribute("role","button");pageDate.dataset.tvDateOpen="1";pageDate.setAttribute("aria-label","Escolher uma data específica")}
 }
-function tvFocusable(){
- return [...document.querySelectorAll('button:not([disabled]):not(.hidden),a[href],input:not([disabled]):not([tabindex="-1"]),[tabindex]:not([tabindex="-1"])')]
+function tvVisibleFocusable(root=document){
+ return [...root.querySelectorAll('button:not([disabled]):not(.hidden),a[href],input:not([disabled]):not([tabindex="-1"]),[tabindex]:not([tabindex="-1"])')]
   .filter(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width>0&&r.height>0&&s.visibility!=="hidden"&&s.display!=="none"});
+}
+function tvFocusable(){return tvVisibleFocusable(document)}
+function tvHorizontalContainer(el){
+ return el&&el.closest(".main-tabs,.stats-controls,.today-page-nav,.day-tabs,.person-mode-tabs,.sports-tab-row,.tv-date-dialog-head,.tv-date-dialog-actions");
+}
+function tvHorizontalTarget(current,key){
+ if(key!=="ArrowLeft"&&key!=="ArrowRight")return null;
+ const group=tvHorizontalContainer(current);if(!group)return null;
+ const items=tvVisibleFocusable(group),i=items.indexOf(current);if(i<0)return null;
+ const next=i+(key==="ArrowRight"?1:-1);
+ return next>=0&&next<items.length?items[next]:null;
 }
 function moveTvFocus(key){
  const items=tvFocusable();if(!items.length)return;
  const current=document.activeElement;
  if(!items.includes(current)){(document.querySelector(".main-tab.active")||items[0]).focus();return}
+ const explicit=tvHorizontalTarget(current,key);
+ if(explicit){explicit.focus({preventScroll:false});explicit.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});return}
  const a=current.getBoundingClientRect(),ax=a.left+a.width/2,ay=a.top+a.height/2;
  const dir={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[key];if(!dir)return;
  let best=null,bestScore=Infinity;
@@ -541,19 +613,87 @@ function moveTvFocus(key){
   if(dir[0]&&Math.sign(dx)!==dir[0])continue;
   if(dir[1]&&Math.sign(dy)!==dir[1])continue;
   const primary=dir[0]?Math.abs(dx):Math.abs(dy),secondary=dir[0]?Math.abs(dy):Math.abs(dx);
-  const score=primary+secondary*2.4;
+  if(secondary>primary*1.35)continue;
+  const score=primary+secondary*2.1;
   if(score<bestScore){bestScore=score;best=el}
  }
  if(best){best.focus({preventScroll:false});best.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"})}
  else if(key==="ArrowDown"||key==="ArrowUp")window.scrollBy({top:(key==="ArrowDown"?1:-1)*Math.round(innerHeight*.58),behavior:"smooth"});
 }
+const TV_DATE_MIN="2026-01-01",TV_DATE_MAX="2027-12-31";
+const TV_DATE_STATE={year:2026,month:1,returnEl:null};
+function tvIso(y,m,d){return String(y).padStart(4,"0")+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0")}
+function tvDaysInMonth(y,m){return new Date(Date.UTC(y,m,0)).getUTCDate()}
+function tvMonthShift(y,m,delta){const d=new Date(Date.UTC(y,m-1+delta,1));return {year:d.getUTCFullYear(),month:d.getUTCMonth()+1}}
+function tvDateAddDays(iso,delta){const [y,m,d]=iso.split("-").map(Number),x=new Date(Date.UTC(y,m-1,d+delta));return tvIso(x.getUTCFullYear(),x.getUTCMonth()+1,x.getUTCDate())}
+function tvDateInRange(iso){return iso>=TV_DATE_MIN&&iso<=TV_DATE_MAX}
+function renderTvDatePicker(focusIso=null){
+ const label=document.querySelector("#tvCalMonthLabel"),grid=document.querySelector("#tvCalGrid");if(!label||!grid)return;
+ const y=TV_DATE_STATE.year,m=TV_DATE_STATE.month,selected=statsIso(),today=isoLocalDate();
+ label.textContent=new Intl.DateTimeFormat("pt-PT",{month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,1)));
+ const firstDow=(new Date(Date.UTC(y,m-1,1)).getUTCDay()+6)%7,days=tvDaysInMonth(y,m);
+ let h="";
+ for(let i=0;i<firstDow;i++)h+='<span class="tv-cal-spacer"></span>';
+ for(let d=1;d<=days;d++){
+  const iso=tvIso(y,m,d),disabled=!tvDateInRange(iso);
+  const aria=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,d)));
+  h+='<button type="button" class="tv-cal-day'+(iso===selected?" is-selected":"")+(iso===today?" is-today":"")+'" data-tv-cal-date="'+iso+'"'+(disabled?" disabled":"")+' aria-label="'+aria+'">'+d+'</button>';
+ }
+ grid.innerHTML=h;
+ const prev=tvMonthShift(y,m,-1),next=tvMonthShift(y,m,1);
+ document.querySelector("#tvCalPrevMonth").disabled=tvIso(prev.year,prev.month,1)<TV_DATE_MIN.slice(0,7)+"-01";
+ document.querySelector("#tvCalNextMonth").disabled=tvIso(next.year,next.month,1)>TV_DATE_MAX.slice(0,7)+"-01";
+ const target=focusIso||((selected.slice(0,7)===tvIso(y,m,1).slice(0,7))?selected:null);
+ setTimeout(()=>{const el=(target&&document.querySelector('[data-tv-cal-date="'+target+'"]'))||document.querySelector(".tv-cal-day:not([disabled])");if(el)el.focus()},0);
+}
+function openTvDatePicker(source){
+ if(!TV_MODE)return;
+ const iso=statsIso(),parts=iso.split("-").map(Number);
+ TV_DATE_STATE.year=parts[0];TV_DATE_STATE.month=parts[1];TV_DATE_STATE.returnEl=source||document.activeElement;
+ const dlg=document.querySelector("#tvDateDialog");dlg.classList.remove("hidden");dlg.setAttribute("aria-hidden","false");renderTvDatePicker(iso);
+}
+function closeTvDatePicker(){
+ const dlg=document.querySelector("#tvDateDialog");if(!dlg)return;
+ dlg.classList.add("hidden");dlg.setAttribute("aria-hidden","true");
+ const ret=TV_DATE_STATE.returnEl;setTimeout(()=>{if(ret&&document.contains(ret))ret.focus()},0);
+}
+function tvCalendarMoveFromDay(el,key){
+ const iso=el&&el.dataset.tvCalDate;if(!iso)return false;
+ const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7}[key];if(!delta)return false;
+ const target=tvDateAddDays(iso,delta);if(!tvDateInRange(target))return true;
+ const parts=target.split("-").map(Number),y=parts[0],m=parts[1];
+ if(y!==TV_DATE_STATE.year||m!==TV_DATE_STATE.month){TV_DATE_STATE.year=y;TV_DATE_STATE.month=m;renderTvDatePicker(target)}
+ else{const next=document.querySelector('[data-tv-cal-date="'+target+'"]');if(next)next.focus()}
+ return true;
+}
+function handleTvDateDialogKey(e){
+ const dlg=document.querySelector("#tvDateDialog");if(!dlg||dlg.classList.contains("hidden"))return false;
+ if(e.key==="Escape"||e.key==="Backspace"){e.preventDefault();closeTvDatePicker();return true}
+ const active=document.activeElement;
+ if(active&&active.classList.contains("tv-cal-day")&&["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();tvCalendarMoveFromDay(active,e.key);return true}
+ if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key);return true}
+ if((e.key==="Enter"||e.key===" ")&&active){e.preventDefault();active.click();return true}
+ return false;
+}
+function syncTvDateButtons(){
+ if(!TV_MODE)return;
+ const iso=statsIso();
+ document.querySelectorAll(".tv-date-open[data-tv-date-control]").forEach(b=>b.textContent=tvFormatDate(iso));
+}
 function initTvRemote(){
  if(!TV_MODE)return;
+ document.addEventListener("click",e=>{
+  const open=e.target.closest('[data-tv-date-open="1"]');if(open){e.preventDefault();openTvDatePicker(open);return}
+  const day=e.target.closest("[data-tv-cal-date]");if(day){const iso=day.dataset.tvCalDate;closeTvDatePicker();setStatsDate(iso);return}
+ });
+ document.querySelector("#tvCalPrevMonth").addEventListener("click",()=>{const x=tvMonthShift(TV_DATE_STATE.year,TV_DATE_STATE.month,-1);TV_DATE_STATE.year=x.year;TV_DATE_STATE.month=x.month;renderTvDatePicker()});
+ document.querySelector("#tvCalNextMonth").addEventListener("click",()=>{const x=tvMonthShift(TV_DATE_STATE.year,TV_DATE_STATE.month,1);TV_DATE_STATE.year=x.year;TV_DATE_STATE.month=x.month;renderTvDatePicker()});
+ document.querySelector("#tvCalToday").addEventListener("click",()=>{closeTvDatePicker();setStatsDate(null)});
+ document.querySelector("#tvCalCancel").addEventListener("click",closeTvDatePicker);
  document.addEventListener("keydown",e=>{
+  if(handleTvDateDialogKey(e))return;
   if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key);return}
-  if((e.key==="Enter"||e.key===" ")&&document.activeElement&&document.activeElement!==document.body){
-   const el=document.activeElement;if(el.matches("button,a,[role=button]")){e.preventDefault();el.click()}
-  }
+  if((e.key==="Enter"||e.key===" ")&&document.activeElement&&document.activeElement!==document.body){const el=document.activeElement;if(el.matches("button,a,[role=button]")){e.preventDefault();el.click()}}
  });
  setTimeout(()=>{const first=document.querySelector(".main-tab.active");if(first)first.focus()},350);
 }
@@ -624,7 +764,7 @@ function schoolStatus(p,refDay){
 function countdownLine(p,refDay){return '<div class="countdown-line" style="border-left:6px solid '+D[p].color+'">'+schoolStatus(p,refDay)+'</div>'}
 function selectedStatsDay(){return statsDate?ymdDay(statsDate):currentLocalDay()}
 function statsIso(){return statsDate||isoLocalDate()}
-function syncStatsControls(){qsa(".stats-date-input").forEach(i=>{if(i.value!==statsIso())i.value=statsIso()})}
+function syncStatsControls(){const iso=statsIso();qsa(".stats-date-input").forEach(i=>{if(i.value!==iso)i.value=iso});syncTvDateButtons()}
 
 function weatherSky(cloud){
  const c=Number(cloud);
@@ -2483,6 +2623,7 @@ setInterval(()=>{
 
 async function refreshCurrentView(){
  updateTodayLabel();
+ maybeCelebrateFamilyEvents();
  // A meteorologia é atualizada por renderActiveView(); evita a segunda chamada ao mesmo fluxo.
  await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);
  renderActiveView();
