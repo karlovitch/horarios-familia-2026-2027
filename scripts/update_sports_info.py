@@ -84,13 +84,18 @@ def normalize_time(date_iso,time_text):
     return f"{date_iso}T{hh:02d}:{mm:02d}:00{offset}"
 
 def make_event(src,date_iso,time_text,home,away,comp,text,link=None):
-    channel=next((ch for ch in CHANNELS if ch.lower() in text.lower()),"Transmissão a confirmar")
-    return {
+    explicit=next((ch for ch in CHANNELS if ch.lower() in text.lower()),"")
+    competition=comp.strip() or "Competição a confirmar"
+    channel=explicit or portugal_channel(src["entity"],competition,text)
+    stream=portugal_stream(src["entity"],competition,channel)
+    out={
       "date":date_iso,"start":normalize_time(date_iso,time_text),
       "entity":src["entity"],"sport":src["sport"],"home":home.strip(),"away":away.strip(),
-      "competition":comp.strip() or "Competição a confirmar","location":infer_location(home),
+      "competition":competition,"location":infer_location(home),
       "channel":channel,"match_url":link or src["url"],"source_url":src["url"]
     }
+    if stream: out["stream_url"]=stream
+    return out
 
 def parse_zerozero(src,html):
     soup=BeautifulSoup(html,"html.parser")
@@ -181,7 +186,8 @@ def parse_fpf(src,html):
           "date":date_iso,"start":normalize_time(date_iso,m.group(6)),
           "entity":src["entity"],"sport":src["sport"],"home":home,"away":away,
           "competition":"Seleção Nacional · competição indicada na ficha FPF",
-          "location":infer_location(home),"channel":"Transmissão a confirmar",
+          "location":infer_location(home),"channel":portugal_channel(src["entity"],"Seleção Nacional",text),
+          "stream_url":portugal_stream(src["entity"],"Seleção Nacional"),
           "match_url":src["url"],"source_url":src["url"]
         })
     return found
@@ -197,12 +203,32 @@ def iso_madrid_to_utc(date_iso,time_text):
 
 def portugal_channel(entity,competition,text=""):
     low=(competition+" "+text).lower()
-    if entity=="Seleção Nacional A":return "RTP 1"
+    detected=next((ch for ch in CHANNELS if ch.lower() in low),"")
+    if detected:return detected
+    if entity=="Seleção Nacional A":return "RTP 1 / SPORT TV Portugal"
     if entity=="Seleção Nacional Sub-21":return "Canal 11"
     if entity=="Real Madrid":
-        if "laliga" in low or "la liga" in low:return "DAZN"
+        if "laliga" in low or "la liga" in low:return "DAZN Portugal"
         if "champions" in low:return "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)"
-    return next((ch for ch in CHANNELS if ch.lower() in low),"Transmissão em Portugal a confirmar")
+    if entity in ("FC Porto","Gil Vicente FC","FC Porto / Gil Vicente FC"):
+        if "champions" in low:return "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)"
+        if any(x in low for x in ("liga portugal","allianz","taça da liga")):
+            return "SPORT TV (canal específico a confirmar)"
+    if entity=="Óquei Clube de Barcelos":
+        if "champions" in low:return "FPP TV / WSE TV (emissão específica a confirmar)"
+        return "FPP TV (emissão específica a confirmar)"
+    if "Hóquei em Patins" in entity or "hóquei em patins" in low:
+        return "FPP TV (emissão específica a confirmar)"
+    return "Transmissão em Portugal a confirmar"
+
+def portugal_stream(entity,competition,channel=""):
+    low=(competition+" "+channel).lower()
+    if "rtp" in low:return "https://www.rtp.pt/play/"
+    if "canal 11" in low:return "https://www.fpf.pt/pt/Canal-11"
+    if "fpp tv" in low:return "https://tv.fpp.pt/"
+    if "dazn" in low:return "https://www.dazn.com/pt-PT/home"
+    if "sport tv" in low:return "https://www.sporttv.pt/"
+    return None
 
 def parse_realmadrid(src,html):
     found=[]
@@ -234,7 +260,7 @@ def parse_realmadrid(src,html):
           "entity":"Real Madrid","sport":"Futebol","home":home,"away":away,
           "competition":comp,"location":infer_location(home),
           "channel":portugal_channel("Real Madrid",comp,joined),
-          "stream_url":"https://www.dazn.com/pt-PT/home" if "LALIGA" in comp.upper() else None,
+          "stream_url":portugal_stream("Real Madrid",comp,portugal_channel("Real Madrid",comp,joined)),
           "match_url":src["url"],"source_url":src["url"]
         })
     return found
