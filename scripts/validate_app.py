@@ -86,6 +86,7 @@ required_index_tokens = {
     "estado completo apenas por minuto": "setInterval(refreshScheduleState,UI_REFRESH.scheduleState)",
     "cronómetro desportivo sem rerender total": "function updateSportsLiveClocks",
     "resize agrupado por animation frame": "requestAnimationFrame(()=>",
+    "sincronização global do seletor de data": "function renderActiveView(){\n syncStatsControls();",
 }
 for label, token in required_index_tokens.items():
     if token not in index:
