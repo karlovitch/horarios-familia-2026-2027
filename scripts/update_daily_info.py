@@ -30,11 +30,16 @@ EUROPEAN_DAYS = {
 
 PORTUGAL_DAYS = {
     "04-25": ["Dia da Liberdade"],
+    "05-06": ["Dia Nacional do Azulejo"],
     "05-10": ["Dia Nacional do Seguro"],
+    "05-25": ["Dia Nacional dos Jardins"],
     "06-10": ["Dia de Portugal, de Camões e das Comunidades Portuguesas"],
+    "06-22": ["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],
     "10-05": ["Implantação da República"],
     "11-11": ["Dia Nacional das Raças Autóctones"],
     "12-01": ["Restauração da Independência"],
+    "12-10": ["Dia Nacional dos Direitos Humanos"],
+    "12-22": ["Dia Nacional do Técnico Auxiliar de Saúde"],
 }
 
 LOCAL_DAYS = {
