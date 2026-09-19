@@ -8,14 +8,18 @@ import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import local
 from urllib.parse import quote, urljoin
 
 import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"history-info.json"
-HEADERS={"User-Agent":"HorariosFamilia/1.0 (efemerides historicas; GitHub Pages)"}
+HEADERS={"User-Agent":"HorariosFamilia/2.0 (efemerides historicas; GitHub Pages)"}
+_THREAD=local()
 MONTHS=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
 PORTUGAL_WORDS=(
     "portugal","português","portuguesa","portugueses","lisboa","porto","coimbra","braga","évora",
@@ -23,8 +27,23 @@ PORTUGAL_WORDS=(
     "afonso henriques","d. joão","d. manuel","d. pedro","marquês de pombal","tap","rtp"
 )
 
+def http_session():
+    session=getattr(_THREAD,"session",None)
+    if session is None:
+        retry=Retry(
+            total=3,connect=3,read=3,backoff_factor=.5,
+            status_forcelist=(429,500,502,503,504),
+            allowed_methods=frozenset({"GET"})
+        )
+        session=requests.Session()
+        session.headers.update(HEADERS)
+        session.mount("https://",HTTPAdapter(max_retries=retry))
+        session.mount("http://",HTTPAdapter(max_retries=retry))
+        _THREAD.session=session
+    return session
+
 def get(url):
-    r=requests.get(url,headers=HEADERS,timeout=25)
+    r=http_session().get(url,timeout=25)
     r.raise_for_status()
     return r.text
 
@@ -41,15 +60,15 @@ def wikipedia_article_from_li(li,wiki_url):
         if not href.startswith("/wiki/"):continue
         if any(x in href for x in (":","Ficheiro:","Categoria:","Wikip%C3%A9dia:")):continue
         return urljoin("https://pt.wikipedia.org",href)
-    return wiki_url
+    return ""
 
 def wikipedia_best_match(year,text):
     q=f"{year} {text[:220]}".strip()
     try:
-        r=requests.get(
+        r=http_session().get(
             "https://pt.wikipedia.org/w/api.php",
             params={"action":"query","list":"search","srsearch":q,"srlimit":1,"format":"json","utf8":1},
-            headers=HEADERS,timeout=25
+            timeout=25
         )
         r.raise_for_status()
         hits=r.json().get("query",{}).get("search",[])
@@ -86,7 +105,7 @@ def world_for(day,month):
             for li in soup.find_all("li"):
                 item=parse_year_text(li.get_text(" ",strip=True))
                 if item and 20<=len(item["text"])<=500:
-                    item["source_url"]=wikipedia_article_from_li(li,wiki_url)
+                    item["source_url"]=wikipedia_article_from_li(li,wiki_url) or wikipedia_best_match(item["year"],item["text"])
                     if not any(x["year"]==item["year"] and x["text"]==item["text"] for x in out):
                         out.append(item)
             if out:
@@ -97,7 +116,7 @@ def world_for(day,month):
     # Fallback: API "On this day" da Wikimedia.
     try:
         feed=f"https://api.wikimedia.org/feed/v1/wikipedia/pt/onthisday/events/{month:02d}/{day:02d}"
-        r=requests.get(feed,headers=HEADERS,timeout=25)
+        r=http_session().get(feed,timeout=25)
         r.raise_for_status()
         for ev in r.json().get("events",[]):
             year=str(ev.get("year","")).strip()
