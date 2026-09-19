@@ -73,7 +73,7 @@ for required_icon in ("apple-touch-icon.png", "favicon-64.png"):
         fail(f"Ficheiro de ícone em falta: {required_icon}")
 
 required_index_tokens = {
-    "regra de visibilidade estável da agenda desportiva": "function updateSportsTabVisibility(){",
+    "regra de visibilidade condicional da agenda desportiva": "function updateSportsTabVisibility(iso=statsIso()){",
     "relógio pelo início real da parte": "const total=base*60+elapsed",
     "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=55*60",
     "estado visual do intervalo": "⏸️ INTERVALO",
