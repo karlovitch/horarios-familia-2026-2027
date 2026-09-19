@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=81">
-<link rel="icon" href="icon.svg?v=81" type="image/svg+xml">
-<link rel="shortcut icon" href="icon.svg?v=81" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest?v=82">
+<link rel="icon" href="icon.svg?v=82" type="image/svg+xml">
+<link rel="shortcut icon" href="icon.svg?v=82" type="image/svg+xml">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="application-name" content="Horários Família">
 <title>Horários Família</title>
@@ -48,7 +48,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v81</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v82</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -195,8 +195,9 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=81;
+const APP_BUILD=82;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
+const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
  sports:{loadedAt:0,promise:null},
@@ -809,10 +810,10 @@ function liveClockText(ev){
  }
  return "Em jogo";
 }
-function sportsStatusHTML(ev){
+function sportsStatusHTML(ev,eventIndex){
  const hs=ev.home_score,as=ev.away_score,hasScore=hs!=null&&as!=null,clock=liveClockText(ev),atBreak=clock==="Intervalo";
  if(ev.status==="live"||ev.status==="halftime"){
-  return '<div class="sports-status live"><span>'+(atBreak?'⏸️ INTERVALO':'🔴 AO VIVO')+'</span>'+(hasScore?'<span class="sports-score">'+esc(String(hs))+'–'+esc(String(as))+'</span>':'')+(atBreak?'':'<span class="sports-clock">⏱️ '+esc(clock)+'</span>')+'</div>';
+  return '<div class="sports-status live" data-sports-index="'+eventIndex+'"><span class="sports-live-label">'+(atBreak?'⏸️ INTERVALO':'🔴 AO VIVO')+'</span>'+(hasScore?'<span class="sports-score">'+esc(String(hs))+'–'+esc(String(as))+'</span>':'')+'<span class="sports-clock'+(atBreak?' hidden':'')+'">⏱️ '+esc(atBreak?'':clock)+'</span></div>';
  }
  if(ev.status==="finished"&&hasScore)return '<div class="sports-status final"><span>Resultado final</span><span class="sports-score">'+esc(String(hs))+'–'+esc(String(as))+'</span></div>';
  return "";
@@ -824,16 +825,31 @@ function renderSportsAgenda(iso){
  const dt=dateFromIso(iso),dl=qs("#sportsDayLabel");
  if(dl)dl.textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
  if(!events.length){el.innerHTML='<div class="sports-empty">Sem jogos ou sessões acompanhados nesta data.</div>';return}
- el.innerHTML='<strong>⚽ 🏒 🏎️ Agenda desportiva do dia</strong><div class="sports-grid">'+events.map(ev=>{
+ el.innerHTML='<strong>⚽ 🏒 🏎️ Agenda desportiva do dia</strong><div class="sports-grid">'+events.map((ev,eventIndex)=>{
   const displayTitle=ev.title?esc(ev.title):(esc(ev.home)+' × '+esc(ev.away));
   const direct=isDirectSportsFixture(ev,ev.match_url);
   const match=direct?'<a class="sports-match" href="'+safeUrl(ev.match_url)+'" target="_blank" rel="noopener">'+displayTitle+'</a>':'<span class="sports-match">'+displayTitle+'</span><span class="sports-fixture-pending">Ficha do jogo ainda não disponível</span>';
   const broadcast=sportsBroadcastInfo(ev);
   const stream=broadcast.stream?' · <a href="'+safeUrl(broadcast.stream)+'" target="_blank" rel="noopener">ver transmissão</a>':'';
-  return '<article class="sports-game"><div class="sports-team">'+esc(ev.entity)+' · '+esc(ev.competition||"Competição a confirmar")+'</div>'+match+sportsStatusHTML(ev)+
+  return '<article class="sports-game"><div class="sports-team">'+esc(ev.entity)+' · '+esc(ev.competition||"Competição a confirmar")+'</div>'+match+sportsStatusHTML(ev,eventIndex)+
    '<div class="sports-meta"><span>🕒 '+esc(formatSportsTime(ev))+'</span><span>📍 '+esc(formatSportsLocation(ev))+'</span><span>📺 '+esc(broadcast.channel)+'</span></div>'+
    '<div class="sports-links">'+stream+(ev.source_url?' · <a href="'+safeUrl(ev.source_url)+'" target="_blank" rel="noopener">fonte/calendário</a>':'')+'</div></article>';
  }).join("")+'</div>';
+}
+function updateSportsLiveClocks(){
+ if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;
+ const events=sportsEventsFor(statsIso());
+ qsa(".sports-status.live[data-sports-index]").forEach(status=>{
+  const ev=events[Number(status.dataset.sportsIndex)];
+  if(!ev||!(ev.status==="live"||ev.status==="halftime"))return;
+  const clock=liveClockText(ev),atBreak=clock==="Intervalo";
+  const label=status.querySelector(".sports-live-label"),clockEl=status.querySelector(".sports-clock");
+  if(label)label.textContent=atBreak?"⏸️ INTERVALO":"🔴 AO VIVO";
+  if(clockEl){
+   clockEl.classList.toggle("hidden",atBreak);
+   if(!atBreak)clockEl.textContent="⏱️ "+clock;
+  }
+ });
 }
 async function loadSportsInfo({force=false}={}){
  const state=DATA_LOAD_STATE.sports;
@@ -1611,7 +1627,7 @@ function renderOverviewWeek(referenceIso){
     }
     if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="overview-week-event" style="top:'+overviewWeekTop("14:00")+'%;height:'+overviewWeekHeight("14:00","18:30")+'%;background:'+i.color+';color:'+i.textColor+'"><b>14:00–18:30</b><span>Reuniões de Avaliação Intercalar</span></div>';
    }
-   if(iso===isoLocalDate()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="overview-week-now-line '+(p===people[0]?'first':'')+'" style="top:'+overviewWeekTop(String(Math.floor(n/60)).padStart(2,"0")+":"+String(Math.floor(n%60)).padStart(2,"0"))+'%"></div>'}
+   if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin())),pct=Math.max(0,Math.min(100,(n-START)*100/(END-START)));h+='<div class="overview-week-now-line '+(p===people[0]?'first':'')+'" style="top:'+pct+'%"></div>'}
    h+='</div>';
   }
  });
@@ -1656,7 +1672,7 @@ function renderOverview(){
   }
   h+='</div>';
  }
- if(iso===isoLocalDate()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  timeline.innerHTML=h;
 }
 const COMMON_REST_OPENINGS=[
@@ -1737,7 +1753,7 @@ function renderTodayTimeline(iso,d){
   }
   h+='</div>';
  }
- if(iso===isoLocalDate()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  timeline.innerHTML=h;
 }
 function renderToday(){
@@ -1777,7 +1793,7 @@ function renderPersonDayTimeline(p,iso){
   if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
  }
  h+='</div>';
- if(iso===isoLocalDate()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  tl.style.gridTemplateColumns=isMobileTimeline()?"30px minmax(0,1fr)":"50px minmax(0,1fr)";
  tl.innerHTML=h;
 }
@@ -1799,7 +1815,7 @@ function renderPersonWeekTimeline(p,iso){
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[dayIso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
   }
-  if(dayIso===isoLocalDate()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line contained" style="top:'+timelineY(n)+'px"></div>'}
+  if(dayIso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line contained" style="top:'+timelineY(n)+'px"></div>'}
   h+='</div>';
  });
  tl.innerHTML=h;
@@ -1821,12 +1837,35 @@ function renderPerson(){
   renderPersonDayTimeline(p,iso);
  }
 }
+function updateNowLines(){
+ if(document.visibilityState&&document.visibilityState!=="visible")return;
+ const n=nowMin(),visible=n>=START&&n<=END;
+ const clamped=Math.max(START,Math.min(END,n)),px=timelineY(clamped);
+ const pct=Math.max(0,Math.min(100,(clamped-START)*100/(END-START)));
+ qsa(".now-line").forEach(line=>{
+  line.style.display=visible?"":"none";
+  if(visible)line.style.top=px+"px";
+ });
+ qsa(".overview-week-now-line").forEach(line=>{
+  line.style.display=visible?"":"none";
+  if(visible)line.style.top=pct+"%";
+ });
+}
+function refreshScheduleState(){
+ if(document.visibilityState&&document.visibilityState!=="visible")return;
+ if(statsIso()!==isoLocalDate())return;
+ if(view==="overview")renderOverview();
+ else if(view==="today"){renderCountdowns();renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()))}
+ else if(person)renderPerson();
+}
 function renderActiveView(){
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
  else if(view==="sports"){applyAdaptiveTheme(statsIso());renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
  else if(person)renderPerson();
  updateSportsTabVisibility(statsIso());
+ updateNowLines();
+ if(view==="sports")updateSportsLiveClocks();
 }
 function setStatsDate(value){
  statsDate=value||null;
@@ -1879,18 +1918,24 @@ qs("#goTodayBtn").addEventListener("click",()=>{
 show("today");
 Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActiveView());
 setTimeout(maybeCelebrateFamilyEvents,450);
-window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()))});
+let resizeFrame=0;
+window.addEventListener("resize",()=>{
+ if(resizeFrame)cancelAnimationFrame(resizeFrame);
+ resizeFrame=requestAnimationFrame(()=>{
+  resizeFrame=0;
+  if(view==="overview")renderOverview();
+  else if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()));
+  else if(person)renderPerson();
+  updateNowLines();
+ });
+},{passive:true});
+setInterval(updateNowLines,UI_REFRESH.nowLine);
+setInterval(refreshScheduleState,UI_REFRESH.scheduleState);
+setInterval(updateSportsLiveClocks,UI_REFRESH.sportsClock);
 setInterval(()=>{
- if(view==="overview")renderOverview();
- else if(view==="today"){renderCountdowns();renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()))}
- else if(person)renderPerson();
-},30000);
-setInterval(()=>{
- if(view==="sports"&&sportsEventsFor(statsIso()).some(e=>e.status==="live"))renderSportsAgenda(statsIso());
-},1000);
-setInterval(()=>{
+ if(document.visibilityState&&document.visibilityState!=="visible")return;
  loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderSportsAgenda(statsIso())});
-},300000);
+},UI_REFRESH.sportsData);
 async function refreshCurrentView(){
  updateTodayLabel();
  await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);
