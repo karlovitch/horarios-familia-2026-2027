@@ -142,6 +142,10 @@ required_index_tokens = {
     "ambiente adaptativo universal": "function applyAdaptiveEnvironment()",
     "seletor Hoje antes da data": 'class="stats-controls today-stats-controls"',
     "data Hoje após seletor": 'class="screen-head today-screen-head"',
+    "título Hoje dinâmico": 'id="todayHeading"',
+    "dia da semana quando não é hoje": 'isToday?"Hoje":weekday.charAt(0).toUpperCase()+weekday.slice(1)',
+    "subtítulo sem duplicar dia da semana": 'qs("#todayDay").textContent=isToday?pretty:fullDate',
+
     "geolocalização de alta precisão sem cache": "maximumAge:0",
     "melhor fix GPS por accuracy": "candidate.accuracy<=WEATHER_CONFIG.goodAccuracy",
     "cache de localização v98": 'weatherCurrentLocationV98',
