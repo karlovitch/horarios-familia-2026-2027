@@ -123,6 +123,12 @@ required_index_tokens = {
     "cache de localização deduplicada": "locationPromise:null",
     "media query reutilizada": 'const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)")',
     "NodeList sem cópia intermédia": "qsa=s=>document.querySelectorAll(s)",
+    "modo Android TV explícito": 'TV_PARAMS.get("tv")==="1"',
+    "perfil TV persistente na URL": 'TV_PARAMS.get("profile")||"auto"',
+    "navegação D-pad": "function moveTvFocus(key)",
+    "foco TV visível": 'outline:5px solid #FFD54A',
+    "altura TV adaptativa": "function tvTimelineHeight()",
+
     "check de versão leve": 'fetch("version.json?__version_check="+Date.now()',
     "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",
     "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',

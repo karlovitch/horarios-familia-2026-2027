@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=89">
-<link rel="icon" href="favicon-64.png?v=89" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=89" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=89" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=89">
+<link rel="manifest" href="manifest.webmanifest?v=90">
+<link rel="icon" href="favicon-64.png?v=90" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=90" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=90" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=90">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -104,10 +104,56 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
  .overview-week-person,.overview-week-day{font-size:.84rem;padding:5px 1px}
  .overview-week-event{font-size:.69rem}.overview-week-event b{font-size:.72rem}.overview-week-empty,.overview-week-special{font-size:.69rem}
 }
+
+/* v90 · modo Android TV / 10-foot UI */
+html.tv-mode{scroll-behavior:smooth}
+html.tv-mode body{overscroll-behavior:none}
+html.tv-mode .top{position:relative;padding:1.5vh 3.2vw 1.3vh}
+html.tv-mode .top h1{font-size:1.75rem}
+html.tv-mode .top p{font-size:1rem}
+html.tv-mode main{max-width:none;width:100%;padding:1.6vh 3.2vw 5vh}
+html.tv-mode .main-tabs{gap:.65vw;padding-bottom:1.2vh}
+html.tv-mode .main-tab,html.tv-mode .day-tab,html.tv-mode .person-mode-btn,html.tv-mode .stats-step,html.tv-mode .stats-today,html.tv-mode .today-jump,html.tv-mode .sports-tab-btn{min-height:52px;font-size:1rem;border-width:2px}
+html.tv-mode .main-tab{padding:11px 6px}
+html.tv-mode .weather-strip{max-width:94vw;font-size:1rem;padding:10px 16px;border-width:2px}
+html.tv-mode .today-page-nav{grid-template-columns:96px minmax(0,1fr) 96px;min-height:76px}
+html.tv-mode .today-page-arrow{width:96px;height:76px;font-size:3rem}
+html.tv-mode .today-page-date{font-size:1.2rem}
+html.tv-mode .stats-controls{gap:10px;padding:10px 14px}
+html.tv-mode .stats-controls strong{font-size:1rem}
+html.tv-mode .stats-date-input{font-size:1rem;max-width:170px}
+html.tv-mode .screen-head h2{font-size:1.4rem}
+html.tv-mode .screen-head p{font-size:1rem}
+html.tv-mode .timeline:not(.compact-overview),html.tv-mode .person-timeline.week-view:not(.compact-overview){height:var(--tv-timeline-height,760px)}
+html.tv-mode .overview-week-cell,html.tv-mode .overview-week-day{height:var(--tv-timeline-height,760px)}
+html.tv-mode .timeline-scroll{overflow:visible}
+html.tv-mode .time-label{font-size:1rem}
+html.tv-mode .lane-head{height:58px;font-size:1.15rem;padding:8px 4px}
+html.tv-mode .block{font-size:1rem;line-height:1.02;padding:4px 5px}
+html.tv-mode .block strong{font-size:1.03rem}
+html.tv-mode .block em{font-size:.95rem}
+html.tv-mode .overview-week-event{font-size:.78rem}
+html.tv-mode .overview-week-event b{font-size:.82rem}
+html.tv-mode .lane-message{top:64px;font-size:1rem}
+html.tv-mode .install{display:none!important}
+html.tv-mode :is(button,a,input,[tabindex]):focus-visible{outline:5px solid #FFD54A!important;outline-offset:4px!important;box-shadow:0 0 0 3px rgba(31,42,68,.45)!important;transform:scale(1.035);position:relative;z-index:80}
+html.tv-mode .stats-date-input{pointer-events:none}
+html.tv-mode.tv-small-screen .top h1{font-size:1.55rem}
+html.tv-mode.tv-small-screen .main-tab{font-size:.9rem}
+html.tv-mode.tv-small-screen .weather-strip{font-size:.9rem}
+html.tv-mode.tv-small-screen .block{font-size:.92rem}
+html.tv-mode.tv-small-screen .block strong{font-size:.95rem}
+html.tv-mode[data-tv-profile="sala40"]{font-size:18px}
+html.tv-mode[data-tv-profile="sala40"] .block{font-size:1.06rem}
+html.tv-mode[data-tv-profile="sala40"] .block strong{font-size:1.09rem}
+html.tv-mode[data-tv-profile="quarto49"]{font-size:17px}
+html.tv-mode[data-tv-profile="quarto49"] .block{font-size:.98rem}
+html.tv-mode[data-tv-profile="quarto49"] .block strong{font-size:1.01rem}
+html.tv-mode[data-tv-profile="cozinha-auto"]{font-size:clamp(16px,1.05vw,19px)}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v89</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v90</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -255,7 +301,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=89;
+const APP_BUILD=90;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
@@ -359,9 +405,62 @@ Carlos:{
  exclusions:["2026-11-12","2026-11-13"]
 }
 };
+const TV_PARAMS=new URLSearchParams(location.search);
+const TV_MODE=TV_PARAMS.get("tv")==="1"||/HorariosFamiliaTV|Android TV|\bTV\b/i.test(navigator.userAgent);
+const TV_PROFILE=TV_MODE?(TV_PARAMS.get("profile")||"auto"):"";
+function tvTimelineHeight(){
+ const h=Math.max(480,window.innerHeight||720);
+ const factor=TV_PROFILE==="sala40"?.70:TV_PROFILE==="quarto49"?.73:.71;
+ return Math.max(620,Math.min(920,Math.round(h*factor)));
+}
+function applyTvEnvironment(){
+ if(!TV_MODE)return;
+ const root=document.documentElement;
+ root.classList.add("tv-mode");
+ root.dataset.tvProfile=TV_PROFILE;
+ if((screen.width||innerWidth)<=1280||(screen.height||innerHeight)<=720)root.classList.add("tv-small-screen");
+ root.style.setProperty("--tv-timeline-height",tvTimelineHeight()+"px");
+ document.querySelectorAll('input[type="date"]').forEach(el=>el.tabIndex=-1);
+}
+function tvFocusable(){
+ return [...document.querySelectorAll('button:not([disabled]):not(.hidden),a[href],input:not([disabled]):not([tabindex="-1"]),[tabindex]:not([tabindex="-1"])')]
+  .filter(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width>0&&r.height>0&&s.visibility!=="hidden"&&s.display!=="none"});
+}
+function moveTvFocus(key){
+ const items=tvFocusable();if(!items.length)return;
+ const current=document.activeElement;
+ if(!items.includes(current)){(document.querySelector(".main-tab.active")||items[0]).focus();return}
+ const a=current.getBoundingClientRect(),ax=a.left+a.width/2,ay=a.top+a.height/2;
+ const dir={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[key];if(!dir)return;
+ let best=null,bestScore=Infinity;
+ for(const el of items){
+  if(el===current)continue;
+  const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,dx=x-ax,dy=y-ay;
+  if(dir[0]&&Math.sign(dx)!==dir[0])continue;
+  if(dir[1]&&Math.sign(dy)!==dir[1])continue;
+  const primary=dir[0]?Math.abs(dx):Math.abs(dy),secondary=dir[0]?Math.abs(dy):Math.abs(dx);
+  const score=primary+secondary*2.4;
+  if(score<bestScore){bestScore=score;best=el}
+ }
+ if(best){best.focus({preventScroll:false});best.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"})}
+ else if(key==="ArrowDown"||key==="ArrowUp")window.scrollBy({top:(key==="ArrowDown"?1:-1)*Math.round(innerHeight*.58),behavior:"smooth"});
+}
+function initTvRemote(){
+ if(!TV_MODE)return;
+ document.addEventListener("keydown",e=>{
+  if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key);return}
+  if((e.key==="Enter"||e.key===" ")&&document.activeElement&&document.activeElement!==document.body){
+   const el=document.activeElement;if(el.matches("button,a,[role=button]")){e.preventDefault();el.click()}
+  }
+ });
+ setTimeout(()=>{const first=document.querySelector(".main-tab.active");if(first)first.focus()},350);
+}
+applyTvEnvironment();
+initTvRemote();
+
 let view="overview",selectedDay=null,person=null,personMode="day",overviewMode="day",statsDate=null,installPrompt=null;
 const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)");
-const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?700:800,laneHeaderHeight=()=>isMobileTimeline()?46:52,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
+const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>!TV_MODE&&MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>TV_MODE?tvTimelineHeight():(isMobileTimeline()?700:800),laneHeaderHeight=()=>TV_MODE?58:(isMobileTimeline()?46:52),timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
 function ymdDay(s){const [y,m,d]=s.split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/MS_DAY)}
 function currentLocalDay(){const n=new Date();return Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/MS_DAY)}
 const HOLIDAY_DAYS=new Set([...NATIONAL_HOLIDAYS,...LOCAL_NO_CLASS_DAYS].map(ymdDay));
@@ -2145,6 +2244,16 @@ setTimeout(maybeCelebrateFamilyEvents,450);
 
 /* Só é necessário recalcular a geometria quando muda o breakpoint que altera
    a altura/cabeçalho da grelha; redimensionamentos dentro do mesmo modo ficam ao CSS. */
+function handleTvViewportChange(){
+ if(!TV_MODE)return;
+ document.documentElement.style.setProperty("--tv-timeline-height",tvTimelineHeight()+"px");
+ handleTimelineBreakpointChange();
+}
+let tvResizeTimer=0;
+if(TV_MODE)window.addEventListener("resize",()=>{
+ clearTimeout(tvResizeTimer);tvResizeTimer=setTimeout(handleTvViewportChange,180);
+},{passive:true});
+
 function handleTimelineBreakpointChange(){
  if(view==="overview")renderOverview();
  else if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()));
