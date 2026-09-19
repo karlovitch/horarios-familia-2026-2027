@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-19T14:00:00Z",
+  "generated_at": "2026-09-19T14:25:38.543956+00:00",
   "sources": {
-    "world": "Wikipédia em português — páginas de efemérides por data",
+    "world": "Wikipédia em português — secção Eventos históricos das páginas de cada data",
     "portugal": "e-Cultura / Centro Nacional de Cultura — Efemérides"
   },
   "dates": {
@@ -28,6 +28,11 @@
           "year": "1975",
           "text": "Toma posse o VI Governo Provisório, chefiado pelo almirante José Pinheiro de Azevedo.",
           "source_url": "https://memoriasdarevolucao.pt/index.php/rtp/diario-do-prec"
+        },
+        {
+          "year": "1872",
+          "text": "A 19 de setembro de 1872, nasce, em Lisboa, o ilustrador português Alfredo de Morais. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-9"
         }
       ]
     },
@@ -49,6 +54,4111 @@
           "year": "1846",
           "text": "São novamente suspensas as garantias constitucionais por 30 dias, no contexto da crise política que conduziu à Patuleia.",
           "source_url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_da_Maria_da_Fonte"
+        }
+      ]
+    },
+    "01-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1930",
+          "text": "A 5 de janeiro de 1930, nasce o poeta e importante resistente anti-fascista português Carlos Aboim Inglez. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-1"
+        },
+        {
+          "year": "2008",
+          "text": "A 5 de janeiro de 2008, morreu o escritor, editor, polemista, epistológrafo, crítico de literatura e comunista português Luiz José Gomes Machado Guerreiro Pacheco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-1"
+        },
+        {
+          "year": "2021",
+          "text": "A 5 de janeiro de 2021 faleceu João Cutileiro, um dos maiores escultores contemporâneos portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-1"
+        }
+      ]
+    },
+    "01-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1942",
+          "text": "A 3 de janeiro de 1942, nasceu o escritor, tradutor e político português Vasco Navarro da Graça Moura. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-1"
+        }
+      ]
+    },
+    "01-07": {
+      "world": [],
+      "portugal": []
+    },
+    "01-04": {
+      "world": [],
+      "portugal": []
+    },
+    "01-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1951",
+          "text": "A 8 de janeiro de 1951, nasceu o maestro português José Carlos Barbosa Calvário. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-1"
+        }
+      ]
+    },
+    "01-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "A 2 de janeiro de 1923, nasceu o escritor surrealista português Mário Henrique Baptista Leiria. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-1"
+        }
+      ]
+    },
+    "01-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1888",
+          "text": "No dia de janeiro de 1888 nasceu Emmerico Nunes, um dos pioneiros da banda desenhada em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-1"
+        },
+        {
+          "year": "2006",
+          "text": "No dia 6 de janeiro de 2006 faleceu Ilse Losa, escritora portuguesa de origem alemã e de ascendência judaica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-1"
+        }
+      ]
+    },
+    "01-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1669",
+          "text": "A 1 de janeiro de 1669, o Papa Clemente IX reconhece a Restauração da Independência de Portugal Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-1"
+        },
+        {
+          "year": "1859",
+          "text": "A 1 de janeiro de 1859, nasceu o pintor português Henrique César de Araújo Pousão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-1"
+        },
+        {
+          "year": "1884",
+          "text": "A 1 de janeiro de 1884, nasceu o poeta português Joaquim Afonso Fernandes Duarte. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-1"
+        },
+        {
+          "year": "1921",
+          "text": "A 1 de janeiro de 1921, nasceu o poeta e letrista português António Sousa Freitas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-1"
+        },
+        {
+          "year": "2021",
+          "text": "A 1 de janeiro de 2021, faleceu o fadista português Carlos do Carmo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-1"
+        }
+      ]
+    },
+    "01-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1926",
+          "text": "A 10 de janeiro de 1926 nasceu Júlio Pomar, um dos maiores nomes da arte portuguesa do último século. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-1"
+        }
+      ]
+    },
+    "01-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1980",
+          "text": "A 9 de janeiro de 1980, morreu o escritor surrealista português Mário Henrique Baptista Leiria. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-1"
+        }
+      ]
+    },
+    "01-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1890",
+          "text": "Em 11 de janeiro de 1890, o Reino Unido lança um ultimato a Portugal, exigindo a retirada militar dos territórios entre Angola e Moçambique, sob a ameaça do rompimento de relações entre as duas nações europeias. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-1"
+        },
+        {
+          "year": "1948",
+          "text": "A 11 de janeiro de 1948 nasceu, em Coimbra, Al Berto - um dos nomes mais singulares da poesia portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-1"
+        }
+      ]
+    },
+    "01-14": {
+      "world": [],
+      "portugal": []
+    },
+    "01-12": {
+      "world": [],
+      "portugal": []
+    },
+    "01-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1922",
+          "text": "A 13 de janeiro de 1922, nasceu a escritora e tradutora portuguesa Maria Ondina Braga. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-1"
+        }
+      ]
+    },
+    "01-15": {
+      "world": [],
+      "portugal": []
+    },
+    "01-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1537",
+          "text": "A 16 de janeiro de 1537, por iniciativa do rei D. João III, dando origem à Universidade de Coimbra. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-1"
+        }
+      ]
+    },
+    "01-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "A 19 de janeiro de 1923, nasce Eugénio de Andrade, um dos maiores poetas portugueses contemporâneos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-1"
+        },
+        {
+          "year": "2007",
+          "text": "A 19 de janeiro de 2007, morreu a poetisa portuguesa Fiama Hasse Pais Brandão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-1"
+        }
+      ]
+    },
+    "01-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1893",
+          "text": "A 20 de janeiro de 1893, é criado o Museu Etnográfico, localizado nas antigas áreas conventuais do Mosteiro dos Jerónimos em Lisboa, por iniciativa de José Leite de Vasconcelos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-1"
+        },
+        {
+          "year": "1918",
+          "text": "A 20 de janeiro de 1918, nasceu o cantor português Maximiano de Sousa, mais conhecido por Max. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-1"
+        },
+        {
+          "year": "2016",
+          "text": "A 20 de janeiro de 2016, morreu o arquiteto português Nuno Teotónio Pereira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-1"
+        }
+      ]
+    },
+    "01-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Adolfo Correia da Rocha, conhecido pelo pseudónimo Miguel Torga, foi um dos mais influentes poetas e escritores portugueses do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-1"
+        }
+      ]
+    },
+    "01-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1961",
+          "text": "A 21 de janeiro de 1961, morreu o ator, encenador e declamador português João Villaret. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-1"
+        }
+      ]
+    },
+    "01-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1808",
+          "text": "A 23 de janeiro de 1808, a família real portuguesa chega ao Brasil e desembarca em Salvador Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-1"
+        },
+        {
+          "year": "1905",
+          "text": "A 23 de janeiro de 1905, faleceu Rafael Bordalo Pinheiro, considerado o maior artista plástico português do século XIX Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-1"
+        },
+        {
+          "year": "1971",
+          "text": "A 23 de janeiro de 1971, morreu o escritor português Mário Paes da Cunha e Sá. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-1"
+        }
+      ]
+    },
+    "01-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1969",
+          "text": "A 24 de janeiro de 1969, morreu o pensador, pedagogo e político português António Sérgio de Sousa Júnior. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-1"
+        }
+      ]
+    },
+    "01-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1462",
+          "text": "A 22 de janeiro de 1462, os navegadores portugueses descobrem a ilha de S. Vicente, em Cabo Verde Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-1"
+        },
+        {
+          "year": "1815",
+          "text": "A 22 de janeiro de 1815, faleceu no Porto o engenheiro e arquiteto Carlos Cruz Amarante. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-1"
+        }
+      ]
+    },
+    "01-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1935",
+          "text": "A 26 de janeiro de 1935, nasceu a pintora portuguesa Maria Paula Figueiroa Rego. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-1"
+        }
+      ]
+    },
+    "01-27": {
+      "world": [],
+      "portugal": []
+    },
+    "01-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1662",
+          "text": "A 25 de janeiro de 1662, nasceu o diplomata português D. Luís da Cunha. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-1"
+        },
+        {
+          "year": "1906",
+          "text": "A 25 de janeiro de 1906, é criado o Jardim Colonial (atual Jardim Botânico Tropical, em Lisboa) Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-1"
+        },
+        {
+          "year": "2017",
+          "text": "Biólogo, oceanógrafo, ativista da Cultura Científica era o português com maior prestígio internacional nos domínios que cultivou, faleceu a 25 de janeiro de 2017, em Lisboa, aos 89 anos de idade. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-1"
+        }
+      ]
+    },
+    "01-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1921",
+          "text": "A 29 de janeiro de 1921, morreu o poeta e crítico literário português António Gomes Leal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-1"
+        }
+      ]
+    },
+    "01-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1881",
+          "text": "A 30 de janeiro de 1881, sai a primeira edição do Portugal Contemporâneo do historiador Oliveira Martins. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-1"
+        },
+        {
+          "year": "1922",
+          "text": "A 30 de janeiro de 1922, nasceu o arquiteto português Nuno Teotónio Pereira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-1"
+        }
+      ]
+    },
+    "01-31": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1891",
+          "text": "No dia 31 de janeiro de 1891, na cidade do Porto, registou-se um levantamento militar contra as cedências do Governo (e da Coroa) ao ultimato britânico de 1890 por causa do Mapa Cor-de-Rosa, que pretendia ligar, por terra, Angola a Moçambique. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-1"
+        },
+        {
+          "year": "1891",
+          "text": "A 31 de janeiro de 1891, nasceu o poeta e editor português Luís de Montalvor. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-1"
+        }
+      ]
+    },
+    "01-28": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1916",
+          "text": "A 28 de janeiro de 1916 nasceu Vergílio Ferreira, romancista e ensaísta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-1"
+        },
+        {
+          "year": "1924",
+          "text": "A 28 de janeiro de 1924, morreu Teófilo Braga, o primeiro Presidente do Governo Provisório da República Portuguesa Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-1"
+        }
+      ]
+    },
+    "02-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1908",
+          "text": "A 1 de fevereiro de 1908, o Rei D. Carlos e o Príncipe D. Luís Filipe foram assassinados na Praça do Comércio em Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-2"
+        },
+        {
+          "year": "1937",
+          "text": "A 1 de fevereiro de 1937, nasce o jornalista, crítico, tradutor e escritor português Fernando Assis Pacheco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-2"
+        },
+        {
+          "year": "1973",
+          "text": "A 1 de fevereiro de 1973, morreu o cantor e poeta português Edmundo Alberto de Bettencourt. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-2"
+        }
+      ]
+    },
+    "02-03": {
+      "world": [],
+      "portugal": []
+    },
+    "02-02": {
+      "world": [],
+      "portugal": []
+    },
+    "02-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1799",
+          "text": "A 4 de fevereiro de 1799 nasceu Almeida Garrett, o percursor do Romantismo em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-2"
+        }
+      ]
+    },
+    "02-05": {
+      "world": [],
+      "portugal": []
+    },
+    "02-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1948",
+          "text": "No dia 6 de fevereiro de 1948, há precisamente 75 anos, fez-se história na história do Jazz em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-2"
+        },
+        {
+          "year": "1971",
+          "text": "A 6 de fevereiro de 1971, morre, em Lisboa, o ilustrador português Alfredo de Morais. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-2"
+        }
+      ]
+    },
+    "02-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1935",
+          "text": "No dia 7 de fevereiro de 1935 nasceu João Bénard da Costa, o mais importante divulgador e defensor do cinema em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-2"
+        },
+        {
+          "year": "1952",
+          "text": "A 7 de fevereiro de 1952, morreu o poeta e professor português Sebastião da Gama. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-2"
+        }
+      ]
+    },
+    "02-08": {
+      "world": [],
+      "portugal": []
+    },
+    "02-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1999",
+          "text": "No dia 10 de fevereiro de 1999, faleceu Maria de Lourdes Ribeiro, mais conhecida por Maluda, uma das artistas mais reconhecidas em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-2"
+        }
+      ]
+    },
+    "02-09": {
+      "world": [],
+      "portugal": []
+    },
+    "02-11": {
+      "world": [],
+      "portugal": []
+    },
+    "02-12": {
+      "world": [],
+      "portugal": []
+    },
+    "02-15": {
+      "world": [],
+      "portugal": []
+    },
+    "02-14": {
+      "world": [],
+      "portugal": []
+    },
+    "02-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1906",
+          "text": "No dia 13 de fevereiro de 1906 nasceu Agostinho da Silva, professor e investigador português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-2"
+        },
+        {
+          "year": "2002",
+          "text": "A 13 de fevereiro de 2002, morre o poeta e importante resistente anti-fascista português Carlos Aboim Inglez. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-2"
+        }
+      ]
+    },
+    "02-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1889",
+          "text": "No dia 16 de fevereiro de 1889 faleceu Soares dos Reis, um importante escultor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-2"
+        },
+        {
+          "year": "1925",
+          "text": "A 16 de fevereiro de 1925 nasceu Carlos Paredes, um dos grandes mestres da guitarra portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-2"
+        },
+        {
+          "year": "s/d",
+          "text": "Eduardo Gageiro é um dos mais premiados e conhecidos fotojornalistas portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-2"
+        },
+        {
+          "year": "1979",
+          "text": "A 16 de fevereiro de 1979, morreu o escultor português Henrique Araújo Moreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-2"
+        }
+      ]
+    },
+    "02-18": {
+      "world": [],
+      "portugal": []
+    },
+    "02-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1830",
+          "text": "A 17 de fevereiro de 1830, faleceu o compositor Marcos Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-2"
+        }
+      ]
+    },
+    "02-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1997",
+          "text": "A 19 de fevereiro de 1997, morreu o professor e poeta português Rómulo Vasco da Gama de Carvalho. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-2"
+        }
+      ]
+    },
+    "02-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1978",
+          "text": "A 20 de fevereiro de 1978, morreu o escritor português Vitorino Nemésio. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-2"
+        }
+      ]
+    },
+    "02-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2009",
+          "text": "A 21 de fevereiro de 2009, morreu o escultor português António Augusto Lagoa Henriques. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-2"
+        }
+      ]
+    },
+    "02-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2002",
+          "text": "No dia 22 de fevereiro de 2002 faleceu Marcelino Vespeira, figura incontornável da pintura portuguesa contemporânea. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-2"
+        }
+      ]
+    },
+    "02-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1987",
+          "text": "A 23 de fevereiro de 1987, morreu o cantor e compositor português José Manuel Cerqueira Afonso dos Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-2"
+        }
+      ]
+    },
+    "02-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1843",
+          "text": "No dia 24 de fevereiro de 1843 nasceu Teófilo Braga - Poeta, Político, Ensaísta e Presidente da República. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-2"
+        },
+        {
+          "year": "1927",
+          "text": "No dia 24 de fevereiro de 1927 nasceu o escritor e poeta português David Mourão-Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-2"
+        }
+      ]
+    },
+    "02-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1855",
+          "text": "No dia 25 de fevereiro de 1855 nasceu Cesário Verde, um dos precursores do modernismo em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-2"
+        }
+      ]
+    },
+    "02-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1929",
+          "text": "A 26 de fevereiro de 1929, nasceu o poeta português Fernando Echevarría. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-2"
+        }
+      ]
+    },
+    "02-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1666",
+          "text": "A 27 de fevereiro de 1666, faleceu D. Luísa de Gusmão, mulher do rei D. João IV de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-2"
+        },
+        {
+          "year": "s/d",
+          "text": "Rui de Moura Ribeiro Belo foi um poeta e ensaísta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-2"
+        }
+      ]
+    },
+    "02-28": {
+      "world": [],
+      "portugal": []
+    },
+    "03-03": {
+      "world": [],
+      "portugal": []
+    },
+    "03-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1898",
+          "text": "No dia 2 de março de 1898 nasceu Amélia Rey Colaço, uma das principais atrizes portuguesas da primeira metade do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-3"
+        },
+        {
+          "year": "1902",
+          "text": "A 2 de março de 1902, nasce o político português Bento António Gonçalves. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-3"
+        },
+        {
+          "year": "1947",
+          "text": "A 2 de março de 1947, morreu o poeta e editor português Luís de Montalvor. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-3"
+        },
+        {
+          "year": "1961",
+          "text": "No dia 2 de março de 1961 faleceu Suart Carvalhais, nome incontornável das artes e da cultura portuguesa do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-3"
+        }
+      ]
+    },
+    "03-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Eurico Sidónio Gouveia Xavier Lopes da Fonseca foi o principal especialista português em astronáutica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-3"
+        },
+        {
+          "year": "1996",
+          "text": "A 1 de março de 1996 faleceu Vergílio Ferreira, romancista e ensaísta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-3"
+        }
+      ]
+    },
+    "03-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1869",
+          "text": "A 4 de março de 1869, nasce o poeta português Eugénio de Castro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-3"
+        }
+      ]
+    },
+    "03-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "No dia 5 de março de 1917 faleceu Manuel de Arriaga, um dos políticos portugueses mais notáveis da transição do século XIX para o século XX, e da monarquia para a república. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-3"
+        },
+        {
+          "year": "1958",
+          "text": "A 5 de março de 1958, morreu o poeta português Joaquim Afonso Fernandes Duarte. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-3"
+        },
+        {
+          "year": "1984",
+          "text": "A 5 de março de 1984, morreu o poeta, professor e folclorista português Pedro Homem de Mello. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-3"
+        }
+      ]
+    },
+    "03-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1992",
+          "text": "A 6 de março de 1992, morreu a pintora portuguesa Maria Helena Vieira da Silva. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-3"
+        }
+      ]
+    },
+    "03-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Nunes Ribeiro Sanches foi um médico português e polímata, tendo sido ainda filósofo, pedagogo e historiador. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-3"
+        },
+        {
+          "year": "1843",
+          "text": "A 7 de março de 1843, nasceu o médico e professor catedrático da Escola Médico-Cirúrgica de Lisboa José Tomás de Sousa Martins. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-3"
+        },
+        {
+          "year": "1887",
+          "text": "No dia 7 de março de 1887 nasceu Suart Carvalhais, nome incontornável das artes e da cultura portuguesa do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-3"
+        }
+      ]
+    },
+    "03-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1837",
+          "text": "A 8 de março de 1837, morreu o pintor português Domingos António de Sequeira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-3"
+        }
+      ]
+    },
+    "03-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1500",
+          "text": "A 9 de março de 1500 saiu de Lisboa a armada de Pedro Álvares Cabral com destino à Índia e que chegou ao Brasil em meados de abril. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-3"
+        }
+      ]
+    },
+    "03-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1768",
+          "text": "A 10 de março de 1768, nasceu o pintor português Domingos António de Sequeira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-3"
+        },
+        {
+          "year": "1927",
+          "text": "A publicação Presença - Folha de Arte e Crítica foi uma das mais influentes revistas literárias portuguesas do Século XX. Foi lançada em Coimbra, a 10 de março de 1927, sendo publicados 54 números até à sua extinção em 1940. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-3"
+        },
+        {
+          "year": "1980",
+          "text": "A 10 de março de 1980 morreu o poeta, ator, encenador, declamador e radialista português Vasco de Lima Couto. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-3"
+        }
+      ]
+    },
+    "03-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1846",
+          "text": "A 11 de março de 1846, nasceu o jurista e poeta português António Cândido Gonçalves Crespo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-3"
+        },
+        {
+          "year": "1940",
+          "text": "A 11 de março de 1940 nasceu Dinis Albano Carneiro Gonçalves, cujo pseudónimo é Sebastião Alba, escritor português naturalizado moçambicano. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-3"
+        }
+      ]
+    },
+    "03-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1514",
+          "text": "A embaixada enviada pelo Rei D. Manuel I chegou a Roma no dia 12 de março de 1514 , com o objetivo de marcar a afirmação de Portugal no contexto dos descobrimentos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-3"
+        },
+        {
+          "year": "1867",
+          "text": "A 12 de março de 1867, nasceu o escritor português Raul Germano Brandão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-3"
+        }
+      ]
+    },
+    "03-13": {
+      "world": [],
+      "portugal": []
+    },
+    "03-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2003",
+          "text": "A 14 de março de 2003, morreu a escritora e tradutora portuguesa Maria Ondina Braga. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-3"
+        },
+        {
+          "year": "2022",
+          "text": "No dia 14 de março de 2022, morreu Jorge Silva Melo, encenador , ator , cineasta , dramaturgo , tradutor e crítico português . Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-3"
+        }
+      ]
+    },
+    "03-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1851",
+          "text": "A 15 de março de 1851, nasceu Carolina Wilhelma Michaëlis de Vasconcelos a primeira mulher a lecionar numa universidade portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-3"
+        },
+        {
+          "year": "1900",
+          "text": "No dia 15 de março de 1900 nasceu Mário Eloy, um dos artistas portugueses mais marcantes do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-3"
+        }
+      ]
+    },
+    "03-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1519",
+          "text": "Fernão de Magalhães foi um navegador português que se notabilizou por ter organizado e iniciado a primeira viagem de circum-navegação ao globo de 1519 até 1522. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-3"
+        },
+        {
+          "year": "1993",
+          "text": "A 17 de março de 1993, morreu o professor, ensaísta e historiador de literatura portuguesa António José Baptista Saraiva. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-3"
+        }
+      ]
+    },
+    "03-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1604",
+          "text": "No dia 19 de março de 1604 nasceu D. João IV, o fundador da dinastia de Bragança. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-3"
+        },
+        {
+          "year": "1907",
+          "text": "A 19 de março de 1907, nasce o pintor Manuel Ribeiro de Pavia, pintor e ilustrador português, neo-realista. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-3"
+        },
+        {
+          "year": "1957",
+          "text": "A 19 de março de 1957, faleceu o pintor Manuel Ribeiro de Pavia, pintor e ilustrador português, neo-realista. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-3"
+        }
+      ]
+    },
+    "03-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1900",
+          "text": "No dia 18 de março de 1900 faleceu o poeta português António Nobre. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-3"
+        }
+      ]
+    },
+    "03-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1884",
+          "text": "A 20 de março de 1884, morreu o pintor português Henrique César de Araújo Pousão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-3"
+        },
+        {
+          "year": "1913",
+          "text": "No dia 20 de março de 1913 nasceu Ilse Losa, escritora portuguesa de origem alemã e de ascendência judaica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-3"
+        },
+        {
+          "year": "1922",
+          "text": "A 20 de março de 1922, nasce o poeta português Reinaldo Edgar de Azevedo e Silva Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-3"
+        },
+        {
+          "year": "2022",
+          "text": "No dia 20 de março de 2022 morreu o poeta, crítico literário, escritor, encenador e tradutor português, Gastão Cruz. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-3"
+        }
+      ]
+    },
+    "03-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1825",
+          "text": "No dia 16 de março de 1825 nasceu Camilo Castelo Branco, um dos grandes génios da literatura portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-3"
+        },
+        {
+          "year": "1927",
+          "text": "A 16 de março de 1927, nasceu o pintor e ceramista português Manuel Cargaleiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-3"
+        },
+        {
+          "year": "1959",
+          "text": "A 16 de março de 1959, morreu o poeta, contista e dramaturgo português António Tomás Botto. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-3"
+        },
+        {
+          "year": "1993",
+          "text": "A 16 de março de 1993 faleceu a escritora e poeta portuguesa Natália Correia. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-3"
+        }
+      ]
+    },
+    "03-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1846",
+          "text": "No dia 21 de março de 1846 nasceu Rafael Bordalo Pinheiro, considerado o maior artista plástico português do século XIX Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-3"
+        },
+        {
+          "year": "s/d",
+          "text": "António Gabriel de Castro e Quadros Ferro, conhecido como António Quadros, foi um filósofo, historiador, escritor, fundador e director do IADE, professor universitário e tradutor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-3"
+        }
+      ]
+    },
+    "03-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1911",
+          "text": "A Universidade do Porto é uma universidade pública portuguesa localizada na cidade do Porto e fundada em 22 de março de 1911. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-3"
+        }
+      ]
+    },
+    "03-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2015",
+          "text": "No dia 23 de março de 2015 faleceu Herberto Helder, r econhecido como um dos maiores poetas portugueses contemporâneos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-3"
+        }
+      ]
+    },
+    "03-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1762",
+          "text": "A 24 de março de 1762, nasce o compositor Marcos Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-3"
+        }
+      ]
+    },
+    "03-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Mário Emílio de Morais Sacramento foi um médico, escritor neorrealista, ensaísta e político antifascista revolucionário comunista português que se destacou como uma importante figura do movimento de oposição democrática ao regime do Estado Novo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-3"
+        }
+      ]
+    },
+    "03-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1949",
+          "text": "No dia 25 de março de 1949 nasceu António Mega Ferreira, um dos maiores intelectuais portugueses da segunda metade do século XX e um verdadeiro homem da Renascença. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-3"
+        },
+        {
+          "year": "2004",
+          "text": "Antonio Tabucchi foi um escritor italiano, professor de Língua e Literatura Portuguesa na Universidade de Siena. Portugal foi cenário de várias dos seus romances e a paixão pelo país, levou-o a pedir a nacionalidade portuguesa, que lhe foi concedida em 2004. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-3"
+        }
+      ]
+    },
+    "03-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Por iniciativa da Sociedade Portuguesa de Autores, 26 de março é considerado o Dia do Livro Português, dia em que foi impresso o primeiro livro em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-3"
+        }
+      ]
+    },
+    "03-28": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Alexandre Herculano de Carvalho e Araújo foi um escritor, historiador, jornalista e poeta português da era do romantismo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-3"
+        },
+        {
+          "year": "1851",
+          "text": "No dia 28 de março de 1851 nasceu Bernardino Machado, ex-presidente da República Portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-3"
+        }
+      ]
+    },
+    "03-29": {
+      "world": [],
+      "portugal": []
+    },
+    "03-30": {
+      "world": [],
+      "portugal": []
+    },
+    "04-02": {
+      "world": [],
+      "portugal": []
+    },
+    "03-31": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1855",
+          "text": "A 30 de março de 1855 morre José Liberato Freire de Carvalho – mais conhecido por José Liberato ou, simplesmente, por Liberato, um dos memorialistas e publicistas portugueses mais destacados do século XIX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-3"
+        },
+        {
+          "year": "1922",
+          "text": "A 31 de março de 1922, nasce a escritora , poeta e ensaísta portuguesa Salette Tavares. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-3"
+        }
+      ]
+    },
+    "04-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1431",
+          "text": "A 1 de abril de 1431, faleceu D. Nuno Álvares Pereira, em Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-4"
+        },
+        {
+          "year": "1996",
+          "text": "No dia 1 de abril de 1996 faleceu Mário Viegas, considerado um dos melhores atores da sua geração e um dos maiores recitadores de poesia em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-4"
+        }
+      ]
+    },
+    "04-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1926",
+          "text": "A 3 de abril de 1926, nasceu o escritor português Luís Infante de Lacerda de Sttau Monteiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-4"
+        },
+        {
+          "year": "1954",
+          "text": "No dia 3 de abril de 1954 faleceu Aristides de Sousa Mendes, diplomata português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-4"
+        },
+        {
+          "year": "1992",
+          "text": "A 3 de abril de 1992, morreu o militar português Fernando José Salgueiro Maia, um dos capitães do Exército Português que liderou as forças revolucionárias durante a Revolução de 25 de Abril de 1974. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-4"
+        },
+        {
+          "year": "1994",
+          "text": "No dia 3 de abril de 1994 faleceu Agostinho da Silva , professor e investigador português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-4"
+        }
+      ]
+    },
+    "04-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1849",
+          "text": "A 4 de abril de 1849, morreu o político liberal português José Xavier Mouzinho da Silveira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-4"
+        },
+        {
+          "year": "1864",
+          "text": "A 4 de abril de 1864, nasceu o pintor e desenhador português Alfredo Roque Gameiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-4"
+        }
+      ]
+    },
+    "04-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1907",
+          "text": "A 5 de abril de 1907, nasceu o poeta português José Carlos de Queirós Nunes Ribeiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-4"
+        }
+      ]
+    },
+    "04-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1385",
+          "text": "No dia 6 de abril de 1385, D. João I, mestre de Avis, foi proclamado Rei de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-4"
+        }
+      ]
+    },
+    "04-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1320",
+          "text": "No dia 8 de abril de 1320 nasce, em Coimbra, o rei D. Pedro I de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-4"
+        }
+      ]
+    },
+    "04-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1865",
+          "text": "No dia 9 de abril de 1865 nasceu Francisco Manuel Alves, mais conhecido como Abade de Baçal, um arqueólogo, historiador e genealogista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-4"
+        }
+      ]
+    },
+    "04-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1924",
+          "text": "A 10 de abril de 1924, nasceu o poeta e professor português Sebastião da Gama. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-4"
+        },
+        {
+          "year": "1971",
+          "text": "A 10 de abril de 1971, nasceu o poeta português Daniel Augusto da Cunha Faria. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-4"
+        }
+      ]
+    },
+    "04-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1357",
+          "text": "No dia 11 de abril de 1357 nasceu , D. João I de Portugal, conhecido como o Mestre de Avis e apelidado de o de Boa Memória , foi rei de Portugal e dos Algarves de 1385 até à sua morte, sendo o primeiro monarca português da Casa de Avis e o décimo rei de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-4"
+        },
+        {
+          "year": "1995",
+          "text": "No dia 11 de abril de 1995 faleceu Menez, um dos nomes da afirmação em Portugal da pintura abstracta. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-4"
+        }
+      ]
+    },
+    "04-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1932",
+          "text": "A 12 de abril de 1932, nasceu o escritor, professor, político e deputado na Assembleia Legislativa de Portugal José Manuel Tengarrinha. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-4"
+        }
+      ]
+    },
+    "04-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1948",
+          "text": "António Ferreira Gomes foi um religioso católico português, bispo das dioceses de Portalegre (1948-1952) e do Porto (1952-1982). Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-4"
+        }
+      ]
+    },
+    "04-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "Em 14 de abril de 1917, Almada Negreiros e Santa Rita realizam sessão futurista no Teatro da República, em Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-4"
+        },
+        {
+          "year": "s/d",
+          "text": "José Júlio de Souza Pinto foi um pintor português, ligado à primeira geração naturalista. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-4"
+        }
+      ]
+    },
+    "04-15": {
+      "world": [],
+      "portugal": []
+    },
+    "04-16": {
+      "world": [],
+      "portugal": []
+    },
+    "01-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1367",
+          "text": "No dia 18 de janeiro de 1367 faleceu, em Estremoz, o rei D. Pedro I de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-1"
+        },
+        {
+          "year": "s/d",
+          "text": "Maria de Lourdes Ruivo da Silva de Matos Pintasilgo foi uma engenheira química, dirigente eclesial e política portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-1"
+        },
+        {
+          "year": "1984",
+          "text": "No dia 18 de janeiro de 1984, morreu o poeta e declamador português José Carlos Pereira Ary dos Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-1"
+        },
+        {
+          "year": "1918",
+          "text": "Em 18 de janeiro de 1918 faleceu o Padre Manuel Antunes, um dos maiores pensadores portugueses do século XX Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-1"
+        }
+      ]
+    },
+    "04-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2015",
+          "text": "A 17 de abril de 2015, morreu o professor universitário, cientista e político português José Mariano Rebelo Pires Gago. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-4"
+        }
+      ]
+    },
+    "04-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1842",
+          "text": "No dia 18 de abril de 1842 nasceu Antero de Quental, escritor e poeta português do século XIX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-4"
+        },
+        {
+          "year": "s/d",
+          "text": "José Ernesto de Sousa foi um artista multidisciplinar, fotógrafo, cineasta e iniciador do movimento cineclubista em Portugal , e crítico de arte português , atividades a que dedicou toda a sua vida. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-4"
+        }
+      ]
+    },
+    "04-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1900",
+          "text": "A 19 de abril de 1900, nasceu o magistrado, escritor, dramaturgo, jornalista e humorista português Luís de Oliveira Guimarães. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-4"
+        }
+      ]
+    },
+    "04-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Atriz, poeta e romancista, tornou-se numa das maiores referências nas artes em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-4"
+        }
+      ]
+    },
+    "04-21": {
+      "world": [],
+      "portugal": []
+    },
+    "04-23": {
+      "world": [],
+      "portugal": []
+    },
+    "04-22": {
+      "world": [],
+      "portugal": []
+    },
+    "04-25": {
+      "world": [],
+      "portugal": []
+    },
+    "04-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "Em 24 de abril de 1917 faleceu Abel Botelho, um coronel de Estado-Maior do Exército, escritor, político e diplomata português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-4"
+        },
+        {
+          "year": "s/d",
+          "text": "Cassiano Viriato Branco foi um arquiteto português. É um dos mais importantes arquitetos da primeira metade do século XX em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-4"
+        }
+      ]
+    },
+    "04-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1916",
+          "text": "A 26 de abril de 1916 faleceu Mário de Sá-Carneiro, poeta de primeiro plano da literatura portuguesa do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-4"
+        }
+      ]
+    },
+    "04-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2014",
+          "text": "A 27 de abril de 2014, morreu o escritor, tradutor e político português Vasco Navarro da Graça Moura. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-4"
+        }
+      ]
+    },
+    "04-28": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1855",
+          "text": "No dia 28 de abril de 1855 nasceu José Malhoa, considerado o melhor pintor naturalista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-4"
+        }
+      ]
+    },
+    "04-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1944",
+          "text": "Em 29 de abril de 1944 faleceu Bernardino Machado, ex-presidente da República Portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-4"
+        }
+      ]
+    },
+    "05-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1922",
+          "text": "A Contemporânea foi uma revista dirigida por José Pacheco (ou José Pacheko), publicada em Lisboa entre 1922 e 1926. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-5"
+        }
+      ]
+    },
+    "05-02": {
+      "world": [],
+      "portugal": []
+    },
+    "04-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Cabral foi um poeta, ficcionista, cronista, ensaísta, dramaturgo, etnógrafo e divulgador da cultura popular portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-4"
+        }
+      ]
+    },
+    "05-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Vasco dos Santos Gonçalves foi um militar (General) e político português, durante o PREC. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-5"
+        }
+      ]
+    },
+    "05-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2009",
+          "text": "A 4 de maio de 2009, morreu o apresentador, cineclubista e professor português Vasco Granja. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-5"
+        }
+      ]
+    },
+    "05-06": {
+      "world": [],
+      "portugal": []
+    },
+    "05-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "A Organização das Nações Unidas para a Educação, Ciência e Cultura (UNESCO) considerou o dia 5 de maio como o Dia Mundial da Língua Portuguesa. É a primeira vez que tal acontece com uma língua não oficial da UNESCO. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-5"
+        },
+        {
+          "year": "1998",
+          "text": "A 5 de maio de 1998, morreu o magistrado, escritor, dramaturgo, jornalista e humorista português Luís de Oliveira Guimarães. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-5"
+        }
+      ]
+    },
+    "05-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1782",
+          "text": "No dia 8 de maio de 1782, faleceu Sebastião José de Carvalho e Mello, Marquês de Pombal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-5"
+        }
+      ]
+    },
+    "05-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1890",
+          "text": "A 9 de maio de 1890, nasceu o escultor português Henrique Araújo Moreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-5"
+        }
+      ]
+    },
+    "05-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1899",
+          "text": "A 10 de maio de 1899, nasceu Artur Paredes, compositor e intérprete de guitarra portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-5"
+        },
+        {
+          "year": "1948",
+          "text": "António Ferreira Gomes foi um religioso católico português, bispo das dioceses de Portalegre (1948-1952) e do Porto (1952-1982). Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-5"
+        },
+        {
+          "year": "1913",
+          "text": "A 10 de maio de 1913, nasceu o ator, encenador e declamador português João Villaret. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-5"
+        },
+        {
+          "year": "2012",
+          "text": "A 10 de maio de 2012, morreu o compositor e pianista português Bernardo Sassetti. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-5"
+        }
+      ]
+    },
+    "05-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1925",
+          "text": "A 7 de maio de 1925, nasceu o escritor, editor, polemista, epistológrafo, crítico de literatura e comunista português Luiz José Gomes Machado Guerreiro Pacheco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-5"
+        }
+      ]
+    },
+    "05-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1913",
+          "text": "A 11 de maio de 1913, nasceu o engenheiro português Edgar Cardoso. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-5"
+        }
+      ]
+    },
+    "05-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1699",
+          "text": "No dia 13 de maio de 1699, nasceu Sebastião José de Carvalho e Mello, Marquês de Pombal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-5"
+        },
+        {
+          "year": "s/d",
+          "text": "José Manuel Osório, foi um fadista, músico, produtor cultural, estudioso de fado e ativista anti-SIDA português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-5"
+        }
+      ]
+    },
+    "05-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "João Cristino da Silva foi um pintor português da época romântica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-5"
+        },
+        {
+          "year": "s/d",
+          "text": "Manuel Alegre de Melo Duarte é um escritor e político português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-5"
+        }
+      ]
+    },
+    "05-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1924",
+          "text": "No dia 14 de maio de 1924 nasceu o compositor português Joly Braga Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-5"
+        }
+      ]
+    },
+    "05-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1930",
+          "text": "A 15 de maio de 1930, nasceu o escritor português José Rentes de Carvalho. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-5"
+        }
+      ]
+    },
+    "05-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1948",
+          "text": "A 16 de maio de 1948, nasceu o professor universitário, cientista e político português José Mariano Rebelo Pires Gago. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-5"
+        }
+      ]
+    },
+    "05-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1941",
+          "text": "No dia 17 de maio de 1941 faleceu José Leite de Vasconcelos. F oi um linguista , filólogo , arqueólogo e etnógrafo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-5"
+        },
+        {
+          "year": "1941",
+          "text": "A 17 de maio de 1941, nasceu o ex-sacerdote católico e cantor português Francisco Fanhais. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-5"
+        }
+      ]
+    },
+    "05-18": {
+      "world": [],
+      "portugal": []
+    },
+    "05-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1937",
+          "text": "A 20 de maio de 1937, nasceu a escritora e jornalista Maria Teresa Horta, conhecida como uma das mais destacadas feministas portuguesas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-5"
+        }
+      ]
+    },
+    "05-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1890",
+          "text": "A 19 de maio de 1890 nasceu Mário de Sá-Carneiro, p oeta de primeiro plano da literatura portuguesa do século XX Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-5"
+        }
+      ]
+    },
+    "05-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2009",
+          "text": "No dia 21 de maio de 2009 faleceu João Bénard da Costa, o mais importante divulgador e defensor do cinema em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-5"
+        }
+      ]
+    },
+    "05-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "O Dia do Autor Português comemora-se anualmente a 22 de maio. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-5"
+        },
+        {
+          "year": "1998",
+          "text": "No dia 22 de maio de 1998 abriu ao público a EXPO'98 - Exposição Internacional de Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-5"
+        },
+        {
+          "year": "2018",
+          "text": "A 22 de maio de 2018 faleceu Júlio Pomar, um dos maiores nomes da arte portuguesa do último século. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-5"
+        }
+      ]
+    },
+    "05-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "Ensaísta português, nasceu a 23 de maio de 1923, em S. Pedro de Rio Seco, Almeida. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-5"
+        },
+        {
+          "year": "2020",
+          "text": "A 23 de maio de 2020, morreu a escritora portuguesa Maria de Fátima de Bivar Velho da Costa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-5"
+        }
+      ]
+    },
+    "05-24": {
+      "world": [],
+      "portugal": []
+    },
+    "05-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1922",
+          "text": "A 25 de maio de 1922 nasceu o arquiteto paisagista, ecologista e político português Gonçalo Ribeiro Telles, um dos membros fundadores do Centro Nacional de Cultura. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-5"
+        },
+        {
+          "year": "1942",
+          "text": "A 25 de maio de 1942 nasceu o músico português José Mário Monteiro Guedes Branco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-5"
+        }
+      ]
+    },
+    "05-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1834",
+          "text": "Capitulação dos miguelistas, assinada a 26 de maio de 1834, que pôs termo à guerra civil de 1832-1834. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-5"
+        }
+      ]
+    },
+    "05-27": {
+      "world": [],
+      "portugal": []
+    },
+    "05-28": {
+      "world": [],
+      "portugal": []
+    },
+    "05-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1980",
+          "text": "A 29 de maio de 1980, morreu o cantor português Maximiano de Sousa, mais conhecido por Max. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-5"
+        }
+      ]
+    },
+    "05-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1850",
+          "text": "No dia 30 de maio de 1850 nasceu Sebastião de Magalhães Lima - advogado, jornalista, político e escritor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-5"
+        }
+      ]
+    },
+    "05-31": {
+      "world": [],
+      "portugal": []
+    },
+    "06-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1859",
+          "text": "A 1 de junho de 1859, nasceu o poeta e diplomata português António de Castro Feijó. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-6"
+        },
+        {
+          "year": "1890",
+          "text": "No dia 1 de junho de 1890 faleceu Camilo Castelo Branco, um dos grandes génios da literatura portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-6"
+        }
+      ]
+    },
+    "06-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1888",
+          "text": "O matutino Jornal de Notícias foi fundado a 2 de junho de 1888, no Porto , e tornou-se num dos jornais de maior expansão em Portugal , especialmente a seguir à Revolução do 25 de abril de 1974. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-6"
+        }
+      ]
+    },
+    "06-03": {
+      "world": [],
+      "portugal": []
+    },
+    "06-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1978",
+          "text": "No dia 4 de junho de 1978 faleceu Jorge de Sena - poeta, crítico, ensaísta, ficcionista, dramaturgo, tradutor e professor universitário português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-6"
+        }
+      ]
+    },
+    "06-05": {
+      "world": [],
+      "portugal": []
+    },
+    "06-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1494",
+          "text": "A 7 de junho de 1494 foi assinado o Tratado de Tordesilhas, entre Portugal e Espanha, acordando a soberania sobre terras descobertas e a descobrir. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-6"
+        }
+      ]
+    },
+    "06-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2022",
+          "text": "A 8 de junho de 2022, morreu a pintora portuguesa Maria Paula Figueiroa Rego. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-6"
+        }
+      ]
+    },
+    "06-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1848",
+          "text": "A 6 de junho de 1848, nasceu o poeta e crítico literário português António Gomes Leal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-6"
+        },
+        {
+          "year": "2018",
+          "text": "A 6 de junho de 2018, morreu o poeta português Albano Dias Martins. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-6"
+        }
+      ]
+    },
+    "06-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1908",
+          "text": "A 9 de junho de 1908, morreu o escritor, magistrado e político português, José Francisco Trindade Coelho. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-6"
+        },
+        {
+          "year": "1999",
+          "text": "A 9 de junho de 1999, morreu o poeta português Daniel Augusto da Cunha Faria. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-6"
+        }
+      ]
+    },
+    "06-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1883",
+          "text": "A 11 de junho de 1883, morreu o jurista e poeta português António Cândido Gonçalves Crespo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-6"
+        },
+        {
+          "year": "s/d",
+          "text": "Vasco dos Santos Gonçalves foi um militar (General) e político português, durante o PREC. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-6"
+        }
+      ]
+    },
+    "06-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1956",
+          "text": "A 12 de junho de 1956, nasceu o físico, professor universitário e ensaísta português Carlos Manuel Baptista Fiolhais. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-6"
+        }
+      ]
+    },
+    "06-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1580",
+          "text": "A 10 de junho de 1580 faleceu o poeta Camões, data feriado em que se celebra o escritor, Portugal e as comunidades portuguesas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-6"
+        },
+        {
+          "year": "2025",
+          "text": "Em 2025, a Portugália celebrou com orgulho o seu centenário, marcando 100 anos de história na restauração portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-6"
+        }
+      ]
+    },
+    "06-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1970",
+          "text": "No dia 15 de junho de 1970 faleceu Almada Negreiros, um dos mais importantes artistas portugueses, pintor, escritor, poeta. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-6"
+        }
+      ]
+    },
+    "06-14": {
+      "world": [],
+      "portugal": []
+    },
+    "06-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1231",
+          "text": "No dia 13 de junho de 1231 faleceu Santo António, o santo casamenteiro e padroeiro de Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "1888",
+          "text": "A 13 de junho de 1888 nasceu o poeta Fernando Pessoa, autor de heterónimos e que se tornou um mito cultural na Europa contemporânea. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "1908",
+          "text": "A 13 de junho de 1908, nasceu a pintora portuguesa Maria Helena Vieira da Silva. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "1980",
+          "text": "António Joaquim Rodrigues Ribeiro, conhecido por António Variações, foi um cantor e compositor português do início dos anos 1980. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "1997",
+          "text": "A 13 de junho de 1997 faleceu, em Lisboa, o poeta Al Berto Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "2005",
+          "text": "A 13 de junho de 2005, morre Eugénio de Andrade, um dos maiores poetas portugueses contemporâneos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        },
+        {
+          "year": "2005",
+          "text": "A 13 de junho de 2005, morreu o político português Álvaro Barreirinhas Cunhal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-6"
+        }
+      ]
+    },
+    "06-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1996",
+          "text": "No dia 16 de junho de 1996 morreu o escritor e poeta português David Mourão-Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-6"
+        }
+      ]
+    },
+    "06-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1861",
+          "text": "A 18 de junho de 1861, nasceu o escritor, magistrado e político português, José Francisco Trindade Coelho. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-6"
+        },
+        {
+          "year": "1893",
+          "text": "A 18 de junho de 1893, nasceu o escritor português Mário Paes da Cunha e Sá. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-6"
+        },
+        {
+          "year": "s/d",
+          "text": "Médico, professor, poeta e ensaísta, pioneiro da educação pela arte em Portugal, Arquimedes da Silva Santos teve intervenção nas áreas política, cívica e artística, tendo sido uma das grandes figuras da história política e cultural do Concelho de Vila Franca de Xira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-6"
+        },
+        {
+          "year": "1946",
+          "text": "A 18 de junho de 1946, nasceu a escritora portuguesa Lídia Jorge. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-6"
+        },
+        {
+          "year": "2010",
+          "text": "No dia 18 de junho de 2010 faleceu José Saramago, autor de prosa, poesia e teatro, o reinventor da literatura do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-6"
+        }
+      ]
+    },
+    "06-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1922",
+          "text": "No dia 17 de junho de 1922 Gago Coutinho e Sacadura Cabral concluíram a primeira travessia aérea do Atlântico Sul, ligando Lisboa ao Rio de Janeiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-6"
+        },
+        {
+          "year": "2009",
+          "text": "A 17 de junho de 2009, morreu o maestro português José Carlos Barbosa Calvário. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-6"
+        }
+      ]
+    },
+    "06-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Francisco de Holanda foi um humanista, arquiteto, escultor, desenhador, iluminador e pintor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-6"
+        },
+        {
+          "year": "1731",
+          "text": "A 19 de junho de 1731, nasceu Machado de Castro, um dos maiores e mais conhecidos escultores portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-6"
+        },
+        {
+          "year": "s/d",
+          "text": "José Dias Coelho foi um artista plástico, militante e dirigente do Partido Comunista Português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-6"
+        }
+      ]
+    },
+    "06-21": {
+      "world": [],
+      "portugal": []
+    },
+    "06-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "A 20 de junho de 1917, morreu o poeta e diplomata português António de Castro Feijó. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-6"
+        },
+        {
+          "year": "s/d",
+          "text": "Matilde Rosa Lopes de Araújo foi uma escritora portuguesa, especializada em literatura infantil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-6"
+        }
+      ]
+    },
+    "06-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1963",
+          "text": "A 22 de junho de 1963 foi inaugurada a Ponte da Arrábida, no Porto. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-6"
+        }
+      ]
+    },
+    "06-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Nicolau Tolentino de Almeida foi um poeta satírico português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-6"
+        },
+        {
+          "year": "1928",
+          "text": "Em 23 junho de 1928 nasceu Armando Cortez, um dos atores portugueses mais conhecidos do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-6"
+        }
+      ]
+    },
+    "06-25": {
+      "world": [],
+      "portugal": []
+    },
+    "06-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1970",
+          "text": "A 24 de junho de 1970, nasceu o compositor e pianista português Bernardo Sassetti. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-6"
+        }
+      ]
+    },
+    "06-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1934",
+          "text": "A 26 de junho de 1934 nasceu o artista plástico e pintor português José Escada. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-6"
+        },
+        {
+          "year": "1937",
+          "text": "A 26 de junho de 1937 nasceu em Lisboa João Cutileiro, um dos maiores escultores contemporâneos portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-6"
+        },
+        {
+          "year": "1938",
+          "text": "A 26 de junho de 1938, nasceu a escritora portuguesa Maria de Fátima de Bivar Velho da Costa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-6"
+        },
+        {
+          "year": "s/d",
+          "text": "José Adriano Rodrigues Barata-Moura é um filósofo, compositor, cantautor e político português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-6"
+        }
+      ]
+    },
+    "06-28": {
+      "world": [],
+      "portugal": []
+    },
+    "06-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1958",
+          "text": "A 29 de junho de 1958 nasceu Rosa Maria Correia dos Santos Mota, atleta portuguesa, campeã olímpica e mundial da maratona. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-6"
+        },
+        {
+          "year": "1967",
+          "text": "A 29 de junho de 1967, morreu o cineasta português José Júlio Marques Leitão de Barros. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-6"
+        },
+        {
+          "year": "2018",
+          "text": "A 29 de junho de 2018, morreu o escritor, professor, político e deputado na Assembleia Legislativa de Portugal José Manuel Tengarrinha. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-6"
+        }
+      ]
+    },
+    "06-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1793",
+          "text": "Foi inaugurado em 30 de junho de 1793 pelo Príncipe Regente D. João para substituir o Teatro Ópera do Tejo , este destruído no Terramoto de 1755. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-6"
+        },
+        {
+          "year": "1914",
+          "text": "A 30 de junho de 1914, nasceu o poeta português Joaquim Namorado. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-6"
+        },
+        {
+          "year": "1959",
+          "text": "A 30 de junho de 1959, morre o poeta português Reinaldo Edgar de Azevedo e Silva Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-6"
+        },
+        {
+          "year": "2004",
+          "text": "A 30 de junho de 2004, morreu o poeta e letrista português António Sousa Freitas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-6"
+        },
+        {
+          "year": "2024",
+          "text": "A 30 de junho de 2024, morreu o pintor e ceramista português Manuel Cargaleiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-6"
+        }
+      ]
+    },
+    "06-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1885",
+          "text": "A 27 de junho de 1885, nasceu a violoncelista portuguesa Guilhermina Augusta Xavier de Medin Suggia. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-6"
+        }
+      ]
+    },
+    "07-03": {
+      "world": [],
+      "portugal": []
+    },
+    "07-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Augusto de Melo Lucena e Quadros, conhecido referido pelos heterónimos João Pedro Grabato Dias, Frey Ioannes Garabatus e Mutimati Barnabé João, foi um pintor e poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-7"
+        },
+        {
+          "year": "2004",
+          "text": "A 2 de julho de 2004 faleceu uma das maiores escritoras e poetisas portuguesas, que apreciava falar-nos de temas como: o mar, a infância ou o humanismo cristão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-7"
+        }
+      ]
+    },
+    "07-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1920",
+          "text": "A 1 de julho de 1920, nasceu a fadista Amália Rodrigues, geralmente aclamada como a voz de Portugal e uma das mais brilhantes cantoras do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-7"
+        },
+        {
+          "year": "1944",
+          "text": "A 1 de julho de 1944, nasceu o militar português Fernando José Salgueiro Maia, um dos capitães do Exército Português que liderou as forças revolucionárias durante a Revolução de 25 de Abril de 1974. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-7"
+        },
+        {
+          "year": "1981",
+          "text": "A 1 de julho de 1981, morreu o escritor português Carlos Alberto Serra de Oliveira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-7"
+        }
+      ]
+    },
+    "07-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1908",
+          "text": "A 4 de julho de 1908 nasceu, no Porto, o poeta e ensaista Adolfo Casais Monteiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-7"
+        }
+      ]
+    },
+    "07-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2000",
+          "text": "A 5 de julho de 2000, morreu o engenheiro português Edgar Cardoso. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-7"
+        }
+      ]
+    },
+    "07-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1858",
+          "text": "No dia 7 de julho de 1858 nasceu José Leite de Vasconcelos - linguista , filólogo , arqueólogo e etnógrafo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-7"
+        },
+        {
+          "year": "s/d",
+          "text": "Mário Emílio de Morais Sacramento foi um médico, escritor neorrealista, ensaísta e político antifascista revolucionário comunista português que se destacou como uma importante figura do movimento de oposição democrática ao regime do Estado Novo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-7"
+        },
+        {
+          "year": "1923",
+          "text": "No dia 7 de julho de 1923 faleceu o poeta, prosador, jornalista e político português - Guerra Junqueiro Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-7"
+        },
+        {
+          "year": "s/d",
+          "text": "José Alfredo de Vilhena Rodrigues foi um escritor, pintor, cartoonista e humorista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-7"
+        }
+      ]
+    },
+    "07-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Matilde Rosa Lopes de Araújo foi uma escritora portuguesa, especializada em literatura infantil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-7"
+        }
+      ]
+    },
+    "07-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Augusto de Melo Lucena e Quadros, conhecido referido pelos heterónimos João Pedro Grabato Dias, Frey Ioannes Garabatus e Mutimati Barnabé João, foi um pintor e poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-7"
+        }
+      ]
+    },
+    "07-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1840",
+          "text": "No dia 8 de julho de 1840 nasceu Manuel de Arriaga, um dos políticos portugueses mais notáveis da transição do século XIX para o século XX, e da monarquia para a república. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-7"
+        },
+        {
+          "year": "1497",
+          "text": "D. Manuel I, rei de Portugal, confiou a Vasco da Gama o cargo de capitão-mor da frota que num sábado, a 8 de julho de 1497, largou de Belém em direção à Índia. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-7"
+        },
+        {
+          "year": "1990",
+          "text": "No dia 8 de julho de 1990 faleceu Amélia Rey Colaço, uma das principais atrizes portuguesas da primeira metade do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-7"
+        }
+      ]
+    },
+    "07-11": {
+      "world": [],
+      "portugal": []
+    },
+    "07-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1925",
+          "text": "A 10 de julho de 1925, nasceu o apresentador, cineclubista e professor português Vasco Granja. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-7"
+        },
+        {
+          "year": "s/d",
+          "text": "Maria de Lourdes Ruivo da Silva de Matos Pintasilgo foi uma engenheira química, dirigente eclesial e política portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-7"
+        }
+      ]
+    },
+    "07-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António José da Cunha foi o primeiro Reitor da Universidade de Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-7"
+        },
+        {
+          "year": "1974",
+          "text": "A 13 de julho de 1974 faleceu o arquiteto português Raul Lino. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-7"
+        }
+      ]
+    },
+    "07-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1780",
+          "text": "A 12 de julho de 1780, nasceu o político liberal português José Xavier Mouzinho da Silveira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-7"
+        }
+      ]
+    },
+    "07-15": {
+      "world": [],
+      "portugal": []
+    },
+    "07-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "José Rodrigues de Carvalho foi um pintor português da época romântica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-7"
+        },
+        {
+          "year": "s/d",
+          "text": "Mário Dionísio de Assis Monteiro foi um crítico, escritor, pintor e professor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-7"
+        }
+      ]
+    },
+    "07-17": {
+      "world": [],
+      "portugal": []
+    },
+    "07-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "No dia 19 de julho assinala-se o nascimento de Aristides de Sousa Mendes, cônsul de Portugal em Bordéus que salvou milhares de vidas Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-7"
+        },
+        {
+          "year": "1886",
+          "text": "No dia 19 de julho de 1886 faleceu Cesário Verde, um dos precursores do modernismo em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-7"
+        }
+      ]
+    },
+    "07-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1988",
+          "text": "No dia 18 de julho de 1988 faleceu o compositor português Joly Braga Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-7"
+        }
+      ]
+    },
+    "07-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1772",
+          "text": "A 20 de julho de 1772 nasce José Liberato Freire de Carvalho – mais conhecido por José Liberato ou, simplesmente, por Liberato, um dos memorialistas e publicistas portugueses mais destacados do século XIX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-7"
+        },
+        {
+          "year": "1941",
+          "text": "No dia 20 de julho de 1941 nasceu o poeta , crítico literário , escritor , encenador e tradutor português, Gastão Cruz . Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-7"
+        }
+      ]
+    },
+    "04-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1893",
+          "text": "No dia 7 de abril de 1893 nasceu Almada Negreiros, um dos mais importantes artistas portugueses, pintor, escritor, poeta. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-4"
+        }
+      ]
+    },
+    "07-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "A data, aprovada por unanimidade na Assembleia da República, pretende homenagear os calceteiros e promover a valorização e preservação da arte da calçada portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-7"
+        }
+      ]
+    },
+    "07-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "João Cristino da Silva foi um pintor português da época romântica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-7"
+        }
+      ]
+    },
+    "07-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1511",
+          "text": "A 25 de julho de 1511, a armada portuguesa de Afonso de Albuquerque inicia a conquista de Malaca. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-7"
+        }
+      ]
+    },
+    "07-21": {
+      "world": [],
+      "portugal": []
+    },
+    "07-26": {
+      "world": [],
+      "portugal": []
+    },
+    "07-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1944",
+          "text": "A 23 de julho de 1944 nasceu a grande pianista portuguesa Maria João Pires. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-7"
+        },
+        {
+          "year": "1972",
+          "text": "A 23 de julho de 1972 morreu, no Porto, o poeta e ensaista Adolfo Casais Monteiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-7"
+        },
+        {
+          "year": "1993",
+          "text": "A 23 de julho de 1993, morreu o escritor português Luís Infante de Lacerda de Sttau Monteiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-7"
+        },
+        {
+          "year": "2004",
+          "text": "No dia 23 de julho de 2004 faleceu Carlos Paredes, um dos grandes mestres da guitarra portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-7"
+        }
+      ]
+    },
+    "07-27": {
+      "world": [],
+      "portugal": []
+    },
+    "07-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1950",
+          "text": "A 30 de julho de 1950, morreu a violoncelista portuguesa Guilhermina Augusta Xavier de Medin Suggia. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-7"
+        }
+      ]
+    },
+    "07-28": {
+      "world": [],
+      "portugal": []
+    },
+    "07-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2021",
+          "text": "A 29 de julho de 2021, morreu o poeta e tradutor literário português Pedro Tamen. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-7"
+        }
+      ]
+    },
+    "07-31": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1771",
+          "text": "A 31 de julho de 1771, nasceu o político português Manuel Fernandes Tomás. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-7"
+        }
+      ]
+    },
+    "08-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "José Manuel Cerqueira Afonso dos Santos, foi um cantor e compositor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-8"
+        }
+      ]
+    },
+    "08-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1928",
+          "text": "A 1 de agosto de 1928, nasceu o poeta português António Maria Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-8"
+        },
+        {
+          "year": "s/d",
+          "text": "António Osório, nascido António Gabriel Maranca Osório de Castro, foi um escritor e poeta português, com antepassados galegos e italianos (com raízes corsas e florentinas). Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-8"
+        }
+      ]
+    },
+    "08-04": {
+      "world": [],
+      "portugal": []
+    },
+    "08-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1935",
+          "text": "A 5 de agosto de 1935, morreu o pintor e desenhador português Alfredo Roque Gameiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-8"
+        }
+      ]
+    },
+    "08-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1930",
+          "text": "A 6 de agosto de 1930, nasceu o poeta português Albano Dias Martins. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-8"
+        },
+        {
+          "year": "s/d",
+          "text": "A Ponte 25 de Abril é uma ponte suspensa rodoferroviária sobre o rio Tejo que liga a cidade de Lisboa (margem norte) à cidade de Almada (margem sul), em Portugal. A ponte atravessa o estuário do Tejo na parte final e mais estreita — o designado gargalo do Tejo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-8"
+        }
+      ]
+    },
+    "08-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1939",
+          "text": "A 3 de agosto de maio de 1939, morreu o poeta português Políbio Gomes dos Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-8"
+        }
+      ]
+    },
+    "08-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "No dia 9 de agosto de 1923 nasceu Mário Cesariny, poeta e pintor, considerado o principal representante do surrealismo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-8"
+        },
+        {
+          "year": "2013",
+          "text": "A 9 de agosto de 2013, faleceu o escritor português Urbano Tavares Rodrigues. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-8"
+        }
+      ]
+    },
+    "08-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Rui de Moura Ribeiro Belo foi um poeta e ensaísta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Raul Augusto de Almeida Solnado foi um humorista, apresentador de televisão e ator português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-8"
+        }
+      ]
+    },
+    "08-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1899",
+          "text": "A 7 de agosto de 1899, nasceu o cantor e poeta português Edmundo Alberto de Bettencourt. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-8"
+        },
+        {
+          "year": "1911",
+          "text": "A 7 de agosto de maio de 1911, nasceu o poeta português Políbio Gomes dos Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-8"
+        },
+        {
+          "year": "1948",
+          "text": "No dia 7 de agosto de 1948 nasceu Jorge Silva Melo, encenador , ator , cineasta , dramaturgo , tradutor e crítico português . Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-8"
+        }
+      ]
+    },
+    "08-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Reinaldo Ferreira, conhecido pelo pseudónimo de Repórter X, foi um repórter, jornalista, dramaturgo e realizador de cinema português. Era pai do poeta Reinaldo Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-8"
+        },
+        {
+          "year": "1921",
+          "text": "A 10 de agosto de 1921, nasceu o escritor português Carlos Alberto Serra de Oliveira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Rui Manuel Correia Knopfli foi um poeta, diplomata e crítico literário e de cinema português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-8"
+        }
+      ]
+    },
+    "08-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Pedro Nunes com o nome latinizado Petrus Nonius, foi um matemático português que ocupou o cargo de cosmógrafo-mor do Reino de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-8"
+        },
+        {
+          "year": "1994",
+          "text": "António Marcos Galopim de Carvalho, é um conceituado professor universitário português, Prémio Bordalo (1994) em Ciências, conhecido como \"o avô dos dinossauros\". Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-8"
+        },
+        {
+          "year": "s/d",
+          "text": "José Manuel Osório, foi um fadista, músico, produtor cultural, estudioso de fado e ativista anti-SIDA português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-8"
+        }
+      ]
+    },
+    "08-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Rosa Ramalho é o nome artístico de Rosa Barbosa Lopes, uma escultora, ceramista e figura emblemática da olaria tradicional portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Ângelo de Lima foi um pintor e poeta português da revista Orpheu . Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-8"
+        }
+      ]
+    },
+    "08-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1999",
+          "text": "O Dia Internacional da Juventude celebra-se a 12 de agosto, por resolução da Assembleia Geral da ONU em 1999, em resposta à recomendação da Conferência Mundial de Ministros Responsáveis pela Juventude, reunida em Lisboa, de 8 a 12 de agosto de 1998. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Adolfo Correia da Rocha, conhecido pelo pseudónimo Miguel Torga, foi um dos mais influentes poetas e escritores portugueses do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-8"
+        },
+        {
+          "year": "1984",
+          "text": "Em 12 de agosto, Carlos Lopes venceu a prova de maratona nos Jogos de 1984, tornando-se o primeiro português a ser medalhado com o ouro nos Jogos Olímpicos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-8"
+        }
+      ]
+    },
+    "08-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1867",
+          "text": "No dia 16 de agosto de 1867 nasceu o poeta português António Nobre. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-8"
+        },
+        {
+          "year": "1900",
+          "text": "A 16 de agosto de 1900, morreu Eça de Queiroz, um dos mais importantes escritores portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-8"
+        }
+      ]
+    },
+    "08-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1938",
+          "text": "A 15 de agosto de 1938, nasceu a poetisa portuguesa Fiama Hasse Pais Brandão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-8"
+        }
+      ]
+    },
+    "08-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1433",
+          "text": "No dia 13 de agosto de 1433 morreu D. João I de Portugal, conhecido como o Mestre de Avis e apelidado de o de Boa Memória , foi rei de Portugal e dos Algarves de 1385 até à sua morte, sendo o primeiro monarca português da Casa de Avis e o décimo rei de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-8"
+        },
+        {
+          "year": "1875",
+          "text": "A 13 de agosto de 1875, nasceu no Porto o escritor Carlos Malheiro Dias. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Cassiano Viriato Branco foi um arquiteto português. É um dos mais importantes arquitetos da primeira metade do século XX em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-8"
+        }
+      ]
+    },
+    "08-21": {
+      "world": [],
+      "portugal": []
+    },
+    "08-20": {
+      "world": [],
+      "portugal": []
+    },
+    "08-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1897",
+          "text": "A 18 de agosto de 1897, morreu o médico e professor catedrático da Escola Médico-Cirúrgica de Lisboa José Tomás de Sousa Martins. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Henrique Medina de Barros foi um pintor português, filho de mãe portuguesa e de pai espanhol. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-8"
+        }
+      ]
+    },
+    "08-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1897",
+          "text": "A 17 de agosto de 1897, nasceu o poeta, contista e dramaturgo português António Tomás Botto. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-8"
+        },
+        {
+          "year": "1944",
+          "text": "A 17 de agosto de 1944, faleceu o poeta português Eugénio de Castro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-8"
+        },
+        {
+          "year": "1966",
+          "text": "A 17 de agosto de 1966 morreu António Pedro da Costa, ator, encenador, escritor, poeta, jornalista, pintor, artista plástico, antiquário e colecionador de arte português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-8"
+        }
+      ]
+    },
+    "08-22": {
+      "world": [],
+      "portugal": []
+    },
+    "08-23": {
+      "world": [],
+      "portugal": []
+    },
+    "08-19": {
+      "world": [],
+      "portugal": []
+    },
+    "08-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Ferreira Gonçalves dos Reis foi um cineasta e poeta português que se distingue pelo sentido poético da sua obra. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-8"
+        }
+      ]
+    },
+    "08-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Carlos Manuel Marques Paião foi um cantor e compositor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-8"
+        },
+        {
+          "year": "s/d",
+          "text": "Carlos Alberto Portugal Correia de Lacerda foi um poeta, professor ocasional de literatura, crítico de arte e colecionador português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-8"
+        },
+        {
+          "year": "2020",
+          "text": "No dia 26 de agosto de 2020 faleceu o artista plástico Nikias Skapinakis, uma referência fundamental da cultura portuguesa contemporânea. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-8"
+        }
+      ]
+    },
+    "08-29": {
+      "world": [],
+      "portugal": []
+    },
+    "08-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1820",
+          "text": "A Revolução do Porto, também referida como Revolução Liberal do Porto, foi um movimento de cunho liberal que eclodiu a 24 de agosto de 1820 na cidade do Porto e teve repercussões tanto na História de Portugal quanto na História do Brasil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-8"
+        }
+      ]
+    },
+    "08-28": {
+      "world": [],
+      "portugal": []
+    },
+    "08-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1952",
+          "text": "Fernando Luís Cardoso Meneses de Tavares e Távora foi um arquiteto português estabelecido no Porto, diplomado pela Escola de Belas-Artes do Porto em Arquitetura no ano de 1952. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-8"
+        }
+      ]
+    },
+    "08-30": {
+      "world": [],
+      "portugal": []
+    },
+    "09-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1866",
+          "text": "A 2 de setembro de 1866 nasce o médico português Tomás de Mello Breyner, figura conhecida nos meios da política e da medicina do princípio do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-9"
+        }
+      ]
+    },
+    "09-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1883",
+          "text": "A 3 de setembro de 1883, nasceu o pensador, pedagogo e político português António Sérgio de Sousa Júnior. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-9"
+        },
+        {
+          "year": "s/d",
+          "text": "Raul Maria de Carvalho foi um poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-9"
+        },
+        {
+          "year": "1952",
+          "text": "Fernando Luís Cardoso Meneses de Tavares e Távora foi um arquiteto português estabelecido no Porto, diplomado pela Escola de Belas-Artes do Porto em Arquitetura no ano de 1952. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-9"
+        }
+      ]
+    },
+    "08-31": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Sérgio de Barros Godinho mais conhecido por Sérgio Godinho é um poeta, compositor e intérprete português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-8"
+        }
+      ]
+    },
+    "09-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Raul Maria de Carvalho foi um poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-9"
+        }
+      ]
+    },
+    "09-01": {
+      "world": [],
+      "portugal": []
+    },
+    "09-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1951",
+          "text": "No dia 5 de setembro de 1951 faleceu Mário Eloy, um dos artistas portugueses mais marcantes do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-9"
+        }
+      ]
+    },
+    "09-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Francisco de Holanda foi um humanista, arquiteto, escultor, desenhador, iluminador e pintor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-9"
+        },
+        {
+          "year": "1904",
+          "text": "A 6 de setembro de 1904, nasceu o poeta, professor e folclorista português Pedro Homem de Mello. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-9"
+        },
+        {
+          "year": "1926",
+          "text": "No dia 6 de setembro de 1926 nasceu Menez, um dos nomes da afirmação em Portugal da pintura abstracta. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-9"
+        }
+      ]
+    },
+    "09-08": {
+      "world": [],
+      "portugal": []
+    },
+    "09-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Lev Tolstoi, mais conhecido em português como Leão Tolstoi foi um escritor russo, amplamente reconhecido como um dos maiores de todos os tempos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-9"
+        },
+        {
+          "year": "1925",
+          "text": "No dia 9 de setembro de 1925 nasceu Marcelino Vespeira, figura incontornável da pintura portuguesa contemporânea. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-9"
+        }
+      ]
+    },
+    "09-07": {
+      "world": [],
+      "portugal": []
+    },
+    "09-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Nicolau Tolentino de Almeida foi um poeta satírico português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-9"
+        },
+        {
+          "year": "s/d",
+          "text": "A Companhia Geral da Agricultura das Vinhas do Alto Douro, também referida como Companhia para a Agricultura das Vinhas do Alto Douro ou simplesmente como Real Companhia Velha, foi uma empresa privilegiada, de carácter monopolista, criada pelo Marquês de Pombal, na segunda metade do século XVIII, em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-9"
+        },
+        {
+          "year": "s/d",
+          "text": "António Ferreira Gonçalves dos Reis foi um cineasta e poeta português que se distingue pelo sentido poético da sua obra. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-9"
+        },
+        {
+          "year": "1996",
+          "text": "Jorge Fernando Branco de Sampaio foi um político português que exerceu o cargo de presidente da República Portuguesa, entre 9 de março de 1996 e 9 de março de 2006. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-9"
+        }
+      ]
+    },
+    "09-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1891",
+          "text": "No dia 11 de setembro de 1891 faleceu Antero de Quental, escritor e poeta português do século XIX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-9"
+        },
+        {
+          "year": "1942",
+          "text": "A 11 de setembro de 1942, morre o político português Bento António Gonçalves. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-9"
+        }
+      ]
+    },
+    "09-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2022",
+          "text": "No dia 12 de setembro de 2022 morreu Vítor Aguiar e Silva, professor, investigador, escritor e poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-9"
+        }
+      ]
+    },
+    "09-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Alexandre Herculano de Carvalho e Araújo foi um escritor, historiador, jornalista e poeta português da era do romantismo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-9"
+        },
+        {
+          "year": "1923",
+          "text": "A 13 de setembro de 1923 nasceu nos Açores a escritora e poeta portuguesa Natália Correia. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-9"
+        }
+      ]
+    },
+    "09-17": {
+      "world": [],
+      "portugal": []
+    },
+    "09-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "José Pedro Amaro dos Santos Reis, conhecido como Zé Pedro, foi um músico português, guitarrista e fundador da banda de rock portuguesa Xutos & Pontapés. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-9"
+        }
+      ]
+    },
+    "09-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1837",
+          "text": "No dia 16 de setembro de 1837 nasce, em Lisboa, o rei D. Pedro V de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-9"
+        },
+        {
+          "year": "s/d",
+          "text": "Fernando Baeta Bissaya Barreto Rosa, mais conhecido por Bissaya Barreto, foi um professor de Medicina da Universidade de Coimbra e político. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-9"
+        }
+      ]
+    },
+    "09-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1861",
+          "text": "A sua construção iniciou-se em 1861, sendo inaugurado em 18 de setembro em 1865 pelo rei D. Luís. Foi concebido para acolher a grande Exposição Internacional do Porto, organizada pela então Associação Industrial Portuense, hoje Associação Empresarial de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-9"
+        },
+        {
+          "year": "1996",
+          "text": "Jorge Fernando Branco de Sampaio foi um político português que exerceu o cargo de presidente da República Portuguesa, entre 9 de março de 1996 e 9 de março de 2006. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-9"
+        }
+      ]
+    },
+    "09-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1765",
+          "text": "No dia 15 de setembro de 1765 nasceu Manuel Barbosa du Bocage, possivelmente o maior representate do arcadismo lusitano. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-9"
+        },
+        {
+          "year": "s/d",
+          "text": "José Júlio de Souza Pinto foi um pintor português, ligado à primeira geração naturalista. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-9"
+        },
+        {
+          "year": "1939",
+          "text": "No dia 15 de setembro de 1939 nasceu Vítor Aguiar e Silva, p rofessor , investigador, escritor e poeta português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-9"
+        }
+      ]
+    },
+    "09-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1276",
+          "text": "A 20 de setembro de 1276, Pedro Julião, conhecido como Pedro Hispano, bispo português, inicia funções como papa, com o nome de João XXI. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-9"
+        },
+        {
+          "year": "s/d",
+          "text": "Carlos Alberto Portugal Correia de Lacerda foi um poeta, professor ocasional de literatura, crítico de arte e colecionador português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-9"
+        }
+      ]
+    },
+    "09-22": {
+      "world": [],
+      "portugal": []
+    },
+    "09-21": {
+      "world": [],
+      "portugal": []
+    },
+    "09-27": {
+      "world": [],
+      "portugal": []
+    },
+    "09-26": {
+      "world": [],
+      "portugal": []
+    },
+    "09-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1834",
+          "text": "A 24 de setembro de 1834, faleceu D. Pedro IV, rei de Portugal e primeiro Imperador do Brasil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-9"
+        },
+        {
+          "year": "s/d",
+          "text": "Rosa Ramalho é o nome artístico de Rosa Barbosa Lopes, uma escultora, ceramista e figura emblemática da olaria tradicional portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-9"
+        },
+        {
+          "year": "2004",
+          "text": "Antonio Tabucchi foi um escritor italiano, professor de Língua e Literatura Portuguesa na Universidade de Siena. Portugal foi cenário de várias dos seus romances e a paixão pelo país, levou-o a pedir a nacionalidade portuguesa, que lhe foi concedida em 2004. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-9"
+        }
+      ]
+    },
+    "09-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1507",
+          "text": "A 25 de setembro de 1507, Afonso de Albuquerque chegou a Ormuz precedido de uma temível reputação e rapidamente tomou posse da ilha na sequência de uma das maiores batalhas da história da marinha portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-9"
+        }
+      ]
+    },
+    "09-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1822",
+          "text": "A Constituição Portuguesa de 1822 aprovada em 23 de setembro de 1822 foi o mais antigo texto constitucional português, tendo assinalado uma tentativa de pôr fim ao absolutismo e inaugurar em Portugal uma monarquia constitucional. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-9"
+        },
+        {
+          "year": "1854",
+          "text": "No dia 23 de setembro de 1854 nasceu Abel Botelho, um coronel de Estado-Maior do Exército, escritor, político e diplomata português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-9"
+        }
+      ]
+    },
+    "09-30": {
+      "world": [],
+      "portugal": []
+    },
+    "09-28": {
+      "world": [],
+      "portugal": []
+    },
+    "09-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1983",
+          "text": "A 29 de setembro de 1983, faleceu em Lisboa o pintor português Mário Botas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-9"
+        }
+      ]
+    },
+    "10-02": {
+      "world": [],
+      "portugal": []
+    },
+    "10-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "José Alfredo de Vilhena Rodrigues foi um escritor, pintor, cartoonista e humorista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-10"
+        }
+      ]
+    },
+    "10-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1833",
+          "text": "A 1 de outubro de 1833 faleceu em Lisboa a cantora lírica Luísa Todi Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-10"
+        }
+      ]
+    },
+    "10-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Reinaldo Ferreira, conhecido pelo pseudónimo de Repórter X, foi um repórter, jornalista, dramaturgo e realizador de cinema português. Era pai do poeta Reinaldo Ferreira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-10"
+        },
+        {
+          "year": "2021",
+          "text": "A 4 de outubro de 2021, morreu o poeta português Fernando Echevarría. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-10"
+        }
+      ]
+    },
+    "10-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1910",
+          "text": "Dia 5 de outubro de 1910 dá-se uma substituição de regime em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-10"
+        }
+      ]
+    },
+    "10-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "José Ernesto de Sousa foi um artista multidisciplinar, fotógrafo, cineasta e iniciador do movimento cineclubista em Portugal , e crítico de arte português , atividades a que dedicou toda a sua vida. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-10"
+        },
+        {
+          "year": "1999",
+          "text": "A 6 de outubro de 1999, faleceu a fadista Amália Rodrigues, geralmente aclamada como a voz de Portugal e uma das mais brilhantes cantoras do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-10"
+        }
+      ]
+    },
+    "10-10": {
+      "world": [],
+      "portugal": []
+    },
+    "10-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1998",
+          "text": "Em outubro de 1998 a Academia Sueca atribuiu este prémio ao escritor português Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-10"
+        }
+      ]
+    },
+    "10-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1200",
+          "text": "Um Panhard et Levassor, de 1200 centímetros cúbicos e 3,75 cavalos, guiado pelo conde Jorge de Avillez, entre o Barreiro e Santiago do Cacém. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-10"
+        }
+      ]
+    },
+    "10-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1749",
+          "text": "A 9 de outubro de 1749, faleceu o diplomata português D. Luís da Cunha. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-10"
+        }
+      ]
+    },
+    "10-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1613",
+          "text": "A 13 de outubro de 1613, nasceu D. Luísa de Gusmão, mulher do rei D. João IV de Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-10"
+        }
+      ]
+    },
+    "10-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Nunes Ribeiro Sanches foi um médico português e polímata, tendo sido ainda filósofo, pedagogo e historiador. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-10"
+        },
+        {
+          "year": "1847",
+          "text": "A 14 de outubro de 1847 nasceu Soares dos Reis, um importante escultor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-10"
+        },
+        {
+          "year": "2000",
+          "text": "A 14 de outubro de 2000 morreu Dinis Albano Carneiro Gonçalves, cujo pseudónimo é Sebastião Alba, escritor português naturalizado moçambicano. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-10"
+        }
+      ]
+    },
+    "10-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1921",
+          "text": "A Seara Nova é uma revista fundada em Lisboa, no ano de 1921, na sua origem era uma publicação essencialmente doutrinária e crítica, assumidamente com fins pedagógicos e políticos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-10"
+        }
+      ]
+    },
+    "07-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Gabriel de Castro e Quadros Ferro, conhecido como António Quadros, foi um filósofo, historiador, escritor, fundador e director do IADE, professor universitário e tradutor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-7"
+        }
+      ]
+    },
+    "10-16": {
+      "world": [],
+      "portugal": []
+    },
+    "10-12": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1798",
+          "text": "A 12 de outubro de 1798 nasce D. Pedro IV, rei de Portugal e primeiro Imperador do Brasil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-10"
+        },
+        {
+          "year": "1890",
+          "text": "A 12 de outubro de 1890, nasceu o compositor português Luís de Freitas Branco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/12-10"
+        }
+      ]
+    },
+    "10-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "A 17 de outubro de 1917, nasceu o e scritor português Alexandre Cabral. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-10"
+        }
+      ]
+    },
+    "10-21": {
+      "world": [],
+      "portugal": []
+    },
+    "10-18": {
+      "world": [],
+      "portugal": []
+    },
+    "10-20": {
+      "world": [],
+      "portugal": []
+    },
+    "10-22": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "D. João V, rei de Portugal, havia prometido construir uma basílica se a sua esposa, D. Maria Ana Josefa de Áustria, lhe desse descendência. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-10"
+        },
+        {
+          "year": "1896",
+          "text": "A 22 de outubro de 1896, nasceu o cineasta português José Júlio Marques Leitão de Barros. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/22-10"
+        }
+      ]
+    },
+    "10-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "António Cabral foi um poeta, ficcionista, cronista, ensaísta, dramaturgo, etnógrafo e divulgador da cultura popular portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-10"
+        }
+      ]
+    },
+    "10-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1739",
+          "text": "A 19 de outubro de 1739, faleceu em Lisboa o escritor e dramaturgo António José da Silva, queimado num auto de fé da Inquisição. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-10"
+        },
+        {
+          "year": "s/d",
+          "text": "José Rodrigues de Carvalho foi um pintor português da época romântica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-10"
+        },
+        {
+          "year": "s/d",
+          "text": "Raul Augusto de Almeida Solnado foi um humorista, apresentador de televisão e ator português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-10"
+        },
+        {
+          "year": "1941",
+          "text": "A 19 de outubro de 1941, morreu em Lisboa o escritor Carlos Malheiro Dias. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-10"
+        },
+        {
+          "year": "2011",
+          "text": "Manuel António Pina foi um jornalista e escritor português, premiado em 2011 com o Prémio Camões. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-10"
+        }
+      ]
+    },
+    "10-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1836",
+          "text": "No dia 24 de outubro de 1836 nasceu, no Porto, o escritor Ramalho Ortigão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-10"
+        },
+        {
+          "year": "1933",
+          "text": "A 24 de outubro de 1933 morre o médico português Tomás de Mello Breyner, figura conhecida nos meios da política e da medicina do princípio do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-10"
+        }
+      ]
+    },
+    "10-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1933",
+          "text": "No dia 26 de outubro de 1933, faleceu José Malhoa, considerado o melhor pintor naturalista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-10"
+        }
+      ]
+    },
+    "10-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1949",
+          "text": "O seu trabalho precursor das técnicas modernas na área da imagiologia cerebral e da psicocirurgia foi distinguido em 1949. Egas Moniz foi o único português a receber o Prémio Nobel da Medicina. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-10"
+        },
+        {
+          "year": "1949",
+          "text": "A 27 de outubro de 1949, morreu o poeta português José Carlos de Queirós Nunes Ribeiro. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-10"
+        }
+      ]
+    },
+    "10-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1520",
+          "text": "No dia 25 de outubro de 1520, D. Manuel I completava 25 anos de reinado e nesse mesmo dia o rei esteve em Coimbra onde inaugurou a igreja de Santa Cruz, depois das obras que tinha ordenado após a sua passagem pela cidade no outono de 1502. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-10"
+        }
+      ]
+    },
+    "10-28": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1856",
+          "text": "A história dos comboios em Portugal começou a escrever-se em 28 de outubro de 1856, quando se realizou a primeira viagem entre Lisboa e o Carregado. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/28-10"
+        }
+      ]
+    },
+    "10-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1748",
+          "text": "A 29 de outubro de 1748, nasceu em Braga o engenheiro e arquiteto Carlos Cruz Amarante. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-10"
+        },
+        {
+          "year": "s/d",
+          "text": "Fernando Baeta Bissaya Barreto Rosa, mais conhecido por Bissaya Barreto, foi um professor de Medicina da Universidade de Coimbra e político. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-10"
+        }
+      ]
+    },
+    "10-30": {
+      "world": [],
+      "portugal": []
+    },
+    "10-31": {
+      "world": [],
+      "portugal": []
+    },
+    "11-02": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Teixeira de Pascoaes, pseudónimo literário de Joaquim Pereira Teixeira de Vasconcelos foi um poeta, escritor e filósofo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-11"
+        },
+        {
+          "year": "1919",
+          "text": "No dia 2 de novembro de 1919 nasceu Jorge de Sena - poeta, crítico, ensaísta, ficcionista, dramaturgo, tradutor e professor universitário português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/2-11"
+        }
+      ]
+    },
+    "11-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1755",
+          "text": "A 1 de novembro de 1755 um grande terramoto atinge Lisboa, seguido de maremoto e incêndio. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-11"
+        },
+        {
+          "year": "s/d",
+          "text": "Carlos Manuel Marques Paião foi um cantor e compositor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-11"
+        }
+      ]
+    },
+    "11-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1918",
+          "text": "A 3 de novembro de 1918 nasceu o Padre Manuel Antunes, um dos maiores pensadores portugueses do século XX Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-11"
+        }
+      ]
+    },
+    "11-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1877",
+          "text": "A 4 de novembro de 1877 foi inaugurada a Ponte D. Maria no Porto (projeto e obra dos engenheiros Téophile Seyrig e Gustave Eiffel), que permitiu a chegada do comboio à cidade. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-11"
+        }
+      ]
+    },
+    "11-05": {
+      "world": [],
+      "portugal": []
+    },
+    "11-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1656",
+          "text": "No dia 6 de novembro de 1656 faleceu D. João IV, o fundador da dinastia de Bragança. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-11"
+        },
+        {
+          "year": "1919",
+          "text": "A 6 de novembro de 1919 nasceu uma das maiores escritoras e poetisas portuguesas, que apreciava falar-nos de temas como: o mar, a infância ou o humanismo cristão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-11"
+        },
+        {
+          "year": "1929",
+          "text": "No dia 6 de novembro de 1929 faleceu Columbano Bordalo Pinheiro, pintor naturalista e realista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-11"
+        }
+      ]
+    },
+    "11-07": {
+      "world": [],
+      "portugal": []
+    },
+    "11-09": {
+      "world": [],
+      "portugal": []
+    },
+    "11-11": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1953",
+          "text": "A 11 de novembro de 1953, morreu o poeta português António Maria Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-11"
+        },
+        {
+          "year": "2020",
+          "text": "A 11 de novembro de 2020, faleceu o arquiteto paisagista, ecologista e político português Gonçalo Ribeiro Telles, um dos membros fundadores do Centro Nacional de Cultura. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/11-11"
+        }
+      ]
+    },
+    "11-10": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1913",
+          "text": "A 10 de novembro de 1913, nasceu o político português Álvaro Barreirinhas Cunhal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-11"
+        },
+        {
+          "year": "1948",
+          "text": "No dia 10 de novembro de 1948 nasceu Mário Viegas, considerado um dos melhores atores da sua geração e um dos maiores recitadores de poesia em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/10-11"
+        }
+      ]
+    },
+    "11-13": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1947",
+          "text": "No dia 13 de abril de 1947 morreu Francisco Manuel Alves, mais conhecido como Abade de Baçal, um arqueólogo, historiador e genealogista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/13-11"
+        }
+      ]
+    },
+    "11-12": {
+      "world": [],
+      "portugal": []
+    },
+    "11-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2020",
+          "text": "A 8 de novembro de 2020 morre o pintor Artur do Cruzeiro Seixas, um dos protagonistas mais importantes do movimento surrealista em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-11"
+        }
+      ]
+    },
+    "11-14": {
+      "world": [],
+      "portugal": []
+    },
+    "11-16": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Portugal é um país fortemente ligado ao mar, ficando marcado para a posterioridade como o país dos Descobrimentos marítimos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-11"
+        },
+        {
+          "year": "1922",
+          "text": "A 16 de novembro de 1922 nasceu o nobel português da literatura, José Saramago. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-11"
+        },
+        {
+          "year": "1925",
+          "text": "A 16 de novembro de 1925, morreu Carolina Wilhelma Michaëlis de Vasconcelos a primeira mulher a lecionar numa universidade portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/16-11"
+        }
+      ]
+    },
+    "11-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1790",
+          "text": "João Carlos Gregório Domingos Vicente Francisco de Saldanha Oliveira e Daun, mais conhecido por Duque de Saldanha, nasceu no Palácio da Anunciada, em Lisboa, a 17 de novembro de 1790. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-11"
+        },
+        {
+          "year": "1822",
+          "text": "A 17 de novembro de 1822, morreu Machado de Castro, um dos maiores e mais conhecidos escultores portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-11"
+        },
+        {
+          "year": "s/d",
+          "text": "Mário Dionísio de Assis Monteiro foi um crítico, escritor, pintor e professor português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-11"
+        }
+      ]
+    },
+    "11-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1822",
+          "text": "A 19 de novembro de 1822, morreu o político português Manuel Fernandes Tomás. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-11"
+        },
+        {
+          "year": "2019",
+          "text": "A 19 de novembro de 2019 morreu o músico português José Mário Monteiro Guedes Branco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-11"
+        }
+      ]
+    },
+    "11-15": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "A 15 de novembro celebra-se o Dia Nacional da Língua Gestual Portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/15-11"
+        }
+      ]
+    },
+    "11-18": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "2011",
+          "text": "Manuel António Pina foi um jornalista e escritor português, premiado em 2011 com o Prémio Camões. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-11"
+        },
+        {
+          "year": "s/d",
+          "text": "António Osório, nascido António Gabriel Maranca Osório de Castro, foi um escritor e poeta português, com antepassados galegos e italianos (com raízes corsas e florentinas). Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/18-11"
+        }
+      ]
+    },
+    "11-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Lev Tolstoi, mais conhecido em português como Leão Tolstoi foi um escritor russo, amplamente reconhecido como um dos maiores de todos os tempos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-11"
+        }
+      ]
+    },
+    "11-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1857",
+          "text": "No dia 21 de novembro de 1857 nasceu Columbano Bordalo Pinheiro, pintor naturalista e realista português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-11"
+        },
+        {
+          "year": "1879",
+          "text": "No dia 21 de novembro de 1879 nasceu o arquiteto português Raul Lino. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-11"
+        },
+        {
+          "year": "1996",
+          "text": "A 21 de novembro de 1996, morreu o e scritor português Alexandre Cabral. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-11"
+        }
+      ]
+    },
+    "11-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1906",
+          "text": "A 24 de novembro de 1906, nasceu o professor e poeta português Rómulo Vasco da Gama de Carvalho. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-11"
+        }
+      ]
+    },
+    "11-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "No dia 23 de novembro nasceu Herberto Helder, reconhecido como um dos maiores poetas portugueses contemporâneos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-11"
+        }
+      ]
+    },
+    "11-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1845",
+          "text": "A 25 de novembro de 1845 nasceu Eça de Queiroz, um dos mais importantes escritores portugueses. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-11"
+        },
+        {
+          "year": "s/d",
+          "text": "Irene do Céu Vieira Lisboa foi professora primária, especializada em psicologia e pedagogia, e deixou uma obra pedagógica de grande interesse e uma obra literária que é considerada uma das mais originais da literatura portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-11"
+        }
+      ]
+    },
+    "11-22": {
+      "world": [],
+      "portugal": []
+    },
+    "11-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1955",
+          "text": "A 27 de novembro de 1955, faleceu o compositor português Luís de Freitas Branco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-11"
+        },
+        {
+          "year": "1994",
+          "text": "No dia 27 de novembro de 1994 morreu Fernando Lopes-Graça, considerado um dos maiores maestros e compositores portugueses do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-11"
+        }
+      ]
+    },
+    "11-26": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "A 26 de novembro de 1923 nasceu o poeta, ator, encenador, declamador e radialista português Vasco de Lima Couto. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-11"
+        },
+        {
+          "year": "2006",
+          "text": "No dia 26 de novembro de 2006 faleceu Mário Cesariny, poeta e pintor, considerado o principal representante do surrealismo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/26-11"
+        }
+      ]
+    },
+    "11-28": {
+      "world": [],
+      "portugal": []
+    },
+    "12-01": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1640",
+          "text": "A 1 de dezembro de 1640 foi restaurada a independência de Portugal e D. João, Duque de Bragança torna-se rei de Portugal como D. João IV. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-12"
+        },
+        {
+          "year": "1934",
+          "text": "A 1 de dezembro de 1934, nasceu o poeta e tradutor literário português Pedro Tamen. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-12"
+        },
+        {
+          "year": "2020",
+          "text": "Ensaísta português, faleceu a 1 de dezembro de 2020, em Lisboa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/1-12"
+        }
+      ]
+    },
+    "12-04": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Eurico Sidónio Gouveia Xavier Lopes da Fonseca foi o principal especialista português em astronáutica. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/4-12"
+        }
+      ]
+    },
+    "12-02": {
+      "world": [],
+      "portugal": []
+    },
+    "11-30": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1935",
+          "text": "A 30 de novembro de 1935 morreu o poeta Fernando Pessoa, autor de heterónimos e que se tornou um mito cultural na Europa contemporânea. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-11"
+        },
+        {
+          "year": "s/d",
+          "text": "Henrique Medina de Barros foi um pintor português, filho de mãe portuguesa e de pai espanhol. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-11"
+        },
+        {
+          "year": "1995",
+          "text": "A 30 de novembro de 1995, morre o jornalista, crítico, tradutor e escritor português Fernando Assis Pacheco. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-11"
+        },
+        {
+          "year": "s/d",
+          "text": "José Pedro Amaro dos Santos Reis, conhecido como Zé Pedro, foi um músico português, guitarrista e fundador da banda de rock portuguesa Xutos & Pontapés. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/30-11"
+        }
+      ]
+    },
+    "12-03": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1920",
+          "text": "A 3 de dezembro de 1920 nasce o pintor Artur do Cruzeiro Seixas, um dos protagonistas mais importantes do movimento surrealista em Portugal. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-12"
+        },
+        {
+          "year": "1980",
+          "text": "António Joaquim Rodrigues Ribeiro, conhecido por António Variações, foi um cantor e compositor português do início dos anos 1980. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/3-12"
+        }
+      ]
+    },
+    "11-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1807",
+          "text": "A 29 de novembro de 1807, por ocasião das invasões napoleónicas, parte de Lisboa a família real e a corte portuguesa, com destino ao Brasil. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-11"
+        },
+        {
+          "year": "1969",
+          "text": "No dia 29 de novembro de 1969 morreu o escritor Alves Redol, considerado como um dos expoentes máximos do Neorrealismo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-11"
+        }
+      ]
+    },
+    "12-05": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1930",
+          "text": "A 5 de dezembro de 1930, morreu o escritor português Raul Germano Brandão. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/5-12"
+        }
+      ]
+    },
+    "12-06": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "A 6 de dezembro de 1923, nasce o escritor português Urbano Tavares Rodrigues. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/6-12"
+        }
+      ]
+    },
+    "12-10": {
+      "world": [],
+      "portugal": []
+    },
+    "12-11": {
+      "world": [],
+      "portugal": []
+    },
+    "12-07": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1937",
+          "text": "No dia 7 de dezembro de 1937, nasceu o poeta e declamador português José Carlos Pereira Ary dos Santos. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/7-12"
+        }
+      ]
+    },
+    "12-09": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1854",
+          "text": "O escritor português Almeida Garrett, morreu em Lisboa no dia 9 de dezembro de 1854. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-12"
+        },
+        {
+          "year": "1909",
+          "text": "A 9 de dezembro de 1909 nasceu António Pedro da Costa, ator, encenador, escritor, poeta, jornalista, pintor, artista plástico, antiquário e colecionador de arte português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/9-12"
+        }
+      ]
+    },
+    "12-12": {
+      "world": [],
+      "portugal": []
+    },
+    "12-08": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1894",
+          "text": "A 8 de dezembro de 1894 nasceu a poetisa portuguesa Florbela Espanca. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-12"
+        },
+        {
+          "year": "1930",
+          "text": "A 8 de dezembro de 1930 morreu a poetisa portuguesa Florbela Espanca. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-12"
+        },
+        {
+          "year": "s/d",
+          "text": "Médico, professor, poeta e ensaísta, pioneiro da educação pela arte em Portugal, Arquimedes da Silva Santos teve intervenção nas áreas política, cívica e artística, tendo sido uma das grandes figuras da história política e cultural do Concelho de Vila Franca de Xira. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/8-12"
+        }
+      ]
+    },
+    "12-13": {
+      "world": [],
+      "portugal": []
+    },
+    "12-15": {
+      "world": [],
+      "portugal": []
+    },
+    "12-14": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Teixeira de Pascoaes, pseudónimo literário de Joaquim Pereira Teixeira de Vasconcelos foi um poeta, escritor e filósofo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/14-12"
+        }
+      ]
+    },
+    "12-17": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1906",
+          "text": "No dia 17 de dezembro de 1906 nasceu Fernando Lopes-Graça, considerado um dos maiores maestros e compositores portugueses do século XX. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/17-12"
+        }
+      ]
+    },
+    "12-18": {
+      "world": [],
+      "portugal": []
+    },
+    "12-19": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1901",
+          "text": "A 19 de dezembro de 1901, nasceu o escritor português Vitorino Nemésio. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-12"
+        },
+        {
+          "year": "s/d",
+          "text": "José Dias Coelho foi um artista plástico, militante e dirigente do Partido Comunista Português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/19-12"
+        }
+      ]
+    },
+    "12-16": {
+      "world": [],
+      "portugal": []
+    },
+    "12-20": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1980",
+          "text": "A 20 de dezembro de 1980, morreu Artur Paredes, compositor e intérprete de guitarra portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/20-12"
+        }
+      ]
+    },
+    "12-23": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1952",
+          "text": "A 23 de dezembro de 1952, nasceu na Nazaré o pintor português Mário Botas. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/23-12"
+        }
+      ]
+    },
+    "12-22": {
+      "world": [],
+      "portugal": []
+    },
+    "12-24": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1524",
+          "text": "A 24 de dezembro de 1524, morre o navegador e explorador português Vasco da Gama. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-12"
+        },
+        {
+          "year": "1779",
+          "text": "A Academia das Ciências de Lisboa foi fundada a 24 de dezembro de 1779, com beneplácito da rainha D. Maria I. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/24-12"
+        }
+      ]
+    },
+    "12-26": {
+      "world": [],
+      "portugal": []
+    },
+    "12-25": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "s/d",
+          "text": "Irene do Céu Vieira Lisboa foi professora primária, especializada em psicologia e pedagogia, e deixou uma obra pedagógica de grande interesse e uma obra literária que é considerada uma das mais originais da literatura portuguesa. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-12"
+        },
+        {
+          "year": "s/d",
+          "text": "Rui Manuel Correia Knopfli foi um poeta, diplomata e crítico literário e de cinema português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/25-12"
+        }
+      ]
+    },
+    "12-28": {
+      "world": [],
+      "portugal": []
+    },
+    "12-27": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1923",
+          "text": "A 27 de dezembro de 1923, nasce o escultor português António Augusto Lagoa Henriques. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/27-12"
+        }
+      ]
+    },
+    "12-29": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1911",
+          "text": "No dia 29 de dezembro de 1911 nasceu o escritor Alves Redol, considerado como um dos expoentes máximos do Neorrealismo português. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-12"
+        },
+        {
+          "year": "s/d",
+          "text": "A 29 de dezembro de 19864, morreu o poeta português Joaquim Namorado. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/29-12"
+        }
+      ]
+    },
+    "12-30": {
+      "world": [],
+      "portugal": []
+    },
+    "12-31": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1917",
+          "text": "A 31 de dezembro de 1917, nasceu o professor, ensaísta e historiador de literatura portuguesa António José Baptista Saraiva. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/31-12"
+        }
+      ]
+    },
+    "12-21": {
+      "world": [],
+      "portugal": [
+        {
+          "year": "1797",
+          "text": "Considerado o maior poeta português do século XVIII, participou ativamente da vida boémia de Lisboa, o que se traduziu por um conjunto de composições satíricas e libertinas que o levaram à prisão (1797). Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-12"
+        },
+        {
+          "year": "1939",
+          "text": "A 21 de dezembro de 1939, nasceu o fadista português Carlos do Carmo. Ler mais",
+          "source_url": "https://www.e-cultura.pt/efemeridesDia/21-12"
         }
       ]
     }
