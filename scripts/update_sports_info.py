@@ -21,6 +21,7 @@ SOURCES = [
     {"entity":"Seleção Nacional A","sport":"Futebol","url":"https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos","kind":"fpf"},
     {"entity":"Seleção Nacional Sub-21","sport":"Futebol","url":"https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos","kind":"fpf"},
     {"entity":"Real Madrid","sport":"Futebol","url":"https://www.laliga.com/en-ES/clubs/real-madrid/next-matches","kind":"realmadrid"},
+    {"entity":"Real Madrid","sport":"Futebol","url":"https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino","kind":"realmadrid_official"},
     {"entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","url":"https://www.zerozero.pt/competicao/mundial-hoquei-patins","kind":"portugal_hockey"},
 ]
 
@@ -238,6 +239,62 @@ def parse_realmadrid(src,html):
         })
     return found
 
+def parse_realmadrid_official(src,html):
+    soup=BeautifulSoup(html,"html.parser")
+    lines=[re.sub(r"\s+"," ",x).strip() for x in soup.stripped_strings if re.sub(r"\s+"," ",x).strip()]
+    if len(lines)<20:
+        # fallback Markdown/Jina: remove sintaxe de links/imagens e bullets
+        lines=[]
+        for raw in html.splitlines():
+            x=re.sub(r"!?\[[^\]]*\]\([^)]*\)","",raw)
+            x=re.sub(r"^#+\s*","",x)
+            x=re.sub(r"^[*\-]\s*","",x)
+            x=re.sub(r"\s+"," ",x).strip()
+            if x:lines.append(x)
+    months={"ene":1,"feb":2,"mar":3,"abr":4,"may":5,"jun":6,"jul":7,"ago":8,"sept":9,"sep":9,"oct":10,"nov":11,"dic":12}
+    found=[]
+    exclude={"Fútbol · Primer Equipo","Primer equipo","La Liga","Champions League","Amistoso","Más","Calendario","Suscribirse"}
+    for i,line in enumerate(lines):
+        if line!="Fútbol · Primer Equipo":continue
+        # nomes das equipas imediatamente antes do marcador
+        prev=[]
+        j=i-1
+        while j>=0 and len(prev)<2 and i-j<=10:
+            x=lines[j].strip()
+            if x not in exclude and not x.lower().startswith(("image","jornada","trofeo")) and len(x)<70:
+                if x not in prev:prev.append(x)
+            j-=1
+        if len(prev)<2:continue
+        away_or_second=prev[0]; home_or_first=prev[1]
+        home,away=home_or_first,away_or_second
+        if "Real Madrid" not in home and "Real Madrid" not in away:continue
+        block=lines[i+1:i+18]
+        comp=next((x for x in block if x in ("La Liga","Champions League","Amistoso") or "Copa" in x or "Supercopa" in x),"Competição a confirmar")
+        date_iso=None;time_text=None;venue="Local a confirmar";date_pos=None
+        for n,x in enumerate(block):
+            m=re.search(r"(\d{1,2})\s+(ene|feb|mar|abr|may|jun|jul|ago|sept|sep|oct|nov|dic)(?:[^0-9]+(\d{2}:\d{2}))?",x,re.I)
+            if m:
+                day=int(m.group(1));mon=months[m.group(2).lower()];year=2026 if mon>=7 else 2027
+                date_iso=f"{year:04d}-{mon:02d}-{day:02d}";time_text=m.group(3);date_pos=n;break
+        if not date_iso:continue
+        if date_pos is not None:
+            for x in block[date_pos+1:date_pos+5]:
+                if x and not x.lower().startswith(("rueda de prensa","orange tv","movistar","dazn","realmadrid tv","más")):
+                    venue=x;break
+        channel=portugal_channel("Real Madrid",comp," ".join(block))
+        stream=None
+        if comp=="La Liga":stream="https://www.dazn.com/pt-PT/home"
+        elif comp=="Amistoso" and any("Realmadrid TV" in x for x in block):
+            channel="Realmadrid TV / RM Play";stream="https://play.realmadrid.com/"
+        found.append({
+          "date":date_iso,"start":iso_madrid_to_utc(date_iso,time_text),
+          "entity":"Real Madrid","sport":"Futebol","home":home,"away":away,
+          "competition":comp,"location":venue,"channel":channel,
+          **({"stream_url":stream} if stream else {}),
+          "match_url":src["url"],"source_url":src["url"]
+        })
+    return found
+
 def f1_events():
     url="https://api.jolpi.ca/ergast/f1/2026.json"
     source="https://www.formula1.com/en/racing/2026"
@@ -304,6 +361,7 @@ for src in SOURCES:
         if src["kind"]=="zerozero": parsed=parse_zerozero(src,html)
         elif src["kind"]=="fpf": parsed=parse_fpf(src,html)
         elif src["kind"]=="realmadrid": parsed=parse_realmadrid(src,html)
+        elif src["kind"]=="realmadrid_official": parsed=parse_realmadrid_official(src,html)
         elif src["kind"]=="portugal_hockey": parsed=[]
         else: parsed=[]
         for e in parsed:
