@@ -216,7 +216,7 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 .passo-fallback{display:inline-block;margin-top:7px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;color:var(--primary);font-size:.74rem;font-weight:800;text-decoration:none;background:#fff}
 .passo-fallback.is-primary{border-color:var(--primary);background:var(--primary);color:#fff}
 
-/* v101 · navegação Android TV por D-pad + calendário próprio */
+/* v103 · navegação Android TV robusta por D-pad + calendário próprio */
 .tv-date-open{display:none}
 html.tv-mode .stats-date-input{display:none!important}
 html.tv-mode .tv-date-open{display:inline-flex;align-items:center;justify-content:center;min-width:176px;min-height:52px;border:2px solid var(--border);border-radius:12px;background:#FFFFFF;color:var(--text);font-size:1rem;font-weight:800}
@@ -240,7 +240,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v102</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v103</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -276,7 +276,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=102"></script>
+<script src="sports-info.js?v=103"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -409,7 +409,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=102;
+const APP_BUILD=103;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -581,13 +581,30 @@ function applyTvEnvironment(){
   }
  });
  const pageDate=document.querySelector("#todayPageDate");
- if(pageDate){pageDate.tabIndex=0;pageDate.setAttribute("role","button");pageDate.dataset.tvDateOpen="1";pageDate.setAttribute("aria-label","Escolher uma data específica")}
+ if(pageDate){
+  pageDate.tabIndex=0;pageDate.setAttribute("role","button");pageDate.dataset.tvDateOpen="1";
+  pageDate.setAttribute("aria-label","Escolher uma data específica");pageDate.setAttribute("aria-haspopup","dialog");pageDate.setAttribute("aria-controls","tvDateDialog");
+ }
 }
 function tvVisibleFocusable(root=document){
  return [...root.querySelectorAll('button:not([disabled]):not(.hidden),a[href],input:not([disabled]):not([tabindex="-1"]),[tabindex]:not([tabindex="-1"])')]
   .filter(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width>0&&r.height>0&&s.visibility!=="hidden"&&s.display!=="none"});
 }
 function tvFocusable(root=document){return tvVisibleFocusable(root)}
+function tvRemoteKey(e){
+ const key=String((e&&e.key)||"");
+ if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Enter","Escape","Backspace"," "].includes(key))return key;
+ if(key==="Spacebar")return " ";
+ if(["Select","Accept","OK","DPadCenter","DPAD_CENTER"].includes(key))return "Enter";
+ const code=Number((e&&(e.keyCode||e.which))||0);
+ return ({37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",13:"Enter",23:"Enter",66:"Enter",32:" ",8:"Backspace",27:"Escape"}[code]||key);
+}
+function tvFocusElement(el){
+ if(!el)return false;
+ try{el.focus({preventScroll:false})}catch(_){el.focus()}
+ try{el.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"})}catch(_){}
+ return document.activeElement===el;
+}
 function tvHorizontalContainer(el){
  return el&&el.closest(".main-tabs,.stats-controls,.today-page-nav,.day-tabs,.person-mode-tabs,.sports-tab-row,.tv-date-dialog-head,.tv-date-dialog-actions");
 }
@@ -601,9 +618,9 @@ function tvHorizontalTarget(current,key){
 function moveTvFocus(key,root=document){
  const items=tvFocusable(root);if(!items.length)return;
  const current=document.activeElement;
- if(!items.includes(current)){((root===document?document.querySelector(".main-tab.active"):null)||items[0]).focus();return}
+ if(!items.includes(current)){tvFocusElement((root===document?document.querySelector(".main-tab.active"):null)||items[0]);return}
  const explicit=tvHorizontalTarget(current,key);
- if(explicit){explicit.focus({preventScroll:false});explicit.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});return}
+ if(explicit){tvFocusElement(explicit);return}
  const a=current.getBoundingClientRect(),ax=a.left+a.width/2,ay=a.top+a.height/2;
  const dir={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[key];if(!dir)return;
  let best=null,bestScore=Infinity;
@@ -617,7 +634,7 @@ function moveTvFocus(key,root=document){
   const score=primary+secondary*2.1;
   if(score<bestScore){bestScore=score;best=el}
  }
- if(best){best.focus({preventScroll:false});best.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"})}
+ if(best)tvFocusElement(best);
  else if(key==="ArrowDown"||key==="ArrowUp")window.scrollBy({top:(key==="ArrowDown"?1:-1)*Math.round(innerHeight*.58),behavior:"smooth"});
 }
 const TV_DATE_MIN="2026-01-01",TV_DATE_MAX="2027-12-31";
@@ -669,13 +686,13 @@ function tvCalendarMoveFromDay(el,key){
  else{const next=document.querySelector('[data-tv-cal-date="'+target+'"]');if(next)next.focus()}
  return true;
 }
-function handleTvDateDialogKey(e){
+function handleTvDateDialogKey(e,key=tvRemoteKey(e)){
  const dlg=document.querySelector("#tvDateDialog");if(!dlg||dlg.classList.contains("hidden"))return false;
- if(e.key==="Escape"||e.key==="Backspace"){e.preventDefault();closeTvDatePicker();return true}
+ if(key==="Escape"||key==="Backspace"){e.preventDefault();e.stopPropagation();closeTvDatePicker();return true}
  const active=document.activeElement;
- if(active&&active.classList.contains("tv-cal-day")&&["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();tvCalendarMoveFromDay(active,e.key);return true}
- if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key,dlg);return true}
- if((e.key==="Enter"||e.key===" ")&&active){e.preventDefault();active.click();return true}
+ if(active&&active.classList.contains("tv-cal-day")&&["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(key)){e.preventDefault();e.stopPropagation();tvCalendarMoveFromDay(active,key);return true}
+ if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(key)){e.preventDefault();e.stopPropagation();moveTvFocus(key,dlg);return true}
+ if((key==="Enter"||key===" ")&&active){e.preventDefault();e.stopPropagation();active.click();return true}
  return false;
 }
 function syncTvDateButtons(){
@@ -686,19 +703,23 @@ function syncTvDateButtons(){
 function initTvRemote(){
  if(!TV_MODE)return;
  document.addEventListener("click",e=>{
-  const open=e.target.closest('[data-tv-date-open="1"]');if(open){e.preventDefault();openTvDatePicker(open);return}
-  const day=e.target.closest("[data-tv-cal-date]");if(day){const iso=day.dataset.tvCalDate;closeTvDatePicker();setStatsDate(iso);return}
+  const open=e.target.closest&&e.target.closest('[data-tv-date-open="1"]');if(open){e.preventDefault();openTvDatePicker(open);return}
+  const day=e.target.closest&&e.target.closest("[data-tv-cal-date]");if(day){const iso=day.dataset.tvCalDate;closeTvDatePicker();setStatsDate(iso);return}
  });
  document.querySelector("#tvCalPrevMonth").addEventListener("click",()=>{const x=tvMonthShift(TV_DATE_STATE.year,TV_DATE_STATE.month,-1);TV_DATE_STATE.year=x.year;TV_DATE_STATE.month=x.month;renderTvDatePicker()});
  document.querySelector("#tvCalNextMonth").addEventListener("click",()=>{const x=tvMonthShift(TV_DATE_STATE.year,TV_DATE_STATE.month,1);TV_DATE_STATE.year=x.year;TV_DATE_STATE.month=x.month;renderTvDatePicker()});
  document.querySelector("#tvCalToday").addEventListener("click",()=>{closeTvDatePicker();setStatsDate(null)});
  document.querySelector("#tvCalCancel").addEventListener("click",closeTvDatePicker);
  document.addEventListener("keydown",e=>{
-  if(handleTvDateDialogKey(e))return;
-  if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key);return}
-  if((e.key==="Enter"||e.key===" ")&&document.activeElement&&document.activeElement!==document.body){const el=document.activeElement;if(el.matches("button,a,[role=button]")){e.preventDefault();el.click()}}
- });
- setTimeout(()=>{const first=document.querySelector(".main-tab.active");if(first)first.focus()},350);
+  const key=tvRemoteKey(e);
+  if(handleTvDateDialogKey(e,key))return;
+  if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(key)){e.preventDefault();e.stopPropagation();moveTvFocus(key);return}
+  if((key==="Enter"||key===" ")&&document.activeElement&&document.activeElement!==document.body){
+   const el=document.activeElement;
+   if(el.matches("button,a,[role=button],[data-tv-date-open]")){e.preventDefault();e.stopPropagation();el.click()}
+  }
+ },true);
+ setTimeout(()=>{const first=document.querySelector(".main-tab.active");if(first)tvFocusElement(first)},350);
 }
 applyTvEnvironment();
 initTvRemote();
@@ -2289,8 +2310,7 @@ function renderOverviewTabs(active,referenceIso){
  }));
 }
 function renderOverview(){
- renderCountdowns();
- const iso=statsIso();applyAdaptiveTheme(iso);
+ const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();
  const d=weekdayFromIso(iso);
  selectedDay=d;
  const activeTab=overviewMode==="week"?"Semana":(SCHOOL_DAYS.includes(d)?d:"Semana");
@@ -2400,8 +2420,9 @@ function renderTodayTimeline(iso,d){
  timeline.innerHTML=h;
 }
 function renderToday(){
+ const iso=statsIso();applyAdaptiveTheme(iso);
  renderCountdowns();renderDailyInfo();renderGlobalQuote();
- const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);renderTodayRestBanner(iso);renderTodayAstronomyBanner(iso);renderTodayHistoryBanners(iso);
+ renderGlobalFamilyBanner(iso);renderTodayRestBanner(iso);renderTodayAstronomyBanner(iso);renderTodayHistoryBanners(iso);
  const dt=dateFromIso(iso),d=WEEK[dt.getUTCDay()],isToday=iso===isoLocalDate();
  const weekday=new Intl.DateTimeFormat("pt-PT",{weekday:"long",timeZone:"UTC"}).format(dt);
  const fullDate=new Intl.DateTimeFormat("pt-PT",{day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
@@ -2469,8 +2490,7 @@ function renderPersonWeekTimeline(p,iso){
  tl.innerHTML=h;
 }
 function renderPerson(){
- renderCountdowns();
- const iso=statsIso();applyAdaptiveTheme(iso);
+ const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();
  const p=person,i=D[p],d=weekdayFromIso(iso);
  qs("#personName").textContent=displayName(p);
  qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";
