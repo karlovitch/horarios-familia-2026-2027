@@ -175,20 +175,11 @@ def flashscore_live_info(mid):
                 if d.get("DD"):
                     try:out["period_start"]=int(d["DD"])
                     except Exception:pass
-                if d.get("DC"):
-                    try:out["live_minute"]=int(d["DC"])
-                    except Exception:pass
 
-                # Calibra o relógio local com o minuto oficial da fonte.
-                # Isto absorve intervalos reais >15 min, compensações e atrasos
-                # no reinício, mantendo depois uma contagem contínua no frontend.
-                now_ts=int(datetime.now(timezone.utc).timestamp())
-                out["status_updated_at"]=now_ts
-                if out.get("period_start") is not None and out.get("live_minute") is not None:
-                    base=45 if out.get("period")=="2H" else (105 if out.get("period")=="ET2" else (90 if out.get("period")=="ET1" else 0))
-                    raw_total=base*60+max(0,now_ts-int(out["period_start"]))
-                    official_total=int(out["live_minute"])*60
-                    out["clock_offset_seconds"]=official_total-raw_total
+                # DD é o início real do período corrente (1H/2H/ET).
+                # Usá-lo evita assumir um intervalo fixo de 15 minutos.
+                # DC não é o minuto de jogo; em vários jogos é um timestamp.
+                out["status_updated_at"]=int(datetime.now(timezone.utc).timestamp())
         return out
     except Exception:
         return {}
