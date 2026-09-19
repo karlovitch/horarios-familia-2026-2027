@@ -350,6 +350,7 @@ def main():
         calendar["dates"][day.isoformat()] = build_day(day, un_map)
         print(f"[1/1] {day.isoformat()} · OK")
 
+    calendar["dates"] = {k: calendar["dates"][k] for k in sorted(calendar["dates"])}
     calendar["generated_at"] = datetime.now(TZ).isoformat(timespec="seconds")
     calendar["sources"] = {
         "un": UN_URL,
