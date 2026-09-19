@@ -62,9 +62,9 @@ ZEROZERO_PAGE_CACHE={}
 # caso contrário, a app mantém a fonte/calendário em vez de abrir uma página
 # Flashscore inexistente.
 VERIFIED_FOOTBALL_MATCH_URLS={
-    "EeqKlS2e":"https://www.flashscore.pt/jogo/futebol/benfica-zBkyuyRI/fc-porto-S2NmScGp/?mid=EeqKlS2e",
-    "hGycdKve":"https://www.flashscore.pt/jogo/futebol/atl-madrid-jaarqpLQ/real-madrid-W8mj7MDD/?mid=hGycdKve",
-    "AaftdAAL":"https://www.zerozero.pt/jogo/2026-09-19-gil-vicente-maritimo/12278057",
+    # Fichas públicas confirmadas manualmente. Flashscore é usado apenas para dados live.
+    "AaftdAAL":"https://www.sofascore.com/football/match/gil-vicente-cs-maritimo/hkbskkb",
+    "hGycdKve":"https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
 }
 FLASHSCORE_HEADERS={
     **HEADERS,
@@ -163,10 +163,13 @@ def flashscore_match_id(event):
     best=flashscore_match_candidate(event)
     return best.get("AA") if best else None
 
-def flashscore_match_url(event):
-    """Só devolve uma ficha pública previamente verificada; nunca fabrica um URL clicável."""
+def verified_football_match_url(event):
+    """Devolve apenas uma ficha pública previamente confirmada (SofaScore/ZeroZero)."""
     mid=flashscore_match_id(event)
-    return VERIFIED_FOOTBALL_MATCH_URLS.get(mid) if mid else None
+    url=VERIFIED_FOOTBALL_MATCH_URLS.get(mid) if mid else None
+    if not url:return None
+    low=url.lower()
+    return url if ("sofascore.com/" in low or re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",low)) else None
 
 def flashscore_live_info(mid):
     if not mid:return {}
@@ -281,7 +284,7 @@ def is_direct_match_url(event,url):
     u=(url or "").lower()
     sport=(event.get("sport") or "").lower()
     if "futebol" in sport:
-        return (("flashscore.pt/jogo/futebol/" in u and ("?mid=" in u or "&mid=" in u)) or re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",u) is not None)
+        return ("sofascore.com/" in u or re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",u) is not None)
     if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
     return bool(url)
 
@@ -531,7 +534,7 @@ def enforce_direct_match_urls(events):
         if "futebol" in sport:
             mid=flashscore_match_id(event)
             if mid:event["flashscore_mid"]=mid
-            direct=zerozero_football_match_url(event) or flashscore_match_url(event)
+            direct=verified_football_match_url(event) or zerozero_football_match_url(event)
         elif "hoquei" in sport or "hóquei" in sport:
             direct=zerozero_hockey_match_url(event)
         if direct:
