@@ -81,12 +81,19 @@ required_index_tokens = {
     "rótulo final das 20h visível": "m===END?\' end-label\'",
     "controlos de data sempre centrados": ".stats-controls{display:grid;grid-template-columns:50px minmax(118px,132px) 50px auto;align-items:center;justify-content:center",
     "rótulo Consultar data centrado": ".stats-controls strong{grid-column:1/-1;width:100%;margin:0 0 2px;text-align:center",
+    "linha do agora a cada 10 segundos": "UI_REFRESH={nowLine:10000",
+    "atualização leve da linha": "setInterval(updateNowLines,UI_REFRESH.nowLine)",
+    "estado completo apenas por minuto": "setInterval(refreshScheduleState,UI_REFRESH.scheduleState)",
+    "cronómetro desportivo sem rerender total": "function updateSportsLiveClocks",
+    "resize agrupado por animation frame": "requestAnimationFrame(()=>",
 }
 for label, token in required_index_tokens.items():
     if token not in index:
         fail(f"Funcionalidade em falta: {label}")
 
 for forbidden in (
+    "},30000);",
+    'if(view==="sports"&&sportsEventsFor(statsIso()).some(e=>e.status==="live"))renderSportsAgenda(statsIso());',
     "Fonte de inspiração:",
     "pt.wikipedia.org/w/index.php?search=",
     "google.com/search",
