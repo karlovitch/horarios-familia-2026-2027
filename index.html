@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=76">
+<link rel="manifest" href="manifest.webmanifest?v=77">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -45,7 +45,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v76</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v77</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -192,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=76;
+const APP_BUILD=77;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
@@ -786,22 +786,20 @@ function liveClockText(ev){
  if(ev.status==="halftime")return "Intervalo";
  if(ev.status!=="live")return "";
  if(ev.period_start){
-  const now=Math.floor(Date.now()/1000);
-  let elapsed=Math.max(0,now-Number(ev.period_start));
-  let base=ev.period==="2H"?45:(ev.period==="ET2"?105:(ev.period==="ET1"?90:0));
+  const now=Math.floor(Date.now()/1000),elapsed=Math.max(0,now-Number(ev.period_start));
+  const base=ev.period==="2H"?45:(ev.period==="ET2"?105:(ev.period==="ET1"?90:0));
+  const offset=Number(ev.clock_offset_seconds||0);
+  let total=base*60+elapsed+offset;
 
-  // Salvaguarda para futebol quando a fonte demora a assinalar o intervalo:
-  // a pausa regulamentar de 15 min não entra no relógio de jogo.
-  if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"){
-   const half=45*60,breakTime=15*60;
-   if(elapsed>=half&&elapsed<half+breakTime)return "Intervalo";
-   if(elapsed>=half+breakTime){
-    elapsed-=breakTime;
-    base=0;
-   }
+  // Se a fonte ainda estiver presa na 1.ª parte depois dos 45', não inventa
+  // a duração do intervalo: conserva o estado de intervalo até nova atualização.
+  if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"&&total>=45*60){
+   const updated=Number(ev.status_updated_at||0),stale=updated&&now-updated>90;
+   if(stale||ev.live_minute>=45)return "Intervalo";
   }
 
-  const total=base*60+elapsed,mm=Math.floor(total/60),ss=total%60;
+  total=Math.max(0,total);
+  const mm=Math.floor(total/60),ss=total%60;
   return String(mm).padStart(2,"0")+":"+String(ss).padStart(2,"0");
  }
  if(ev.live_minute!=null)return String(ev.live_minute)+"'";
