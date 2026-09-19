@@ -366,7 +366,7 @@ function themeContextForIso(iso){
 function activeThemeForIso(iso){return themeContextForIso(iso).active}
 function personMicroPalette(p,colors,themeName=""){
  const [a,b,c,d]=colors,profile=PERSON_STYLE_PROFILES[p]||PERSON_STYLE_PROFILES.Carlos;
- // Na Primavera normal, preservar uma identidade botânica/luminosa e evitar derivações lilás/púrpura.
+ // Na Primavera normal, manter uma identidade botânica e luminosa, sem derivações lilás/púrpura.
  if(themeName==="Primavera"){
   if(profile.style==="sweet")return {bg:mixHex(d,"#FFFFFF",.42),accent:mixHex(b,"#FFFFFF",.10)};
   if(profile.style==="indie")return {bg:mixHex(c,"#172033",.36),accent:mixHex(d,"#111827",.14)};
