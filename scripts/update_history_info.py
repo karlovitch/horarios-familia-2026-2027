@@ -35,6 +35,32 @@ def parse_year_text(text):
         return None
     return {"year":m.group(1).strip(),"text":m.group(2).strip()}
 
+def wikipedia_article_from_li(li,wiki_url):
+    for a in li.find_all("a",href=True):
+        href=a.get("href","")
+        if not href.startswith("/wiki/"):continue
+        if any(x in href for x in (":","Ficheiro:","Categoria:","Wikip%C3%A9dia:")):continue
+        return urljoin("https://pt.wikipedia.org",href)
+    return wiki_url
+
+def wikipedia_best_match(year,text):
+    q=f"{year} {text[:220]}".strip()
+    try:
+        r=requests.get(
+            "https://pt.wikipedia.org/w/api.php",
+            params={"action":"query","list":"search","srsearch":q,"srlimit":1,"format":"json","utf8":1},
+            headers=HEADERS,timeout=25
+        )
+        r.raise_for_status()
+        hits=r.json().get("query",{}).get("search",[])
+        if hits:
+            title=hits[0].get("title","").strip()
+            if title:
+                return "https://pt.wikipedia.org/wiki/"+quote(title.replace(" ","_"))
+    except Exception:
+        pass
+    return ""
+
 def world_for(day,month):
     month_name=MONTHS[month-1]
     title=f"{day}_de_{month_name}"
@@ -60,7 +86,7 @@ def world_for(day,month):
             for li in soup.find_all("li"):
                 item=parse_year_text(li.get_text(" ",strip=True))
                 if item and 20<=len(item["text"])<=500:
-                    item["source_url"]=wiki_url
+                    item["source_url"]=wikipedia_article_from_li(li,wiki_url)
                     if not any(x["year"]==item["year"] and x["text"]==item["text"] for x in out):
                         out.append(item)
             if out:
@@ -77,7 +103,13 @@ def world_for(day,month):
             year=str(ev.get("year","")).strip()
             text=re.sub(r"\\s+"," ",str(ev.get("text",""))).strip()
             if year and 20<=len(text)<=500:
-                item={"year":year,"text":text,"source_url":wiki_url}
+                source_url=wiki_url
+                pages=ev.get("pages") or []
+                if pages:
+                    title=str(pages[0].get("title","")).strip()
+                    if title:
+                        source_url="https://pt.wikipedia.org/wiki/"+quote(title.replace(" ","_"))
+                item={"year":year,"text":text,"source_url":source_url}
                 if not any(x["year"]==year and x["text"]==text for x in out):
                     out.append(item)
     except Exception:
@@ -105,13 +137,7 @@ def portugal_for(day,month):
         desc=re.sub(r"\s*Ler\s+mais\s*\.?\s*$","",desc,flags=re.I)
         desc=re.sub(r"\s+"," ",desc).strip()
         if not desc or len(desc)>600:continue
-        source_url=url
-        if parent:
-            more=parent.find("a",string=re.compile(r"^\s*Ler\s+mais\s*$",re.I))
-            if not more:
-                more=parent.find("a",href=True)
-            if more and more.get("href"):
-                source_url=urljoin(url,more.get("href"))
+        source_url=wikipedia_best_match(year or "",desc)
         item={"year":year or "s/d","text":desc,"source_url":source_url}
         if not any(x["text"]==item["text"] for x in out):out.append(item)
     return out[:12]
