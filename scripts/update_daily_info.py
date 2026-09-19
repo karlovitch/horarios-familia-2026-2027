@@ -35,17 +35,32 @@ EUROPEAN_DAYS = {
 }
 
 PORTUGAL_DAYS = {
-    "04-25": ["Dia da Liberdade"],
+    "01-01": ["Ano Novo (Feriado Nacional)"],
+    "04-25": ["Dia da Liberdade (Feriado Nacional)"],
+    "05-01": ["Dia do Trabalhador (Feriado Nacional)"],
     "05-06": ["Dia Nacional do Azulejo"],
     "05-10": ["Dia Nacional do Seguro"],
     "05-25": ["Dia Nacional dos Jardins"],
-    "06-10": ["Dia de Portugal, de Camões e das Comunidades Portuguesas"],
+    "06-10": ["Dia de Portugal, de Camões e das Comunidades Portuguesas (Feriado Nacional)"],
     "06-22": ["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],
-    "10-05": ["Implantação da República"],
+    "08-15": ["Assunção de Nossa Senhora (Feriado Nacional)"],
+    "10-05": ["Implantação da República (Feriado Nacional)"],
+    "11-01": ["Dia de Todos os Santos (Feriado Nacional)"],
     "11-11": ["Dia Nacional das Raças Autóctones"],
-    "12-01": ["Restauração da Independência"],
+    "12-01": ["Restauração da Independência (Feriado Nacional)"],
+    "12-08": ["Imaculada Conceição (Feriado Nacional)"],
     "12-10": ["Dia Nacional dos Direitos Humanos"],
     "12-22": ["Dia Nacional do Técnico Auxiliar de Saúde"],
+    "12-25": ["Natal (Feriado Nacional)"],
+}
+
+PORTUGAL_MOVABLE_HOLIDAYS = {
+    "2026-04-03": ["Sexta-Feira Santa (Feriado Nacional)"],
+    "2026-04-05": ["Domingo de Páscoa (Feriado Nacional)"],
+    "2026-06-04": ["Corpo de Deus (Feriado Nacional)"],
+    "2027-03-26": ["Sexta-Feira Santa (Feriado Nacional)"],
+    "2027-03-28": ["Domingo de Páscoa (Feriado Nacional)"],
+    "2027-05-27": ["Corpo de Deus (Feriado Nacional)"],
 }
 
 LOCAL_DAYS = {
@@ -167,7 +182,7 @@ def build_day(day: date, un_map: dict[str, list[str]]) -> dict:
         "date": day.isoformat(),
         "un_days": un_map.get(mmdd, []),
         "european_days": EUROPEAN_DAYS.get(mmdd, []),
-        "portugal_days": PORTUGAL_DAYS.get(mmdd, []),
+        "portugal_days": [*PORTUGAL_DAYS.get(mmdd, []), *PORTUGAL_MOVABLE_HOLIDAYS.get(day.isoformat(), [])],
         "local_days": LOCAL_DAYS.get(mmdd, []),
         **lit,
     }
