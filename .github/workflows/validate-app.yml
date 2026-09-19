@@ -1,0 +1,61 @@
+name: Validar aplicação
+
+on:
+  push:
+    paths:
+      - "index.html"
+      - "sw.js"
+      - "manifest.webmanifest"
+      - "calendar-info.json"
+      - "daily-info.json"
+      - "history-info.json"
+      - "sports-info.json"
+      - "scripts/**"
+      - ".github/workflows/**"
+  pull_request:
+    paths:
+      - "index.html"
+      - "sw.js"
+      - "manifest.webmanifest"
+      - "scripts/**"
+
+concurrency:
+  group: validate-app-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar invariantes funcionais
+        run: python scripts/validate_app.py
+
+      - name: Validar sintaxe dos scripts Python
+        run: python -m py_compile scripts/*.py
+
+      - name: Extrair JavaScript da aplicação
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          match = re.search(r"<script>([\s\S]*)</script>", html)
+          if not match:
+              raise SystemExit("Bloco <script> não encontrado")
+          Path("/tmp/app-inline.js").write_text(match.group(1), encoding="utf-8")
+          PY
+
+      - name: Validar sintaxe JavaScript
+        run: node --check /tmp/app-inline.js
