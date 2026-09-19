@@ -247,12 +247,16 @@ if "PASSO_REZAR_BASE" not in daily_script:
 if 'result = {"passo_page_url": page_url}' in daily_script:
     fail("O atualizador diário não deve expor a página externa do Passo-a-Rezar")
 
-if "VERIFIED_FLASHSCORE_MATCH_URLS" not in sports_script:
-    fail("O atualizador desportivo deve manter fichas Flashscore verificadas")
-if 'if event.get("entity") in {"FC Porto","Real Madrid"}' not in sports_script:
-    fail("FC Porto e Real Madrid devem rejeitar fichas Flashscore não verificadas")
-if 'hid=best.get("JA");aid=best.get("JB")' not in sports_script:
-    fail("As restantes fichas Flashscore devem usar os identificadores codificados do feed")
+if "VERIFIED_FOOTBALL_MATCH_URLS" not in sports_script:
+    fail("O atualizador desportivo deve manter um mapa de fichas de futebol verificadas")
+if "def flashscore_match_candidate(event):" not in sports_script or "def flashscore_match_id(event):" not in sports_script:
+    fail("O atualizador desportivo deve separar a identificação live do URL público")
+if "def zerozero_football_match_url(event):" not in sports_script:
+    fail("Falta fallback de ficha ZeroZero verificada para futebol")
+if 'event["flashscore_mid"]=mid' not in sports_script:
+    fail("O ID Flashscore live deve ficar separado da ficha pública")
+if 'return f"https://www.flashscore.pt/jogo/futebol/' in sports_script:
+    fail("Não é permitido fabricar URLs públicos Flashscore a partir de IDs internos")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
