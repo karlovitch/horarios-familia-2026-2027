@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=69">
+<link rel="manifest" href="manifest.webmanifest?v=70">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -45,7 +45,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v69</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v70</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -192,7 +192,33 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=69;
+const APP_BUILD=70;
+const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
+const DATA_LOAD_STATE={
+ daily:{loadedAt:0,promise:null},
+ sports:{loadedAt:0,promise:null},
+ history:{loadedAt:0,promise:null}
+};
+function resourceUrl(path,params={}){
+ const q=new URLSearchParams({v:String(APP_BUILD)});
+ for(const [k,v] of Object.entries(params))if(v!==undefined&&v!==null)q.set(k,String(v));
+ return path+"?"+q.toString();
+}
+function storageRead(key,fallback=null){
+ try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch(_){return fallback}
+}
+function storageWrite(key,value){
+ try{localStorage.setItem(key,JSON.stringify(value))}catch(_){}
+}
+async function fetchJsonResource(path,params={}){
+ const r=await fetch(resourceUrl(path,params),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
+ if(!r.ok)throw new Error(path+" · HTTP "+r.status);
+ return r.json();
+}
+function dataFresh(kind){
+ const s=DATA_LOAD_STATE[kind];
+ return !!s.loadedAt&&(Date.now()-s.loadedAt)<DATA_TTL[kind];
+}
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -781,13 +807,25 @@ function renderSportsAgenda(iso){
    '<div class="sports-links">'+stream+(ev.source_url?' · <a href="'+safeUrl(ev.source_url)+'" target="_blank" rel="noopener">fonte/calendário</a>':'')+'</div></article>';
  }).join("")+'</div>';
 }
-async function loadSportsInfo(){
- try{
-  const r=await fetch("sports-info.json?v=69&ts="+Date.now(),{cache:"no-store"});
-  if(r.ok)SPORTS_INFO=await r.json();
- }catch(e){}
- updateSportsTabVisibility(statsIso());
- if(view==="sports")renderSportsAgenda(statsIso());
+async function loadSportsInfo({force=false}={}){
+ const state=DATA_LOAD_STATE.sports;
+ if(state.promise)return state.promise;
+ if(!force&&dataFresh("sports")){updateSportsTabVisibility(statsIso());return SPORTS_INFO}
+ state.promise=(async()=>{
+  try{
+   SPORTS_INFO=await fetchJsonResource("sports-info.json",{ts:Date.now()});
+   storageWrite("sportsInfo",SPORTS_INFO);
+   state.loadedAt=Date.now();
+  }catch(_){
+   const cached=storageRead("sportsInfo",null);
+   if(cached){SPORTS_INFO=cached;state.loadedAt=Date.now()}
+  }finally{
+   state.promise=null;
+   updateSportsTabVisibility(statsIso());
+  }
+  return SPORTS_INFO;
+ })();
+ return state.promise;
 }
 function renderGlobalFamilyBanner(iso){
  const el=qs("#globalFamilyBanner"),events=familyEventsFor(iso);
@@ -797,28 +835,19 @@ function renderGlobalFamilyBanner(iso){
  el.classList.remove("hidden");
 }
 const ASTRONOMY_SOURCE_URLS={
- equinox:"https://pt.wikipedia.org/wiki/Equin%C3%B3cio",
- summerSolstice:"https://pt.wikipedia.org/wiki/Solst%C3%ADcio_de_ver%C3%A3o",
- winterSolstice:"https://pt.wikipedia.org/wiki/Solst%C3%ADcio_de_inverno",
- solarEclipse:"https://pt.wikipedia.org/wiki/Eclipse_solar",
- lunarEclipse:"https://pt.wikipedia.org/wiki/Eclipse_lunar",
- perseids:"https://en.wikipedia.org/wiki/Perseids",
- orionids:"https://en.wikipedia.org/wiki/Orionids",
- leonids:"https://en.wikipedia.org/wiki/Leonids",
- geminids:"https://en.wikipedia.org/wiki/Geminids",
- quadrantids:"https://en.wikipedia.org/wiki/Quadrantids",
- lyrids:"https://en.wikipedia.org/wiki/Lyrids",
- etaAquariids:"https://en.wikipedia.org/wiki/Eta_Aquariids"
+ seasonsLisbon:"https://www.timeanddate.com/calendar/seasons.html?n=133",
+ perseids:"https://www.timeanddate.com/astronomy/meteor-shower/perseid.html",
+ orionids:"https://www.timeanddate.com/astronomy/meteor-shower/orionid.html",
+ leonids:"https://www.timeanddate.com/astronomy/meteor-shower/leonid.html",
+ geminids:"https://www.timeanddate.com/astronomy/meteor-shower/geminid.html",
+ quadrantids:"https://www.timeanddate.com/astronomy/meteor-shower/quadrantid.html",
+ lyrids:"https://www.timeanddate.com/astronomy/meteor-shower/lyrid.html",
+ etaAquariids:"https://www.timeanddate.com/astronomy/meteor-shower/eta-aquarids.html"
 };
-function astronomyReadMoreUrl(label,special=null){
+function astronomyReadMoreUrl(label,special=null,iso=statsIso()){
  const t=((special&&special.name)||label||"").toLowerCase();
- if(/equin[oó]cio/.test(t))return ASTRONOMY_SOURCE_URLS.equinox;
- if(/solst[ií]cio/.test(t)){
-  if(/ver[aã]o|junho/.test(t))return ASTRONOMY_SOURCE_URLS.summerSolstice;
-  if(/inverno|dezembro/.test(t))return ASTRONOMY_SOURCE_URLS.winterSolstice;
- }
- if(/eclipse solar/.test(t))return ASTRONOMY_SOURCE_URLS.solarEclipse;
- if(/eclipse lunar/.test(t))return ASTRONOMY_SOURCE_URLS.lunarEclipse;
+ if(/equin[oó]cio|solst[ií]cio/.test(t))return ASTRONOMY_SOURCE_URLS.seasonsLisbon;
+ if(/eclipse solar|eclipse lunar/.test(t))return "https://www.timeanddate.com/eclipse/in/portugal/lisbon?iso="+iso.replaceAll("-","");
  if(/perseidas/.test(t))return ASTRONOMY_SOURCE_URLS.perseids;
  if(/ori[oó]nidas/.test(t))return ASTRONOMY_SOURCE_URLS.orionids;
  if(/le[oó]nidas/.test(t))return ASTRONOMY_SOURCE_URLS.leonids;
@@ -833,8 +862,8 @@ function renderTodayAstronomyBanner(iso){
  if(!el)return;
  if(!events.length&&!special){el.classList.add("hidden");el.innerHTML="";return}
  let html='<strong>🔭 Astronomia</strong>';
- if(events.length)html+=events.map(e=>'<span class="astro-event">'+esc(e)+' <a class="feature-read-more" href="'+safeUrl(astronomyReadMoreUrl(e))+'" target="_blank" rel="noopener noreferrer">Ler mais</a></span>').join("");
- if(special)html+='<div class="astro-note"><b>'+esc(special.name)+':</b> '+esc(special.explanation)+'<br><b>Curiosidade '+iso.slice(0,4)+':</b> '+esc(special.curiosity)+' <a class="feature-read-more" href="'+safeUrl(astronomyReadMoreUrl(special.name,special))+'" target="_blank" rel="noopener noreferrer">Ler mais</a></div>';
+ if(events.length)html+=events.map(e=>'<span class="astro-event">'+esc(e)+' <a class="feature-read-more" href="'+safeUrl(astronomyReadMoreUrl(e,null,iso))+'" target="_blank" rel="noopener noreferrer">Ler mais</a></span>').join("");
+ if(special)html+='<div class="astro-note"><b>'+esc(special.name)+':</b> '+esc(special.explanation)+'<br><b>Curiosidade '+iso.slice(0,4)+':</b> '+esc(special.curiosity)+' <a class="feature-read-more" href="'+safeUrl(astronomyReadMoreUrl(special.name,special,iso))+'" target="_blank" rel="noopener noreferrer">Ler mais</a></div>';
  el.innerHTML=html;el.classList.remove("hidden");
 }
 const WORLD_HISTORY_BY_DATE={
@@ -978,11 +1007,18 @@ function historyFeatureHtml(title,feature,iso,kind){
  const more=url?' <a class="feature-read-more" href="'+safeUrl(url)+'" target="_blank" rel="noopener noreferrer">Ler mais</a>':"";
  return '<strong>'+title+'</strong><b>'+esc(String(feature.year||""))+'</b> — '+esc(text)+more;
 }
+function dateNeedsRemoteHistory(iso){
+ const mmdd=iso.slice(5);
+ return !(WORLD_HISTORY_BY_DATE[mmdd]||[]).length||!(PORTUGAL_HISTORY_BY_DATE[mmdd]||[]).length;
+}
 function renderTodayHistoryBanners(iso){
  const world=historyFeatureForDate(WORLD_HISTORY_BY_DATE,iso,"world"),pt=historyFeatureForDate(PORTUGAL_HISTORY_BY_DATE,iso,"portugal");
  const we=qs("#todayWorldHistoryBanner"),pe=qs("#todayPortugalHistoryBanner");
  if(we){if(world){we.innerHTML=historyFeatureHtml("🌍 História mundial",world,iso,"world");we.classList.remove("hidden")}else{we.innerHTML="";we.classList.add("hidden")}}
  if(pe){if(pt){pe.innerHTML=historyFeatureHtml("🇵🇹 História de Portugal",pt,iso,"portugal");pe.classList.remove("hidden")}else{pe.innerHTML="";pe.classList.add("hidden")}}
+ if(dateNeedsRemoteHistory(iso)&&!DATA_LOAD_STATE.history.loadedAt&&!DATA_LOAD_STATE.history.promise){
+  loadHistoryInfo().then(()=>{if(view==="today"&&statsIso()===iso)renderTodayHistoryBanners(iso)});
+ }
 }
 function launchConfetti(colors){
  const layer=qs("#confettiLayer");if(!layer)return;
@@ -1461,29 +1497,47 @@ function renderDailyInfo(){
   (saints?'<div class="daily-row"><div class="daily-label">Santo(s)</div><div class="daily-value">'+saints+'</div></div>':'')+
   (gospel?'<div class="daily-row"><div class="daily-label">Evangelho</div><div class="daily-value">'+gospel+' · <a href="'+litUrl+'" target="_blank" rel="noopener noreferrer">ver Liturgia diária</a>'+passoPlayer+gospelBox+'</div></div>':'');
 }
-async function loadHistoryInfo(){
- try{
-  const r=await fetch("history-info.json?v=69&ts="+Date.now(),{cache:"no-store"});
-  if(r.ok){HISTORY_INFO=await r.json();try{localStorage.setItem("historyInfo",JSON.stringify(HISTORY_INFO))}catch(e){}}
- }catch(e){
-  try{const s=localStorage.getItem("historyInfo");if(s)HISTORY_INFO=JSON.parse(s)}catch(_){}
- }
- if(view==="today")renderTodayHistoryBanners(statsIso());
+async function loadHistoryInfo({force=false}={}){
+ const state=DATA_LOAD_STATE.history;
+ if(state.promise)return state.promise;
+ if(!force&&dataFresh("history"))return HISTORY_INFO;
+ state.promise=(async()=>{
+  try{
+   HISTORY_INFO=await fetchJsonResource("history-info.json",{ts:Date.now()});
+   storageWrite("historyInfo",HISTORY_INFO);
+   state.loadedAt=Date.now();
+  }catch(_){
+   const cached=storageRead("historyInfo",null);
+   if(cached){HISTORY_INFO=cached;state.loadedAt=Date.now()}
+  }finally{state.promise=null}
+  return HISTORY_INFO;
+ })();
+ return state.promise;
 }
-async function loadDailyInfo(){
- try{
-  const r=await fetch("calendar-info.json?v=69",{cache:"no-store"});
-  if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
- }catch(e){
-  try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
- }
- try{
-  const r=await fetch("daily-info.json?d="+isoLocalDate(),{cache:"no-store"});
-  if(r.ok){DAILY_INFO=await r.json();try{localStorage.setItem("dailyInfo",JSON.stringify(DAILY_INFO))}catch(e){}}
- }catch(e){
-  try{const s=localStorage.getItem("dailyInfo");if(s)DAILY_INFO=JSON.parse(s)}catch(_){}
- }
- renderDailyInfo();renderGlobalQuote();
+async function loadDailyInfo({force=false}={}){
+ const state=DATA_LOAD_STATE.daily;
+ if(state.promise)return state.promise;
+ if(!force&&dataFresh("daily"))return {calendar:CALENDAR_INFO,daily:DAILY_INFO};
+ state.promise=(async()=>{
+  const [calResult,dailyResult]=await Promise.allSettled([
+   fetchJsonResource("calendar-info.json"),
+   fetchJsonResource("daily-info.json",{d:isoLocalDate()})
+  ]);
+  if(calResult.status==="fulfilled"){
+   CALENDAR_INFO=calResult.value;storageWrite("calendarInfo",CALENDAR_INFO);
+  }else{
+   CALENDAR_INFO=CALENDAR_INFO||storageRead("calendarInfo",null);
+  }
+  if(dailyResult.status==="fulfilled"){
+   DAILY_INFO=dailyResult.value;storageWrite("dailyInfo",DAILY_INFO);
+  }else{
+   DAILY_INFO=DAILY_INFO||storageRead("dailyInfo",null);
+  }
+  state.loadedAt=Date.now();
+  state.promise=null;
+  return {calendar:CALENDAR_INFO,daily:DAILY_INFO};
+ })();
+ return state.promise;
 }
 function eventTypeClass(e){const t=(e.title||"").toLowerCase();if(/intervalo|pausa|interrup/.test(t))return "pause";if(/teste|avalia|questão de aula|qa\b|entrega|prazo/.test(t))return "assessment";if(/cnl|coordenação|funções de âmbito organizacional|reunião|administrativ/.test(t))return "admin";return ""}
 function eventHTML(e,d,p,iso=null){const i=D[p],isLive=(!iso||iso===isoLocalDate())&&current(e,d);return '<article class="event person-colored '+(isLive?"current":"")+'" style="background:'+i.color+';color:'+i.textColor+'"><div class="event-time">'+e.start+'<br>'+e.end+'</div><div class="event-main"><strong>'+esc(e.title)+'</strong>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div></article>'}
@@ -1734,6 +1788,25 @@ function renderPerson(){
   renderPersonDayTimeline(p,iso);
  }
 }
+function renderActiveView(){
+ if(view==="today")renderToday();
+ else if(view==="overview")renderOverview();
+ else if(view==="sports"){applyAdaptiveTheme(statsIso());renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
+ else if(person)renderPerson();
+ updateSportsTabVisibility(statsIso());
+}
+function setStatsDate(value){
+ statsDate=value||null;
+ renderActiveView();
+}
+function shiftStatsDate(days){
+ const base=statsDate?ymdDay(statsDate):currentLocalDay();
+ const dt=new Date((base+Number(days))*MS_DAY);
+ setStatsDate(dt.toISOString().slice(0,10));
+}
+function updateTodayLabel(){
+ qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());
+}
 function show(v){
  view=v;
  qs("#overview").classList.toggle("hidden",v!=="overview");
@@ -1742,22 +1815,53 @@ function show(v){
  qs("#person").classList.toggle("hidden",!D[v]);
  qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
  qsa(".sports-tab-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
- if(v==="overview"){person=null;selectedDay=null;statsDate=isoLocalDate();const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview()}
- else if(v==="today"){person=null;selectedDay=null;renderToday()}
- else if(v==="sports"){person=null;selectedDay=null;statsDate=isoLocalDate();renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
- else if(D[v]){person=v;selectedDay=null;statsDate=isoLocalDate();personMode="week";renderPerson()}
- updateSportsTabVisibility(statsIso());
+ if(v==="overview"){
+  person=null;selectedDay=null;statsDate=isoLocalDate();
+  const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";
+ }else if(v==="today"){
+  person=null;selectedDay=null;
+ }else if(v==="sports"){
+  person=null;selectedDay=null;statsDate=isoLocalDate();
+ }else if(D[v]){
+  person=v;selectedDay=null;statsDate=isoLocalDate();personMode="week";
+ }
+ renderActiveView();
 }
-qs("#todayPrevPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())-1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
-qs("#todayNextPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())+1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
-qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qsa(".sports-tab-btn").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview();renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();loadSportsInfo();loadHistoryInfo();renderGlobalQuote();show("today");setTimeout(maybeCelebrateFamilyEvents,450);window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);setInterval(()=>{if(view==="sports")renderSportsAgenda(statsIso())},1000);setInterval(()=>{if(view==="sports")loadSportsInfo()},30000);
+qs("#todayPrevPage").addEventListener("click",()=>shiftStatsDate(-1));
+qs("#todayNextPage").addEventListener("click",()=>shiftStatsDate(1));
+updateTodayLabel();
+qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));
+qsa(".sports-tab-btn").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));
+qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});
+qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});
+qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>setStatsDate(i.value||null)));
+qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>shiftStatsDate(b.dataset.statsShift)));
+qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>setStatsDate(null)));
+qs("#goTodayBtn").addEventListener("click",()=>{
+ statsDate=null;selectedDay=null;
+ const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";
+ renderActiveView();
+});
+
+show("today");
+Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActiveView());
+setTimeout(maybeCelebrateFamilyEvents,450);
+window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()))});
+setInterval(()=>{
+ if(view==="overview")renderOverview();
+ else if(view==="today"){renderCountdowns();renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()))}
+ else if(person)renderPerson();
+},60000);
+setInterval(()=>{
+ if(view==="sports"&&sportsEventsFor(statsIso()).some(e=>e.status==="live"))renderSportsAgenda(statsIso());
+},1000);
+setInterval(()=>{
+ loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderSportsAgenda(statsIso())});
+},300000);
 async function refreshCurrentView(){
- qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());
- await Promise.all([loadDailyInfo(),loadSportsInfo(),loadHistoryInfo()]);
- renderGlobalQuote();
- if(view==="today")renderToday();
- else if(view==="overview")renderOverview();
- else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson();
+ updateTodayLabel();
+ await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);
+ renderActiveView();
 }
 async function checkForNewBuild(){
  try{
@@ -1791,6 +1895,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=69",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register(resourceUrl("sw.js"),{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
