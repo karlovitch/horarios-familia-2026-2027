@@ -131,6 +131,8 @@ required_index_tokens = {
     "navegação D-pad": "function moveTvFocus(key)",
     "foco TV visível": 'outline:5px solid #FFD54A',
     "altura TV adaptativa": "function tvTimelineHeight()",
+    "atualização automática TV a cada 5 minutos": "const TV_BUILD_POLL_MS=5*60*1000",
+
 
     "check de versão leve": 'fetch("version.json?__version_check="+Date.now()',
     "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",
