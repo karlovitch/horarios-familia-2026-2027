@@ -135,8 +135,12 @@ required_index_tokens = {
 
     "check de versão leve": 'fetch("version.json?__version_check="+Date.now()',
     "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",
-    "separador Desporto sempre visível": '<div id="sportsTabRow" class="sports-tab-row"><button class="sports-tab-btn"',
-    "visibilidade Desporto independente dos eventos": 'function updateSportsTabVisibility(){',
+    "data canónica dos eventos desportivos": "function sportsEventDate(e)",
+    "event.date prioritário": 'if(/^20\\d{2}-\\d{2}-\\d{2}$/.test(explicit))return explicit;',
+    "separador Desporto condicional": 'row.classList.toggle("hidden",!hasEvents)',
+    "eventos terminados não são filtrados": "// Não filtra pelo estado: scheduled, live, halftime e finished permanecem visíveis.",
+    "refresh ao abrir Desporto": 'loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderActiveView()})',
+
 
     "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
     "deduplicação de foreground": "now-lastForegroundRefresh<10000",
@@ -164,8 +168,6 @@ for forbidden in (
     "weatherBarcelos",
     'fetch("index.html?__version_check="',
     "setInterval(updateSportsLiveClocks",
-    'sportsTabRow" class="sports-tab-row hidden"',
-    'row.classList.toggle("hidden",!hasEvents)',
     "let resizeFrame=0;",
     "font-size:1.44rem;line-height:1.04",
     "font-size:1.40rem",
