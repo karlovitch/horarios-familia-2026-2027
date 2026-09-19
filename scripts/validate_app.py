@@ -72,7 +72,7 @@ required_index_tokens = {
     "fonte astronómica portuguesa": "https://oal.ul.pt/",
     "botões táteis de navegação": "min-width:50px;min-height:50px",
     "setas principais ampliadas": ".today-page-arrow{width:82px;height:66px",
-    "seletor de data compacto": "width:clamp(118px,33vw,132px)",
+    "seletor de data compacto": ".stats-date-input{width:100%;min-width:0;max-width:132px",
     "frases com normalização linguística": "function normalizeReflectionText",
     "horários prolongados até às 20h00": "START=480,END=1200",
     "linha vermelha do momento atual": "background:#D71920",
