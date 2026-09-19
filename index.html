@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=82">
-<link rel="icon" href="icon.svg?v=82" type="image/svg+xml">
-<link rel="shortcut icon" href="icon.svg?v=82" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest?v=83">
+<link rel="icon" href="icon.svg?v=83" type="image/svg+xml">
+<link rel="shortcut icon" href="icon.svg?v=83" type="image/svg+xml">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="application-name" content="Horários Família">
 <title>Horários Família</title>
@@ -48,7 +48,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v82</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v83</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -195,7 +195,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=82;
+const APP_BUILD=83;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const DATA_LOAD_STATE={
@@ -1859,6 +1859,7 @@ function refreshScheduleState(){
  else if(person)renderPerson();
 }
 function renderActiveView(){
+ syncStatsControls();
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
  else if(view==="sports"){applyAdaptiveTheme(statsIso());renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
