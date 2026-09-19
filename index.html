@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v15</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v16</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -39,7 +39,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Contagem de dias letivos em:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-09-14" max="2027-06-30"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="overviewCountdowns" class="countdown-panel"></div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div></section>
-<section id="today" class="screen hidden"><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Contagem de dias letivos em:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-09-14" max="2027-06-30"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="todayCountdowns" class="countdown-panel"></div><section class="daily-info-card"><div class="daily-info-head"><h3>Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCards" class="cards"></div></section>
+<section id="today" class="screen hidden"><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Contagem de dias letivos em:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-09-14" max="2027-06-30"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="todayCountdowns" class="countdown-panel"></div><section class="daily-info-card"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCards" class="cards"></div></section>
 <section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="stats-controls"><strong>Contagem de dias letivos em:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-09-14" max="2027-06-30"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="personCountdowns" class="countdown-panel"></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div id="personDays" class="day-tabs"></div><div id="personCards" class="cards one"></div></section>
 </main>
 <script>
@@ -180,32 +180,82 @@ function renderCountdowns(){
  qs("#todayCountdowns").innerHTML=collective;
  if(person)qs("#personCountdowns").innerHTML=countdownLine(person,refDay);
 }
-let DAILY_INFO=null;
+let DAILY_INFO=null,CALENDAR_INFO=null;
+const FAMILY_EVENTS=[
+ {kind:"birthday",label:"Carlinhos",date:"1982-06-21"},
+ {kind:"birthday",label:"Sandrinha",date:"1978-01-18"},
+ {kind:"birthday",label:"Margarida",date:"2011-08-31"},
+ {kind:"birthday",label:"Leonor",date:"2016-11-08"},
+ {kind:"birthday",label:"Avô André",date:"1956-05-05"},
+ {kind:"birthday",label:"Avó Mena",date:"1957-02-04"},
+ {kind:"birthday",label:"Avó Teté",date:"1951-03-23"},
+ {kind:"birthday",label:"Avô Décio",date:"1939-04-26"},
+ {kind:"birthday",label:"Tia Andreia",date:"1986-07-22"},
+ {kind:"birthday",label:"Tio Bruno",date:"1982-02-27"},
+ {kind:"birthday",label:"Carlota",date:"2016-11-06"},
+ {kind:"birthday",label:"Francisco",date:"2023-10-04"},
+ {kind:"birthday",label:"Tia Zeza",date:"1950-03-19"},
+ {kind:"anniversary",label:"Aniversário de casamento do Carlos e da Sandrinha",date:"2009-09-26"},
+ {kind:"anniversary",label:"Aniversário de namoro do Carlos e da Sandrinha",date:"2005-01-22"}
+];
+const CORE_BIRTHDAYS=FAMILY_EVENTS.filter(e=>e.kind==="birthday"&&["Carlinhos","Leonor","Margarida","Sandrinha"].includes(e.label));
 function isoLocalDate(){const n=new Date(),y=n.getFullYear(),m=String(n.getMonth()+1).padStart(2,"0"),d=String(n.getDate()).padStart(2,"0");return y+"-"+m+"-"+d}
-function liturgiaUrlForToday(){const n=new Date();return "https://liturgia.pt/liturgiadiaria/dia.php?data="+n.getFullYear()+"-"+(n.getMonth()+1)+"-"+n.getDate()}
+function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))}
+function liturgiaUrlForDate(iso){const [y,m,d]=iso.split("-").map(Number);return "https://liturgia.pt/liturgiadiaria/dia.php?data="+y+"-"+m+"-"+d}
 function listText(arr,emptyText){return arr&&arr.length?arr.map(esc).join(" · "):emptyText}
+function familyEventsFor(iso){
+ const mmdd=iso.slice(5),year=Number(iso.slice(0,4));
+ return FAMILY_EVENTS.filter(e=>e.date.slice(5)===mmdd).map(e=>{
+  const baseYear=Number(e.date.slice(0,4)),years=year-baseYear;
+  return e.kind==="birthday"?"Aniversário de "+e.label+" — "+years+" anos":e.label+" — "+years+" anos";
+ });
+}
+function daysToNextAnnual(refIso,eventDate){
+ const [ry,rm,rd]=refIso.split("-").map(Number),[,em,ed]=eventDate.split("-").map(Number);
+ const ref=Math.floor(Date.UTC(ry,rm-1,rd)/MS_DAY);
+ let target=Math.floor(Date.UTC(ry,em-1,ed)/MS_DAY);
+ if(target<ref)target=Math.floor(Date.UTC(ry+1,em-1,ed)/MS_DAY);
+ return target-ref;
+}
+function birthdayCountdownText(iso){
+ return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
+}
+function calendarInfoFor(iso){
+ return CALENDAR_INFO&&CALENDAR_INFO.dates&&CALENDAR_INFO.dates[iso]?CALENDAR_INFO.dates[iso]:(DAILY_INFO&&DAILY_INFO.date===iso?DAILY_INFO:null);
+}
 function renderDailyInfo(){
- const box=qs("#dailyInfoBody"),dateEl=qs("#dailyInfoDate"),today=isoLocalDate();
- dateEl.textContent=new Intl.DateTimeFormat("pt-PT",{day:"2-digit",month:"long",year:"numeric"}).format(new Date());
- const x=DAILY_INFO&&DAILY_INFO.date===today?DAILY_INFO:null;
- const un=x?listText(x.un_days,"Sem efeméride ONU assinalada hoje"):"Consultar calendário ONU";
- const eu=x?listText(x.european_days,"Sem dia europeu assinalado hoje"):"Sem dados atualizados";
- const pt=x?listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada hoje"):"Sem dados atualizados";
- const local=x?listText(x.local_days,"Sem efeméride local assinalada hoje"):"Sem dados atualizados";
- const lit=x&&x.liturgical_day?esc(x.liturgical_day):"Liturgia do dia";
- const saints=x?listText(x.saints,"Sem memória/solenidade adicional indicada"):"Consultar fonte";
- const gospel=x&&x.gospel?esc(x.gospel):"Ver referência";
- const litUrl=x&&x.liturgy_url?x.liturgy_url:liturgiaUrlForToday();
+ const box=qs("#dailyInfoBody"),dateEl=qs("#dailyInfoDate"),titleEl=qs("#dailyInfoTitle"),selected=statsIso(),dt=dateFromIso(selected),x=calendarInfoFor(selected);
+ titleEl.textContent=selected===isoLocalDate()?"Hoje no calendário":"Calendário da data selecionada";
+ dateEl.textContent=new Intl.DateTimeFormat("pt-PT",{day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
+ const missing="Dados de efemérides ainda não disponíveis para esta data";
+ const un=x?listText(x.un_days,"Sem efeméride ONU assinalada nesta data"):missing;
+ const eu=x?listText(x.european_days,"Sem dia europeu assinalado nesta data"):missing;
+ const pt=x?listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada nesta data"):missing;
+ const local=x?listText(x.local_days,"Sem efeméride local assinalada nesta data"):missing;
+ const family=listText(familyEventsFor(selected),"Sem aniversário ou efeméride familiar nesta data");
+ const birthdays=birthdayCountdownText(selected);
+ const lit=x&&x.liturgical_day?esc(x.liturgical_day):(x?"Liturgia do dia não identificada":missing);
+ const saints=x?listText(x.saints,"Sem memória/solenidade adicional indicada"):missing;
+ const gospel=x&&x.gospel?esc(x.gospel):(x?"Referência não identificada":missing);
+ const litUrl=x&&x.liturgy_url?x.liturgy_url:liturgiaUrlForDate(selected);
  box.innerHTML=
   '<div class="daily-row"><div class="daily-label">ONU</div><div class="daily-value">'+un+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Europa</div><div class="daily-value">'+eu+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Portugal</div><div class="daily-value">'+pt+'</div></div>'+
   (x&&x.local_days&&x.local_days.length?'<div class="daily-row"><div class="daily-label">Barcelos</div><div class="daily-value">'+local+'</div></div>':'')+
+  '<div class="daily-row"><div class="daily-label">Família</div><div class="daily-value">'+family+'</div></div>'+
+  '<div class="daily-row"><div class="daily-label">Aniversários</div><div class="daily-value">'+birthdays+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Liturgia</div><div class="daily-value">'+lit+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Santo(s)</div><div class="daily-value">'+saints+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Evangelho</div><div class="daily-value">'+gospel+' · <a href="'+litUrl+'" target="_blank" rel="noopener">ver Liturgia diária</a></div></div>';
 }
 async function loadDailyInfo(){
+ try{
+  const r=await fetch("calendar-info.json?v=16",{cache:"no-store"});
+  if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
+ }catch(e){
+  try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
+ }
  try{
   const r=await fetch("daily-info.json?d="+isoLocalDate(),{cache:"no-store"});
   if(r.ok){DAILY_INFO=await r.json();try{localStorage.setItem("dailyInfo",JSON.stringify(DAILY_INFO))}catch(e){}}
@@ -222,7 +272,7 @@ function personCard(p,d){const i=D[p],ev=i.days[d]||[],isActive=!!activeEvent(p,
 function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs("#todayDay").textContent=d;qs("#todayCards").innerHTML=SCHOOL_DAYS.includes(d)?PEOPLE.map(p=>personCard(p,d)).join(""):'<section class="card"><div class="empty">Hoje não há horário definido.</div></section>'}
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=p;qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
-qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=15",{updateViaCache:"none"}));
+qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=16",{updateViaCache:"none"}));
 </script>
 </body></html>
