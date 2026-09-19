@@ -350,7 +350,17 @@ def portugal_hockey_seed():
     ]
 
 def key(e):
-    return (e.get("date"),re.sub(r"\W+","",e.get("home","").lower()),re.sub(r"\W+","",e.get("away","").lower()))
+    if e.get("title"):
+        return (
+            e.get("date"),
+            re.sub(r"\W+","",e.get("entity","").lower()),
+            re.sub(r"\W+","",e.get("title","").lower()),
+        )
+    return (
+        e.get("date"),
+        re.sub(r"\W+","",e.get("home","").lower()),
+        re.sub(r"\W+","",e.get("away","").lower()),
+    )
 
 data=load()
 existing={key(e):e for e in data.get("events",[])}
