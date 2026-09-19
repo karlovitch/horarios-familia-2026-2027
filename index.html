@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=105">
-<link rel="icon" href="favicon-64.png?v=105" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=105" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=105" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=105">
+<link rel="manifest" href="manifest.webmanifest?v=106">
+<link rel="icon" href="favicon-64.png?v=106" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=106" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=106" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=106">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -240,7 +240,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v105</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v106</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -276,7 +276,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=105"></script>
+<script src="sports-info.js?v=106"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -306,7 +306,7 @@ Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 const SEASON_THEMES={
  spring:{name:"Primavera",colors:["#7FBF90","#F4D35E","#8EC5E8","#F29C82"]},
- summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]},
+ summer:{name:"Verão",colors:["#6EC6F0","#2F8FCE","#F2D16B","#F49B3F"]},
  autumn:{name:"Outono",colors:["#E07A3F","#C9A86A","#A7B59A","#8A3A47"]},
  winter:{name:"Inverno",colors:["#1F2A44","#D1D5DB","#CFE8F9","#F3F4F6"]}
 };
@@ -373,6 +373,13 @@ function personMicroPalette(p,colors,themeName=""){
   if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.34),accent:mixHex(c,a,.24)};
   return {bg:mixHex(c,"#1F2A44",.50),accent:mixHex(a,"#1F2A44",.22)};
  }
+ // No Verão normal, reforçar céu, mar, areia e sol, preservando a identidade de cada pessoa.
+ if(themeName==="Verão"){
+  if(profile.style==="sweet")return {bg:mixHex(a,"#FFFFFF",.44),accent:mixHex(c,"#FFFFFF",.08)};
+  if(profile.style==="indie")return {bg:mixHex(b,"#172033",.34),accent:mixHex(d,"#111827",.12)};
+  if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.30),accent:mixHex(c,b,.18)};
+  return {bg:mixHex(b,"#1F2A44",.46),accent:mixHex(c,"#1F2A44",.18)};
+ }
  if(profile.style==="sweet")return {bg:mixHex(c,"#FFFFFF",.38),accent:mixHex(a,"#FFFFFF",.14)};
  if(profile.style==="indie")return {bg:mixHex(b,"#172033",.42),accent:mixHex(d,"#111827",.18)};
  if(profile.style==="serene")return {bg:mixHex(a,"#FFFFFF",.30),accent:mixHex(c,a,.30)};
@@ -416,7 +423,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=105;
+const APP_BUILD=106;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
