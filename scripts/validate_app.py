@@ -140,6 +140,13 @@ required_index_tokens = {
     "snapshot JS da agenda": 'sports-info.js?v=',
     "merge resiliente de agenda": "function mergeSportsInfo(...sources)",
     "ambiente adaptativo universal": "function applyAdaptiveEnvironment()",
+    "seletor Hoje antes da data": 'class="stats-controls today-stats-controls"',
+    "data Hoje após seletor": 'class="screen-head today-screen-head"',
+    "geolocalização de alta precisão sem cache": "maximumAge:0",
+    "melhor fix GPS por accuracy": "candidate.accuracy<=WEATHER_CONFIG.goodAccuracy",
+    "cache de localização v98": 'weatherCurrentLocationV98',
+    "meteorologia móvel sem scroll horizontal": ".weather-source{flex:1 0 100%;justify-content:center}",
+
     "altura adaptativa de horários": "function adaptiveScheduleHeight()",
 
     "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",

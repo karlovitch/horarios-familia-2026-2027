@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=97">
-<link rel="icon" href="favicon-64.png?v=97" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=97" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=97" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=97">
+<link rel="manifest" href="manifest.webmanifest?v=98">
+<link rel="icon" href="favicon-64.png?v=98" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=98" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=98" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=98">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -191,10 +191,29 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 @media (min-width:2200px){
  :root{font-size:18px}
 }
+
+/* v98 · Hoje: seletor antes da data; meteorologia responsiva sem scroll horizontal */
+.today-stats-controls{margin-bottom:8px}
+.today-screen-head{margin-top:0;margin-bottom:8px}
+.weather-strip{width:fit-content;max-width:100%;white-space:normal;overflow:visible;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;text-align:center}
+.weather-strip .weather-item{display:inline-flex;align-items:baseline;gap:3px;min-width:0}
+.weather-strip .weather-source{white-space:normal}
+.weather-strip .weather-approx{font-size:.82em;font-weight:650;opacity:.7}
+@media(max-width:700px){
+ .weather-strip{width:100%;max-width:100%;padding:7px 8px;font-size:.69rem;line-height:1.18;gap:3px 7px;overflow:visible}
+ .weather-strip .weather-item{flex:0 1 auto}
+ .weather-strip .weather-source{flex:1 0 100%;justify-content:center}
+ .weather-strip .weather-wind{flex:1 1 auto}
+ body{overflow-x:hidden}
+}
+@media(max-width:420px){
+ .weather-strip{font-size:.64rem;gap:2px 6px}
+ .weather-strip .weather-source{font-size:.62rem}
+}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v97</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v98</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -204,7 +223,7 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalFamilyBanner" class="family-banner hidden"></div>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
-<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
+<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="stats-controls today-stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="screen-head today-screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
 <section id="sports" class="screen hidden">
   <div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
   <div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
@@ -214,7 +233,7 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 <section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 </main>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=97"></script>
+<script src="sports-info.js?v=98"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -343,10 +362,10 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=97;
+const APP_BUILD=98;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
-const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
+const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
 const WEATHER_STATE={loadedAt:0,promise:null,data:null,weatherKey:"",location:null,locationLoadedAt:0,locationPromise:null};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
@@ -616,21 +635,37 @@ function beaufortFromKmh(kmh){
 }
 function weatherLocationKey(loc){return Number(loc.lat).toFixed(3)+","+Number(loc.lon).toFixed(3)}
 function weatherLocationCached(){
- const cached=storageRead("weatherCurrentLocationV87",null);
+ const cached=storageRead("weatherCurrentLocationV98",null);
  return cached&&cached.location&&cached.savedAt?cached:null;
 }
 function weatherForecastCached(){
- const cached=storageRead("weatherCurrentForecastV87",null);
+ const cached=storageRead("weatherCurrentForecastV98",null);
  return cached&&cached.data&&cached.locationKey&&cached.savedAt?cached:null;
 }
 function browserCurrentPosition(){
  return new Promise((resolve,reject)=>{
   if(!navigator.geolocation){reject(new Error("geolocation unavailable"));return}
-  navigator.geolocation.getCurrentPosition(
-   p=>resolve({lat:p.coords.latitude,lon:p.coords.longitude,accuracy:p.coords.accuracy||null,source:"dispositivo"}),
-   reject,
-   {enableHighAccuracy:true,timeout:WEATHER_CONFIG.geoTimeout,maximumAge:5*60*1000}
+  let best=null,settled=false,watchId=null,hardTimer=null,bestTimer=null;
+  const finish=(err)=>{
+   if(settled)return;settled=true;
+   if(watchId!==null)navigator.geolocation.clearWatch(watchId);
+   clearTimeout(hardTimer);clearTimeout(bestTimer);
+   if(best)resolve(best);else reject(err||new Error("geolocation unavailable"));
+  };
+  const accept=p=>{
+   if(!p||!p.coords)return;
+   const accuracy=Number(p.coords.accuracy);
+   const candidate={lat:Number(p.coords.latitude),lon:Number(p.coords.longitude),accuracy:Number.isFinite(accuracy)?accuracy:null,source:"dispositivo"};
+   if(!best||candidate.accuracy===null||(best.accuracy!==null&&candidate.accuracy<best.accuracy))best=candidate;
+   if(candidate.accuracy!==null&&candidate.accuracy<=WEATHER_CONFIG.goodAccuracy)finish();
+  };
+  watchId=navigator.geolocation.watchPosition(
+   accept,
+   err=>{if(!best)finish(err)},
+   {enableHighAccuracy:true,timeout:WEATHER_CONFIG.geoTimeout,maximumAge:0}
   );
+  bestTimer=setTimeout(()=>finish(),WEATHER_CONFIG.geoBestWait);
+  hardTimer=setTimeout(()=>finish(new Error("geolocation timeout")),WEATHER_CONFIG.geoTimeout+1500);
  });
 }
 async function reverseLocationName(loc){
@@ -643,7 +678,7 @@ async function reverseLocationName(loc){
   const r=await fetch(u.toString(),{cache:"no-store",signal:controller.signal});
   if(!r.ok)throw new Error("reverse geocode HTTP "+r.status);
   const j=await r.json();
-  const local=j.locality||j.city||j.localityInfo?.administrative?.find(x=>x.name)?.name||"";
+  const local=j.city||j.locality||j.localityInfo?.administrative?.find(x=>x.name)?.name||"";
   const region=j.principalSubdivision||"";
   const country=j.countryName||"";
   const parts=[];
@@ -664,33 +699,42 @@ async function ipCurrentPosition(){
   return {lat:Number(j.latitude),lon:Number(j.longitude),label:parts.slice(0,2).join(", ")||j.country||"Localização por rede",source:"rede"};
  }finally{clearTimeout(timer)}
 }
+async function geolocationPermissionState(){
+ try{
+  if(!navigator.permissions||!navigator.permissions.query)return "unknown";
+  const p=await navigator.permissions.query({name:"geolocation"});
+  return p&&p.state||"unknown";
+ }catch(_){return "unknown"}
+}
 async function resolveWeatherLocation({force=false}={}){
  const now=Date.now();
- if(!force&&WEATHER_STATE.location&&now-WEATHER_STATE.locationLoadedAt<WEATHER_CONFIG.locationTtl)return WEATHER_STATE.location;
- const cached=weatherLocationCached();
- if(!force&&!WEATHER_STATE.location&&cached&&now-cached.savedAt<WEATHER_CONFIG.locationTtl){
-  WEATHER_STATE.location=cached.location;WEATHER_STATE.locationLoadedAt=cached.savedAt;return cached.location;
- }
+ if(!force&&WEATHER_STATE.location&&WEATHER_STATE.location.source==="dispositivo"&&now-WEATHER_STATE.locationLoadedAt<WEATHER_CONFIG.locationTtl)return WEATHER_STATE.location;
+ const cached=storageRead("weatherCurrentLocationV98",null);
  if(WEATHER_STATE.locationPromise)return WEATHER_STATE.locationPromise;
  WEATHER_STATE.locationPromise=(async()=>{
-  let loc=null;
+  let loc=null,deviceError=null;
+  const permission=await geolocationPermissionState();
   try{
    loc=await browserCurrentPosition();
    try{loc.label=await reverseLocationName(loc)}catch(_){loc.label=Number(loc.lat).toFixed(3)+", "+Number(loc.lon).toFixed(3)}
-  }catch(_){
-   try{loc=await ipCurrentPosition()}catch(err){
-    if(cached&&cached.location)loc=cached.location;
-    else throw err;
+  }catch(err){deviceError=err}
+  if(!loc){
+   // Uma localização GPS recente é preferível a um IP geograficamente errado.
+   if(cached&&cached.location&&cached.location.source==="dispositivo"&&now-cached.savedAt<24*60*60*1000){
+    loc=cached.location;
+   }else if(permission==="denied"||permission==="unknown"){
+    try{loc=await ipCurrentPosition();loc.approximate=true}catch(_){}
    }
   }
+  if(!loc)throw deviceError||new Error("location unavailable");
   WEATHER_STATE.location=loc;WEATHER_STATE.locationLoadedAt=Date.now();
-  storageWrite("weatherCurrentLocationV87",{savedAt:WEATHER_STATE.locationLoadedAt,location:loc});
+  storageWrite("weatherCurrentLocationV98",{savedAt:WEATHER_STATE.locationLoadedAt,location:loc});
   return loc;
  })().finally(()=>{WEATHER_STATE.locationPromise=null});
  return WEATHER_STATE.locationPromise;
 }
 async function loadWeather({force=false}={}){
- const loc=await resolveWeatherLocation({force:false});
+ const loc=await resolveWeatherLocation({force});
  const key=weatherLocationKey(loc),now=Date.now();
  if(!force&&WEATHER_STATE.data&&WEATHER_STATE.weatherKey===key&&now-WEATHER_STATE.loadedAt<WEATHER_CONFIG.ttl)return {forecast:WEATHER_STATE.data,location:loc};
  const cached=weatherForecastCached();
@@ -714,7 +758,7 @@ async function loadWeather({force=false}={}){
    if(!r.ok)throw new Error("weather HTTP "+r.status);
    const data=await r.json();
    WEATHER_STATE.data=data;WEATHER_STATE.loadedAt=Date.now();WEATHER_STATE.weatherKey=key;
-   storageWrite("weatherCurrentForecastV87",{savedAt:WEATHER_STATE.loadedAt,locationKey:key,data});
+   storageWrite("weatherCurrentForecastV98",{savedAt:WEATHER_STATE.loadedAt,locationKey:key,data});
    return {forecast:data,location:loc};
   }catch(err){
    if(cached&&cached.locationKey===key&&cached.data){
@@ -738,19 +782,24 @@ function renderWeatherStrip(payload,iso){
  const sky=weatherSky(Number.isFinite(cloud)?cloud:Number(cur&&cur.cloud_cover));
  const wind=Number(isToday?(cur&&cur.wind_speed_10m):(day&&day.wind));
  const bf=beaufortFromKmh(wind);
- let text=sky.icon+" "+sky.label;
- text+=" · Atual "+(Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—");
- if(day&&Number.isFinite(Number(day.max))&&Number.isFinite(Number(day.min)))text+=" · Máx. "+Math.round(day.max)+"° · Mín. "+Math.round(day.min)+"°";
- else text+=" · Máx./Mín. —";
- if(Number.isFinite(wind))text+=" · Vento F"+bf.force+" ("+bf.label+") · "+Math.round(wind)+" km/h";
- else text+=" · Vento —";
- text+=' <span class="weather-source">· 📍 '+esc((loc&&loc.label)||"Localização atual")+"</span>";
- qsa("[data-weather-strip]").forEach(el=>{el.classList.remove("is-error");el.innerHTML=text});
+ const current=Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—";
+ const max=day&&Number.isFinite(Number(day.max))?Math.round(day.max)+"°":"—";
+ const min=day&&Number.isFinite(Number(day.min))?Math.round(day.min)+"°":"—";
+ const windText=Number.isFinite(wind)?"F"+bf.force+" ("+bf.label+") · "+Math.round(wind)+" km/h":"—";
+ const label=esc((loc&&loc.label)||"Localização atual");
+ const approx=loc&&loc.approximate?' <small class="weather-approx">(aprox.)</small>':"";
+ const html='<span class="weather-item weather-sky">'+sky.icon+' <b>'+esc(sky.label)+'</b></span>'
+  +'<span class="weather-item"><b>Atual</b> '+current+'</span>'
+  +'<span class="weather-item"><b>Máx.</b> '+max+'</span>'
+  +'<span class="weather-item"><b>Mín.</b> '+min+'</span>'
+  +'<span class="weather-item weather-wind"><b>Vento</b> '+esc(windText)+'</span>'
+  +'<span class="weather-item weather-source">📍 '+label+approx+'</span>';
+ qsa("[data-weather-strip]").forEach(el=>{el.classList.remove("is-error");el.innerHTML=html});
 }
 async function updateWeatherStrip(iso=statsIso()){
  qsa("[data-weather-strip]").forEach(el=>{if(!WEATHER_STATE.data)el.textContent="🌤️ A obter previsão e localização…"});
  try{
-  const payload=await loadWeather();
+  const payload=await loadWeather({force:!WEATHER_STATE.location});
   if(statsIso()===iso)renderWeatherStrip(payload,iso);
  }catch(_){
   if(statsIso()!==iso)return;
