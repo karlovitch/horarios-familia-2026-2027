@@ -787,11 +787,12 @@ def valid_stream_url(url):
 for event in events:
     if event.get("stream_url") and not valid_stream_url(event.get("stream_url")):
         event.pop("stream_url",None)
+    # Campos de calibração experimentais antigos deixam de ser usados.
+    event.pop("live_minute",None)
+    event.pop("clock_offset_seconds",None)
     if event.get("status")!="live":
         event.pop("period_start",None)
-        event.pop("live_minute",None)
         event.pop("status_updated_at",None)
-        event.pop("clock_offset_seconds",None)
 
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 payload={
