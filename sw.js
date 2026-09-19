@@ -1,5 +1,5 @@
-const C='horarios-familia-2026-27-v33';
-const CORE=['./','index.html','manifest.webmanifest','icon.svg'];
+const C='horarios-familia-2026-27-v34';
+const CORE=['./?v=34','index.html?v=34','manifest.webmanifest?v=34','icon.svg'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
@@ -7,12 +7,12 @@ self.addEventListener('install',event=>{
 });
 
 self.addEventListener('activate',event=>{
-  event.waitUntil(
-    Promise.all([
-      caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k)))),
-      self.clients.claim()
-    ])
-  );
+  event.waitUntil((async()=>{
+    await caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k))));
+    await self.clients.claim();
+    const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+    await Promise.all(windows.map(w=>w.navigate(w.url).catch(()=>null)));
+  })());
 });
 
 self.addEventListener('fetch',event=>{
