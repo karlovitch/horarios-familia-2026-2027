@@ -39,32 +39,46 @@ def world_for(day,month):
     month_name=MONTHS[month-1]
     title=f"{day} de {month_name}"
     wiki_url=f"https://pt.wikipedia.org/wiki/{quote(title.replace(' ','_'))}"
-    api="https://pt.wikipedia.org/w/api.php"
-    params={"action":"parse","page":title,"prop":"text","format":"json","formatversion":"2","redirects":"1"}
-    r=requests.get(api,params=params,headers=HEADERS,timeout=25)
-    r.raise_for_status()
-    payload=r.json()
-    html=payload.get("parse",{}).get("text","")
-    if not html:return []
-    soup=BeautifulSoup(html,"html.parser")
-    heading=None
-    for h in soup.find_all(["h2","h3"]):
-        label=unicodedata.normalize("NFKD",h.get_text(" ",strip=True)).encode("ascii","ignore").decode("ascii").lower()
-        if "eventos historicos" in label:
-            heading=h;break
-    if not heading:return []
     out=[]
-    node=heading.find_next_sibling()
-    while node:
-        if getattr(node,"name",None) in ("h2","h3"):break
-        if hasattr(node,"find_all"):
-            for li in node.find_all("li"):
-                item=parse_year_text(li.get_text(" ",strip=True))
-                if item and 20<=len(item["text"])<=500:
-                    item["source_url"]=wiki_url
-                    if not any(x["year"]==item["year"] and x["text"]==item["text"] for x in out):
-                        out.append(item)
-        node=node.find_next_sibling()
+
+    # Wikimedia expõe uma API própria de efemérides, já limitada à data pedida.
+    try:
+        feed=f"https://api.wikimedia.org/feed/v1/wikipedia/pt/onthisday/events/{month:02d}/{day:02d}"
+        r=requests.get(feed,headers=HEADERS,timeout=25)
+        r.raise_for_status()
+        for ev in r.json().get("events",[]):
+            year=str(ev.get("year","")).strip()
+            text=re.sub(r"\\s+"," ",str(ev.get("text",""))).strip()
+            if year and 20<=len(text)<=500:
+                item={"year":year,"text":text,"source_url":wiki_url}
+                if not any(x["year"]==year and x["text"]==text for x in out):
+                    out.append(item)
+        if out:return out[:24]
+    except Exception:
+        pass
+
+    # Fallback pela API MediaWiki: encontra a secção "Eventos históricos" e lê só essa secção.
+    try:
+        api="https://pt.wikipedia.org/w/api.php"
+        sec_params={"action":"parse","page":title,"prop":"sections","format":"json","formatversion":"2","redirects":"1"}
+        rs=requests.get(api,params=sec_params,headers=HEADERS,timeout=25)
+        rs.raise_for_status()
+        sections=rs.json().get("parse",{}).get("sections",[])
+        sec=next((s.get("index") for s in sections if "eventos historicos" in unicodedata.normalize("NFKD",s.get("line","")).encode("ascii","ignore").decode("ascii").lower()),None)
+        if sec is None:return []
+        txt_params={"action":"parse","page":title,"prop":"text","section":sec,"format":"json","formatversion":"2","redirects":"1"}
+        rt=requests.get(api,params=txt_params,headers=HEADERS,timeout=25)
+        rt.raise_for_status()
+        html=rt.json().get("parse",{}).get("text","")
+        soup=BeautifulSoup(html,"html.parser")
+        for li in soup.find_all("li"):
+            item=parse_year_text(li.get_text(" ",strip=True))
+            if item and 20<=len(item["text"])<=500:
+                item["source_url"]=wiki_url
+                if not any(x["year"]==item["year"] and x["text"]==item["text"] for x in out):
+                    out.append(item)
+    except Exception:
+        pass
     return out[:24]
 
 def portugal_for(day,month):
