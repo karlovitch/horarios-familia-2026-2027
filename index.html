@@ -696,7 +696,7 @@ function sportsBroadcastInfo(ev){
  const entity=(ev.entity||"").toLowerCase(),comp=(ev.competition||"").toLowerCase(),raw=(ev.channel||"").trim();
  let channel=raw,stream=isActualStreamingUrl(ev.stream_url)?ev.stream_url:"";
  const uncertain=!raw||/confirmar/i.test(raw);
- if(entity.includes("formula 1")){channel="DAZN Portugal";stream=stream||"https://www.dazn.com/pt-PT/home"}
+ if(entity.includes("formula 1")){channel="DAZN 5";stream=stream||"https://www.dazn.com/pt-PT/home"}
  else if(entity.includes("seleção nacional a")){if(uncertain)channel="RTP 1 / SPORT TV Portugal";if(/rtp 1/i.test(channel))stream=stream||"https://www.rtp.pt/play/direto/rtp1"}
  else if(entity.includes("sub-21")){if(uncertain)channel="Canal 11"}
  else if(entity.includes("real madrid")){
