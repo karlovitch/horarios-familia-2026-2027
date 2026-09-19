@@ -6,6 +6,7 @@ import re
 import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 import requests
@@ -22,6 +23,7 @@ END_DATE = date(2027, 12, 31)
 UN_URL = "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/"
 COE_URL = "https://eurocid.mne.gov.pt/artigos/efemerides"
 LITURGIA_BASE = "https://liturgia.pt/liturgiadiaria/dia.php"
+VATICAN_SAINT_BASE = "https://www.vaticannews.va/pt/santo-do-dia"
 
 EUROPEAN_DAYS = {
     "01-28": ["Dia da Proteção de Dados"],
@@ -136,6 +138,44 @@ def get_un_map() -> dict[str, list[str]]:
         print("Aviso: não foi possível atualizar a ONU:", exc)
     return out
 
+_VATICAN_SAINT_CACHE: dict[str, list[dict[str, str]]] = {}
+
+def get_vatican_hagiographies(day: date) -> list[dict[str, str]]:
+    key = day.strftime("%m-%d")
+    if key in _VATICAN_SAINT_CACHE:
+        return _VATICAN_SAINT_CACHE[key]
+
+    day_url = f"{VATICAN_SAINT_BASE}/{day.month:02d}/{day.day:02d}.html"
+    out: list[dict[str, str]] = []
+    try:
+        soup = BeautifulSoup(fetch(day_url), "html.parser")
+        for heading in soup.find_all(["h2", "h3"]):
+            name = re.sub(r"\s+", " ", heading.get_text(" ", strip=True)).strip()
+            if not name or not re.match(r"^(S\.|SS\.|São|Santa|Santo|Santos|Santas)\b", name, re.I):
+                continue
+
+            link = None
+            node = heading
+            for _ in range(8):
+                node = node.find_next()
+                if node is None:
+                    break
+                if getattr(node, "name", None) in ("h2", "h3"):
+                    break
+                if getattr(node, "name", None) == "a":
+                    label = re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
+                    href = node.get("href")
+                    if href and re.search(r"(Leia\s+tudo|Ler\s+mais)", label, re.I):
+                        link = urljoin(day_url, href)
+                        break
+
+            out.append({"name": name, "url": link or day_url})
+    except Exception as exc:
+        print(f"Aviso Vatican News {day.isoformat()}: {exc}")
+
+    _VATICAN_SAINT_CACHE[key] = out
+    return out
+
 def get_liturgy(day: date) -> dict:
     url = f"{LITURGIA_BASE}?data={day.year}-{day.month}-{day.day}"
     result = {
@@ -189,12 +229,14 @@ def load_calendar() -> dict:
 def build_day(day: date, un_map: dict[str, list[str]]) -> dict:
     mmdd = day.strftime("%m-%d")
     lit = get_liturgy(day)
+    hagiographies = get_vatican_hagiographies(day)
     return {
         "date": day.isoformat(),
         "un_days": un_map.get(mmdd, []),
         "european_days": EUROPEAN_DAYS.get(mmdd, []),
         "portugal_days": [*PORTUGAL_DAYS.get(mmdd, []), *PORTUGAL_MOVABLE_HOLIDAYS.get(day.isoformat(), [])],
         "local_days": LOCAL_DAYS.get(mmdd, []),
+        "saint_hagiographies": hagiographies,
         **lit,
     }
 
@@ -230,6 +272,7 @@ def main():
         "un": UN_URL,
         "europe": COE_URL,
         "liturgy": "https://liturgia.pt/liturgiadiaria/",
+        "saints": VATICAN_SAINT_BASE,
     }
     CALENDAR_OUT.write_text(
         json.dumps(calendar, ensure_ascii=False, indent=2) + "\n",
