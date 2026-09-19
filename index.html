@@ -979,7 +979,7 @@ function renderGlobalQuote(){
  const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);
  const x=calendarInfoFor(iso),q=uniqueReflectionForDay(iso,x);
  qs("#globalQuoteText").textContent="“"+q.text+"”";
- qs("#globalQuoteAuthor").textContent="— "+q.author+" · inspiração: "+q.source.name+" ("+q.source.bio+"), "+q.source.year;
+ qs("#globalQuoteAuthor").textContent="— Fonte de inspiração: "+q.source.name+" ("+q.source.bio+"), "+q.source.year+" · reflexão original";
 }
 function meaningfulLiturgicalText(v){
  const t=(v||"").trim();
