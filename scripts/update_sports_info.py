@@ -223,6 +223,41 @@ def is_direct_match_url(event,url):
     if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
     return bool(url)
 
+def zerozero_hockey_status(event):
+    url=event.get("match_url")
+    if not url or "zerozero.pt/jogo/" not in url:return {}
+    try:
+        html=get(url)
+        text=" ".join(BeautifulSoup(html,"html.parser").stripped_strings)
+        norm=unicodedata.normalize("NFKD",text).encode("ascii","ignore").decode("ascii")
+        home=_norm_name(event.get("home",""));away=_norm_name(event.get("away",""))
+        compact=_norm_name(norm)
+        hp=compact.find(home);ap=compact.find(away)
+        score=None
+        if hp>=0 and ap>=0:
+            lo=min(hp,ap);hi=max(hp,ap)
+            # Use the visible header area between both team names, where zerozero places the score.
+            raw_segment=text[:1800]
+            m=re.search(r"\b(\d{1,2})\s*[-:]\s*(\d{1,2})\b",raw_segment)
+            if m:score=(int(m.group(1)),int(m.group(2)))
+        if not score:return {}
+        out={"home_score":score[0],"away_score":score[1],"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        now=datetime.now(timezone.utc)
+        start=None
+        try:start=datetime.fromisoformat((event.get("start") or "").replace("Z","+00:00"))
+        except Exception:pass
+        if "Antevisão do Jogo" in text and "Ficha de Jogo" not in text:
+            out["status"]="scheduled"
+        elif start and now < start:
+            out["status"]="scheduled"
+        elif start and (now-start).total_seconds() < 9000:
+            out["status"]="live"
+        else:
+            out["status"]="finished"
+        return out
+    except Exception:
+        return {}
+
 def enforce_direct_match_urls(events):
     resolved=0
     today=datetime.now(timezone.utc).date()
@@ -248,6 +283,15 @@ def enforce_direct_match_urls(events):
                         info=flashscore_live_info(m.group(1))
                         for k,v in info.items():
                             if v is not None:event[k]=v
+            except Exception:
+                pass
+        elif ("hoquei" in sport or "hóquei" in sport) and is_direct_match_url(event,event.get("match_url")):
+            try:
+                event_day=datetime.fromisoformat(event.get("date")).date()
+                if abs((event_day-today).days)<=1:
+                    info=zerozero_hockey_status(event)
+                    for k,v in info.items():
+                        if v is not None:event[k]=v
             except Exception:
                 pass
     return resolved
