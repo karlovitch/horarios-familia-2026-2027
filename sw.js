@@ -1,5 +1,16 @@
-const C='horarios-familia-2026-27-v69';
-const CORE=['./?v=69','index.html?v=69','manifest.webmanifest?v=69','icon.svg'];
+const BUILD=70;
+const C='horarios-familia-2026-27-v'+BUILD;
+const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'icon.svg'];
+const NETWORK_FIRST_PATHS=new Set([
+  '/index.html','/manifest.webmanifest','/daily-info.json','/calendar-info.json',
+  '/sports-info.json','/history-info.json'
+]);
+
+function canonicalCacheKey(url){
+  const path=url.pathname;
+  if(path.endsWith('/'))return new Request(url.origin+path);
+  return new Request(url.origin+path);
+}
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
@@ -17,28 +28,39 @@ self.addEventListener('activate',event=>{
 
 self.addEventListener('fetch',event=>{
   const req=event.request;
+  if(req.method!=='GET')return;
   const url=new URL(req.url);
 
-  // HTML/navegação e informação diária: rede primeiro para evitar versões antigas.
-  if(req.mode==='navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/manifest.webmanifest') || url.pathname.endsWith('/daily-info.json') || url.pathname.endsWith('/calendar-info.json') || url.pathname.endsWith('/sports-info.json') || url.pathname.endsWith('/history-info.json')){
+  // Não interfere com recursos externos (ex.: Passo-a-Rezar).
+  if(url.origin!==self.location.origin)return;
+
+  const path=url.pathname;
+  const isNavigation=req.mode==='navigate';
+  const networkFirst=isNavigation||[...NETWORK_FIRST_PATHS].some(p=>path.endsWith(p));
+
+  if(networkFirst){
+    const key=canonicalCacheKey(url);
     event.respondWith(
       fetch(req,{cache:'no-store'})
         .then(res=>{
-          const copy=res.clone();
-          caches.open(C).then(cache=>cache.put(req,copy));
+          if(res&&res.ok){
+            const copy=res.clone();
+            caches.open(C).then(cache=>cache.put(key,copy));
+          }
           return res;
         })
-        .catch(()=>caches.match(req).then(r=>r||caches.match('index.html')))
+        .catch(()=>caches.match(key).then(r=>r||caches.match(new Request(self.location.origin+'/index.html'))))
     );
     return;
   }
 
-  // Restantes recursos: cache com atualização em segundo plano.
   event.respondWith(
     caches.match(req).then(cached=>{
       const network=fetch(req).then(res=>{
-        const copy=res.clone();
-        caches.open(C).then(cache=>cache.put(req,copy));
+        if(res&&res.ok){
+          const copy=res.clone();
+          caches.open(C).then(cache=>cache.put(req,copy));
+        }
         return res;
       }).catch(()=>cached);
       return cached||network;
@@ -46,4 +68,6 @@ self.addEventListener('fetch',event=>{
   );
 });
 
-self.addEventListener('message',event=>{if(event.data&&event.data.type==='SKIP_WAITING')self.skipWaiting();});
+self.addEventListener('message',event=>{
+  if(event.data&&event.data.type==='SKIP_WAITING')self.skipWaiting();
+});
