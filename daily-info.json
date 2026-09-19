@@ -11,10 +11,10 @@
   ],
   "gospel": "Lc 8, 4-15",
   "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-19",
-  "updated_at": "2026-09-19T02:22:04+01:00",
+  "updated_at": "2026-09-19T09:47:52+01:00",
   "sources": {
-    "un": "https://www.un.org/en/observances/list-days-weeks",
-    "europe": "https://www.coe.int/en/web/portal/international-and-european-days",
+    "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
+    "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
     "liturgy": "https://liturgia.pt/liturgiadiaria/"
   }
 }
