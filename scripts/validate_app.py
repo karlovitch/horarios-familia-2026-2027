@@ -57,6 +57,8 @@ if manifest.get("scope") != "./":
 required_index_tokens = {
     "ocultação da agenda desportiva": 'id="sportsTabRow" class="sports-tab-row hidden"',
     "regra dinâmica da agenda desportiva": "function updateSportsTabVisibility",
+    "intervalo excluído do relógio do futebol": "const half=45*60,breakTime=15*60",
+    "estado visual do intervalo": "⏸️ INTERVALO",
     "dados de áudio direto do Passo-a-Rezar": "passo_audio_url",
     "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
     "hagiografias": "saint_hagiographies",
