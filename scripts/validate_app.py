@@ -133,6 +133,7 @@ required_index_tokens = {
     "navegação horizontal por grupos": "function tvHorizontalTarget(current,key)",
     "navegação vertical semanal no calendário TV": "ArrowDown:7",
     "paleta Verão exata": 'summer:{name:"Verão",colors:["#6EC6F0","#2F8FCE","#F2D16B","#F49B3F"]}',
+    "micro-paletas pessoais específicas de Verão": 'if(themeName==="Verão"){',
     "perfil Leonor 9": 'Leonor:{age:9,style:"sweet"',
     "perfil Margarida 15": 'Margarida:{age:15,style:"indie"',
     "perfil Sandrinha 48": 'Sandra:{age:48,style:"serene"',
