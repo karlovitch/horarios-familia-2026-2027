@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T13:03:51.602Z",
+  "generated_at": "2026-09-19T13:19:26.147254+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
@@ -57,11 +57,921 @@
     },
     {
       "url": "https://api.jolpi.ca/ergast/f1/2026.json",
-      "ok": false,
-      "error": "HTTPSConnectionPool(host='api.jolpi.ca', port=443): Read timed out. (read timeout=30)"
+      "ok": true,
+      "events_found": 115
     }
   ],
   "events": [
+    {
+      "date": "2026-03-06",
+      "start": "2026-03-06T01:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-06",
+      "start": "2026-03-06T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-07",
+      "start": "2026-03-07T01:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-07",
+      "start": "2026-03-07T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-08",
+      "start": "2026-03-08T04:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-13",
+      "start": "2026-03-13T03:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-13",
+      "start": "2026-03-13T07:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-14",
+      "start": "2026-03-14T03:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-14",
+      "start": "2026-03-14T07:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-15",
+      "start": "2026-03-15T07:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-27",
+      "start": "2026-03-27T02:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-27",
+      "start": "2026-03-27T06:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-28",
+      "start": "2026-03-28T02:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-28",
+      "start": "2026-03-28T06:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-29",
+      "start": "2026-03-29T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-01",
+      "start": "2026-05-01T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-01",
+      "start": "2026-05-01T20:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-02",
+      "start": "2026-05-02T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-02",
+      "start": "2026-05-02T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-03",
+      "start": "2026-05-03T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-22",
+      "start": "2026-05-22T16:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-22",
+      "start": "2026-05-22T20:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-23",
+      "start": "2026-05-23T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-23",
+      "start": "2026-05-23T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-24",
+      "start": "2026-05-24T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-05",
+      "start": "2026-06-05T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-05",
+      "start": "2026-06-05T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-06",
+      "start": "2026-06-06T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-06",
+      "start": "2026-06-06T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-07",
+      "start": "2026-06-07T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-12",
+      "start": "2026-06-12T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-12",
+      "start": "2026-06-12T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-13",
+      "start": "2026-06-13T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-13",
+      "start": "2026-06-13T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-14",
+      "start": "2026-06-14T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-26",
+      "start": "2026-06-26T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-26",
+      "start": "2026-06-26T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-27",
+      "start": "2026-06-27T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-27",
+      "start": "2026-06-27T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-28",
+      "start": "2026-06-28T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-03",
+      "start": "2026-07-03T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-03",
+      "start": "2026-07-03T15:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-04",
+      "start": "2026-07-04T11:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-04",
+      "start": "2026-07-04T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-05",
+      "start": "2026-07-05T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-17",
+      "start": "2026-07-17T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-17",
+      "start": "2026-07-17T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-18",
+      "start": "2026-07-18T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-18",
+      "start": "2026-07-18T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-19",
+      "start": "2026-07-19T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-24",
+      "start": "2026-07-24T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-24",
+      "start": "2026-07-24T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-25",
+      "start": "2026-07-25T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-25",
+      "start": "2026-07-25T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-26",
+      "start": "2026-07-26T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-21",
+      "start": "2026-08-21T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-21",
+      "start": "2026-08-21T14:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-22",
+      "start": "2026-08-22T10:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-22",
+      "start": "2026-08-22T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-23",
+      "start": "2026-08-23T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-04",
+      "start": "2026-09-04T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-04",
+      "start": "2026-09-04T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-05",
+      "start": "2026-09-05T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-05",
+      "start": "2026-09-05T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-06",
+      "start": "2026-09-06T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-11",
+      "start": "2026-09-11T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-11",
+      "start": "2026-09-11T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-12",
+      "start": "2026-09-12T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-12",
+      "start": "2026-09-12T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-13",
+      "start": "2026-09-13T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
     {
       "date": "2026-09-18",
       "start": "2026-09-18T20:30:00Z",
@@ -72,7 +982,7 @@
       "competition": "Taça do Minho 2026 · Jornada 1",
       "location": "Valença, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "match_url": null,
       "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
     },
     {
@@ -86,7 +996,7 @@
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
       "stream_url": "https://tv.fpp.pt/",
-      "match_url": "https://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
+      "match_url": "http://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
       "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"
     },
     {
@@ -111,9 +1021,9 @@
       "away": "Real Madrid",
       "competition": "La Liga",
       "location": "Riyadh Air Metropolitano, Madrid, Espanha",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -126,7 +1036,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 7",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.zerozero.pt/jogo/2026-09-20-fc-porto-benfica/12278065",
+      "match_url": null,
       "source_url": "https://www.fcporto.pt/pt/agenda"
     },
     {
@@ -139,7 +1049,7 @@
       "competition": "Taça do Minho 2026 · Jornada 2",
       "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "match_url": null,
       "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
     },
     {
@@ -147,26 +1057,26 @@
       "start": "2026-09-24T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP do Azerbaijão",
+      "title": "Treino Livre 1 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-24",
       "start": "2026-09-24T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP do Azerbaijão",
+      "title": "Treino Livre 2 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-24",
@@ -179,7 +1089,7 @@
       "location": "Estádio José Alvalade, Lisboa, Portugal",
       "channel": "RTP 1",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056"
     },
     {
@@ -187,26 +1097,26 @@
       "start": "2026-09-25T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP do Azerbaijão",
+      "title": "Treino Livre 3 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-25",
       "start": "2026-09-25T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP do Azerbaijão",
+      "title": "Qualificação · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-25",
@@ -218,7 +1128,7 @@
       "competition": "Qualificação Campeonato da Europa Sub-21 2027 · Grupo B",
       "location": "Bulgária · estádio/localidade a confirmar",
       "channel": "Canal 11",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
       "stream_url": "https://www.fpf.pt/pt/Canal-11"
     },
@@ -227,26 +1137,13 @@
       "start": "2026-09-26T11:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP do Azerbaijão",
+      "title": "Corrida · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
-    },
-    {
-      "date": "2026-09-27",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "Riba d'Ave HC",
-      "away": "OC Barcelos",
-      "competition": "Taça do Minho 2026 · Jornada 3",
-      "location": "Riba de Ave, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
-      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-27",
@@ -258,9 +1155,22 @@
       "competition": "UEFA Liga das Nações 2026/27",
       "location": "Ullevaal Stadion, Oslo, Noruega",
       "channel": "RTP 1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos/ficha-de-jogo/match/2539279",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1"
+    },
+    {
+      "date": "2026-09-27",
+      "start": null,
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "Riba d'Ave HC",
+      "away": "OC Barcelos",
+      "competition": "Taça do Minho 2026 · Jornada 3",
+      "location": "Riba de Ave, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": null,
+      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
     },
     {
       "date": "2026-09-30",
@@ -272,7 +1182,7 @@
       "competition": "Qualificação Campeonato da Europa Sub-21 2027 · Grupo B",
       "location": "Portugal · estádio/localidade a confirmar",
       "channel": "Canal 11",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
       "stream_url": "https://www.fpf.pt/pt/Canal-11"
     },
@@ -286,7 +1196,7 @@
       "competition": "UEFA Liga das Nações 2026/27",
       "location": "Parken Stadium, Copenhaga, Dinamarca",
       "channel": "RTP 1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1"
     },
@@ -297,11 +1207,11 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 1 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-02",
@@ -310,11 +1220,11 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 2 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-03",
@@ -323,11 +1233,11 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 3 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-03",
@@ -336,11 +1246,11 @@
       "sport": "Automobilismo",
       "title": "Qualificação · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-04",
@@ -349,11 +1259,11 @@
       "sport": "Automobilismo",
       "title": "Corrida · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-04",
@@ -365,7 +1275,7 @@
       "competition": "UEFA Liga das Nações 2026/27",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "RTP 1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1"
     },
@@ -379,7 +1289,7 @@
       "competition": "Qualificação Campeonato da Europa Sub-21 2027 · Grupo B",
       "location": "Portugal · estádio/localidade a confirmar",
       "channel": "Canal 11",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
       "stream_url": "https://www.fpf.pt/pt/Canal-11"
     },
@@ -388,26 +1298,26 @@
       "start": "2026-10-09T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP de Singapura",
+      "title": "Treino Livre 1 · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-09",
       "start": "2026-10-09T12:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação Sprint · GP de Singapura",
+      "title": "Qualificação Sprint · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-09",
@@ -419,7 +1329,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 8",
       "location": "Parque Desportivo Comendador Joaquim de Almeida Freitas, Moreira de Cónegos, Portugal",
       "channel": "V+",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -427,26 +1337,26 @@
       "start": "2026-10-10T09:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Sprint · GP de Singapura",
+      "title": "Sprint · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-10",
       "start": "2026-10-10T13:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP de Singapura",
+      "title": "Qualificação · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-10",
@@ -458,7 +1368,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 8",
       "location": "Estádio do Marítimo, Funchal, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -470,9 +1380,9 @@
       "away": "Villarreal CF",
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -483,10 +1393,10 @@
       "home": "Real Madrid",
       "away": "Villarreal",
       "competition": "La Liga",
-      "location": "Estadio Santiago Bernabéu",
-      "channel": "DAZN",
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -494,13 +1404,13 @@
       "start": "2026-10-11T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP de Singapura",
+      "title": "Corrida · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-13",
@@ -512,7 +1422,7 @@
       "competition": "Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos",
       "location": "Assunção, Paraguai",
       "channel": "Transmissão em Portugal a confirmar",
-      "match_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
     },
     {
@@ -525,7 +1435,7 @@
       "competition": "Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos",
       "location": "Assunção, Paraguai",
       "channel": "Transmissão em Portugal a confirmar",
-      "match_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
     },
     {
@@ -538,7 +1448,7 @@
       "competition": "UEFA Champions League 2026/27 · Fase de Liga",
       "location": "Estádio Benito Villamarín, Sevilha, Espanha",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -550,9 +1460,10 @@
       "away": "Real Madrid",
       "competition": "Champions League",
       "location": "Stadio Olimpico",
-      "channel": "DAZN",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "stream_url": "https://www.dazn.com/pt-PT/home"
     },
     {
       "date": "2026-10-14",
@@ -564,7 +1475,7 @@
       "competition": "Campeonato do Mundo de Hóquei em Patins 2026 · Fase de grupos",
       "location": "Assunção, Paraguai",
       "channel": "Transmissão em Portugal a confirmar",
-      "match_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
     },
     {
@@ -576,9 +1487,9 @@
       "away": "Sevilla FC",
       "competition": "LALIGA EA SPORTS",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -589,10 +1500,10 @@
       "home": "Real Madrid",
       "away": "Sevilla",
       "competition": "La Liga",
-      "location": "Estadio Santiago Bernabéu",
-      "channel": "DAZN",
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -605,7 +1516,7 @@
       "competition": "UEFA Champions League 2026/27 · Fase de Liga",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -616,49 +1527,50 @@
       "home": "Real Madrid",
       "away": "RB Leipzig",
       "competition": "Champions League",
-      "location": "Estadio Santiago Bernabéu",
-      "channel": "DAZN",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "stream_url": "https://www.dazn.com/pt-PT/home"
     },
     {
       "date": "2026-10-23",
       "start": "2026-10-23T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP dos Estados Unidos",
+      "title": "Treino Livre 1 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-23",
       "start": "2026-10-23T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP dos Estados Unidos",
+      "title": "Treino Livre 2 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-24",
       "start": "2026-10-24T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP dos Estados Unidos",
+      "title": "Treino Livre 3 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-24",
@@ -670,7 +1582,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 9",
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -678,26 +1590,26 @@
       "start": "2026-10-24T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP dos Estados Unidos",
+      "title": "Qualificação · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-25",
       "start": "2026-10-25T20:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP dos Estados Unidos",
+      "title": "Corrida · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-25",
@@ -708,9 +1620,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Barcelona, Espanha",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -722,9 +1634,9 @@
       "away": "Real Madrid",
       "competition": "La Liga",
       "location": "Spotify Camp Nou",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -737,7 +1649,7 @@
       "competition": "Allianz Cup 2026/27 · Quartos-de-final",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -750,7 +1662,7 @@
       "competition": "Allianz Cup 2026/27 · Quartos-de-final",
       "location": "Estádio da Luz, Lisboa, Portugal",
       "channel": "Sport TV",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -758,39 +1670,39 @@
       "start": "2026-10-30T18:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP da Cidade do México",
+      "title": "Treino Livre 1 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-30",
       "start": "2026-10-30T22:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP da Cidade do México",
+      "title": "Treino Livre 2 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-31",
       "start": "2026-10-31T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP da Cidade do México",
+      "title": "Treino Livre 3 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-31",
@@ -802,7 +1714,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 10",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -810,13 +1722,26 @@
       "start": "2026-10-31T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP da Cidade do México",
+      "title": "Qualificação · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-11-01",
+      "start": "2026-11-01T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Cidade do México",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-01",
@@ -827,9 +1752,9 @@
       "away": "Real Madrid",
       "competition": "La Liga",
       "location": "Campos de Sport de El Sardinero",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -841,23 +1766,10 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
-    },
-    {
-      "date": "2026-11-01",
-      "start": "2026-11-01T20:00:00Z",
-      "entity": "Formula 1",
-      "sport": "Automobilismo",
-      "title": "Corrida · GP da Cidade do México",
-      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
     },
     {
       "date": "2026-11-02",
@@ -869,7 +1781,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 10",
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV 1",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -882,7 +1794,7 @@
       "competition": "UEFA Champions League · Fase de Liga · Jornada 4",
       "location": "Atenas, Grécia",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026"
     },
     {
@@ -895,8 +1807,8 @@
       "competition": "UEFA Champions League",
       "location": "Local a confirmar",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "stream_url": null,
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -908,8 +1820,8 @@
       "away": "Real Madrid",
       "competition": "Champions League",
       "location": "ALLWYN Arena",
-      "channel": "DAZN",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "channel": "DAZN Portugal",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -922,7 +1834,7 @@
       "competition": "UEFA Champions League 2026/27 · Fase de Liga",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -935,8 +1847,8 @@
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-06",
@@ -948,8 +1860,8 @@
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-07",
@@ -961,8 +1873,8 @@
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-07",
@@ -974,49 +1886,8 @@
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
-    },
-    {
-      "date": "2026-11-08",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "OC Barcelos",
-      "away": "SC Tomar",
-      "competition": "Campeonato Placard 2026/27 · Jornada 1",
-      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "source_url": "https://fpp.pt/jogos-do-campeonato-placard-definidos-para-a-proxima-epoca/"
-    },
-    {
-      "date": "2026-11-08",
-      "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Valencia CF",
-      "away": "Real Madrid",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
-    },
-    {
-      "date": "2026-11-08",
-      "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Valencia",
-      "away": "Real Madrid",
-      "competition": "La Liga",
-      "location": "Estadio de Mestalla",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-08",
@@ -1028,7 +1899,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 11",
       "location": "Estádio de São Miguel, Ponta Delgada, Portugal",
       "channel": "Sport TV",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -1041,8 +1912,8 @@
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-08",
@@ -1054,21 +1925,49 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 11",
       "location": "Estádio D. Afonso Henriques, Guimarães, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
-      "date": "2026-11-14",
+      "date": "2026-11-08",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Valencia CF",
+      "away": "Real Madrid",
+      "competition": "LALIGA EA SPORTS",
+      "location": "Local a confirmar",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+    },
+    {
+      "date": "2026-11-08",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Valencia",
+      "away": "Real Madrid",
+      "competition": "La Liga",
+      "location": "Estadio de Mestalla",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+    },
+    {
+      "date": "2026-11-08",
       "start": null,
       "entity": "Óquei Clube de Barcelos",
       "sport": "Hóquei em Patins",
-      "home": "AD Oeiras",
-      "away": "OC Barcelos",
-      "competition": "Campeonato Placard 2026/27 · Jornada 2",
-      "location": "Oeiras, Portugal",
+      "home": "OC Barcelos",
+      "away": "SC Tomar",
+      "competition": "Campeonato Placard 2026/27 · Jornada 1",
+      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+      "match_url": null,
+      "source_url": "https://fpp.pt/jogos-do-campeonato-placard-definidos-para-a-proxima-epoca/"
     },
     {
       "date": "2026-11-14",
@@ -1080,9 +1979,22 @@
       "competition": "UEFA Liga das Nações 2026/27",
       "location": "Estádio Municipal de Braga, Braga, Portugal",
       "channel": "RTP 1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1"
+    },
+    {
+      "date": "2026-11-14",
+      "start": null,
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "AD Oeiras",
+      "away": "OC Barcelos",
+      "competition": "Campeonato Placard 2026/27 · Jornada 2",
+      "location": "Oeiras, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": null,
+      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
       "date": "2026-11-17",
@@ -1094,7 +2006,7 @@
       "competition": "UEFA Liga das Nações 2026/27",
       "location": "Cardiff City Stadium, Cardiff, País de Gales",
       "channel": "RTP 1",
-      "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos/ficha-de-jogo/match/2539287",
+      "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1"
     },
@@ -1108,8 +2020,8 @@
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-20",
@@ -1121,21 +2033,8 @@
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
-    },
-    {
-      "date": "2026-11-21",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "HC Braga",
-      "away": "OC Barcelos",
-      "competition": "Campeonato Placard 2026/27 · Jornada 3",
-      "location": "Braga, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-21",
@@ -1147,8 +2046,8 @@
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-21",
@@ -1160,36 +2059,21 @@
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
-      "date": "2026-11-22",
+      "date": "2026-11-21",
       "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Real Madrid",
-      "away": "Celta",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
-    },
-    {
-      "date": "2026-11-22",
-      "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Real Madrid",
-      "away": "Celta de Vigo",
-      "competition": "La Liga",
-      "location": "Estadio Santiago Bernabéu",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "HC Braga",
+      "away": "OC Barcelos",
+      "competition": "Campeonato Placard 2026/27 · Jornada 3",
+      "location": "Braga, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": null,
+      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
       "date": "2026-11-22",
@@ -1201,8 +2085,36 @@
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-11-22",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Real Madrid",
+      "away": "Celta",
+      "competition": "LALIGA EA SPORTS",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+    },
+    {
+      "date": "2026-11-22",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Real Madrid",
+      "away": "Celta de Vigo",
+      "competition": "La Liga",
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-11-24",
@@ -1214,7 +2126,7 @@
       "competition": "UEFA Champions League 2026/27 · Fase de Liga",
       "location": "De Kuip, Roterdão, Países Baixos",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -1227,8 +2139,9 @@
       "competition": "UEFA Champions League",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "stream_url": "https://www.dazn.com/pt-PT/home"
     },
     {
       "date": "2026-11-24",
@@ -1238,9 +2151,9 @@
       "home": "Real Madrid",
       "away": "PSV Eindhoven",
       "competition": "Champions League",
-      "location": "Estadio Santiago Bernabéu",
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
@@ -1253,7 +2166,7 @@
       "competition": "WSE Champions League 2026/27 · Jornada 1",
       "location": "Lisboa, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
@@ -1261,26 +2174,52 @@
       "start": "2026-11-27T13:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP do Qatar",
+      "title": "Treino Livre 1 · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-27",
       "start": "2026-11-27T17:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP do Qatar",
+      "title": "Treino Livre 2 · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-11-28",
+      "start": "2026-11-28T14:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Qatar",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Lusail International Circuit, Lusail, Qatar",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-11-28",
+      "start": "2026-11-28T18:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Qatar",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Lusail International Circuit, Lusail, Qatar",
+      "channel": "DAZN",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-28",
@@ -1292,61 +2231,21 @@
       "competition": "Campeonato Placard 2026/27 · Jornada 4",
       "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
-    },
-    {
-      "date": "2026-11-28",
-      "start": "2026-11-28T14:30:00Z",
-      "entity": "Formula 1",
-      "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP do Qatar",
-      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Lusail International Circuit, Lusail, Qatar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
-    },
-    {
-      "date": "2026-11-28",
-      "start": "2026-11-28T18:00:00Z",
-      "entity": "Formula 1",
-      "sport": "Automobilismo",
-      "title": "Qualificação · GP do Qatar",
-      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Lusail International Circuit, Lusail, Qatar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
-    },
-    {
-      "date": "2026-11-29",
-      "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Real Madrid",
-      "away": "Deportivo Alavés",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2026-11-29",
       "start": "2026-11-29T16:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP do Qatar",
+      "title": "Corrida · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-29",
@@ -1358,7 +2257,7 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 12",
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
@@ -1371,8 +2270,22 @@
       "competition": "Liga Portugal Betclic 2026/27 · Jornada 12",
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+    },
+    {
+      "date": "2026-11-29",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Real Madrid",
+      "away": "Deportivo Alavés",
+      "competition": "LALIGA EA SPORTS",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2026-12-02",
@@ -1384,7 +2297,7 @@
       "competition": "Campeonato Placard 2026/27 · Jornada 5",
       "location": "Riba de Ave, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
@@ -1397,8 +2310,8 @@
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-04",
@@ -1410,21 +2323,8 @@
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
-    },
-    {
-      "date": "2026-12-05",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "OC Barcelos",
-      "away": "Sporting CP",
-      "competition": "Campeonato Placard 2026/27 · Jornada 6",
-      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-05",
@@ -1436,8 +2336,8 @@
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-05",
@@ -1449,22 +2349,21 @@
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
-      "date": "2026-12-06",
+      "date": "2026-12-05",
       "start": null,
-      "entity": "Real Madrid",
-      "sport": "Futebol",
-      "home": "Athletic Club",
-      "away": "Real Madrid",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
-      "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "OC Barcelos",
+      "away": "Sporting CP",
+      "competition": "Campeonato Placard 2026/27 · Jornada 6",
+      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": null,
+      "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
       "date": "2026-12-06",
@@ -1476,8 +2375,22 @@
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-12-06",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Athletic Club",
+      "away": "Real Madrid",
+      "competition": "LALIGA EA SPORTS",
+      "location": "Local a confirmar",
+      "channel": "DAZN Portugal",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
       "date": "2026-12-09",
@@ -1489,7 +2402,7 @@
       "competition": "UEFA Champions League 2026/27 · Fase de Liga",
       "location": "Anfield, Liverpool, Reino Unido",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
@@ -1502,8 +2415,9 @@
       "competition": "UEFA Champions League",
       "location": "Emirates Stadium, Londres, Reino Unido",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "stream_url": "https://www.dazn.com/pt-PT/home"
     },
     {
       "date": "2026-12-10",
@@ -1515,7 +2429,7 @@
       "competition": "WSE Champions League 2026/27 · Jornada 2",
       "location": "Bassano del Grappa, Itália",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
@@ -1528,7 +2442,7 @@
       "competition": "Campeonato Placard 2026/27 · Jornada 7",
       "location": "Oliveira de Azeméis, Portugal",
       "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
     },
     {
@@ -1539,10 +2453,10 @@
       "home": "Real Madrid",
       "away": "CA Osasuna",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1554,9 +2468,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1567,10 +2481,10 @@
       "home": "Real Madrid",
       "away": "Getafe CF",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1581,10 +2495,10 @@
       "home": "Real Madrid",
       "away": "Levante UD",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1596,9 +2510,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1611,8 +2525,9 @@
       "competition": "UEFA Champions League",
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "match_url": null,
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "stream_url": "https://www.dazn.com/pt-PT/home"
     },
     {
       "date": "2027-01-24",
@@ -1622,10 +2537,10 @@
       "home": "Real Madrid",
       "away": "Real Betis",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1638,7 +2553,7 @@
       "competition": "UEFA Champions League · Fase de Liga · Jornada 8",
       "location": "Londres, Reino Unido",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "match_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026",
+      "match_url": null,
       "source_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026"
     },
     {
@@ -1651,8 +2566,8 @@
       "competition": "UEFA Champions League",
       "location": "Local a confirmar",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
-      "stream_url": null,
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "stream_url": "https://www.dazn.com/pt-PT/home",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1664,9 +2579,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1678,9 +2593,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1691,10 +2606,10 @@
       "home": "Real Madrid",
       "away": "Athletic Club",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1706,9 +2621,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1719,10 +2634,10 @@
       "home": "Real Madrid",
       "away": "Valencia CF",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1734,9 +2649,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1747,10 +2662,10 @@
       "home": "Real Madrid",
       "away": "RCD Espanyol de Barcelona",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1762,9 +2677,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1775,10 +2690,10 @@
       "home": "Real Madrid",
       "away": "Atlético de Madrid",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1790,9 +2705,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1804,9 +2719,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1817,10 +2732,10 @@
       "home": "Real Madrid",
       "away": "Elche CF",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1832,9 +2747,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1845,10 +2760,10 @@
       "home": "Real Madrid",
       "away": "FC Barcelona",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1859,10 +2774,10 @@
       "home": "Real Madrid",
       "away": "R. Racing Club",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1874,9 +2789,9 @@
       "away": "Real Madrid",
       "competition": "LALIGA EA SPORTS",
       "location": "Local a confirmar",
-      "channel": "DAZN",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     },
     {
@@ -1887,10 +2802,10 @@
       "home": "Real Madrid",
       "away": "RC Deportivo",
       "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
-      "channel": "DAZN",
+      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "channel": "DAZN Portugal",
       "stream_url": "https://www.dazn.com/pt-PT/home",
-      "match_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
     }
   ]
