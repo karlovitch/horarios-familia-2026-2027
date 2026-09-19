@@ -314,3 +314,4 @@ print(f"Build: v{m_app.group(1) if m_app else '?'}")
 print(f"Calendário: {len(calendar.get('dates', {}))} datas")
 print(f"História: {len(history.get('dates', {}))} datas")
 print(f"Desporto: {len(sports.get('events', []))} eventos")
+# v107: paletas festivas/astronómicas e micro-paletas pessoais auditadas acima.
