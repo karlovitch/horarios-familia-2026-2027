@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=50">
+<link rel="manifest" href="manifest.webmanifest?v=51">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v50</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v51</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -73,7 +73,7 @@ Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 const SEASON_THEMES={
  spring:{name:"Primavera",colors:["#8ED9B5","#F6E27F","#F7B7D4","#A7D8F0"]},
- summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]},
+ summer:{name:"Verão",colors:["#66BDEB","#2AB7B5","#F4D58D","#FFD95A"]},
  autumn:{name:"Outono",colors:["#E07A3F","#C9A86A","#A7B59A","#8A3A47"]},
  winter:{name:"Inverno",colors:["#1F2A44","#D1D5DB","#CFE8F9","#F3F4F6"]}
 };
@@ -121,12 +121,32 @@ function specialThemeForIso(iso){
  return null;
 }
 function activeThemeForIso(iso){return specialThemeForIso(iso)||SEASON_THEMES[seasonForIso(iso)]}
-function personMicroPalette(p,colors){
+function personMicroPalette(p,colors,themeName=""){
  const [a,b,c,d]=colors;
- if(p==="Leonor")return {bg:mixHex(c,"#FFFFFF",.18),accent:mixHex(a,"#FFFFFF",.10)};
- if(p==="Margarida")return {bg:mixHex(a,"#1A1A1A",.42),accent:mixHex(c,"#1A1A1A",.18)};
- if(p==="Sandra")return {bg:mixHex(d,a,.32),accent:mixHex(b,d,.35)};
- return {bg:mixHex(a,"#1F2A44",.52),accent:mixHex(d,"#1F2A44",.25)};
+ if(themeName==="Verão"){
+  if(p==="Leonor")return {bg:mixHex(a,"#FFFFFF",.48),accent:mixHex(d,"#FFFFFF",.18)};      // céu claro + sol suave
+  if(p==="Margarida")return {bg:mixHex(b,"#17364B",.58),accent:mixHex(a,"#1A1A1A",.28)}; // mar profundo / indie
+  if(p==="Sandra")return {bg:mixHex(b,"#FFFFFF",.30),accent:mixHex(c,b,.22)};              // água serena + areia
+  return {bg:mixHex(a,"#1F2A44",.60),accent:mixHex(d,"#1F2A44",.32)};                    // azul editorial + luz
+ }
+ if(p==="Leonor")return {bg:mixHex(c,"#FFFFFF",.24),accent:mixHex(a,"#FFFFFF",.12)};
+ if(p==="Margarida")return {bg:mixHex(b,"#1A1A1A",.46),accent:mixHex(d,"#1A1A1A",.22)};
+ if(p==="Sandra")return {bg:mixHex(a,"#FFFFFF",.28),accent:mixHex(c,a,.34)};
+ return {bg:mixHex(d,"#1F2A44",.58),accent:mixHex(a,"#1F2A44",.30)};
+}
+function applyDistinctPersonPalettes(colors,themeName){
+ const seen=new Set();
+ ["Leonor","Margarida","Sandra","Carlos"].forEach((p,idx)=>{
+  let m=personMicroPalette(p,colors,themeName),guard=0;
+  while(seen.has(m.bg)&&guard<6){
+   m={...m,bg:mixHex(m.bg,idx%2?"#101820":"#FFFFFF",.08*(guard+1))};
+   guard++;
+  }
+  seen.add(m.bg);
+  D[p].color=m.bg;
+  D[p].textColor=textFor(m.bg);
+  D[p].accent=m.accent;
+ });
 }
 function applyAdaptiveTheme(iso){
  const theme=activeThemeForIso(iso),colors=theme.colors,root=document.documentElement;
@@ -136,7 +156,7 @@ function applyAdaptiveTheme(iso){
  root.style.setProperty("--primary",primary);root.style.setProperty("--bg",bg);root.style.setProperty("--secondary",secondary);root.style.setProperty("--text","#1F2A44");
  root.style.setProperty("--muted",mixHex(primary,"#FFFFFF",.52));root.style.setProperty("--border",mixHex(primary,"#FFFFFF",.76));root.style.setProperty("--active",colors[0]);
  root.style.setProperty("--positive",colors[2]);root.style.setProperty("--alert",colors[1]);root.style.setProperty("--blue",colors[3]);
- for(const p of ["Leonor","Margarida","Sandra","Carlos"]){const m=personMicroPalette(p,colors);D[p].color=m.bg;D[p].textColor=textFor(m.bg);D[p].accent=m.accent}
+ applyDistinctPersonPalettes(colors,theme.name);
  document.body.dataset.theme=theme.name;return theme;
 }
 function astronomicalSpecialInfo(iso){
@@ -1097,7 +1117,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=50",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=51",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1300,6 +1320,6 @@ function renderPerson(){
 }
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;if(SCHOOL_DAYS.includes(dayNow()))renderOverview();else show("today");renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();renderGlobalQuote();show("today");setTimeout(maybeCelebrateFamilyEvents,450);window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=50",{updateViaCache:"none"}).then(r=>r.update()));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=51",{updateViaCache:"none"}).then(r=>r.update()));
 </script>
 </body></html>
