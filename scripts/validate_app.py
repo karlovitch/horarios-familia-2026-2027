@@ -100,7 +100,7 @@ required_index_tokens = {
     "estado completo apenas por minuto": "setInterval(refreshScheduleState,UI_REFRESH.scheduleState)",
     "cronómetro desportivo sem rerender total": "function updateSportsLiveClocks",
     "resize apenas ao mudar de breakpoint": 'MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange)',
-    "sincronização global do seletor de data": "function renderActiveView(){\n syncStatsControls();",
+    "sincronização global do seletor de data": "function renderActiveView(){\n const iso=statsIso();\n syncStatsControls();",
     "faixa meteorológica disponível": 'data-weather-strip',
     "meteorologia imediatamente sob navegação Hoje": '<div class="today-page-nav" aria-label="Navegação diária">',
     "título Horários Família": '<h1>Horários Família</h1>',
@@ -128,7 +128,6 @@ required_index_tokens = {
     "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
     "deduplicação de foreground": "now-lastForegroundRefresh<10000",
     "refresh sem meteorologia duplicada": "await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);",
-    "version.json em network-first": "'/history-info.json','/version.json'",
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -187,6 +186,8 @@ if "ignoreSearch:true" not in service_worker:
     fail("O fallback offline deve ignorar query strings")
 if "canonicalCacheKey" not in service_worker:
     fail("O service worker deve normalizar chaves de cache")
+if "'/version.json'" not in service_worker:
+    fail("O service worker deve tratar version.json como recurso de atualização")
 
 if not isinstance(calendar.get("dates"), dict):
     fail("calendar-info.json não contém o mapa dates")
