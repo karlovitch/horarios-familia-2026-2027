@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=65">
+<link rel="manifest" href="manifest.webmanifest?v=66">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -45,14 +45,14 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v65</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v66</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
 <button class="main-tab" data-view="Carlos" type="button">Carlos</button><button class="main-tab" data-view="Sandra" type="button">Sandrinha</button>
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
-<div class="sports-tab-row"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
+<div id="sportsTabRow" class="sports-tab-row hidden"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalFamilyBanner" class="family-banner hidden"></div>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 <section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
@@ -192,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=65;
+const APP_BUILD=66;
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -727,6 +727,14 @@ function sportsEventsFor(iso){
  }
  return out.sort((a,b)=>(a.start||"9999").localeCompare(b.start||"9999")||(a.entity||"").localeCompare(b.entity||"","pt"));
 }
+function updateSportsTabVisibility(iso=statsIso()){
+ const row=qs("#sportsTabRow");
+ if(!row)return false;
+ const hasEvents=sportsEventsFor(iso).length>0;
+ row.classList.toggle("hidden",!hasEvents);
+ row.setAttribute("aria-hidden",hasEvents?"false":"true");
+ return hasEvents;
+}
 function isDirectSportsFixture(ev,url){
  const u=(url||"").toLowerCase(),sport=(ev.sport||"").toLowerCase();
  if(/futebol/.test(sport))return /flashscore\.pt\/jogo\/futebol\//.test(u)&&/[?&]mid=/.test(u);
@@ -755,6 +763,7 @@ function sportsStatusHTML(ev){
 }
 function renderSportsAgenda(iso){
  const el=qs("#sportsPanel"),events=sportsEventsFor(iso);
+ updateSportsTabVisibility(iso);
  if(!el)return;
  const dt=dateFromIso(iso),dl=qs("#sportsDayLabel");
  if(dl)dl.textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
@@ -772,9 +781,10 @@ function renderSportsAgenda(iso){
 }
 async function loadSportsInfo(){
  try{
-  const r=await fetch("sports-info.json?v=65&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("sports-info.json?v=66&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
+ updateSportsTabVisibility(statsIso());
  if(view==="sports")renderSportsAgenda(statsIso());
 }
 function renderGlobalFamilyBanner(iso){
@@ -1036,27 +1046,39 @@ const DAILY_LESSONS=[
 "o medo encolhe quando damos o primeiro passo","o bem pode ser discreto sem deixar de ser poderoso","a esperança precisa de gestos para não ficar apenas numa palavra",
 "o que fazes quando ninguém vê também te está a formar"
 ];
+function reflectionSentenceStart(value){
+ const s=String(value||"").trim();
+ return s?s.charAt(0).toLocaleUpperCase("pt-PT")+s.slice(1):"";
+}
+function reflectionLowerStart(value){
+ const s=String(value||"").trim();
+ return s?s.charAt(0).toLocaleLowerCase("pt-PT")+s.slice(1):"";
+}
+function normalizeReflectionText(value){
+ const s=String(value||"").replace(/\s+([,.;:!?])/g,"$1").replace(/\s{2,}/g," ").trim();
+ return /[.!?]$/.test(s)?s:s+".";
+}
 const DAILY_PATTERNS=[
-(v,a,l)=>"Cultiva "+v+"; "+a+", porque "+l+".",
+(v,a,l)=>"Cultiva "+v+". "+reflectionSentenceStart(a)+", porque "+l+".",
 (v,a,l)=>"Leva contigo "+v+". Hoje, "+a+"; lembra-te de que "+l+".",
-(v,a,l)=>"Se tiveres de escolher um rumo, escolhe "+v+": "+a+", pois "+l+".",
-(v,a,l)=>"Que "+v+" seja o teu ponto de partida. Depois, "+a+"; "+l+".",
-(v,a,l)=>"Uma boa regra para hoje: "+a+". Faz isso com "+v+", porque "+l+".",
-(v,a,l)=>"Não procures um dia perfeito; procura "+v+". "+a+", e descobrirás que "+l+".",
-(v,a,l)=>"Antes de tentares mudar o mundo à tua volta, pratica "+v+": "+a+". Afinal, "+l+".",
-(v,a,l)=>"Há dias em que o mais importante é "+v+". Nesses dias, "+a+"; "+l+".",
-(v,a,l)=>"Faz espaço para "+v+" e transforma-a em gesto: "+a+". É assim que se confirma que "+l+".",
-(v,a,l)=>"Hoje não precisas de fazer tudo; precisas de agir com "+v+". Começa por isto: "+a+". "+l+".",
-(v,a,l)=>"Quando houver dúvida, regressa a "+v+". "+a+", porque no fim "+l+".",
-(v,a,l)=>"A tua conduta de hoje pode começar por "+v+". Experimenta: "+a+". Com o tempo, perceberás que "+l+".",
-(v,a,l)=>"Escolhe uma coisa que dependa de ti e faz dela um exercício de "+v+": "+a+". "+l+".",
-(v,a,l)=>"Que a pressa não te roube "+v+". Em vez disso, "+a+"; é bom lembrar que "+l+".",
-(v,a,l)=>"A melhor preparação para amanhã é viver hoje com "+v+". Para isso, "+a+". "+l+".",
-(v,a,l)=>"Nem todos os progressos são visíveis. Conserva "+v+", "+a+" e confia que "+l+".",
-(v,a,l)=>"Se o dia se tornar pesado, volta ao essencial: "+v+". Depois, "+a+", porque "+l+".",
-(v,a,l)=>"Aquilo que repetes torna-se parte de ti. Repete "+v+": "+a+". Não esqueças que "+l+".",
-(v,a,l)=>"Uma vida com sentido faz-se de escolhas pequenas. Hoje escolhe "+v+", "+a+" e recorda que "+l+".",
-(v,a,l)=>"Não deixes a circunstância escolher por ti. Responde com "+v+", "+a+" e guarda esta lição: "+l+"."
+(v,a,l)=>"Se tiveres de escolher um rumo, escolhe "+v+". Depois, "+a+"; afinal, "+l+".",
+(v,a,l)=>"Que "+v+" seja o teu ponto de partida. Depois, "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Uma boa regra para hoje é simples: "+a+". Faz isso com "+v+", porque "+l+".",
+(v,a,l)=>"Não procures um dia perfeito; procura "+v+". "+reflectionSentenceStart(a)+". Com o tempo, descobrirás que "+l+".",
+(v,a,l)=>"Antes de tentares mudar o mundo à tua volta, pratica "+v+". "+reflectionSentenceStart(a)+". Afinal, lembra-te de que "+l+".",
+(v,a,l)=>"Há dias em que o mais importante é "+v+". Nesses dias, "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Faz espaço para "+v+" e transforma essa atitude em gesto: "+a+". Assim, confirma-se que "+l+".",
+(v,a,l)=>"Hoje não precisas de fazer tudo; precisas de agir com "+v+". Começa por isto: "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Quando houver dúvida, volta ao essencial e escolhe "+v+". Depois, "+a+". No fim, lembra-te de que "+l+".",
+(v,a,l)=>"A tua conduta de hoje pode começar por "+v+". Experimenta isto: "+a+". Com o tempo, perceberás que "+l+".",
+(v,a,l)=>"Escolhe uma coisa que dependa de ti e pratica "+v+" através de um gesto concreto: "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Que a pressa não te roube "+v+". Em vez disso, "+a+". É bom lembrar que "+l+".",
+(v,a,l)=>"A melhor preparação para amanhã é viver hoje com "+v+". Para isso, "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Nem todos os progressos são visíveis. Conserva "+v+". Depois, "+a+". Confia que "+l+".",
+(v,a,l)=>"Se o dia se tornar pesado, volta ao essencial: "+v+". Depois, "+a+". "+reflectionSentenceStart(l)+".",
+(v,a,l)=>"Aquilo que repetes torna-se parte de ti. Traduz "+v+" em gestos concretos: "+a+". Não esqueças que "+l+".",
+(v,a,l)=>"Uma vida com sentido faz-se de escolhas pequenas. Hoje, escolhe "+v+". Depois, "+a+". Recorda que "+l+".",
+(v,a,l)=>"Não deixes a circunstância escolher por ti. Responde com "+v+". Depois, "+a+". Guarda esta lição: "+l+"."
 ];
 function reflectionThemeLead(x){
  const t=mergeUnique(x.un_days||[],x.european_days||[],x.portugal_days||[],x.history_days||[],x.astronomy_days||[]).join(" ").toLowerCase();
@@ -1069,15 +1091,15 @@ function reflectionThemeLead(x){
  return "";
 }
 const INSPIRATION_SOURCES=[
- {name:"Marco Aurélio",bio:"imperador e filósofo estoico, romano",year:"c. 170",theme:"estoicismo"},
- {name:"Teresa de Ávila",bio:"mística, escritora e religiosa, espanhola",year:"c. 1577",theme:"vida interior"},
- {name:"Viktor Frankl",bio:"neurologista e psiquiatra, austríaco",year:1946,theme:"sentido e resiliência"},
- {name:"Sophia de Mello Breyner Andresen",bio:"poeta e escritora, portuguesa",year:1974,theme:"humanismo e liberdade"},
- {name:"Epicteto",bio:"filósofo estoico, grego",year:"c. 125",theme:"autodomínio"},
- {name:"Antoine de Saint-Exupéry",bio:"escritor e aviador, francês",year:1943,theme:"responsabilidade e relações"},
- {name:"Nelson Mandela",bio:"advogado e estadista, sul-africano",year:2003,theme:"educação e dignidade"},
- {name:"António Gedeão",bio:"poeta, professor e químico, português",year:1956,theme:"sonho e aprendizagem"},
- {name:"Séneca",bio:"filósofo e estadista, romano",year:"c. 65",theme:"serenidade e tempo"}
+ {name:"Marco Aurélio",bio:"imperador romano e filósofo estoico",year:"c. 170",theme:"estoicismo"},
+ {name:"Teresa de Ávila",bio:"mística, escritora e religiosa espanhola",year:"c. 1577",theme:"vida interior"},
+ {name:"Viktor Frankl",bio:"neurologista e psiquiatra austríaco",year:1946,theme:"sentido e resiliência"},
+ {name:"Sophia de Mello Breyner Andresen",bio:"poeta e escritora portuguesa",year:1974,theme:"humanismo e liberdade"},
+ {name:"Epicteto",bio:"filósofo estoico grego",year:"c. 125",theme:"autodomínio"},
+ {name:"Antoine de Saint-Exupéry",bio:"escritor e aviador francês",year:1943,theme:"responsabilidade e relações"},
+ {name:"Nelson Mandela",bio:"advogado e estadista sul-africano",year:2003,theme:"educação e dignidade"},
+ {name:"António Gedeão",bio:"poeta, professor e químico português",year:1956,theme:"sonho e aprendizagem"},
+ {name:"Séneca",bio:"filósofo e estadista romano",year:"c. 65",theme:"serenidade e tempo"}
 ];
 function inspirationSourceForDay(iso){
  const n=Math.max(0,ymdDay(iso)-ymdDay("2026-01-01"));
@@ -1092,14 +1114,16 @@ function uniqueReflectionForDay(iso,x){
  const a=DAILY_ACTIONS[(n*19+3)%DAILY_ACTIONS.length];
  const l=DAILY_LESSONS[(n*13+5)%DAILY_LESSONS.length];
  const source=inspirationSourceForDay(iso);
- const text=reflectionThemeLead(x)+p(v,a,l);
+ const body=normalizeReflectionText(p(v,a,l));
+ const lead=reflectionThemeLead(x);
+ const text=normalizeReflectionText(lead?lead+reflectionLowerStart(body):body);
  return {text,author:"Reflexão original",source};
 }
 function renderGlobalQuote(){
- const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);
+ const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);updateSportsTabVisibility(iso);
  const x=calendarInfoFor(iso),q=uniqueReflectionForDay(iso,x);
  qs("#globalQuoteText").textContent="“"+q.text+"”";
- qs("#globalQuoteAuthor").textContent="— Fonte de inspiração: "+q.source.name+" ("+q.source.bio+"), "+q.source.year+" · reflexão original";
+ qs("#globalQuoteAuthor").textContent="— "+q.source.name+" ("+q.source.bio+"), "+q.source.year+" · reflexão original";
 }
 function meaningfulLiturgicalText(v){
  const t=(v||"").trim();
@@ -1285,7 +1309,7 @@ function renderDailyInfo(){
 }
 async function loadHistoryInfo(){
  try{
-  const r=await fetch("history-info.json?v=65&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("history-info.json?v=66&ts="+Date.now(),{cache:"no-store"});
   if(r.ok){HISTORY_INFO=await r.json();try{localStorage.setItem("historyInfo",JSON.stringify(HISTORY_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("historyInfo");if(s)HISTORY_INFO=JSON.parse(s)}catch(_){}
@@ -1294,7 +1318,7 @@ async function loadHistoryInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=65",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=66",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1568,6 +1592,7 @@ function show(v){
  else if(v==="today"){person=null;selectedDay=null;renderToday()}
  else if(v==="sports"){person=null;selectedDay=null;statsDate=isoLocalDate();renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
  else if(D[v]){person=v;selectedDay=null;statsDate=isoLocalDate();personMode="week";renderPerson()}
+ updateSportsTabVisibility(statsIso());
 }
 qs("#todayPrevPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())-1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
 qs("#todayNextPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())+1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
@@ -1612,6 +1637,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=65",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=66",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
