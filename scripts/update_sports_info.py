@@ -61,9 +61,10 @@ ZEROZERO_PAGE_CACHE={}
 # Real Madrid só publicamos uma ficha direta quando o URL foi verificado;
 # caso contrário, a app mantém a fonte/calendário em vez de abrir uma página
 # Flashscore inexistente.
-VERIFIED_FLASHSCORE_MATCH_URLS={
+VERIFIED_FOOTBALL_MATCH_URLS={
     "EeqKlS2e":"https://www.flashscore.pt/jogo/futebol/benfica-zBkyuyRI/fc-porto-S2NmScGp/?mid=EeqKlS2e",
     "hGycdKve":"https://www.flashscore.pt/jogo/futebol/atl-madrid-jaarqpLQ/real-madrid-W8mj7MDD/?mid=hGycdKve",
+    "AaftdAAL":"https://www.zerozero.pt/jogo/2026-09-19-gil-vicente-maritimo/12278057",
 }
 FLASHSCORE_HEADERS={
     **HEADERS,
@@ -128,7 +129,8 @@ def _football_candidate_score(event,cand):
         if "u21" in joined:score-=.8
     return score
 
-def flashscore_match_url(event):
+def flashscore_match_candidate(event):
+    """Resolve o jogo no feed Flashscore sem expor URLs construídos a partir de IDs internos."""
     date_iso=event.get("date")
     if not date_iso:return None
     if date_iso not in FLASHSCORE_DAILY_CACHE:
@@ -150,28 +152,21 @@ def flashscore_match_url(event):
     if not best or best_score<1.35:return None
 
     # Exige correspondência razoável dos DOIS clubes, evitando que um nome
-    # muito parecido faça escolher outro jogo do mesmo dia.
+    # parecido faça escolher outro jogo do mesmo dia.
     direct_pair=(_team_similarity(event.get("home",""),best.get("AE","")),_team_similarity(event.get("away",""),best.get("AF","")))
     reverse_pair=(_team_similarity(event.get("home",""),best.get("AF","")),_team_similarity(event.get("away",""),best.get("AE","")))
     pair=direct_pair if sum(direct_pair)>=sum(reverse_pair) else reverse_pair
     if min(pair)<.65:return None
+    return best
 
-    mid=best.get("AA")
-    if not mid:return None
+def flashscore_match_id(event):
+    best=flashscore_match_candidate(event)
+    return best.get("AA") if best else None
 
-    verified=VERIFIED_FLASHSCORE_MATCH_URLS.get(mid)
-    if verified:return verified
-
-    # Estes dois clubes tinham URLs aparentemente válidos mas com IDs de
-    # participante que abriam uma ficha inexistente. Sem confirmação explícita,
-    # é preferível não transformar o título do jogo num link quebrado.
-    if event.get("entity") in {"FC Porto","Real Madrid"}:
-        return None
-
-    hs=best.get("WU");aws=best.get("WV")
-    hid=best.get("JA");aid=best.get("JB")
-    if not all([hs,aws,hid,aid]):return None
-    return f"https://www.flashscore.pt/jogo/futebol/{hs}-{hid}/{aws}-{aid}/?mid={mid}"
+def flashscore_match_url(event):
+    """Só devolve uma ficha pública previamente verificada; nunca fabrica um URL clicável."""
+    mid=flashscore_match_id(event)
+    return VERIFIED_FOOTBALL_MATCH_URLS.get(mid) if mid else None
 
 def flashscore_live_info(mid):
     if not mid:return {}
@@ -221,14 +216,42 @@ def _zerozero_links(page_url):
         soup=BeautifulSoup(html,"html.parser")
         for a in soup.find_all("a",href=True):
             href=urljoin(page_url,a["href"])
-            if re.search(r"zerozero\.pt/jogo/\d{4}-\d{2}-\d{2}-",href):
+            if re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/\d{4}-\d{2}-\d{2}-",href):
                 links.append(href.split("?")[0].split("#")[0])
-        for href in re.findall(r"""https?://(?:www\.)?zerozero\.pt/jogo/[^\s)\]"']+""",html):
+        for href in re.findall(r"""https?://(?:www\.)?zerozero\.pt/(?:jogo|live-ao-minuto)/[^\s)\]"']+""",html):
             links.append(href.split("?")[0].split("#")[0])
     except Exception:
         pass
     ZEROZERO_PAGE_CACHE[page_url]=list(dict.fromkeys(links))
     return ZEROZERO_PAGE_CACHE[page_url]
+
+def _zerozero_match_score(event,url):
+    low=unicodedata.normalize("NFKD",url).encode("ascii","ignore").decode("ascii").lower()
+    date_iso=event.get("date","")
+    if date_iso and date_iso not in low:return -1
+    home=_norm_name(event.get("home",""));away=_norm_name(event.get("away",""))
+    score=0
+    for token in [t for t in home.split() if len(t)>2]:
+        if token in low:score+=1
+    for token in [t for t in away.split() if len(t)>2]:
+        if token in low:score+=1
+    return score
+
+def zerozero_football_match_url(event):
+    """Procura uma ficha ZeroZero direta e compatível com data + duas equipas."""
+    current=event.get("match_url")
+    if current and re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",current,re.I):
+        if _zerozero_match_score(event,current)>=2:return current.split("?")[0].split("#")[0]
+    pages=[event.get("source_url")]
+    entity=(event.get("entity") or "").lower()
+    if "gil vicente" in entity:pages.append("https://www.zerozero.pt/equipa/gil-vicente/jogos")
+    if "fc porto" in entity:pages.append("https://www.zerozero.pt/equipa/fc-porto/agenda")
+    candidates=[]
+    for page in dict.fromkeys(p for p in pages if p):
+        candidates.extend(_zerozero_links(page))
+    ranked=[(_zerozero_match_score(event,url),url) for url in dict.fromkeys(candidates)]
+    ranked=[item for item in ranked if item[0]>=2]
+    return max(ranked,key=lambda x:x[0])[1] if ranked else None
 
 def zerozero_hockey_match_url(event):
     date_iso=event.get("date","")
@@ -257,7 +280,8 @@ def zerozero_hockey_match_url(event):
 def is_direct_match_url(event,url):
     u=(url or "").lower()
     sport=(event.get("sport") or "").lower()
-    if "futebol" in sport:return "flashscore.pt/jogo/futebol/" in u and ("?mid=" in u or "&mid=" in u)
+    if "futebol" in sport:
+        return (("flashscore.pt/jogo/futebol/" in u and ("?mid=" in u or "&mid=" in u)) or re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",u) is not None)
     if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
     return bool(url)
 
@@ -505,7 +529,9 @@ def enforce_direct_match_urls(events):
         sport=(event.get("sport") or "").lower()
         direct=None
         if "futebol" in sport:
-            direct=flashscore_match_url(event)
+            mid=flashscore_match_id(event)
+            if mid:event["flashscore_mid"]=mid
+            direct=zerozero_football_match_url(event) or flashscore_match_url(event)
         elif "hoquei" in sport or "hóquei" in sport:
             direct=zerozero_hockey_match_url(event)
         if direct:
@@ -514,13 +540,13 @@ def enforce_direct_match_urls(events):
             if not is_direct_match_url(event,event.get("match_url")):
                 event["match_url"]=None
 
-        if "futebol" in sport and is_direct_match_url(event,event.get("match_url")):
+        if "futebol" in sport:
             try:
                 event_day=datetime.fromisoformat(event.get("date")).date()
                 if abs((event_day-today).days)<=1:
-                    m=re.search(r"[?&]mid=([A-Za-z0-9]+)",event["match_url"])
-                    if m:
-                        info=flashscore_live_info(m.group(1))
+                    mid=event.get("flashscore_mid") or flashscore_match_id(event)
+                    if mid:
+                        info=flashscore_live_info(mid)
                         for k,v in info.items():
                             if v is not None:event[k]=v
             except Exception:
