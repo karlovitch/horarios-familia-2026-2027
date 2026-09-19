@@ -42,8 +42,18 @@ def get(url):
         jr.raise_for_status()
         return jr.text
 
-SOFASCORE_DAILY_CACHE={}
+FLASHSCORE_DAILY_CACHE={}
 ZEROZERO_PAGE_CACHE={}
+FLASHSCORE_HEADERS={
+    **HEADERS,
+    "Accept":"*/*",
+    "Accept-Language":"en-US,en;q=0.8",
+    "Referer":"https://www.flashscore.com/",
+    "Origin":"https://www.flashscore.com",
+    "x-fsign":"SW9D1eZo",
+    "Cache-Control":"no-cache",
+    "Pragma":"no-cache",
+}
 
 def _norm_name(value):
     text=unicodedata.normalize("NFKD",str(value or "")).encode("ascii","ignore").decode("ascii").lower()
@@ -52,7 +62,7 @@ def _norm_name(value):
       "dinamarca":"denmark","noruega":"norway","bulgaria":"bulgaria","maritimo":"maritimo",
       "selecao nacional a":"portugal","selecao nacional":"portugal"
     }
-    for a,b in replacements.items(): text=text.replace(a,b)
+    for old,new in replacements.items(): text=text.replace(old,new)
     text=re.sub(r"\b(fc|cf|sc|cd|club|clube|futebol|football)\b"," ",text)
     return re.sub(r"[^a-z0-9]+"," ",text).strip()
 
@@ -66,46 +76,61 @@ def _team_similarity(a,b):
     seq=SequenceMatcher(None,a,b).ratio()
     return max(token,seq)
 
+def _parse_flashscore_feed(raw):
+    rows=[]
+    for item in raw.split("~"):
+        if not item.strip():continue
+        data={}
+        for param in item.split("¬"):
+            if not param:continue
+            sep="÷" if "÷" in param else ("·" if "·" in param else None)
+            if not sep:continue
+            key,val=param.split(sep,1)
+            if key and key not in data:data[key]=val
+        if data.get("AA") and data.get("AE") and data.get("AF"):
+            rows.append(data)
+    return rows
+
 def _football_candidate_score(event,cand):
-    ch=(cand.get("homeTeam") or {}).get("name","")
-    ca=(cand.get("awayTeam") or {}).get("name","")
+    ch=cand.get("AE","");ca=cand.get("AF","")
     eh=event.get("home","");ea=event.get("away","")
     direct=_team_similarity(eh,ch)+_team_similarity(ea,ca)
     reverse=_team_similarity(eh,ca)+_team_similarity(ea,ch)
     score=max(direct,reverse)
     ent=(event.get("entity") or "").lower()
-    joined=(" "+_norm_name(ch)+" "+_norm_name(ca)+" ")
+    joined=" "+_norm_name(ch)+" "+_norm_name(ca)+" "
     if "sub-21" in ent or "u21" in ent:
         if "u21" not in joined:score-=.8
     elif "seleção nacional a" in ent or "selecao nacional a" in ent:
         if "u21" in joined:score-=.8
     return score
 
-def sofascore_match_url(event):
+def flashscore_match_url(event):
     date_iso=event.get("date")
     if not date_iso:return None
-    if date_iso not in SOFASCORE_DAILY_CACHE:
-        url=f"https://www.sofascore.com/api/v1/sport/football/scheduled-events/{date_iso}"
+    if date_iso not in FLASHSCORE_DAILY_CACHE:
         try:
-            r=requests.get(url,headers=HEADERS,timeout=25)
+            target=datetime.fromisoformat(date_iso).date()
+            today=datetime.now(timezone.utc).date()
+            offset=(target-today).days
+            url=f"https://local-global.flashscore.ninja/2/x/feed/f_1_{offset}_3_en_1"
+            r=requests.get(url,headers=FLASHSCORE_HEADERS,timeout=25)
             r.raise_for_status()
-            SOFASCORE_DAILY_CACHE[date_iso]=r.json().get("events",[])
+            FLASHSCORE_DAILY_CACHE[date_iso]=_parse_flashscore_feed(r.text)
         except Exception:
-            SOFASCORE_DAILY_CACHE[date_iso]=[]
+            FLASHSCORE_DAILY_CACHE[date_iso]=[]
     best=None;best_score=0
-    for cand in SOFASCORE_DAILY_CACHE[date_iso]:
+    for cand in FLASHSCORE_DAILY_CACHE[date_iso]:
         score=_football_candidate_score(event,cand)
         if score>best_score:
             best,best_score=cand,score
     if not best or best_score<1.35:return None
-    custom=best.get("customId")
-    hs=(best.get("homeTeam") or {}).get("slug")
-    aws=(best.get("awayTeam") or {}).get("slug")
-    if custom and hs and aws:
-        return f"https://www.sofascore.com/pt-pt/football/match/{hs}-{aws}/{custom}"
-    if best.get("id") and hs and aws:
-        return f"https://www.sofascore.com/pt-pt/football/match/{hs}-{aws}#id:{best['id']}"
-    return None
+    mid=best.get("AA")
+    hs=best.get("WU");aws=best.get("WV")
+    hid=best.get("AU") or best.get("JA")
+    aid=best.get("AV") or best.get("JB")
+    if not all([mid,hs,aws,hid,aid]):return None
+    return f"https://www.flashscore.pt/jogo/futebol/{hs}-{hid}/{aws}-{aid}/?mid={mid}"
 
 def _zerozero_links(page_url):
     if not page_url:return []
@@ -152,7 +177,7 @@ def zerozero_hockey_match_url(event):
 def is_direct_match_url(event,url):
     u=(url or "").lower()
     sport=(event.get("sport") or "").lower()
-    if "futebol" in sport:return "sofascore.com" in u and "/football/match/" in u
+    if "futebol" in sport:return "flashscore.pt/jogo/futebol/" in u and ("?mid=" in u or "&mid=" in u)
     if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
     return bool(url)
 
@@ -162,7 +187,7 @@ def enforce_direct_match_urls(events):
         sport=(event.get("sport") or "").lower()
         direct=None
         if "futebol" in sport:
-            direct=sofascore_match_url(event)
+            direct=flashscore_match_url(event)
         elif "hoquei" in sport or "hóquei" in sport:
             direct=zerozero_hockey_match_url(event)
         if direct:
@@ -358,11 +383,10 @@ def portugal_channel(entity,competition,text=""):
 
 def portugal_stream(entity,competition,channel=""):
     low=(competition+" "+channel).lower()
-    if "rtp" in low:return "https://www.rtp.pt/play/"
-    if "canal 11" in low:return "https://www.fpf.pt/pt/Canal-11"
+    if "rtp 1" in low or "rtp1" in low:return "https://www.rtp.pt/play/direto/rtp1"
     if "fpp tv" in low:return "https://tv.fpp.pt/"
     if "dazn" in low:return "https://www.dazn.com/pt-PT/home"
-    if "sport tv" in low:return "https://www.sporttv.pt/"
+    if "realmadrid tv" in low or "rm play" in low:return "https://play.realmadrid.com/"
     return None
 
 def parse_realmadrid(src,html):
