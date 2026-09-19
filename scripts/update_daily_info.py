@@ -314,7 +314,7 @@ def get_passo_metadata(day: date) -> dict[str, str]:
     cookies nem os elementos promocionais da aplicação do Passo-a-Rezar.
     """
     page_url = f"{PASSO_REZAR_BASE}/{day.isoformat()}"
-    result = {"passo_page_url": page_url}
+    result: dict[str, str] = {}
     try:
         raw = fetch(page_url)
         soup = BeautifulSoup(raw, "html.parser")
@@ -386,7 +386,7 @@ def get_passo_metadata(day: date) -> dict[str, str]:
             result["passo_audio_url"] = best_url
             print(f"Passo-a-Rezar {day.isoformat()}: áudio direto encontrado.")
         else:
-            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto não encontrado; mantém-se a página original.")
+            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto não encontrado; leitor fica temporariamente indisponível.")
     except Exception as exc:
         print(f"Aviso Passo-a-Rezar {day.isoformat()}: {exc}")
     return result
@@ -443,6 +443,12 @@ def main():
         day = targets[0]
         calendar["dates"][day.isoformat()] = build_day(day, un_map)
         print(f"[1/1] {day.isoformat()} · OK")
+
+    # Remove metadados legados que abriam a página externa do Passo-a-Rezar.
+    # A interface usa exclusivamente o áudio direto, evitando cookies e promoções.
+    for info in calendar.get("dates", {}).values():
+        if isinstance(info, dict):
+            info.pop("passo_page_url", None)
 
     # O episódio do Passo-a-Rezar é enriquecido apenas para o dia corrente.
     # As execuções diárias vão preenchendo o histórico sem centenas de pedidos
