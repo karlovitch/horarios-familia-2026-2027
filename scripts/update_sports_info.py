@@ -62,12 +62,27 @@ ZEROZERO_PAGE_CACHE={}
 # caso contrário, a app mantém a fonte/calendário em vez de abrir uma página
 # Flashscore inexistente.
 VERIFIED_FOOTBALL_MATCH_URLS={
-    # Fichas públicas confirmadas manualmente. Flashscore é usado apenas para dados live.
+    # Compatibilidade com IDs live já confirmados. Nunca é a única chave de uma ficha.
     "AaftdAAL":"https://www.sofascore.com/football/match/gil-vicente-cs-maritimo/hkbskkb",
     "EeqKlS2e":"https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
     "hGycdKve":"https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
     "MH4bvpgD":"https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
     "U5ZbmgKM":"https://www.sofascore.com/pt/football/match/portugal-u21-bulgaria-u21/JXbsVvc",
+}
+VERIFIED_FOOTBALL_FIXTURES={
+    # Chave estável: data|casa normalizada|fora normalizada.
+    "2026-09-19|gil vicente|maritimo":"https://www.sofascore.com/football/match/gil-vicente-cs-maritimo/hkbskkb",
+    "2026-09-20|atletico de madrid|real madrid":"https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
+    "2026-09-20|porto|sl benfica":"https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
+    "2026-09-24|portugal|wales":"https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
+    "2026-09-25|bulgaria|portugal":"https://www.sofascore.com/pt/football/match/portugal-u21-bulgaria-u21/JXbsVvc",
+    "2026-09-27|norway|portugal":"https://www.sofascore.com/pt-pt/football/match/portugal-norway/AObseUb",
+    "2026-09-30|portugal|gibraltar":"https://www.sofascore.com/football/match/gibraltar-u21-portugal-u21/Vvcsykac",
+    "2026-10-01|denmark|portugal":"https://www.sofascore.com/pt-pt/football/match/portugal-denmark/BObseUb",
+    "2026-10-06|portugal|czech republic":"https://www.zerozero.pt/jogo/2026-10-06-portugal-chequia/10781803",
+    "2026-10-09|moreirense|gil vicente":"https://www.zerozero.pt/jogo/2026-10-09-moreirense-gil-vicente/12278043",
+    "2026-10-10|maritimo|porto":"https://www.zerozero.pt/jogo/2026-10-10-maritimo-fc-porto/12278041",
+    "2026-10-10|real madrid|villarreal":"https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
 }
 FLASHSCORE_HEADERS={
     **HEADERS,
@@ -166,10 +181,19 @@ def flashscore_match_id(event):
     best=flashscore_match_candidate(event)
     return best.get("AA") if best else None
 
+def football_fixture_key(event):
+    return "|".join([
+      str(event.get("date") or ""),
+      _norm_name(event.get("home","")),
+      _norm_name(event.get("away","")),
+    ])
+
 def verified_football_match_url(event):
-    """Devolve apenas uma ficha pública previamente confirmada (SofaScore/ZeroZero)."""
-    mid=flashscore_match_id(event)
-    url=VERIFIED_FOOTBALL_MATCH_URLS.get(mid) if mid else None
+    """Resolve primeiro por data+equipas; o ID live é apenas fallback."""
+    url=VERIFIED_FOOTBALL_FIXTURES.get(football_fixture_key(event))
+    if not url:
+        mid=event.get("flashscore_mid") or flashscore_match_id(event)
+        url=VERIFIED_FOOTBALL_MATCH_URLS.get(mid) if mid else None
     if not url:return None
     low=url.lower()
     return url if ("sofascore.com/" in low or re.search(r"zerozero\.pt/(?:jogo|live-ao-minuto)/",low)) else None
@@ -252,6 +276,9 @@ def zerozero_football_match_url(event):
     entity=(event.get("entity") or "").lower()
     if "gil vicente" in entity:pages.append("https://www.zerozero.pt/equipa/gil-vicente/jogos")
     if "fc porto" in entity:pages.append("https://www.zerozero.pt/equipa/fc-porto/agenda")
+    if "real madrid" in entity:pages.append("https://www.zerozero.pt/equipa/real-madrid")
+    if "sub-21" in entity or "u21" in entity:pages.append("https://www.zerozero.pt/equipa/portugal/3767")
+    elif "seleção nacional" in entity or "selecao nacional" in entity:pages.append("https://www.zerozero.pt/equipa/portugal")
     candidates=[]
     for page in dict.fromkeys(p for p in pages if p):
         candidates.extend(_zerozero_links(page))
