@@ -17,14 +17,14 @@
   ],
   "gospel": "Lc 8, 4-15",
   "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-19",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-19",
   "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2220/o.mp3",
-  "updated_at": "2026-09-19T16:29:35+01:00",
+  "updated_at": "2026-09-19T20:24:30+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
     "liturgy": "https://liturgia.pt/liturgiadiaria/",
     "saints": "https://www.vaticannews.va/pt/santo-do-dia",
     "podcast": "https://passo-a-rezar.net/reprodutor"
-  },
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-19"
+  }
 }
