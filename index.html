@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=99">
-<link rel="icon" href="favicon-64.png?v=99" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=99" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=99" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=99">
+<link rel="manifest" href="manifest.webmanifest?v=100">
+<link rel="icon" href="favicon-64.png?v=100" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=100" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=100" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=100">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -210,10 +210,15 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
  .weather-strip{font-size:.64rem;gap:2px 6px}
  .weather-strip .weather-source{font-size:.62rem}
 }
+
+/* v100 · player Passo-a-Rezar resiliente */
+.passo-player-error{display:block;margin-top:6px;color:#9A3412;font-size:.72rem;font-weight:700}
+.passo-fallback{display:inline-block;margin-top:7px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;color:var(--primary);font-size:.74rem;font-weight:800;text-decoration:none;background:#fff}
+.passo-fallback.is-primary{border-color:var(--primary);background:var(--primary);color:#fff}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v99</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v100</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -233,7 +238,7 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
 <section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 </main>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=99"></script>
+<script src="sports-info.js?v=100"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -362,7 +367,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=99;
+const APP_BUILD=100;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -1993,13 +1998,26 @@ function saintsHTML(arr,iso,hagiographies=[]){
 }
 function passoARezarPlayerHTML(iso,info={}){
  const audioUrl=info.passo_audio_url||"";
+ const pageUrl=info.passo_page_url||("https://passo-a-rezar.net/reprodutor/"+iso);
+ const fallback='<a class="passo-fallback" href="'+safeUrl(pageUrl)+'" target="_blank" rel="noopener noreferrer">Abrir o episódio no Passo-a-Rezar</a>';
  if(audioUrl){
-  return '<div class="passo-player-wrap"><strong>🎧 Passo-a-Rezar — oração do dia</strong>'+
-   '<audio class="passo-player" controls preload="metadata" src="'+safeUrl(audioUrl)+'">O teu navegador não suporta reprodução de áudio.</audio>'+
-   '<span class="passo-player-note">Leitor direto do episódio, sem janela de cookies nem promoção de instalação da app.</span></div>';
+  return '<div class="passo-player-wrap" data-passo-player><strong>🎧 Passo-a-Rezar — oração do dia</strong>'+
+   '<audio class="passo-player" controls preload="metadata"><source src="'+safeUrl(audioUrl)+'" type="audio/mpeg">O teu navegador não suporta reprodução de áudio.</audio>'+
+   '<span class="passo-player-note">Leitor direto do episódio.</span>'+
+   '<span class="passo-player-error hidden">Não foi possível reproduzir o áudio direto neste dispositivo.</span>'+fallback+'</div>';
  }
- return '<div class="passo-player-wrap"><strong>🎧 Passo-a-Rezar — oração do dia</strong>'+
-  '<span class="passo-player-note">Áudio direto temporariamente indisponível para esta data.</span></div>';
+ return '<div class="passo-player-wrap" data-passo-player><strong>🎧 Passo-a-Rezar — oração do dia</strong>'+
+  '<span class="passo-player-note">Áudio direto indisponível; podes abrir o episódio oficial.</span>'+fallback+'</div>';
+}
+function bindPassoPlayerFallback(){
+ qsa("[data-passo-player]").forEach(wrap=>{
+  const audio=wrap.querySelector("audio"),err=wrap.querySelector(".passo-player-error"),link=wrap.querySelector(".passo-fallback");
+  if(!audio)return;
+  const fail=()=>{if(err)err.classList.remove("hidden");if(link)link.classList.add("is-primary")};
+  audio.addEventListener("error",fail,{once:true});
+  audio.addEventListener("stalled",()=>{if(audio.readyState===0)fail()},{once:true});
+  audio.addEventListener("canplay",()=>{if(err)err.classList.add("hidden");if(link)link.classList.remove("is-primary")},{once:true});
+ });
 }
 function renderDailyInfo(){
  const box=qs("#dailyInfoBody"),dateEl=qs("#dailyInfoDate"),titleEl=qs("#dailyInfoTitle"),selected=statsIso(),dt=dateFromIso(selected),x=calendarInfoFor(selected);
@@ -2036,6 +2054,7 @@ function renderDailyInfo(){
   (lit?'<div class="daily-row"><div class="daily-label">Liturgia</div><div class="daily-value">'+lit+'</div></div>':'')+
   (saints?'<div class="daily-row"><div class="daily-label">Santo(s)</div><div class="daily-value">'+saints+'</div></div>':'')+
   (gospel?'<div class="daily-row"><div class="daily-label">Evangelho</div><div class="daily-value">'+gospel+' · <a href="'+litUrl+'" target="_blank" rel="noopener noreferrer">ver Liturgia diária</a>'+passoPlayer+gospelBox+'</div></div>':'');
+ bindPassoPlayerFallback();
 }
 async function loadHistoryInfo({force=false}={}){
  const state=DATA_LOAD_STATE.history;

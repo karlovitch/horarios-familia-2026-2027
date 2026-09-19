@@ -307,6 +307,26 @@ def _media_url(raw: str, page_url: str) -> str:
         value = "https:" + value
     return urljoin(page_url, value)
 
+def _probe_audio_url(url: str) -> bool:
+    """Confirma que o candidato é realmente um ficheiro de áudio acessível diretamente."""
+    try:
+        headers={"Range":"bytes=0-4095","Accept":"audio/*,*/*;q=0.8"}
+        r=http_session().get(url,headers=headers,timeout=20,stream=True,allow_redirects=True)
+        if r.status_code not in (200,206):
+            return False
+        content_type=(r.headers.get("Content-Type") or "").lower()
+        first=next(r.iter_content(64),b"")
+        if content_type.startswith("audio/"):
+            return True
+        # MP3: ID3 ou frame sync; M4A/MP4: caixa ftyp.
+        if first.startswith(b"ID3") or (len(first)>=2 and first[0]==0xFF and (first[1]&0xE0)==0xE0):
+            return True
+        if len(first)>=12 and first[4:8]==b"ftyp":
+            return True
+        return False
+    except Exception:
+        return False
+
 def get_passo_metadata(day: date) -> dict[str, str]:
     """Extrai o áudio do episódio diário sem incorporar a página externa.
 
@@ -314,7 +334,7 @@ def get_passo_metadata(day: date) -> dict[str, str]:
     cookies nem os elementos promocionais da aplicação do Passo-a-Rezar.
     """
     page_url = f"{PASSO_REZAR_BASE}/{day.isoformat()}"
-    result: dict[str, str] = {}
+    result: dict[str, str] = {"passo_page_url": page_url}
     try:
         raw = fetch(page_url)
         soup = BeautifulSoup(raw, "html.parser")
@@ -382,11 +402,13 @@ def get_passo_metadata(day: date) -> dict[str, str]:
             if score > best_score:
                 best_score, best_url = score, url
 
-        if best_url:
+        if best_url and _probe_audio_url(best_url):
             result["passo_audio_url"] = best_url
-            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto encontrado.")
+            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto validado.")
+        elif best_url:
+            print(f"Passo-a-Rezar {day.isoformat()}: candidato de áudio rejeitado pela verificação; usar ligação oficial.")
         else:
-            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto não encontrado; leitor fica temporariamente indisponível.")
+            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto não encontrado; usar ligação oficial.")
     except Exception as exc:
         print(f"Aviso Passo-a-Rezar {day.isoformat()}: {exc}")
     return result
@@ -443,12 +465,6 @@ def main():
         day = targets[0]
         calendar["dates"][day.isoformat()] = build_day(day, un_map)
         print(f"[1/1] {day.isoformat()} · OK")
-
-    # Remove metadados legados que abriam a página externa do Passo-a-Rezar.
-    # A interface usa exclusivamente o áudio direto, evitando cookies e promoções.
-    for info in calendar.get("dates", {}).values():
-        if isinstance(info, dict):
-            info.pop("passo_page_url", None)
 
     # O episódio do Passo-a-Rezar é enriquecido apenas para o dia corrente.
     # As execuções diárias vão preenchendo o histórico sem centenas de pedidos

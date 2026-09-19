@@ -136,6 +136,9 @@ required_index_tokens = {
 
     "check de versão leve": 'fetch("version.json?__version_check="+stamp',
     "atualização automática universal a cada minuto": "const BUILD_POLL_MS=60*1000",
+    "fallback oficial do podcast": 'class="passo-fallback"',
+    "tratamento de erro do áudio": 'function bindPassoPlayerFallback()',
+
     "mensagem de ativação do service worker": 'type==="BUILD_ACTIVATED"',
     "snapshot JS da agenda": 'sports-info.js?v=',
     "merge resiliente de agenda": "function mergeSportsInfo(...sources)",
@@ -206,6 +209,10 @@ if "LEANBACK_LAUNCHER" not in tv_manifest or "android.hardware.touchscreen" not 
 if "adb -s" not in tv_installer or "HorariosFamilia-TV.apk" not in tv_installer:
     fail("Instalador PowerShell Android TV incompleto")
 
+if "def _probe_audio_url(url: str) -> bool:" not in daily_script:
+    fail("O podcast não valida o ficheiro de áudio antes de o publicar")
+if '"passo_page_url": page_url' not in daily_script:
+    fail("O podcast não guarda a ligação oficial de fallback")
 if "def get_passo_metadata(" not in daily_script:
     fail("O atualizador diário deve extrair o áudio direto do Passo-a-Rezar")
 if "PASSO_REZAR_BASE" not in daily_script:
