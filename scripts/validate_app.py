@@ -57,8 +57,8 @@ if manifest.get("scope") != "./":
 required_index_tokens = {
     "ocultação da agenda desportiva": 'id="sportsTabRow" class="sports-tab-row hidden"',
     "regra dinâmica da agenda desportiva": "function updateSportsTabVisibility",
-    "calibração oficial do relógio": "clock_offset_seconds",
-    "intervalo sem duração presumida": "ev.period===\"1H\"&&total>=45*60",
+    "relógio pelo início real da parte": "const total=base*60+elapsed",
+    "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=55*60",
     "estado visual do intervalo": "⏸️ INTERVALO",
     "dados de áudio direto do Passo-a-Rezar": "passo_audio_url",
     "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
