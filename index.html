@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v22</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v23</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -527,6 +527,7 @@ function birthdayCountdownText(iso){
  return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
 }
 const CATHOLIC_DATA_BASE="https://cpbjr.github.io/catholic-readings-api";
+const CATHOLIC_DATA_RAW="https://raw.githubusercontent.com/cpbjr/catholic-readings-api/main";
 const REMOTE_LITURGY_CACHE={};
 const REMOTE_LITURGY_LOADING=new Set();
 const REMOTE_LITURGY_FAILED=new Set();
@@ -562,6 +563,12 @@ function remoteLiturgyFromStorage(iso){
  try{const raw=localStorage.getItem("liturgia:"+iso);if(raw){const x=JSON.parse(raw);REMOTE_LITURGY_CACHE[iso]=x;return x}}catch(e){}
  return null;
 }
+async function fetchCatholicJson(path){
+ for(const base of [CATHOLIC_DATA_BASE,CATHOLIC_DATA_RAW]){
+  try{const r=await fetch(base+path,{cache:"no-store"});if(r.ok)return await r.json()}catch(e){}
+ }
+ return null;
+}
 async function ensureRemoteLiturgy(iso){
  if(REMOTE_LITURGY_CACHE[iso]||REMOTE_LITURGY_LOADING.has(iso)||REMOTE_LITURGY_FAILED.has(iso))return;
  if(remoteLiturgyFromStorage(iso)){renderDailyInfo();return}
@@ -569,12 +576,12 @@ async function ensureRemoteLiturgy(iso){
  if(!["2026","2027"].includes(year))return;
  REMOTE_LITURGY_LOADING.add(iso);
  try{
-  const [rr,cr]=await Promise.all([
-   fetch(CATHOLIC_DATA_BASE+"/readings/"+year+"/"+md+".json",{cache:"no-store"}),
-   fetch(CATHOLIC_DATA_BASE+"/liturgical-calendar/"+year+"/"+md+".json",{cache:"no-store"})
+  const [readings,cal]=await Promise.all([
+   fetchCatholicJson("/readings/"+year+"/"+md+".json"),
+   fetchCatholicJson("/liturgical-calendar/"+year+"/"+md+".json")
   ]);
-  if(!rr.ok&&!cr.ok)throw new Error("Sem dados litúrgicos");
-  const readings=rr.ok?await rr.json():null,cal=cr.ok?await cr.json():null,celebration=cal&&cal.celebration?cal.celebration:null;
+  if(!readings&&!cal)throw new Error("Sem dados litúrgicos");
+  const celebration=cal&&cal.celebration?cal.celebration:null;
   const cName=celebration?translateCelebrationName(celebration.name):"";
   const rank=celebration?translateCelebrationType(celebration.type):"";
   const season=translateSeason((cal&&cal.season)||(readings&&readings.season)||"");
@@ -644,7 +651,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=16",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=23",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -666,6 +673,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=22",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=23",{updateViaCache:"none"}));
 </script>
 </body></html>
