@@ -732,28 +732,49 @@ function isDirectSportsFixture(ev,url){
  if(/hóquei|hoquei/.test(sport))return /zerozero\.pt\/jogo\//.test(u);
  return !!url;
 }
-function renderTodaySports(iso){
- const el=qs("#todaySports"),events=sportsEventsFor(iso);
+function liveClockText(ev){
+ if(ev.status==="halftime")return "Intervalo";
+ if(ev.status!=="live")return "";
+ if(ev.period_start){
+  const now=Math.floor(Date.now()/1000),elapsed=Math.max(0,now-Number(ev.period_start));
+  const base=ev.period==="2H"?45:(ev.period==="ET2"?105:(ev.period==="ET1"?90:0));
+  const total=base*60+elapsed,mm=Math.floor(total/60),ss=total%60;
+  return String(mm).padStart(2,"0")+":"+String(ss).padStart(2,"0");
+ }
+ if(ev.live_minute!=null)return String(ev.live_minute)+"'";
+ return "Em jogo";
+}
+function sportsStatusHTML(ev){
+ const hs=ev.home_score,as=ev.away_score,hasScore=hs!=null&&as!=null;
+ if(ev.status==="live"||ev.status==="halftime"){
+  return '<div class="sports-status live"><span>🔴 AO VIVO</span>'+(hasScore?'<span class="sports-score">'+esc(String(hs))+'–'+esc(String(as))+'</span>':'')+'<span class="sports-clock">⏱️ '+esc(liveClockText(ev))+'</span></div>';
+ }
+ if(ev.status==="finished"&&hasScore)return '<div class="sports-status final"><span>Resultado final</span><span class="sports-score">'+esc(String(hs))+'–'+esc(String(as))+'</span></div>';
+ return "";
+}
+function renderSportsAgenda(iso){
+ const el=qs("#sportsPanel"),events=sportsEventsFor(iso);
  if(!el)return;
- if(!events.length){el.classList.add("hidden");el.innerHTML="";return}
+ const dt=dateFromIso(iso),dl=qs("#sportsDayLabel");
+ if(dl)dl.textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);
+ if(!events.length){el.innerHTML='<div class="sports-empty">Sem jogos ou sessões acompanhados nesta data.</div>';return}
  el.innerHTML='<strong>⚽ 🏒 🏎️ Agenda desportiva do dia</strong><div class="sports-grid">'+events.map(ev=>{
   const displayTitle=ev.title?esc(ev.title):(esc(ev.home)+' × '+esc(ev.away));
   const direct=isDirectSportsFixture(ev,ev.match_url);
   const match=direct?'<a class="sports-match" href="'+safeUrl(ev.match_url)+'" target="_blank" rel="noopener">'+displayTitle+'</a>':'<span class="sports-match">'+displayTitle+'</span><span class="sports-fixture-pending">Ficha do jogo ainda não disponível</span>';
   const broadcast=sportsBroadcastInfo(ev);
-  const stream=broadcast.stream?' · <a href="'+safeUrl(broadcast.stream)+'" target="_blank" rel="noopener">TV/stream em Portugal</a>':'';
-  return '<article class="sports-game"><div class="sports-team">'+esc(ev.entity)+' · '+esc(ev.competition||"Competição a confirmar")+'</div>'+match+
+  const stream=broadcast.stream?' · <a href="'+safeUrl(broadcast.stream)+'" target="_blank" rel="noopener">ver transmissão</a>':'';
+  return '<article class="sports-game"><div class="sports-team">'+esc(ev.entity)+' · '+esc(ev.competition||"Competição a confirmar")+'</div>'+match+sportsStatusHTML(ev)+
    '<div class="sports-meta"><span>🕒 '+esc(formatSportsTime(ev))+'</span><span>📍 '+esc(formatSportsLocation(ev))+'</span><span>📺 '+esc(broadcast.channel)+'</span></div>'+
    '<div class="sports-links">'+stream+(ev.source_url?' · <a href="'+safeUrl(ev.source_url)+'" target="_blank" rel="noopener">fonte/calendário</a>':'')+'</div></article>';
  }).join("")+'</div>';
- el.classList.remove("hidden");
 }
 async function loadSportsInfo(){
  try{
   const r=await fetch("sports-info.json?v=60&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
- if(view==="today")renderTodaySports(statsIso());
+ if(view==="sports")renderSportsAgenda(statsIso());
 }
 function renderGlobalFamilyBanner(iso){
  const el=qs("#globalFamilyBanner"),events=familyEventsFor(iso);
@@ -1442,7 +1463,7 @@ function renderTodayTimeline(iso,d){
 }
 function renderToday(){
  renderCountdowns();renderDailyInfo();renderGlobalQuote();
- const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);renderTodaySports(iso);renderTodayRestBanner(iso);renderTodayAstronomyBanner(iso);renderTodayHistoryBanners(iso);
+ const iso=statsIso();applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);renderTodayRestBanner(iso);renderTodayAstronomyBanner(iso);renderTodayHistoryBanners(iso);
  const dt=dateFromIso(iso),d=WEEK[dt.getUTCDay()];
  const pretty=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"}).format(dt);qs("#todayDay").textContent=pretty;qs("#todayPageDate").textContent=pretty;
  renderTodayTimeline(iso,d);
@@ -1519,17 +1540,29 @@ function renderPerson(){
   renderPersonDayTimeline(p,iso);
  }
 }
-function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;statsDate=null;const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="week";renderPerson()}}
+function show(v){
+ view=v;
+ qs("#overview").classList.toggle("hidden",v!=="overview");
+ qs("#today").classList.toggle("hidden",v!=="today");
+ qs("#sports").classList.toggle("hidden",v!=="sports");
+ qs("#person").classList.toggle("hidden",!D[v]);
+ qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+ qsa(".sports-tab-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+ if(v==="overview"){person=null;selectedDay=null;statsDate=null;const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview()}
+ else if(v==="today"){person=null;selectedDay=null;renderToday()}
+ else if(v==="sports"){person=null;selectedDay=null;statsDate=null;renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
+ else if(D[v]){person=v;selectedDay=null;personMode="week";renderPerson()}
+}
 qs("#todayPrevPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())-1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
 qs("#todayNextPage").addEventListener("click",()=>{const d=(statsDate?ymdDay(statsDate):currentLocalDay())+1;statsDate=new Date(d*MS_DAY).toISOString().slice(0,10);renderGlobalQuote();renderToday();renderCountdowns()});
-qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview();renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();loadSportsInfo();renderGlobalQuote();show("today");setTimeout(maybeCelebrateFamilyEvents,450);window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
+qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qsa(".sports-tab-btn").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday();else if(view==="overview")renderOverview();else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson()}));qs("#goTodayBtn").addEventListener("click",()=>{statsDate=null;selectedDay=null;const dow=new Date().getDay();overviewMode=(dow===0||dow===6)?"week":"day";renderOverview();renderCountdowns();renderDailyInfo();renderGlobalQuote()});loadDailyInfo();loadSportsInfo();renderGlobalQuote();show("today");setTimeout(maybeCelebrateFamilyEvents,450);window.addEventListener("resize",()=>{if(view==="overview")renderOverview();if(view==="today")renderToday()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);setInterval(()=>{if(view==="sports")renderSportsAgenda(statsIso())},1000);setInterval(()=>{if(view==="sports")loadSportsInfo()},30000);
 async function refreshCurrentView(){
  qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());
  await Promise.all([loadDailyInfo(),loadSportsInfo()]);
  renderGlobalQuote();
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
- else if(person)renderPerson();
+ else if(view==="sports")renderSportsAgenda(statsIso());else if(person)renderPerson();
 }
 async function checkForNewBuild(){
  try{
