@@ -38,6 +38,8 @@ version_meta = read_json("version.json")
 calendar = read_json("calendar-info.json")
 daily = read_json("daily-info.json")
 sports = read_json("sports-info.json")
+sports_js = read_text("sports-info.js")
+sports_script = read_text("scripts/update_sports_info.py")
 history = read_json("history-info.json")
 daily_script = read_text("scripts/update_daily_info.py")
 tv_activity = read_text("android-tv/app/src/main/java/pt/horariosfamilia/tv/MainActivity.java")
@@ -130,10 +132,16 @@ required_index_tokens = {
     "navegação D-pad": "function moveTvFocus(key)",
     "foco TV visível": 'outline:5px solid #FFD54A',
     "altura TV adaptativa": "function tvTimelineHeight()",
-    "atualização automática TV a cada 5 minutos": "const TV_BUILD_POLL_MS=5*60*1000",
 
 
-    "check de versão leve": 'fetch("version.json?__version_check="+Date.now()',
+    "check de versão leve": 'fetch("version.json?__version_check="+stamp',
+    "atualização automática universal a cada minuto": "const BUILD_POLL_MS=60*1000",
+    "mensagem de ativação do service worker": 'type==="BUILD_ACTIVATED"',
+    "snapshot JS da agenda": 'sports-info.js?v=94',
+    "merge resiliente de agenda": "function mergeSportsInfo(...sources)",
+    "ambiente adaptativo universal": "function applyAdaptiveEnvironment()",
+    "altura adaptativa de horários": "function adaptiveScheduleHeight()",
+
     "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",
     "data canónica dos eventos desportivos": "function sportsEventDate(e)",
     "event.date prioritário": 'if(/^20\\d{2}-\\d{2}-\\d{2}$/.test(explicit))return explicit;',
@@ -217,6 +225,10 @@ if not isinstance(calendar.get("dates"), dict):
     fail("calendar-info.json não contém o mapa dates")
 if not isinstance(history.get("dates"), dict):
     fail("history-info.json não contém o mapa dates")
+if "window.__SPORTS_INFO__=" not in sports_js:
+    fail("sports-info.js não contém o snapshot da agenda")
+if 'OUT_JS.write_text("window.__SPORTS_INFO__="' not in sports_script:
+    fail("O gerador desportivo não atualiza sports-info.js")
 if not isinstance(sports.get("events"), list):
     fail("sports-info.json não contém a lista events")
 if not daily.get("date"):

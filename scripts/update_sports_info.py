@@ -16,6 +16,7 @@ from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "sports-info.json"
+OUT_JS = ROOT / "sports-info.js"
 
 HEADERS = {"User-Agent":"HorariosFamilia/4.0 (+GitHub Pages; atualização de agendas desportivas)"}
 _RETRY=Retry(
@@ -832,4 +833,5 @@ previous_payload={k:data.get(k) for k in payload}
 generated_at=data.get("generated_at") if previous_payload==payload else datetime.now(timezone.utc).isoformat()
 out={"generated_at":generated_at or datetime.now(timezone.utc).isoformat(),**payload}
 OUT.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+OUT_JS.write_text("window.__SPORTS_INFO__="+json.dumps(out,ensure_ascii=False,separators=(",",":"))+";\n",encoding="utf-8")
 print(f"{len(events)} eventos; fontes verificadas: {len(checked)}; fichas diretas resolvidas: {direct_resolved}")

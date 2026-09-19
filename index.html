@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=93">
-<link rel="icon" href="favicon-64.png?v=93" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=93" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=93" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=93">
+<link rel="manifest" href="manifest.webmanifest?v=94">
+<link rel="icon" href="favicon-64.png?v=94" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=94" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=94" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=94">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -150,10 +150,51 @@ html.tv-mode[data-tv-profile="quarto49"]{font-size:17px}
 html.tv-mode[data-tv-profile="quarto49"] .block{font-size:.98rem}
 html.tv-mode[data-tv-profile="quarto49"] .block strong{font-size:1.01rem}
 html.tv-mode[data-tv-profile="cozinha-auto"]{font-size:clamp(16px,1.05vw,19px)}
+
+/* v94 · adaptação universal por viewport e tipo de interação */
+:root{--adaptive-main-max:1180px;--adaptive-gutter:12px;--adaptive-schedule-h:800px}
+main{max-width:var(--adaptive-main-max);padding-left:var(--adaptive-gutter);padding-right:var(--adaptive-gutter)}
+.timeline:not(.compact-overview),.person-timeline.week-view:not(.compact-overview),
+.overview-week-cell,.overview-week-day{height:var(--adaptive-schedule-h)}
+html[data-ui-width="phone"] .main-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+html[data-ui-width="tablet"] .main-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+html[data-ui-width="desktop"]{--adaptive-main-max:min(1380px,calc(100vw - 32px));--adaptive-gutter:16px}
+html[data-ui-width="wide"]{--adaptive-main-max:min(1680px,calc(100vw - 48px));--adaptive-gutter:20px}
+html[data-ui-width="ultrawide"]{--adaptive-main-max:min(2040px,calc(100vw - 64px));--adaptive-gutter:24px}
+html[data-ui-width="wide"] .main-tab,html[data-ui-width="ultrawide"] .main-tab{font-size:clamp(.82rem,.75vw,1rem);padding:11px 8px}
+html[data-ui-width="wide"] .sports-grid,html[data-ui-width="ultrawide"] .sports-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+html[data-ui-height="short"] .top{padding-top:8px;padding-bottom:8px}
+html[data-ui-height="short"] main{padding-top:7px}
+html[data-ui-height="short"] .today-page-nav{min-height:54px;margin-bottom:7px}
+html[data-ui-height="short"] .today-page-arrow{height:54px}
+html[data-ui-input="touch"] :is(button,.main-tab,.day-tab,.person-mode-btn,.stats-step,.stats-today,.today-jump,.sports-tab-btn){min-height:48px}
+html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px solid #FFD54A!important;outline-offset:4px!important;box-shadow:0 0 0 3px rgba(31,42,68,.45)!important}
+@media (hover:hover) and (pointer:fine){
+ button,.main-tab,.day-tab,.sports-tab-btn,.person-mode-btn{transition:transform .12s ease,box-shadow .12s ease}
+ button:hover,.main-tab:hover,.day-tab:hover,.sports-tab-btn:hover,.person-mode-btn:hover{box-shadow:0 3px 10px rgba(31,42,68,.12)}
+}
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+@media (max-width:700px){
+ .main-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:430px){
+ .main-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .weather-strip{width:100%;max-width:100%}
+}
+@media (min-width:1600px){
+ .top h1{font-size:clamp(1.5rem,1.45vw,2rem)}
+ .top p{font-size:clamp(.9rem,.8vw,1.08rem)}
+ .screen-head h2{font-size:clamp(1.2rem,1vw,1.55rem)}
+}
+@media (min-width:2200px){
+ :root{font-size:18px}
+}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v93</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v94</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -173,6 +214,7 @@ html.tv-mode[data-tv-profile="cozinha-auto"]{font-size:clamp(16px,1.05vw,19px)}
 <section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 </main>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+<script src="sports-info.js?v=94"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -301,7 +343,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=93;
+const APP_BUILD=94;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
@@ -406,8 +448,44 @@ Carlos:{
 }
 };
 const TV_PARAMS=new URLSearchParams(location.search);
+const UI_MEDIA={
+ coarse:window.matchMedia("(pointer:coarse)"),
+ fine:window.matchMedia("(pointer:fine)"),
+ hover:window.matchMedia("(hover:hover)")
+};
+function adaptiveWidthClass(w){
+ if(w<480)return "phone";
+ if(w<900)return "tablet";
+ if(w<1400)return "desktop";
+ if(w<2100)return "wide";
+ return "ultrawide";
+}
+function adaptiveHeightClass(h){return h<650?"short":(h>1000?"tall":"normal")}
+function adaptiveInputClass(){
+ if(TV_MODE)return "remote";
+ if(UI_MEDIA.coarse.matches)return "touch";
+ return "pointer";
+}
+function adaptiveScheduleHeight(){
+ if(TV_MODE)return tvTimelineHeight();
+ const h=Math.max(480,window.innerHeight||800);
+ const w=Math.max(320,window.innerWidth||1024);
+ if(w<700)return Math.max(620,Math.min(780,Math.round(h*.88)));
+ if(h<650)return Math.max(600,Math.min(720,Math.round(h*.96)));
+ if(w>=1600)return Math.max(780,Math.min(980,Math.round(h*.84)));
+ return Math.max(700,Math.min(900,Math.round(h*.84)));
+}
+function applyAdaptiveEnvironment(){
+ const root=document.documentElement,w=window.innerWidth||document.documentElement.clientWidth||1024,h=window.innerHeight||document.documentElement.clientHeight||768;
+ root.dataset.uiWidth=adaptiveWidthClass(w);
+ root.dataset.uiHeight=adaptiveHeightClass(h);
+ root.dataset.uiInput=adaptiveInputClass();
+ root.style.setProperty("--adaptive-schedule-h",adaptiveScheduleHeight()+"px");
+}
+
 const TV_MODE=TV_PARAMS.get("tv")==="1"||/HorariosFamiliaTV|Android TV|\bTV\b/i.test(navigator.userAgent);
 const TV_PROFILE=TV_MODE?(TV_PARAMS.get("profile")||"auto"):"";
+applyAdaptiveEnvironment();
 function tvTimelineHeight(){
  const h=Math.max(480,window.innerHeight||720);
  const factor=TV_PROFILE==="sala40"?.70:TV_PROFILE==="quarto49"?.73:.71;
@@ -460,7 +538,7 @@ initTvRemote();
 
 let view="overview",selectedDay=null,person=null,personMode="day",overviewMode="day",statsDate=null,installPrompt=null;
 const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)");
-const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>!TV_MODE&&MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>TV_MODE?tvTimelineHeight():(isMobileTimeline()?700:800),laneHeaderHeight=()=>TV_MODE?58:(isMobileTimeline()?46:52),timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
+const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>!TV_MODE&&MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>adaptiveScheduleHeight(),laneHeaderHeight=()=>TV_MODE?58:(isMobileTimeline()?46:52),timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
 function ymdDay(s){const [y,m,d]=s.split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/MS_DAY)}
 function currentLocalDay(){const n=new Date();return Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/MS_DAY)}
 const HOLIDAY_DAYS=new Set([...NATIONAL_HOLIDAYS,...LOCAL_NO_CLASS_DAYS].map(ymdDay));
@@ -1015,7 +1093,24 @@ function isoLocalDate(){const n=new Date(),y=n.getFullYear(),m=String(n.getMonth
 function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))}
 function liturgiaUrlForDate(iso){const [y,m,d]=iso.split("-").map(Number);return "https://liturgia.pt/liturgiadiaria/dia.php?data="+y+"-"+m+"-"+d}
 function listText(arr,emptyText){return arr&&arr.length?arr.map(esc).join(" · "):emptyText}
-let SPORTS_INFO={generated_at:null,events:[]};
+let SPORTS_INFO=(window.__SPORTS_INFO__&&Array.isArray(window.__SPORTS_INFO__.events))?window.__SPORTS_INFO__:{generated_at:null,events:[]};
+let SPORTS_DATA_READY=Array.isArray(SPORTS_INFO.events)&&SPORTS_INFO.events.length>0;
+function sportsEventKey(e){
+ return [String(e&&e.date||""),String(e&&e.entity||""),String(e&&e.title||e&&e.home||""),String(e&&e.away||"")].join("|").toLowerCase();
+}
+function mergeSportsInfo(...sources){
+ const valid=sources.filter(x=>x&&Array.isArray(x.events));
+ if(!valid.length)return {generated_at:null,events:[]};
+ const byKey=new Map();
+ for(const src of valid){
+  for(const ev of src.events||[]){
+   const k=sportsEventKey(ev);
+   byKey.set(k,{...(byKey.get(k)||{}),...ev});
+  }
+ }
+ const generated=valid.map(x=>x.generated_at||"").sort().pop()||null;
+ return {...valid[0],...valid[valid.length-1],generated_at:generated,events:[...byKey.values()]};
+}
 function safeUrl(url){
  try{
   const u=new URL(String(url||""));
@@ -1099,9 +1194,11 @@ function sportsEventsFor(iso){
 function updateSportsTabVisibility(iso=statsIso()){
  const row=qs("#sportsTabRow");
  if(!row)return false;
- const hasEvents=sportsEventsFor(iso).length>0;
+ const count=SPORTS_DATA_READY?sportsEventsFor(iso).length:0;
+ const hasEvents=count>0;
  row.classList.toggle("hidden",!hasEvents);
  row.setAttribute("aria-hidden",hasEvents?"false":"true");
+ row.dataset.eventCount=String(count);
  return hasEvents;
 }
 function isDirectSportsFixture(ev,url){
@@ -1177,19 +1274,29 @@ function updateSportsLiveClocks(){
 }
 async function loadSportsInfo({force=false}={}){
  const state=DATA_LOAD_STATE.sports;
+ const cached=storageRead("sportsInfo",null);
+ if(cached&&Array.isArray(cached.events)){
+  SPORTS_INFO=mergeSportsInfo(SPORTS_INFO,cached);
+  SPORTS_DATA_READY=SPORTS_INFO.events.length>0;
+  updateSportsTabVisibility(statsIso());
+ }
  if(state.promise)return state.promise;
  if(!force&&dataFresh("sports")){updateSportsTabVisibility(statsIso());return SPORTS_INFO}
  state.promise=(async()=>{
   try{
-   SPORTS_INFO=await fetchJsonResource("sports-info.json",{ts:Date.now()});
-   storageWrite("sportsInfo",SPORTS_INFO);
-   state.loadedAt=Date.now();
+   const fresh=await fetchJsonResource("sports-info.json",{ts:Date.now(),build:APP_BUILD},15000);
+   if(fresh&&Array.isArray(fresh.events)){
+    SPORTS_INFO=mergeSportsInfo(SPORTS_INFO,fresh);
+    SPORTS_DATA_READY=true;
+    storageWrite("sportsInfo",SPORTS_INFO);
+    state.loadedAt=Date.now();
+   }
   }catch(_){
-   const cached=storageRead("sportsInfo",null);
-   if(cached){SPORTS_INFO=cached;state.loadedAt=Date.now()}
+   // Mantém o snapshot incorporado/local em vez de esvaziar a agenda.
   }finally{
    state.promise=null;
    updateSportsTabVisibility(statsIso());
+   if(view==="sports")renderSportsAgenda(statsIso());
   }
   return SPORTS_INFO;
  })();
@@ -2251,15 +2358,25 @@ setTimeout(maybeCelebrateFamilyEvents,450);
 
 /* Só é necessário recalcular a geometria quando muda o breakpoint que altera
    a altura/cabeçalho da grelha; redimensionamentos dentro do mesmo modo ficam ao CSS. */
-function handleTvViewportChange(){
- if(!TV_MODE)return;
- document.documentElement.style.setProperty("--tv-timeline-height",tvTimelineHeight()+"px");
- handleTimelineBreakpointChange();
+let adaptiveResizeTimer=0,lastAdaptiveHeight=adaptiveScheduleHeight(),lastAdaptiveWidth=adaptiveWidthClass(window.innerWidth||1024);
+function handleAdaptiveViewportChange(){
+ applyAdaptiveEnvironment();
+ const nextH=adaptiveScheduleHeight(),nextW=adaptiveWidthClass(window.innerWidth||1024);
+ const geometryChanged=Math.abs(nextH-lastAdaptiveHeight)>=16||nextW!==lastAdaptiveWidth;
+ lastAdaptiveHeight=nextH;lastAdaptiveWidth=nextW;
+ if(geometryChanged)handleTimelineBreakpointChange();
 }
-let tvResizeTimer=0;
-if(TV_MODE)window.addEventListener("resize",()=>{
- clearTimeout(tvResizeTimer);tvResizeTimer=setTimeout(handleTvViewportChange,180);
+window.addEventListener("resize",()=>{
+ clearTimeout(adaptiveResizeTimer);
+ adaptiveResizeTimer=setTimeout(handleAdaptiveViewportChange,180);
 },{passive:true});
+if(window.visualViewport)window.visualViewport.addEventListener("resize",()=>{
+ clearTimeout(adaptiveResizeTimer);
+ adaptiveResizeTimer=setTimeout(handleAdaptiveViewportChange,180);
+},{passive:true});
+for(const mq of Object.values(UI_MEDIA)){
+ if(mq.addEventListener)mq.addEventListener("change",applyAdaptiveEnvironment);
+}
 
 function handleTimelineBreakpointChange(){
  if(view==="overview")renderOverview();
@@ -2299,15 +2416,25 @@ async function refreshCurrentView(){
 
 /* version.json tem poucos bytes; evita transferir e analisar ~177 KB de index.html
    em cada regresso à aplicação. */
+let buildReloadPending=false;
 async function checkForNewBuild(){
+ if(buildReloadPending)return true;
  try{
-  const r=await fetch("version.json?__version_check="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
+  const stamp=Date.now();
+  const r=await fetch("version.json?__version_check="+stamp,{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"}});
   if(!r.ok)return false;
   const meta=await r.json(),latest=Number(meta&&meta.build)||APP_BUILD;
   if(latest>APP_BUILD){
+   buildReloadPending=true;
+   if("serviceWorker" in navigator){
+    try{
+     const reg=await navigator.serviceWorker.getRegistration();
+     if(reg){await reg.update();if(reg.waiting)reg.waiting.postMessage({type:"SKIP_WAITING"})}
+    }catch(_){}
+   }
    const u=new URL(location.href);
    u.searchParams.set("v",String(latest));
-   u.searchParams.set("__fresh",String(Date.now()));
+   u.searchParams.set("__fresh",String(stamp));
    location.replace(u.toString());
    return true;
   }
@@ -2336,10 +2463,10 @@ document.addEventListener("visibilitychange",()=>{
   refreshWhenVisible("visibilitychange");
  }else stopSportsClockTimer();
 });
-const TV_BUILD_POLL_MS=5*60*1000;
-if(TV_MODE)setInterval(()=>{
+const BUILD_POLL_MS=60*1000;
+setInterval(()=>{
  if(!document.visibilityState||document.visibilityState==="visible")checkForNewBuild();
-},TV_BUILD_POLL_MS);
+},BUILD_POLL_MS);
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
 
@@ -2352,6 +2479,12 @@ qs("#installBtn").addEventListener("click",async()=>{
 });
 window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));
 
+if("serviceWorker" in navigator){
+ navigator.serviceWorker.addEventListener("message",e=>{
+  const b=Number(e.data&&e.data.build);
+  if(e.data&&e.data.type==="BUILD_ACTIVATED"&&b>APP_BUILD&&!buildReloadPending)checkForNewBuild();
+ });
+}
 if("serviceWorker" in navigator)window.addEventListener("load",()=>{
  navigator.serviceWorker.register(resourceUrl("sw.js"),{updateViaCache:"none"})
   .then(async r=>{await r.update();setTimeout(checkForNewBuild,300)})

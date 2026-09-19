@@ -1,9 +1,9 @@
-const BUILD=93;
+const BUILD=94;
 const C='horarios-familia-2026-27-v'+BUILD;
-const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD];
+const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD,'sports-info.js?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([
   '/index.html','/manifest.webmanifest','/daily-info.json','/calendar-info.json',
-  '/sports-info.json','/history-info.json','/version.json'
+  '/sports-info.json','/sports-info.js','/history-info.json','/version.json'
 ]);
 
 function canonicalCacheKey(url){
@@ -21,12 +21,12 @@ self.addEventListener('install',event=>{
 });
 
 self.addEventListener('activate',event=>{
-  event.waitUntil(
-    Promise.all([
-      caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k)))),
-      self.clients.claim()
-    ])
-  );
+  event.waitUntil((async()=>{
+    await caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==C).map(k=>caches.delete(k))));
+    await self.clients.claim();
+    const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+    for(const client of clients)client.postMessage({type:'BUILD_ACTIVATED',build:BUILD});
+  })());
 });
 
 self.addEventListener('fetch',event=>{
