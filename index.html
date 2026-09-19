@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=61">
+<link rel="manifest" href="manifest.webmanifest?v=62">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -35,16 +35,17 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 .overview-week-corner{border-color:transparent;background:transparent}
 .overview-week-person{padding:7px 3px;text-align:center;font-weight:850;font-size:.67rem;line-height:1.05}
 .overview-week-day{padding:7px 3px;text-align:center;font-weight:850;font-size:.66rem;line-height:1.12}
-.overview-week-cell{padding:4px;display:grid;gap:4px;align-content:start}
-.overview-week-event{padding:4px 3px;border-radius:6px;font-size:.55rem;line-height:1.08;overflow-wrap:anywhere}
+.overview-week-cell{position:relative;height:320px;padding:0;overflow:hidden;background:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,color-mix(in srgb,var(--border) 32%,transparent) 31px)}
+.overview-week-day{height:320px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.overview-week-event{position:absolute;left:3px;right:3px;padding:4px 3px;border:1px solid rgba(45,55,72,.26);border-radius:6px;font-size:.55rem;line-height:1.08;overflow:hidden;box-shadow:0 1px 3px rgba(22,32,51,.06)}
 .overview-week-event b{display:block;font-size:.56rem}.overview-week-event span{display:block;margin-top:1px}
 .overview-week-empty,.overview-week-special{padding:7px 2px;text-align:center;font-size:.53rem;line-height:1.15;color:var(--muted)}
 .overview-week-special{color:var(--text);font-weight:750}
-@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell{padding:2px;gap:3px}.overview-week-event{font-size:.46rem;padding:3px 2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
+@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:286px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v61</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v62</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -191,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=61;
+const APP_BUILD=62;
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -771,7 +772,7 @@ function renderSportsAgenda(iso){
 }
 async function loadSportsInfo(){
  try{
-  const r=await fetch("sports-info.json?v=61&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("sports-info.json?v=62&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
  if(view==="sports")renderSportsAgenda(statsIso());
@@ -810,6 +811,10 @@ const WORLD_HISTORY_BY_DATE={
  "09-01":[{year:"1939",text:"A Alemanha invade a Polónia, marcando o início da II Guerra Mundial na Europa."}],
  "09-02":[{year:"1945",text:"O Japão assina formalmente o instrumento de rendição, encerrando a II Guerra Mundial."}],
  "09-11":[{year:"2001",text:"Os atentados de 11 de setembro atingem os Estados Unidos e alteram profundamente a política internacional."}],
+ "09-19":[
+   {year:"1893",text:"A Nova Zelândia torna-se o primeiro país autónomo a conceder às mulheres o direito de voto em eleições nacionais."},
+   {year:"1985",text:"Um forte sismo atinge a Cidade do México, provocando milhares de mortos e uma vasta destruição."}
+ ],
  "10-04":[{year:"1957",text:"A União Soviética lança o Sputnik 1, o primeiro satélite artificial da Terra."}],
  "10-07":[{year:"1571",text:"A Batalha de Lepanto termina com a vitória da Liga Santa sobre a frota otomana."}],
  "10-24":[{year:"1945",text:"Entra em vigor a Carta das Nações Unidas, data assinalada como fundação oficial da ONU."}],
@@ -834,14 +839,20 @@ const PORTUGAL_HISTORY_BY_DATE={
  "08-21":[{year:"1415",text:"As forças portuguesas conquistam Ceuta, episódio que marca o início da expansão portuguesa no Norte de África."}],
  "08-24":[{year:"1820",text:"Começa no Porto a Revolução Liberal de 1820."}],
  "09-12":[{year:"1297",text:"Portugal e Castela celebram o Tratado de Alcanizes, que fixa grande parte da fronteira portuguesa."}],
+ "09-19":[
+   {year:"1946",text:"A TAP inaugura a sua primeira linha comercial, ligando Lisboa a Madrid."},
+   {year:"1975",text:"Toma posse o VI Governo Provisório, chefiado pelo almirante José Pinheiro de Azevedo."}
+ ],
  "10-05":[{year:"1910",text:"A Revolução de 5 de Outubro derruba a monarquia constitucional e implanta a República em Portugal."}],
+ "10-07":[{year:"1846",text:"São novamente suspensas as garantias constitucionais por 30 dias, no contexto da crise política que conduziu à Patuleia."}],
  "11-01":[{year:"1755",text:"Um grande terramoto, seguido de incêndios e maremoto, devasta Lisboa e outras regiões."}],
  "12-01":[{year:"1640",text:"A revolta de 1 de Dezembro põe fim à União Ibérica e restaura a independência portuguesa."}],
  "12-13":[{year:"1521",text:"Morre D. Manuel I; D. João III sucede-lhe no trono português."}]
 };
 function historyFeatureForDate(map,iso){
  const arr=map[iso.slice(5)]||[];if(!arr.length)return null;
- return arr[Math.abs(Number(iso.slice(0,4)))%arr.length];
+ const year=Number(iso.slice(0,4));
+ return arr[Math.abs(year-2026)%arr.length];
 }
 function renderTodayHistoryBanners(iso){
  const world=historyFeatureForDate(WORLD_HISTORY_BY_DATE,iso),pt=historyFeatureForDate(PORTUGAL_HISTORY_BY_DATE,iso);
@@ -1272,7 +1283,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=61",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=62",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1288,6 +1299,14 @@ async function loadDailyInfo(){
 function eventTypeClass(e){const t=(e.title||"").toLowerCase();if(/intervalo|pausa|interrup/.test(t))return "pause";if(/teste|avalia|questão de aula|qa\b|entrega|prazo/.test(t))return "assessment";if(/cnl|coordenação|funções de âmbito organizacional|reunião|administrativ/.test(t))return "admin";return ""}
 function eventHTML(e,d,p,iso=null){const i=D[p],isLive=(!iso||iso===isoLocalDate())&&current(e,d);return '<article class="event person-colored '+(isLive?"current":"")+'" style="background:'+i.color+';color:'+i.textColor+'"><div class="event-time">'+e.start+'<br>'+e.end+'</div><div class="event-main"><strong>'+esc(e.title)+'</strong>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div></article>'}
 function dayButtons(c,a,f){c.innerHTML=SCHOOL_DAYS.map(d=>'<button type="button" class="day-tab '+(d===a?"active":"")+'" data-day="'+d+'">'+d+'</button>').join("");c.querySelectorAll(".day-tab").forEach(b=>b.addEventListener("click",()=>f(b.dataset.day)))}
+function overviewWeekTop(time){
+ const min=toMin(time),span=END-START;
+ return Math.max(0,Math.min(100,(min-START)*100/span));
+}
+function overviewWeekHeight(start,end){
+ const span=END-START;
+ return Math.max(2,(toMin(end)-toMin(start))*100/span);
+}
 function renderOverviewWeek(referenceIso){
  const host=qs("#timeline"),people=["Leonor","Margarida","Sandra","Carlos"],days=["Segunda","Terça","Quarta","Quinta","Sexta"];
  host.classList.remove("compact-overview");host.classList.add("week-overview");
@@ -1304,8 +1323,10 @@ function renderOverviewWeek(referenceIso){
    else{
     const ev=i.days[d]||[];
     if(!ev.length)h+='<div class="overview-week-empty">Sem horário.</div>';
-    for(const e of ev)h+='<div class="overview-week-event" style="background:'+i.color+';color:'+i.textColor+'"><b>'+e.start+'–'+e.end+'</b><span>'+esc(e.title)+'</span>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div>';
-    if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="overview-week-event" style="background:'+i.color+';color:'+i.textColor+'"><b>14:00–18:30</b><span>Reuniões de Avaliação Intercalar</span></div>';
+    for(const e of ev){
+      h+='<div class="overview-week-event" style="top:'+overviewWeekTop(e.start)+'%;height:'+overviewWeekHeight(e.start,e.end)+'%;background:'+i.color+';color:'+i.textColor+'"><b>'+e.start+'–'+e.end+'</b><span>'+esc(e.title)+'</span>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div>';
+    }
+    if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="overview-week-event" style="top:'+overviewWeekTop("14:00")+'%;height:'+overviewWeekHeight("14:00","18:30")+'%;background:'+i.color+';color:'+i.textColor+'"><b>14:00–18:30</b><span>Reuniões de Avaliação Intercalar</span></div>';
    }
    h+='</div>';
   }
@@ -1580,6 +1601,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=61",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=62",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
