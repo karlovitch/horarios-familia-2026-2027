@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=36">
+<link rel="manifest" href="manifest.webmanifest?v=37">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v36</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v37</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -718,8 +718,61 @@ function meaningfulLiturgicalText(v){
 function meaningfulSaints(arr){
  return (arr||[]).filter(v=>v&&!/^Sem memória própria/i.test(v)&&!/^Consultar/i.test(v)&&!/^A carregar/i.test(v));
 }
+const GOSPEL_REFLECTIONS_BY_REF={
+ "Mt 9, 9-13":[
+  "Jesus chama Mateus no meio da sua vida concreta, mostrando que a conversão pode começar precisamente onde estamos.",
+  "O olhar de Jesus não fica preso ao passado de uma pessoa; vê antes aquilo em que ela se pode tornar.",
+  "A misericórdia é colocada acima de uma religiosidade feita apenas de regras e aparências.",
+  "Sentar-se à mesa com pecadores revela um Deus que se aproxima de quem precisa de cura, em vez de se afastar.",
+  "O Evangelho convida a perguntar se tratamos os outros a partir dos seus erros ou da possibilidade de recomeçarem."
+ ],
+ "Lc 8, 19-21":[
+  "Jesus alarga a ideia de família: a proximidade com Ele nasce sobretudo da escuta e da prática da Palavra de Deus.",
+  "Ouvir a Palavra não basta; ela torna-se fecunda quando passa para escolhas, atitudes e relações concretas.",
+  "A fé não depende apenas de laços de sangue ou pertenças exteriores, mas de uma resposta pessoal a Deus.",
+  "A verdadeira intimidade com Cristo constrói-se pela fidelidade quotidiana ao que reconhecemos como bem.",
+  "Este Evangelho desafia-nos a perceber se aquilo que ouvimos de Deus realmente transforma a forma como vivemos."
+ ],
+ "Lc 9, 1-6":[
+  "Jesus envia os discípulos com autoridade, mas também com simplicidade, mostrando que a missão não depende do excesso de recursos.",
+  "Partir sem acumular seguranças ensina confiança em Deus e disponibilidade para acolher a ajuda dos outros.",
+  "A missão cristã une anúncio e cuidado: proclamar o Reino e aliviar o sofrimento caminham juntos.",
+  "Nem todas as pessoas acolherão a mensagem; Jesus ensina a não transformar a rejeição em ressentimento.",
+  "A passagem convida a perguntar se a nossa vida comunica esperança através de palavras, escolhas e serviço."
+ ],
+ "Lc 9, 7-9":[
+  "Herodes sente curiosidade por Jesus, mas a curiosidade por si só não conduz necessariamente à conversão.",
+  "É possível querer saber quem é Jesus sem estar verdadeiramente disponível para mudar de vida.",
+  "A consciência perturbada de Herodes recorda que não conseguimos silenciar indefinidamente aquilo que sabemos estar errado.",
+  "O Evangelho distingue o desejo de ver de uma verdadeira disposição para escutar e compreender.",
+  "A pergunta «Quem é este?» continua atual: a resposta cristã não se reduz a informação, exige uma tomada de posição pessoal."
+ ],
+ "Lc 9, 18-22":[
+  "Jesus leva os discípulos a passar da opinião dos outros para uma resposta pessoal à pergunta sobre quem Ele é.",
+  "Pedro reconhece Jesus como o Messias, mas essa profissão de fé precisa de ser purificada de expectativas de poder e triunfo fácil.",
+  "Jesus liga a sua identidade ao sofrimento, à entrega e à ressurreição, contrariando uma visão superficial do sucesso.",
+  "Conhecer Cristo implica aceitar que o caminho do amor pode incluir perda, sacrifício e fidelidade nas dificuldades.",
+  "O Evangelho convida a perguntar se seguimos a imagem de Jesus que nos convém ou o Jesus que realmente se revela."
+ ],
+ "Lc 9, 43b-45":[
+  "Enquanto todos admiram os feitos de Jesus, Ele fala da sua entrega futura, lembrando que a glória não elimina a cruz.",
+  "Os discípulos não compreendem e têm medo de perguntar; o medo pode tornar-se obstáculo à aprendizagem espiritual.",
+  "Jesus mostra que a fé não consiste apenas em admirar acontecimentos extraordinários, mas em acolher também verdades exigentes.",
+  "Não compreender de imediato não é fracasso; o problema surge quando deixamos de perguntar e de procurar sentido.",
+  "A passagem convida a cultivar uma fé humilde, capaz de permanecer junto de Deus mesmo quando não entende tudo."
+ ],
+ "Mt 21, 28-32":[
+  "Jesus distingue entre dizer e fazer: a verdadeira resposta a Deus mede-se sobretudo pelas ações.",
+  "Quem inicialmente recusa mas depois muda de atitude mostra que a conversão permanece sempre possível.",
+  "A religiosidade exterior perde valor quando não é acompanhada por uma vida coerente.",
+  "Jesus valoriza quem reconhece os próprios erros e muda de caminho mais do que quem apenas aparenta estar certo.",
+  "O Evangelho convida a perguntar se as nossas escolhas confirmam aquilo que afirmamos acreditar."
+ ]
+};
 function gospelReflectionMessages(ref){
- const r=(ref||"").trim(),m=r.match(/^(Mt|Mc|Lc|Jo)\s+(\d+)/),book=m?m[1]:"",ch=m?Number(m[2]):0;
+ const r=(ref||"").trim();
+ if(GOSPEL_REFLECTIONS_BY_REF[r])return GOSPEL_REFLECTIONS_BY_REF[r];
+ const m=r.match(/^(Mt|Mc|Lc|Jo)\s+(\d+)/),book=m?m[1]:"",ch=m?Number(m[2]):0;
  const sets={
   "Mt5":["A felicidade evangélica nasce de um coração convertido, não apenas do cumprimento exterior.","Jesus pede uma justiça mais profunda, capaz de transformar intenções, relações e escolhas.","O discípulo é chamado a ser sal e luz no mundo através de obras concretas.","A relação com Deus deve conduzir à reconciliação, à misericórdia e à coerência de vida."],
   "Mt6":["A fé pede uma relação sincera com Deus, sem procura de aparência ou reconhecimento.","A oração confiante coloca Deus no centro e ensina a pedir o essencial.","Jesus convida a libertar o coração da ansiedade e da acumulação.","O verdadeiro tesouro mede-se pelo que aproxima de Deus e do próximo."],
@@ -839,7 +892,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=36",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=37",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -861,6 +914,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const iso=statsIso()
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote();if(view==="today")renderToday()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("today");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=36",{updateViaCache:"none"}).then(r=>r.update()));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=37",{updateViaCache:"none"}).then(r=>r.update()));
 </script>
 </body></html>
