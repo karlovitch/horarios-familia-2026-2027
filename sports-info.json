@@ -1392,9 +1392,7 @@
       "away_score": 0,
       "period": "2H",
       "period_start": 1789832149,
-      "live_minute": 1789828200,
-      "status_updated_at": 1789832471,
-      "clock_offset_seconds": 107389688978
+      "status_updated_at": 1789832471
     },
     {
       "date": "2026-09-20",
