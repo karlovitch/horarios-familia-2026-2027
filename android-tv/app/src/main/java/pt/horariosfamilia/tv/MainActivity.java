@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.KeyEvent;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -84,6 +85,35 @@ public class MainActivity extends Activity {
         if (webView != null) {
             webView.evaluateJavascript("window.dispatchEvent(new Event('focus'));", null);
         }
+    }
+
+    private String remoteKeyName(int keyCode) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT: return "ArrowLeft";
+            case KeyEvent.KEYCODE_DPAD_RIGHT: return "ArrowRight";
+            case KeyEvent.KEYCODE_DPAD_UP: return "ArrowUp";
+            case KeyEvent.KEYCODE_DPAD_DOWN: return "ArrowDown";
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_ENTER:
+            case KeyEvent.KEYCODE_NUMPAD_ENTER:
+                return "Enter";
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (webView != null && event.getAction() == KeyEvent.ACTION_DOWN) {
+            String key = remoteKeyName(event.getKeyCode());
+            if (key != null) {
+                String js = "document.dispatchEvent(new KeyboardEvent('keydown',{key:'" + key +
+                    "',bubbles:true,cancelable:true}));";
+                webView.evaluateJavascript(js, null);
+                return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     @Override
