@@ -55,6 +55,15 @@ def get(url):
 
 FLASHSCORE_DAILY_CACHE={}
 ZEROZERO_PAGE_CACHE={}
+
+# Fichas que foram confirmadas no próprio Flashscore.pt. Para FC Porto e
+# Real Madrid só publicamos uma ficha direta quando o URL foi verificado;
+# caso contrário, a app mantém a fonte/calendário em vez de abrir uma página
+# Flashscore inexistente.
+VERIFIED_FLASHSCORE_MATCH_URLS={
+    "EeqKlS2e":"https://www.flashscore.pt/jogo/futebol/benfica-zBkyuyRI/fc-porto-S2NmScGp/?mid=EeqKlS2e",
+    "hGycdKve":"https://www.flashscore.pt/jogo/futebol/atl-madrid-jaarqpLQ/real-madrid-W8mj7MDD/?mid=hGycdKve",
+}
 FLASHSCORE_HEADERS={
     **HEADERS,
     "Accept":"*/*",
@@ -147,14 +156,20 @@ def flashscore_match_url(event):
     if min(pair)<.65:return None
 
     mid=best.get("AA")
-    hs=best.get("WU");aws=best.get("WV")
+    if not mid:return None
 
-    # JA/JB são os identificadores codificados usados no URL público da
-    # equipa no Flashscore. AU/AV não são substitutos seguros para esse fim
-    # e originavam fichas inexistentes (nomeadamente FC Porto/Real Madrid).
-    hid=best.get("JA")
-    aid=best.get("JB")
-    if not all([mid,hs,aws,hid,aid]):return None
+    verified=VERIFIED_FLASHSCORE_MATCH_URLS.get(mid)
+    if verified:return verified
+
+    # Estes dois clubes tinham URLs aparentemente válidos mas com IDs de
+    # participante que abriam uma ficha inexistente. Sem confirmação explícita,
+    # é preferível não transformar o título do jogo num link quebrado.
+    if event.get("entity") in {"FC Porto","Real Madrid"}:
+        return None
+
+    hs=best.get("WU");aws=best.get("WV")
+    hid=best.get("JA");aid=best.get("JB")
+    if not all([hs,aws,hid,aid]):return None
     return f"https://www.flashscore.pt/jogo/futebol/{hs}-{hid}/{aws}-{aid}/?mid={mid}"
 
 def flashscore_live_info(mid):
