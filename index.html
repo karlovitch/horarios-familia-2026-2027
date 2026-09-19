@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=87">
-<link rel="icon" href="favicon-64.png?v=87" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=87" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=87" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=87">
+<link rel="manifest" href="manifest.webmanifest?v=88">
+<link rel="icon" href="favicon-64.png?v=88" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=88" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=88" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=88">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -50,65 +50,64 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 .overview-week-special{color:var(--text);font-weight:750}
 @media(max-width:700px){.overview-week-cell,.overview-week-day{height:560px}}@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:560px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
 
-/* v87 · meteorologia por localização atual + texto dos horários a 2× */
+/* v88 · meteorologia no topo + horários a 1,5× */
 .weather-strip{display:block;width:max-content;max-width:100%;margin:0 auto 10px;padding:8px 12px;border:1px solid var(--border);border-radius:11px;background:#FFFFFF;color:var(--primary);font-size:.78rem;font-weight:800;line-height:1.25;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .weather-strip::-webkit-scrollbar{display:none}.weather-strip.is-error{font-weight:700;color:var(--muted)}.weather-strip .weather-source{font-weight:650;opacity:.72}
+#today>.weather-strip{margin-top:-2px;margin-bottom:12px}
 
-/* A grelha cresce ligeiramente para acomodar o texto duplicado sem esmagar blocos curtos. */
-.timeline{height:920px;grid-template-columns:76px repeat(4,minmax(0,1fr))}
-.person-timeline.week-view{grid-template-columns:76px repeat(5,minmax(0,1fr))}
-.time-label{font-size:1.40rem;left:5px}
-.lane-head{height:68px;padding:10px 4px;font-size:1.72rem;line-height:1.03;white-space:normal;overflow-wrap:anywhere}
-.live-badge{font-size:1.16rem;padding:3px 6px;margin-left:5px}
-.block{font-size:1.44rem;line-height:1.04;padding:5px 5px}
-.block strong{font-size:1.48rem;line-height:1.02}.block em{font-size:1.44rem;line-height:1.02}
-.block.medium-block{font-size:1.20rem}.block.medium-block strong{font-size:1.24rem}.block.medium-block em{font-size:1.10rem}
-.block.short-block{font-size:1rem;line-height:.98}.block.short-block strong{font-size:1.04rem}.block.short-block em{font-size:.90rem}
-.lane-message{font-size:1.36rem;line-height:1.12}.lane-message.secondary{font-size:1.24rem}
-.now-line{left:76px}
-.overview-mini-head{font-size:1.44rem;line-height:1.05}
-.overview-mini-event{font-size:1.18rem;line-height:1.08}.overview-mini-event .mini-time{font-size:1.26rem}.overview-mini-event strong{font-size:1.32rem}.overview-mini-event span{font-size:1.18rem}.overview-mini-empty{font-size:1.24rem}
-.overview-week-grid{grid-template-columns:100px repeat(4,minmax(0,1fr))}
-.overview-week-person{font-size:1.34rem;line-height:1.05}.overview-week-day{font-size:1.32rem;line-height:1.08}
-.overview-week-cell,.overview-week-day{height:920px}.overview-week-event{font-size:1.10rem;line-height:1.02;padding:4px 3px}.overview-week-event b{font-size:1.12rem}.overview-week-empty,.overview-week-special{font-size:1.06rem}
+/* 1,5× face aos tamanhos originais da grelha. */
+.timeline{height:800px;grid-template-columns:75px repeat(4,minmax(0,1fr))}
+.person-timeline.week-view{grid-template-columns:75px repeat(5,minmax(0,1fr))}
+.time-label{font-size:1.05rem;left:5px}
+.lane-head{height:52px;padding:8px 3px;font-size:1.29rem;line-height:1.03;white-space:normal;overflow-wrap:anywhere}
+.live-badge{font-size:.87rem;padding:2px 5px;margin-left:4px}
+.block{font-size:1.08rem;line-height:1.04;padding:4px 4px}
+.block strong{font-size:1.11rem;line-height:1.02}.block em{font-size:1.08rem;line-height:1.02}
+.lane-message{top:58px;font-size:1.02rem;line-height:1.12}.lane-message.secondary{font-size:.93rem}
+.now-line{left:75px}
+.overview-mini-head{font-size:1.08rem;line-height:1.05}
+.overview-mini-event{font-size:.93rem;line-height:1.08}.overview-mini-event .mini-time{font-size:.945rem}.overview-mini-event strong{font-size:.99rem}.overview-mini-event span{font-size:.885rem}.overview-mini-empty{font-size:.93rem}
+.overview-week-grid{grid-template-columns:96px repeat(4,minmax(0,1fr))}
+.overview-week-person{font-size:1.005rem;line-height:1.05}.overview-week-day{font-size:.99rem;line-height:1.08}
+.overview-week-cell,.overview-week-day{height:800px}.overview-week-event{font-size:.825rem;line-height:1.02;padding:4px 3px}.overview-week-event b{font-size:.84rem}.overview-week-empty,.overview-week-special{font-size:.795rem}
 
 @media(max-width:700px){
  .weather-strip{font-size:.74rem;padding:7px 9px;margin-bottom:8px}
- .timeline:not(.compact-overview){grid-template-columns:58px repeat(4,minmax(0,1fr));height:820px}
- .person-timeline.week-view:not(.compact-overview){grid-template-columns:58px repeat(5,minmax(0,1fr));height:820px}
- .time-label{left:2px;font-size:.96rem}
- .lane-head{height:60px;padding:6px 1px;font-size:1.18rem;line-height:1}
- .live-badge{display:block;width:max-content;margin:2px auto 0;font-size:.86rem;padding:2px 4px}
- .block{font-size:.96rem;line-height:1;padding:2px 2px}
- .block strong{font-size:1rem;line-height:1}.block em{font-size:.90rem;line-height:1}
- .block.medium-block{font-size:.88rem}.block.medium-block strong{font-size:.90rem}.block.medium-block em{font-size:.82rem}
- .block.short-block{font-size:.80rem;line-height:.96}.block.short-block strong{font-size:.82rem}.block.short-block em{font-size:.76rem}
- .lane-message{font-size:1.20rem}.lane-message.secondary{font-size:1.08rem}
- .now-line{left:58px}
- .overview-mini-head{font-size:1.18rem}.overview-mini-event{font-size:1rem}.overview-mini-event .mini-time{font-size:1.08rem}.overview-mini-event strong{font-size:1.12rem}.overview-mini-event span{font-size:1rem}.overview-mini-empty{font-size:1rem}
- .overview-week-grid{grid-template-columns:76px repeat(4,minmax(0,1fr));gap:4px}
- .overview-week-person{font-size:1.12rem;padding:5px 1px}.overview-week-day{font-size:1.12rem;padding:5px 1px}
- .overview-week-cell,.overview-week-day{height:820px}
- .overview-week-event{font-size:.92rem;line-height:1;padding:3px 2px}.overview-week-event b{font-size:.96rem}.overview-week-empty,.overview-week-special{font-size:.92rem}
+ .timeline:not(.compact-overview){grid-template-columns:45px repeat(4,minmax(0,1fr));height:700px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:45px repeat(5,minmax(0,1fr));height:700px}
+ .time-label{left:2px;font-size:.72rem}
+ .lane-head{height:46px;padding:5px 1px;font-size:.885rem;line-height:1}
+ .live-badge{display:block;width:max-content;margin:1px auto 0;font-size:.645rem;padding:1px 3px}
+ .block{font-size:.72rem;line-height:1;padding:2px 2px}
+ .block strong{font-size:.75rem;line-height:1}.block em{font-size:.675rem;line-height:1}
+ .block.medium-block{font-size:.66rem;line-height:.98;padding:1px}.block.medium-block strong{font-size:.675rem}.block.medium-block em{font-size:.615rem}
+ .block.short-block{font-size:.60rem;line-height:.92;padding:1px}.block.short-block strong{font-size:.615rem}.block.short-block em{font-size:.57rem}
+ .lane-message{top:52px;font-size:1.02rem}.lane-message.secondary{font-size:.93rem}
+ .now-line{left:45px}
+ .overview-mini-head{font-size:1.08rem}.overview-mini-event{font-size:.93rem}.overview-mini-event .mini-time{font-size:.945rem}.overview-mini-event strong{font-size:.99rem}.overview-mini-event span{font-size:.885rem}.overview-mini-empty{font-size:.93rem}
+ .overview-week-grid{grid-template-columns:72px repeat(4,minmax(0,1fr));gap:4px}
+ .overview-week-person{font-size:.84rem;padding:5px 1px}.overview-week-day{font-size:.84rem;padding:5px 1px}
+ .overview-week-cell,.overview-week-day{height:700px}
+ .overview-week-event{font-size:.69rem;line-height:1;padding:3px 2px}.overview-week-event b{font-size:.72rem}.overview-week-empty,.overview-week-special{font-size:.69rem}
 }
 @media(max-width:420px){
- .timeline:not(.compact-overview){grid-template-columns:54px repeat(4,minmax(0,1fr));height:820px}
- .person-timeline.week-view:not(.compact-overview){grid-template-columns:54px repeat(5,minmax(0,1fr));height:820px}
- .time-label{font-size:.88rem}
- .lane-head{font-size:1.10rem}
- .block{font-size:.90rem}.block strong{font-size:.94rem}.block em{font-size:.84rem}
- .block.medium-block{font-size:.82rem}.block.medium-block strong{font-size:.84rem}.block.medium-block em{font-size:.76rem}
- .block.short-block{font-size:.74rem}.block.short-block strong{font-size:.76rem}.block.short-block em{font-size:.70rem}
- .lane-message{font-size:1.08rem}.lane-message.secondary{font-size:.96rem}
- .now-line{left:54px}
- .overview-week-grid{grid-template-columns:70px repeat(4,minmax(0,1fr));gap:3px}
- .overview-week-person,.overview-week-day{font-size:1.12rem;padding:5px 1px}
- .overview-week-event{font-size:.92rem}.overview-week-event b{font-size:.96rem}.overview-week-empty,.overview-week-special{font-size:.92rem}
+ .timeline:not(.compact-overview){grid-template-columns:39px repeat(4,minmax(0,1fr));height:700px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:39px repeat(5,minmax(0,1fr));height:700px}
+ .time-label{font-size:.66rem}
+ .lane-head{height:46px;font-size:.825rem;padding:5px 1px}
+ .block{font-size:.675rem;padding:1px;line-height:.98}.block strong{font-size:.705rem}.block em{font-size:.63rem}
+ .block.medium-block{font-size:.615rem}.block.medium-block strong{font-size:.63rem}.block.medium-block em{font-size:.615rem}
+ .block.short-block{font-size:.555rem;line-height:.9}.block.short-block strong{font-size:.57rem}.block.short-block em{font-size:.525rem}
+ .lane-message{top:52px;font-size:1.02rem}.lane-message.secondary{font-size:.93rem}
+ .now-line{left:39px}
+ .overview-week-grid{grid-template-columns:66px repeat(4,minmax(0,1fr));gap:3px}
+ .overview-week-person,.overview-week-day{font-size:.84rem;padding:5px 1px}
+ .overview-week-event{font-size:.69rem}.overview-week-event b{font-size:.72rem}.overview-week-empty,.overview-week-special{font-size:.69rem}
 }
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v87</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v88</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -118,7 +117,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 <div id="sportsTabRow" class="sports-tab-row hidden"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalFamilyBanner" class="family-banner hidden"></div>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
-<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
+<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
 <section id="sports" class="screen hidden">
   <div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
   <div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
@@ -256,7 +255,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=87;
+const APP_BUILD=88;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
@@ -362,7 +361,7 @@ Carlos:{
 };
 let view="overview",selectedDay=null,person=null,personMode="day",overviewMode="day",statsDate=null,installPrompt=null;
 const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)");
-const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?820:920,laneHeaderHeight=()=>isMobileTimeline()?60:68,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
+const qs=s=>document.querySelector(s),qsa=s=>document.querySelectorAll(s),toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?700:800,laneHeaderHeight=()=>isMobileTimeline()?46:52,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
 function ymdDay(s){const [y,m,d]=s.split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/MS_DAY)}
 function currentLocalDay(){const n=new Date();return Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/MS_DAY)}
 const HOLIDAY_DAYS=new Set([...NATIONAL_HOLIDAYS,...LOCAL_NO_CLASS_DAYS].map(ymdDay));
