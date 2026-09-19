@@ -1,12 +1,39 @@
 {
-  "generated_at": "2026-09-19T12:50:00+01:00",
-  "timezone_note": "Os horários são guardados com referência temporal e apresentados na app no fuso horário local do dispositivo.",
+  "generated_at": "2026-09-19T12:46:27.302513+00:00",
+  "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
   "sources": [
-    "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
-    "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos",
     "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
     "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-    "https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+    "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+    "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+    "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos"
+  ],
+  "source_checks": [
+    {
+      "url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "ok": false,
+      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+    },
+    {
+      "url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "ok": false,
+      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/gil-vicente/jogos"
+    },
+    {
+      "url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "ok": false,
+      "error": "403 Client Error: Forbidden for url: https://www.zerozero.pt/equipa/oc-barcelos/agenda"
+    },
+    {
+      "url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos",
+      "ok": false,
+      "error": "403 Client Error: Forbidden for url: https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos"
+    },
+    {
+      "url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos",
+      "ok": false,
+      "error": "403 Client Error: Forbidden for url: https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/jogos"
+    }
   ],
   "events": [
     {
@@ -64,19 +91,6 @@
     },
     {
       "date": "2026-09-27",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "Riba d'Ave HC",
-      "away": "OC Barcelos",
-      "competition": "Taça do Minho 2026 · Jornada 3",
-      "location": "Riba de Ave, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
-      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
-    },
-    {
-      "date": "2026-09-27",
       "start": "2026-09-27T18:45:00Z",
       "entity": "Seleção Nacional A",
       "sport": "Futebol",
@@ -87,6 +101,19 @@
       "channel": "Transmissão a confirmar",
       "match_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-a/jogos/ficha-de-jogo/match/2539279",
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056"
+    },
+    {
+      "date": "2026-09-27",
+      "start": null,
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "Riba d'Ave HC",
+      "away": "OC Barcelos",
+      "competition": "Taça do Minho 2026 · Jornada 3",
+      "location": "Riba de Ave, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
     },
     {
       "date": "2026-09-30",
@@ -272,16 +299,16 @@
     },
     {
       "date": "2026-11-08",
-      "start": null,
-      "entity": "Óquei Clube de Barcelos",
-      "sport": "Hóquei em Patins",
-      "home": "OC Barcelos",
-      "away": "SC Tomar",
-      "competition": "Campeonato Placard 2026/27 · Jornada 1",
-      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
-      "source_url": "https://fpp.pt/jogos-do-campeonato-placard-definidos-para-a-proxima-epoca/"
+      "start": "2026-11-08T15:30:00Z",
+      "entity": "Gil Vicente FC",
+      "sport": "Futebol",
+      "home": "Santa Clara",
+      "away": "Gil Vicente FC",
+      "competition": "Liga Portugal Betclic 2026/27 · Jornada 11",
+      "location": "Estádio de São Miguel, Ponta Delgada, Portugal",
+      "channel": "Sport TV",
+      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
     },
     {
       "date": "2026-11-08",
@@ -298,16 +325,16 @@
     },
     {
       "date": "2026-11-08",
-      "start": "2026-11-08T15:30:00Z",
-      "entity": "Gil Vicente FC",
-      "sport": "Futebol",
-      "home": "Santa Clara",
-      "away": "Gil Vicente FC",
-      "competition": "Liga Portugal Betclic 2026/27 · Jornada 11",
-      "location": "Estádio de São Miguel, Ponta Delgada, Portugal",
-      "channel": "Sport TV",
-      "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
+      "start": null,
+      "entity": "Óquei Clube de Barcelos",
+      "sport": "Hóquei em Patins",
+      "home": "OC Barcelos",
+      "away": "SC Tomar",
+      "competition": "Campeonato Placard 2026/27 · Jornada 1",
+      "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "source_url": "https://fpp.pt/jogos-do-campeonato-placard-definidos-para-a-proxima-epoca/"
     },
     {
       "date": "2026-11-14",
@@ -402,19 +429,6 @@
     },
     {
       "date": "2026-11-29",
-      "start": "2026-11-29T20:30:00Z",
-      "entity": "FC Porto",
-      "sport": "Futebol",
-      "home": "FC Porto",
-      "away": "Sporting CP",
-      "competition": "Liga Portugal Betclic 2026/27 · Jornada 12",
-      "location": "Estádio do Dragão, Porto, Portugal",
-      "channel": "Transmissão a confirmar",
-      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
-      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
-    },
-    {
-      "date": "2026-11-29",
       "start": "2026-11-29T18:00:00Z",
       "entity": "Gil Vicente FC",
       "sport": "Futebol",
@@ -425,6 +439,19 @@
       "channel": "Sport TV",
       "match_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
+    },
+    {
+      "date": "2026-11-29",
+      "start": "2026-11-29T20:30:00Z",
+      "entity": "FC Porto",
+      "sport": "Futebol",
+      "home": "FC Porto",
+      "away": "Sporting CP",
+      "competition": "Liga Portugal Betclic 2026/27 · Jornada 12",
+      "location": "Estádio do Dragão, Porto, Portugal",
+      "channel": "Transmissão a confirmar",
+      "match_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
     },
     {
       "date": "2026-12-02",
