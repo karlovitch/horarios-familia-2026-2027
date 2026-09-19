@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
+from difflib import SequenceMatcher
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -39,6 +41,136 @@ def get(url):
         jr=requests.get("https://r.jina.ai/http://"+clean,headers=HEADERS,timeout=45)
         jr.raise_for_status()
         return jr.text
+
+SOFASCORE_DAILY_CACHE={}
+ZEROZERO_PAGE_CACHE={}
+
+def _norm_name(value):
+    text=unicodedata.normalize("NFKD",str(value or "")).encode("ascii","ignore").decode("ascii").lower()
+    replacements={
+      "sub-21":"u21","sub 21":"u21","under 21":"u21","pais de gales":"wales","republica checa":"czech republic",
+      "dinamarca":"denmark","noruega":"norway","bulgaria":"bulgaria","maritimo":"maritimo",
+      "selecao nacional a":"portugal","selecao nacional":"portugal"
+    }
+    for a,b in replacements.items(): text=text.replace(a,b)
+    text=re.sub(r"\b(fc|cf|sc|cd|club|clube|futebol|football)\b"," ",text)
+    return re.sub(r"[^a-z0-9]+"," ",text).strip()
+
+def _team_similarity(a,b):
+    a=_norm_name(a);b=_norm_name(b)
+    if not a or not b:return 0.0
+    if a==b:return 1.0
+    if a in b or b in a:return .92
+    at=set(a.split());bt=set(b.split())
+    token=(2*len(at&bt)/(len(at)+len(bt))) if at and bt else 0
+    seq=SequenceMatcher(None,a,b).ratio()
+    return max(token,seq)
+
+def _football_candidate_score(event,cand):
+    ch=(cand.get("homeTeam") or {}).get("name","")
+    ca=(cand.get("awayTeam") or {}).get("name","")
+    eh=event.get("home","");ea=event.get("away","")
+    direct=_team_similarity(eh,ch)+_team_similarity(ea,ca)
+    reverse=_team_similarity(eh,ca)+_team_similarity(ea,ch)
+    score=max(direct,reverse)
+    ent=(event.get("entity") or "").lower()
+    joined=(" "+_norm_name(ch)+" "+_norm_name(ca)+" ")
+    if "sub-21" in ent or "u21" in ent:
+        if "u21" not in joined:score-=.8
+    elif "seleção nacional a" in ent or "selecao nacional a" in ent:
+        if "u21" in joined:score-=.8
+    return score
+
+def sofascore_match_url(event):
+    date_iso=event.get("date")
+    if not date_iso:return None
+    if date_iso not in SOFASCORE_DAILY_CACHE:
+        url=f"https://www.sofascore.com/api/v1/sport/football/scheduled-events/{date_iso}"
+        try:
+            r=requests.get(url,headers=HEADERS,timeout=25)
+            r.raise_for_status()
+            SOFASCORE_DAILY_CACHE[date_iso]=r.json().get("events",[])
+        except Exception:
+            SOFASCORE_DAILY_CACHE[date_iso]=[]
+    best=None;best_score=0
+    for cand in SOFASCORE_DAILY_CACHE[date_iso]:
+        score=_football_candidate_score(event,cand)
+        if score>best_score:
+            best,best_score=cand,score
+    if not best or best_score<1.35:return None
+    custom=best.get("customId")
+    hs=(best.get("homeTeam") or {}).get("slug")
+    aws=(best.get("awayTeam") or {}).get("slug")
+    if custom and hs and aws:
+        return f"https://www.sofascore.com/pt-pt/football/match/{hs}-{aws}/{custom}"
+    if best.get("id") and hs and aws:
+        return f"https://www.sofascore.com/pt-pt/football/match/{hs}-{aws}#id:{best['id']}"
+    return None
+
+def _zerozero_links(page_url):
+    if not page_url:return []
+    if page_url in ZEROZERO_PAGE_CACHE:return ZEROZERO_PAGE_CACHE[page_url]
+    links=[]
+    try:
+        html=get(page_url)
+        soup=BeautifulSoup(html,"html.parser")
+        for a in soup.find_all("a",href=True):
+            href=urljoin(page_url,a["href"])
+            if re.search(r"zerozero\.pt/jogo/\d{4}-\d{2}-\d{2}-",href):
+                links.append(href.split("?")[0].split("#")[0])
+        for href in re.findall(r"https?://(?:www\.)?zerozero\.pt/jogo/[^\s)\]"']+",html):
+            links.append(href.split("?")[0].split("#")[0])
+    except Exception:
+        pass
+    ZEROZERO_PAGE_CACHE[page_url]=list(dict.fromkeys(links))
+    return ZEROZERO_PAGE_CACHE[page_url]
+
+def zerozero_hockey_match_url(event):
+    date_iso=event.get("date","")
+    pages=[
+      event.get("source_url"),event.get("match_url"),
+      "https://www.zerozero.pt/equipa/oc-barcelos/agenda",
+      "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
+    ]
+    candidates=[]
+    for page in dict.fromkeys(p for p in pages if p):
+        candidates.extend(_zerozero_links(page))
+    home=_norm_name(event.get("home",""));away=_norm_name(event.get("away",""))
+    best=None;best_score=-1
+    for url in dict.fromkeys(candidates):
+        low=unicodedata.normalize("NFKD",url).encode("ascii","ignore").decode("ascii").lower()
+        if date_iso and date_iso not in low:continue
+        score=0
+        for token in [t for t in home.split() if len(t)>2]:
+            if token in low:score+=1
+        for token in [t for t in away.split() if len(t)>2]:
+            if token in low:score+=1
+        if score>best_score:
+            best,best_score=url,score
+    return best if best_score>=2 else None
+
+def is_direct_match_url(event,url):
+    u=(url or "").lower()
+    sport=(event.get("sport") or "").lower()
+    if "futebol" in sport:return "sofascore.com" in u and "/football/match/" in u
+    if "hoquei" in sport or "hóquei" in sport:return "zerozero.pt/jogo/" in u
+    return bool(url)
+
+def enforce_direct_match_urls(events):
+    resolved=0
+    for event in events:
+        sport=(event.get("sport") or "").lower()
+        direct=None
+        if "futebol" in sport:
+            direct=sofascore_match_url(event)
+        elif "hoquei" in sport or "hóquei" in sport:
+            direct=zerozero_hockey_match_url(event)
+        if direct:
+            event["match_url"]=direct;resolved+=1
+        elif sport and ("futebol" in sport or "hoquei" in sport or "hóquei" in sport):
+            if not is_direct_match_url(event,event.get("match_url")):
+                event["match_url"]=None
+    return resolved
 
 def load():
     try:
@@ -465,7 +597,9 @@ except Exception as exc:
     for e in generated_f1: existing[key(e)]=e
     checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":False,"fallback":"Formula1.com","events_found":len(generated_f1),"error":str(exc)[:180]})
 for e in portugal_hockey_seed(): existing[key(e)]=e
-events=sorted(existing.values(),key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
+events=list(existing.values())
+direct_resolved=enforce_direct_match_urls(events)
+events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
  "generated_at":datetime.now(timezone.utc).isoformat(),
  "timezone_note":"Horas apresentadas na app no fuso horário local do dispositivo. Horas por confirmar mantêm-se explicitamente assinaladas.",
@@ -474,4 +608,4 @@ out={
  "events":events
 }
 OUT.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-print(f"{len(events)} eventos; fontes verificadas: {len(checked)}")
+print(f"{len(events)} eventos; fontes verificadas: {len(checked)}; fichas diretas resolvidas: {direct_resolved}")
