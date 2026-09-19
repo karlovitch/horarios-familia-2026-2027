@@ -1,5 +1,5 @@
-const C='horarios-familia-2026-27-v34';
-const CORE=['./?v=34','index.html?v=34','manifest.webmanifest?v=34','icon.svg'];
+const C='horarios-familia-2026-27-v35';
+const CORE=['./?v=35','index.html?v=35','manifest.webmanifest?v=35','icon.svg'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
