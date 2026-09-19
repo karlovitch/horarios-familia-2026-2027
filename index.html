@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=68">
+<link rel="manifest" href="manifest.webmanifest?v=69">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -45,7 +45,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v68</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v69</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -192,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=68;
+const APP_BUILD=69;
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -690,18 +690,20 @@ function formatSportsLocation(ev){
  return loc||"Local a confirmar";
 }
 function isActualStreamingUrl(url){
- const u=(url||"").toLowerCase();
- return /rtp\.pt\/play\/(direto|p\d+)/.test(u)||/tv\.fpp\.pt/.test(u)||/dazn\.com/.test(u)||/play\.realmadrid\.com/.test(u)||/youtube\.com|youtu\.be|uefa\.tv|fifa\.com\/fifaplus/.test(u);
+ const u=(url||"").toLowerCase().replace(/\/$/,"");
+ if(!u)return false;
+ if(u==="https://www.dazn.com/pt-pt/home"||u==="https://tv.fpp.pt"||u==="https://play.realmadrid.com")return false;
+ return /rtp\.pt\/play\/(direto|p\d+)/.test(u)||/tv\.fpp\.pt\/.+/.test(u)||/dazn\.com\/.+/.test(u)||/play\.realmadrid\.com\/.+/.test(u)||/youtube\.com|youtu\.be|uefa\.tv|fifa\.com\/fifaplus/.test(u);
 }
 function sportsBroadcastInfo(ev){
  const entity=(ev.entity||"").toLowerCase(),comp=(ev.competition||"").toLowerCase(),raw=(ev.channel||"").trim();
  let channel=raw,stream=isActualStreamingUrl(ev.stream_url)?ev.stream_url:"";
  const uncertain=!raw||/confirmar/i.test(raw);
- if(entity.includes("formula 1")){channel="DAZN 5";stream=stream||"https://www.dazn.com/pt-PT/home"}
+ if(entity.includes("formula 1")){channel="DAZN 5"}
  else if(entity.includes("seleção nacional a")){if(uncertain)channel="RTP 1 / SPORT TV Portugal";if(/rtp 1/i.test(channel))stream=stream||"https://www.rtp.pt/play/direto/rtp1"}
  else if(entity.includes("sub-21")){if(uncertain)channel="Canal 11"}
  else if(entity.includes("real madrid")){
-  if(/laliga|la liga/.test(comp)){channel="DAZN Portugal";stream=stream||"https://www.dazn.com/pt-PT/home"}
+  if(/laliga|la liga/.test(comp)){channel="DAZN Portugal"}
   else if(/champions/.test(comp)&&uncertain)channel="SPORT TV / DAZN / LiveMode — operador do jogo a confirmar";
  }
  else if(entity.includes("fc porto")||entity.includes("gil vicente")){
@@ -710,7 +712,7 @@ function sportsBroadcastInfo(ev){
  }
  if(entity.includes("óquei clube de barcelos")||entity.includes("hóquei em patins")){
   if(uncertain)channel=/champions/.test(comp)?"FPP TV / WSE TV — emissão específica a confirmar":"FPP TV — emissão específica a confirmar";
-  if(/fpp tv/i.test(channel))stream=stream||"https://tv.fpp.pt/";
+  if(/fpp tv/i.test(channel)&&!stream)stream="";
  }
  return {channel:channel||"Transmissão em Portugal a confirmar",stream};
 }
@@ -781,7 +783,7 @@ function renderSportsAgenda(iso){
 }
 async function loadSportsInfo(){
  try{
-  const r=await fetch("sports-info.json?v=68&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("sports-info.json?v=69&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
  updateSportsTabVisibility(statsIso());
@@ -1391,10 +1393,24 @@ const SAINT_HAGIOGRAPHIES={
 function saintKey(value){
  return String(value||"").toLowerCase().replace(/\s*[–—-].*$/,"").replace(/\s+/g," ").trim();
 }
-function saintsHTML(arr,iso){
+function normalizedSaintTokens(value){
+ return saintKey(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\b(s|ss|sao|santa|santo|santos|santas|bispo|martir|papa|presbitero|virgem|abade|doutor|igreja|mf)\b/g," ").replace(/[^a-z0-9]+/g," ").trim().split(/\s+/).filter(x=>x.length>2);
+}
+function bestHagiographyUrl(saint,items){
+ const a=normalizedSaintTokens(saint);
+ let best=null,bestScore=0;
+ for(const item of items||[]){
+  const b=normalizedSaintTokens(item.name||"");
+  const score=a.filter(x=>b.includes(x)).length;
+  if(score>bestScore){best=item;bestScore=score}
+ }
+ return bestScore>0&&best&&best.url?best.url:"";
+}
+function saintsHTML(arr,iso,hagiographies=[]){
  const fallback=vaticanSaintsUrl(iso);
  return (arr||[]).map(s=>{
-  const url=SAINT_HAGIOGRAPHIES[saintKey(s)]||fallback;
+  const specific=bestHagiographyUrl(s,hagiographies);
+  const url=specific||SAINT_HAGIOGRAPHIES[saintKey(s)]||fallback;
   return '<span class="saint-item">'+esc(s)+' · <a class="feature-read-more" href="'+safeUrl(url)+'" target="_blank" rel="noopener noreferrer">hagiografia</a></span>';
  }).join("");
 }
@@ -1427,7 +1443,7 @@ function renderDailyInfo(){
  const litRaw=meaningfulLiturgicalText(x.liturgical_day);
  const saintsArr=meaningfulSaints(x.saints);
  const lit=litRaw?esc(litRaw):"";
- const saints=saintsHTML(saintsArr,selected);
+ const saints=saintsHTML(saintsArr,selected,x.saint_hagiographies||[]);
  const gospel=x.gospel?esc(x.gospel):"";
  const litUrl=x&&x.liturgy_url?x.liturgy_url:liturgiaUrlForDate(selected);
  const gospelBox=x.gospel?gospelReflectionsHTML(x.gospel):"";
@@ -1447,7 +1463,7 @@ function renderDailyInfo(){
 }
 async function loadHistoryInfo(){
  try{
-  const r=await fetch("history-info.json?v=68&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("history-info.json?v=69&ts="+Date.now(),{cache:"no-store"});
   if(r.ok){HISTORY_INFO=await r.json();try{localStorage.setItem("historyInfo",JSON.stringify(HISTORY_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("historyInfo");if(s)HISTORY_INFO=JSON.parse(s)}catch(_){}
@@ -1456,7 +1472,7 @@ async function loadHistoryInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=68",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=69",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1775,6 +1791,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=68",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=69",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
