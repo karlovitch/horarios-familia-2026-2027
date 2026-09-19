@@ -791,79 +791,63 @@ function renderTodayAstronomyBanner(iso){
  if(special)html+='<div class="astro-note"><b>'+esc(special.name)+':</b> '+esc(special.explanation)+'<br><b>Curiosidade '+iso.slice(0,4)+':</b> '+esc(special.curiosity)+'</div>';
  el.innerHTML=html;el.classList.remove("hidden");
 }
-const WORLD_HISTORY_FEATURES=[
- {year:"476",text:"Queda do Império Romano do Ocidente, um marco tradicional da transição da Antiguidade para a Idade Média europeia."},
- {year:"1215",text:"A Magna Carta é selada em Inglaterra e torna-se uma referência histórica na limitação do poder régio."},
- {year:"1453",text:"A conquista de Constantinopla pelos Otomanos põe fim ao Império Bizantino."},
- {year:"1492",text:"A viagem de Cristóvão Colombo chega às Américas, transformando as relações entre continentes."},
- {year:"1517",text:"As teses de Martinho Lutero tornam-se um símbolo do início da Reforma Protestante."},
- {year:"1776",text:"As Treze Colónias proclamam a Declaração de Independência dos Estados Unidos."},
- {year:"1789",text:"A Revolução Francesa inicia uma transformação política e social de alcance mundial."},
- {year:"1804",text:"Napoleão Bonaparte é coroado imperador dos Franceses."},
- {year:"1815",text:"A derrota de Napoleão em Waterloo encerra o ciclo das Guerras Napoleónicas."},
- {year:"1848",text:"Uma vaga de revoluções percorre grande parte da Europa, reivindicando reformas políticas e nacionais."},
- {year:"1861",text:"Começa a Guerra Civil dos Estados Unidos, centrada na União, secessão e escravatura."},
- {year:"1869",text:"O Canal do Suez é inaugurado, reduzindo a distância marítima entre a Europa e a Ásia."},
- {year:"1914",text:"Começa a Primeira Guerra Mundial, conflito que altera profundamente a ordem internacional."},
- {year:"1917",text:"A Revolução Russa derruba a ordem imperial e abre caminho à formação da União Soviética."},
- {year:"1918",text:"O Armistício encerra os combates da Primeira Guerra Mundial na Frente Ocidental."},
- {year:"1929",text:"O colapso bolsista de Wall Street assinala o início da Grande Depressão."},
- {year:"1939",text:"A invasão da Polónia pela Alemanha marca o início da Segunda Guerra Mundial na Europa."},
- {year:"1945",text:"É criada a Organização das Nações Unidas após a Segunda Guerra Mundial."},
- {year:"1947",text:"A Índia torna-se independente do domínio britânico."},
- {year:"1948",text:"A Assembleia Geral das Nações Unidas proclama a Declaração Universal dos Direitos Humanos."},
- {year:"1949",text:"É fundada a República Popular da China."},
- {year:"1957",text:"O Sputnik 1 torna-se o primeiro satélite artificial da Terra e inaugura a era espacial."},
- {year:"1961",text:"Yuri Gagarin torna-se o primeiro ser humano a viajar no espaço."},
- {year:"1969",text:"A missão Apollo 11 leva seres humanos à superfície da Lua."},
- {year:"1989",text:"A queda do Muro de Berlim simboliza o colapso da divisão política da Europa da Guerra Fria."},
- {year:"1991",text:"A dissolução da União Soviética encerra uma das principais estruturas políticas do século XX."},
- {year:"1994",text:"As primeiras eleições multirraciais da África do Sul conduzem Nelson Mandela à presidência."},
- {year:"2001",text:"Os atentados de 11 de setembro nos Estados Unidos alteram profundamente a política internacional."},
- {year:"2004",text:"A União Europeia realiza o seu maior alargamento, integrando dez novos Estados."},
- {year:"2020",text:"A Organização Mundial da Saúde caracteriza a COVID-19 como pandemia."}
-];
-const PORTUGAL_HISTORY_FEATURES=[
- {year:"1143",text:"O Tratado de Zamora é tradicionalmente associado ao reconhecimento político do Reino de Portugal."},
- {year:"1179",text:"A bula Manifestis Probatum reconhece D. Afonso Henriques como rei de Portugal."},
- {year:"1385",text:"A vitória portuguesa em Aljubarrota consolida a independência durante a crise de 1383-1385."},
- {year:"1415",text:"A conquista de Ceuta marca o início da expansão portuguesa no Norte de África."},
- {year:"1498",text:"Vasco da Gama chega à Índia por via marítima, ligando diretamente a Europa ao oceano Índico."},
- {year:"1500",text:"A armada de Pedro Álvares Cabral chega ao território que viria a ser o Brasil."},
- {year:"1580",text:"A crise dinástica conduz à União Ibérica sob Filipe II de Espanha, Filipe I de Portugal."},
- {year:"1640",text:"A Restauração da Independência coloca a dinastia de Bragança no trono português."},
- {year:"1755",text:"O terramoto de Lisboa provoca destruição devastadora e marca profundamente o reinado de D. José I."},
- {year:"1807",text:"A corte portuguesa transfere-se para o Brasil perante a invasão francesa."},
- {year:"1820",text:"A Revolução Liberal do Porto inicia a construção do regime constitucional português."},
- {year:"1822",text:"É aprovada a primeira Constituição portuguesa."},
- {year:"1826",text:"D. Pedro IV outorga a Carta Constitucional."},
- {year:"1834",text:"A Convenção de Évora-Monte encerra a Guerra Civil entre liberais e absolutistas."},
- {year:"1890",text:"O Ultimato britânico agrava a contestação política à monarquia portuguesa."},
- {year:"1910",text:"A Revolução de 5 de Outubro implanta a República em Portugal."},
- {year:"1911",text:"A Primeira República aprova uma nova Constituição."},
- {year:"1916",text:"Portugal entra formalmente na Primeira Guerra Mundial contra a Alemanha."},
- {year:"1926",text:"O golpe militar de 28 de Maio põe fim à Primeira República."},
- {year:"1933",text:"A nova Constituição institucionaliza o Estado Novo."},
- {year:"1949",text:"Portugal integra o grupo fundador da NATO."},
- {year:"1961",text:"O início da guerra em Angola abre o ciclo das Guerras Coloniais portuguesas."},
- {year:"1968",text:"Marcelo Caetano sucede a António de Oliveira Salazar na chefia do Governo."},
- {year:"1974",text:"A Revolução de 25 de Abril derruba a ditadura e inicia a transição democrática."},
- {year:"1975",text:"O processo de descolonização conduz à independência das antigas colónias africanas portuguesas."},
- {year:"1976",text:"Entra em vigor a Constituição da República Portuguesa democrática."},
- {year:"1986",text:"Portugal adere às Comunidades Europeias."},
- {year:"1998",text:"A Expo 98, em Lisboa, assinala uma grande transformação urbana na zona oriental da cidade."},
- {year:"1999",text:"Portugal transfere para a China a administração de Macau."},
- {year:"2002",text:"As notas e moedas de euro entram em circulação em Portugal."},
- {year:"2007",text:"O Tratado de Lisboa é assinado na capital portuguesa pelos Estados-membros da União Europeia."},
- {year:"2011",text:"Portugal solicita assistência financeira internacional durante a crise da dívida soberana."}
-];
-function dayOfYear(iso){const d=dateFromIso(iso),y=d.getUTCFullYear();return Math.floor((d-Date.UTC(y,0,1))/MS_DAY)}
-function historicalFeature(pool,iso,salt){const y=Number(iso.slice(0,4)),idx=(dayOfYear(iso)+(y-2026)*salt+pool.length*10)%pool.length;return pool[idx]}
+const WORLD_HISTORY_BY_DATE={
+ "01-27":[{year:"1945",text:"O Exército Vermelho liberta o campo de Auschwitz-Birkenau, na Polónia ocupada."}],
+ "02-11":[{year:"1990",text:"Nelson Mandela é libertado após 27 anos de prisão na África do Sul."}],
+ "03-11":[{year:"2020",text:"A Organização Mundial da Saúde caracteriza a COVID-19 como pandemia."}],
+ "03-20":[{year:"2003",text:"Começa a invasão do Iraque por uma coligação liderada pelos Estados Unidos."}],
+ "04-12":[{year:"1961",text:"Yuri Gagarin torna-se o primeiro ser humano a viajar no espaço."}],
+ "04-26":[{year:"1986",text:"Ocorre o acidente nuclear de Chernobyl, na então República Socialista Soviética da Ucrânia."}],
+ "05-08":[{year:"1945",text:"É assinalada na Europa a vitória sobre a Alemanha nazi, após a sua rendição incondicional."}],
+ "05-09":[{year:"1950",text:"Robert Schuman apresenta a declaração que está na origem do processo de integração europeia."}],
+ "06-06":[{year:"1944",text:"Os Aliados desembarcam na Normandia no Dia D, abrindo uma grande frente ocidental contra a Alemanha nazi."}],
+ "06-28":[{year:"1914",text:"O arquiduque Francisco Fernando da Áustria é assassinado em Sarajevo, desencadeando a crise que conduziria à I Guerra Mundial."}],
+ "07-14":[{year:"1789",text:"A tomada da Bastilha, em Paris, torna-se um dos acontecimentos simbólicos da Revolução Francesa."}],
+ "07-20":[{year:"1969",text:"A Apollo 11 realiza a primeira alunagem tripulada; Neil Armstrong e Buzz Aldrin caminham na Lua."}],
+ "08-06":[{year:"1945",text:"Uma bomba atómica é lançada sobre Hiroshima, no Japão."}],
+ "08-09":[{year:"1945",text:"Uma segunda bomba atómica é lançada sobre Nagasaki, no Japão."}],
+ "08-15":[{year:"1947",text:"A Índia torna-se independente do domínio britânico."}],
+ "09-01":[{year:"1939",text:"A Alemanha invade a Polónia, marcando o início da II Guerra Mundial na Europa."}],
+ "09-02":[{year:"1945",text:"O Japão assina formalmente o instrumento de rendição, encerrando a II Guerra Mundial."}],
+ "09-11":[{year:"2001",text:"Os atentados de 11 de setembro atingem os Estados Unidos e alteram profundamente a política internacional."}],
+ "10-04":[{year:"1957",text:"A União Soviética lança o Sputnik 1, o primeiro satélite artificial da Terra."}],
+ "10-07":[{year:"1571",text:"A Batalha de Lepanto termina com a vitória da Liga Santa sobre a frota otomana."}],
+ "10-24":[{year:"1945",text:"Entra em vigor a Carta das Nações Unidas, data assinalada como fundação oficial da ONU."}],
+ "11-09":[{year:"1989",text:"A abertura das fronteiras da República Democrática Alemã conduz à queda do Muro de Berlim."}],
+ "11-11":[{year:"1918",text:"Entra em vigor o armistício que encerra os combates da I Guerra Mundial na Frente Ocidental."}],
+ "12-10":[{year:"1948",text:"A Assembleia Geral das Nações Unidas adota a Declaração Universal dos Direitos Humanos."}],
+ "12-26":[{year:"1991",text:"A União Soviética é formalmente dissolvida."}]
+};
+const PORTUGAL_HISTORY_BY_DATE={
+ "01-11":[{year:"1890",text:"O Reino Unido apresenta a Portugal o Ultimato britânico relativo às pretensões territoriais portuguesas em África."}],
+ "01-31":[{year:"1891",text:"Ocorre no Porto a revolta republicana de 31 de Janeiro."}],
+ "02-01":[{year:"1908",text:"O rei D. Carlos I e o príncipe herdeiro D. Luís Filipe são assassinados no Terreiro do Paço, em Lisboa."}],
+ "03-09":[{year:"1916",text:"A Alemanha declara guerra a Portugal, formalizando a entrada portuguesa na I Guerra Mundial."}],
+ "04-09":[{year:"1918",text:"As forças portuguesas combatem na Batalha de La Lys, na Flandres, durante a I Guerra Mundial."}],
+ "04-25":[{year:"1974",text:"O Movimento das Forças Armadas derruba a ditadura do Estado Novo e inicia a transição democrática."}],
+ "05-09":[{year:"1386",text:"Portugal e Inglaterra celebram o Tratado de Windsor, reforçando a aliança entre os dois reinos."}],
+ "05-13":[{year:"1917",text:"Tem lugar a primeira das aparições de Fátima relatadas pelos três pastorinhos."}],
+ "05-28":[{year:"1926",text:"Um golpe militar iniciado em Braga põe fim à I República e abre caminho à Ditadura Militar."}],
+ "06-10":[{year:"1579/1580",text:"A data é tradicionalmente associada à morte de Luís de Camões, ocorrida em 1579 ou 1580, e viria a ser escolhida para o Dia de Portugal."}],
+ "07-24":[{year:"1833",text:"As forças liberais entram em Lisboa durante a Guerra Civil Portuguesa."}],
+ "08-14":[{year:"1385",text:"O exército português vence as forças castelhanas na Batalha de Aljubarrota."}],
+ "08-21":[{year:"1415",text:"As forças portuguesas conquistam Ceuta, episódio que marca o início da expansão portuguesa no Norte de África."}],
+ "08-24":[{year:"1820",text:"Começa no Porto a Revolução Liberal de 1820."}],
+ "09-12":[{year:"1297",text:"Portugal e Castela celebram o Tratado de Alcanizes, que fixa grande parte da fronteira portuguesa."}],
+ "10-05":[{year:"1910",text:"A Revolução de 5 de Outubro derruba a monarquia constitucional e implanta a República em Portugal."}],
+ "11-01":[{year:"1755",text:"Um grande terramoto, seguido de incêndios e maremoto, devasta Lisboa e outras regiões."}],
+ "12-01":[{year:"1640",text:"A revolta de 1 de Dezembro põe fim à União Ibérica e restaura a independência portuguesa."}],
+ "12-13":[{year:"1521",text:"Morre D. Manuel I; D. João III sucede-lhe no trono português."}]
+};
+function historyFeatureForDate(map,iso){
+ const arr=map[iso.slice(5)]||[];if(!arr.length)return null;
+ return arr[Math.abs(Number(iso.slice(0,4)))%arr.length];
+}
 function renderTodayHistoryBanners(iso){
- const world=historicalFeature(WORLD_HISTORY_FEATURES,iso,11),pt=historicalFeature(PORTUGAL_HISTORY_FEATURES,iso,13);
+ const world=historyFeatureForDate(WORLD_HISTORY_BY_DATE,iso),pt=historyFeatureForDate(PORTUGAL_HISTORY_BY_DATE,iso);
  const we=qs("#todayWorldHistoryBanner"),pe=qs("#todayPortugalHistoryBanner");
- if(we)we.innerHTML='<strong>🌍 História mundial</strong><b>'+esc(world.year)+'</b> — '+esc(world.text);
- if(pe)pe.innerHTML='<strong>🇵🇹 História de Portugal</strong><b>'+esc(pt.year)+'</b> — '+esc(pt.text);
+ if(we){if(world){we.innerHTML='<strong>🌍 História mundial</strong><b>'+esc(world.year)+'</b> — '+esc(world.text);we.classList.remove("hidden")}else{we.innerHTML="";we.classList.add("hidden")}}
+ if(pe){if(pt){pe.innerHTML='<strong>🇵🇹 História de Portugal</strong><b>'+esc(pt.year)+'</b> — '+esc(pt.text);pe.classList.remove("hidden")}else{pe.innerHTML="";pe.classList.add("hidden")}}
 }
 function launchConfetti(colors){
  const layer=qs("#confettiLayer");if(!layer)return;
