@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=74">
+<link rel="manifest" href="manifest.webmanifest?v=75">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -45,7 +45,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v74</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v75</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -192,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=74;
+const APP_BUILD=75;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
@@ -694,7 +694,12 @@ function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Da
 function liturgiaUrlForDate(iso){const [y,m,d]=iso.split("-").map(Number);return "https://liturgia.pt/liturgiadiaria/dia.php?data="+y+"-"+m+"-"+d}
 function listText(arr,emptyText){return arr&&arr.length?arr.map(esc).join(" · "):emptyText}
 let SPORTS_INFO={generated_at:null,events:[]};
-function safeUrl(url){return /^https?:\/\//i.test(url||"")?url:"#"}
+function safeUrl(url){
+ try{
+  const u=new URL(String(url||""));
+  return /^https?:$/.test(u.protocol)?esc(u.href):"#";
+ }catch(_){return "#"}
+}
 function localIsoForInstant(value){
  const d=new Date(value);if(Number.isNaN(d.getTime()))return "";
  const parts=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(d);
@@ -1114,6 +1119,7 @@ function birthdayCountdownText(iso){
 }
 const CATHOLIC_DATA_BASE="https://cpbjr.github.io/catholic-readings-api";
 const CATHOLIC_DATA_RAW="https://raw.githubusercontent.com/cpbjr/catholic-readings-api/main";
+const LITURGY_CACHE_VERSION=2;
 const REMOTE_LITURGY_CACHE={};
 const REMOTE_LITURGY_LOADING=new Set();
 const REMOTE_LITURGY_FAILED=new Set();
@@ -1146,7 +1152,10 @@ function translateGospelRef(ref){
  return ref.replace(":",", ");
 }
 function remoteLiturgyFromStorage(iso){
- try{const raw=localStorage.getItem("liturgia:v25:"+iso);if(raw){const x=JSON.parse(raw);REMOTE_LITURGY_CACHE[iso]=x;return x}}catch(e){}
+ try{
+  const raw=localStorage.getItem("liturgia:v"+LITURGY_CACHE_VERSION+":"+iso);
+  if(raw){const x=JSON.parse(raw);REMOTE_LITURGY_CACHE[iso]=x;return x}
+ }catch(e){}
  return null;
 }
 async function fetchCatholicJson(path){
@@ -1177,7 +1186,7 @@ async function ensureRemoteLiturgy(iso){
   const gospel=readings&&readings.readings?translateGospelRef(readings.readings.gospel):"";
   const data={liturgical_day:liturgicalDay||"Liturgia do dia",saints,gospel,liturgy_url:liturgiaUrlForDate(iso)};
   REMOTE_LITURGY_CACHE[iso]=data;
-  try{localStorage.setItem("liturgia:v25:"+iso,JSON.stringify(data))}catch(e){}
+  try{localStorage.setItem("liturgia:v"+LITURGY_CACHE_VERSION+":"+iso,JSON.stringify(data))}catch(e){}
  }catch(e){REMOTE_LITURGY_FAILED.add(iso)}
  finally{REMOTE_LITURGY_LOADING.delete(iso);if(statsIso()===iso)renderDailyInfo()}
 }
