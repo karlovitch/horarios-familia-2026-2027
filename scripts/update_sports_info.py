@@ -118,7 +118,7 @@ def _zerozero_links(page_url):
             href=urljoin(page_url,a["href"])
             if re.search(r"zerozero\.pt/jogo/\d{4}-\d{2}-\d{2}-",href):
                 links.append(href.split("?")[0].split("#")[0])
-        for href in re.findall(r"https?://(?:www\.)?zerozero\.pt/jogo/[^\s)\]"']+",html):
+        for href in re.findall(r"""https?://(?:www\.)?zerozero\.pt/jogo/[^\s)\]"']+""",html):
             links.append(href.split("?")[0].split("#")[0])
     except Exception:
         pass
