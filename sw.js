@@ -49,7 +49,7 @@ self.addEventListener('fetch',event=>{
           }
           return res;
         })
-        .catch(()=>caches.match(key).then(r=>r||caches.match(new Request(self.location.origin+'/index.html'))))
+        .catch(()=>caches.match(key,{ignoreSearch:true}).then(r=>r||caches.match(new Request(self.location.origin+'/index.html'),{ignoreSearch:true})))
     );
     return;
   }
