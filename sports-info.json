@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T18:39:19.829Z",
+  "generated_at": "2026-09-19T18:41:03.088086+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1314,7 +1314,8 @@
       "away_score": 3,
       "status": "finished",
       "source_url": "https://www.zerozero.pt/hoquei-em-patins",
-      "match_url": null
+      "match_url": null,
+      "result_source_url": "https://www.hoqueipatins.pt/"
     },
     {
       "date": "2026-09-18",
@@ -1330,7 +1331,8 @@
       "away_score": 2,
       "status": "finished",
       "source_url": "https://www.hoqueipatins.pt/",
-      "match_url": null
+      "match_url": null,
+      "result_source_url": "https://www.hoqueipatins.pt/"
     },
     {
       "date": "2026-09-18",
@@ -1346,7 +1348,8 @@
       "away_score": 7,
       "status": "finished",
       "source_url": "https://www.hoqueipatins.pt/",
-      "match_url": null
+      "match_url": null,
+      "result_source_url": "https://www.hoqueipatins.pt/"
     },
     {
       "date": "2026-09-18",
@@ -1357,13 +1360,13 @@
       "away": "OC Barcelos",
       "competition": "Taça do Minho 2026 · Jornada 1",
       "location": "Valença, Portugal",
-      "channel": "Transmissão a confirmar",
+      "channel": "Transmissão em Portugal não registada",
       "match_url": null,
       "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
       "home_score": 2,
       "away_score": 0,
       "status": "finished",
-      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/valenca-hc-entra-vencer-na-taca-do-minho.html?m=0"
+      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
     },
     {
       "date": "2026-09-19",
@@ -1377,7 +1380,10 @@
       "channel": "FPP TV",
       "match_url": "http://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
       "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/",
-      "status": "awaiting_final"
+      "status": "finished",
+      "home_score": 9,
+      "away_score": 1,
+      "result_source_url": "https://www.hoqueipatins.pt/"
     },
     {
       "date": "2026-09-19",
