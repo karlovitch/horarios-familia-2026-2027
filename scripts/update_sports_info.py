@@ -64,7 +64,10 @@ ZEROZERO_PAGE_CACHE={}
 VERIFIED_FOOTBALL_MATCH_URLS={
     # Fichas públicas confirmadas manualmente. Flashscore é usado apenas para dados live.
     "AaftdAAL":"https://www.sofascore.com/football/match/gil-vicente-cs-maritimo/hkbskkb",
+    "EeqKlS2e":"https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
     "hGycdKve":"https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
+    "MH4bvpgD":"https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
+    "U5ZbmgKM":"https://www.sofascore.com/pt/football/match/portugal-u21-bulgaria-u21/JXbsVvc",
 }
 FLASHSCORE_HEADERS={
     **HEADERS,
