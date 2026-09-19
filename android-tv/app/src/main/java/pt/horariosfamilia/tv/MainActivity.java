@@ -12,8 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import android.net.Uri;
 
 public class MainActivity extends Activity {
     private static final String BASE_URL = "https://karlovitch.github.io/horarios-familia-2026-2027/";
@@ -74,7 +73,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        String encoded = URLEncoder.encode(profile, StandardCharsets.UTF_8);
+        String encoded = Uri.encode(profile);
         webView.loadUrl(BASE_URL + "?tv=1&shell=1&profile=" + encoded);
         webView.requestFocus();
     }
