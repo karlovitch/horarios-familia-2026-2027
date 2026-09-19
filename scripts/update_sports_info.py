@@ -175,11 +175,20 @@ def flashscore_live_info(mid):
                 if d.get("DD"):
                     try:out["period_start"]=int(d["DD"])
                     except Exception:pass
-                # O frontend calcula o relógio em direto a partir de period_start,
-                # evitando gravar uma contagem de minutos que mudaria a cada execução.
-                if not d.get("DD") and d.get("DC"):
+                if d.get("DC"):
                     try:out["live_minute"]=int(d["DC"])
                     except Exception:pass
+
+                # Calibra o relógio local com o minuto oficial da fonte.
+                # Isto absorve intervalos reais >15 min, compensações e atrasos
+                # no reinício, mantendo depois uma contagem contínua no frontend.
+                now_ts=int(datetime.now(timezone.utc).timestamp())
+                out["status_updated_at"]=now_ts
+                if out.get("period_start") is not None and out.get("live_minute") is not None:
+                    base=45 if out.get("period")=="2H" else (105 if out.get("period")=="ET2" else (90 if out.get("period")=="ET1" else 0))
+                    raw_total=base*60+max(0,now_ts-int(out["period_start"]))
+                    official_total=int(out["live_minute"])*60
+                    out["clock_offset_seconds"]=official_total-raw_total
         return out
     except Exception:
         return {}
@@ -787,12 +796,11 @@ def valid_stream_url(url):
 for event in events:
     if event.get("stream_url") and not valid_stream_url(event.get("stream_url")):
         event.pop("stream_url",None)
-    event.pop("status_updated_at",None)
     if event.get("status")!="live":
         event.pop("period_start",None)
         event.pop("live_minute",None)
-    elif event.get("period_start"):
-        event.pop("live_minute",None)
+        event.pop("status_updated_at",None)
+        event.pop("clock_offset_seconds",None)
 
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 payload={
