@@ -611,11 +611,104 @@ function renderTodayFamilyBanner(iso){
  el.classList.remove("hidden");
 }
 function renderTodayAstronomyBanner(iso){
- const el=qs("#todayAstronomyBanner"),x=calendarInfoFor(iso),events=(x&&x.astronomy_days)||[];
+ const el=qs("#todayAstronomyBanner"),x=calendarInfoFor(iso),events=(x&&x.astronomy_days)||[],special=astronomicalSpecialInfo(iso);
  if(!el)return;
- if(!events.length){el.classList.add("hidden");el.innerHTML="";return}
- el.innerHTML='<strong>🔭 Astronomia</strong>'+events.map(esc).join(" · ");
- el.classList.remove("hidden");
+ if(!events.length&&!special){el.classList.add("hidden");el.innerHTML="";return}
+ let html='<strong>🔭 Astronomia</strong>'+events.map(esc).join(" · ");
+ if(special)html+='<div class="astro-note"><b>'+esc(special.name)+':</b> '+esc(special.explanation)+'<br><b>Curiosidade '+iso.slice(0,4)+':</b> '+esc(special.curiosity)+'</div>';
+ el.innerHTML=html;el.classList.remove("hidden");
+}
+const WORLD_HISTORY_FEATURES=[
+ {year:"476",text:"Queda do Império Romano do Ocidente, um marco tradicional da transição da Antiguidade para a Idade Média europeia."},
+ {year:"1215",text:"A Magna Carta é selada em Inglaterra e torna-se uma referência histórica na limitação do poder régio."},
+ {year:"1453",text:"A conquista de Constantinopla pelos Otomanos põe fim ao Império Bizantino."},
+ {year:"1492",text:"A viagem de Cristóvão Colombo chega às Américas, transformando as relações entre continentes."},
+ {year:"1517",text:"As teses de Martinho Lutero tornam-se um símbolo do início da Reforma Protestante."},
+ {year:"1776",text:"As Treze Colónias proclamam a Declaração de Independência dos Estados Unidos."},
+ {year:"1789",text:"A Revolução Francesa inicia uma transformação política e social de alcance mundial."},
+ {year:"1804",text:"Napoleão Bonaparte é coroado imperador dos Franceses."},
+ {year:"1815",text:"A derrota de Napoleão em Waterloo encerra o ciclo das Guerras Napoleónicas."},
+ {year:"1848",text:"Uma vaga de revoluções percorre grande parte da Europa, reivindicando reformas políticas e nacionais."},
+ {year:"1861",text:"Começa a Guerra Civil dos Estados Unidos, centrada na União, secessão e escravatura."},
+ {year:"1869",text:"O Canal do Suez é inaugurado, reduzindo a distância marítima entre a Europa e a Ásia."},
+ {year:"1914",text:"Começa a Primeira Guerra Mundial, conflito que altera profundamente a ordem internacional."},
+ {year:"1917",text:"A Revolução Russa derruba a ordem imperial e abre caminho à formação da União Soviética."},
+ {year:"1918",text:"O Armistício encerra os combates da Primeira Guerra Mundial na Frente Ocidental."},
+ {year:"1929",text:"O colapso bolsista de Wall Street assinala o início da Grande Depressão."},
+ {year:"1939",text:"A invasão da Polónia pela Alemanha marca o início da Segunda Guerra Mundial na Europa."},
+ {year:"1945",text:"É criada a Organização das Nações Unidas após a Segunda Guerra Mundial."},
+ {year:"1947",text:"A Índia torna-se independente do domínio britânico."},
+ {year:"1948",text:"A Assembleia Geral das Nações Unidas proclama a Declaração Universal dos Direitos Humanos."},
+ {year:"1949",text:"É fundada a República Popular da China."},
+ {year:"1957",text:"O Sputnik 1 torna-se o primeiro satélite artificial da Terra e inaugura a era espacial."},
+ {year:"1961",text:"Yuri Gagarin torna-se o primeiro ser humano a viajar no espaço."},
+ {year:"1969",text:"A missão Apollo 11 leva seres humanos à superfície da Lua."},
+ {year:"1989",text:"A queda do Muro de Berlim simboliza o colapso da divisão política da Europa da Guerra Fria."},
+ {year:"1991",text:"A dissolução da União Soviética encerra uma das principais estruturas políticas do século XX."},
+ {year:"1994",text:"As primeiras eleições multirraciais da África do Sul conduzem Nelson Mandela à presidência."},
+ {year:"2001",text:"Os atentados de 11 de setembro nos Estados Unidos alteram profundamente a política internacional."},
+ {year:"2004",text:"A União Europeia realiza o seu maior alargamento, integrando dez novos Estados."},
+ {year:"2020",text:"A Organização Mundial da Saúde caracteriza a COVID-19 como pandemia."}
+];
+const PORTUGAL_HISTORY_FEATURES=[
+ {year:"1143",text:"O Tratado de Zamora é tradicionalmente associado ao reconhecimento político do Reino de Portugal."},
+ {year:"1179",text:"A bula Manifestis Probatum reconhece D. Afonso Henriques como rei de Portugal."},
+ {year:"1385",text:"A vitória portuguesa em Aljubarrota consolida a independência durante a crise de 1383-1385."},
+ {year:"1415",text:"A conquista de Ceuta marca o início da expansão portuguesa no Norte de África."},
+ {year:"1498",text:"Vasco da Gama chega à Índia por via marítima, ligando diretamente a Europa ao oceano Índico."},
+ {year:"1500",text:"A armada de Pedro Álvares Cabral chega ao território que viria a ser o Brasil."},
+ {year:"1580",text:"A crise dinástica conduz à União Ibérica sob Filipe II de Espanha, Filipe I de Portugal."},
+ {year:"1640",text:"A Restauração da Independência coloca a dinastia de Bragança no trono português."},
+ {year:"1755",text:"O terramoto de Lisboa provoca destruição devastadora e marca profundamente o reinado de D. José I."},
+ {year:"1807",text:"A corte portuguesa transfere-se para o Brasil perante a invasão francesa."},
+ {year:"1820",text:"A Revolução Liberal do Porto inicia a construção do regime constitucional português."},
+ {year:"1822",text:"É aprovada a primeira Constituição portuguesa."},
+ {year:"1826",text:"D. Pedro IV outorga a Carta Constitucional."},
+ {year:"1834",text:"A Convenção de Évora-Monte encerra a Guerra Civil entre liberais e absolutistas."},
+ {year:"1890",text:"O Ultimato britânico agrava a contestação política à monarquia portuguesa."},
+ {year:"1910",text:"A Revolução de 5 de Outubro implanta a República em Portugal."},
+ {year:"1911",text:"A Primeira República aprova uma nova Constituição."},
+ {year:"1916",text:"Portugal entra formalmente na Primeira Guerra Mundial contra a Alemanha."},
+ {year:"1926",text:"O golpe militar de 28 de Maio põe fim à Primeira República."},
+ {year:"1933",text:"A nova Constituição institucionaliza o Estado Novo."},
+ {year:"1949",text:"Portugal integra o grupo fundador da NATO."},
+ {year:"1961",text:"O início da guerra em Angola abre o ciclo das Guerras Coloniais portuguesas."},
+ {year:"1968",text:"Marcelo Caetano sucede a António de Oliveira Salazar na chefia do Governo."},
+ {year:"1974",text:"A Revolução de 25 de Abril derruba a ditadura e inicia a transição democrática."},
+ {year:"1975",text:"O processo de descolonização conduz à independência das antigas colónias africanas portuguesas."},
+ {year:"1976",text:"Entra em vigor a Constituição da República Portuguesa democrática."},
+ {year:"1986",text:"Portugal adere às Comunidades Europeias."},
+ {year:"1998",text:"A Expo 98, em Lisboa, assinala uma grande transformação urbana na zona oriental da cidade."},
+ {year:"1999",text:"Portugal transfere para a China a administração de Macau."},
+ {year:"2002",text:"As notas e moedas de euro entram em circulação em Portugal."},
+ {year:"2007",text:"O Tratado de Lisboa é assinado na capital portuguesa pelos Estados-membros da União Europeia."},
+ {year:"2011",text:"Portugal solicita assistência financeira internacional durante a crise da dívida soberana."}
+];
+function dayOfYear(iso){const d=dateFromIso(iso),y=d.getUTCFullYear();return Math.floor((d-Date.UTC(y,0,1))/MS_DAY)}
+function historicalFeature(pool,iso,salt){const y=Number(iso.slice(0,4)),idx=(dayOfYear(iso)+(y-2026)*salt+pool.length*10)%pool.length;return pool[idx]}
+function renderTodayHistoryBanners(iso){
+ const world=historicalFeature(WORLD_HISTORY_FEATURES,iso,11),pt=historicalFeature(PORTUGAL_HISTORY_FEATURES,iso,13);
+ const we=qs("#todayWorldHistoryBanner"),pe=qs("#todayPortugalHistoryBanner");
+ if(we)we.innerHTML='<strong>🌍 História mundial</strong><b>'+esc(world.year)+'</b> — '+esc(world.text);
+ if(pe)pe.innerHTML='<strong>🇵🇹 História de Portugal</strong><b>'+esc(pt.year)+'</b> — '+esc(pt.text);
+}
+function launchConfetti(colors){
+ const layer=qs("#confettiLayer");if(!layer)return;
+ for(let i=0;i<80;i++){
+  const el=document.createElement("i");el.className="confetti-piece";
+  el.style.left=(Math.random()*100)+"vw";el.style.background=colors[i%colors.length];
+  el.style.setProperty("--fall",(2.2+Math.random()*1.8)+"s");el.style.setProperty("--drift",((Math.random()-.5)*180)+"px");
+  el.style.animationDelay=(Math.random()*.55)+"s";layer.appendChild(el);setTimeout(()=>el.remove(),4700);
+ }
+}
+function maybeCelebrateFamilyEvents(){
+ const iso=isoLocalDate(),mmdd=iso.slice(5),events=FAMILY_EVENTS.filter(e=>e.date.slice(5)===mmdd);
+ if(!events.length)return;
+ const unseen=events.filter(e=>{try{return !localStorage.getItem("familyConfetti:"+iso+":"+e.label)}catch(_){return true}});
+ if(!unseen.length)return;
+ unseen.forEach((e,n)=>{try{localStorage.setItem("familyConfetti:"+iso+":"+e.label,"1")}catch(_){}
+  setTimeout(()=>launchConfetti(activeThemeForIso(iso).colors),n*650);
+ });
 }
 function familyEventsFor(iso){
  const mmdd=iso.slice(5),year=Number(iso.slice(0,4));
