@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=88">
-<link rel="icon" href="favicon-64.png?v=88" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=88" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=88" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=88">
+<link rel="manifest" href="manifest.webmanifest?v=89">
+<link rel="icon" href="favicon-64.png?v=89" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=89" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=89" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=89">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -107,7 +107,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v88</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v89</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -255,7 +255,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=88;
+const APP_BUILD=89;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:5*60*1000,geoTimeout:9000};
@@ -581,7 +581,7 @@ async function updateWeatherStrip(iso=statsIso()){
  }
 }
 function renderCountdowns(){
- const refDay=selectedStatsDay();syncStatsControls();
+ const refDay=selectedStatsDay();
  const collective=["Leonor","Sandra","Margarida","Carlos"].map(p=>countdownLine(p,refDay)).join("");
  qs("#overviewCountdowns").innerHTML=collective;
  qs("#todayCountdowns").innerHTML=collective;
@@ -2078,18 +2078,21 @@ function refreshScheduleState(){
  else if(person)renderPerson();
 }
 function renderActiveView(){
+ const iso=statsIso();
  syncStatsControls();
- updateWeatherStrip(statsIso());
+ updateWeatherStrip(iso);
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
- else if(view==="sports"){applyAdaptiveTheme(statsIso());renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
+ else if(view==="sports"){applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);renderSportsAgenda(iso)}
  else if(person)renderPerson();
- updateSportsTabVisibility(statsIso());
+ if(view!=="sports")updateSportsTabVisibility(iso);
  updateNowLines();
- if(view==="sports")updateSportsLiveClocks();
+ syncSportsClockTimer();
 }
 function setStatsDate(value){
- statsDate=value||null;
+ const next=value||null;
+ if(statsDate===next){syncStatsControls();return}
+ statsDate=next;
  renderActiveView();
 }
 function shiftStatsDate(days){
@@ -2139,35 +2142,52 @@ qs("#goTodayBtn").addEventListener("click",()=>{
 show("today");
 Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActiveView());
 setTimeout(maybeCelebrateFamilyEvents,450);
-let resizeFrame=0;
-window.addEventListener("resize",()=>{
- if(resizeFrame)cancelAnimationFrame(resizeFrame);
- resizeFrame=requestAnimationFrame(()=>{
-  resizeFrame=0;
-  if(view==="overview")renderOverview();
-  else if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()));
-  else if(person)renderPerson();
-  updateNowLines();
- });
-},{passive:true});
+
+/* Só é necessário recalcular a geometria quando muda o breakpoint que altera
+   a altura/cabeçalho da grelha; redimensionamentos dentro do mesmo modo ficam ao CSS. */
+function handleTimelineBreakpointChange(){
+ if(view==="overview")renderOverview();
+ else if(view==="today")renderTodayTimeline(statsIso(),weekdayFromIso(statsIso()));
+ else if(person)renderPerson();
+ updateNowLines();
+}
+if(MOBILE_TIMELINE_QUERY.addEventListener)MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange);
+else if(MOBILE_TIMELINE_QUERY.addListener)MOBILE_TIMELINE_QUERY.addListener(handleTimelineBreakpointChange);
+
 setInterval(updateNowLines,UI_REFRESH.nowLine);
 setInterval(refreshScheduleState,UI_REFRESH.scheduleState);
-setInterval(updateSportsLiveClocks,UI_REFRESH.sportsClock);
+
+/* O relógio ao segundo só existe enquanto a agenda desportiva está realmente visível. */
+let sportsClockTimer=0;
+function stopSportsClockTimer(){
+ if(sportsClockTimer){clearTimeout(sportsClockTimer);sportsClockTimer=0}
+}
+function syncSportsClockTimer(){
+ stopSportsClockTimer();
+ if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;
+ updateSportsLiveClocks();
+ sportsClockTimer=setTimeout(syncSportsClockTimer,UI_REFRESH.sportsClock);
+}
+
 setInterval(()=>{
  if(document.visibilityState&&document.visibilityState!=="visible")return;
- loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderSportsAgenda(statsIso())});
+ loadSportsInfo({force:true}).then(()=>{if(view==="sports"){renderSportsAgenda(statsIso());syncSportsClockTimer()}});
 },UI_REFRESH.sportsData);
+
 async function refreshCurrentView(){
  updateTodayLabel();
- await Promise.allSettled([loadDailyInfo(),loadSportsInfo(),loadWeather()]);
+ // A meteorologia é atualizada por renderActiveView(); evita a segunda chamada ao mesmo fluxo.
+ await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);
  renderActiveView();
 }
+
+/* version.json tem poucos bytes; evita transferir e analisar ~177 KB de index.html
+   em cada regresso à aplicação. */
 async function checkForNewBuild(){
  try{
-  const r=await fetch("index.html?__version_check="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
+  const r=await fetch("version.json?__version_check="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
   if(!r.ok)return false;
-  const html=await r.text(),m=html.match(/· v(\d+)/);
-  const latest=m?Number(m[1]):APP_BUILD;
+  const meta=await r.json(),latest=Number(meta&&meta.build)||APP_BUILD;
   if(latest>APP_BUILD){
    const u=new URL(location.href);
    u.searchParams.set("v",String(latest));
@@ -2178,10 +2198,12 @@ async function checkForNewBuild(){
  }catch(e){}
  return false;
 }
+
 async function refreshWhenVisible(reason="visible"){
  if(document.visibilityState&&document.visibilityState!=="visible")return;
  const now=Date.now();
- if(foregroundRefreshRunning||now-lastForegroundRefresh<1200)return;
+ // focus/pageshow/visibilitychange costumam chegar em rajada; uma atualização chega.
+ if(foregroundRefreshRunning||now-lastForegroundRefresh<10000)return;
  foregroundRefreshRunning=true;lastForegroundRefresh=now;
  try{
   if("serviceWorker" in navigator){
@@ -2191,9 +2213,29 @@ async function refreshWhenVisible(reason="visible"){
   if(!reloading)await refreshCurrentView();
  }finally{foregroundRefreshRunning=false}
 }
-document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
+
+document.addEventListener("visibilitychange",()=>{
+ if(document.visibilityState==="visible"){
+  syncSportsClockTimer();
+  refreshWhenVisible("visibilitychange");
+ }else stopSportsClockTimer();
+});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register(resourceUrl("sw.js"),{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+
+window.addEventListener("beforeinstallprompt",e=>{
+ e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")
+});
+qs("#installBtn").addEventListener("click",async()=>{
+ if(!installPrompt)return;
+ installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")
+});
+window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));
+
+if("serviceWorker" in navigator)window.addEventListener("load",()=>{
+ navigator.serviceWorker.register(resourceUrl("sw.js"),{updateViaCache:"none"})
+  .then(async r=>{await r.update();setTimeout(checkForNewBuild,300)})
+  .catch(()=>{});
+});
 </script>
 </body></html>

@@ -34,6 +34,7 @@ def read_json(path: str):
 index = read_text("index.html")
 service_worker = read_text("sw.js")
 manifest = read_json("manifest.webmanifest")
+version_meta = read_json("version.json")
 calendar = read_json("calendar-info.json")
 daily = read_json("daily-info.json")
 sports = read_json("sports-info.json")
@@ -49,6 +50,8 @@ if not m_sw:
     fail("BUILD não encontrado em sw.js")
 if m_app and m_sw and m_app.group(1) != m_sw.group(1):
     fail(f"Versões desencontradas: index v{m_app.group(1)} / sw v{m_sw.group(1)}")
+if m_app and int(version_meta.get("build", -1)) != int(m_app.group(1)):
+    fail(f"version.json desencontrado: {version_meta.get('build')} / index v{m_app.group(1)}")
 
 if manifest.get("start_url") != "./":
     fail("manifest.webmanifest deve usar start_url './' sem versão fixa")
@@ -96,7 +99,7 @@ required_index_tokens = {
     "atualização leve da linha": "setInterval(updateNowLines,UI_REFRESH.nowLine)",
     "estado completo apenas por minuto": "setInterval(refreshScheduleState,UI_REFRESH.scheduleState)",
     "cronómetro desportivo sem rerender total": "function updateSportsLiveClocks",
-    "resize agrupado por animation frame": "requestAnimationFrame(()=>",
+    "resize apenas ao mudar de breakpoint": 'MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange)',
     "sincronização global do seletor de data": "function renderActiveView(){\n syncStatsControls();",
     "faixa meteorológica disponível": 'data-weather-strip',
     "meteorologia imediatamente sob navegação Hoje": '<div class="today-page-nav" aria-label="Navegação diária">',
@@ -120,6 +123,12 @@ required_index_tokens = {
     "cache de localização deduplicada": "locationPromise:null",
     "media query reutilizada": 'const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)")',
     "NodeList sem cópia intermédia": "qsa=s=>document.querySelectorAll(s)",
+    "check de versão leve": 'fetch("version.json?__version_check="+Date.now()',
+    "cronómetro desportivo sob demanda": "function syncSportsClockTimer()",
+    "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
+    "deduplicação de foreground": "now-lastForegroundRefresh<10000",
+    "refresh sem meteorologia duplicada": "await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);",
+    "version.json em network-first": "'/history-info.json','/version.json'",
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -141,6 +150,9 @@ for forbidden in (
     "passo-player-fallback",
     "www.timeanddate.com",
     "weatherBarcelos",
+    'fetch("index.html?__version_check="',
+    "setInterval(updateSportsLiveClocks",
+    'window.addEventListener("resize"',
     "font-size:1.44rem;line-height:1.04",
     "font-size:1.40rem",
     "height:68px;padding:10px 4px;font-size:1.72rem",
