@@ -321,6 +321,40 @@ def parse_realmadrid_official(src,html):
         })
     return found
 
+def f1_fallback():
+    source="https://www.formula1.com/en/racing/2026"
+    weekends=[
+      ("GP do Azerbaijão","Baku City Circuit, Baku, Azerbaijão","https://www.formula1.com/en/racing/2026/azerbaijan",[
+        ("2026-09-24","08:30","Treino Livre 1"),("2026-09-24","12:00","Treino Livre 2"),("2026-09-25","08:30","Treino Livre 3"),("2026-09-25","12:00","Qualificação"),("2026-09-26","11:00","Corrida")]),
+      ("GP do Barém na Malásia","Sepang International Circuit, Sepang, Malásia","https://www.formula1.com/en/racing/2026/bahrain",[
+        ("2026-10-02","04:30","Treino Livre 1"),("2026-10-02","08:00","Treino Livre 2"),("2026-10-03","04:30","Treino Livre 3"),("2026-10-03","08:00","Qualificação"),("2026-10-04","07:00","Corrida")]),
+      ("GP de Singapura","Marina Bay Street Circuit, Singapura","https://www.formula1.com/en/racing/2026/singapore",[
+        ("2026-10-09","08:30","Treino Livre 1"),("2026-10-09","12:30","Qualificação Sprint"),("2026-10-10","09:00","Sprint"),("2026-10-10","13:00","Qualificação"),("2026-10-11","12:00","Corrida")]),
+      ("GP dos Estados Unidos","Circuit of the Americas, Austin, Estados Unidos","https://www.formula1.com/en/racing/2026/united-states",[
+        ("2026-10-23","17:30","Treino Livre 1"),("2026-10-23","21:00","Treino Livre 2"),("2026-10-24","17:30","Treino Livre 3"),("2026-10-24","21:00","Qualificação"),("2026-10-25","20:00","Corrida")]),
+      ("GP da Cidade do México","Autódromo Hermanos Rodríguez, Cidade do México, México","https://www.formula1.com/en/racing/2026/mexico",[
+        ("2026-10-30","18:30","Treino Livre 1"),("2026-10-30","22:00","Treino Livre 2"),("2026-10-31","17:30","Treino Livre 3"),("2026-10-31","21:00","Qualificação"),("2026-11-01","20:00","Corrida")]),
+      ("GP de São Paulo","Autódromo José Carlos Pace, São Paulo, Brasil","https://www.formula1.com/en/racing/2026/brazil",[
+        ("2026-11-06","15:30","Treino Livre 1"),("2026-11-06","19:00","Treino Livre 2"),("2026-11-07","14:30","Treino Livre 3"),("2026-11-07","18:00","Qualificação"),("2026-11-08","17:00","Corrida")]),
+      ("GP de Las Vegas","Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos","https://www.formula1.com/en/racing/2026/las-vegas",[
+        ("2026-11-20","00:30","Treino Livre 1"),("2026-11-20","04:00","Treino Livre 2"),("2026-11-21","00:30","Treino Livre 3"),("2026-11-21","04:00","Qualificação"),("2026-11-22","04:00","Corrida")]),
+      ("GP do Qatar","Lusail International Circuit, Lusail, Qatar","https://www.formula1.com/en/racing/2026/qatar",[
+        ("2026-11-27","13:30","Treino Livre 1"),("2026-11-27","17:00","Treino Livre 2"),("2026-11-28","14:30","Treino Livre 3"),("2026-11-28","18:00","Qualificação"),("2026-11-29","16:00","Corrida")]),
+      ("GP de Abu Dhabi","Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos","https://www.formula1.com/en/racing/2026/united-arab-emirates",[
+        ("2026-12-04","09:30","Treino Livre 1"),("2026-12-04","13:00","Treino Livre 2"),("2026-12-05","10:30","Treino Livre 3"),("2026-12-05","14:00","Qualificação"),("2026-12-06","13:00","Corrida")]),
+    ]
+    out=[]
+    for gp,location,url,sessions in weekends:
+        for date_iso,time_text,label in sessions:
+            out.append({
+              "date":date_iso,"start":f"{date_iso}T{time_text}:00Z",
+              "entity":"Formula 1","sport":"Automobilismo","title":f"{label} · {gp}",
+              "competition":"Campeonato do Mundo de Fórmula 1 da FIA 2026",
+              "location":location,"channel":"DAZN","stream_url":"https://www.dazn.com/pt-PT/home",
+              "match_url":url,"source_url":url
+            })
+    return out
+
 def f1_events():
     url="https://api.jolpi.ca/ergast/f1/2026.json"
     source="https://www.formula1.com/en/racing/2026"
@@ -420,7 +454,9 @@ try:
     for e in generated_f1: existing[key(e)]=e
     checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":True,"events_found":len(generated_f1)})
 except Exception as exc:
-    checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":False,"error":str(exc)[:180]})
+    generated_f1=f1_fallback()
+    for e in generated_f1: existing[key(e)]=e
+    checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":False,"fallback":"Formula1.com","events_found":len(generated_f1),"error":str(exc)[:180]})
 for e in portugal_hockey_seed(): existing[key(e)]=e
 events=sorted(existing.values(),key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
