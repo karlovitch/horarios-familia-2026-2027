@@ -3,14 +3,17 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from threading import local
 from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parents[1]
 DAILY_OUT = ROOT / "daily-info.json"
@@ -90,11 +93,29 @@ HEADERS = {
     "July", "August", "September", "October", "November", "December"
 }
 
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "HorariosFamilia/2.0 (+GitHub Pages school calendar)"})
+HTTP_HEADERS = {"User-Agent": "HorariosFamilia/3.0 (+GitHub Pages school calendar)"}
+_THREAD = local()
+
+def http_session() -> requests.Session:
+    session = getattr(_THREAD, "session", None)
+    if session is None:
+        retry = Retry(
+            total=3,
+            connect=3,
+            read=3,
+            backoff_factor=0.5,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset({"GET"}),
+        )
+        session = requests.Session()
+        session.headers.update(HTTP_HEADERS)
+        session.mount("https://", HTTPAdapter(max_retries=retry))
+        session.mount("http://", HTTPAdapter(max_retries=retry))
+        _THREAD.session = session
+    return session
 
 def fetch(url: str) -> str:
-    r = SESSION.get(url, timeout=30)
+    r = http_session().get(url, timeout=30)
     r.raise_for_status()
     return r.text
 
@@ -261,11 +282,23 @@ def main():
         targets = [today]
 
     total = len(targets)
-    for idx, day in enumerate(targets, 1):
-        print(f"[{idx}/{total}] {day.isoformat()}")
+    if args.all:
+        # As páginas de liturgia e hagiografia são independentes por data.
+        # Um pequeno pool reduz drasticamente o tempo de regeneração integral
+        # sem criar uma carga agressiva sobre as fontes.
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            futures = {executor.submit(build_day, day, un_map): day for day in targets}
+            for idx, future in enumerate(as_completed(futures), 1):
+                day = futures[future]
+                try:
+                    calendar["dates"][day.isoformat()] = future.result()
+                    print(f"[{idx}/{total}] {day.isoformat()} · OK")
+                except Exception as exc:
+                    print(f"[{idx}/{total}] {day.isoformat()} · erro: {exc}")
+    else:
+        day = targets[0]
         calendar["dates"][day.isoformat()] = build_day(day, un_map)
-        if args.all:
-            time.sleep(0.04)
+        print(f"[1/1] {day.isoformat()} · OK")
 
     calendar["generated_at"] = datetime.now(TZ).isoformat(timespec="seconds")
     calendar["sources"] = {
