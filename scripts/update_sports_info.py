@@ -155,7 +155,7 @@ def flashscore_live_info(mid):
         if not rows:return {}
         d=rows[0]
         state=d.get("DA")
-        out={"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        out={}
         if d.get("DE") is not None: out["home_score"]=int(d["DE"])
         if d.get("DF") is not None: out["away_score"]=int(d["DF"])
         if state=="1":
@@ -175,11 +175,10 @@ def flashscore_live_info(mid):
                 if d.get("DD"):
                     try:out["period_start"]=int(d["DD"])
                     except Exception:pass
-                if d.get("DD"):
-                    try:
-                        elapsed=max(0,int(datetime.now(timezone.utc).timestamp())-int(d["DD"]))
-                        base=45 if out.get("period")=="2H" else 0
-                        out["live_minute"]=base+elapsed//60
+                # O frontend calcula o relógio em direto a partir de period_start,
+                # evitando gravar uma contagem de minutos que mudaria a cada execução.
+                if not d.get("DD") and d.get("DC"):
+                    try:out["live_minute"]=int(d["DC"])
                     except Exception:pass
         return out
     except Exception:
@@ -251,7 +250,7 @@ def zerozero_hockey_status(event):
             raw_segment=text[:1800]
             m=re.search(r"(?<![\d-])(\d{1,2})\s*-\s*(\d{1,2})(?![\d-])",raw_segment)
             if m:score=(int(m.group(1)),int(m.group(2)))
-        out={"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        out={}
         if score:
             out["home_score"],out["away_score"]=score
         now=datetime.now(timezone.utc)
@@ -788,13 +787,22 @@ def valid_stream_url(url):
 for event in events:
     if event.get("stream_url") and not valid_stream_url(event.get("stream_url")):
         event.pop("stream_url",None)
+    event.pop("status_updated_at",None)
+    if event.get("status")!="live":
+        event.pop("period_start",None)
+        event.pop("live_minute",None)
+    elif event.get("period_start"):
+        event.pop("live_minute",None)
+
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
-out={
- "generated_at":datetime.now(timezone.utc).isoformat(),
+payload={
  "timezone_note":"Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
  "sources":[s["url"] for s in SOURCES]+["https://api.jolpi.ca/ergast/f1/2026.json","https://www.formula1.com/en/racing/2026","https://tv.fpp.pt/"],
  "source_checks":checked,
  "events":events
 }
+previous_payload={k:data.get(k) for k in payload}
+generated_at=data.get("generated_at") if previous_payload==payload else datetime.now(timezone.utc).isoformat()
+out={"generated_at":generated_at or datetime.now(timezone.utc).isoformat(),**payload}
 OUT.write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(f"{len(events)} eventos; fontes verificadas: {len(checked)}; fichas diretas resolvidas: {direct_resolved}")
