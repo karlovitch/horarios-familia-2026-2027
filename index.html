@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v19</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v20</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -213,35 +213,129 @@ const UN_FALLBACK={
 "07-11":["Dia Mundial da População"],"07-15":["Dia Mundial das Competências dos Jovens"],"07-18":["Dia Internacional Nelson Mandela"],"07-20":["Dia Internacional da Lua","Dia Mundial do Xadrez"],"07-30":["Dia Internacional da Amizade","Dia Mundial contra o Tráfico de Pessoas"],
 "08-09":["Dia Internacional dos Povos Indígenas"],"08-12":["Dia Internacional da Juventude"],"08-19":["Dia Mundial Humanitário"],"08-23":["Dia Internacional em Memória do Tráfico de Escravos e da sua Abolição"],"08-29":["Dia Internacional contra os Ensaios Nucleares"],"08-30":["Dia Internacional das Vítimas de Desaparecimentos Forçados"],"08-31":["Dia Internacional das Pessoas de Ascendência Africana"]
 };
-const EUROPE_FALLBACK={"01-28":["Dia da Proteção de Dados"],"05-05":["Dia da Europa — Conselho da Europa"],"05-09":["Dia da Europa — União Europeia"],"09-26":["Dia Europeu das Línguas"],"10-10":["Dia Europeu contra a Pena de Morte"],"10-18":["Dia Europeu contra o Tráfico de Seres Humanos"],"10-25":["Dia Europeu da Justiça"],"11-18":["Dia Europeu para a Proteção das Crianças contra a Exploração Sexual e o Abuso Sexual"]};
-const PORTUGAL_FALLBACK={
-"01-01":["Ano Novo (Feriado Nacional)"],
-"04-25":["Dia da Liberdade (Feriado Nacional)"],
-"05-01":["Dia do Trabalhador (Feriado Nacional)"],
+const EUROPE_FALLBACK={
+"01-28":["Dia Europeu da Proteção de Dados"],
+"02-11":["Dia Europeu do 112"],
+"03-11":["Dia Europeu em Memória das Vítimas do Terrorismo"],
+"05-05":["Dia da Europa — Conselho da Europa"],
+"05-09":["Dia da Europa — União Europeia"],
+"05-20":["Dia Europeu do Mar"],
+"08-23":["Dia Europeu em Memória das Vítimas dos Regimes Totalitários e Autoritários"],
+"09-23":["Dia Europeu da Agricultura Biológica"],
+"09-26":["Dia Europeu das Línguas"],
+"10-10":["Dia Europeu contra a Pena de Morte"],
+"10-18":["Dia Europeu contra o Tráfico de Seres Humanos"],
+"10-25":["Dia Europeu da Justiça"],
+"11-18":["Dia Europeu para a Proteção das Crianças contra a Exploração Sexual e o Abuso Sexual"]
+};
+
+const PORTUGAL_INSTITUTIONAL_FIXED={
+"03-27":["Dia Nacional do Dador de Sangue"],
+"03-31":["Dia Nacional do Doente com AVC"],
 "05-06":["Dia Nacional do Azulejo"],
 "05-10":["Dia Nacional do Seguro"],
-"05-25":["Dia Nacional dos Jardins"],
-"06-10":["Dia de Portugal, de Camões e das Comunidades Portuguesas (Feriado Nacional)"],
 "06-22":["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],
-"08-15":["Assunção de Nossa Senhora (Feriado Nacional)"],
-"10-05":["Implantação da República (Feriado Nacional)"],
-"11-01":["Dia de Todos os Santos (Feriado Nacional)"],
+"07-22":["Dia Nacional do Calceteiro e da Calçada Portuguesa"],
+"07-28":["Dia Nacional da Conservação da Natureza"],
+"10-01":["Dia Nacional da Água"],
+"10-18":["Dia Nacional da Banda Desenhada Portuguesa"],
+"10-30":["Dia Nacional de Prevenção do Cancro da Mama"],
 "11-11":["Dia Nacional das Raças Autóctones"],
-"12-01":["Restauração da Independência (Feriado Nacional)"],
-"12-08":["Imaculada Conceição (Feriado Nacional)"],
+"11-15":["Dia Nacional da Língua Gestual Portuguesa"],
+"11-16":["Dia Nacional do Mar — entrada em vigor da Convenção das Nações Unidas sobre o Direito do Mar em 1994"],
+"11-17":["Dia Nacional do Não Fumador"],
+"11-24":["Dia Nacional da Cultura Científica"],
+"12-09":["Dia Nacional da Pessoa com Deficiência"],
 "12-10":["Dia Nacional dos Direitos Humanos"],
-"12-22":["Dia Nacional do Técnico Auxiliar de Saúde"],
-"12-25":["Natal (Feriado Nacional)"]
+"12-22":["Dia Nacional do Técnico Auxiliar de Saúde"]
 };
+
+const PORTUGAL_HOLIDAY_FIXED={
+"01-01":{label:"Ano Novo",kind:"civil"},
+"04-25":{label:"Dia da Liberdade — Revolução de 25 de Abril",year:1974},
+"05-01":{label:"Dia do Trabalhador — origem nas mobilizações laborais de Chicago",year:1886},
+"06-10":{label:"Dia de Portugal, de Camões e das Comunidades Portuguesas",camoes:true},
+"08-15":{label:"Assunção de Nossa Senhora",kind:"religioso"},
+"10-05":{label:"Implantação da República",year:1910},
+"11-01":{label:"Dia de Todos os Santos",kind:"religioso"},
+"12-01":{label:"Restauração da Independência",year:1640},
+"12-08":{label:"Imaculada Conceição",kind:"religioso"},
+"12-25":{label:"Natal",kind:"religioso"}
+};
+
 const PORTUGAL_MOVABLE_HOLIDAYS={
-"2026-04-03":["Sexta-Feira Santa (Feriado Nacional)"],
-"2026-04-05":["Domingo de Páscoa (Feriado Nacional)"],
-"2026-06-04":["Corpo de Deus (Feriado Nacional)"],
-"2027-03-26":["Sexta-Feira Santa (Feriado Nacional)"],
-"2027-03-28":["Domingo de Páscoa (Feriado Nacional)"],
-"2027-05-27":["Corpo de Deus (Feriado Nacional)"]
+"2026-04-03":"Sexta-Feira Santa",
+"2026-04-05":"Domingo de Páscoa",
+"2026-06-04":"Corpo de Deus",
+"2027-03-26":"Sexta-Feira Santa",
+"2027-03-28":"Domingo de Páscoa",
+"2027-05-27":"Corpo de Deus"
 };
+
 const LOCAL_FALLBACK={"05-03":["Feriado Municipal (Festa das Cruzes)"]};
+
+const HISTORY_META={
+"07-28":[{label:"Início da Primeira Guerra Mundial",year:1914}],
+"11-11":[{label:"Fim da Primeira Guerra Mundial — Armistício de Compiègne",year:1918}],
+"09-01":[{label:"Início da Segunda Guerra Mundial — invasão da Polónia pela Alemanha",year:1939}],
+"05-08":[{label:"Fim da Segunda Guerra Mundial na Europa — rendição da Alemanha",year:1945}],
+"09-02":[{label:"Fim da Segunda Guerra Mundial — assinatura da rendição formal do Japão",year:1945}]
+};
+
+const ASTRONOMY_BY_DATE={
+"2026-03-20":["Equinócio de março — início da primavera astronómica no hemisfério norte, às 14:46 (hora do Porto)"],
+"2026-06-21":["Solstício de junho — início do verão astronómico, às 09:25 (hora do Porto)"],
+"2026-08-12":["Eclipse solar parcial visível no Norte de Portugal","Pico da chuva de meteoros Perseidas — noite de 12 para 13 de agosto"],
+"2026-08-28":["Eclipse lunar parcial visível no Norte de Portugal"],
+"2026-09-23":["Equinócio de setembro — início do outono astronómico, às 01:05 (hora do Porto)"],
+"2026-10-21":["Pico da chuva de meteoros Oriónidas — noite de 21 para 22 de outubro"],
+"2026-11-16":["Pico da chuva de meteoros Leónidas — noite de 16 para 17 de novembro"],
+"2026-12-13":["Pico da chuva de meteoros Gemínidas — noite de 13 para 14 de dezembro"],
+"2026-12-21":["Solstício de dezembro — início do inverno astronómico, às 20:50 (hora do Porto)"],
+"2027-01-03":["Pico da chuva de meteoros Quadrântidas — noite de 3 para 4 de janeiro; condições particularmente favoráveis na Europa"],
+"2027-02-20":["Eclipse lunar penumbral visível no Norte de Portugal, prolongando-se pela madrugada de 21 de fevereiro"],
+"2027-03-20":["Equinócio de março — início da primavera astronómica, às 20:24 (hora de Portugal continental)"],
+"2027-04-22":["Pico da chuva de meteoros Líridas — noite de 22 para 23 de abril"],
+"2027-05-05":["Pico da chuva de meteoros Eta Aquáridas — noite de 5 para 6 de maio; observação possível no Norte, com o radiante baixo"],
+"2027-06-21":["Solstício de junho — início do verão astronómico, às 15:10 (hora de Portugal continental)"],
+"2027-08-02":["Eclipse solar parcial visível no Norte de Portugal — no Porto, aproximadamente 08:43–10:55, máximo às 09:46 e cerca de 82,6% de obscurecimento"],
+"2027-08-12":["Pico da chuva de meteoros Perseidas — noite de 12 para 13 de agosto"],
+"2027-08-17":["Eclipse lunar penumbral visível no Norte de Portugal — no Porto, aproximadamente 06:24–06:48, máximo às 06:45"],
+"2027-09-23":["Equinócio de setembro — início do outono astronómico, às 07:01 (hora de Portugal continental)"],
+"2027-10-21":["Pico da chuva de meteoros Oriónidas — noite de 21 para 22 de outubro"],
+"2027-11-17":["Pico da chuva de meteoros Leónidas — noite de 17 para 18 de novembro"],
+"2027-12-13":["Pico da chuva de meteoros Gemínidas — noite de 13 para 14 de dezembro"],
+"2027-12-22":["Solstício de dezembro — início do inverno astronómico, às 02:42 (hora de Portugal continental)"]
+};
+
+function yearsSince(iso,year){return Number(iso.slice(0,4))-year}
+function formatHoliday(iso,meta){
+ const y=Number(iso.slice(0,4));
+ if(meta.camoes){
+  const a=y-1579,b=y-1580;
+  return meta.label+" — data tradicional da morte de Luís de Camões, em 1579 ou 1580 (há "+a+" ou "+b+" anos) (Feriado Nacional)";
+ }
+ if(meta.year)return meta.label+" ("+meta.year+"; há "+(y-meta.year)+" anos) (Feriado Nacional)";
+ if(meta.kind==="religioso")return meta.label+" (Feriado Nacional; celebração religiosa, sem um ano histórico único consensual para o acontecimento celebrado)";
+ return meta.label+" (Feriado Nacional)";
+}
+function lastWeekdayOfMonth(year,month0,weekday){
+ const d=new Date(Date.UTC(year,month0+1,0));
+ while(d.getUTCDay()!==weekday)d.setUTCDate(d.getUTCDate()-1);
+ return d.toISOString().slice(0,10);
+}
+function portugalDaysFor(iso){
+ const mmdd=iso.slice(5),y=Number(iso.slice(0,4)),out=[...(PORTUGAL_INSTITUTIONAL_FIXED[mmdd]||[])];
+ if(PORTUGAL_HOLIDAY_FIXED[mmdd])out.unshift(formatHoliday(iso,PORTUGAL_HOLIDAY_FIXED[mmdd]));
+ if(PORTUGAL_MOVABLE_HOLIDAYS[iso])out.unshift(PORTUGAL_MOVABLE_HOLIDAYS[iso]+" (Feriado Nacional; celebração religiosa, sem um ano histórico único consensual para o acontecimento celebrado)");
+ if(iso===lastWeekdayOfMonth(y,4,0))out.push("Dia Nacional da Gastronomia Portuguesa — último domingo de maio");
+ if(y>=2026&&iso===lastWeekdayOfMonth(y,9,4))out.push("Dia Nacional das Acessibilidades — última quinta-feira de outubro");
+ return out;
+}
+function historyDaysFor(iso){
+ const mmdd=iso.slice(5);
+ return (HISTORY_META[mmdd]||[]).map(e=>e.label+" ("+e.year+"; há "+yearsSince(iso,e.year)+" anos)");
+}
 function isoLocalDate(){const n=new Date(),y=n.getFullYear(),m=String(n.getMonth()+1).padStart(2,"0"),d=String(n.getDate()).padStart(2,"0");return y+"-"+m+"-"+d}
 function dateFromIso(iso){const [y,m,d]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))}
 function liturgiaUrlForDate(iso){const [y,m,d]=iso.split("-").map(Number);return "https://liturgia.pt/liturgiadiaria/dia.php?data="+y+"-"+m+"-"+d}
@@ -263,19 +357,22 @@ function daysToNextAnnual(refIso,eventDate){
 function birthdayCountdownText(iso){
  return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
 }
+function mergeUnique(...lists){return [...new Set(lists.flat().filter(Boolean))]}
 function fallbackCalendarInfo(iso){
  const mmdd=iso.slice(5);
- const pt=[...(PORTUGAL_FALLBACK[mmdd]||[]),...(PORTUGAL_MOVABLE_HOLIDAYS[iso]||[])];return {date:iso,un_days:UN_FALLBACK[mmdd]||[],european_days:EUROPE_FALLBACK[mmdd]||[],portugal_days:pt,local_days:LOCAL_FALLBACK[mmdd]||[],liturgical_day:"",saints:[],gospel:"",liturgy_url:liturgiaUrlForDate(iso)};
+ return {date:iso,un_days:UN_FALLBACK[mmdd]||[],european_days:EUROPE_FALLBACK[mmdd]||[],portugal_days:portugalDaysFor(iso),local_days:LOCAL_FALLBACK[mmdd]||[],history_days:historyDaysFor(iso),astronomy_days:ASTRONOMY_BY_DATE[iso]||[],liturgical_day:"",saints:[],gospel:"",liturgy_url:liturgiaUrlForDate(iso)};
 }
 function calendarInfoFor(iso){
  const fb=fallbackCalendarInfo(iso);
  const src=CALENDAR_INFO&&CALENDAR_INFO.dates&&CALENDAR_INFO.dates[iso]?CALENDAR_INFO.dates[iso]:(DAILY_INFO&&DAILY_INFO.date===iso?DAILY_INFO:null);
  if(!src)return fb;
  return {...fb,...src,
-  un_days:src.un_days&&src.un_days.length?src.un_days:fb.un_days,
-  european_days:src.european_days&&src.european_days.length?src.european_days:fb.european_days,
-  portugal_days:src.portugal_days&&src.portugal_days.length?src.portugal_days:fb.portugal_days,
-  local_days:src.local_days&&src.local_days.length?src.local_days:fb.local_days,
+  un_days:mergeUnique(fb.un_days,src.un_days||[]),
+  european_days:mergeUnique(fb.european_days,src.european_days||[]),
+  portugal_days:mergeUnique(fb.portugal_days,src.portugal_days||[]),
+  local_days:mergeUnique(fb.local_days,src.local_days||[]),
+  history_days:mergeUnique(fb.history_days,src.history_days||[]),
+  astronomy_days:mergeUnique(fb.astronomy_days,src.astronomy_days||[]),
   liturgy_url:src.liturgy_url||fb.liturgy_url
  };
 }
@@ -288,6 +385,8 @@ function renderDailyInfo(){
  const eu=listText(x.european_days,"Sem dia europeu assinalado nesta data");
  const pt=listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada nesta data");
  const local=listText(x.local_days,"Sem efeméride local assinalada nesta data");
+ const history=listText(x.history_days,"");
+ const astronomy=listText(x.astronomy_days,"");
  const family=listText(familyEventsFor(selected),"Sem aniversário ou efeméride familiar nesta data");
  const birthdays=birthdayCountdownText(selected);
  const lit=x.liturgical_day?esc(x.liturgical_day):"Consultar Liturgia diária";
@@ -299,6 +398,8 @@ function renderDailyInfo(){
   '<div class="daily-row"><div class="daily-label">Europa</div><div class="daily-value">'+eu+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Portugal</div><div class="daily-value">'+pt+'</div></div>'+
   (x.local_days&&x.local_days.length?'<div class="daily-row"><div class="daily-label">Barcelos</div><div class="daily-value">'+local+'</div></div>':'')+
+  (history?'<div class="daily-row"><div class="daily-label">História</div><div class="daily-value">'+history+'</div></div>':'')+
+  (astronomy?'<div class="daily-row"><div class="daily-label">Astronomia</div><div class="daily-value">'+astronomy+'</div></div>':'')+
   '<div class="daily-row"><div class="daily-label">Família</div><div class="daily-value">'+family+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Aniversários</div><div class="daily-value">'+birthdays+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Liturgia</div><div class="daily-value">'+lit+'</div></div>'+
@@ -329,6 +430,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=p;qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=19",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=20",{updateViaCache:"none"}));
 </script>
 </body></html>
