@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v31</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v32</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -631,40 +631,59 @@ async function ensureRemoteLiturgy(iso){
  finally{REMOTE_LITURGY_LOADING.delete(iso);if(statsIso()===iso)renderDailyInfo()}
 }
 
-const REFLECTION_OPENINGS=[
-"Escolhe agir com serenidade",
-"Procura aprender com humildade",
-"Cuida das palavras antes de as dizer",
-"Faz do teu trabalho uma forma de serviço",
-"Avança com coragem sem perder a bondade",
-"Escuta antes de julgar",
-"Protege aquilo que alimenta a tua consciência",
-"Transforma cada dificuldade numa oportunidade de crescer",
-"Valoriza as pessoas antes das coisas",
-"Permanece fiel ao que sabes ser justo",
-"Usa o conhecimento para iluminar, não para diminuir os outros",
-"Deixa espaço para o silêncio e para a gratidão",
-"Constrói o dia com pequenos gestos de bem"
+const DAILY_VIRTUES=[
+"a serenidade de quem sabe esperar","a coragem de recomeçar","a humildade de continuar a aprender","a bondade que não procura aplauso",
+"a firmeza de fazer o que é justo","a gratidão pelo que já existe","a paciência diante do que ainda não mudou","a liberdade de não viver pela opinião alheia",
+"a esperança que resiste ao desânimo","a disciplina que transforma intenção em caminho","a compaixão que vê a pessoa antes do erro","a honestidade de reconhecer limites",
+"a alegria simples de servir","a prudência de pensar antes de agir","a confiança que não depende de controlar tudo","a generosidade que sabe partilhar",
+"a fortaleza de permanecer inteiro nas dificuldades","a sabedoria de distinguir o urgente do importante","a mansidão que não confunde paz com fraqueza",
+"a curiosidade de quem nunca deixa de perguntar","a fidelidade às pequenas responsabilidades","a capacidade de perdoar sem esquecer a lição",
+"a atenção ao bem que acontece em silêncio","a coragem de pedir ajuda quando é preciso","a integridade de ser o mesmo com ou sem testemunhas",
+"a abertura para mudar de opinião quando os factos o exigem","a delicadeza de tratar cada pessoa com dignidade","a perseverança que aceita avançar devagar",
+"a lucidez de não alimentar medos imaginados","a confiança de que um erro não define uma vida","a vontade de crescer sem competir com os outros",
+"a capacidade de transformar conhecimento em serviço","a serenidade de aceitar o que não depende de ti","a responsabilidade de cuidar do que te foi confiado",
+"a esperança de que o bem semeado pode florescer mais tarde","a coragem de dizer a verdade com respeito","a simplicidade de reconhecer o essencial"
 ];
-const REFLECTION_CONTEXTS=[
-"mesmo quando ninguém está a observar",
-"sobretudo quando o resultado demora",
-"quando o caminho exige paciência",
-"nos momentos em que é mais fácil desistir",
-"quando uma escolha pequena pode mudar muito",
-"sem esquecer quem caminha ao teu lado",
-"com a atenção de quem sabe que o tempo é precioso",
-"aceitando que crescer também implica corrigir o rumo",
-"lembrando que aprender é também aprender a viver"
+const DAILY_ACTIONS=[
+"escuta antes de responder","cumpre o que prometeste, mesmo nas coisas pequenas","faz hoje uma coisa difícil sem a adiar",
+"oferece atenção inteira a quem estiver contigo","aprende alguma coisa que ontem não sabias","troca uma crítica fácil por uma pergunta sincera",
+"agradece algo que normalmente tomas por garantido","corrige um erro sem procurar desculpas","protege alguns minutos de silêncio no meio do ruído",
+"faz o bem sem precisares de ser reconhecido","trata o teu tempo como algo que tem valor","deixa uma pessoa melhor do que a encontraste",
+"não respondas à irritação com mais irritação","faz primeiro aquilo que sabes que é importante","aceita que nem todas as batalhas precisam de ser travadas",
+"partilha aquilo que sabes sem diminuir quem ainda está a aprender","procura compreender antes de quereres ter razão","termina o dia com menos ressentimento do que o começaste",
+"cuida do corpo e da mente como instrumentos de uma vida boa","dá mais valor ao progresso do que à perfeição","se errares, recomeça sem transformar o erro numa identidade",
+"lembra-te de que a gentileza também é uma forma de força","escolhe uma atitude que o teu eu de amanhã agradeça"
 ];
-const REFLECTION_ENDINGS=[
-"porque o carácter se revela nas escolhas repetidas",
-"e faz de cada dia uma ocasião para deixar o mundo um pouco melhor",
-"porque a verdadeira força não precisa de fazer ruído",
-"e mede o sucesso pela pessoa em que te estás a tornar",
-"porque o que ofereces aos outros também transforma quem és",
-"e não troques o essencial pelo urgente",
-"porque a esperança também se pratica"
+const DAILY_LESSONS=[
+"o carácter constrói-se muito antes de ser posto à prova","a paz interior começa na forma como escolhes responder","quem aprende a governar-se precisa de governar menos os outros",
+"o tempo revela a força dos pequenos hábitos","uma consciência tranquila vale mais do que uma vitória obtida de qualquer maneira",
+"o conhecimento cresce quando é partilhado","ninguém perde dignidade por admitir que precisa de aprender","a bondade repetida acaba por se tornar carácter",
+"a pressa resolve menos do que a clareza","há perguntas que nos fazem crescer mais do que respostas rápidas","o que alimentas diariamente acaba por orientar a tua vida",
+"a liberdade aumenta quando diminuem as dependências do ego","uma relação vale mais do que a necessidade de vencer uma discussão",
+"o medo encolhe quando damos o primeiro passo","o bem pode ser discreto sem deixar de ser poderoso","a esperança precisa de gestos para não ficar apenas numa palavra",
+"o que fazes quando ninguém vê também te está a formar"
+];
+const DAILY_PATTERNS=[
+(v,a,l)=>"Cultiva "+v+"; "+a+", porque "+l+".",
+(v,a,l)=>"Leva contigo "+v+". Hoje, "+a+"; lembra-te de que "+l+".",
+(v,a,l)=>"Se tiveres de escolher um rumo, escolhe "+v+": "+a+", pois "+l+".",
+(v,a,l)=>"Que "+v+" seja o teu ponto de partida. Depois, "+a+"; "+l+".",
+(v,a,l)=>"Uma boa regra para hoje: "+a+". Faz isso com "+v+", porque "+l+".",
+(v,a,l)=>"Não procures um dia perfeito; procura "+v+". "+a+", e descobrirás que "+l+".",
+(v,a,l)=>"Antes de tentares mudar o mundo à tua volta, pratica "+v+": "+a+". Afinal, "+l+".",
+(v,a,l)=>"Há dias em que o mais importante é "+v+". Nesses dias, "+a+"; "+l+".",
+(v,a,l)=>"Faz espaço para "+v+" e transforma-a em gesto: "+a+". É assim que se confirma que "+l+".",
+(v,a,l)=>"Hoje não precisas de fazer tudo; precisas de agir com "+v+". Começa por isto: "+a+". "+l+".",
+(v,a,l)=>"Quando houver dúvida, regressa a "+v+". "+a+", porque no fim "+l+".",
+(v,a,l)=>"A tua conduta de hoje pode começar por "+v+". Experimenta: "+a+". Com o tempo, perceberás que "+l+".",
+(v,a,l)=>"Escolhe uma coisa que dependa de ti e faz dela um exercício de "+v+": "+a+". "+l+".",
+(v,a,l)=>"Que a pressa não te roube "+v+". Em vez disso, "+a+"; é bom lembrar que "+l+".",
+(v,a,l)=>"A melhor preparação para amanhã é viver hoje com "+v+". Para isso, "+a+". "+l+".",
+(v,a,l)=>"Nem todos os progressos são visíveis. Conserva "+v+", "+a+" e confia que "+l+".",
+(v,a,l)=>"Se o dia se tornar pesado, volta ao essencial: "+v+". Depois, "+a+", porque "+l+".",
+(v,a,l)=>"Aquilo que repetes torna-se parte de ti. Repete "+v+": "+a+". Não esqueças que "+l+".",
+(v,a,l)=>"Uma vida com sentido faz-se de escolhas pequenas. Hoje escolhe "+v+", "+a+" e recorda que "+l+".",
+(v,a,l)=>"Não deixes a circunstância escolher por ti. Responde com "+v+", "+a+" e guarda esta lição: "+l+"."
 ];
 function reflectionThemeLead(x){
  const t=mergeUnique(x.un_days||[],x.european_days||[],x.portugal_days||[],x.history_days||[],x.astronomy_days||[]).join(" ").toLowerCase();
@@ -678,9 +697,11 @@ function reflectionThemeLead(x){
 }
 function uniqueReflectionForDay(iso,x){
  const base=ymdDay("2026-01-01"),n=Math.max(0,ymdDay(iso)-base);
- const a=REFLECTION_OPENINGS.length,b=REFLECTION_CONTEXTS.length;
- const i=n%a,j=Math.floor(n/a)%b,k=Math.floor(n/(a*b))%REFLECTION_ENDINGS.length;
- const text=reflectionThemeLead(x)+REFLECTION_OPENINGS[i]+", "+REFLECTION_CONTEXTS[j]+", "+REFLECTION_ENDINGS[k]+".";
+ const p=DAILY_PATTERNS[n%DAILY_PATTERNS.length];
+ const v=DAILY_VIRTUES[(n*17)%DAILY_VIRTUES.length];
+ const a=DAILY_ACTIONS[(n*19+3)%DAILY_ACTIONS.length];
+ const l=DAILY_LESSONS[(n*13+5)%DAILY_LESSONS.length];
+ const text=reflectionThemeLead(x)+p(v,a,l);
  return {text,author:"Horários Família",bio:"projeto editorial familiar, português",year:Number(iso.slice(0,4))};
 }
 function renderGlobalQuote(){
@@ -738,14 +759,20 @@ function gospelReflectionMessages(ref){
   "Jo21":["Jesus oferece recomeço depois do fracasso.","O amor a Cristo é ligado ao cuidado concreto pelos outros.","Pedro é chamado a seguir sem se comparar com o caminho dos restantes discípulos.","A missão nasce de uma relação renovada de confiança e fidelidade."]
  };
  const key=book&&ch?book+ch:"";
- if(sets[key])return sets[key];
  const fallback={
   Mt:["Jesus convida a acolher o Reino de Deus como critério para as escolhas concretas.","A fé verdadeira procura coerência entre palavras, intenções e ações.","A misericórdia e a justiça devem caminhar juntas na relação com os outros.","O discípulo é chamado a transformar o ensinamento de Jesus em prática quotidiana."],
   Mc:["O Evangelho conduz a reconhecer quem é Jesus através das suas palavras e ações.","A fé cresce quando vence o medo e aprende a confiar.","Seguir Jesus implica serviço, humildade e disponibilidade para a cruz.","O encontro com Cristo pede uma resposta concreta e não apenas admiração."],
   Lc:["A misericórdia de Deus ocupa o centro da mensagem de Jesus.","O Evangelho dá particular atenção aos pobres, excluídos e pessoas feridas.","A conversão manifesta-se em escolhas concretas de justiça, perdão e partilha.","A oração e a ação do Espírito sustentam o caminho do discípulo."],
   Jo:["Jesus revela uma relação de vida e comunhão entre Deus e a humanidade.","Crer significa entrar numa relação pessoal de confiança com Cristo.","O amor é apresentado como sinal essencial da vida do discípulo.","Os sinais e palavras de Jesus convidam a passar da compreensão superficial a uma fé mais profunda."]
  };
- return fallback[book]||["Escutar o Evangelho pede atenção ao que Jesus revela sobre Deus e sobre a pessoa humana.","A mensagem do texto convida a identificar uma mudança concreta de atitude.","A fé cristã liga sempre encontro com Deus e responsabilidade pelo próximo.","A Palavra torna-se fecunda quando passa da leitura para a vida quotidiana."];
+ const fifth={
+  Mt:"A leitura de Mateus convida a unir fé, justiça e compromisso concreto no quotidiano.",
+  Mc:"A leitura de Marcos recorda que seguir Jesus é uma decisão prática, feita de confiança, serviço e perseverança.",
+  Lc:"A leitura de Lucas desafia a transformar a misericórdia em proximidade real com quem mais precisa.",
+  Jo:"A leitura de João convida a permanecer em Cristo e a deixar que o amor transforme a maneira de viver."
+ };
+ const base=(sets[key]||fallback[book]||["Escutar o Evangelho pede atenção ao que Jesus revela sobre Deus e sobre a pessoa humana.","A mensagem do texto convida a identificar uma mudança concreta de atitude.","A fé cristã liga sempre encontro com Deus e responsabilidade pelo próximo.","A Palavra torna-se fecunda quando passa da leitura para a vida quotidiana."]).slice(0,4);
+ return [...base,fifth[book]||"A mensagem do Evangelho pede uma resposta concreta na forma como pensamos, escolhemos e tratamos os outros."];
 }
 function gospelReflectionsHTML(ref){
  if(!ref)return "";
@@ -812,7 +839,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=31",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=32",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -834,6 +861,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=31",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=32",{updateViaCache:"none"}));
 </script>
 </body></html>
