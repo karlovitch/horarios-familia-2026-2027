@@ -238,21 +238,22 @@ def zerozero_hockey_status(event):
             lo=min(hp,ap);hi=max(hp,ap)
             # Use the visible header area between both team names, where zerozero places the score.
             raw_segment=text[:1800]
-            m=re.search(r"(?<![\\d-])(\\d{1,2})\\s*-\\s*(\\d{1,2})(?![\\d-])",raw_segment)
+            m=re.search(r"(?<![\d-])(\d{1,2})\s*-\s*(\d{1,2})(?![\d-])",raw_segment)
             if m:score=(int(m.group(1)),int(m.group(2)))
-        if not score:return {}
-        out={"home_score":score[0],"away_score":score[1],"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        out={"status_updated_at":datetime.now(timezone.utc).isoformat()}
+        if score:
+            out["home_score"],out["away_score"]=score
         now=datetime.now(timezone.utc)
         start=None
         try:start=datetime.fromisoformat((event.get("start") or "").replace("Z","+00:00"))
         except Exception:pass
-        if "Antevisão do Jogo" in text and "Ficha de Jogo" not in text:
+        if start and now < start:
             out["status"]="scheduled"
-        elif start and now < start:
+        elif "Antevisão do Jogo" in text and "Ficha de Jogo" not in text:
             out["status"]="scheduled"
-        elif start and (now-start).total_seconds() < 9000:
+        elif start and (now-start).total_seconds() < 7200:
             out["status"]="live"
-        else:
+        elif score:
             out["status"]="finished"
         return out
     except Exception:
