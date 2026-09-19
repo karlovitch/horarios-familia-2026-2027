@@ -1,4 +1,4 @@
-const BUILD=77;
+const BUILD=78;
 const C='horarios-familia-2026-27-v'+BUILD;
 const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'icon.svg'];
 const NETWORK_FIRST_PATHS=new Set([
