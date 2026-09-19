@@ -9,12 +9,17 @@ on:
       - "scripts/update_daily_info.py"
       - ".github/workflows/update-daily-info.yml"
 
+concurrency:
+  group: update-daily-info
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
 jobs:
   atualizar:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Obter repositório
         uses: actions/checkout@v4
@@ -38,6 +43,12 @@ jobs:
 
       - name: Guardar atualização
         run: |
+          cp daily-info.json /tmp/daily-info.json
+          cp calendar-info.json /tmp/calendar-info.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/daily-info.json daily-info.json
+          cp /tmp/calendar-info.json calendar-info.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add daily-info.json calendar-info.json
