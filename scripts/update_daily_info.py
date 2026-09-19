@@ -300,7 +300,7 @@ def load_calendar() -> dict:
 def build_day(day: date, un_map: dict[str, list[str]]) -> dict:
     mmdd = day.strftime("%m-%d")
     lit = get_liturgy(day)
-    hagiographies = get_vatican_hagiographies(day)
+    hagiographies = get_vatican_hagiographies(day) if lit.get("saints") else []
     return {
         "date": day.isoformat(),
         "un_days": un_map.get(mmdd, []),
