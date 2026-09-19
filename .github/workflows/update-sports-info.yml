@@ -9,12 +9,17 @@ on:
       - "scripts/update_sports_info.py"
       - ".github/workflows/update-sports-info.yml"
 
+concurrency:
+  group: update-sports-info
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   atualizar:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Obter repositório
         uses: actions/checkout@v4
