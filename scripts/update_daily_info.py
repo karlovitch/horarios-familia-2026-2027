@@ -19,8 +19,8 @@ TZ = ZoneInfo("Europe/Lisbon")
 START_DATE = date(2026, 1, 1)
 END_DATE = date(2027, 12, 31)
 
-UN_URL = "https://www.un.org/en/observances/list-days-weeks"
-COE_URL = "https://www.coe.int/en/web/portal/international-and-european-days"
+UN_URL = "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/"
+COE_URL = "https://eurocid.mne.gov.pt/artigos/efemerides"
 LITURGIA_BASE = "https://liturgia.pt/liturgiadiaria/dia.php"
 
 EUROPEAN_DAYS = {
@@ -36,19 +36,30 @@ EUROPEAN_DAYS = {
 
 PORTUGAL_DAYS = {
     "01-01": ["Ano Novo (Feriado Nacional)"],
+    "03-27": ["Dia Nacional do Dador de Sangue"],
+    "03-31": ["Dia Nacional do Doente com AVC"],
     "04-25": ["Dia da Liberdade (Feriado Nacional)"],
     "05-01": ["Dia do Trabalhador (Feriado Nacional)"],
     "05-06": ["Dia Nacional do Azulejo"],
     "05-10": ["Dia Nacional do Seguro"],
-    "05-25": ["Dia Nacional dos Jardins"],
     "06-10": ["Dia de Portugal, de Camões e das Comunidades Portuguesas (Feriado Nacional)"],
     "06-22": ["Dia Nacional da Liberdade Religiosa e do Diálogo Inter-Religioso"],
+    "07-22": ["Dia Nacional do Calceteiro e da Calçada Portuguesa"],
+    "07-28": ["Dia Nacional da Conservação da Natureza"],
     "08-15": ["Assunção de Nossa Senhora (Feriado Nacional)"],
+    "10-01": ["Dia Nacional da Água"],
     "10-05": ["Implantação da República (Feriado Nacional)"],
+    "10-18": ["Dia Nacional da Banda Desenhada Portuguesa"],
+    "10-30": ["Dia Nacional de Prevenção do Cancro da Mama"],
     "11-01": ["Dia de Todos os Santos (Feriado Nacional)"],
     "11-11": ["Dia Nacional das Raças Autóctones"],
+    "11-15": ["Dia Nacional da Língua Gestual Portuguesa"],
+    "11-16": ["Dia Nacional do Mar"],
+    "11-17": ["Dia Nacional do Não Fumador"],
+    "11-24": ["Dia Nacional da Cultura Científica"],
     "12-01": ["Restauração da Independência (Feriado Nacional)"],
     "12-08": ["Imaculada Conceição (Feriado Nacional)"],
+    "12-09": ["Dia Nacional da Pessoa com Deficiência"],
     "12-10": ["Dia Nacional dos Direitos Humanos"],
     "12-22": ["Dia Nacional do Técnico Auxiliar de Saúde"],
     "12-25": ["Natal (Feriado Nacional)"],
