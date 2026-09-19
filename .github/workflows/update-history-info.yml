@@ -1,0 +1,48 @@
+name: Atualizar efemérides históricas
+
+on:
+  schedule:
+    - cron: "37 3 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/update_history_info.py"
+      - ".github/workflows/update-history-info.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install requests beautifulsoup4
+
+      - name: Atualizar efemérides
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python scripts/update_history_info.py --all
+          else
+            python scripts/update_history_info.py
+          fi
+
+      - name: Guardar atualização
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add history-info.json
+          if git diff --cached --quiet; then
+            echo "Sem alterações."
+          else
+            git commit -m "Atualizar efemérides históricas"
+            git push
+          fi
