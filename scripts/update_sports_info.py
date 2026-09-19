@@ -287,15 +287,102 @@ def zerozero_hockey_status(event):
         except Exception:pass
         if start and now < start:
             out["status"]="scheduled"
-        elif "Antevisão do Jogo" in text and "Ficha de Jogo" not in text:
-            out["status"]="scheduled"
-        elif start and (now-start).total_seconds() < 7200:
-            out["status"]="live"
         elif score:
             out["status"]="finished"
+        elif start and (now-start).total_seconds() < 7200:
+            out["status"]="live"
+        elif hockey_event_overdue(event,now):
+            # Uma antevisão desatualizada não pode transformar um jogo antigo em "agendado".
+            out["status"]="awaiting_final"
         return out
     except Exception:
         return {}
+
+
+def _hockey_event_start(event):
+    try:
+        return datetime.fromisoformat((event.get("start") or "").replace("Z","+00:00"))
+    except Exception:
+        return None
+
+def hockey_event_overdue(event, now=None):
+    start=_hockey_event_start(event)
+    if not start:return False
+    now=now or datetime.now(timezone.utc)
+    # 2h45 cobre tempo regulamentar, interrupções e eventual prolongamento.
+    return (now-start).total_seconds() >= 2*3600+45*60
+
+def _ascii_loose(value):
+    text=unicodedata.normalize("NFKD",str(value or "")).encode("ascii","ignore").decode("ascii").lower()
+    return re.sub(r"\s+"," ",text)
+
+def _score_near_teams(text,event):
+    clean=_ascii_loose(text)
+    # Remove datas para não confundir 19-09 com um marcador.
+    clean=re.sub(r"\b20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}\b"," ",clean)
+    clean=re.sub(r"\b\d{1,2}[-/.]\d{1,2}[-/.]20\d{2}\b"," ",clean)
+    home=_norm_name(event.get("home",""));away=_norm_name(event.get("away",""))
+    if not home or not away:return None
+
+    occurrences=[]
+    for hm in re.finditer(re.escape(home),_norm_name(clean)):
+        occurrences.append(("home",hm.start()))
+    for am in re.finditer(re.escape(away),_norm_name(clean)):
+        occurrences.append(("away",am.start()))
+    if not occurrences:return None
+
+    # Também pesquisa no texto ASCII original, onde preservamos o hífen do marcador.
+    hpos=[m.start() for m in re.finditer(re.escape(_ascii_loose(event.get("home",""))),clean)]
+    apos=[m.start() for m in re.finditer(re.escape(_ascii_loose(event.get("away",""))),clean)]
+    best=None
+    for hp in hpos:
+        for ap in apos:
+            if abs(hp-ap)>420:continue
+            lo=max(0,min(hp,ap)-100);hi=min(len(clean),max(hp,ap)+260)
+            ctx=clean[lo:hi]
+            scores=[]
+            for m in re.finditer(r"(?<![\d-])(\d{1,2})\s*[-–]\s*(\d{1,2})(?![\d-])",ctx):
+                a,b=map(int,m.groups())
+                if a>30 or b>30:continue
+                scores.append((abs((lo+m.start())-((hp+ap)//2)),a,b))
+            if not scores:continue
+            _,a,b=min(scores,key=lambda x:x[0])
+            # O marcador é publicado normalmente na ordem casa-fora.
+            candidate=(a,b)
+            distance=abs(hp-ap)
+            if best is None or distance<best[0]:best=(distance,candidate)
+    return best[1] if best else None
+
+def hockey_fallback_status(event):
+    urls=["https://www.hoqueipatins.pt/"]
+    entity=(event.get("entity") or "").lower()
+    if "barcelos" in entity:
+        urls.extend([
+          event.get("source_url"),
+          "https://hoqueiminhoto.blogspot.com/2026/09/?m=0",
+        ])
+    for url in dict.fromkeys(u for u in urls if u):
+        try:
+            html=get(url)
+            text=" ".join(BeautifulSoup(html,"html.parser").stripped_strings)
+            score=_score_near_teams(text,event)
+            if score is not None:
+                return {"home_score":score[0],"away_score":score[1],"status":"finished","result_source_url":url}
+        except Exception:
+            pass
+    return {}
+
+def merge_hockey_seed(existing_event,seed_event):
+    """Atualiza calendário/base sem apagar um resultado já confirmado."""
+    old=existing_event or {}
+    merged={**old,**seed_event}
+    if old.get("home_score") is not None and old.get("away_score") is not None:
+        merged["home_score"]=old["home_score"];merged["away_score"]=old["away_score"]
+        if old.get("status"):merged["status"]=old["status"]
+        if old.get("result_source_url"):merged["result_source_url"]=old["result_source_url"]
+    elif old.get("status")=="awaiting_final":
+        merged["status"]="awaiting_final"
+    return merged
 
 def enforce_direct_match_urls(events):
     resolved=0
@@ -324,13 +411,25 @@ def enforce_direct_match_urls(events):
                             if v is not None:event[k]=v
             except Exception:
                 pass
-        elif ("hoquei" in sport or "hóquei" in sport) and is_direct_match_url(event,event.get("match_url")):
+        elif "hoquei" in sport or "hóquei" in sport:
             try:
                 event_day=datetime.fromisoformat(event.get("date")).date()
-                if abs((event_day-today).days)<=1:
-                    info=zerozero_hockey_status(event)
+                if abs((event_day-today).days)<=2:
+                    info={}
+                    if is_direct_match_url(event,event.get("match_url")):
+                        info=zerozero_hockey_status(event)
+                    # Se a ficha principal não trouxer marcador, procura fontes alternativas.
+                    if info.get("home_score") is None or info.get("away_score") is None:
+                        alt=hockey_fallback_status(event)
+                        if alt:info={**info,**alt}
+                    if (info.get("home_score") is None or info.get("away_score") is None) and hockey_event_overdue(event):
+                        info["status"]="awaiting_final"
+                    # Nunca degrada um resultado final já confirmado.
+                    already_final=event.get("status")=="finished" and event.get("home_score") is not None and event.get("away_score") is not None
                     for k,v in info.items():
-                        if v is not None:event[k]=v
+                        if v is None:continue
+                        if already_final and k in {"status","home_score","away_score"}:continue
+                        event[k]=v
             except Exception:
                 pass
     return resolved
@@ -741,6 +840,7 @@ def historical_seed():
       {"date":"2026-09-11","start":"2026-09-11T22:00:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"Riba d'Ave","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":1,"away_score":1,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
       {"date":"2026-09-12","start":"2026-09-12T19:30:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"HC Braga","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":2,"away_score":1,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
       {"date":"2026-09-13","start":"2026-09-13T17:00:00+01:00","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"OC Barcelos","away":"Juventude de Viana","competition":"Troféu Jorge Coutinho 2026","location":"Pavilhão Municipal de Barcelos, Barcelos, Portugal","channel":"Transmissão em Portugal não registada","home_score":1,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156"},
+      {"date":"2026-09-18","start":"2026-09-18T20:30:00Z","entity":"Óquei Clube de Barcelos","sport":"Hóquei em Patins","home":"Valença HC","away":"OC Barcelos","competition":"Taça do Minho 2026 · Jornada 1","location":"Valença, Portugal","channel":"Transmissão em Portugal não registada","home_score":2,"away_score":0,"status":"finished","result_source_url":"https://hoqueiminhoto.blogspot.com/2026/09/valenca-hc-entra-vencer-na-taca-do-minho.html?m=0","source_url":"https://hoqueiminhoto.blogspot.com/2026/09/"},
 
       {"date":"2026-09-17","start":"2026-09-17T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"Portugal","away":"Angola","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":5,"away_score":3,"status":"finished","source_url":"https://www.zerozero.pt/hoquei-em-patins"},
       {"date":"2026-09-18","start":"2026-09-18T13:30:00+02:00","entity":"Seleção Nacional de Portugal · Hóquei em Patins","sport":"Hóquei em Patins","home":"França","away":"Portugal","competition":"GoldenCat 2026 · Seleção AA Masculina","location":"Cerdanyola del Vallès, Catalunha, Espanha","channel":"FPP TV","home_score":4,"away_score":2,"status":"finished","source_url":"https://www.hoqueipatins.pt/"},
@@ -795,7 +895,7 @@ except Exception as exc:
     generated_f1=f1_fallback()
     for e in generated_f1: existing[key(e)]=e
     checked.append({"url":"https://api.jolpi.ca/ergast/f1/2026.json","ok":False,"fallback":"Formula1.com","events_found":len(generated_f1),"error":str(exc)[:180]})
-for e in portugal_hockey_seed(): existing[key(e)]=e
+for e in portugal_hockey_seed(): existing[key(e)]=merge_hockey_seed(existing.get(key(e)),e)
 for e in historical_seed(): existing[key(e)]={**existing.get(key(e),{}),**e}
 events=list(existing.values())
 direct_resolved=enforce_direct_match_urls(events)

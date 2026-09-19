@@ -147,6 +147,8 @@ required_index_tokens = {
     "event.date prioritário": 'if(/^20\\d{2}-\\d{2}-\\d{2}$/.test(explicit))return explicit;',
     "separador Desporto condicional": 'row.classList.toggle("hidden",!hasEvents)',
     "eventos terminados não são filtrados": "// Não filtra pelo estado: scheduled, live, halftime e finished permanecem visíveis.",
+    "resultado final pendente explicitado": 'ev.status==="awaiting_final"',
+
     "refresh ao abrir Desporto": 'loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderActiveView()})',
 
 
@@ -225,6 +227,12 @@ if not isinstance(calendar.get("dates"), dict):
     fail("calendar-info.json não contém o mapa dates")
 if not isinstance(history.get("dates"), dict):
     fail("history-info.json não contém o mapa dates")
+if "def hockey_fallback_status(event):" not in sports_script:
+    fail("O atualizador desportivo não tem fallback multi-fonte para hóquei")
+if "def merge_hockey_seed(existing_event,seed_event):" not in sports_script:
+    fail("O seed de hóquei pode voltar a apagar resultados já confirmados")
+if '"status":"awaiting_final"' not in index and 'ev.status==="awaiting_final"' not in index:
+    fail("A interface não apresenta resultados finais ainda por confirmar")
 if "window.__SPORTS_INFO__=" not in sports_js:
     fail("sports-info.js não contém o snapshot da agenda")
 if 'OUT_JS.write_text("window.__SPORTS_INFO__="' not in sports_script:

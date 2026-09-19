@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T16:14:47.125911+00:00",
+  "generated_at": "2026-09-19T18:39:19.829Z",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1359,7 +1359,11 @@
       "location": "Valença, Portugal",
       "channel": "Transmissão a confirmar",
       "match_url": null,
-      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
+      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "finished",
+      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/valenca-hc-entra-vencer-na-taca-do-minho.html?m=0"
     },
     {
       "date": "2026-09-19",
@@ -1372,7 +1376,8 @@
       "location": "Cerdanyola del Vallès, Catalunha, Espanha",
       "channel": "FPP TV",
       "match_url": "http://www.zerozero.pt/jogo/2026-09-19-portugal-franca/12609727",
-      "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/"
+      "source_url": "https://fpp.pt/selecoes-nacionais-em-preparacao-para-os-world-skate-games-no-goldencat-com-transmissao-na-fpp-tv/",
+      "status": "awaiting_final"
     },
     {
       "date": "2026-09-19",
