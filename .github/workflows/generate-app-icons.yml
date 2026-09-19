@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "icon.svg"
+      - ".icon-source/**"
       - ".github/workflows/generate-app-icons.yml"
 
 permissions:
@@ -26,31 +26,32 @@ jobs:
       - name: Instalar Pillow
         run: pip install pillow
 
-      - name: Gerar PNGs a partir do ícone original
+      - name: Gerar PNGs reais a partir do ícone aprovado
         shell: python
         run: |
-          import base64, io, re
+          import base64, io
           from pathlib import Path
           from PIL import Image
 
-          svg = Path("icon.svg").read_text(encoding="utf-8")
-          m = re.search(r"data:image/png;base64,([^\"]+)", svg)
-          if not m:
-              raise SystemExit("PNG incorporado não encontrado em icon.svg")
-
-          raw = base64.b64decode(m.group(1))
+          parts = sorted(Path(".icon-source").glob("part*.txt"))
+          if not parts:
+              raise SystemExit("Fonte do ícone não encontrada.")
+          encoded = "".join(p.read_text(encoding="utf-8").strip() for p in parts)
+          raw = base64.b64decode(encoded, validate=True)
           src = Image.open(io.BytesIO(raw)).convert("RGB")
+          if src.size != (512, 512):
+              src = src.resize((512, 512), Image.Resampling.LANCZOS)
 
-          # O PNG incorporado é o ícone exato aprovado; apenas mudamos a resolução.
+          # PNGs reais: evitam o problema do launcher Android com o SVG anterior.
           src.resize((192, 192), Image.Resampling.LANCZOS).save("icon-192.png", optimize=True)
-          src.resize((512, 512), Image.Resampling.LANCZOS).save("icon-512.png", optimize=True)
+          src.save("icon-512.png", optimize=True)
           src.resize((180, 180), Image.Resampling.LANCZOS).save("apple-touch-icon.png", optimize=True)
           src.resize((64, 64), Image.Resampling.LANCZOS).save("favicon-64.png", optimize=True)
 
-          # Variante maskable para Android: mantém todo o desenho dentro da zona segura.
+          # Variante Android maskable, mantendo o desenho dentro da zona segura.
           canvas = Image.new("RGB", (512, 512), (246, 242, 235))
           safe = src.resize((410, 410), Image.Resampling.LANCZOS)
-          canvas.paste(safe, ((512-410)//2, (512-410)//2))
+          canvas.paste(safe, ((512 - 410)//2, (512 - 410)//2))
           canvas.save("icon-maskable-512.png", optimize=True)
 
       - name: Guardar ícones
@@ -67,6 +68,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Ícones já atualizados."
           else
-            git commit -m "Gerar ícones PNG da aplicação"
+            git commit -m "Gerar ícones PNG reais da aplicação"
             git push
           fi
