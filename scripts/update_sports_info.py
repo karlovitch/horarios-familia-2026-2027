@@ -623,6 +623,13 @@ except Exception as exc:
 for e in portugal_hockey_seed(): existing[key(e)]=e
 events=list(existing.values())
 direct_resolved=enforce_direct_match_urls(events)
+for event in events:
+    stream=(event.get("stream_url") or "").lower()
+    if stream and not any(token in stream for token in (
+        "rtp.pt/play/direto/","tv.fpp.pt","dazn.com","play.realmadrid.com",
+        "youtube.com","youtu.be","uefa.tv","fifa.com/fifaplus"
+    )):
+        event.pop("stream_url",None)
 events=sorted(events,key=lambda e:(e.get("date","9999"),e.get("start") or "9999",e.get("entity","")))
 out={
  "generated_at":datetime.now(timezone.utc).isoformat(),
