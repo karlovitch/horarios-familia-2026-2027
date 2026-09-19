@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=64">
+<link rel="manifest" href="manifest.webmanifest?v=65">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -35,17 +35,17 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 .overview-week-corner{border-color:transparent;background:transparent}
 .overview-week-person{padding:7px 3px;text-align:center;font-weight:850;font-size:.67rem;line-height:1.05}
 .overview-week-day{padding:7px 3px;text-align:center;font-weight:850;font-size:.66rem;line-height:1.12}
-.overview-week-cell{position:relative;height:320px;padding:0;overflow:hidden;background:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,color-mix(in srgb,var(--border) 32%,transparent) 31px)}
-.overview-week-day{height:320px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.overview-week-cell{position:relative;height:650px;padding:0;overflow:hidden;background:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,color-mix(in srgb,var(--border) 32%,transparent) 31px)}
+.overview-week-day{height:650px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .overview-week-event{position:absolute;left:3px;right:3px;padding:4px 3px;border:1px solid rgba(45,55,72,.26);border-radius:6px;font-size:.55rem;line-height:1.08;overflow:hidden;box-shadow:0 1px 3px rgba(22,32,51,.06)}
 .overview-week-event b{display:block;font-size:.56rem}.overview-week-event span{display:block;margin-top:1px}
 .overview-week-empty,.overview-week-special{padding:7px 2px;text-align:center;font-size:.53rem;line-height:1.15;color:var(--muted)}
 .overview-week-special{color:var(--text);font-weight:750}
-@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:286px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
+@media(max-width:700px){.overview-week-cell,.overview-week-day{height:560px}}@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:560px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v64</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v65</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -192,7 +192,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=64;
+const APP_BUILD=65;
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -772,7 +772,7 @@ function renderSportsAgenda(iso){
 }
 async function loadSportsInfo(){
  try{
-  const r=await fetch("sports-info.json?v=64&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("sports-info.json?v=65&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
  if(view==="sports")renderSportsAgenda(statsIso());
@@ -1285,7 +1285,7 @@ function renderDailyInfo(){
 }
 async function loadHistoryInfo(){
  try{
-  const r=await fetch("history-info.json?v=64&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("history-info.json?v=65&ts="+Date.now(),{cache:"no-store"});
   if(r.ok){HISTORY_INFO=await r.json();try{localStorage.setItem("historyInfo",JSON.stringify(HISTORY_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("historyInfo");if(s)HISTORY_INFO=JSON.parse(s)}catch(_){}
@@ -1294,7 +1294,7 @@ async function loadHistoryInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=64",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=65",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1612,6 +1612,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=64",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=65",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
