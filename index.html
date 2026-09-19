@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=85">
-<link rel="icon" href="favicon-64.png?v=85" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=85" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=85" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=85">
+<link rel="manifest" href="manifest.webmanifest?v=86">
+<link rel="icon" href="favicon-64.png?v=86" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=86" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=86" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=86">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -49,10 +49,50 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 .overview-week-empty,.overview-week-special{padding:7px 2px;text-align:center;font-size:.53rem;line-height:1.15;color:var(--muted)}
 .overview-week-special{color:var(--text);font-weight:750}
 @media(max-width:700px){.overview-week-cell,.overview-week-day{height:560px}}@media(max-width:420px){.overview-week-grid{grid-template-columns:54px repeat(4,minmax(0,1fr));gap:3px}.overview-week-person,.overview-week-day{font-size:.56rem;padding:5px 1px}.overview-week-cell,.overview-week-day{height:560px}.overview-week-event{font-size:.46rem;padding:2px}.overview-week-event b{font-size:.48rem}.overview-week-empty,.overview-week-special{font-size:.46rem;padding:5px 1px}}
+
+/* v86 · meteorologia + legibilidade dos horários */
+.weather-strip{display:block;width:max-content;max-width:100%;margin:0 auto 10px;padding:8px 12px;border:1px solid var(--border);border-radius:11px;background:#FFFFFF;color:var(--primary);font-size:.78rem;font-weight:800;line-height:1.25;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.weather-strip::-webkit-scrollbar{display:none}.weather-strip.is-error{font-weight:700;color:var(--muted)}.weather-strip .weather-source{font-weight:650;opacity:.66}
+.timeline{height:850px;grid-template-columns:64px repeat(4,minmax(0,1fr))}
+.person-timeline.week-view{grid-template-columns:64px repeat(5,minmax(0,1fr))}
+.time-label{font-size:.98rem;left:4px}
+.lane-head{height:44px;padding:8px 3px;font-size:1.05rem;line-height:1.05}
+.block{font-size:1.44rem;line-height:1.05;padding:5px 5px}
+.block strong{font-size:1.48rem;line-height:1.02}.block em{font-size:1.36rem;line-height:1.02}
+.block.medium-block{font-size:1.20rem}.block.medium-block strong{font-size:1.24rem}.block.medium-block em{font-size:1.10rem}
+.block.short-block{font-size:1rem;line-height:.98}.block.short-block strong{font-size:1.04rem}.block.short-block em{font-size:.90rem}
+.now-line{left:64px}
+.overview-week-cell,.overview-week-day{height:850px}.overview-week-event{font-size:1.10rem;line-height:1.02;padding:4px 3px}.overview-week-event b{font-size:1.12rem}.overview-week-empty,.overview-week-special{font-size:1rem}
+.overview-mini-event{font-size:1.18rem}.overview-mini-event .mini-time{font-size:1.26rem}.overview-mini-event strong{font-size:1.32rem}.overview-mini-event span{font-size:1.18rem}
+@media(max-width:700px){
+ .weather-strip{font-size:.74rem;padding:7px 9px;margin-bottom:8px}
+ .timeline:not(.compact-overview){grid-template-columns:44px repeat(4,minmax(0,1fr));height:760px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:44px repeat(5,minmax(0,1fr));height:760px}
+ .time-label{left:2px;font-size:.72rem}
+ .lane-head{height:40px;padding:5px 1px;font-size:.88rem;line-height:1}
+ .block{font-size:.96rem;line-height:1;padding:2px 2px}
+ .block strong{font-size:1rem;line-height:1}.block em{font-size:.90rem;line-height:1}
+ .block.medium-block{font-size:.88rem}.block.medium-block strong{font-size:.90rem}.block.medium-block em{font-size:.82rem}
+ .block.short-block{font-size:.80rem;line-height:.96}.block.short-block strong{font-size:.82rem}.block.short-block em{font-size:.70rem}
+ .now-line{left:44px}
+ .overview-week-cell,.overview-week-day{height:760px}
+ .overview-week-event{font-size:.92rem;line-height:1;padding:3px 2px}.overview-week-event b{font-size:.96rem}
+ .overview-week-empty,.overview-week-special{font-size:.84rem}
+}
+@media(max-width:420px){
+ .timeline:not(.compact-overview){grid-template-columns:42px repeat(4,minmax(0,1fr));height:760px}
+ .person-timeline.week-view:not(.compact-overview){grid-template-columns:42px repeat(5,minmax(0,1fr));height:760px}
+ .time-label{font-size:.68rem}.lane-head{font-size:.82rem}
+ .block{font-size:.90rem}.block strong{font-size:.94rem}.block em{font-size:.84rem}
+ .block.medium-block{font-size:.82rem}.block.medium-block strong{font-size:.84rem}.block.medium-block em{font-size:.76rem}
+ .block.short-block{font-size:.74rem}.block.short-block strong{font-size:.76rem}.block.short-block em{font-size:.66rem}
+ .now-line{left:42px}
+}
+
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v85</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v86</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -61,14 +101,15 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalFamilyBanner" class="family-banner hidden"></div>
-<section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
-<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
+<section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
+<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="screen-head"><div><h2>Hoje</h2><p id="todayDay"></p></div></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
 <section id="sports" class="screen hidden">
   <div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
   <div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+  <div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
   <section id="sportsPanel" class="sports-panel"></section>
 </section>
-<section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
+<section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
 </main>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
 <script>
@@ -199,9 +240,11 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=85;
+const APP_BUILD=86;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
+const WEATHER_CONFIG={lat:41.5388,lon:-8.6151,label:"Barcelos",timezone:"Europe/Lisbon",ttl:10*60*1000};
+const WEATHER_STATE={loadedAt:0,promise:null,data:null};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
  sports:{loadedAt:0,promise:null},
@@ -302,7 +345,8 @@ Carlos:{
 }
 };
 let view="overview",selectedDay=null,person=null,personMode="day",overviewMode="day",statsDate=null,installPrompt=null;
-const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)],toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>window.matchMedia("(max-width:700px)").matches,timelineHeight=()=>isMobileTimeline()?560:650,laneHeaderHeight=()=>isMobileTimeline()?30:34,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
+const MOBILE_TIMELINE_QUERY=window.matchMedia("(max-width:700px)");
+const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)],toMin=t=>{const [h,m]=t.split(":").map(Number);return h*60+m},isMobileTimeline=()=>MOBILE_TIMELINE_QUERY.matches,timelineHeight=()=>isMobileTimeline()?760:850,laneHeaderHeight=()=>isMobileTimeline()?40:44,timelineY=m=>laneHeaderHeight()+((m-START)/(END-START))*(timelineHeight()-laneHeaderHeight()),timelineDur=(a,b)=>((toMin(b)-toMin(a))/(END-START))*(timelineHeight()-laneHeaderHeight()),dayNow=()=>WEEK[new Date().getDay()],nowMin=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60},esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),current=(e,d)=>d===dayNow()&&nowMin()>=toMin(e.start)&&nowMin()<toMin(e.end),activeEvent=(p,d)=>(D[p].days[d]||[]).find(e=>current(e,d));
 function ymdDay(s){const [y,m,d]=s.split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/MS_DAY)}
 function currentLocalDay(){const n=new Date();return Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/MS_DAY)}
 const HOLIDAY_DAYS=new Set([...NATIONAL_HOLIDAYS,...LOCAL_NO_CLASS_DAYS].map(ymdDay));
@@ -365,6 +409,85 @@ function countdownLine(p,refDay){return '<div class="countdown-line" style="bord
 function selectedStatsDay(){return statsDate?ymdDay(statsDate):currentLocalDay()}
 function statsIso(){return statsDate||isoLocalDate()}
 function syncStatsControls(){qsa(".stats-date-input").forEach(i=>{if(i.value!==statsIso())i.value=statsIso()})}
+
+function weatherSky(cloud){
+ const c=Number(cloud);
+ if(!Number.isFinite(c))return {icon:"🌤️",label:"Céu variável"};
+ if(c>=85)return {icon:"☁️",label:"Céu totalmente nublado"};
+ if(c>=30)return {icon:"🌤️",label:"Pouco nublado"};
+ return {icon:"☀️",label:"Sol"};
+}
+function beaufortFromKmh(kmh){
+ const v=Math.max(0,Number(kmh)||0),limits=[1,6,12,20,29,39,50,62,75,89,103,118],labels=["calmo","aragem","brisa leve","brisa fraca","brisa moderada","brisa fresca","vento forte","vento muito forte","vento duro","temporal","temporal forte","tempestade","furacão"];
+ let force=limits.findIndex(x=>v<x);if(force<0)force=12;
+ return {force,label:labels[force]};
+}
+function weatherCached(){
+ const cached=storageRead("weatherBarcelos",null);
+ if(!cached||!cached.data||!cached.savedAt)return null;
+ return cached;
+}
+async function loadWeather({force=false}={}){
+ if(!force&&WEATHER_STATE.data&&Date.now()-WEATHER_STATE.loadedAt<WEATHER_CONFIG.ttl)return WEATHER_STATE.data;
+ const cached=weatherCached();
+ if(!force&&!WEATHER_STATE.data&&cached&&Date.now()-cached.savedAt<WEATHER_CONFIG.ttl){
+  WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;return cached.data;
+ }
+ if(WEATHER_STATE.promise)return WEATHER_STATE.promise;
+ WEATHER_STATE.promise=(async()=>{
+  const u=new URL("https://api.open-meteo.com/v1/forecast");
+  u.searchParams.set("latitude",WEATHER_CONFIG.lat);
+  u.searchParams.set("longitude",WEATHER_CONFIG.lon);
+  u.searchParams.set("current","temperature_2m,cloud_cover,wind_speed_10m");
+  u.searchParams.set("daily","temperature_2m_max,temperature_2m_min,cloud_cover_mean,wind_speed_10m_max");
+  u.searchParams.set("timezone",WEATHER_CONFIG.timezone);
+  u.searchParams.set("past_days","7");
+  u.searchParams.set("forecast_days","16");
+  try{
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+   let r;
+   try{r=await fetch(u.toString(),{cache:"no-store",signal:controller.signal})}finally{clearTimeout(timer)}
+   if(!r.ok)throw new Error("weather HTTP "+r.status);
+   const data=await r.json();
+   WEATHER_STATE.data=data;WEATHER_STATE.loadedAt=Date.now();
+   storageWrite("weatherBarcelos",{savedAt:WEATHER_STATE.loadedAt,data});
+   return data;
+  }catch(err){
+   if(cached&&cached.data){WEATHER_STATE.data=cached.data;WEATHER_STATE.loadedAt=cached.savedAt;return cached.data}
+   throw err;
+  }finally{WEATHER_STATE.promise=null}
+ })();
+ return WEATHER_STATE.promise;
+}
+function weatherDay(data,iso){
+ const d=data&&data.daily;if(!d||!Array.isArray(d.time))return null;
+ const i=d.time.indexOf(iso);if(i<0)return null;
+ return {max:d.temperature_2m_max?.[i],min:d.temperature_2m_min?.[i],cloud:d.cloud_cover_mean?.[i],wind:d.wind_speed_10m_max?.[i]};
+}
+function renderWeatherStrip(data,iso){
+ const day=weatherDay(data,iso),today=isoLocalDate(),cur=data&&data.current;
+ const currentTemp=Number(cur&&cur.temperature_2m),isToday=iso===today;
+ const cloud=isToday?Number(cur&&cur.cloud_cover):Number(day&&day.cloud);
+ const wind=isToday?Number(cur&&cur.wind_speed_10m):Number(day&&day.wind);
+ const sky=weatherSky(cloud),bf=beaufortFromKmh(wind);
+ let text=sky.icon+" "+sky.label;
+ if(Number.isFinite(currentTemp))text+=" · Agora "+Math.round(currentTemp)+"°C";
+ if(day&&Number.isFinite(Number(day.max))&&Number.isFinite(Number(day.min)))text+=" · Máx. "+Math.round(day.max)+"° · Mín. "+Math.round(day.min)+"°";
+ else if(!isToday)text+=" · Previsão ainda indisponível para esta data";
+ if(Number.isFinite(wind))text+=" · "+(isToday?"Vento ":"Vento máx. ")+Math.round(wind)+" km/h · F"+bf.force+" ("+bf.label+")";
+ text+=' <span class="weather-source">· '+WEATHER_CONFIG.label+"</span>";
+ qsa("[data-weather-strip]").forEach(el=>{el.classList.remove("is-error");el.innerHTML=text});
+}
+async function updateWeatherStrip(iso=statsIso()){
+ qsa("[data-weather-strip]").forEach(el=>{if(!el.dataset.ready)el.textContent="🌤️ A obter previsão…"});
+ try{
+  const data=await loadWeather();
+  if(statsIso()===iso){renderWeatherStrip(data,iso);qsa("[data-weather-strip]").forEach(el=>el.dataset.ready="1")}
+ }catch(_){
+  if(statsIso()!==iso)return;
+  qsa("[data-weather-strip]").forEach(el=>{el.classList.add("is-error");el.textContent="🌤️ Previsão meteorológica temporariamente indisponível · "+WEATHER_CONFIG.label});
+ }
+}
 function renderCountdowns(){
  const refDay=selectedStatsDay();syncStatsControls();
  const collective=["Leonor","Sandra","Margarida","Carlos"].map(p=>countdownLine(p,refDay)).join("");
@@ -1798,7 +1921,7 @@ function renderPersonDayTimeline(p,iso){
  }
  h+='</div>';
  if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
- tl.style.gridTemplateColumns=isMobileTimeline()?"30px minmax(0,1fr)":"50px minmax(0,1fr)";
+ tl.style.gridTemplateColumns=isMobileTimeline()?"44px minmax(0,1fr)":"64px minmax(0,1fr)";
  tl.innerHTML=h;
 }
 function renderPersonWeekTimeline(p,iso){
@@ -1864,6 +1987,7 @@ function refreshScheduleState(){
 }
 function renderActiveView(){
  syncStatsControls();
+ updateWeatherStrip(statsIso());
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
  else if(view==="sports"){applyAdaptiveTheme(statsIso());renderGlobalFamilyBanner(statsIso());renderSportsAgenda(statsIso())}
@@ -1943,7 +2067,7 @@ setInterval(()=>{
 },UI_REFRESH.sportsData);
 async function refreshCurrentView(){
  updateTodayLabel();
- await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);
+ await Promise.allSettled([loadDailyInfo(),loadSportsInfo(),loadWeather()]);
  renderActiveView();
 }
 async function checkForNewBuild(){
