@@ -71,6 +71,80 @@ Quinta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","16:0
 Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00","Aulas",""]]}}
 };
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
+const SEASON_THEMES={
+ spring:{name:"Primavera",colors:["#8ED9B5","#F6E27F","#F7B7D4","#A7D8F0"]},
+ summer:{name:"Verão",colors:["#3CC7C4","#FF8F6B","#FFD966","#A8E85F"]},
+ autumn:{name:"Outono",colors:["#E07A3F","#C9A86A","#A7B59A","#8A3A47"]},
+ winter:{name:"Inverno",colors:["#1F2A44","#D1D5DB","#CFE8F9","#F3F4F6"]}
+};
+const FESTIVE_THEMES={
+ christmas:{name:"Natal",colors:["#0F4D3F","#8B1E2D","#C9A86A","#FFFFFF"]},
+ newyear:{name:"Ano Novo",colors:["#1A1A1A","#F2E6C9","#D8D8D8","#D4B464"]},
+ triduum:{name:"Tríduo Pascal",colors:["#6A3FA0","#FFFFFF","#C7A45A","#AFC7E8"]}
+};
+const ASTRONOMICAL_THEMES={
+ summerSolstice:{name:"Solstício de Verão",colors:["#FFE45C","#4FA9E3","#FF9A4D","#7EDC7A"]},
+ winterSolstice:{name:"Solstício de Inverno",colors:["#142033","#E3E6EB","#AFC3D9","#7A7A7A"]},
+ springEquinox:{name:"Equinócio da Primavera",colors:["#9EDC8B","#F4C4D7","#F7E58A","#BEE3F7"]},
+ autumnEquinox:{name:"Equinócio do Outono",colors:["#D97A3F","#A67C52","#7F9A6A","#7A2E3A"]}
+};
+const SEASON_STARTS={
+ 2026:{spring:"2026-03-20",summer:"2026-06-21",autumn:"2026-09-23",winter:"2026-12-21"},
+ 2027:{spring:"2027-03-20",summer:"2027-06-21",autumn:"2027-09-23",winter:"2027-12-22"}
+};
+const TRIDUUM_DATES=new Set(["2026-04-02","2026-04-03","2026-04-04","2026-04-05","2027-03-25","2027-03-26","2027-03-27","2027-03-28"]);
+const ASTRONOMICAL_SPECIALS={
+ "2026-03-20":{type:"springEquinox",explanation:"No equinócio, o Sol cruza o equador celeste e o dia e a noite têm durações muito semelhantes.",curiosities:["Em 2026, a primavera astronómica começa a 20 de março, antes do meio da tarde em Portugal continental.","O termo «equinócio» vem do latim e significa, aproximadamente, «noite igual»."]},
+ "2026-06-21":{type:"summerSolstice",explanation:"No solstício de verão, o hemisfério norte atinge a sua maior inclinação em direção ao Sol, produzindo o dia com mais horas de luz do ano.",curiosities:["O Sol atinge a maior altura anual ao meio-dia solar, mas os dias mais quentes costumam ocorrer semanas depois.","A palavra «solstício» alude à aparente pausa do movimento anual do Sol no horizonte."]},
+ "2026-09-23":{type:"autumnEquinox",explanation:"No equinócio de outono, o Sol volta a cruzar o equador celeste e a duração do dia aproxima-se da duração da noite.",curiosities:["Depois deste equinócio, as noites tornam-se progressivamente mais longas no hemisfério norte.","A data do equinócio pode variar entre 22 e 23 de setembro conforme o ano e o fuso horário."]},
+ "2026-12-21":{type:"winterSolstice",explanation:"No solstício de inverno, o hemisfério norte apresenta a menor inclinação em direção ao Sol e ocorre o dia com menos horas de luz do ano.",curiosities:["A partir do solstício, a duração do dia começa lentamente a aumentar, mesmo que o inverno ainda esteja a começar.","O pôr do Sol mais cedo e o nascer do Sol mais tarde não coincidem exatamente com o dia do solstício."]},
+ "2027-03-20":{type:"springEquinox",explanation:"No equinócio, o Sol cruza o equador celeste e o dia e a noite ficam com durações muito próximas.",curiosities:["Em 2027, o equinócio acontece já ao início da noite em Portugal continental.","Os equinócios não tornam o dia e a noite rigorosamente iguais em todos os lugares por causa da refração atmosférica."]},
+ "2027-06-21":{type:"summerSolstice",explanation:"No solstício de verão, o hemisfério norte recebe a maior duração diária de luz solar do ano.",curiosities:["Em 2027, o solstício ocorre durante a tarde em Portugal continental.","Mesmo no solstício, o ponto do nascer e do pôr do Sol continua a variar ligeiramente devido à geometria da órbita terrestre."]},
+ "2027-09-23":{type:"autumnEquinox",explanation:"No equinócio de outono, o Sol cruza o equador celeste e começa o outono astronómico no hemisfério norte.",curiosities:["Em 2027, o equinócio ocorre pela manhã em Portugal continental.","O equilíbrio entre horas de luz e de escuridão é aproximado e depende também da latitude."]},
+ "2027-12-22":{type:"winterSolstice",explanation:"No solstício de inverno, o Sol alcança a sua menor altura anual ao meio-dia no hemisfério norte e começa o inverno astronómico.",curiosities:["Em 2027, o inverno astronómico começa já de madrugada em Portugal continental.","Depois deste dia, a trajetória aparente do Sol começa gradualmente a subir no céu ao longo das semanas."]}
+};
+function hexRgb(hex){const h=hex.replace("#","");return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function rgbHex(r,g,b){return "#"+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,"0")).join("").toUpperCase()}
+function mixHex(a,b,t){const A=hexRgb(a),B=hexRgb(b);return rgbHex(A[0]*(1-t)+B[0]*t,A[1]*(1-t)+B[1]*t,A[2]*(1-t)+B[2]*t)}
+function luminance(hex){const [r,g,b]=hexRgb(hex).map(v=>v/255);const f=v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);return .2126*f(r)+.7152*f(g)+.0722*f(b)}
+function textFor(hex){return luminance(hex)>.48?"#1F2A44":"#FFFFFF"}
+function seasonForIso(iso){
+ const y=Number(iso.slice(0,4)),s=SEASON_STARTS[y];
+ if(!s){const md=iso.slice(5);if(md>="12-21"||md<"03-20")return "winter";if(md<"06-21")return "spring";if(md<"09-23")return "summer";return "autumn"}
+ if(iso<s.spring)return "winter";if(iso<s.summer)return "spring";if(iso<s.autumn)return "summer";if(iso<s.winter)return "autumn";return "winter";
+}
+function specialThemeForIso(iso){
+ if(ASTRONOMICAL_SPECIALS[iso])return ASTRONOMICAL_THEMES[ASTRONOMICAL_SPECIALS[iso].type];
+ if(iso.slice(5)==="12-25")return FESTIVE_THEMES.christmas;
+ if(iso.slice(5)==="01-01")return FESTIVE_THEMES.newyear;
+ if(TRIDUUM_DATES.has(iso))return FESTIVE_THEMES.triduum;
+ return null;
+}
+function activeThemeForIso(iso){return specialThemeForIso(iso)||SEASON_THEMES[seasonForIso(iso)]}
+function personMicroPalette(p,colors){
+ const [a,b,c,d]=colors;
+ if(p==="Leonor")return {bg:mixHex(c,"#FFFFFF",.18),accent:mixHex(a,"#FFFFFF",.10)};
+ if(p==="Margarida")return {bg:mixHex(a,"#1A1A1A",.42),accent:mixHex(c,"#1A1A1A",.18)};
+ if(p==="Sandra")return {bg:mixHex(d,a,.32),accent:mixHex(b,d,.35)};
+ return {bg:mixHex(a,"#1F2A44",.52),accent:mixHex(d,"#1F2A44",.25)};
+}
+function applyAdaptiveTheme(iso){
+ const theme=activeThemeForIso(iso),colors=theme.colors,root=document.documentElement;
+ const lum=colors.map(x=>({x,l:luminance(x)})).sort((m,n)=>m.l-n.l),dark=lum[0].x,light=lum[lum.length-1].x;
+ const primary=mixHex(dark,"#1F2A44",.42),bg=mixHex(light,"#FFFFFF",.76),secondary=mixHex(light,"#FFFFFF",.90);
+ root.style.setProperty("--season-1",colors[0]);root.style.setProperty("--season-2",colors[1]);root.style.setProperty("--season-3",colors[2]);root.style.setProperty("--season-4",colors[3]);
+ root.style.setProperty("--primary",primary);root.style.setProperty("--bg",bg);root.style.setProperty("--secondary",secondary);root.style.setProperty("--text","#1F2A44");
+ root.style.setProperty("--muted",mixHex(primary,"#FFFFFF",.52));root.style.setProperty("--border",mixHex(primary,"#FFFFFF",.76));root.style.setProperty("--active",colors[0]);
+ root.style.setProperty("--positive",colors[2]);root.style.setProperty("--alert",colors[1]);root.style.setProperty("--blue",colors[3]);
+ for(const p of ["Leonor","Margarida","Sandra","Carlos"]){const m=personMicroPalette(p,colors);D[p].color=m.bg;D[p].textColor=textFor(m.bg);D[p].accent=m.accent}
+ document.body.dataset.theme=theme.name;return theme;
+}
+function astronomicalSpecialInfo(iso){
+ const x=ASTRONOMICAL_SPECIALS[iso];if(!x)return null;
+ const y=Number(iso.slice(0,4)),cur=x.curiosities[Math.abs(y)%x.curiosities.length];
+ return {...x,name:ASTRONOMICAL_THEMES[x.type].name,curiosity:cur};
+}
+
 const MARGARIDA_FRIDAY_SESSIONS=[
   {start:"10:05",end:"12:30",title:"EDF"},
   {start:"13:30",end:"15:50",title:"BGEO"},
