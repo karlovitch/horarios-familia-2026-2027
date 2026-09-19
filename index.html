@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=55">
+<link rel="manifest" href="manifest.webmanifest?v=56">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>Horários Família</title>
 <style>
@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px;min-width:0}.main-tab
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v55</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v56</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -172,7 +172,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
-const APP_BUILD=55;
+const APP_BUILD=56;
 let lastForegroundRefresh=0,foregroundRefreshRunning=false;
 const NATIONAL_HOLIDAYS=[
 "2026-01-01","2026-04-03","2026-04-05","2026-04-25","2026-05-01","2026-06-04","2026-06-10","2026-08-15","2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -648,7 +648,7 @@ function sportsBroadcastInfo(ev){
  else if(entity.includes("sub-21")){if(uncertain)channel="Canal 11";stream=stream||"https://www.fpf.pt/pt/Canal-11"}
  else if(entity.includes("real madrid")){
    if(/laliga|la liga/.test(comp)){channel="DAZN Portugal";stream=stream||"https://www.dazn.com/pt-PT/home"}
-   else if(/champions/.test(comp)){if(uncertain)channel="SPORT TV / DAZN / LiveMode — operador do jogo a confirmar";stream=stream||"https://www.dazn.com/pt-PT/home"}
+   else if(/champions/.test(comp)){if(uncertain||/^dazn(?: portugal)?$/i.test(raw))channel="SPORT TV / DAZN / LiveMode — operador do jogo a confirmar";stream=stream||"https://www.dazn.com/pt-PT/home"}
  }
  else if(entity.includes("fc porto")||entity.includes("gil vicente")){
    if(/champions/.test(comp)){if(uncertain)channel="SPORT TV / DAZN / LiveMode — operador do jogo a confirmar";stream=stream||"https://www.dazn.com/pt-PT/home"}
@@ -660,8 +660,17 @@ function sportsBroadcastInfo(ev){
  return {channel:channel||"Transmissão em Portugal a confirmar",stream};
 }
 function sportsEventsFor(iso){
- return (SPORTS_INFO.events||[]).filter(e=>e.start?localIsoForInstant(e.start)===iso:e.date===iso)
-  .sort((a,b)=>(a.start||"9999").localeCompare(b.start||"9999")||(a.entity||"").localeCompare(b.entity||"","pt"));
+ const src=(SPORTS_INFO.events||[]).filter(e=>e.start?localIsoForInstant(e.start)===iso:e.date===iso),out=[],rm=[];
+ for(const e of src){if(e.entity==="Real Madrid")rm.push(e);else out.push(e)}
+ if(rm.length){
+  const byTime=new Map(),score=e=>(e.start?4:0)+(e.location&&!/confirmar/i.test(e.location)?3:0)+(/Fase de Liga|LALIGA EA SPORTS/i.test(e.competition||"")?2:0)+(e.match_url?1:0);
+  for(const e of rm){
+   const k=e.start||"sem-hora";
+   if(!byTime.has(k)||score(e)>score(byTime.get(k)))byTime.set(k,e);
+  }
+  out.push(...byTime.values());
+ }
+ return out.sort((a,b)=>(a.start||"9999").localeCompare(b.start||"9999")||(a.entity||"").localeCompare(b.entity||"","pt"));
 }
 function renderTodaySports(iso){
  const el=qs("#todaySports"),events=sportsEventsFor(iso);
@@ -680,7 +689,7 @@ function renderTodaySports(iso){
 }
 async function loadSportsInfo(){
  try{
-  const r=await fetch("sports-info.json?v=55&ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("sports-info.json?v=56&ts="+Date.now(),{cache:"no-store"});
   if(r.ok)SPORTS_INFO=await r.json();
  }catch(e){}
  if(view==="today")renderTodaySports(statsIso());
@@ -1197,7 +1206,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=55",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=56",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -1452,6 +1461,6 @@ async function refreshWhenVisible(reason="visible"){
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshWhenVisible("visibilitychange")});
 window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow"));
 window.addEventListener("focus",()=>refreshWhenVisible("focus"));
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=55",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=56",{updateViaCache:"none"}).then(async r=>{await r.update();setTimeout(()=>refreshWhenVisible("service-worker"),300)}));
 </script>
 </body></html>
