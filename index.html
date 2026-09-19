@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=101">
-<link rel="icon" href="favicon-64.png?v=101" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=101" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=101" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=101">
+<link rel="manifest" href="manifest.webmanifest?v=102">
+<link rel="icon" href="favicon-64.png?v=102" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=102" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=102" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=102">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -240,7 +240,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v101</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v102</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -276,7 +276,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=101"></script>
+<script src="sports-info.js?v=102"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -409,7 +409,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=101;
+const APP_BUILD=102;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -587,7 +587,7 @@ function tvVisibleFocusable(root=document){
  return [...root.querySelectorAll('button:not([disabled]):not(.hidden),a[href],input:not([disabled]):not([tabindex="-1"]),[tabindex]:not([tabindex="-1"])')]
   .filter(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width>0&&r.height>0&&s.visibility!=="hidden"&&s.display!=="none"});
 }
-function tvFocusable(){return tvVisibleFocusable(document)}
+function tvFocusable(root=document){return tvVisibleFocusable(root)}
 function tvHorizontalContainer(el){
  return el&&el.closest(".main-tabs,.stats-controls,.today-page-nav,.day-tabs,.person-mode-tabs,.sports-tab-row,.tv-date-dialog-head,.tv-date-dialog-actions");
 }
@@ -598,10 +598,10 @@ function tvHorizontalTarget(current,key){
  const next=i+(key==="ArrowRight"?1:-1);
  return next>=0&&next<items.length?items[next]:null;
 }
-function moveTvFocus(key){
- const items=tvFocusable();if(!items.length)return;
+function moveTvFocus(key,root=document){
+ const items=tvFocusable(root);if(!items.length)return;
  const current=document.activeElement;
- if(!items.includes(current)){(document.querySelector(".main-tab.active")||items[0]).focus();return}
+ if(!items.includes(current)){((root===document?document.querySelector(".main-tab.active"):null)||items[0]).focus();return}
  const explicit=tvHorizontalTarget(current,key);
  if(explicit){explicit.focus({preventScroll:false});explicit.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});return}
  const a=current.getBoundingClientRect(),ax=a.left+a.width/2,ay=a.top+a.height/2;
@@ -659,6 +659,9 @@ function closeTvDatePicker(){
 }
 function tvCalendarMoveFromDay(el,key){
  const iso=el&&el.dataset.tvCalDate;if(!iso)return false;
+ const day=Number(iso.slice(8)),days=tvDaysInMonth(TV_DATE_STATE.year,TV_DATE_STATE.month);
+ if(key==="ArrowUp"&&day<=7){const head=document.querySelector("#tvCalPrevMonth");if(head)head.focus();return true}
+ if(key==="ArrowDown"&&day+7>days){const action=document.querySelector("#tvCalToday");if(action)action.focus();return true}
  const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7}[key];if(!delta)return false;
  const target=tvDateAddDays(iso,delta);if(!tvDateInRange(target))return true;
  const parts=target.split("-").map(Number),y=parts[0],m=parts[1];
@@ -671,7 +674,7 @@ function handleTvDateDialogKey(e){
  if(e.key==="Escape"||e.key==="Backspace"){e.preventDefault();closeTvDatePicker();return true}
  const active=document.activeElement;
  if(active&&active.classList.contains("tv-cal-day")&&["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();tvCalendarMoveFromDay(active,e.key);return true}
- if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key);return true}
+ if(["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)){e.preventDefault();moveTvFocus(e.key,dlg);return true}
  if((e.key==="Enter"||e.key===" ")&&active){e.preventDefault();active.click();return true}
  return false;
 }
