@@ -31,11 +31,11 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v21</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v22</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
-<button class="main-tab" data-view="Carlos" type="button">Carlos</button><button class="main-tab" data-view="Sandra" type="button">Sandra</button>
+<button class="main-tab" data-view="Carlos" type="button">Carlos</button><button class="main-tab" data-view="Sandra" type="button">Sandrinha</button>
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
 <section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Contagem de dias letivos em:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div id="overviewCountdowns" class="countdown-panel"></div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div></section>
@@ -74,7 +74,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
   {start:"13:30",end:"15:50",title:"BGEO"},
   {start:"16:45",end:"18:15",title:"FQA"}
 ];
-const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], START=480,END=1110;
+const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1110;
 const MS_DAY=86400000;
 const NATIONAL_HOLIDAYS=[
 "2026-10-05","2026-11-01","2026-12-01","2026-12-08","2026-12-25",
@@ -526,6 +526,69 @@ function daysToNextAnnual(refIso,eventDate){
 function birthdayCountdownText(iso){
  return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
 }
+const CATHOLIC_DATA_BASE="https://cpbjr.github.io/catholic-readings-api";
+const REMOTE_LITURGY_CACHE={};
+const REMOTE_LITURGY_LOADING=new Set();
+const REMOTE_LITURGY_FAILED=new Set();
+function displayName(p){return DISPLAY_NAMES[p]||p}
+function translateSeason(s){
+ const m={"Ordinary Time":"Tempo Comum","Advent":"Advento","Christmas":"Tempo do Natal","Christmas Time":"Tempo do Natal","Lent":"Quaresma","Eastertide":"Tempo Pascal","Easter":"Tempo Pascal","Holy Week":"Semana Santa"};
+ return m[s]||s||"";
+}
+function translateCelebrationType(t){
+ const m={FERIA:"Féria",FEAST:"Festa",MEMORIAL:"Memória",OPTIONAL_MEMORIAL:"Memória facultativa",SOLEMNITY:"Solenidade"};
+ return m[t]||t||"";
+}
+function translateCelebrationName(name){
+ if(!name)return "";
+ const wd={Monday:"Segunda-feira",Tuesday:"Terça-feira",Wednesday:"Quarta-feira",Thursday:"Quinta-feira",Friday:"Sexta-feira",Saturday:"Sábado",Sunday:"Domingo"};
+ const ordinary=name.match(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) of the (\d+)(?:st|nd|rd|th) week of Ordinary Time$/);
+ if(ordinary)return wd[ordinary[1]]+" da "+ordinary[2]+".ª semana do Tempo Comum";
+ const seasonal=name.match(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) of the (\d+)(?:st|nd|rd|th) week of (Advent|Lent|Eastertide|Christmas)$/);
+ if(seasonal)return wd[seasonal[1]]+" da "+seasonal[2]+".ª semana do "+translateSeason(seasonal[3]);
+ let t=name;
+ const pairs=[["Saints Philip and James","Santos Filipe e Tiago"],["Saint Matthew","São Mateus"],["Saint Mark","São Marcos"],["Saint Luke","São Lucas"],["Saint John","São João"],["Saint Peter","São Pedro"],["Saint Paul","São Paulo"],["Saint Joseph","São José"],["Saint Andrew","Santo André"],["Saint Thomas","São Tomé"],["Saint Stephen","Santo Estêvão"],["Saint Francis","São Francisco"],["Saint Anthony","Santo António"],["Saint Augustine","Santo Agostinho"],["Saint Benedict","São Bento"],["Saint Gregory","São Gregório"],["Saint Jerome","São Jerónimo"],["Saint Lawrence","São Lourenço"],["Saint Martin","São Martinho"],["Saint Michael","São Miguel"],["Saint Raphael","São Rafael"],["Saint Dominic","São Domingos"],["Saint Teresa","Santa Teresa"],["Saint Thérèse","Santa Teresa"],["Blessed Virgin Mary","Virgem Santa Maria"],["The Blessed Virgin Mary","Virgem Santa Maria"],["Our Lady","Nossa Senhora"],["Nativity of the Lord","Natividade do Senhor"],["Epiphany of the Lord","Epifania do Senhor"],["Baptism of the Lord","Batismo do Senhor"],["Ascension of the Lord","Ascensão do Senhor"],["Pentecost Sunday","Domingo de Pentecostes"],["Most Holy Trinity","Santíssima Trindade"],["Corpus Christi","Santíssimo Corpo e Sangue de Cristo"],["Sacred Heart of Jesus","Sagrado Coração de Jesus"],["Christ the King","Cristo Rei"]];
+ for(const [a,b] of pairs)t=t.replaceAll(a,b);
+ t=t.replace(/\bSaints\b/g,"Santos").replace(/\bSaint\b/g,"São").replace(/\bApostles\b/g,"Apóstolos").replace(/\bApostle\b/g,"Apóstolo").replace(/\bEvangelists\b/g,"Evangelistas").replace(/\bEvangelist\b/g,"Evangelista").replace(/\bMartyrs\b/g,"Mártires").replace(/\bMartyr\b/g,"Mártir").replace(/\bBishops\b/g,"Bispos").replace(/\bBishop\b/g,"Bispo").replace(/\bPriests\b/g,"Presbíteros").replace(/\bPriest\b/g,"Presbítero").replace(/\bPope\b/g,"Papa").replace(/\bAbbot\b/g,"Abade").replace(/\bDoctor of the Church\b/g,"Doutor da Igreja");
+ return t;
+}
+function translateGospelRef(ref){
+ if(!ref)return "";
+ const books={"Matthew":"Mt","Mark":"Mc","Luke":"Lc","John":"Jo"};
+ for(const [en,pt] of Object.entries(books))if(ref.startsWith(en+" "))return pt+" "+ref.slice(en.length+1).replace(":",", ");
+ return ref.replace(":",", ");
+}
+function remoteLiturgyFromStorage(iso){
+ try{const raw=localStorage.getItem("liturgia:"+iso);if(raw){const x=JSON.parse(raw);REMOTE_LITURGY_CACHE[iso]=x;return x}}catch(e){}
+ return null;
+}
+async function ensureRemoteLiturgy(iso){
+ if(REMOTE_LITURGY_CACHE[iso]||REMOTE_LITURGY_LOADING.has(iso)||REMOTE_LITURGY_FAILED.has(iso))return;
+ if(remoteLiturgyFromStorage(iso)){renderDailyInfo();return}
+ const year=iso.slice(0,4),md=iso.slice(5);
+ if(!["2026","2027"].includes(year))return;
+ REMOTE_LITURGY_LOADING.add(iso);
+ try{
+  const [rr,cr]=await Promise.all([
+   fetch(CATHOLIC_DATA_BASE+"/readings/"+year+"/"+md+".json",{cache:"no-store"}),
+   fetch(CATHOLIC_DATA_BASE+"/liturgical-calendar/"+year+"/"+md+".json",{cache:"no-store"})
+  ]);
+  if(!rr.ok&&!cr.ok)throw new Error("Sem dados litúrgicos");
+  const readings=rr.ok?await rr.json():null,cal=cr.ok?await cr.json():null,celebration=cal&&cal.celebration?cal.celebration:null;
+  const cName=celebration?translateCelebrationName(celebration.name):"";
+  const rank=celebration?translateCelebrationType(celebration.type):"";
+  const season=translateSeason((cal&&cal.season)||(readings&&readings.season)||"");
+  const liturgicalDay=cName?(rank?rank+" — "+cName:cName):season;
+  const isSaint=celebration&&/(Saint|Saints|Blessed|Virgin Mary|Our Lady)/i.test(celebration.name||"");
+  const saints=isSaint?[cName]:["Sem memória própria de santo nesta data"];
+  const gospel=readings&&readings.readings?translateGospelRef(readings.readings.gospel):"";
+  const data={liturgical_day:liturgicalDay||"Liturgia do dia",saints,gospel,liturgy_url:liturgiaUrlForDate(iso)};
+  REMOTE_LITURGY_CACHE[iso]=data;
+  try{localStorage.setItem("liturgia:"+iso,JSON.stringify(data))}catch(e){}
+ }catch(e){REMOTE_LITURGY_FAILED.add(iso)}
+ finally{REMOTE_LITURGY_LOADING.delete(iso);if(statsIso()===iso)renderDailyInfo()}
+}
+
 function mergeUnique(...lists){return [...new Set(lists.flat().filter(Boolean))]}
 function fallbackCalendarInfo(iso){
  const mmdd=iso.slice(5);
@@ -534,8 +597,7 @@ function fallbackCalendarInfo(iso){
 function calendarInfoFor(iso){
  const fb=fallbackCalendarInfo(iso);
  const src=CALENDAR_INFO&&CALENDAR_INFO.dates&&CALENDAR_INFO.dates[iso]?CALENDAR_INFO.dates[iso]:(DAILY_INFO&&DAILY_INFO.date===iso?DAILY_INFO:null);
- if(!src)return fb;
- return {...fb,...src,
+ let out=src?{...fb,...src,
   un_days:mergeUnique(fb.un_days,src.un_days||[]),
   european_days:mergeUnique(fb.european_days,src.european_days||[]),
   portugal_days:mergeUnique(fb.portugal_days,src.portugal_days||[]),
@@ -543,7 +605,10 @@ function calendarInfoFor(iso){
   history_days:mergeUnique(fb.history_days,src.history_days||[]),
   astronomy_days:mergeUnique(fb.astronomy_days,src.astronomy_days||[]),
   liturgy_url:src.liturgy_url||fb.liturgy_url
- };
+ }:fb;
+ const remote=REMOTE_LITURGY_CACHE[iso]||remoteLiturgyFromStorage(iso);
+ if(remote)out={...out,...remote,saints:remote.saints&&remote.saints.length?remote.saints:out.saints};
+ return out;
 }
 function renderDailyInfo(){
  const box=qs("#dailyInfoBody"),dateEl=qs("#dailyInfoDate"),titleEl=qs("#dailyInfoTitle"),selected=statsIso(),dt=dateFromIso(selected),x=calendarInfoFor(selected);
@@ -558,9 +623,11 @@ function renderDailyInfo(){
  const astronomy=listText(x.astronomy_days,"");
  const family=listText(familyEventsFor(selected),"Sem aniversário ou efeméride familiar nesta data");
  const birthdays=birthdayCountdownText(selected);
- const lit=x.liturgical_day?esc(x.liturgical_day):"Consultar Liturgia diária";
- const saints=listText(x.saints,"Consultar Liturgia diária");
- const gospel=x.gospel?esc(x.gospel):"Consultar referência";
+ if(!x.liturgical_day&&!REMOTE_LITURGY_LOADING.has(selected)&&!REMOTE_LITURGY_FAILED.has(selected))ensureRemoteLiturgy(selected);
+ const loadingLit=REMOTE_LITURGY_LOADING.has(selected);
+ const lit=x.liturgical_day?esc(x.liturgical_day):(loadingLit?"A carregar informação litúrgica…":"Liturgia do dia indisponível automaticamente");
+ const saints=listText(x.saints,loadingLit?"A carregar santos do dia…":"Sem memória própria de santo indicada");
+ const gospel=x.gospel?esc(x.gospel):(loadingLit?"A carregar referência do Evangelho…":"Referência do Evangelho indisponível automaticamente");
  const litUrl=x&&x.liturgy_url?x.liturgy_url:liturgiaUrlForDate(selected);
  box.innerHTML=
   '<div class="daily-row"><div class="daily-label">ONU</div><div class="daily-value">'+un+'</div></div>'+
@@ -593,12 +660,12 @@ async function loadDailyInfo(){
 function eventTypeClass(e){const t=(e.title||"").toLowerCase();if(/intervalo|pausa|interrup/.test(t))return "pause";if(/teste|avalia|questão de aula|qa\b|entrega|prazo/.test(t))return "assessment";if(/cnl|coordenação|funções de âmbito organizacional|reunião|administrativ/.test(t))return "admin";return ""}
 function eventHTML(e,d,p){const i=D[p];return '<article class="event person-colored '+(current(e,d)?"current":"")+'" style="background:'+i.color+';color:'+i.textColor+'"><div class="event-time">'+e.start+'<br>'+e.end+'</div><div class="event-main"><strong>'+esc(e.title)+'</strong>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div></article>'}
 function dayButtons(c,a,f){c.innerHTML=SCHOOL_DAYS.map(d=>'<button type="button" class="day-tab '+(d===a?"active":"")+'" data-day="'+d+'">'+d+'</button>').join("");c.querySelectorAll(".day-tab").forEach(b=>b.addEventListener("click",()=>f(b.dataset.day)))}
-function renderOverview(){renderCountdowns();const d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;dayButtons(qs("#overviewDays"),d,x=>{selectedDay=x;renderOverview()});const active=PEOPLE.filter(p=>activeEvent(p,d));const summary=qs("#activeSummary");if(d===dayNow()&&active.length){summary.textContent="Agora: "+active.join(", ");summary.classList.remove("hidden")}else{summary.classList.add("hidden");summary.textContent=""}let h='<div class="time-axis">';for(let m=480;m<=1080;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';h+='</div>';for(const p of PEOPLE){const i=D[p],isActive=!!activeEvent(p,d);h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+p+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}for(const e of i.days[d]||[]){h+='<div class="block '+(current(e,d)?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),18)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>'}h+='</div>'}if(d===dayNow()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}qs("#timeline").innerHTML=h}
-function personCard(p,d){const i=D[p],ev=i.days[d]||[],isActive=!!activeEvent(p,d);return '<section class="card '+(isActive?"active-person-card":"")+'"><div class="card-head" style="background:'+i.color+';color:'+i.textColor+'"><span>'+p+(isActive?' <span class="live-badge">Agora</span>':'')+'</span><small>'+d+'</small></div><div class="events">'+(ev.length?ev.map(e=>eventHTML(e,d,p)).join(""):'<div class="empty">Sem horário.</div>')+'</div></section>'}
+function renderOverview(){renderCountdowns();const d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;dayButtons(qs("#overviewDays"),d,x=>{selectedDay=x;renderOverview()});const active=PEOPLE.filter(p=>activeEvent(p,d));const summary=qs("#activeSummary");if(d===dayNow()&&active.length){summary.textContent="Agora: "+active.map(displayName).join(", ");summary.classList.remove("hidden")}else{summary.classList.add("hidden");summary.textContent=""}let h='<div class="time-axis">';for(let m=480;m<=1080;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';h+='</div>';for(const p of PEOPLE){const i=D[p],isActive=!!activeEvent(p,d);h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}for(const e of i.days[d]||[]){h+='<div class="block '+(current(e,d)?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),18)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>'}h+='</div>'}if(d===dayNow()){const n=nowMin();if(n>=START&&n<=END)h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}qs("#timeline").innerHTML=h}
+function personCard(p,d){const i=D[p],ev=i.days[d]||[],isActive=!!activeEvent(p,d);return '<section class="card '+(isActive?"active-person-card":"")+'"><div class="card-head" style="background:'+i.color+';color:'+i.textColor+'"><span>'+displayName(p)+(isActive?' <span class="live-badge">Agora</span>':'')+'</span><small>'+d+'</small></div><div class="events">'+(ev.length?ev.map(e=>eventHTML(e,d,p)).join(""):'<div class="empty">Sem horário.</div>')+'</div></section>'}
 function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs("#todayDay").textContent=d;qs("#todayCards").innerHTML=SCHOOL_DAYS.includes(d)?PEOPLE.map(p=>personCard(p,d)).join(""):'<section class="card"><div class="empty">Hoje não há horário definido.</div></section>'}
-function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=p;qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
+function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=21",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=22",{updateViaCache:"none"}));
 </script>
 </body></html>
