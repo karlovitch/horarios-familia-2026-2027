@@ -9,12 +9,17 @@ on:
       - "scripts/update_history_info.py"
       - ".github/workflows/update-history-info.yml"
 
+concurrency:
+  group: update-history-info
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
 jobs:
   atualizar:
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     steps:
       - name: Obter repositório
         uses: actions/checkout@v4
