@@ -1,5 +1,5 @@
-const C='horarios-familia-2026-27-v52';
-const CORE=['./?v=52','index.html?v=52','manifest.webmanifest?v=52','icon.svg'];
+const C='horarios-familia-2026-27-v53';
+const CORE=['./?v=53','index.html?v=53','manifest.webmanifest?v=53','icon.svg'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
@@ -20,7 +20,7 @@ self.addEventListener('fetch',event=>{
   const url=new URL(req.url);
 
   // HTML/navegação e informação diária: rede primeiro para evitar versões antigas.
-  if(req.mode==='navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/manifest.webmanifest') || url.pathname.endsWith('/daily-info.json') || url.pathname.endsWith('/calendar-info.json')){
+  if(req.mode==='navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/manifest.webmanifest') || url.pathname.endsWith('/daily-info.json') || url.pathname.endsWith('/calendar-info.json') || url.pathname.endsWith('/sports-info.json')){
     event.respondWith(
       fetch(req,{cache:'no-store'})
         .then(res=>{
