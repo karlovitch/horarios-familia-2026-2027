@@ -201,6 +201,7 @@ def main():
             cur=data["dates"].setdefault(mmdd,{"world":[],"portugal":[]})
             cur["world"]=merge_unique(cur.get("world",[]),result["world"])
             cur["portugal"]=merge_unique(cur.get("portugal",[]),result["portugal"])
+    data["dates"]={k:data["dates"][k] for k in sorted(data["dates"])}
     data["generated_at"]=datetime.now(timezone.utc).isoformat()
     data["sources"]={
         "world":"Wikipédia em português — secção Eventos históricos das páginas de cada data",
