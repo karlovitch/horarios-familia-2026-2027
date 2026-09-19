@@ -31,7 +31,7 @@ main{max-width:1180px;margin:0 auto;padding:12px 12px 36px}.main-tabs,.day-tabs{
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v28</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v29</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="overview" type="button">Conjunto</button><button class="main-tab" data-view="today" type="button">Hoje</button>
@@ -183,7 +183,7 @@ function renderCountdowns(){
 }
 let DAILY_INFO=null,CALENDAR_INFO=null;
 const FAMILY_EVENTS=[
- {kind:"birthday",label:"Carlinhos",date:"1982-06-21"},
+ {kind:"birthday",label:"Carlos",date:"1982-06-21"},
  {kind:"birthday",label:"Sandrinha",date:"1978-01-18"},
  {kind:"birthday",label:"Margarida",date:"2011-08-31"},
  {kind:"birthday",label:"Leonor",date:"2016-11-08"},
@@ -199,7 +199,7 @@ const FAMILY_EVENTS=[
  {kind:"anniversary",label:"Aniversário de casamento do Carlos e da Sandrinha",date:"2009-09-26"},
  {kind:"anniversary",label:"Aniversário de namoro do Carlos e da Sandrinha",date:"2005-01-22"}
 ];
-const CORE_BIRTHDAYS=FAMILY_EVENTS.filter(e=>e.kind==="birthday"&&["Carlinhos","Leonor","Margarida","Sandrinha"].includes(e.label));
+const CORE_BIRTHDAYS=FAMILY_EVENTS.filter(e=>e.kind==="birthday"&&["Carlos","Leonor","Margarida","Sandrinha"].includes(e.label));
 const UN_FALLBACK={
 "01-04":["Dia Mundial do Braille"],
 "01-24":["Dia Internacional da Educação"],
@@ -517,15 +517,49 @@ function familyEventsFor(iso){
   return e.kind==="birthday"?"Aniversário de "+e.label+" — "+years+" anos":e.label+" — "+years+" anos";
  });
 }
-function daysToNextAnnual(refIso,eventDate){
+function nextAnnualDate(refIso,eventDate){
  const [ry,rm,rd]=refIso.split("-").map(Number),[,em,ed]=eventDate.split("-").map(Number);
- const ref=Math.floor(Date.UTC(ry,rm-1,rd)/MS_DAY);
- let target=Math.floor(Date.UTC(ry,em-1,ed)/MS_DAY);
- if(target<ref)target=Math.floor(Date.UTC(ry+1,em-1,ed)/MS_DAY);
- return target-ref;
+ let y=ry;
+ let target=Date.UTC(y,em-1,ed),ref=Date.UTC(ry,rm-1,rd);
+ if(target<ref){y++;target=Date.UTC(y,em-1,ed)}
+ return {year:y,month:em,day:ed,targetDay:Math.floor(target/MS_DAY),refDay:Math.floor(ref/MS_DAY)};
 }
+function daysToNextAnnual(refIso,eventDate){
+ const x=nextAnnualDate(refIso,eventDate);
+ return x.targetDay-x.refDay;
+}
+function addUtcMonthsClamped(d,months){
+ const y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
+ const first=new Date(Date.UTC(y,m+months,1));
+ const last=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+1,0)).getUTCDate();
+ return new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth(),Math.min(day,last)));
+}
+function birthdayDurationParts(refIso,eventDate){
+ const next=nextAnnualDate(refIso,eventDate);
+ const ref=dateFromIso(refIso),target=new Date(next.targetDay*MS_DAY);
+ let months=0,cursor=new Date(ref.getTime());
+ while(true){
+  const candidate=addUtcMonthsClamped(ref,months+1);
+  if(candidate.getTime()<=target.getTime())months++;
+  else break;
+ }
+ cursor=addUtcMonthsClamped(ref,months);
+ const remDays=Math.round((target.getTime()-cursor.getTime())/MS_DAY);
+ const weeks=Math.floor(remDays/7),days=remDays%7;
+ return {totalDays:next.targetDay-next.refDay,months,weeks,days};
+}
+function unit(n,singular,plural){return n+" "+(n===1?singular:plural)}
 function birthdayCountdownText(iso){
- return CORE_BIRTHDAYS.map(e=>"Faltam "+daysToNextAnnual(iso,e.date)+" dias para o aniversário d"+(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha"?"a ":"o ")+e.label).join(" · ");
+ return CORE_BIRTHDAYS
+  .map(e=>({event:e,...birthdayDurationParts(iso,e.date)}))
+  .sort((a,b)=>a.totalDays-b.totalDays)
+  .map(x=>{
+   const e=x.event,art=(e.label==="Leonor"||e.label==="Margarida"||e.label==="Sandrinha")?"da ":"do ";
+   return "Faltam "+unit(x.totalDays,"dia","dias")+" para o aniversário "+art+e.label+
+    " ("+unit(x.months,"mês completo","meses completos")+" + "+
+    unit(x.weeks,"semana completa","semanas completas")+" + "+
+    unit(x.days,"dia completo","dias completos")+")";
+  }).join(" · ");
 }
 const CATHOLIC_DATA_BASE="https://cpbjr.github.io/catholic-readings-api";
 const CATHOLIC_DATA_RAW="https://raw.githubusercontent.com/cpbjr/catholic-readings-api/main";
@@ -821,7 +855,7 @@ function renderDailyInfo(){
 }
 async function loadDailyInfo(){
  try{
-  const r=await fetch("calendar-info.json?v=28",{cache:"no-store"});
+  const r=await fetch("calendar-info.json?v=29",{cache:"no-store"});
   if(r.ok){CALENDAR_INFO=await r.json();try{localStorage.setItem("calendarInfo",JSON.stringify(CALENDAR_INFO))}catch(e){}}
  }catch(e){
   try{const s=localStorage.getItem("calendarInfo");if(s)CALENDAR_INFO=JSON.parse(s)}catch(_){}
@@ -843,6 +877,6 @@ function renderToday(){renderCountdowns();renderDailyInfo();const d=dayNow();qs(
 function renderPerson(){renderCountdowns();const p=person,i=D[p],d=selectedDay||(SCHOOL_DAYS.includes(dayNow())?dayNow():"Segunda");selectedDay=d;qs("#personName").textContent=displayName(p);qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";qs("#personDayMode").classList.toggle("active",personMode==="day");qs("#personWeekMode").classList.toggle("active",personMode==="week");const days=qs("#personDays"),cards=qs("#personCards");if(personMode==="week"){days.classList.add("hidden");cards.classList.remove("one");cards.classList.add("weekly");cards.innerHTML=SCHOOL_DAYS.map(day=>personCard(p,day)).join("")}else{days.classList.remove("hidden");cards.classList.add("one");cards.classList.remove("weekly");dayButtons(days,d,x=>{selectedDay=x;renderPerson()});cards.innerHTML=personCard(p,d)}}
 function show(v){view=v;qs("#overview").classList.toggle("hidden",v!=="overview");qs("#today").classList.toggle("hidden",v!=="today");qs("#person").classList.toggle("hidden",!D[v]);qsa(".main-tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="overview"){person=null;selectedDay=null;renderOverview()}else if(v==="today"){person=null;selectedDay=null;renderToday()}else if(D[v]){person=v;selectedDay=null;personMode="day";renderPerson()}}
 qs("#todayLabel").textContent=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"2-digit",month:"long"}).format(new Date());qsa(".main-tab").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));qs("#personDayMode").addEventListener("click",()=>{personMode="day";renderPerson()});qs("#personWeekMode").addEventListener("click",()=>{personMode="week";renderPerson()});qsa(".stats-date-input").forEach(i=>i.addEventListener("change",()=>{statsDate=i.value||null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-step").forEach(b=>b.addEventListener("click",()=>{const base=statsDate?ymdDay(statsDate):currentLocalDay(),next=base+Number(b.dataset.statsShift),dt=new Date(next*MS_DAY);statsDate=dt.toISOString().slice(0,10);renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qsa(".stats-today").forEach(b=>b.addEventListener("click",()=>{statsDate=null;renderCountdowns();renderDailyInfo();renderGlobalQuote()}));qs("#goTodayBtn").addEventListener("click",()=>{const d=dayNow();if(SCHOOL_DAYS.includes(d)){selectedDay=d;renderOverview()}else{show("today")}});loadDailyInfo();renderGlobalQuote();show("overview");window.addEventListener("resize",()=>{if(view==="overview")renderOverview()});setInterval(()=>{if(view==="overview")renderOverview();if(view==="today")renderToday();if(person)renderPerson()},60000);
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=28",{updateViaCache:"none"}));
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;qs("#installBtn").classList.remove("hidden")});qs("#installBtn").addEventListener("click",async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;qs("#installBtn").classList.add("hidden")});window.addEventListener("appinstalled",()=>qs("#installBtn").classList.add("hidden"));if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js?v=29",{updateViaCache:"none"}));
 </script>
 </body></html>
