@@ -187,6 +187,7 @@ function renderDailyInfo(){
  const un=x?listText(x.un_days,"Sem efeméride ONU assinalada hoje"):"Consultar calendário ONU";
  const eu=x?listText(x.european_days,"Sem dia europeu assinalado hoje"):"Sem dados atualizados";
  const pt=x?listText(x.portugal_days,"Sem efeméride nacional portuguesa selecionada hoje"):"Sem dados atualizados";
+ const local=x?listText(x.local_days,"Sem efeméride local assinalada hoje"):"Sem dados atualizados";
  const lit=x&&x.liturgical_day?esc(x.liturgical_day):"Liturgia do dia";
  const saints=x?listText(x.saints,"Sem memória/solenidade adicional indicada"):"Consultar fonte";
  const gospel=x&&x.gospel?esc(x.gospel):"Ver referência";
@@ -195,6 +196,7 @@ function renderDailyInfo(){
   '<div class="daily-row"><div class="daily-label">ONU</div><div class="daily-value">'+un+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Europa</div><div class="daily-value">'+eu+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Portugal</div><div class="daily-value">'+pt+'</div></div>'+
+  (x&&x.local_days&&x.local_days.length?'<div class="daily-row"><div class="daily-label">Barcelos</div><div class="daily-value">'+local+'</div></div>':'')+
   '<div class="daily-row"><div class="daily-label">Liturgia</div><div class="daily-value">'+lit+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Santo(s)</div><div class="daily-value">'+saints+'</div></div>'+
   '<div class="daily-row"><div class="daily-label">Evangelho</div><div class="daily-value">'+gospel+' · <a href="'+litUrl+'" target="_blank" rel="noopener">ver Liturgia diária</a></div></div>';
