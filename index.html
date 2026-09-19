@@ -210,10 +210,18 @@ function storageRead(key,fallback=null){
 function storageWrite(key,value){
  try{localStorage.setItem(key,JSON.stringify(value))}catch(_){}
 }
-async function fetchJsonResource(path,params={}){
- const r=await fetch(resourceUrl(path,params),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
- if(!r.ok)throw new Error(path+" · HTTP "+r.status);
- return r.json();
+async function fetchJsonResource(path,params={},timeoutMs=30000){
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),timeoutMs);
+ try{
+  const r=await fetch(resourceUrl(path,params),{
+   cache:"no-store",
+   headers:{"Cache-Control":"no-cache"},
+   signal:controller.signal
+  });
+  if(!r.ok)throw new Error(path+" · HTTP "+r.status);
+  return await r.json();
+ }finally{clearTimeout(timer)}
 }
 function dataFresh(kind){
  const s=DATA_LOAD_STATE[kind];
@@ -1055,10 +1063,6 @@ function nextAnnualDate(refIso,eventDate){
  if(target<ref){y++;target=Date.UTC(y,em-1,ed)}
  return {year:y,month:em,day:ed,targetDay:Math.floor(target/MS_DAY),refDay:Math.floor(ref/MS_DAY)};
 }
-function daysToNextAnnual(refIso,eventDate){
- const x=nextAnnualDate(refIso,eventDate);
- return x.targetDay-x.refDay;
-}
 function addUtcMonthsClamped(d,months){
  const y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
  const first=new Date(Date.UTC(y,m+months,1));
@@ -1475,7 +1479,6 @@ function renderDailyInfo(){
  const family=listText(familyEvents,"");
  const birthdays=birthdayCountdownText(selected);
  if(!x.liturgical_day&&!REMOTE_LITURGY_LOADING.has(selected)&&!REMOTE_LITURGY_FAILED.has(selected))ensureRemoteLiturgy(selected);
- const loadingLit=REMOTE_LITURGY_LOADING.has(selected);
  const litRaw=meaningfulLiturgicalText(x.liturgical_day);
  const saintsArr=meaningfulSaints(x.saints);
  const lit=litRaw?esc(litRaw):"";
@@ -1504,11 +1507,9 @@ async function loadHistoryInfo({force=false}={}){
  state.promise=(async()=>{
   try{
    HISTORY_INFO=await fetchJsonResource("history-info.json",{ts:Date.now()});
-   storageWrite("historyInfo",HISTORY_INFO);
    state.loadedAt=Date.now();
   }catch(_){
-   const cached=storageRead("historyInfo",null);
-   if(cached){HISTORY_INFO=cached;state.loadedAt=Date.now()}
+   // O service worker já tenta a cópia em cache; evita duplicar ~2,3 MB no localStorage.
   }finally{state.promise=null}
   return HISTORY_INFO;
  })();
@@ -1539,9 +1540,6 @@ async function loadDailyInfo({force=false}={}){
  })();
  return state.promise;
 }
-function eventTypeClass(e){const t=(e.title||"").toLowerCase();if(/intervalo|pausa|interrup/.test(t))return "pause";if(/teste|avalia|questão de aula|qa\b|entrega|prazo/.test(t))return "assessment";if(/cnl|coordenação|funções de âmbito organizacional|reunião|administrativ/.test(t))return "admin";return ""}
-function eventHTML(e,d,p,iso=null){const i=D[p],isLive=(!iso||iso===isoLocalDate())&&current(e,d);return '<article class="event person-colored '+(isLive?"current":"")+'" style="background:'+i.color+';color:'+i.textColor+'"><div class="event-time">'+e.start+'<br>'+e.end+'</div><div class="event-main"><strong>'+esc(e.title)+'</strong>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div></article>'}
-function dayButtons(c,a,f){c.innerHTML=SCHOOL_DAYS.map(d=>'<button type="button" class="day-tab '+(d===a?"active":"")+'" data-day="'+d+'">'+d+'</button>').join("");c.querySelectorAll(".day-tab").forEach(b=>b.addEventListener("click",()=>f(b.dataset.day)))}
 function overviewWeekTop(time){
  const min=toMin(time),span=END-START;
  return Math.max(0,Math.min(100,(min-START)*100/span));
@@ -1668,16 +1666,6 @@ const INTERCALARY_MEETINGS={
  "2026-11-12":"all",
  "2026-11-13":"all"
 };
-function overviewMiniCard(p,d){
- const i=D[p],ev=i.days[d]||[];
- return '<section class="overview-mini-card">'+
-  '<div class="overview-mini-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+'</div>'+
-  '<div class="overview-mini-events">'+
-   (ev.length?ev.map(e=>'<div class="overview-mini-event" style="background:'+i.color+';color:'+i.textColor+'"><span class="mini-time">'+e.start+'–'+e.end+'</span><strong>'+esc(e.title)+'</strong>'+(e.place?'<span>'+esc(e.place)+'</span>':'')+'</div>').join(""):'<div class="overview-mini-empty">Sem horário.</div>')+
-  '</div></section>';
-}
-function personCard(p,d,iso=null,extraMessage=""){const i=D[p],ev=i.days[d]||[],isActive=(!iso||iso===isoLocalDate())&&!!activeEvent(p,d),extra=extraMessage?'<div class="special-note">'+esc(extraMessage)+'</div>':"";return '<section class="card '+(isActive?"active-person-card":"")+'"><div class="card-head" style="background:'+i.color+';color:'+i.textColor+'"><span>'+displayName(p)+(isActive?' <span class="live-badge">Agora</span>':'')+'</span><small>'+d+'</small></div><div class="events">'+(ev.length?ev.map(e=>eventHTML(e,d,p,iso)).join(""):'<div class="empty">Sem horário.</div>')+extra+'</div></section>'}
-function noClassCard(p,d,message,secondary=""){const i=D[p];return '<section class="card"><div class="card-head" style="background:'+i.color+';color:'+i.textColor+'"><span>'+displayName(p)+'</span><small>'+d+'</small></div><div class="events"><div class="empty holiday-message"><strong>'+esc(message)+'</strong>'+(secondary?'<span>'+esc(secondary)+'</span>':'')+'</div></div></section>'}
 function renderTodayTimeline(iso,d){
  const timeline=qs("#todayTimeline"),reason=noClassReason(iso),dt=dateFromIso(iso),weekend=(dt.getUTCDay()===0||dt.getUTCDay()===6);
  timeline.classList.remove("compact-overview");
