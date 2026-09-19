@@ -8,7 +8,7 @@ import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -100,9 +100,19 @@ def portugal_for(day,month):
         if m:year=m.group(1)
         desc=text
         if title and desc.startswith(title):desc=desc[len(title):].strip(" -–—")
+        # O site inclui frequentemente o texto do botão "Ler mais" na extração.
+        # Guardamos o respetivo URL, mas removemos esse rótulo do texto da efeméride.
+        desc=re.sub(r"\s*Ler\s+mais\s*\.?\s*$","",desc,flags=re.I)
         desc=re.sub(r"\s+"," ",desc).strip()
         if not desc or len(desc)>600:continue
-        item={"year":year or "s/d","text":desc,"source_url":url}
+        source_url=url
+        if parent:
+            more=parent.find("a",string=re.compile(r"^\s*Ler\s+mais\s*$",re.I))
+            if not more:
+                more=parent.find("a",href=True)
+            if more and more.get("href"):
+                source_url=urljoin(url,more.get("href"))
+        item={"year":year or "s/d","text":desc,"source_url":source_url}
         if not any(x["text"]==item["text"] for x in out):out.append(item)
     return out[:12]
 
