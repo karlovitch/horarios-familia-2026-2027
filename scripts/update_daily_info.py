@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import html as html_lib
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -27,6 +28,7 @@ UN_URL = "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/"
 COE_URL = "https://eurocid.mne.gov.pt/artigos/efemerides"
 LITURGIA_BASE = "https://liturgia.pt/liturgiadiaria/dia.php"
 VATICAN_SAINT_BASE = "https://www.vaticannews.va/pt/santo-do-dia"
+PASSO_REZAR_BASE = "https://passo-a-rezar.net/reprodutor"
 
 EUROPEAN_DAYS = {
     "01-28": ["Dia da Proteção de Dados"],
@@ -297,6 +299,98 @@ def load_calendar() -> dict:
             pass
     return {"generated_at": None, "dates": {}, "sources": {}}
 
+def _media_url(raw: str, page_url: str) -> str:
+    value = html_lib.unescape(str(raw or "")).replace("\\/", "/").strip().strip("'\"")
+    if not value:
+        return ""
+    if value.startswith("//"):
+        value = "https:" + value
+    return urljoin(page_url, value)
+
+def get_passo_metadata(day: date) -> dict[str, str]:
+    """Extrai o áudio do episódio diário sem incorporar a página externa.
+
+    O leitor nativo da PWA usa este URL direto; assim não carrega o banner de
+    cookies nem os elementos promocionais da aplicação do Passo-a-Rezar.
+    """
+    page_url = f"{PASSO_REZAR_BASE}/{day.isoformat()}"
+    result = {"passo_page_url": page_url}
+    try:
+        raw = fetch(page_url)
+        soup = BeautifulSoup(raw, "html.parser")
+        candidates: list[tuple[int, str]] = []
+
+        # Fontes declaradas explicitamente pelo player HTML têm prioridade.
+        for audio in soup.find_all("audio"):
+            if audio.get("src"):
+                candidates.append((100, _media_url(audio.get("src"), page_url)))
+            for source in audio.find_all("source"):
+                if source.get("src"):
+                    candidates.append((110, _media_url(source.get("src"), page_url)))
+
+        for source in soup.find_all("source"):
+            src = source.get("src")
+            media_type = (source.get("type") or "").lower()
+            if src and ("audio" in media_type or re.search(r"\.(mp3|m4a|aac|ogg|wav)(?:\?|$)", src, re.I)):
+                candidates.append((90, _media_url(src, page_url)))
+
+        # Alguns players guardam a fonte em atributos data-*.
+        for tag in soup.find_all(True):
+            for attr in ("data-src", "data-audio", "data-audio-url", "data-file", "data-url"):
+                value = tag.get(attr)
+                if value and (
+                    re.search(r"\.(mp3|m4a|aac|ogg|wav)(?:\?|$)", value, re.I)
+                    or "audio" in attr
+                ):
+                    candidates.append((80, _media_url(value, page_url)))
+
+        # Fallback para URLs de áudio serializadas em JavaScript/JSON.
+        decoded = html_lib.unescape(raw).replace("\\/", "/")
+        for match in re.finditer(
+            r"""(?P<url>https?://[^"'<>\s]+?\.(?:mp3|m4a|aac|ogg|wav)(?:\?[^"'<>\s]*)?)""",
+            decoded,
+            re.I,
+        ):
+            candidates.append((60, _media_url(match.group("url"), page_url)))
+
+        for match in re.finditer(
+            r"""(?:audio(?:_url)?|file|src)\s*[:=]\s*["'](?P<url>[^"']+)["']""",
+            decoded,
+            re.I,
+        ):
+            url = _media_url(match.group("url"), page_url)
+            if re.search(r"\.(mp3|m4a|aac|ogg|wav)(?:\?|$)", url, re.I):
+                candidates.append((55, url))
+
+        # Elimina duplicados e favorece o ficheiro misto do episódio do dia.
+        best_url = ""
+        best_score = -1
+        seen: set[str] = set()
+        day_token = day.isoformat()
+        for base_score, url in candidates:
+            if not url or url in seen or not url.startswith(("http://", "https://")):
+                continue
+            seen.add(url)
+            low = url.lower()
+            score = base_score
+            if day_token in low:
+                score += 25
+            if any(token in low for token in ("passo", "rezar", "podcast", "oracao", "oração")):
+                score += 12
+            if any(token in low for token in ("music", "musica", "magnatune", "preview")):
+                score -= 25
+            if score > best_score:
+                best_score, best_url = score, url
+
+        if best_url:
+            result["passo_audio_url"] = best_url
+            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto encontrado.")
+        else:
+            print(f"Passo-a-Rezar {day.isoformat()}: áudio direto não encontrado; mantém-se a página original.")
+    except Exception as exc:
+        print(f"Aviso Passo-a-Rezar {day.isoformat()}: {exc}")
+    return result
+
 def build_day(day: date, un_map: dict[str, list[str]]) -> dict:
     mmdd = day.strftime("%m-%d")
     lit = get_liturgy(day)
@@ -350,6 +444,12 @@ def main():
         calendar["dates"][day.isoformat()] = build_day(day, un_map)
         print(f"[1/1] {day.isoformat()} · OK")
 
+    # O episódio do Passo-a-Rezar é enriquecido apenas para o dia corrente.
+    # As execuções diárias vão preenchendo o histórico sem centenas de pedidos
+    # desnecessários em cada regeneração integral.
+    if today.isoformat() in calendar["dates"]:
+        calendar["dates"][today.isoformat()].update(get_passo_metadata(today))
+
     calendar["dates"] = {k: calendar["dates"][k] for k in sorted(calendar["dates"])}
     calendar["generated_at"] = datetime.now(TZ).isoformat(timespec="seconds")
     calendar["sources"] = {
@@ -357,6 +457,7 @@ def main():
         "europe": COE_URL,
         "liturgy": "https://liturgia.pt/liturgiadiaria/",
         "saints": VATICAN_SAINT_BASE,
+        "podcast": PASSO_REZAR_BASE,
     }
     CALENDAR_OUT.write_text(
         json.dumps(calendar, ensure_ascii=False, indent=2) + "\n",
