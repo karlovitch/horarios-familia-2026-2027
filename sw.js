@@ -1,6 +1,6 @@
-const BUILD=84;
+const BUILD=85;
 const C='horarios-familia-2026-27-v'+BUILD;
-const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'icon.svg?v='+BUILD];
+const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([
   '/index.html','/manifest.webmanifest','/daily-info.json','/calendar-info.json',
   '/sports-info.json','/history-info.json'
