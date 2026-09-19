@@ -79,6 +79,8 @@ required_index_tokens = {
     "linha do agora na vista semanal individual": 'class="now-line contained"',
     "linha do agora na vista semanal de conjunto": "overview-week-now-line",
     "rótulo final das 20h visível": "m===END?\' end-label\'",
+    "controlos de data sempre centrados": ".stats-controls{display:grid;grid-template-columns:50px minmax(118px,132px) 50px auto;align-items:center;justify-content:center",
+    "rótulo Consultar data centrado": ".stats-controls strong{grid-column:1/-1;width:100%;margin:0 0 2px;text-align:center",
 }
 for label, token in required_index_tokens.items():
     if token not in index:
@@ -107,10 +109,12 @@ if "PASSO_REZAR_BASE" not in daily_script:
 if 'result = {"passo_page_url": page_url}' in daily_script:
     fail("O atualizador diário não deve expor a página externa do Passo-a-Rezar")
 
-if 'hid=best.get("JA")' not in sports_script or 'aid=best.get("JB")' not in sports_script:
-    fail("O atualizador desportivo deve usar JA/JB nos URLs públicos do Flashscore")
-if 'best.get("AU") or best.get("JA")' in sports_script or 'best.get("AV") or best.get("JB")' in sports_script:
-    fail("O atualizador desportivo ainda usa AU/AV para construir fichas Flashscore")
+if "VERIFIED_FLASHSCORE_MATCH_URLS" not in sports_script:
+    fail("O atualizador desportivo deve manter fichas Flashscore verificadas")
+if 'if event.get("entity") in {"FC Porto","Real Madrid"}' not in sports_script:
+    fail("FC Porto e Real Madrid devem rejeitar fichas Flashscore não verificadas")
+if 'hid=best.get("JA");aid=best.get("JB")' not in sports_script:
+    fail("As restantes fichas Flashscore devem usar os identificadores codificados do feed")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
