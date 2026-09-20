@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=125">
-<link rel="icon" href="favicon-64.png?v=125" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=125" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=125" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=125">
+<link rel="manifest" href="manifest.webmanifest?v=126">
+<link rel="icon" href="favicon-64.png?v=126" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=126" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=126" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=126">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -365,7 +365,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v125</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v126</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -452,7 +452,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=125"></script>
+<script src="sports-info.js?v=126"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -622,7 +622,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=125;
+const APP_BUILD=126;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -3015,40 +3015,39 @@ else if(MOBILE_TIMELINE_QUERY.addListener)MOBILE_TIMELINE_QUERY.addListener(hand
 setInterval(updateNowLines,UI_REFRESH.nowLine);
 setInterval(refreshScheduleState,UI_REFRESH.scheduleState);
 
-/* Relógio live: usa o ciclo de desenho do ecrã em vez de depender do estado
-   visibility/foreground do Android WebView, que pode reportar "hidden" mesmo
-   com a app visível. O texto só é recalculado quando muda o segundo. */
-let sportsClockFrame=0,sportsClockLastSecond=-1;
+/* Relógio live: atualização redundante e independente do requestAnimationFrame.
+   Alguns Android/PWA deixam o rAF congelado apesar de a aplicação continuar visível.
+   Mantemos um pulso do thread principal e outro de Web Worker; ambos apenas atualizam
+   o DOM quando o segundo efetivamente muda. */
+let sportsClockLastSecond=-1;
+function sportsClockPulse(nowMs=Date.now()){
+ if(view!=="sports")return;
+ const second=Math.floor(Number(nowMs||Date.now())/1000);
+ if(second===sportsClockLastSecond)return;
+ sportsClockLastSecond=second;
+ updateSportsLiveClocks();
+}
+const sportsClockInterval=setInterval(()=>sportsClockPulse(Date.now()),250);
+let sportsClockWorker=null;
+try{
+ const workerCode="setInterval(function(){postMessage(Date.now())},250);";
+ sportsClockWorker=new Worker(URL.createObjectURL(new Blob([workerCode],{type:"text/javascript"})));
+ sportsClockWorker.onmessage=e=>sportsClockPulse(Number(e.data)||Date.now());
+}catch(_){}
 function stopSportsClockTimer(){
- if(sportsClockFrame){
-  if(window.cancelAnimationFrame)cancelAnimationFrame(sportsClockFrame);
-  else clearTimeout(sportsClockFrame);
-  sportsClockFrame=0;
- }
+ // O pulso global é intencionalmente mantido; fora de Desporto retorna imediatamente.
  sportsClockLastSecond=-1;
 }
-function sportsClockLoop(){
- if(view!=="sports"){stopSportsClockTimer();return}
- const second=Math.floor(Date.now()/1000);
- if(second!==sportsClockLastSecond){
-  sportsClockLastSecond=second;
-  updateSportsLiveClocks();
- }
- sportsClockFrame=window.requestAnimationFrame
-  ?requestAnimationFrame(sportsClockLoop)
-  :setTimeout(sportsClockLoop,250);
-}
 function syncSportsClockTimer(){
- if(view!=="sports"){stopSportsClockTimer();return}
- updateSportsLiveClocks();
- if(!sportsClockFrame)sportsClockLoop();
+ if(view!=="sports"){sportsClockLastSecond=-1;return}
+ sportsClockLastSecond=-1;
+ sportsClockPulse(Date.now());
 }
 
 setInterval(()=>{
  if(view!=="sports")return;
  loadSportsInfo({force:true}).then(()=>{if(view==="sports"){renderSportsAgenda(statsIso());syncSportsClockTimer()}});
 },UI_REFRESH.sportsData);
-
 async function refreshCurrentView({force=false}={}){
  updateTodayLabel();
  maybeCelebrateFamilyEvents();
@@ -3126,8 +3125,8 @@ document.addEventListener("visibilitychange",()=>{
   markForegroundSignal();
   refreshWhenVisible("visibilitychange",true);
   syncSportsClockTimer();
- }else if(view!=="sports"&&Date.now()>=foregroundOverrideUntil){
-  stopSportsClockTimer();
+ }else if(Date.now()>=foregroundOverrideUntil){
+  // O relógio desportivo tem pulso próprio e não depende deste estado.
  }
 });
 const BUILD_POLL_MS=60*1000;
