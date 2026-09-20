@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=114">
-<link rel="icon" href="favicon-64.png?v=114" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=114" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=114" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=114">
+<link rel="manifest" href="manifest.webmanifest?v=117">
+<link rel="icon" href="favicon-64.png?v=117" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=117" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=117" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=117">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -304,10 +304,32 @@ html.tv-mode #todayPageDate[data-tv-date-open="1"]{display:flex;align-items:cent
 .tv-cal-day.is-today{box-shadow:inset 0 0 0 3px var(--active)}
 .tv-date-dialog-actions{display:flex;justify-content:center;gap:18px;margin-top:18px}
 html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px solid #FFD54A!important;outline-offset:4px!important;box-shadow:0 0 0 4px rgba(31,42,68,.55)!important;transform:scale(1.045)}
+
+/* v117 · layout uniforme, 07:00–21:00 e leitura temporal reforçada */
+.main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:5px}
+.main-tab{min-width:0!important;padding-left:2px!important;padding-right:2px!important}
+.schedule-date-controls{margin-top:4px;margin-bottom:8px}
+.bottom-date-controls{margin-top:10px}
+.past-time-shade{position:absolute;left:0;right:0;background:rgba(71,85,105,.16);z-index:8;pointer-events:none;backdrop-filter:grayscale(24%)}
+.overview-past-shade{z-index:8}
+.now-line,.overview-week-now-line{z-index:10}
+.now-axis-clock{font-size:.76rem!important;padding:3px 5px!important}
+.overview-week-now-line.first:after{font-size:.72rem!important;padding:3px 5px!important}
+@media(max-width:700px){
+ html:not(.tv-mode) .main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:3px}
+ html:not(.tv-mode) .main-tab{font-size:clamp(.50rem,2vw,.68rem)!important;padding:8px 1px!important;letter-spacing:-.02em}
+ .now-axis-clock{font-size:.60rem!important}
+ .overview-week-now-line.first:after{font-size:.60rem!important}
+}
+@media(max-width:430px){
+ html:not(.tv-mode) .main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ html:not(.tv-mode) .main-tab{font-size:.50rem!important;padding:7px 0!important}
+}
+
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v114</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v117</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -315,16 +337,52 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
-<div id="globalFamilyBanner" class="family-banner hidden"></div>
-<section id="overview" class="screen"><div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div><div id="activeSummary" class="active-summary hidden" aria-live="polite"></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="overviewDays" class="day-tabs"></div><div class="timeline-scroll"><div id="timeline" class="timeline"></div></div><div id="overviewCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
-<section id="today" class="screen hidden"><div class="today-page-nav" aria-label="Navegação diária"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="todayRestBanner" class="rest-banner hidden"></div><section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section><div id="todayAstronomyBanner" class="astronomy-banner hidden"></div><div id="todayWorldHistoryBanner" class="history-feature world-history"></div><div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div><div class="stats-controls today-stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="screen-head today-screen-head"><div><h2 id="todayHeading">Hoje</h2><p id="todayDay"></p></div></div><div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div><section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section><div id="todayCountdowns" class="countdown-panel"></div></section>
-<section id="sports" class="screen hidden">
-  <div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
-  <div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
-  <div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
-  <section id="sportsPanel" class="sports-panel"></section>
+<section id="overview" class="screen">
+<div class="stats-controls schedule-date-controls top-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div>
+<div id="activeSummary" class="active-summary hidden" aria-live="polite"></div>
+<div id="overviewDays" class="day-tabs"></div>
+<div class="timeline-scroll"><div id="timeline" class="timeline"></div></div>
+<div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
+<div class="family-banner hidden" data-global-family-banner></div>
+<div id="overviewCountdowns" class="countdown-panel"></div>
 </section>
-<section id="person" class="screen hidden"><div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div><div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div><div class="stats-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div><div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div><div id="personDays" class="day-tabs"></div><div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div><div id="personCountdowns" class="countdown-panel" style="margin-top:12px"></div></section>
+<section id="today" class="screen hidden">
+<div class="stats-controls schedule-date-controls top-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="screen-head today-screen-head"><div><h2 id="todayHeading">Hoje</h2><p id="todayDay"></p></div></div>
+<div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div>
+<div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
+<div class="family-banner hidden" data-global-family-banner></div>
+<div class="today-page-nav hidden" aria-hidden="true"><button id="todayPrevPage" class="today-page-arrow" type="button" aria-label="Dia anterior">‹</button><div id="todayPageDate" class="today-page-date"></div><button id="todayNextPage" class="today-page-arrow" type="button" aria-label="Dia seguinte">›</button></div>
+<div id="todayRestBanner" class="rest-banner hidden"></div>
+<section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section>
+<div id="todayAstronomyBanner" class="astronomy-banner hidden"></div>
+<div id="todayWorldHistoryBanner" class="history-feature world-history"></div>
+<div id="todayPortugalHistoryBanner" class="history-feature portugal-history"></div>
+<section class="daily-info-card" style="margin-top:12px"><div class="daily-info-head"><h3 id="dailyInfoTitle">Hoje no calendário</h3><span id="dailyInfoDate"></span></div><div id="dailyInfoBody" class="daily-info-body"><div class="daily-info-loading">A atualizar efemérides…</div></div></section>
+<div id="todayCountdowns" class="countdown-panel"></div>
+</section>
+<section id="sports" class="screen hidden">
+<div class="stats-controls schedule-date-controls top-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
+<section id="sportsPanel" class="sports-panel"></section>
+<div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
+<div class="family-banner hidden" data-global-family-banner></div>
+</section>
+<section id="person" class="screen hidden">
+<div class="stats-controls schedule-date-controls top-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div>
+<div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div>
+<div id="personDays" class="day-tabs"></div>
+<div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div>
+<div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
+<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
+<div class="family-banner hidden" data-global-family-banner></div>
+<div id="personCountdowns" class="countdown-panel"></div>
+</section>
 </main>
 <div id="tvDateDialog" class="tv-date-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="tvDateDialogTitle" aria-hidden="true">
   <div class="tv-date-dialog-card">
@@ -343,7 +401,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=114"></script>
+<script src="sports-info.js?v=117"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -511,9 +569,9 @@ const MARGARIDA_FRIDAY_SESSIONS=[
   {start:"13:30",end:"15:50",title:"BGEO"},
   {start:"16:45",end:"18:15",title:"FQA"}
 ];
-const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
+const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=114;
+const APP_BUILD=117;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -641,10 +699,10 @@ function adaptiveScheduleHeight(){
  if(TV_MODE)return tvTimelineHeight();
  const h=Math.max(480,window.innerHeight||800);
  const w=Math.max(320,window.innerWidth||1024);
- if(w<700)return Math.max(620,Math.min(780,Math.round(h*.88)));
- if(h<650)return Math.max(600,Math.min(720,Math.round(h*.96)));
- if(w>=1600)return Math.max(780,Math.min(980,Math.round(h*.84)));
- return Math.max(700,Math.min(900,Math.round(h*.84)));
+ if(w<700)return Math.max(760,Math.min(920,Math.round(h*1.02)));
+ if(h<650)return Math.max(740,Math.min(880,Math.round(h*1.14)));
+ if(w>=1600)return Math.max(920,Math.min(1120,Math.round(h*.98)));
+ return Math.max(840,Math.min(1040,Math.round(h*.98)));
 }
 function applyAdaptiveEnvironment(){
  const root=document.documentElement,w=window.innerWidth||document.documentElement.clientWidth||1024,h=window.innerHeight||document.documentElement.clientHeight||768;
@@ -660,8 +718,8 @@ const TV_PROFILE=TV_MODE?(TV_PARAMS.get("profile")||"auto"):"";
 applyAdaptiveEnvironment();
 function tvTimelineHeight(){
  const h=Math.max(480,window.innerHeight||720);
- const factor=TV_PROFILE==="sala40"?.70:TV_PROFILE==="quarto49"?.73:.71;
- return Math.max(620,Math.min(920,Math.round(h*factor)));
+ const factor=TV_PROFILE==="sala40"?.82:TV_PROFILE==="quarto49"?.85:.83;
+ return Math.max(760,Math.min(1080,Math.round(h*factor)));
 }
 function tvFormatDate(iso){
  const [y,m,d]=String(iso||"").split("-");
@@ -1632,11 +1690,12 @@ async function loadSportsInfo({force=false}={}){
  return state.promise;
 }
 function renderGlobalFamilyBanner(iso){
- const el=qs("#globalFamilyBanner"),events=familyEventsFor(iso);
- if(!el)return;
- if(!events.length){el.classList.add("hidden");el.innerHTML="";return}
- el.innerHTML='<strong>Família</strong>'+events.map(esc).join(" · ");
- el.classList.remove("hidden");
+ const events=familyEventsFor(iso);
+ qsa("[data-global-family-banner]").forEach(el=>{
+  if(!events.length){el.classList.add("hidden");el.innerHTML="";return}
+  el.innerHTML='<strong>Família</strong>'+events.map(esc).join(" · ");
+  el.classList.remove("hidden");
+ });
 }
 const ASTRONOMY_SOURCE_URLS={
  equinoxSpring:"https://oal.ul.pt/equinocio-da-primavera-2021/",
@@ -2401,7 +2460,7 @@ function renderOverviewWeek(referenceIso){
     }
     if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="overview-week-event" style="top:'+overviewWeekTop("14:00")+'%;height:'+overviewWeekHeight("14:00","18:30")+'%;background:'+i.color+';color:'+i.textColor+'"><b>14:00–18:30</b><span>Reuniões de Avaliação Intercalar</span></div>';
    }
-   if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin())),pct=Math.max(0,Math.min(100,(n-START)*100/(END-START)));h+='<div class="overview-week-now-line '+(p===people[0]?'first':'')+'" style="top:'+pct+'%"></div>'}
+   if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin())),pct=Math.max(0,Math.min(100,(n-START)*100/(END-START)));h+=pastShadeOverviewHtml()+'<div class="overview-week-now-line '+(p===people[0]?'first':'')+'" style="top:'+pct+'%"></div>'}
    h+='</div>';
   }
  });
@@ -2420,7 +2479,7 @@ function renderOverviewTabs(active,referenceIso){
  }));
 }
 function renderOverview(){
- const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();
+ const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();renderGlobalFamilyBanner(iso);
  const d=weekdayFromIso(iso);
  selectedDay=d;
  const activeTab=overviewMode==="week"?"Semana":(SCHOOL_DAYS.includes(d)?d:"Semana");
@@ -2445,7 +2504,7 @@ function renderOverview(){
   }
   h+='</div>';
  }
- if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  timeline.innerHTML=h;
 }
 const COMMON_REST_OPENINGS=[
@@ -2526,7 +2585,7 @@ function renderTodayTimeline(iso,d){
   }
   h+='</div>';
  }
- if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  timeline.innerHTML=h;
 }
 function renderToday(){
@@ -2561,7 +2620,7 @@ function renderPersonDayTimeline(p,iso){
  const tl=qs("#personTimeline"),d=weekdayFromIso(iso),i=D[p],special=personSpecialMessage(p,iso);
  tl.classList.remove("week-view","compact-overview");
  let h='<div class="time-axis">';
- for(let m=480;m<=1080;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
+ for(let m=START;m<=END;m+=60h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
  h+='</div><div class="lane"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+' · '+d+'</div>';
  if(special)h+='<div class="lane-message">'+esc(special)+'</div>';
  else{
@@ -2572,7 +2631,7 @@ function renderPersonDayTimeline(p,iso){
   if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
  }
  h+='</div>';
- if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
+ if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  tl.style.gridTemplateColumns=isMobileTimeline()?"44px minmax(0,1fr)":"64px minmax(0,1fr)";
  tl.innerHTML=h;
 }
@@ -2594,13 +2653,13 @@ function renderPersonWeekTimeline(p,iso){
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[dayIso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
   }
-  if(dayIso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+='<div class="now-line contained" style="top:'+timelineY(n)+'px"></div>'}
+  if(dayIso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line contained" style="top:'+timelineY(n)+'px"></div>'}
   h+='</div>';
  });
  tl.innerHTML=h;
 }
 function renderPerson(){
- const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();
+ const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();renderGlobalFamilyBanner(iso);
  const p=person,i=D[p],d=weekdayFromIso(iso);
  qs("#personName").textContent=displayName(p);
  qs(".person-title").style.borderLeft='8px solid '+i.color;qs(".person-title").style.paddingLeft="10px";
@@ -2614,6 +2673,14 @@ function renderPerson(){
   days.classList.add("hidden");
   renderPersonDayTimeline(p,iso);
  }
+}
+function pastShadeTimelineHtml(){
+ const n=Math.max(START,Math.min(END,nowMin())),top=laneHeaderHeight(),bottom=timelineY(n);
+ return '<div class="past-time-shade" data-past-shade="timeline" style="top:'+top+'px;height:'+Math.max(0,bottom-top)+'px"></div>';
+}
+function pastShadeOverviewHtml(){
+ const n=Math.max(START,Math.min(END,nowMin())),pct=Math.max(0,Math.min(100,(n-START)*100/(END-START)));
+ return '<div class="past-time-shade overview-past-shade" data-past-shade="overview" style="top:0;height:'+pct+'%"></div>';
 }
 function currentClockLabel(){
  const d=new Date();
@@ -2639,6 +2706,15 @@ function updateNowLines(){
   line.style.display=visible?"":"none";
   line.dataset.nowTime=timeLabel;
   if(visible)line.style.top=pct+"%";
+ });
+ qsa('.past-time-shade[data-past-shade="timeline"]').forEach(shade=>{
+  const top=laneHeaderHeight(),bottom=timelineY(clamped);
+  shade.style.display=visible?"":"none";
+  if(visible){shade.style.top=top+"px";shade.style.height=Math.max(0,bottom-top)+"px"}
+ });
+ qsa('.past-time-shade[data-past-shade="overview"]').forEach(shade=>{
+  shade.style.display=visible?"":"none";
+  if(visible)shade.style.height=pct+"%";
  });
 }
 function refreshScheduleState(){
