@@ -1,4 +1,4 @@
-const BUILD=113;
+const BUILD=114;
 const C='horarios-familia-2026-27-v'+BUILD;
 const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD,'sports-info.js?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([
@@ -44,7 +44,7 @@ self.addEventListener('fetch',event=>{
   if(networkFirst){
     const key=canonicalCacheKey(url);
     event.respondWith(
-      fetch(req,{cache:'no-store'})
+      fetch(req,{cache:'no-cache'})
         .then(res=>{
           if(res&&res.ok){
             const copy=res.clone();
@@ -59,14 +59,14 @@ self.addEventListener('fetch',event=>{
 
   event.respondWith(
     caches.match(req).then(cached=>{
-      const network=fetch(req).then(res=>{
+      if(cached)return cached;
+      return fetch(req).then(res=>{
         if(res&&res.ok){
           const copy=res.clone();
           caches.open(C).then(cache=>cache.put(req,copy));
         }
         return res;
-      }).catch(()=>cached);
-      return cached||network;
+      });
     })
   );
 });
