@@ -267,6 +267,23 @@ if 'return f"https://www.flashscore.pt/jogo/futebol/' in sports_script:
 if '"sofascore.com/" in low' not in sports_script:
     fail("As fichas verificadas de futebol devem aceitar SofaScore")
 
+if "function adaptiveOrientationClass(w,h)" not in index:
+    fail("Falta deteção explícita da orientação do ecrã")
+if "root.dataset.uiOrientation=adaptiveOrientationClass(w,h);" not in index:
+    fail("A orientação não está exposta ao CSS adaptativo")
+if 'window.addEventListener("orientationchange"' not in index:
+    fail("A aplicação não reage explicitamente à rotação do ecrã")
+if "@media (orientation:landscape) and (max-height:900px)" not in index:
+    fail("Falta o perfil CSS específico para modo paisagem")
+if "html:not(.tv-mode) .main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))" not in index:
+    fail("Em paisagem, as seis abas principais devem caber numa só linha")
+if "html:not(.tv-mode) .day-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))" not in index:
+    fail("Em paisagem, os seis seletores de dia devem caber numa só linha")
+if "html:not(.tv-mode) .countdown-panel{grid-template-columns:repeat(2,minmax(0,1fr))" not in index:
+    fail("O painel de contagens deve aproveitar duas colunas em paisagem")
+if "html:not(.tv-mode) .sports-grid{grid-template-columns:repeat(2,minmax(0,1fr))" not in index:
+    fail("A agenda desportiva deve aproveitar duas colunas em paisagem")
+
 if "function currentClockLabel(){" not in index:
     fail("Falta formatação HH:MM na linha da hora atual")
 if 'clock.className="now-axis-clock"' not in index:
