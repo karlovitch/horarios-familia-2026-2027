@@ -355,6 +355,19 @@ for token in [
     if token not in index:
         fail("Falta dimensionamento individual dos separadores")
 
+if "function connectionBearerLabel(){" not in index:
+    fail("Falta identificação da ligação Wi‑Fi/dados móveis")
+if 'source:"gps-wifi-mobile"' not in index or 'method:"GPS/Wi‑Fi/dados móveis"' not in index:
+    fail("A geolocalização principal deve usar a localização fundida GPS/Wi‑Fi/dados móveis")
+if 'source:"network-ip"' not in index or 'method:bearer+" (rede/IP)"' not in index:
+    fail("Falta fallback de localização por rede/IP")
+if "const networkPromise=ipCurrentPosition().catch(()=>null);" not in index:
+    fail("O fallback por rede deve ser preparado em paralelo com a localização do dispositivo")
+if 'if(permission!=="denied")' not in index or "if(!loc)loc=await networkPromise;" not in index:
+    fail("A resolução de localização deve cair para a rede quando GPS/localização do dispositivo falha")
+if "function isDeviceLocation(loc)" not in index:
+    fail("Falta distinção entre localização precisa e localização aproximada por rede")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
