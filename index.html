@@ -2620,7 +2620,7 @@ function renderPersonDayTimeline(p,iso){
  const tl=qs("#personTimeline"),d=weekdayFromIso(iso),i=D[p],special=personSpecialMessage(p,iso);
  tl.classList.remove("week-view","compact-overview");
  let h='<div class="time-axis">';
- for(let m=START;m<=END;m+=60h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
+ for(let m=START;m<=END;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+String(Math.floor(m/60)).padStart(2,"0")+':00</div>';
  h+='</div><div class="lane"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+' · '+d+'</div>';
  if(special)h+='<div class="lane-message">'+esc(special)+'</div>';
  else{
