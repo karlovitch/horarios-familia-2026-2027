@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=122">
-<link rel="icon" href="favicon-64.png?v=122" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=122" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=122" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=122">
+<link rel="manifest" href="manifest.webmanifest?v=123">
+<link rel="icon" href="favicon-64.png?v=123" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=123" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=123" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=123">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -365,7 +365,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v122</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v123</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -452,7 +452,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=122"></script>
+<script src="sports-info.js?v=123"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -622,7 +622,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=122;
+const APP_BUILD=123;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -1690,9 +1690,8 @@ function liveClockText(ev){
 
   // DD representa o início real da parte atual. Se a fonte ficar presa em 1H
   // durante demasiado tempo, evita mostrar minutos impossíveis.
-  if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"&&total>=55*60){
-   const updated=Number(ev.status_updated_at||0);
-   if(!updated||now-updated>420)return "Intervalo";
+  if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"&&total>=52*60){
+   return "Intervalo";
   }
 
   const mm=Math.floor(total/60),ss=total%60;
@@ -1706,7 +1705,7 @@ function liveClockText(ev){
    let total=Math.floor(n)*60+extra;
    // O relógio continua a andar entre snapshots. Só trava quando o período
    // já seria manifestamente impossível e a fonte live está desatualizada.
-   if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"&&total>=55*60&&updated&&now-updated>420)return "Intervalo";
+   if(/futebol/i.test(ev.sport||"")&&ev.period==="1H"&&total>=52*60)return "Intervalo";
    if(/futebol/i.test(ev.sport||"")&&ev.period==="2H")total=Math.min(total,110*60);
    const mm=Math.floor(total/60),ss=total%60;
    return String(mm).padStart(2,"0")+":"+String(ss).padStart(2,"0");
