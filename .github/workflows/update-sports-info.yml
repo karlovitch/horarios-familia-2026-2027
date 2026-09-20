@@ -2,7 +2,7 @@ name: Atualizar agenda desportiva
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2-57/5 * * * *"
   workflow_dispatch:
   push:
     paths:
@@ -11,7 +11,7 @@ on:
 
 concurrency:
   group: update-sports-info
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
