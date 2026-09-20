@@ -55,6 +55,7 @@ def get(url):
         return jr.text
 
 FLASHSCORE_DAILY_CACHE={}
+SOFASCORE_DAILY_CACHE={}
 ZEROZERO_PAGE_CACHE={}
 
 # Fichas que foram confirmadas no próprio Flashscore.pt. Para FC Porto e
@@ -85,7 +86,8 @@ VERIFIED_FOOTBALL_FIXTURES={
     "2026-10-10|real madrid|villarreal":"https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
 }
 VERIFIED_FOOTBALL_LIVE_FEEDS={
-    # Fontes live de fallback, independentes da ficha pública mostrada na app.
+    # Fallback adicional quando há um ID ESPN confirmado; o SofaScore genérico
+    # resolve os restantes jogos automaticamente por data e equipas.
     "2026-09-20|atletico de madrid|real madrid":{"provider":"espn","event_id":"401882865","league":"esp.1"},
 }
 
@@ -241,6 +243,93 @@ def flashscore_live_info(mid):
         return out
     except Exception:
         return {}
+
+def sofascore_football_live_info(event):
+    """Fallback genérico: resolve qualquer jogo por data + equipas no SofaScore."""
+    date_iso=event.get("date")
+    if not date_iso:return {}
+    if date_iso not in SOFASCORE_DAILY_CACHE:
+        try:
+            url=f"https://www.sofascore.com/api/v1/sport/football/scheduled-events/{date_iso}"
+            r=HTTP.get(url,headers={
+                **HEADERS,
+                "Accept":"application/json",
+                "Accept-Language":"pt-PT,pt;q=0.9,en;q=0.7",
+                "Referer":"https://www.sofascore.com/",
+            },timeout=25)
+            r.raise_for_status()
+            payload=r.json()
+            SOFASCORE_DAILY_CACHE[date_iso]=payload.get("events") or []
+        except Exception:
+            SOFASCORE_DAILY_CACHE[date_iso]=[]
+
+    best=None;best_score=0.0
+    for item in SOFASCORE_DAILY_CACHE.get(date_iso,[]):
+        home=((item.get("homeTeam") or {}).get("name") or "")
+        away=((item.get("awayTeam") or {}).get("name") or "")
+        direct=_team_similarity(event.get("home",""),home)+_team_similarity(event.get("away",""),away)
+        reverse=_team_similarity(event.get("home",""),away)+_team_similarity(event.get("away",""),home)
+        score=max(direct,reverse)
+        if score>best_score:
+            best,best_score=item,score
+
+    if not best or best_score<1.35:return {}
+    home=((best.get("homeTeam") or {}).get("name") or "")
+    away=((best.get("awayTeam") or {}).get("name") or "")
+    pair=(
+        _team_similarity(event.get("home",""),home),
+        _team_similarity(event.get("away",""),away),
+    )
+    reverse_pair=(
+        _team_similarity(event.get("home",""),away),
+        _team_similarity(event.get("away",""),home),
+    )
+    if min(pair if sum(pair)>=sum(reverse_pair) else reverse_pair)<.65:return {}
+
+    status=best.get("status") or {}
+    stype=str(status.get("type") or "").lower()
+    desc=str(status.get("description") or status.get("shortName") or "").lower()
+    out={"sofascore_event_id":best.get("id")}
+    hs=best.get("homeScore") or {};as_=best.get("awayScore") or {}
+    hscore=hs.get("current")
+    ascore=as_.get("current")
+    if hscore is not None:
+        try:out["home_score"]=int(hscore)
+        except Exception:pass
+    if ascore is not None:
+        try:out["away_score"]=int(ascore)
+        except Exception:pass
+
+    if stype in {"notstarted","scheduled"}:
+        out["status"]="scheduled"
+    elif stype in {"finished","ended"}:
+        out["status"]="finished"
+    elif stype in {"inprogress","live"}:
+        if "half" in desc and ("time" in desc or "break" in desc):
+            out["status"]="halftime";out["period"]="HT"
+        else:
+            out["status"]="live"
+            if "1st" in desc or "first" in desc:
+                out["period"]="1H"
+            elif "2nd" in desc or "second" in desc:
+                out["period"]="2H"
+            else:
+                out["period"]="LIVE"
+
+            time_info=best.get("time") or {}
+            period_start=time_info.get("currentPeriodStartTimestamp")
+            if period_start:
+                try:out["period_start"]=int(period_start)
+                except Exception:pass
+            else:
+                minute=status.get("period") or status.get("current")
+                if minute is not None:
+                    try:
+                        minute=int(minute)
+                        if 0<=minute<=150:out["live_minute"]=minute
+                    except Exception:pass
+            out["status_updated_at"]=int(datetime.now(timezone.utc).timestamp())
+    return out
 
 def espn_football_live_info(event):
     cfg=VERIFIED_FOOTBALL_LIVE_FEEDS.get(football_fixture_key(event))
@@ -652,17 +741,28 @@ def enforce_direct_match_urls(events):
                 if abs((event_day-today).days)<=1:
                     mid=event.get("flashscore_mid") or flashscore_match_id(event)
                     primary=flashscore_live_info(mid) if mid else {}
-                    fallback=espn_football_live_info(event)
+                    sofa=sofascore_football_live_info(event)
+                    espn=espn_football_live_info(event)
                     info=dict(primary or {})
-                    # Se a fonte principal ficou presa em "scheduled", uma fonte live
-                    # confirmada tem prioridade para estado, marcador e minuto.
-                    if fallback and (not info or info.get("status")=="scheduled" or fallback.get("status") in {"live","halftime","finished"}):
-                        info.update({k:v for k,v in fallback.items() if v is not None})
+
+                    # Qualquer fonte alternativa que confirme live/final pode corrigir
+                    # uma fonte principal vazia ou presa em "scheduled".
+                    for fallback in (sofa,espn):
+                        if fallback and (
+                            not info or
+                            info.get("status")=="scheduled" or
+                            fallback.get("status") in {"live","halftime","finished"}
+                        ):
+                            info.update({k:v for k,v in fallback.items() if v is not None})
+
+                    # Se ainda não houver estado live, usa apenas a hora de início
+                    # para mostrar "em jogo"; nunca inventa marcador.
                     if not info or info.get("status")=="scheduled":
                         start_fallback=football_start_fallback_info(event)
                         if start_fallback.get("status")=="live":
                             for k,v in start_fallback.items():
                                 if k not in info or info.get(k) in (None,"scheduled"):info[k]=v
+
                     for k,v in info.items():
                         if v is not None:event[k]=v
             except Exception:
