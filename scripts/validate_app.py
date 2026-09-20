@@ -412,6 +412,15 @@ if 'ev.period==="1H"&&total>=52*60' not in index:
     fail("A 1.ª parte deve passar a Intervalo se a fonte ficar presa para lá do limite de segurança")
 if 'return "Intervalo";' not in index:
     fail("Falta fallback visual de Intervalo")
+if index.count('data-global-family-banner') != 1:
+    fail("Deve existir uma única linha global Família")
+sports_pos = index.find('id="sportsTabRow"')
+family_pos = index.find('id="globalFamilyBanner"')
+if sports_pos < 0 or family_pos < 0 or family_pos <= sports_pos:
+    fail("A linha Família deve ficar imediatamente abaixo da linha Desporto")
+if 'const events=familyEventsFor(iso);' not in index or 'if(!events.length){el.classList.add("hidden");el.innerHTML="";return}' not in index:
+    fail("A linha Família deve aparecer apenas nas datas com aniversário/evento familiar")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
