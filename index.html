@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=128">
-<link rel="icon" href="favicon-64.png?v=128" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=128" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=128" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=128">
+<link rel="manifest" href="manifest.webmanifest?v=129">
+<link rel="icon" href="favicon-64.png?v=129" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=129" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=129" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=129">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -402,7 +402,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v128</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v129</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -489,7 +489,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=128"></script>
+<script src="sports-info.js?v=129"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -659,7 +659,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=128;
+const APP_BUILD=129;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -1879,6 +1879,20 @@ async function fetchEspnDirectFootballLive(ev){
   clearTimeout(timeout);
  }
 }
+function footballClockProgressSeconds(ev,nowSec=Math.floor(Date.now()/1000)){
+ if(!ev||String(ev.status||"").toLowerCase()!=="live")return -1;
+ const period=String(ev.period||"").toUpperCase();
+ const base=period==="2H"?45:(period==="ET1"?90:(period==="ET2"?105:0));
+ const periodStart=Number(ev.period_start);
+ if(Number.isFinite(periodStart)&&periodStart>0){
+  return base*60+Math.max(0,nowSec-periodStart);
+ }
+ const minute=Number(ev.live_minute),updated=Number(ev.status_updated_at);
+ if(Number.isFinite(minute)&&minute>=0&&minute<=150){
+  return Math.floor(minute)*60+(Number.isFinite(updated)&&updated>0?Math.max(0,nowSec-updated):0);
+ }
+ return -1;
+}
 async function refreshDirectFootballLive(){
  if(view!=="sports")return false;
  const candidates=sportsEventsFor(statsIso()).filter(ev=>/futebol/i.test(ev.sport||"")&&ev.espn_event_id&&ev.espn_league&&ev.status!=="finished");
@@ -1889,8 +1903,30 @@ async function refreshDirectFootballLive(){
   if(result.status!=="fulfilled"||!result.value)return;
   const ev=candidates[i],patch=result.value;
   if(footballLivePhaseRank(patch)<footballLivePhaseRank(ev))return;
+
   const oldStatus=ev.status,oldPeriod=ev.period,oldHome=ev.home_score,oldAway=ev.away_score,oldStart=ev.period_start;
+  const nowSec=Math.floor(Date.now()/1000);
+  const oldProgress=footballClockProgressSeconds(ev,nowSec);
+  const patchProgress=footballClockProgressSeconds(patch,nowSec);
+  const sameLivePeriod=String(ev.status||"")==="live"&&String(patch.status||"")==="live"&&String(ev.period||"")===String(patch.period||"");
+  const keepExistingClock=sameLivePeriod&&oldProgress>=0&&(patchProgress<0||oldProgress>patchProgress+5);
+  const preservedClock=keepExistingClock?{
+   period_start:ev.period_start,
+   live_minute:ev.live_minute,
+   status_updated_at:ev.status_updated_at
+  }:null;
+
   Object.assign(ev,patch);
+
+  // O marcador/estado pode vir da ESPN, mas o relógio nunca recua.
+  // Se o snapshot já tiver um relógio mais avançado (ex.: Flashscore 94:13
+  // contra ESPN 90:38), preserva o relógio mais avançado e atualiza apenas
+  // resultado/estado.
+  if(preservedClock){
+   if(preservedClock.period_start!=null)ev.period_start=preservedClock.period_start; else delete ev.period_start;
+   if(preservedClock.live_minute!=null)ev.live_minute=preservedClock.live_minute; else delete ev.live_minute;
+   if(preservedClock.status_updated_at!=null)ev.status_updated_at=preservedClock.status_updated_at; else delete ev.status_updated_at;
+  }
   if(patch.status!=="live"){delete ev.period_start;delete ev.live_minute}
   if(patch.status==="halftime"){delete ev.status_updated_at}
   if(oldStatus!==ev.status||oldPeriod!==ev.period||oldHome!==ev.home_score||oldAway!==ev.away_score||oldStart!==ev.period_start)changed=true;
