@@ -83,8 +83,18 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         if (webView != null) {
-            webView.evaluateJavascript("window.dispatchEvent(new Event('focus'));", null);
+            webView.onResume();
+            webView.evaluateJavascript(
+                "window.dispatchEvent(new Event('appforeground'));window.dispatchEvent(new Event('focus'));",
+                null
+            );
         }
+    }
+
+    @Override
+    protected void onPause() {
+        if (webView != null) webView.onPause();
+        super.onPause();
     }
 
     private String remoteKeyName(int keyCode) {
