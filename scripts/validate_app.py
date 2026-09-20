@@ -92,11 +92,11 @@ required_index_tokens = {
     "setas principais ampliadas": ".today-page-arrow{width:82px;height:66px",
     "seletor de data compacto": ".stats-date-input{width:100%;min-width:0;max-width:132px",
     "frases com normalização linguística": "function normalizeReflectionText",
-    "horários prolongados até às 20h00": "START=480,END=1200",
+    "horários das 07h00 às 21h00": "START=420,END=1260",
     "linha vermelha do momento atual": "background:#D71920",
     "linha do agora na vista semanal individual": 'class="now-line contained"',
     "linha do agora na vista semanal de conjunto": "overview-week-now-line",
-    "rótulo final das 20h visível": "m===END?\' end-label\'",
+    "rótulo final das 21h visível": "m===END?\' end-label\'",
     "controlos de data sempre centrados": ".stats-controls{display:grid;grid-template-columns:50px minmax(118px,132px) 50px auto;align-items:center;justify-content:center",
     "rótulo Consultar data centrado": ".stats-controls strong{grid-column:1/-1;width:100%;margin:0 0 2px;text-align:center",
     "linha do agora a cada 10 segundos": "UI_REFRESH={nowLine:10000",
@@ -106,7 +106,7 @@ required_index_tokens = {
     "resize apenas ao mudar de breakpoint": 'MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange)',
     "sincronização global do seletor de data": "function renderActiveView(){\n const iso=statsIso();\n syncStatsControls();",
     "faixa meteorológica disponível": 'data-weather-strip',
-    "meteorologia imediatamente sob navegação Hoje": '<div class="today-page-nav" aria-label="Navegação diária">',
+    "meteorologia após segunda seleção": "bottom-date-controls",
     "título Horários Família": '<h1>Horários Família</h1>',
     "meteorologia Open-Meteo": "https://api.open-meteo.com/v1/forecast",
     "classificação visual da nebulosidade": "function weatherSky(cloud)",
@@ -292,9 +292,9 @@ if 'clock.className="now-axis-clock"' not in index:
     fail("A hora atual deve ser criada dentro da primeira coluna horária")
 if ".now-axis-clock{" not in index:
     fail("Falta estilo da etiqueta HH:MM na primeira coluna")
-if "font-size:.66rem" not in index:
+if "font-size:.76rem!important" not in index:
     fail("A hora atual na primeira coluna deve ter tamanho reforçado")
-if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index or "font-size:.64rem" not in index:
+if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index or "font-size:.72rem!important" not in index:
     fail("A vista semanal deve deslocar e ampliar a hora atual na primeira coluna")
 
 if 'cache:"no-cache"' not in index or '"Pragma":"no-cache"' not in index:
@@ -307,6 +307,38 @@ if 'Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActive
     fail("O arranque não deve duplicar a primeira carga de dados")
 if 'if(!SPORTS_CACHE_HYDRATED)' not in index:
     fail("A cache local desportiva deve ser hidratada apenas uma vez por página")
+
+if ".main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))!important" not in index:
+    fail("Os seis separadores principais devem permanecer numa única linha")
+if index.count("top-date-controls") < 4 or index.count("bottom-date-controls") < 4:
+    fail("Cada separador principal deve ter seleção de data antes e depois do horário")
+if "function pastShadeTimelineHtml(){" not in index or "function pastShadeOverviewHtml(){" not in index:
+    fail("Falta indicação visual do período do dia já passado")
+if 'data-past-shade="timeline"' not in index or 'data-past-shade="overview"' not in index:
+    fail("A zona temporal passada não está ligada às grelhas de horário")
+
+main_sections = [
+    ("overview", 'id="timeline"'),
+    ("today", 'id="todayTimeline"'),
+    ("sports", 'id="sportsPanel"'),
+    ("person", 'id="personTimeline"'),
+]
+for pos, (section_id, schedule_token) in enumerate(main_sections):
+    start = index.find(f'<section id="{section_id}"')
+    if start < 0:
+        fail(f"Separador em falta: {section_id}")
+        continue
+    if pos + 1 < len(main_sections):
+        end = index.find(f'<section id="{main_sections[pos + 1][0]}"', start + 1)
+    else:
+        end = index.find("</main>", start)
+    chunk = index[start:end if end >= 0 else len(index)]
+    top = chunk.find("top-date-controls")
+    schedule = chunk.find(schedule_token)
+    bottom = chunk.find("bottom-date-controls")
+    weather = chunk.find("data-weather-strip")
+    if min(top, schedule, bottom, weather) < 0 or not (top < schedule < bottom < weather):
+        fail(f"Ordem de layout inválida no separador {section_id}: data → horário → data → meteorologia")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
