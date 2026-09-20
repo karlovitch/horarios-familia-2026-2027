@@ -1421,15 +1421,13 @@
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "status": "live",
+      "status": "finished",
       "flashscore_mid": "hGycdKve",
       "home_score": 2,
-      "away_score": 0,
+      "away_score": 1,
       "period": "2H",
       "espn_event_id": "401882865",
-      "espn_league": "esp.1",
-      "period_start": 1789917893,
-      "status_updated_at": 1789919536
+      "espn_league": "esp.1"
     },
     {
       "date": "2026-09-20",
