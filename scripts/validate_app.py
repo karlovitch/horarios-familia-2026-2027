@@ -262,6 +262,15 @@ if 'return f"https://www.flashscore.pt/jogo/futebol/' in sports_script:
 if '"sofascore.com/" in low' not in sports_script:
     fail("As fichas verificadas de futebol devem aceitar SofaScore")
 
+if "function currentClockLabel(){" not in index:
+    fail("Falta formatação HH:MM na linha da hora atual")
+if "line.dataset.nowTime=timeLabel;" not in index:
+    fail("A linha vermelha não recebe a hora atual")
+if 'content:attr(data-now-time)' not in index:
+    fail("Falta etiqueta visual da hora sobre a linha vermelha")
+if ".overview-week-now-line.first:after" not in index:
+    fail("A vista semanal não mostra a hora atual sem duplicação")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
