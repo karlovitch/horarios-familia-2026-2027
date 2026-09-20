@@ -1441,15 +1441,13 @@
       "channel": "Sport TV 1",
       "match_url": "https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
       "source_url": "https://www.fcporto.pt/pt/agenda",
-      "status": "live",
+      "status": "finished",
       "flashscore_mid": "EeqKlS2e",
       "espn_event_id": "401885433",
       "espn_league": "por.1",
       "home_score": 3,
       "away_score": 1,
-      "period": "2H",
-      "period_start": 1789936808,
-      "status_updated_at": 1789937802
+      "period": "2H"
     },
     {
       "date": "2026-09-23",
