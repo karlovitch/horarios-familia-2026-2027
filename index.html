@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=133">
-<link rel="icon" href="favicon-64.png?v=133" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=133" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=133" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=133">
+<link rel="manifest" href="manifest.webmanifest?v=134">
+<link rel="icon" href="favicon-64.png?v=134" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=134" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=134" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=134">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -492,7 +492,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=133"></script>
+<script src="sports-info.js?v=134"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -662,7 +662,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=133;
+const APP_BUILD=134;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -1250,12 +1250,13 @@ function renderWeatherStrip(payload,iso){
  const current=Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—";
  const max=day&&Number.isFinite(Number(day.max))?Math.round(day.max)+"°":"—";
  const min=day&&Number.isFinite(Number(day.min))?Math.round(day.min)+"°":"—";
- const windText=Number.isFinite(wind)?"F"+bf.force+" ("+bf.label+") · "+Math.round(wind)+" km/h":"—";
+ const windText=Number.isFinite(wind)?bf.label+" · "+Math.round(wind)+" km/h":"—";
  const label=esc((loc&&loc.label)||"Localização atual");
  const sourceMethod=loc&&loc.method?esc(loc.method):"";
  const approx=loc&&loc.approximate?' <small class="weather-approx">(aprox. · '+sourceMethod+')</small>':(sourceMethod?' <small class="weather-approx">('+sourceMethod+')</small>':"");
+ const currentHtml=isToday?'<span class="weather-item"><b>Atual</b> '+current+'</span>':"";
  const html='<span class="weather-item weather-sky">'+sky.icon+' <b>'+esc(sky.label)+'</b></span>'
-  +'<span class="weather-item"><b>Atual</b> '+current+'</span>'
+  +currentHtml
   +'<span class="weather-item"><b>Máx.</b> '+max+'</span>'
   +'<span class="weather-item"><b>Mín.</b> '+min+'</span>'
   +'<span class="weather-item weather-wind"><b>Vento</b> '+esc(windText)+'</span>'
