@@ -169,7 +169,7 @@ required_index_tokens = {
     "snapshot JS da agenda": 'sports-info.js?v=',
     "merge resiliente de agenda": "function mergeSportsInfo(...sources)",
     "ambiente adaptativo universal": "function applyAdaptiveEnvironment()",
-    "primeira seleção de data no Hoje": "top-date-controls",
+    "primeira seleção de data no estilo v114": "today-page-nav top-date-nav",
     "cabeçalho Hoje após primeira seleção": 'class="screen-head today-screen-head"',
     "título Hoje dinâmico": 'id="todayHeading"',
     "dia da semana quando não é hoje": 'isToday?"Hoje":weekday.charAt(0).toUpperCase()+weekday.slice(1)',
@@ -308,10 +308,10 @@ if 'Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActive
 if 'if(!SPORTS_CACHE_HYDRATED)' not in index:
     fail("A cache local desportiva deve ser hidratada apenas uma vez por página")
 
-if ".main-tabs{grid-template-columns:repeat(6,minmax(0,1fr))!important" not in index:
-    fail("Os seis separadores principais devem permanecer numa única linha")
-if index.count("top-date-controls") < 4 or index.count("bottom-date-controls") < 4:
-    fail("Cada separador principal deve ter seleção de data antes e depois do horário")
+if "grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr) minmax(0,.90fr) minmax(0,1.20fr) minmax(0,1.20fr) minmax(0,.90fr)!important" not in index:
+    fail("Os seis separadores principais devem permanecer numa única linha com larguras adaptadas")
+if index.count("top-date-nav") < 4 or index.count("bottom-date-controls") < 4:
+    fail("Cada separador principal deve ter navegação superior e seleção inferior de data")
 if "function pastShadeTimelineHtml(){" not in index or "function pastShadeOverviewHtml(){" not in index:
     fail("Falta indicação visual do período do dia já passado")
 if 'data-past-shade="timeline"' not in index or 'data-past-shade="overview"' not in index:
@@ -333,12 +333,27 @@ for pos, (section_id, schedule_token) in enumerate(main_sections):
     else:
         end = index.find("</main>", start)
     chunk = index[start:end if end >= 0 else len(index)]
-    top = chunk.find("top-date-controls")
+    top = chunk.find("top-date-nav")
     schedule = chunk.find(schedule_token)
     bottom = chunk.find("bottom-date-controls")
     weather = chunk.find("data-weather-strip")
     if min(top, schedule, bottom, weather) < 0 or not (top < schedule < bottom < weather):
         fail(f"Ordem de layout inválida no separador {section_id}: data → horário → data → meteorologia")
+
+if index.count('data-top-date') < 4 or index.count('data-top-shift="-1"') < 4 or index.count('data-top-shift="1"') < 4:
+    fail("A navegação superior ao estilo v114 deve existir nos quatro separadores")
+if 'function topDateLabel(iso){' not in index or 'qsa("[data-top-date]")' not in index:
+    fail("As datas superiores devem ser sincronizadas entre separadores")
+for token in [
+    '.main-tab[data-view="today"]{font-size:.96rem!important}',
+    '.main-tab[data-view="overview"]{font-size:.88rem!important}',
+    '.main-tab[data-view="Carlos"]{font-size:.93rem!important}',
+    '.main-tab[data-view="Sandra"]{font-size:.86rem!important}',
+    '.main-tab[data-view="Margarida"]{font-size:.84rem!important}',
+    '.main-tab[data-view="Leonor"]{font-size:.92rem!important}',
+]:
+    if token not in index:
+        fail("Falta dimensionamento individual dos separadores")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
