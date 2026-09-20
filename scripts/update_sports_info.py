@@ -301,7 +301,9 @@ def sofascore_football_live_info(event):
         try:out["away_score"]=int(ascore)
         except Exception:pass
 
-    if stype in {"notstarted","scheduled"}:
+    if stype in {"halftime","paused","break"} or desc in {"ht","halftime","half time"} or ("half" in desc and ("time" in desc or "break" in desc)):
+        out["status"]="halftime";out["period"]="HT"
+    elif stype in {"notstarted","scheduled"}:
         out["status"]="scheduled"
     elif stype in {"finished","ended"}:
         out["status"]="finished"
@@ -805,6 +807,46 @@ def merge_hockey_seed(existing_event,seed_event):
         merged["status"]="awaiting_final"
     return merged
 
+def football_phase_rank(info):
+    if not info:return -1
+    status=str(info.get("status") or "").lower()
+    period=str(info.get("period") or "").upper()
+    if status=="finished":return 100
+    if status=="halftime" or period=="HT":return 50
+    if status=="scheduled":return 0
+    if status=="live":
+        if period=="1H":return 20
+        if period=="2H":return 70
+        if period=="ET1":return 80
+        if period=="ET2":return 90
+        if period in {"PEN","PENS","PENALTIES"}:return 95
+        return 30
+    return 1
+
+def merge_football_live_sources(*sources):
+    """Escolhe a fase mais avançada; fontes atrasadas não fazem o jogo recuar."""
+    valid=[src for src in sources if src]
+    if not valid:return {}
+    selected=max(valid,key=football_phase_rank)
+    out=dict(selected)
+    # Preserva IDs de diagnóstico/ligação encontrados noutras fontes.
+    for src in valid:
+        for key in ("sofascore_event_id","espn_event_id","espn_league"):
+            if out.get(key) is None and src.get(key) is not None:
+                out[key]=src[key]
+    # Se a fonte de fase mais avançada não trouxe marcador, completa-o
+    # a partir da melhor fonte que o tenha, sem inventar valores.
+    if out.get("home_score") is None or out.get("away_score") is None:
+        scored=[src for src in valid if src.get("home_score") is not None and src.get("away_score") is not None]
+        if scored:
+            score_src=max(scored,key=football_phase_rank)
+            out["home_score"]=score_src.get("home_score")
+            out["away_score"]=score_src.get("away_score")
+    if out.get("status") in {"halftime","finished"}:
+        out.pop("period_start",None)
+        out.pop("live_minute",None)
+    return out
+
 def enforce_direct_match_urls(events):
     resolved=0
     today=datetime.now(timezone.utc).date()
@@ -827,22 +869,17 @@ def enforce_direct_match_urls(events):
             try:
                 event_day=datetime.fromisoformat(event.get("date")).date()
                 if abs((event_day-today).days)<=1:
-                    mid=event.get("flashscore_mid") or flashscore_match_id(event)
+                    dynamic_mid=flashscore_match_id(event)
+                    mid=dynamic_mid or event.get("flashscore_mid")
+                    if dynamic_mid:event["flashscore_mid"]=dynamic_mid
                     primary=flashscore_live_info(mid) if mid else {}
                     sofa=sofascore_football_live_info(event)
                     espn_generic=espn_scoreboard_live_info(event)
                     espn=espn_football_live_info(event)
-                    info=dict(primary or {})
 
-                    # Qualquer fonte alternativa que confirme live/final pode corrigir
-                    # uma fonte principal vazia ou presa em "scheduled".
-                    for fallback in (sofa,espn_generic,espn):
-                        if fallback and (
-                            not info or
-                            info.get("status")=="scheduled" or
-                            fallback.get("status") in {"live","halftime","finished"}
-                        ):
-                            info.update({k:v for k,v in fallback.items() if v is not None})
+                    # Seleciona a fase mais avançada entre fontes independentes.
+                    # Ex.: HT vence 1H; 2H vence HT; final vence tudo.
+                    info=merge_football_live_sources(primary,sofa,espn_generic,espn)
 
                     # Se ainda não houver estado live, usa apenas a hora de início
                     # para mostrar "em jogo"; nunca inventa marcador.
