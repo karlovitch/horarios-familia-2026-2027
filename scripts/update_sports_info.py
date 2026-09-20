@@ -56,6 +56,7 @@ def get(url):
 
 FLASHSCORE_DAILY_CACHE={}
 SOFASCORE_DAILY_CACHE={}
+ESPN_DAILY_CACHE={}
 ZEROZERO_PAGE_CACHE={}
 
 # Fichas que foram confirmadas no próprio Flashscore.pt. Para FC Porto e
@@ -328,6 +329,93 @@ def sofascore_football_live_info(event):
                         minute=int(minute)
                         if 0<=minute<=150:out["live_minute"]=minute
                     except Exception:pass
+            out["status_updated_at"]=int(datetime.now(timezone.utc).timestamp())
+    return out
+
+def _espn_candidate_leagues(event):
+    entity=(event.get("entity") or "").lower()
+    comp=(event.get("competition") or "").lower()
+    leagues=[]
+    if "real madrid" in entity or "la liga" in comp:leagues.extend(["esp.1","uefa.champions"])
+    if "fc porto" in entity or "gil vicente" in entity or "liga portugal" in comp:leagues.extend(["por.1","uefa.champions"])
+    if "sub-21" in entity or "u21" in entity:leagues.extend(["uefa.euro_u21_qual","uefa.euro_u21"])
+    elif "seleção nacional" in entity or "selecao nacional" in entity:leagues.extend(["uefa.nations","fifa.worldq.uefa","uefa.euro"])
+    leagues.extend(["club.friendly","friendly"])
+    return list(dict.fromkeys(leagues))
+
+def espn_scoreboard_live_info(event):
+    """Fallback genérico ESPN: descobre o ID do jogo por data + equipas."""
+    date_iso=event.get("date")
+    if not date_iso:return {}
+    date_token=date_iso.replace("-","")
+    best=None;best_score=0.0
+    for league in _espn_candidate_leagues(event):
+        key=(league,date_token)
+        if key not in ESPN_DAILY_CACHE:
+            try:
+                url=f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard?dates={date_token}&limit=100"
+                r=HTTP.get(url,headers={**HEADERS,"Accept":"application/json","Accept-Language":"en-US,en;q=0.8"},timeout=20)
+                r.raise_for_status()
+                ESPN_DAILY_CACHE[key]=r.json().get("events") or []
+            except Exception:
+                ESPN_DAILY_CACHE[key]=[]
+        for item in ESPN_DAILY_CACHE[key]:
+            comp=((item.get("competitions") or [None])[0] or {})
+            competitors=comp.get("competitors") or []
+            home=next((x for x in competitors if x.get("homeAway")=="home"),None) or {}
+            away=next((x for x in competitors if x.get("homeAway")=="away"),None) or {}
+            hn=((home.get("team") or {}).get("displayName") or (home.get("team") or {}).get("name") or "")
+            an=((away.get("team") or {}).get("displayName") or (away.get("team") or {}).get("name") or "")
+            direct=_team_similarity(event.get("home",""),hn)+_team_similarity(event.get("away",""),an)
+            reverse=_team_similarity(event.get("home",""),an)+_team_similarity(event.get("away",""),hn)
+            score=max(direct,reverse)
+            if score>best_score:
+                best,best_score=(item,league),score
+
+    if not best or best_score<1.35:return {}
+    item,league=best
+    comp=((item.get("competitions") or [None])[0] or {})
+    competitors=comp.get("competitors") or []
+    home=next((x for x in competitors if x.get("homeAway")=="home"),None) or {}
+    away=next((x for x in competitors if x.get("homeAway")=="away"),None) or {}
+    hn=((home.get("team") or {}).get("displayName") or (home.get("team") or {}).get("name") or "")
+    an=((away.get("team") or {}).get("displayName") or (away.get("team") or {}).get("name") or "")
+    pair=(_team_similarity(event.get("home",""),hn),_team_similarity(event.get("away",""),an))
+    reverse_pair=(_team_similarity(event.get("home",""),an),_team_similarity(event.get("away",""),hn))
+    if min(pair if sum(pair)>=sum(reverse_pair) else reverse_pair)<.65:return {}
+
+    status=comp.get("status") or item.get("status") or {}
+    status_type=status.get("type") or {}
+    state=str(status_type.get("state") or "").lower()
+    period=status.get("period")
+    display=str(status.get("displayClock") or status_type.get("shortDetail") or status_type.get("detail") or "")
+    out={"espn_event_id":item.get("id"),"espn_league":league}
+    for side,node in (("home",home),("away",away)):
+        score=node.get("score")
+        if score is None:continue
+        try:score=int(float(str(score)))
+        except Exception:continue
+        out[side+"_score"]=score
+
+    if state=="pre":
+        out["status"]="scheduled"
+    elif state=="post":
+        out["status"]="finished"
+    elif state=="in":
+        detail=display.lower()
+        if "half" in detail or detail in {"ht","halftime"}:
+            out["status"]="halftime";out["period"]="HT"
+        else:
+            out["status"]="live"
+            try:
+                p=int(period)
+                out["period"]="1H" if p==1 else ("2H" if p==2 else "LIVE")
+            except Exception:
+                out["period"]="LIVE"
+            m=re.search(r"(\d{1,3})(?::\d{2})?\s*['’]?",display)
+            if m:
+                minute=int(m.group(1))
+                if 0<=minute<=150:out["live_minute"]=minute
             out["status_updated_at"]=int(datetime.now(timezone.utc).timestamp())
     return out
 
@@ -742,12 +830,13 @@ def enforce_direct_match_urls(events):
                     mid=event.get("flashscore_mid") or flashscore_match_id(event)
                     primary=flashscore_live_info(mid) if mid else {}
                     sofa=sofascore_football_live_info(event)
+                    espn_generic=espn_scoreboard_live_info(event)
                     espn=espn_football_live_info(event)
                     info=dict(primary or {})
 
                     # Qualquer fonte alternativa que confirme live/final pode corrigir
                     # uma fonte principal vazia ou presa em "scheduled".
-                    for fallback in (sofa,espn):
+                    for fallback in (sofa,espn_generic,espn):
                         if fallback and (
                             not info or
                             info.get("status")=="scheduled" or
