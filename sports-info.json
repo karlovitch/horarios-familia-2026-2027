@@ -1405,7 +1405,9 @@
       "home_score": 1,
       "away_score": 1,
       "period": "2H",
-      "flashscore_mid": "AaftdAAL"
+      "flashscore_mid": "AaftdAAL",
+      "espn_event_id": "401885435",
+      "espn_league": "por.1"
     },
     {
       "date": "2026-09-20",
@@ -1425,7 +1427,9 @@
       "away_score": 0,
       "period": "1H",
       "period_start": 1789913791,
-      "status_updated_at": 1789914818
+      "status_updated_at": 1789914984,
+      "espn_event_id": "401882865",
+      "espn_league": "esp.1"
     },
     {
       "date": "2026-09-20",
@@ -1440,7 +1444,11 @@
       "match_url": "https://www.sofascore.com/pt-pt/football/match/benfica-fc-porto/ckbsgkb",
       "source_url": "https://www.fcporto.pt/pt/agenda",
       "status": "scheduled",
-      "flashscore_mid": "EeqKlS2e"
+      "flashscore_mid": "EeqKlS2e",
+      "espn_event_id": "401885433",
+      "espn_league": "por.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-09-23",
