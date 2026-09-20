@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=112">
-<link rel="icon" href="favicon-64.png?v=112" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=112" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=112" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=112">
+<link rel="manifest" href="manifest.webmanifest?v=113">
+<link rel="icon" href="favicon-64.png?v=113" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=113" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=113" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=113">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -192,6 +192,73 @@ html[data-ui-input="remote"] :is(button,a,[tabindex]):focus-visible{outline:5px 
  :root{font-size:18px}
 }
 
+/* v113 · modo paisagem para telemóveis/tablets: mais largura útil e menos chrome vertical */
+@media (orientation:landscape) and (max-height:900px){
+ html:not(.tv-mode) .top{position:relative;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;gap:6px}
+ html:not(.tv-mode) .top h1{font-size:1.12rem;line-height:1.08}
+ html:not(.tv-mode) .top p{margin-top:1px;font-size:.72rem;line-height:1.1}
+ html:not(.tv-mode) main{max-width:none;width:100%;padding:6px max(10px,env(safe-area-inset-right)) 22px max(10px,env(safe-area-inset-left))}
+ html:not(.tv-mode) .main-tabs{grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;padding-bottom:6px}
+ html:not(.tv-mode) .main-tab{padding:7px 4px;font-size:clamp(.64rem,1.25vw,.82rem)}
+ html:not(.tv-mode) .day-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;padding-bottom:6px}
+ html:not(.tv-mode) .day-tab{width:100%;min-width:0;padding:7px 5px;text-align:center;font-size:.74rem}
+ html:not(.tv-mode) .stats-controls{grid-template-columns:auto 50px minmax(118px,150px) 50px auto;width:max-content;max-width:100%;gap:5px;margin-bottom:5px;padding:5px 8px}
+ html:not(.tv-mode) .stats-controls strong{grid-column:auto;width:auto;margin:0 3px 0 0;font-size:.72rem;white-space:nowrap}
+ html:not(.tv-mode) .stats-date-input{max-width:150px;padding:6px 7px}
+ html:not(.tv-mode) .screen-head{margin:2px 0 5px;align-items:center}
+ html:not(.tv-mode) .screen-head h2{font-size:1.06rem}
+ html:not(.tv-mode) .screen-head p{font-size:.74rem}
+ html:not(.tv-mode) .today-page-nav{grid-template-columns:64px minmax(0,1fr) 64px;min-height:50px;gap:7px;margin-bottom:6px}
+ html:not(.tv-mode) .today-page-arrow{width:64px;height:50px;border-radius:14px;font-size:2.15rem}
+ html:not(.tv-mode) .today-page-date{font-size:.8rem}
+ html:not(.tv-mode) .weather-strip{margin-bottom:6px;padding:6px 9px;font-size:.7rem;gap:2px 8px}
+ html:not(.tv-mode) .countdown-panel{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin-bottom:6px}
+ html:not(.tv-mode) .countdown-line{padding:6px 8px;font-size:.72rem}
+ html:not(.tv-mode) .person-mode-tabs{margin-bottom:5px}
+ html:not(.tv-mode) .person-mode-btn{padding:6px 10px}
+ html:not(.tv-mode) .today-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ html:not(.tv-mode) .cards.weekly{grid-template-columns:repeat(2,minmax(0,1fr))}
+ html:not(.tv-mode) .sports-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ html:not(.tv-mode) .daily-info-head{padding:7px 10px}
+ html:not(.tv-mode) .daily-info-body{padding:6px 9px}
+ html:not(.tv-mode) .daily-row{grid-template-columns:108px 1fr;gap:7px;padding:4px 0}
+ html:not(.tv-mode) .daily-label,html:not(.tv-mode) .daily-value{font-size:.74rem}
+ html:not(.tv-mode) .active-summary{margin-bottom:5px;padding:6px 9px}
+ html:not(.tv-mode) .timeline-scroll{padding-bottom:4px}
+ html:not(.tv-mode) .timeline:not(.compact-overview){grid-template-columns:58px repeat(4,minmax(0,1fr));border-radius:11px}
+ html:not(.tv-mode) .person-timeline.week-view:not(.compact-overview){grid-template-columns:58px repeat(5,minmax(0,1fr))}
+ html:not(.tv-mode) .time-label{left:3px;font-size:.82rem}
+ html:not(.tv-mode) .now-line{left:58px}
+ html:not(.tv-mode) .now-axis-clock{font-size:.64rem}
+ html:not(.tv-mode) .lane-head{height:44px;padding:6px 2px;font-size:.9rem}
+ html:not(.tv-mode) .block{font-size:.76rem;line-height:1.01;padding:3px}
+ html:not(.tv-mode) .block strong{font-size:.79rem}
+ html:not(.tv-mode) .block em{font-size:.72rem}
+ html:not(.tv-mode) .block.medium-block{font-size:.70rem}
+ html:not(.tv-mode) .block.medium-block strong{font-size:.72rem}
+ html:not(.tv-mode) .block.short-block{font-size:.64rem}
+ html:not(.tv-mode) .block.short-block strong{font-size:.66rem}
+ html:not(.tv-mode) .overview-week-grid{grid-template-columns:78px repeat(4,minmax(0,1fr));gap:4px}
+ html:not(.tv-mode) .overview-week-person{font-size:.8rem}
+ html:not(.tv-mode) .overview-week-day{font-size:.78rem}
+ html:not(.tv-mode) .overview-week-event{font-size:.67rem}
+ html:not(.tv-mode) .overview-week-event b{font-size:.7rem}
+ html:not(.tv-mode) .sports-panel{padding:8px;margin-bottom:8px}
+ html:not(.tv-mode) .sports-game{padding:7px 9px}
+ html:not(.tv-mode) .rest-banner,html:not(.tv-mode) .family-banner,html:not(.tv-mode) .astronomy-banner,html:not(.tv-mode) .history-feature{margin-bottom:7px;padding:7px 10px}
+}
+@media (orientation:landscape) and (max-height:520px){
+ html:not(.tv-mode) .top p{display:none}
+ html:not(.tv-mode) .install{padding:6px 9px;font-size:.72rem}
+ html:not(.tv-mode) .main-tabs{gap:4px;padding-bottom:4px}
+ html:not(.tv-mode) .main-tab{padding:5px 3px;min-height:44px}
+ html:not(.tv-mode) .day-tab{min-height:44px;padding:5px 4px}
+ html:not(.tv-mode) .stats-step,html:not(.tv-mode) .stats-today{min-height:44px}
+ html:not(.tv-mode) .today-page-nav{min-height:46px}
+ html:not(.tv-mode) .today-page-arrow{height:46px}
+ html:not(.tv-mode) .weather-strip{margin-bottom:4px}
+}
+
 /* v98 · Hoje: seletor antes da data; meteorologia responsiva sem scroll horizontal */
 .today-stats-controls{margin-bottom:8px}
 .today-screen-head{margin-top:0;margin-bottom:8px}
@@ -240,7 +307,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v112</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v113</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -276,7 +343,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=112"></script>
+<script src="sports-info.js?v=113"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -446,7 +513,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=480,END=1200;
 const MS_DAY=86400000;
-const APP_BUILD=112;
+const APP_BUILD=113;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -564,6 +631,7 @@ function adaptiveWidthClass(w){
  return "ultrawide";
 }
 function adaptiveHeightClass(h){return h<650?"short":(h>1000?"tall":"normal")}
+function adaptiveOrientationClass(w,h){return w>=h?"landscape":"portrait"}
 function adaptiveInputClass(){
  if(TV_MODE)return "remote";
  if(UI_MEDIA.coarse.matches)return "touch";
@@ -582,6 +650,7 @@ function applyAdaptiveEnvironment(){
  const root=document.documentElement,w=window.innerWidth||document.documentElement.clientWidth||1024,h=window.innerHeight||document.documentElement.clientHeight||768;
  root.dataset.uiWidth=adaptiveWidthClass(w);
  root.dataset.uiHeight=adaptiveHeightClass(h);
+ root.dataset.uiOrientation=adaptiveOrientationClass(w,h);
  root.dataset.uiInput=adaptiveInputClass();
  root.style.setProperty("--adaptive-schedule-h",adaptiveScheduleHeight()+"px");
 }
@@ -2644,12 +2713,12 @@ setTimeout(maybeCelebrateFamilyEvents,450);
 
 /* Só é necessário recalcular a geometria quando muda o breakpoint que altera
    a altura/cabeçalho da grelha; redimensionamentos dentro do mesmo modo ficam ao CSS. */
-let adaptiveResizeTimer=0,lastAdaptiveHeight=adaptiveScheduleHeight(),lastAdaptiveWidth=adaptiveWidthClass(window.innerWidth||1024);
+let adaptiveResizeTimer=0,lastAdaptiveHeight=adaptiveScheduleHeight(),lastAdaptiveWidth=adaptiveWidthClass(window.innerWidth||1024),lastAdaptiveOrientation=adaptiveOrientationClass(window.innerWidth||1024,window.innerHeight||768);
 function handleAdaptiveViewportChange(){
  applyAdaptiveEnvironment();
- const nextH=adaptiveScheduleHeight(),nextW=adaptiveWidthClass(window.innerWidth||1024);
- const geometryChanged=Math.abs(nextH-lastAdaptiveHeight)>=16||nextW!==lastAdaptiveWidth;
- lastAdaptiveHeight=nextH;lastAdaptiveWidth=nextW;
+ const nextH=adaptiveScheduleHeight(),nextW=adaptiveWidthClass(window.innerWidth||1024),nextOrientation=adaptiveOrientationClass(window.innerWidth||1024,window.innerHeight||768);
+ const geometryChanged=Math.abs(nextH-lastAdaptiveHeight)>=16||nextW!==lastAdaptiveWidth||nextOrientation!==lastAdaptiveOrientation;
+ lastAdaptiveHeight=nextH;lastAdaptiveWidth=nextW;lastAdaptiveOrientation=nextOrientation;
  if(geometryChanged)handleTimelineBreakpointChange();
 }
 window.addEventListener("resize",()=>{
@@ -2659,6 +2728,10 @@ window.addEventListener("resize",()=>{
 if(window.visualViewport)window.visualViewport.addEventListener("resize",()=>{
  clearTimeout(adaptiveResizeTimer);
  adaptiveResizeTimer=setTimeout(handleAdaptiveViewportChange,180);
+},{passive:true});
+window.addEventListener("orientationchange",()=>{
+ clearTimeout(adaptiveResizeTimer);
+ adaptiveResizeTimer=setTimeout(handleAdaptiveViewportChange,120);
 },{passive:true});
 for(const mq of Object.values(UI_MEDIA)){
  if(mq.addEventListener)mq.addEventListener("change",applyAdaptiveEnvironment);
