@@ -101,6 +101,8 @@ required_index_tokens = {
     "número visual atualizado por APP_BUILD": 'document.getElementById("appVersion").textContent="· v"+APP_BUILD;',
     "linha vermelha do momento atual": "background:#D71920",
     "linha do agora na vista semanal individual": 'class="now-line contained"',
+    "linha Desporto condicional por data": 'row.classList.toggle("hidden",!hasEvents)',
+    "linha Família condicional por data": 'if(!events.length){el.classList.add("hidden");el.innerHTML="";return}',
     "linha do agora na vista semanal de conjunto": "overview-week-now-line",
     "rótulo final das 20h30 visível": "m===END?\' end-label\'",
     "controlos de data sempre centrados": ".stats-controls{display:grid;grid-template-columns:50px minmax(118px,132px) 50px auto;align-items:center;justify-content:center",
@@ -112,10 +114,11 @@ required_index_tokens = {
     "resize apenas ao mudar de breakpoint": 'MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange)',
     "sincronização global do seletor de data": "function renderActiveView(){\n const iso=statsIso();\n syncStatsControls();",
     "faixa meteorológica disponível": 'data-weather-strip',
-    "meteorologia após segunda seleção": "bottom-date-controls",
+    "meteorologia global entre Desporto e Família": 'id="globalWeatherStrip"',
     "título Horários Família": '<h1>Horários Família</h1>',
     "meteorologia Open-Meteo": "https://api.open-meteo.com/v1/forecast",
-    "classificação visual da nebulosidade": "function weatherSky(cloud)",
+    "classificação visual dia/noite e nebulosidade": "function weatherSky(cloud,isDay=true)",
+    "estado dia/noite Open-Meteo": 'wind_speed_10m,is_day"',
     "força do vento Beaufort": "function beaufortFromKmh(kmh)",
     "cache meteorológica de 10 minutos": 'ttl:10*60*1000',
     "texto dos blocos a 1,5x no móvel": ".block{font-size:.72rem;line-height:1;padding:2px 2px}",
@@ -209,8 +212,8 @@ required_index_tokens = {
     "cache desportiva hidratada uma vez": "let SPORTS_CACHE_HYDRATED=false;",
     "polling desportivo apenas na vista": 'if(view!=="sports")return;',
 }
-if index.count('data-weather-strip') < 4:
-    fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
+if index.count('data-weather-strip aria-live="polite"') != 1:
+    fail("Deve existir uma única faixa meteorológica global, comum a todos os separadores")
 
 for label, token in required_index_tokens.items():
     if token not in index:
@@ -342,9 +345,8 @@ for pos, (section_id, schedule_token) in enumerate(main_sections):
     top = chunk.find("top-date-nav")
     schedule = chunk.find(schedule_token)
     bottom = chunk.find("bottom-date-controls")
-    weather = chunk.find("data-weather-strip")
-    if min(top, schedule, bottom, weather) < 0 or not (top < schedule < bottom < weather):
-        fail(f"Ordem de layout inválida no separador {section_id}: data → horário → data → meteorologia")
+    if min(top, schedule, bottom) < 0 or not (top < schedule < bottom):
+        fail(f"Ordem de layout inválida no separador {section_id}: data → horário → data")
 
 if index.count('data-top-date') < 4 or index.count('data-top-shift="-1"') < 4 or index.count('data-top-shift="1"') < 4:
     fail("A navegação superior ao estilo v114 deve existir nos quatro separadores")
@@ -421,9 +423,10 @@ if 'return "Intervalo";' not in index:
 if index.count('id="globalFamilyBanner"') != 1:
     fail("Deve existir uma única linha global Família")
 sports_pos = index.find('id="sportsTabRow"')
+weather_pos = index.find('id="globalWeatherStrip"')
 family_pos = index.find('id="globalFamilyBanner"')
-if sports_pos < 0 or family_pos < 0 or family_pos <= sports_pos:
-    fail("A linha Família deve ficar imediatamente abaixo da linha Desporto")
+if min(sports_pos, weather_pos, family_pos) < 0 or not (sports_pos < weather_pos < family_pos):
+    fail("A ordem global deve ser Desporto → Meteorologia → Família")
 if 'const events=familyEventsFor(iso);' not in index or 'if(!events.length){el.classList.add("hidden");el.innerHTML="";return}' not in index:
     fail("A linha Família deve aparecer apenas nas datas com aniversário/evento familiar")
 

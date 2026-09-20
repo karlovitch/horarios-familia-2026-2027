@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=132">
-<link rel="icon" href="favicon-64.png?v=132" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=132" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=132" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=132">
+<link rel="manifest" href="manifest.webmanifest?v=133">
+<link rel="icon" href="favicon-64.png?v=133" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=133" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=133" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=133">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -402,7 +402,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 
 /* v130 · linha Família global imediatamente abaixo da Agenda Desportiva */
 .global-family-row{margin:8px 0 10px}
-.sports-tab-row.hidden + .global-family-row:not(.hidden){margin-top:0}
+.global-weather-row{margin-top:0}.global-family-row:not(.hidden){margin-top:0}
 
 </style>
 </head>
@@ -415,6 +415,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <button class="main-tab" data-view="Margarida" type="button">Margarida</button><button class="main-tab" data-view="Leonor" type="button">Leonor</button>
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
+<div id="globalWeatherStrip" class="weather-strip global-weather-row" data-weather-strip aria-live="polite">🌡️ A obter previsão…</div>
 <div id="globalFamilyBanner" class="family-banner global-family-row hidden" data-global-family-banner></div>
 <section id="overview" class="screen">
 <div class="today-page-nav top-date-nav" aria-label="Navegação diária">
@@ -427,7 +428,6 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <div id="overviewDays" class="day-tabs"></div>
 <div class="timeline-scroll"><div id="timeline" class="timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
-<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
 
 <div id="overviewCountdowns" class="countdown-panel"></div>
 </section>
@@ -440,7 +440,6 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <div class="screen-head today-screen-head"><div><h2 id="todayHeading">Hoje</h2><p id="todayDay"></p></div></div>
 <div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
-<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
 
 <div id="todayRestBanner" class="rest-banner hidden"></div>
 <section id="globalQuote" class="daily-quote global-quote" aria-live="polite"><div id="globalQuoteText" class="daily-quote-text"></div><div id="globalQuoteAuthor" class="daily-quote-author"></div></section>
@@ -459,7 +458,6 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <div class="screen-head"><div><h2>Agenda desportiva</h2><p id="sportsDayLabel">Jogos e sessões acompanhados</p></div></div>
 <section id="sportsPanel" class="sports-panel"></section>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
-<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
 
 </section>
 <section id="person" class="screen hidden">
@@ -473,7 +471,6 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 <div id="personDays" class="day-tabs"></div>
 <div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
-<div class="weather-strip" data-weather-strip aria-live="polite">🌤️ A obter previsão…</div>
 
 <div id="personCountdowns" class="countdown-panel"></div>
 </section>
@@ -495,7 +492,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=132"></script>
+<script src="sports-info.js?v=133"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -665,7 +662,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=132;
+const APP_BUILD=133;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -1066,12 +1063,12 @@ function syncStatsControls(){
  syncTvDateButtons();
 }
 
-function weatherSky(cloud){
- const c=Number(cloud);
- if(!Number.isFinite(c))return {icon:"🌤️",label:"Céu variável"};
+function weatherSky(cloud,isDay=true){
+ const c=Number(cloud),daylight=isDay!==false;
+ if(!Number.isFinite(c))return daylight?{icon:"🌤️",label:"Céu variável"}:{icon:"🌙",label:"Céu variável"};
  if(c>=85)return {icon:"☁️",label:"Céu totalmente nublado"};
- if(c>=30)return {icon:"🌤️",label:"Pouco nublado"};
- return {icon:"☀️",label:"Sol"};
+ if(c>=30)return daylight?{icon:"🌤️",label:"Pouco nublado"}:{icon:"🌙☁️",label:"Pouco nublado"};
+ return daylight?{icon:"☀️",label:"Sol"}:{icon:"🌙",label:"Céu limpo"};
 }
 function beaufortFromKmh(kmh){
  const v=Math.max(0,Number(kmh)||0),limits=[1,6,12,20,29,39,50,62,75,89,103,118],labels=["calmo","aragem","brisa leve","brisa fraca","brisa moderada","brisa fresca","vento forte","vento muito forte","vento duro","temporal","temporal forte","tempestade","furacão"];
@@ -1212,7 +1209,7 @@ async function loadWeather({force=false}={}){
   const u=new URL("https://api.open-meteo.com/v1/forecast");
   u.searchParams.set("latitude",Number(loc.lat).toFixed(4));
   u.searchParams.set("longitude",Number(loc.lon).toFixed(4));
-  u.searchParams.set("current","temperature_2m,cloud_cover,wind_speed_10m");
+  u.searchParams.set("current","temperature_2m,cloud_cover,wind_speed_10m,is_day");
   u.searchParams.set("daily","temperature_2m_max,temperature_2m_min,cloud_cover_mean,wind_speed_10m_max");
   u.searchParams.set("timezone","auto");
   u.searchParams.set("past_days","7");
@@ -1244,8 +1241,10 @@ function weatherDay(data,iso){
 function renderWeatherStrip(payload,iso){
  const data=payload&&payload.forecast,loc=payload&&payload.location,day=weatherDay(data,iso),today=isoLocalDate(),cur=data&&data.current;
  const currentTemp=Number(cur&&cur.temperature_2m),isToday=iso===today;
- const cloud=Number(day&&day.cloud);
- const sky=weatherSky(Number.isFinite(cloud)?cloud:Number(cur&&cur.cloud_cover));
+ const currentCloud=Number(cur&&cur.cloud_cover),dailyCloud=Number(day&&day.cloud);
+ const currentIsDay=Number(cur&&cur.is_day);
+ const skyCloud=isToday&&Number.isFinite(currentCloud)?currentCloud:dailyCloud;
+ const sky=weatherSky(skyCloud,!isToday||!Number.isFinite(currentIsDay)||currentIsDay===1);
  const wind=Number(isToday?(cur&&cur.wind_speed_10m):(day&&day.wind));
  const bf=beaufortFromKmh(wind);
  const current=Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—";
@@ -1264,13 +1263,13 @@ function renderWeatherStrip(payload,iso){
  qsa("[data-weather-strip]").forEach(el=>{el.classList.remove("is-error");el.innerHTML=html});
 }
 async function updateWeatherStrip(iso=statsIso()){
- qsa("[data-weather-strip]").forEach(el=>{if(!WEATHER_STATE.data)el.textContent="🌤️ A obter previsão e localização…"});
+ qsa("[data-weather-strip]").forEach(el=>{if(!WEATHER_STATE.data)el.textContent="🌡️ A obter previsão e localização…"});
  try{
   const payload=await loadWeather({force:!WEATHER_STATE.location});
   if(statsIso()===iso)renderWeatherStrip(payload,iso);
  }catch(_){
   if(statsIso()!==iso)return;
-  qsa("[data-weather-strip]").forEach(el=>{el.classList.add("is-error");el.textContent="🌤️ Não foi possível obter a meteorologia/localização atual."});
+  qsa("[data-weather-strip]").forEach(el=>{el.classList.add("is-error");el.textContent="🌡️ Não foi possível obter a meteorologia/localização atual."});
  }
 }
 function renderCountdowns(){
