@@ -58,6 +58,9 @@ if m_app and m_sw and m_app.group(1) != m_sw.group(1):
 if m_app and int(version_meta.get("build", -1)) != int(m_app.group(1)):
     fail(f"version.json desencontrado: {version_meta.get('build')} / index v{m_app.group(1)}")
 
+if re.search(r'<span[^>]*style="opacity:\\.65;font-size:\\.72rem">· v\\d+</span>', index):
+    fail("O número de versão visual não pode ficar hard-coded no cabeçalho")
+
 if manifest.get("start_url") != "./":
     fail("manifest.webmanifest deve usar start_url './' sem versão fixa")
 if manifest.get("scope") != "./":
@@ -94,6 +97,8 @@ required_index_tokens = {
     "frases com normalização linguística": "function normalizeReflectionText",
     "horários das 07h30 às 20h30": "START=450,END=1230",
     "rótulos horários com minutos reais": "minToTime(m)",
+    "versão visual ligada à build real": 'id="appVersion"',
+    "número visual atualizado por APP_BUILD": 'document.getElementById("appVersion").textContent="· v"+APP_BUILD;',
     "linha vermelha do momento atual": "background:#D71920",
     "linha do agora na vista semanal individual": 'class="now-line contained"',
     "linha do agora na vista semanal de conjunto": "overview-week-now-line",
