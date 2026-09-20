@@ -412,7 +412,7 @@ if 'ev.period==="1H"&&total>=52*60' not in index:
     fail("A 1.ª parte deve passar a Intervalo se a fonte ficar presa para lá do limite de segurança")
 if 'return "Intervalo";' not in index:
     fail("Falta fallback visual de Intervalo")
-if index.count('data-global-family-banner') != 1:
+if index.count('id="globalFamilyBanner"') != 1:
     fail("Deve existir uma única linha global Família")
 sports_pos = index.find('id="sportsTabRow"')
 family_pos = index.find('id="globalFamilyBanner"')
