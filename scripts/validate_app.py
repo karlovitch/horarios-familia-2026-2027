@@ -77,7 +77,7 @@ for required_icon in ("apple-touch-icon.png", "favicon-64.png"):
 required_index_tokens = {
     "regra de visibilidade condicional da agenda desportiva": "function updateSportsTabVisibility(iso=statsIso()){",
     "relógio pelo início real da parte": "const total=base*60+elapsed",
-    "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=52*60",
+    "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=55*60",
     "estado visual do intervalo": "⏸️ INTERVALO",
     "dados de áudio direto do Passo-a-Rezar": "passo_audio_url",
     "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
@@ -192,7 +192,7 @@ required_index_tokens = {
     "refresh ao abrir Desporto": 'loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderActiveView()})',
 
 
-    "cronómetro suspenso fora do desporto": 'if(view!=="sports"||!appIsForeground())return;',
+    "cronómetro suspenso fora do desporto": 'if(view!=="sports")return;',
     "fila de foreground": "if(foregroundRefreshRunning){",
     "refresh de dados forçado ao regressar": "loadDailyInfo({force}),",
     "refresh desportivo forçado ao regressar": "loadSportsInfo({force}),",
@@ -201,7 +201,7 @@ required_index_tokens = {
     "refresh no pageshow": 'window.addEventListener("pageshow",()=>{',
     "refresh no focus": 'window.addEventListener("focus",()=>{',
     "cache desportiva hidratada uma vez": "let SPORTS_CACHE_HYDRATED=false;",
-    "polling desportivo apenas na vista": 'if(view!=="sports"||!appIsForeground())return;',
+    "polling desportivo apenas na vista": 'if(view!=="sports")return;',
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -391,8 +391,8 @@ if 'const NATIVE_SHELL_HINT=new URLSearchParams(location.search).get("shell")===
     fail("A WebView nativa deve ter foreground independente de visibilityState")
 if "foregroundRefreshPending=true;" not in index or 'queueMicrotask(()=>refreshWhenVisible("queued",true));' not in index:
     fail("Eventos de foreground ocorridos durante um refresh não podem ser perdidos")
-if "clearInterval(sportsClockTimer)" not in index or "sportsClockTimer=setInterval(()=>{" not in index:
-    fail("O relógio desportivo deve usar um intervalo persistente de 1 segundo")
+if "const sportsClockInterval=setInterval(()=>sportsClockPulse(Date.now()),250);" not in index:
+    fail("O relógio desportivo deve ter pulso persistente de alta frequência")
 if "sportsData:60000" not in index:
     fail("A agenda desportiva deve procurar snapshots novos de minuto a minuto enquanto está aberta")
 if 'window.addEventListener("appforeground",()=>{' not in index:
@@ -408,8 +408,8 @@ if 'if period=="2H":return 70' not in sports_script:
     fail("A 2.ª parte deve ter prioridade sobre uma fonte ainda em intervalo")
 if 'dynamic_mid=flashscore_match_id(event)' not in sports_script or 'mid=dynamic_mid or event.get("flashscore_mid")' not in sports_script:
     fail("O ID live Flashscore deve ser re-resolvido por data/equipas antes de usar o ID guardado")
-if 'ev.period==="1H"&&total>=52*60' not in index:
-    fail("A 1.ª parte deve passar a Intervalo se a fonte ficar presa para lá do limite de segurança")
+if 'ev.period==="1H"&&total>=55*60' not in index:
+    fail("A 1.ª parte deve impedir a exibição de minutos impossíveis quando a fonte fica presa")
 if 'return "Intervalo";' not in index:
     fail("Falta fallback visual de Intervalo")
 if index.count('id="globalFamilyBanner"') != 1:
