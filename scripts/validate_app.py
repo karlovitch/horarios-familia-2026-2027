@@ -77,7 +77,7 @@ for required_icon in ("apple-touch-icon.png", "favicon-64.png"):
 required_index_tokens = {
     "regra de visibilidade condicional da agenda desportiva": "function updateSportsTabVisibility(iso=statsIso()){",
     "relógio pelo início real da parte": "const total=base*60+elapsed",
-    "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=55*60",
+    "proteção contra 1.ª parte obsoleta": "ev.period===\"1H\"&&total>=52*60",
     "estado visual do intervalo": "⏸️ INTERVALO",
     "dados de áudio direto do Passo-a-Rezar": "passo_audio_url",
     "leitor nativo Passo-a-Rezar": '<audio class="passo-player"',
@@ -370,8 +370,8 @@ if "function isDeviceLocation(loc)" not in index:
 
 if "VERIFIED_FOOTBALL_LIVE_FEEDS" not in sports_script or "def espn_football_live_info(event):" not in sports_script:
     fail("Falta fallback live alternativo ao Flashscore")
-if 'info.get("status")=="scheduled"' not in sports_script or 'fallback.get("status") in {"live","halftime","finished"}' not in sports_script:
-    fail("O fallback live deve substituir uma fonte presa em agendado")
+if "info=merge_football_live_sources(primary,sofa,espn_generic,espn)" not in sports_script:
+    fail("As fontes live devem ser fundidas por fase de jogo")
 if "def football_start_fallback_info(event):" not in sports_script:
     fail("Falta fallback temporal para jogos que já começaram")
 if 'const updated=Number(ev.status_updated_at||0)' not in index or 'const extra=updated>0?Math.max(0,now-updated):0;' not in index:
@@ -385,10 +385,8 @@ if "ESPN_DAILY_CACHE={}" not in sports_script or "def espn_scoreboard_live_info(
     fail("Falta fallback genérico ESPN por data e equipas")
 if 'scheduled-events/{date_iso}' not in sports_script:
     fail("O fallback genérico deve resolver jogos por data")
-if "for fallback in (sofa,espn_generic,espn):" not in sports_script:
-    fail("A cadeia live deve combinar SofaScore e ESPN genéricos, mantendo ESPN específico quando disponível")
-if 'fallback.get("status") in {"live","halftime","finished"}' not in sports_script:
-    fail("Uma fonte alternativa live/final deve poder corrigir estado agendado")
+if "merge_football_live_sources(primary,sofa,espn_generic,espn)" not in sports_script:
+    fail("A cadeia live deve combinar Flashscore, SofaScore e ESPN por prioridade de fase")
 if 'const NATIVE_SHELL_HINT=new URLSearchParams(location.search).get("shell")==="1";' not in index:
     fail("A WebView nativa deve ter foreground independente de visibilityState")
 if "foregroundRefreshPending=true;" not in index or 'queueMicrotask(()=>refreshWhenVisible("queued",true));' not in index:
