@@ -379,10 +379,12 @@ if 'const updated=Number(ev.status_updated_at||0)' not in index or 'Math.min(359
 
 if "SOFASCORE_DAILY_CACHE={}" not in sports_script or "def sofascore_football_live_info(event):" not in sports_script:
     fail("Falta fallback genérico SofaScore para jogos de futebol")
+if "ESPN_DAILY_CACHE={}" not in sports_script or "def espn_scoreboard_live_info(event):" not in sports_script:
+    fail("Falta fallback genérico ESPN por data e equipas")
 if 'scheduled-events/{date_iso}' not in sports_script:
     fail("O fallback genérico deve resolver jogos por data")
-if "for fallback in (sofa,espn):" not in sports_script:
-    fail("A cadeia live deve combinar SofaScore genérico e ESPN quando disponível")
+if "for fallback in (sofa,espn_generic,espn):" not in sports_script:
+    fail("A cadeia live deve combinar SofaScore e ESPN genéricos, mantendo ESPN específico quando disponível")
 if 'fallback.get("status") in {"live","halftime","finished"}' not in sports_script:
     fail("Uma fonte alternativa live/final deve poder corrigir estado agendado")
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
