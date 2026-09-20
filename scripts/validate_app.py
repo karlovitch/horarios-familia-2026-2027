@@ -264,12 +264,12 @@ if '"sofascore.com/" in low' not in sports_script:
 
 if "function currentClockLabel(){" not in index:
     fail("Falta formatação HH:MM na linha da hora atual")
-if "line.dataset.nowTime=timeLabel;" not in index:
-    fail("A linha vermelha não recebe a hora atual")
-if 'content:attr(data-now-time)' not in index:
-    fail("Falta etiqueta visual da hora sobre a linha vermelha")
-if ".overview-week-now-line.first:after" not in index:
-    fail("A vista semanal não mostra a hora atual sem duplicação")
+if 'clock.className="now-axis-clock"' not in index:
+    fail("A hora atual deve ser criada dentro da primeira coluna horária")
+if ".now-axis-clock{" not in index:
+    fail("Falta estilo da etiqueta HH:MM na primeira coluna")
+if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index:
+    fail("A vista semanal deve deslocar a hora atual para a primeira coluna")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
