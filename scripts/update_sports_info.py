@@ -84,6 +84,11 @@ VERIFIED_FOOTBALL_FIXTURES={
     "2026-10-10|maritimo|porto":"https://www.zerozero.pt/jogo/2026-10-10-maritimo-fc-porto/12278041",
     "2026-10-10|real madrid|villarreal":"https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
 }
+VERIFIED_FOOTBALL_LIVE_FEEDS={
+    # Fontes live de fallback, independentes da ficha pública mostrada na app.
+    "2026-09-20|atletico de madrid|real madrid":{"provider":"espn","event_id":"401882865","league":"esp.1"},
+}
+
 FLASHSCORE_HEADERS={
     **HEADERS,
     "Accept":"*/*",
@@ -236,6 +241,74 @@ def flashscore_live_info(mid):
         return out
     except Exception:
         return {}
+
+def espn_football_live_info(event):
+    cfg=VERIFIED_FOOTBALL_LIVE_FEEDS.get(football_fixture_key(event))
+    if not cfg or cfg.get("provider")!="espn":return {}
+    try:
+        league=cfg.get("league") or "esp.1"
+        event_id=cfg.get("event_id")
+        if not event_id:return {}
+        url=f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/summary?event={event_id}"
+        r=HTTP.get(url,headers={**HEADERS,"Accept":"application/json","Accept-Language":"en-US,en;q=0.8"},timeout=20)
+        r.raise_for_status()
+        data=r.json()
+        comp=((data.get("header") or {}).get("competitions") or [None])[0] or {}
+        status=comp.get("status") or {}
+        status_type=status.get("type") or {}
+        state=str(status_type.get("state") or "").lower()
+        period=status.get("period")
+        display=str(status.get("displayClock") or status_type.get("shortDetail") or status_type.get("detail") or "")
+        out={}
+        for team in comp.get("competitors") or []:
+            side=team.get("homeAway")
+            score=team.get("score")
+            if score is None:continue
+            try:score=int(float(str(score)))
+            except Exception:continue
+            if side=="home":out["home_score"]=score
+            elif side=="away":out["away_score"]=score
+
+        if state=="pre":
+            out["status"]="scheduled"
+        elif state=="post":
+            out["status"]="finished"
+        elif state=="in":
+            detail=display.lower()
+            if "half" in detail or detail in {"ht","halftime"}:
+                out["status"]="halftime";out["period"]="HT"
+            else:
+                out["status"]="live"
+                try:
+                    p=int(period)
+                    out["period"]="1H" if p==1 else ("2H" if p==2 else "LIVE")
+                except Exception:
+                    out["period"]="LIVE"
+                m=re.search(r"(\d{1,3})\s*['’]",display)
+                if m:
+                    minute=int(m.group(1))
+                    if 0<=minute<=150:out["live_minute"]=minute
+                out["status_updated_at"]=int(datetime.now(timezone.utc).timestamp())
+        return out
+    except Exception:
+        return {}
+
+def _football_event_start(event):
+    try:return datetime.fromisoformat((event.get("start") or "").replace("Z","+00:00"))
+    except Exception:return None
+
+def football_start_fallback_info(event):
+    """Evita 'agendado' depois do pontapé de saída quando as fontes live atrasam."""
+    start=_football_event_start(event)
+    if not start:return {}
+    now=datetime.now(timezone.utc)
+    elapsed=(now-start).total_seconds()
+    if elapsed<0:return {"status":"scheduled"}
+    if elapsed>3*3600:return {}
+    # Sem marcador confirmado não inventa resultado; apenas indica que o jogo está em curso.
+    minute=max(0,min(150,int(elapsed//60)))
+    return {"status":"live","period":"1H" if minute<60 else "LIVE","live_minute":minute,
+            "status_updated_at":int(now.timestamp())}
 
 def _zerozero_links(page_url):
     if not page_url:return []
@@ -578,10 +651,20 @@ def enforce_direct_match_urls(events):
                 event_day=datetime.fromisoformat(event.get("date")).date()
                 if abs((event_day-today).days)<=1:
                     mid=event.get("flashscore_mid") or flashscore_match_id(event)
-                    if mid:
-                        info=flashscore_live_info(mid)
-                        for k,v in info.items():
-                            if v is not None:event[k]=v
+                    primary=flashscore_live_info(mid) if mid else {}
+                    fallback=espn_football_live_info(event)
+                    info=dict(primary or {})
+                    # Se a fonte principal ficou presa em "scheduled", uma fonte live
+                    # confirmada tem prioridade para estado, marcador e minuto.
+                    if fallback and (not info or info.get("status")=="scheduled" or fallback.get("status") in {"live","halftime","finished"}):
+                        info.update({k:v for k,v in fallback.items() if v is not None})
+                    if not info or info.get("status")=="scheduled":
+                        start_fallback=football_start_fallback_info(event)
+                        if start_fallback.get("status")=="live":
+                            for k,v in start_fallback.items():
+                                if k not in info or info.get(k) in (None,"scheduled"):info[k]=v
+                    for k,v in info.items():
+                        if v is not None:event[k]=v
             except Exception:
                 pass
         elif "hoquei" in sport or "hóquei" in sport:
