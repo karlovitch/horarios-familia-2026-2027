@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T01:32:15.256106+00:00",
+  "generated_at": "2026-09-20T14:29:01.591303+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -43,7 +43,7 @@
     {
       "url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "ok": true,
-      "events_found": 39
+      "events_found": 38
     },
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
@@ -1419,8 +1419,13 @@
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/pt-pt/football/match/atletico-madrid-real-madrid/EgbsLgb",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "status": "scheduled",
-      "flashscore_mid": "hGycdKve"
+      "status": "live",
+      "flashscore_mid": "hGycdKve",
+      "home_score": 0,
+      "away_score": 0,
+      "period": "1H",
+      "period_start": 1789913791,
+      "status_updated_at": 1789914520
     },
     {
       "date": "2026-09-20",
