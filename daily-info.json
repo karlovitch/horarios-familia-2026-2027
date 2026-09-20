@@ -1,25 +1,17 @@
 {
-  "date": "2026-09-19",
+  "date": "2026-09-20",
   "un_days": [],
   "european_days": [],
   "portugal_days": [],
   "local_days": [],
-  "saint_hagiographies": [
-    {
-      "name": "s januario bispo de benevento e martir .html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/19/s--januario--bispo-de-benevento-e-martir-.html"
-    }
-  ],
-  "liturgical_day": "Sábado da semana XXIV",
-  "saints": [
-    "Santa Maria no Sábado – MF",
-    "S. Januário, bispo e mártir – MF"
-  ],
-  "gospel": "Lc 8, 4-15",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-19",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-19",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2220/o.mp3",
-  "updated_at": "2026-09-19T20:24:30+01:00",
+  "saint_hagiographies": [],
+  "liturgical_day": "DOMINGO XXV DO TEMPO COMUM",
+  "saints": [],
+  "gospel": "Mt 20, 1-16a",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-20",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-20",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2221/o.mp3",
+  "updated_at": "2026-09-20T10:16:44+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
