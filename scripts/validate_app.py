@@ -192,16 +192,16 @@ required_index_tokens = {
     "refresh ao abrir Desporto": 'loadSportsInfo({force:true}).then(()=>{if(view==="sports")renderActiveView()})',
 
 
-    "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
-    "deduplicação de foreground": "if(foregroundRefreshRunning)return;",
+    "cronómetro suspenso fora do desporto": 'if(view!=="sports"||!appIsForeground())return;',
+    "fila de foreground": "if(foregroundRefreshRunning){",
     "refresh de dados forçado ao regressar": "loadDailyInfo({force}),",
     "refresh desportivo forçado ao regressar": "loadSportsInfo({force}),",
     "histórico apenas quando necessário": 'const historyTask=(view==="today"&&dateNeedsRemoteHistory(statsIso()))?loadHistoryInfo({force}):Promise.resolve(HISTORY_INFO);',
     "refresh no arranque consolidado": 'window.addEventListener("load",initializeApp,{once:true});',
-    "refresh no pageshow": 'window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow",true));',
-    "refresh no focus": 'window.addEventListener("focus",()=>refreshWhenVisible("focus",true));',
+    "refresh no pageshow": 'window.addEventListener("pageshow",()=>{',
+    "refresh no focus": 'window.addEventListener("focus",()=>{',
     "cache desportiva hidratada uma vez": "let SPORTS_CACHE_HYDRATED=false;",
-    "polling desportivo apenas na vista": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
+    "polling desportivo apenas na vista": 'if(view!=="sports"||!appIsForeground())return;',
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -374,8 +374,10 @@ if 'info.get("status")=="scheduled"' not in sports_script or 'fallback.get("stat
     fail("O fallback live deve substituir uma fonte presa em agendado")
 if "def football_start_fallback_info(event):" not in sports_script:
     fail("Falta fallback temporal para jogos que já começaram")
-if 'const updated=Number(ev.status_updated_at||0)' not in index or 'Math.min(359,now-updated)' not in index:
-    fail("O relógio live deve avançar localmente entre atualizações")
+if 'const updated=Number(ev.status_updated_at||0)' not in index or 'const extra=updated>0?Math.max(0,now-updated):0;' not in index:
+    fail("O relógio live deve avançar continuamente entre atualizações")
+if "Math.min(359,now-updated)" in index:
+    fail("O relógio live não pode congelar após 359 segundos")
 
 if "SOFASCORE_DAILY_CACHE={}" not in sports_script or "def sofascore_football_live_info(event):" not in sports_script:
     fail("Falta fallback genérico SofaScore para jogos de futebol")
@@ -387,6 +389,19 @@ if "for fallback in (sofa,espn_generic,espn):" not in sports_script:
     fail("A cadeia live deve combinar SofaScore e ESPN genéricos, mantendo ESPN específico quando disponível")
 if 'fallback.get("status") in {"live","halftime","finished"}' not in sports_script:
     fail("Uma fonte alternativa live/final deve poder corrigir estado agendado")
+if 'const NATIVE_SHELL_HINT=new URLSearchParams(location.search).get("shell")==="1";' not in index:
+    fail("A WebView nativa deve ter foreground independente de visibilityState")
+if "foregroundRefreshPending=true;" not in index or 'queueMicrotask(()=>refreshWhenVisible("queued",true));' not in index:
+    fail("Eventos de foreground ocorridos durante um refresh não podem ser perdidos")
+if "clearInterval(sportsClockTimer)" not in index or "sportsClockTimer=setInterval(()=>{" not in index:
+    fail("O relógio desportivo deve usar um intervalo persistente de 1 segundo")
+if "sportsData:60000" not in index:
+    fail("A agenda desportiva deve procurar snapshots novos de minuto a minuto enquanto está aberta")
+if 'window.addEventListener("appforeground",()=>{' not in index:
+    fail("Falta evento explícito de regresso ao primeiro plano")
+if 'ts:force?Date.now():undefined' not in index:
+    fail("As atualizações forçadas devem contornar caches intermédias")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
