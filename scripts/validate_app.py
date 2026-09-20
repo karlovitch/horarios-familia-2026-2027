@@ -368,6 +368,15 @@ if 'if(permission!=="denied")' not in index or "if(!loc)loc=await networkPromise
 if "function isDeviceLocation(loc)" not in index:
     fail("Falta distinção entre localização precisa e localização aproximada por rede")
 
+if "VERIFIED_FOOTBALL_LIVE_FEEDS" not in sports_script or "def espn_football_live_info(event):" not in sports_script:
+    fail("Falta fallback live alternativo ao Flashscore")
+if 'if fallback and (not info or info.get("status")=="scheduled"' not in sports_script:
+    fail("O fallback live deve substituir uma fonte presa em agendado")
+if "def football_start_fallback_info(event):" not in sports_script:
+    fail("Falta fallback temporal para jogos que já começaram")
+if 'const updated=Number(ev.status_updated_at||0)' not in index or 'Math.min(359,now-updated)' not in index:
+    fail("O relógio live deve avançar localmente entre atualizações")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
