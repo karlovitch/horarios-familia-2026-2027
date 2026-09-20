@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=118">
-<link rel="icon" href="favicon-64.png?v=118" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=118" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=118" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=118">
+<link rel="manifest" href="manifest.webmanifest?v=119">
+<link rel="icon" href="favicon-64.png?v=119" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=119" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=119" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=119">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -365,7 +365,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v118</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v119</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -452,7 +452,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=118"></script>
+<script src="sports-info.js?v=119"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -622,7 +622,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=118;
+const APP_BUILD=119;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:300000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -1032,6 +1032,15 @@ function weatherLocationCached(){
  const cached=storageRead("weatherCurrentLocationV98",null);
  return cached&&cached.location&&cached.savedAt?cached:null;
 }
+function connectionBearerLabel(){
+ const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+ const type=String(conn&&conn.type||"").toLowerCase();
+ if(type==="wifi")return "Wi‑Fi";
+ if(type==="cellular")return "dados móveis";
+ if(type==="ethernet")return "Ethernet";
+ return "Wi‑Fi/dados móveis";
+}
+function isDeviceLocation(loc){return !!loc&&loc.source==="gps-wifi-mobile"}
 function weatherForecastCached(){
  const cached=storageRead("weatherCurrentForecastV98",null);
  return cached&&cached.data&&cached.locationKey&&cached.savedAt?cached:null;
@@ -1049,7 +1058,12 @@ function browserCurrentPosition(){
   const accept=p=>{
    if(!p||!p.coords)return;
    const accuracy=Number(p.coords.accuracy);
-   const candidate={lat:Number(p.coords.latitude),lon:Number(p.coords.longitude),accuracy:Number.isFinite(accuracy)?accuracy:null,source:"dispositivo"};
+   const candidate={
+    lat:Number(p.coords.latitude),lon:Number(p.coords.longitude),
+    accuracy:Number.isFinite(accuracy)?accuracy:null,
+    source:"gps-wifi-mobile",
+    method:"GPS/Wi‑Fi/dados móveis"
+   };
    if(!best||candidate.accuracy===null||(best.accuracy!==null&&candidate.accuracy<best.accuracy))best=candidate;
    if(candidate.accuracy!==null&&candidate.accuracy<=WEATHER_CONFIG.goodAccuracy)finish();
   };
@@ -1090,7 +1104,12 @@ async function ipCurrentPosition(){
   const j=await r.json();
   if(j.success===false||!Number.isFinite(Number(j.latitude))||!Number.isFinite(Number(j.longitude)))throw new Error("IP geolocation invalid");
   const parts=[j.city,j.region,j.country].filter(Boolean);
-  return {lat:Number(j.latitude),lon:Number(j.longitude),label:parts.slice(0,2).join(", ")||j.country||"Localização por rede",source:"rede"};
+  const bearer=connectionBearerLabel();
+  return {
+   lat:Number(j.latitude),lon:Number(j.longitude),
+   label:parts.slice(0,2).join(", ")||j.country||"Localização por rede",
+   source:"network-ip",method:bearer+" (rede/IP)",approximate:true
+  };
  }finally{clearTimeout(timer)}
 }
 async function geolocationPermissionState(){
@@ -1102,24 +1121,26 @@ async function geolocationPermissionState(){
 }
 async function resolveWeatherLocation({force=false}={}){
  const now=Date.now();
- if(!force&&WEATHER_STATE.location&&WEATHER_STATE.location.source==="dispositivo"&&now-WEATHER_STATE.locationLoadedAt<WEATHER_CONFIG.locationTtl)return WEATHER_STATE.location;
- const cached=storageRead("weatherCurrentLocationV98",null);
+ if(!force&&WEATHER_STATE.location&&isDeviceLocation(WEATHER_STATE.location)&&now-WEATHER_STATE.locationLoadedAt<WEATHER_CONFIG.locationTtl)return WEATHER_STATE.location;
+ const cached=weatherLocationCached();
  if(WEATHER_STATE.locationPromise)return WEATHER_STATE.locationPromise;
  WEATHER_STATE.locationPromise=(async()=>{
   let loc=null,deviceError=null;
   const permission=await geolocationPermissionState();
-  try{
-   loc=await browserCurrentPosition();
-   try{loc.label=await reverseLocationName(loc)}catch(_){loc.label=Number(loc.lat).toFixed(3)+", "+Number(loc.lon).toFixed(3)}
-  }catch(err){deviceError=err}
-  if(!loc){
-   // Uma localização GPS recente é preferível a um IP geograficamente errado.
-   if(cached&&cached.location&&cached.location.source==="dispositivo"&&now-cached.savedAt<24*60*60*1000){
-    loc=cached.location;
-   }else if(permission==="denied"||permission==="unknown"){
-    try{loc=await ipCurrentPosition();loc.approximate=true}catch(_){}
-   }
+  // Prepara em paralelo o fallback por Wi‑Fi/dados móveis, mas dá prioridade
+  // à localização fundida do sistema (GPS + Wi‑Fi + antenas móveis).
+  const networkPromise=ipCurrentPosition().catch(()=>null);
+  if(permission!=="denied"){
+   try{
+    loc=await browserCurrentPosition();
+    try{loc.label=await reverseLocationName(loc)}catch(_){loc.label=Number(loc.lat).toFixed(3)+", "+Number(loc.lon).toFixed(3)}
+   }catch(err){deviceError=err}
   }
+  if(!loc&&cached&&cached.location&&isDeviceLocation(cached.location)&&now-cached.savedAt<24*60*60*1000){
+   // Uma localização precisa recente é preferível a uma localização IP aproximada.
+   loc=cached.location;
+  }
+  if(!loc)loc=await networkPromise;
   if(!loc)throw deviceError||new Error("location unavailable");
   WEATHER_STATE.location=loc;WEATHER_STATE.locationLoadedAt=Date.now();
   storageWrite("weatherCurrentLocationV98",{savedAt:WEATHER_STATE.locationLoadedAt,location:loc});
@@ -1181,7 +1202,8 @@ function renderWeatherStrip(payload,iso){
  const min=day&&Number.isFinite(Number(day.min))?Math.round(day.min)+"°":"—";
  const windText=Number.isFinite(wind)?"F"+bf.force+" ("+bf.label+") · "+Math.round(wind)+" km/h":"—";
  const label=esc((loc&&loc.label)||"Localização atual");
- const approx=loc&&loc.approximate?' <small class="weather-approx">(aprox.)</small>':"";
+ const sourceMethod=loc&&loc.method?esc(loc.method):"";
+ const approx=loc&&loc.approximate?' <small class="weather-approx">(aprox. · '+sourceMethod+')</small>':(sourceMethod?' <small class="weather-approx">('+sourceMethod+')</small>':"");
  const html='<span class="weather-item weather-sky">'+sky.icon+' <b>'+esc(sky.label)+'</b></span>'
   +'<span class="weather-item"><b>Atual</b> '+current+'</span>'
   +'<span class="weather-item"><b>Máx.</b> '+max+'</span>'
