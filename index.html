@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=134">
-<link rel="icon" href="favicon-64.png?v=134" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=134" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=134" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=134">
+<link rel="manifest" href="manifest.webmanifest?v=135">
+<link rel="icon" href="favicon-64.png?v=135" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=135" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=135" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=135">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -400,9 +400,52 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 }
 
 
-/* v130 · linha Família global imediatamente abaixo da Agenda Desportiva */
+/* v135 · linhas globais e variação cromática automática dia/noite */
 .global-family-row{margin:8px 0 10px}
 .global-weather-row{margin-top:0}.global-family-row:not(.hidden){margin-top:0}
+
+body,.top,.main-tab,.day-tab,.stats-controls,.today-jump,.timeline,.time-axis,.lane,.card,.daily-info-card,.daily-info-head,.weather-strip,.family-banner,.astronomy-banner,.history-feature,.rest-banner,.sports-panel,.sports-game,.countdown-line,.active-summary,.gospel-reflection,.daily-quote,.passo-player-wrap,.special-note,.overview-mini-card,.lane-message,.stats-date-input{
+ transition:background-color .75s ease,color .75s ease,border-color .75s ease,box-shadow .75s ease;
+}
+html[data-dayphase="night"] body{background:var(--bg);color:var(--text)}
+html[data-dayphase="night"] .main-tab,
+html[data-dayphase="night"] .day-tab,
+html[data-dayphase="night"] .stats-controls,
+html[data-dayphase="night"] .today-jump,
+html[data-dayphase="night"] .timeline,
+html[data-dayphase="night"] .card,
+html[data-dayphase="night"] .daily-info-card,
+html[data-dayphase="night"] .weather-strip,
+html[data-dayphase="night"] .family-banner,
+html[data-dayphase="night"] .astronomy-banner,
+html[data-dayphase="night"] .history-feature,
+html[data-dayphase="night"] .rest-banner,
+html[data-dayphase="night"] .sports-panel,
+html[data-dayphase="night"] .countdown-line,
+html[data-dayphase="night"] .active-summary,
+html[data-dayphase="night"] .gospel-reflection,
+html[data-dayphase="night"] .daily-quote,
+html[data-dayphase="night"] .passo-player-wrap,
+html[data-dayphase="night"] .special-note,
+html[data-dayphase="night"] .overview-mini-card,
+html[data-dayphase="night"] .lane-message,
+html[data-dayphase="night"] .stats-date-input{
+ background:var(--secondary)!important;color:var(--text)!important;border-color:var(--border)!important;
+}
+html[data-dayphase="night"] .main-tab.active,
+html[data-dayphase="night"] .sports-tab-btn.active{background:var(--primary)!important;color:#F7FAFC!important;border-color:var(--primary)!important}
+html[data-dayphase="night"] .day-tab.active{background:var(--active)!important;color:var(--text)!important;border-color:var(--active)!important}
+html[data-dayphase="night"] .daily-info-head{background:color-mix(in srgb,var(--secondary) 82%,var(--season-3) 18%)!important;border-color:var(--border)!important}
+html[data-dayphase="night"] .sports-tab-btn,
+html[data-dayphase="night"] .install{background:var(--secondary);color:var(--text);border-color:var(--border)}
+html[data-dayphase="night"] .sports-game{background:color-mix(in srgb,var(--secondary) 88%,var(--season-3) 12%)}
+html[data-dayphase="night"] .timeline,
+html[data-dayphase="night"] .overview-week-cell{background-color:var(--secondary)}
+html[data-dayphase="night"] .lane{background:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,color-mix(in srgb,var(--border) 34%,transparent) 31px)}
+html[data-dayphase="night"] .time-axis{background:color-mix(in srgb,var(--secondary) 88%,var(--bg) 12%)}
+html[data-dayphase="night"] .event{border-color:var(--border)}
+html[data-dayphase="night"] .daily-value a,
+html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--active) 68%,#FFFFFF 32%)}
 
 </style>
 </head>
@@ -492,7 +535,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=134"></script>
+<script src="sports-info.js?v=135"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -638,16 +681,46 @@ function applyDistinctPersonPalettes(colors,themeName){
   D[p].accent=m.accent;
  });
 }
+let CURRENT_DAY_PHASE="day";
+function nightTone(hex,strength=.48){
+ const l=luminance(hex),extra=(l-.45)*.22,t=Math.max(.30,Math.min(.62,strength+extra));
+ return mixHex(hex,"#08111D",t);
+}
+function nightPalette(colors){return colors.map((c,i)=>nightTone(c,[.48,.44,.46,.52][i]||.48))}
+function adaptPersonPalettesForNight(){
+ for(const p of PEOPLE){
+  D[p].color=nightTone(D[p].color,.38);
+  D[p].accent=nightTone(D[p].accent,.22);
+  D[p].textColor=textFor(D[p].color);
+ }
+}
 function applyAdaptiveTheme(iso){
- const ctx=themeContextForIso(iso),theme=ctx.active,colors=theme.colors,root=document.documentElement;
+ const ctx=themeContextForIso(iso),theme=ctx.active,night=CURRENT_DAY_PHASE==="night",colors=night?nightPalette(theme.colors):theme.colors,root=document.documentElement;
  const lum=colors.map(x=>({x,l:luminance(x)})).sort((m,n)=>m.l-n.l),dark=lum[0].x,light=lum[lum.length-1].x;
- const primary=mixHex(dark,"#1F2A44",.42),bg=mixHex(light,"#FFFFFF",.76),secondary=mixHex(light,"#FFFFFF",.90);
+ let primary,bg,secondary,text,muted,border;
+ if(night){
+  primary=mixHex(dark,"#08101C",.18);
+  bg=mixHex(dark,"#050910",.70);
+  secondary=mixHex(light,"#101A27",.70);
+  text="#F1F5F9";
+  muted=mixHex(text,bg,.42);
+  border=mixHex(light,bg,.68);
+ }else{
+  primary=mixHex(dark,"#1F2A44",.42);
+  bg=mixHex(light,"#FFFFFF",.76);
+  secondary=mixHex(light,"#FFFFFF",.90);
+  text="#1F2A44";
+  muted=mixHex(primary,"#FFFFFF",.52);
+  border=mixHex(primary,"#FFFFFF",.76);
+ }
+ root.dataset.dayphase=CURRENT_DAY_PHASE;
  root.style.setProperty("--season-1",colors[0]);root.style.setProperty("--season-2",colors[1]);root.style.setProperty("--season-3",colors[2]);root.style.setProperty("--season-4",colors[3]);
- root.style.setProperty("--primary",primary);root.style.setProperty("--bg",bg);root.style.setProperty("--secondary",secondary);root.style.setProperty("--text","#1F2A44");
- root.style.setProperty("--muted",mixHex(primary,"#FFFFFF",.52));root.style.setProperty("--border",mixHex(primary,"#FFFFFF",.76));root.style.setProperty("--active",colors[0]);
+ root.style.setProperty("--primary",primary);root.style.setProperty("--bg",bg);root.style.setProperty("--secondary",secondary);root.style.setProperty("--text",text);
+ root.style.setProperty("--muted",muted);root.style.setProperty("--border",border);root.style.setProperty("--active",colors[0]);
  root.style.setProperty("--positive",colors[2]);root.style.setProperty("--alert",colors[1]);root.style.setProperty("--blue",colors[3]);
  applyDistinctPersonPalettes(colors,theme.name);
- document.body.dataset.theme=theme.name;document.body.dataset.season=ctx.base.name;document.body.dataset.specialTheme=ctx.special?ctx.special.name:"";return theme;
+ if(night)adaptPersonPalettesForNight();
+ document.body.dataset.dayphase=CURRENT_DAY_PHASE;document.body.dataset.theme=theme.name;document.body.dataset.season=ctx.base.name;document.body.dataset.specialTheme=ctx.special?ctx.special.name:"";return theme;
 }
 function astronomicalSpecialInfo(iso){
  const x=ASTRONOMICAL_SPECIALS[iso];if(!x)return null;
@@ -662,7 +735,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=134;
+const APP_BUILD=135;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -1210,7 +1283,7 @@ async function loadWeather({force=false}={}){
   u.searchParams.set("latitude",Number(loc.lat).toFixed(4));
   u.searchParams.set("longitude",Number(loc.lon).toFixed(4));
   u.searchParams.set("current","temperature_2m,cloud_cover,wind_speed_10m,is_day");
-  u.searchParams.set("daily","temperature_2m_max,temperature_2m_min,cloud_cover_mean,wind_speed_10m_max");
+  u.searchParams.set("daily","temperature_2m_max,temperature_2m_min,cloud_cover_mean,wind_speed_10m_max,sunrise,sunset");
   u.searchParams.set("timezone","auto");
   u.searchParams.set("past_days","7");
   u.searchParams.set("forecast_days","16");
@@ -1236,15 +1309,40 @@ async function loadWeather({force=false}={}){
 function weatherDay(data,iso){
  const d=data&&data.daily;if(!d||!Array.isArray(d.time))return null;
  const i=d.time.indexOf(iso);if(i<0)return null;
- return {max:d.temperature_2m_max?.[i],min:d.temperature_2m_min?.[i],cloud:d.cloud_cover_mean?.[i],wind:d.wind_speed_10m_max?.[i]};
+ return {max:d.temperature_2m_max?.[i],min:d.temperature_2m_min?.[i],cloud:d.cloud_cover_mean?.[i],wind:d.wind_speed_10m_max?.[i],sunrise:d.sunrise?.[i],sunset:d.sunset?.[i]};
+}
+function forecastLocalEpoch(localIso,offsetSeconds=0){
+ const m=String(localIso||"").match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+ if(!m)return NaN;
+ return Date.UTC(Number(m[1]),Number(m[2])-1,Number(m[3]),Number(m[4]),Number(m[5]))-Number(offsetSeconds||0)*1000;
+}
+function dayPhaseFromForecast(data,nowMs=Date.now()){
+ const daily=data&&data.daily,current=data&&data.current;
+ if(daily&&Array.isArray(daily.time)){
+  const dateKey=String(current&&current.time||"").slice(0,10)||isoLocalDate(),i=daily.time.indexOf(dateKey);
+  if(i>=0){
+   const offset=Number(data.utc_offset_seconds)||0,rise=forecastLocalEpoch(daily.sunrise?.[i],offset),set=forecastLocalEpoch(daily.sunset?.[i],offset);
+   if(Number.isFinite(rise)&&Number.isFinite(set))return nowMs>=rise&&nowMs<set?"day":"night";
+  }
+ }
+ const isDay=Number(current&&current.is_day);
+ if(isDay===0||isDay===1)return isDay===1?"day":"night";
+ const h=new Date().getHours();return h>=7&&h<20?"day":"night";
+}
+function syncDayPhaseFromWeather(data){
+ const next=dayPhaseFromForecast(data),changed=next!==CURRENT_DAY_PHASE;
+ CURRENT_DAY_PHASE=next;
+ document.documentElement.dataset.dayphase=next;
+ if(document.body)document.body.dataset.dayphase=next;
+ if(changed&&typeof statsIso==="function")applyAdaptiveTheme(statsIso());
+ return next;
 }
 function renderWeatherStrip(payload,iso){
  const data=payload&&payload.forecast,loc=payload&&payload.location,day=weatherDay(data,iso),today=isoLocalDate(),cur=data&&data.current;
  const currentTemp=Number(cur&&cur.temperature_2m),isToday=iso===today;
  const currentCloud=Number(cur&&cur.cloud_cover),dailyCloud=Number(day&&day.cloud);
- const currentIsDay=Number(cur&&cur.is_day);
  const skyCloud=isToday&&Number.isFinite(currentCloud)?currentCloud:dailyCloud;
- const sky=weatherSky(skyCloud,!isToday||!Number.isFinite(currentIsDay)||currentIsDay===1);
+ const sky=weatherSky(skyCloud,!isToday||CURRENT_DAY_PHASE!=="night");
  const wind=Number(isToday?(cur&&cur.wind_speed_10m):(day&&day.wind));
  const bf=beaufortFromKmh(wind);
  const current=Number.isFinite(currentTemp)?Math.round(currentTemp)+"°C":"—";
@@ -1267,6 +1365,7 @@ async function updateWeatherStrip(iso=statsIso()){
  qsa("[data-weather-strip]").forEach(el=>{if(!WEATHER_STATE.data)el.textContent="🌡️ A obter previsão e localização…"});
  try{
   const payload=await loadWeather({force:!WEATHER_STATE.location});
+  syncDayPhaseFromWeather(payload&&payload.forecast);
   if(statsIso()===iso)renderWeatherStrip(payload,iso);
  }catch(_){
   if(statsIso()!==iso)return;
@@ -3112,6 +3211,7 @@ else if(MOBILE_TIMELINE_QUERY.addListener)MOBILE_TIMELINE_QUERY.addListener(hand
 
 setInterval(updateNowLines,UI_REFRESH.nowLine);
 setInterval(refreshScheduleState,UI_REFRESH.scheduleState);
+setInterval(()=>{if(WEATHER_STATE.data)syncDayPhaseFromWeather(WEATHER_STATE.data)},60000);
 
 /* Relógio live: atualização redundante e independente do requestAnimationFrame.
    Alguns Android/PWA deixam o rAF congelado apesar de a aplicação continuar visível.
