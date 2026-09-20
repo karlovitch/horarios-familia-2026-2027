@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=124">
-<link rel="icon" href="favicon-64.png?v=124" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=124" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=124" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=124">
+<link rel="manifest" href="manifest.webmanifest?v=125">
+<link rel="icon" href="favicon-64.png?v=125" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=125" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=125" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=125">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -365,7 +365,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 </style>
 </head>
 <body>
-<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v124</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
+<header class="top"><div><h1>Horários Família</h1><p><span id="todayLabel">2026–2027</span> <span style="opacity:.65;font-size:.72rem">· v125</span></p></div><button id="installBtn" class="install hidden" type="button">Instalar</button></header>
 <main>
 <nav class="main-tabs" aria-label="Modo de consulta">
 <button class="main-tab active" data-view="today" type="button">Hoje</button><button class="main-tab" data-view="overview" type="button">Conjunto</button>
@@ -452,7 +452,7 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=124"></script>
+<script src="sports-info.js?v=125"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -622,7 +622,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=420,END=1260;
 const MS_DAY=86400000;
-const APP_BUILD=124;
+const APP_BUILD=125;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
@@ -1741,7 +1741,7 @@ function renderSportsAgenda(iso){
  }).join("")+'</div>';
 }
 function updateSportsLiveClocks(){
- if(view!=="sports"||!appIsForeground())return;
+ if(view!=="sports")return;
  const events=sportsEventsFor(statsIso());
  qsa(".sports-status.live[data-sports-index]").forEach(status=>{
   const ev=events[Number(status.dataset.sportsIndex)];
@@ -1825,7 +1825,7 @@ async function fetchEspnDirectFootballLive(ev){
  }
 }
 async function refreshDirectFootballLive(){
- if(view!=="sports"||!appIsForeground())return false;
+ if(view!=="sports")return false;
  const candidates=sportsEventsFor(statsIso()).filter(ev=>/futebol/i.test(ev.sport||"")&&ev.espn_event_id&&ev.espn_league&&ev.status!=="finished");
  if(!candidates.length)return false;
  const results=await Promise.allSettled(candidates.map(fetchEspnDirectFootballLive));
@@ -3015,24 +3015,37 @@ else if(MOBILE_TIMELINE_QUERY.addListener)MOBILE_TIMELINE_QUERY.addListener(hand
 setInterval(updateNowLines,UI_REFRESH.nowLine);
 setInterval(refreshScheduleState,UI_REFRESH.scheduleState);
 
-/* Relógio live independente de re-renderizações: 1 atualização por segundo enquanto Desporto está visível. */
-let sportsClockTimer=0;
+/* Relógio live: usa o ciclo de desenho do ecrã em vez de depender do estado
+   visibility/foreground do Android WebView, que pode reportar "hidden" mesmo
+   com a app visível. O texto só é recalculado quando muda o segundo. */
+let sportsClockFrame=0,sportsClockLastSecond=-1;
 function stopSportsClockTimer(){
- if(sportsClockTimer){clearInterval(sportsClockTimer);sportsClockTimer=0}
+ if(sportsClockFrame){
+  if(window.cancelAnimationFrame)cancelAnimationFrame(sportsClockFrame);
+  else clearTimeout(sportsClockFrame);
+  sportsClockFrame=0;
+ }
+ sportsClockLastSecond=-1;
+}
+function sportsClockLoop(){
+ if(view!=="sports"){stopSportsClockTimer();return}
+ const second=Math.floor(Date.now()/1000);
+ if(second!==sportsClockLastSecond){
+  sportsClockLastSecond=second;
+  updateSportsLiveClocks();
+ }
+ sportsClockFrame=window.requestAnimationFrame
+  ?requestAnimationFrame(sportsClockLoop)
+  :setTimeout(sportsClockLoop,250);
 }
 function syncSportsClockTimer(){
- if(view!=="sports"||!appIsForeground()){stopSportsClockTimer();return}
+ if(view!=="sports"){stopSportsClockTimer();return}
  updateSportsLiveClocks();
- if(!sportsClockTimer){
-  sportsClockTimer=setInterval(()=>{
-   if(view!=="sports"||!appIsForeground()){stopSportsClockTimer();return}
-   updateSportsLiveClocks();
-  },UI_REFRESH.sportsClock);
- }
+ if(!sportsClockFrame)sportsClockLoop();
 }
 
 setInterval(()=>{
- if(view!=="sports"||!appIsForeground())return;
+ if(view!=="sports")return;
  loadSportsInfo({force:true}).then(()=>{if(view==="sports"){renderSportsAgenda(statsIso());syncSportsClockTimer()}});
 },UI_REFRESH.sportsData);
 
@@ -3113,7 +3126,7 @@ document.addEventListener("visibilitychange",()=>{
   markForegroundSignal();
   refreshWhenVisible("visibilitychange",true);
   syncSportsClockTimer();
- }else if(Date.now()>=foregroundOverrideUntil){
+ }else if(view!=="sports"&&Date.now()>=foregroundOverrideUntil){
   stopSportsClockTimer();
  }
 });
