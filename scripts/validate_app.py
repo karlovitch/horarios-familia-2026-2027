@@ -410,6 +410,10 @@ if 'if period=="2H":return 70' not in sports_script:
     fail("A 2.ª parte deve ter prioridade sobre uma fonte ainda em intervalo")
 if 'dynamic_mid=flashscore_match_id(event)' not in sports_script or 'mid=dynamic_mid or event.get("flashscore_mid")' not in sports_script:
     fail("O ID live Flashscore deve ser re-resolvido por data/equipas antes de usar o ID guardado")
+if 'ev.period==="1H"&&total>=52*60' not in index:
+    fail("A 1.ª parte deve passar a Intervalo se a fonte ficar presa para lá do limite de segurança")
+if 'return "Intervalo";' not in index:
+    fail("Falta fallback visual de Intervalo")
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
