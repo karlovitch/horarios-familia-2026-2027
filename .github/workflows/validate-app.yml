@@ -5,6 +5,7 @@ on:
     paths:
       - "index.html"
       - "sw.js"
+      - "version.json"
       - "manifest.webmanifest"
       - "calendar-info.json"
       - "daily-info.json"
@@ -16,6 +17,7 @@ on:
     paths:
       - "index.html"
       - "sw.js"
+      - "version.json"
       - "manifest.webmanifest"
       - "scripts/**"
 
