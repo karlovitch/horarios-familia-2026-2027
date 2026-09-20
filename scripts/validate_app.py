@@ -196,10 +196,12 @@ required_index_tokens = {
     "deduplicação de foreground": "if(foregroundRefreshRunning)return;",
     "refresh de dados forçado ao regressar": "loadDailyInfo({force}),",
     "refresh desportivo forçado ao regressar": "loadSportsInfo({force}),",
-    "refresh histórico forçado ao regressar": "loadHistoryInfo({force})",
-    "refresh no load": 'window.addEventListener("load",()=>refreshWhenVisible("load",true));',
+    "histórico apenas quando necessário": 'const historyTask=(view==="today"&&dateNeedsRemoteHistory(statsIso()))?loadHistoryInfo({force}):Promise.resolve(HISTORY_INFO);',
+    "refresh no arranque consolidado": 'window.addEventListener("load",initializeApp,{once:true});',
     "refresh no pageshow": 'window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow",true));',
     "refresh no focus": 'window.addEventListener("focus",()=>refreshWhenVisible("focus",true));',
+    "cache desportiva hidratada uma vez": "let SPORTS_CACHE_HYDRATED=false;",
+    "polling desportivo apenas na vista": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -295,6 +297,17 @@ if "font-size:.66rem" not in index:
 if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index or "font-size:.64rem" not in index:
     fail("A vista semanal deve deslocar e ampliar a hora atual na primeira coluna")
 
+if 'cache:"no-cache"' not in index or '"Pragma":"no-cache"' not in index:
+    fail("Os JSON devem ser revalidados sem forçar transferências no-store")
+if '{ts:Date.now(),build:APP_BUILD}' in index or 'history-info.json",{ts:Date.now()}' in index:
+    fail("URLs de dados não devem usar timestamps que inutilizam a revalidação HTTP")
+if index.count('window.addEventListener("load"') != 1:
+    fail("Deve existir apenas um listener de load consolidado")
+if 'Promise.allSettled([loadDailyInfo(),loadSportsInfo()]).then(()=>renderActiveView());' in index:
+    fail("O arranque não deve duplicar a primeira carga de dados")
+if 'if(!SPORTS_CACHE_HYDRATED)' not in index:
+    fail("A cache local desportiva deve ser hidratada apenas uma vez por página")
+
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
     fail(f"Referências de versão inconsistentes em index.html: {sorted(versioned_refs)}")
@@ -307,6 +320,11 @@ if "canonicalCacheKey" not in service_worker:
     fail("O service worker deve normalizar chaves de cache")
 if "'/version.json'" not in service_worker:
     fail("O service worker deve tratar version.json como recurso de atualização")
+if "fetch(req,{cache:'no-cache'})" not in service_worker:
+    fail("Recursos network-first devem usar revalidação HTTP")
+if "if(cached)return cached;" not in service_worker:
+    fail("Recursos estáticos versionados devem usar cache-first sem pedido de rede redundante")
+
 
 if not isinstance(calendar.get("dates"), dict):
     fail("calendar-info.json não contém o mapa dates")
