@@ -193,8 +193,13 @@ required_index_tokens = {
 
 
     "cronómetro suspenso fora do desporto": 'if(view!=="sports"||(document.visibilityState&&document.visibilityState!=="visible"))return;',
-    "deduplicação de foreground": "now-lastForegroundRefresh<10000",
-    "refresh sem meteorologia duplicada": "await Promise.allSettled([loadDailyInfo(),loadSportsInfo()]);",
+    "deduplicação de foreground": "if(foregroundRefreshRunning)return;",
+    "refresh de dados forçado ao regressar": "loadDailyInfo({force}),",
+    "refresh desportivo forçado ao regressar": "loadSportsInfo({force}),",
+    "refresh histórico forçado ao regressar": "loadHistoryInfo({force})",
+    "refresh no load": 'window.addEventListener("load",()=>refreshWhenVisible("load",true));',
+    "refresh no pageshow": 'window.addEventListener("pageshow",()=>refreshWhenVisible("pageshow",true));',
+    "refresh no focus": 'window.addEventListener("focus",()=>refreshWhenVisible("focus",true));',
 }
 if index.count('data-weather-strip') < 4:
     fail("Devem existir faixas meteorológicas nos quatro contextos com seletor de data")
@@ -268,8 +273,10 @@ if 'clock.className="now-axis-clock"' not in index:
     fail("A hora atual deve ser criada dentro da primeira coluna horária")
 if ".now-axis-clock{" not in index:
     fail("Falta estilo da etiqueta HH:MM na primeira coluna")
-if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index:
-    fail("A vista semanal deve deslocar a hora atual para a primeira coluna")
+if "font-size:.66rem" not in index:
+    fail("A hora atual na primeira coluna deve ter tamanho reforçado")
+if ".overview-week-now-line.first:after" not in index or "right:calc(100% + 9px)" not in index or "font-size:.64rem" not in index:
+    fail("A vista semanal deve deslocar e ampliar a hora atual na primeira coluna")
 
 versioned_refs = {int(x) for x in re.findall(r"[?&]v=(\d+)", index)}
 if m_app and versioned_refs and versioned_refs != {int(m_app.group(1))}:
