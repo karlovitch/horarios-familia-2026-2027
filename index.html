@@ -2777,7 +2777,7 @@ function renderOverview(){
  if(d===dayNow()&&active.length){summary.textContent="Agora: "+active.map(displayName).join(", ");summary.classList.remove("hidden")}else{summary.classList.add("hidden");summary.textContent=""}
  timeline.classList.remove("compact-overview");
  let h='<div class="time-axis">';
- for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)</div>';
+ for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)+'</div>';
  h+='</div>';
  for(const p of PEOPLE){
   const i=D[p],isActive=(iso===isoLocalDate())&&!!activeEvent(p,d);
@@ -2846,7 +2846,7 @@ function renderTodayTimeline(iso,d){
  const timeline=qs("#todayTimeline"),reason=noClassReason(iso),dt=dateFromIso(iso),weekend=(dt.getUTCDay()===0||dt.getUTCDay()===6);
  timeline.classList.remove("compact-overview");
  let h='<div class="time-axis">';
- for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)</div>';
+ for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)+'</div>';
  h+='</div>';
  for(const p of ["Leonor","Margarida","Sandra","Carlos"]){
   const i=D[p],isActive=(iso===isoLocalDate())&&!reason&&!weekend&&!!activeEvent(p,d);
@@ -2905,7 +2905,7 @@ function renderPersonDayTimeline(p,iso){
  const tl=qs("#personTimeline"),d=weekdayFromIso(iso),i=D[p],special=personSpecialMessage(p,iso);
  tl.classList.remove("week-view","compact-overview");
  let h='<div class="time-axis">';
- for(let m=START;m<=END;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+minToTime(m)</div>';
+ for(let m=START;m<=END;m+=60)h+='<div class="time-label" style="top:'+timelineY(m)+'px">'+minToTime(m)+'</div>';
  h+='</div><div class="lane"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+' · '+d+'</div>';
  if(special)h+='<div class="lane-message">'+esc(special)+'</div>';
  else{
@@ -2924,7 +2924,7 @@ function renderPersonWeekTimeline(p,iso){
  const tl=qs("#personTimeline"),i=D[p];
  tl.classList.add("week-view");tl.classList.remove("compact-overview");tl.style.gridTemplateColumns="";
  let h='<div class="time-axis">';
- for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)</div>';
+ for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)+'</div>';
  h+='</div>';
  const dayNames=["Segunda","Terça","Quarta","Quinta","Sexta"];
  dayNames.forEach((d,idx)=>{
