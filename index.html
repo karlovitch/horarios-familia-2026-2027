@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=140">
-<link rel="icon" href="favicon-64.png?v=140" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=140" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=140" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=140">
+<link rel="manifest" href="manifest.webmanifest?v=141">
+<link rel="icon" href="favicon-64.png?v=141" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=141" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=141" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=141">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -489,7 +489,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalWeatherStrip" class="weather-strip global-weather-row" data-weather-strip aria-live="polite">🌡️ A obter previsão…</div>
-<div id="globalPersonalAgenda" class="personal-agenda-row" data-personal-agenda aria-live="polite"><div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" disabled>A carregar…</button></div></div>
+<div id="globalPersonalAgenda" class="personal-agenda-row" data-personal-agenda aria-live="polite"><div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" data-calendar-unlock>Ligar</button></div></div>
 <div id="globalFamilyBanner" class="family-banner global-family-row hidden" data-global-family-banner></div>
 <section id="overview" class="screen">
 <div class="today-page-nav top-date-nav" aria-label="Navegação diária">
@@ -578,7 +578,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=140"></script>
+<script src="sports-info.js?v=141"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -778,7 +778,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=140;
+const APP_BUILD=141;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -2178,8 +2178,9 @@ function renderPersonalAgenda(iso=statsIso()){
  const row=qs("#globalPersonalAgenda");if(!row)return;
  const env=PERSONAL_CALENDAR_STATE.envelope;
  if(!env&&!PERSONAL_CALENDAR_STATE.error){
-  row.innerHTML='<div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" disabled>A carregar…</button></div>';
+  row.innerHTML='<div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" data-calendar-unlock>Ligar</button></div>';
   row.classList.remove("hidden");
+  const button=row.querySelector("[data-calendar-unlock]");if(button)button.addEventListener("click",openCalendarSyncDialog);
   return;
  }
  if(env&&env.configured&&PERSONAL_CALENDAR_STATE.locked){
@@ -2211,6 +2212,14 @@ async function unlockPersonalCalendar(passphrase){
   renderPersonalAgenda(statsIso());return false;
  }
 }
+async function fetchPersonalCalendarEnvelope(url,timeoutMs=8000){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
+ try{
+  const r=await fetch(url,{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"},signal:controller.signal});
+  if(!r.ok)throw new Error("calendar HTTP "+r.status);
+  return await r.json();
+ }finally{clearTimeout(timer)}
+}
 async function loadPersonalCalendar({force=false}={}){
  const now=Date.now();
  if(!force&&PERSONAL_CALENDAR_STATE.loadedAt&&now-PERSONAL_CALENDAR_STATE.loadedAt<5*60*1000)return PERSONAL_CALENDAR_STATE.data;
@@ -2218,18 +2227,11 @@ async function loadPersonalCalendar({force=false}={}){
  PERSONAL_CALENDAR_STATE.promise=(async()=>{
   try{
    const stamp=Date.now();
-   let r=await fetch(PERSONAL_CALENDAR_FILE+"?ts="+stamp,{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"}});
-   if(!r.ok){
-    r=await fetch(PERSONAL_CALENDAR_RAW_URL+"?ts="+stamp,{cache:"no-store"});
-   }
    let envelope;
    try{
-    if(!r.ok)throw new Error("calendar HTTP "+r.status);
-    envelope=await r.json();
-   }catch(primaryErr){
-    const raw=await fetch(PERSONAL_CALENDAR_RAW_URL+"?ts="+Date.now(),{cache:"no-store"});
-    if(!raw.ok)throw primaryErr;
-    envelope=await raw.json();
+    envelope=await fetchPersonalCalendarEnvelope(PERSONAL_CALENDAR_RAW_URL+"?ts="+stamp,8000);
+   }catch(rawErr){
+    envelope=await fetchPersonalCalendarEnvelope(PERSONAL_CALENDAR_FILE+"?ts="+Date.now(),6000);
    }
    PERSONAL_CALENDAR_STATE.envelope=envelope;PERSONAL_CALENDAR_STATE.loadedAt=Date.now();PERSONAL_CALENDAR_STATE.error="";
    if(!envelope.configured){
@@ -3347,15 +3349,21 @@ qs("#goTodayBtn").addEventListener("click",()=>{
  renderActiveView();
 });
 
+const initialCalendarUnlock=qs("#globalPersonalAgenda [data-calendar-unlock]");
+if(initialCalendarUnlock)initialCalendarUnlock.addEventListener("click",openCalendarSyncDialog);
 qs("#calendarSyncCancel").addEventListener("click",closeCalendarSyncDialog);
 qs("#calendarSyncClear").addEventListener("click",()=>{
  setPersonalCalendarPassphrase("");PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=!!(PERSONAL_CALENDAR_STATE.envelope&&PERSONAL_CALENDAR_STATE.envelope.configured);closeCalendarSyncDialog();renderPersonalAgenda(statsIso());
 });
 qs("#calendarSyncSave").addEventListener("click",async()=>{
- const input=qs("#calendarSyncPassphrase"),value=(input&&input.value||"").trim();
+ const input=qs("#calendarSyncPassphrase"),save=qs("#calendarSyncSave"),value=(input&&input.value||"").trim();
  if(!value)return;
- const ok=await unlockPersonalCalendar(value);
- if(ok)closeCalendarSyncDialog();else{input.select();input.focus()}
+ const oldText=save.textContent;save.disabled=true;save.textContent="A ligar…";
+ try{
+  if(!PERSONAL_CALENDAR_STATE.envelope||!PERSONAL_CALENDAR_STATE.envelope.configured)await loadPersonalCalendar({force:true});
+  const ok=await unlockPersonalCalendar(value);
+  if(ok)closeCalendarSyncDialog();else{input.select();input.focus()}
+ }finally{save.disabled=false;save.textContent=oldText}
 });
 qs("#calendarSyncPassphrase").addEventListener("keydown",e=>{if(e.key==="Enter")qs("#calendarSyncSave").click();if(e.key==="Escape")closeCalendarSyncDialog()});
 
