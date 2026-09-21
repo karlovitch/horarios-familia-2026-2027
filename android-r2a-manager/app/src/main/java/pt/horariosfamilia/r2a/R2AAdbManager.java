@@ -20,9 +20,6 @@ import android.sun.security.x509.X500Name;
 import android.sun.security.x509.X509CertImpl;
 import android.sun.security.x509.X509CertInfo;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,7 +49,7 @@ import io.github.muntashirakon.adb.AbsAdbConnectionManager;
 public class R2AAdbManager extends AbsAdbConnectionManager {
     private static R2AAdbManager INSTANCE;
 
-    public static synchronized R2AAdbManager getInstance(@NonNull Context context) throws Exception {
+    public static synchronized R2AAdbManager getInstance(Context context) throws Exception {
         if (INSTANCE == null) {
             INSTANCE = new R2AAdbManager(context.getApplicationContext());
         }
@@ -62,7 +59,7 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
     private PrivateKey privateKey;
     private Certificate certificate;
 
-    private R2AAdbManager(@NonNull Context context) throws Exception {
+    private R2AAdbManager(Context context) throws Exception {
         setApi(Build.VERSION.SDK_INT);
         privateKey = readPrivateKeyFromFile(context);
         certificate = readCertificateFromFile(context);
@@ -71,7 +68,7 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         }
     }
 
-    private void generateIdentity(@NonNull Context context) throws Exception {
+    private void generateIdentity(Context context) throws Exception {
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048, SecureRandom.getInstance("SHA1PRNG"));
         KeyPair pair = generator.generateKeyPair();
@@ -111,26 +108,22 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         writeCertificateToFile(context, certificate);
     }
 
-    @NonNull
     @Override
     protected PrivateKey getPrivateKey() {
         return privateKey;
     }
 
-    @NonNull
     @Override
     protected Certificate getCertificate() {
         return certificate;
     }
 
-    @NonNull
     @Override
     protected String getDeviceName() {
         return "R2A-Diagnostico";
     }
 
-    @Nullable
-    private static Certificate readCertificateFromFile(@NonNull Context context)
+    private static Certificate readCertificateFromFile(Context context)
             throws IOException, CertificateException {
         File certFile = new File(context.getFilesDir(), "r2a-cert.pem");
         if (!certFile.exists()) return null;
@@ -139,7 +132,7 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         }
     }
 
-    private static void writeCertificateToFile(@NonNull Context context, @NonNull Certificate certificate)
+    private static void writeCertificateToFile(Context context, Certificate certificate)
             throws CertificateEncodingException, IOException {
         File certFile = new File(context.getFilesDir(), "r2a-cert.pem");
         BASE64Encoder encoder = new BASE64Encoder();
@@ -152,8 +145,7 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         }
     }
 
-    @Nullable
-    private static PrivateKey readPrivateKeyFromFile(@NonNull Context context)
+    private static PrivateKey readPrivateKeyFromFile(Context context)
             throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         File keyFile = new File(context.getFilesDir(), "r2a-private.key");
         if (!keyFile.exists()) return null;
@@ -171,7 +163,7 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         return factory.generatePrivate(spec);
     }
 
-    private static void writePrivateKeyToFile(@NonNull Context context, @NonNull PrivateKey privateKey)
+    private static void writePrivateKeyToFile(Context context, PrivateKey privateKey)
             throws IOException {
         File keyFile = new File(context.getFilesDir(), "r2a-private.key");
         try (OutputStream os = new FileOutputStream(keyFile)) {
