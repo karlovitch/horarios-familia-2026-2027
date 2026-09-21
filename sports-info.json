@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T15:13:48.298834+00:00",
+  "generated_at": "2026-09-21T00:39:40.360615+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1368,7 +1368,7 @@
       "home_score": 2,
       "away_score": 0,
       "status": "finished",
-      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/valenca-hc-entra-vencer-na-taca-do-minho.html?m=0",
       "result_source_priority": 20
     },
     {
@@ -1460,7 +1460,12 @@
       "location": "Pavilhão Municipal de Barcelos, Barcelos, Portugal",
       "channel": "Transmissão a confirmar",
       "match_url": null,
-      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/"
+      "source_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "finished",
+      "result_source_url": "https://hoqueiminhoto.blogspot.com/2026/09/",
+      "result_source_priority": 20
     },
     {
       "date": "2026-09-24",
