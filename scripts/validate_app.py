@@ -117,7 +117,7 @@ required_index_tokens = {
     "meteorologia global": 'id="globalWeatherStrip"',
     "agenda pessoal global": 'id="globalPersonalAgenda"',
     "agenda pessoal encriptada": 'personal-calendar.enc.json',
-    "agenda Carlos/Sandrinha visualmente distinta": 'agenda-owner owner-carlos',
+    "agenda Carlos visualmente distinta": 'owner-carlos',
     "agenda Sandrinha visualmente distinta": 'owner-sandrinha',
     "desencriptação AES-GCM no dispositivo": 'async function decryptPersonalCalendar(envelope,passphrase)',
     "título Horários Família": '<h1>Horários Família</h1>',
