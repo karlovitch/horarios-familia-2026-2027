@@ -117,6 +117,8 @@ required_index_tokens = {
     "meteorologia global": 'id="globalWeatherStrip"',
     "agenda pessoal global": 'id="globalPersonalAgenda"',
     "agenda pessoal encriptada": 'personal-calendar.enc.json',
+    "fallback direto encriptado da agenda": "raw.githubusercontent.com/karlovitch/horarios-familia-2026-2027/main/personal-calendar.enc.json",
+    "erro da agenda visível e repetível": "data-calendar-retry",
     "agenda Carlos visualmente distinta": 'owner-carlos',
     "agenda Sandrinha visualmente distinta": 'owner-sandrinha',
     "desencriptação AES-GCM no dispositivo": 'async function decryptPersonalCalendar(envelope,passphrase)',

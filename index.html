@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=138">
-<link rel="icon" href="favicon-64.png?v=138" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=138" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=138" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=138">
+<link rel="manifest" href="manifest.webmanifest?v=139">
+<link rel="icon" href="favicon-64.png?v=139" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=139" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=139" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=139">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -578,7 +578,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=138"></script>
+<script src="sports-info.js?v=139"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -778,13 +778,14 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=138;
+const APP_BUILD=139;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
 const WEATHER_STATE={loadedAt:0,promise:null,data:null,weatherKey:"",location:null,locationLoadedAt:0,locationPromise:null};
 const PERSONAL_CALENDAR_FILE="personal-calendar.enc.json";
+const PERSONAL_CALENDAR_RAW_URL="https://raw.githubusercontent.com/karlovitch/horarios-familia-2026-2027/main/personal-calendar.enc.json";
 const PERSONAL_CALENDAR_KEY_STORAGE="personalCalendarPassphraseV1";
 const PERSONAL_CALENDAR_STATE={envelope:null,data:null,loadedAt:0,locked:false,promise:null,error:""};
 const DATA_LOAD_STATE={
@@ -2182,6 +2183,12 @@ function renderPersonalAgenda(iso=statsIso()){
   const button=row.querySelector("[data-calendar-unlock]");if(button)button.addEventListener("click",openCalendarSyncDialog);
   return;
  }
+ if(!env&&PERSONAL_CALENDAR_STATE.error){
+  row.innerHTML='<div class="agenda-lock"><strong>Agenda pessoal</strong><span>Não foi possível carregar a agenda.</span><button type="button" data-calendar-retry>Tentar novamente</button></div>';
+  row.classList.remove("hidden");
+  const retry=row.querySelector("[data-calendar-retry]");if(retry)retry.addEventListener("click",()=>loadPersonalCalendar({force:true}));
+  return;
+ }
  const events=personalAgendaEventsFor(iso);
  if(!events.length){row.classList.add("hidden");row.innerHTML="";return}
  const carlos=events.filter(e=>e.owner==="Carlos"),sandrinha=events.filter(e=>e.owner==="Sandrinha");
@@ -2205,9 +2212,20 @@ async function loadPersonalCalendar({force=false}={}){
  if(PERSONAL_CALENDAR_STATE.promise)return PERSONAL_CALENDAR_STATE.promise;
  PERSONAL_CALENDAR_STATE.promise=(async()=>{
   try{
-   const r=await fetch(PERSONAL_CALENDAR_FILE+"?ts="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"}});
-   if(!r.ok)throw new Error("calendar HTTP "+r.status);
-   const envelope=await r.json();
+   const stamp=Date.now();
+   let r=await fetch(PERSONAL_CALENDAR_FILE+"?ts="+stamp,{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"}});
+   if(!r.ok){
+    r=await fetch(PERSONAL_CALENDAR_RAW_URL+"?ts="+stamp,{cache:"no-store"});
+   }
+   let envelope;
+   try{
+    if(!r.ok)throw new Error("calendar HTTP "+r.status);
+    envelope=await r.json();
+   }catch(primaryErr){
+    const raw=await fetch(PERSONAL_CALENDAR_RAW_URL+"?ts="+Date.now(),{cache:"no-store"});
+    if(!raw.ok)throw primaryErr;
+    envelope=await raw.json();
+   }
    PERSONAL_CALENDAR_STATE.envelope=envelope;PERSONAL_CALENDAR_STATE.loadedAt=Date.now();PERSONAL_CALENDAR_STATE.error="";
    if(!envelope.configured){
     PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=false;renderPersonalAgenda(statsIso());return null;
