@@ -156,6 +156,13 @@ public class MainActivity extends Activity {
             return;
         }
 
+        if (isNativeAppInstalled()) {
+            showError(
+                "A app Horários Família desta box está instalada, mas precisa de ser atualizada " +
+                "para aceitar o emparelhamento. Instala a versão Android TV mais recente e volta a tentar.");
+            return;
+        }
+
         String pairUrl = WEB_URL + "#agendaKey=" + Uri.encode(key);
         if (openWeb(pairUrl)) {
             codeInput.setText("");
@@ -163,6 +170,15 @@ public class MainActivity extends Activity {
             openButton.setVisibility(View.VISIBLE);
         } else {
             showError("Não encontrei a app Horários Família nem um browser capaz de abrir a ligação.");
+        }
+    }
+
+    private boolean isNativeAppInstalled() {
+        try {
+            getPackageManager().getPackageInfo(TV_PACKAGE, 0);
+            return true;
+        } catch (Exception ignored) {
+            return false;
         }
     }
 

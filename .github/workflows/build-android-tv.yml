@@ -63,6 +63,13 @@ jobs:
       - name: Preparar lançamento
         run: cp android-tv/app/build/outputs/apk/debug/app-debug.apk HorariosFamilia-TV.apk
 
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: HorariosFamilia-TV
+          path: HorariosFamilia-TV.apk
+          if-no-files-found: error
+
       - name: Publicar APK
         uses: softprops/action-gh-release@v2
         with:
