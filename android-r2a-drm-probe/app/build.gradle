@@ -5,7 +5,6 @@ plugins {
 android {
     namespace 'pt.horariosfamilia.r2a.drmprobe'
     compileSdk 37
-    compileSdkMinor 0
 
     defaultConfig {
         applicationId 'pt.horariosfamilia.r2a.drmprobe'
