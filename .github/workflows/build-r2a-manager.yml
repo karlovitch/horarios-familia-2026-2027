@@ -71,8 +71,14 @@ jobs:
           ANDROID_HOME: /usr/local/lib/android/sdk
         run: |
           mkdir -p .signing
-          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.pk8?format=TEXT" | base64 -d > .signing/testkey.pk8
-          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.x509.pem?format=TEXT" | base64 -d > .signing/testkey.x509.pem
+          (
+            curl --retry 8 --retry-delay 2 --retry-all-errors -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.pk8?format=TEXT" | base64 -d > .signing/testkey.pk8
+          ) || curl --retry 5 --retry-delay 2 --retry-all-errors -fsSL "https://raw.githubusercontent.com/aosp-mirror/platform_build/master/target/product/security/testkey.pk8" -o .signing/testkey.pk8
+          (
+            curl --retry 8 --retry-delay 2 --retry-all-errors -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.x509.pem?format=TEXT" | base64 -d > .signing/testkey.x509.pem
+          ) || curl --retry 5 --retry-delay 2 --retry-all-errors -fsSL "https://raw.githubusercontent.com/aosp-mirror/platform_build/master/target/product/security/testkey.x509.pem" -o .signing/testkey.x509.pem
+          test -s .signing/testkey.pk8
+          test -s .signing/testkey.x509.pem
           "$ANDROID_HOME/build-tools/37.0.0/zipalign" -f 4             android-r2a-manager/app/build/outputs/apk/release/app-release-unsigned.apk             R2A-Diagnostico-Gestao-Stable-aligned.apk
           "$ANDROID_HOME/build-tools/37.0.0/apksigner" sign             --key .signing/testkey.pk8             --cert .signing/testkey.x509.pem             --out R2A-Diagnostico-Gestao-Stable.apk             R2A-Diagnostico-Gestao-Stable-aligned.apk
           "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose R2A-Diagnostico-Gestao-Stable.apk
