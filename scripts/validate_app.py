@@ -114,7 +114,12 @@ required_index_tokens = {
     "resize apenas ao mudar de breakpoint": 'MOBILE_TIMELINE_QUERY.addEventListener("change",handleTimelineBreakpointChange)',
     "sincronização global do seletor de data": "function renderActiveView(){\n const iso=statsIso();\n syncStatsControls();",
     "faixa meteorológica disponível": 'data-weather-strip',
-    "meteorologia global entre Desporto e Família": 'id="globalWeatherStrip"',
+    "meteorologia global": 'id="globalWeatherStrip"',
+    "agenda pessoal global": 'id="globalPersonalAgenda"',
+    "agenda pessoal encriptada": 'personal-calendar.enc.json',
+    "agenda Carlos/Sandrinha visualmente distinta": 'agenda-owner owner-carlos',
+    "agenda Sandrinha visualmente distinta": 'owner-sandrinha',
+    "desencriptação AES-GCM no dispositivo": 'async function decryptPersonalCalendar(envelope,passphrase)',
     "título Horários Família": '<h1>Horários Família</h1>',
     "meteorologia Open-Meteo": "https://api.open-meteo.com/v1/forecast",
     "classificação visual dia/noite e nebulosidade": "function weatherSky(cloud,isDay=true)",
@@ -430,11 +435,14 @@ if 'return "Intervalo";' not in index:
     fail("Falta fallback visual de Intervalo")
 if index.count('id="globalFamilyBanner"') != 1:
     fail("Deve existir uma única linha global Família")
+if index.count('id="globalPersonalAgenda"') != 1:
+    fail("Deve existir uma única linha global Agenda pessoal")
 sports_pos = index.find('id="sportsTabRow"')
 weather_pos = index.find('id="globalWeatherStrip"')
+agenda_pos = index.find('id="globalPersonalAgenda"')
 family_pos = index.find('id="globalFamilyBanner"')
-if min(sports_pos, weather_pos, family_pos) < 0 or not (sports_pos < weather_pos < family_pos):
-    fail("A ordem global deve ser Desporto → Meteorologia → Família")
+if min(sports_pos, weather_pos, agenda_pos, family_pos) < 0 or not (sports_pos < weather_pos < agenda_pos < family_pos):
+    fail("A ordem global deve ser Desporto → Meteorologia → Agenda pessoal → Família")
 if 'const events=familyEventsFor(iso);' not in index or 'if(!events.length){el.classList.add("hidden");el.innerHTML="";return}' not in index:
     fail("A linha Família deve aparecer apenas nas datas com aniversário/evento familiar")
 

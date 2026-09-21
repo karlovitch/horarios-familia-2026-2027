@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=137">
-<link rel="icon" href="favicon-64.png?v=137" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=137" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=137" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=137">
+<link rel="manifest" href="manifest.webmanifest?v=138">
+<link rel="icon" href="favicon-64.png?v=138" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=138" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=138" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=138">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -402,9 +402,37 @@ html.tv-mode .tv-date-dialog :is(button,[tabindex]):focus-visible{outline:6px so
 
 /* v135 · linhas globais e variação cromática automática dia/noite */
 .global-family-row{margin:8px 0 10px}
-.global-weather-row{margin-top:0}.global-family-row:not(.hidden){margin-top:0}
+.global-weather-row{margin-top:0}
+.personal-agenda-row{margin:0 auto 10px;padding:9px 12px;border:1px solid var(--border);border-left:5px solid var(--active);border-radius:11px;background:var(--secondary);font-size:.78rem;line-height:1.35}
+.personal-agenda-row>strong{display:block;margin-bottom:5px;color:var(--primary)}
+.personal-agenda-groups{display:grid;gap:6px}
+.personal-agenda-group{display:flex;align-items:flex-start;gap:7px;min-width:0}
+.agenda-owner{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:86px;padding:3px 8px;border-radius:999px;font-size:.7rem;font-weight:900;letter-spacing:.035em;color:#fff}
+.agenda-owner.owner-carlos{background:#2563EB}
+.agenda-owner.owner-sandrinha{background:#B04A72}
+.agenda-events{display:flex;flex-wrap:wrap;gap:4px 10px;min-width:0}
+.agenda-event{font-weight:750}
+.agenda-event-time{font-weight:900;color:var(--primary)}
+.agenda-event-location{opacity:.72;font-weight:650}
+.agenda-lock{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.agenda-lock button{border:1px solid var(--border);border-radius:999px;background:var(--primary);color:#fff;padding:6px 11px;font-weight:850}
+.calendar-sync-dialog{position:fixed;inset:0;z-index:10020;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.46)}
+.calendar-sync-dialog.hidden{display:none}
+.calendar-sync-card{width:min(440px,94vw);padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--secondary);color:var(--text);box-shadow:0 18px 55px rgba(0,0,0,.24)}
+.calendar-sync-card h2{margin:0 0 8px;font-size:1.05rem}
+.calendar-sync-card p{margin:0 0 12px;font-size:.82rem;line-height:1.4;color:var(--muted)}
+.calendar-sync-card input{width:100%;padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text);font:inherit}
+.calendar-sync-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.calendar-sync-actions button{padding:8px 12px;border:1px solid var(--border);border-radius:9px;background:var(--secondary);color:var(--text);font-weight:800}
+.calendar-sync-actions .primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.global-family-row:not(.hidden){margin-top:0}
+@media(max-width:700px){
+ .personal-agenda-row{font-size:.7rem;padding:8px 9px}
+ .personal-agenda-group{display:grid;grid-template-columns:78px minmax(0,1fr)}
+ .agenda-owner{min-width:0;font-size:.62rem}
+}
 
-body,.top,.main-tab,.day-tab,.stats-controls,.today-jump,.timeline,.time-axis,.lane,.card,.daily-info-card,.daily-info-head,.weather-strip,.family-banner,.astronomy-banner,.history-feature,.rest-banner,.sports-panel,.sports-game,.countdown-line,.active-summary,.gospel-reflection,.daily-quote,.passo-player-wrap,.special-note,.overview-mini-card,.lane-message,.stats-date-input{
+body,.top,.main-tab,.day-tab,.stats-controls,.today-jump,.timeline,.time-axis,.lane,.card,.daily-info-card,.daily-info-head,.weather-strip,.personal-agenda-row,.calendar-sync-card,.family-banner,.astronomy-banner,.history-feature,.rest-banner,.sports-panel,.sports-game,.countdown-line,.active-summary,.gospel-reflection,.daily-quote,.passo-player-wrap,.special-note,.overview-mini-card,.lane-message,.stats-date-input{
  transition:background-color .75s ease,color .75s ease,border-color .75s ease,box-shadow .75s ease;
 }
 html[data-dayphase="night"] body{background:var(--bg);color:var(--text)}
@@ -416,6 +444,8 @@ html[data-dayphase="night"] .timeline,
 html[data-dayphase="night"] .card,
 html[data-dayphase="night"] .daily-info-card,
 html[data-dayphase="night"] .weather-strip,
+html[data-dayphase="night"] .personal-agenda-row,
+html[data-dayphase="night"] .calendar-sync-card,
 html[data-dayphase="night"] .family-banner,
 html[data-dayphase="night"] .astronomy-banner,
 html[data-dayphase="night"] .history-feature,
@@ -459,6 +489,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalWeatherStrip" class="weather-strip global-weather-row" data-weather-strip aria-live="polite">🌡️ A obter previsão…</div>
+<div id="globalPersonalAgenda" class="personal-agenda-row hidden" data-personal-agenda aria-live="polite"></div>
 <div id="globalFamilyBanner" class="family-banner global-family-row hidden" data-global-family-banner></div>
 <section id="overview" class="screen">
 <div class="today-page-nav top-date-nav" aria-label="Navegação diária">
@@ -518,6 +549,18 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 <div id="personCountdowns" class="countdown-panel"></div>
 </section>
 </main>
+<div id="calendarSyncDialog" class="calendar-sync-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="calendarSyncTitle" aria-hidden="true">
+ <div class="calendar-sync-card">
+  <h2 id="calendarSyncTitle">Ligar Agenda pessoal</h2>
+  <p>Introduz o código privado configurado nos GitHub Actions Secrets. O código fica guardado apenas neste dispositivo.</p>
+  <input id="calendarSyncPassphrase" type="password" autocomplete="current-password" placeholder="Código da agenda">
+  <div class="calendar-sync-actions">
+   <button id="calendarSyncCancel" type="button">Cancelar</button>
+   <button id="calendarSyncClear" type="button">Esquecer código</button>
+   <button id="calendarSyncSave" class="primary" type="button">Guardar e ligar</button>
+  </div>
+ </div>
+</div>
 <div id="tvDateDialog" class="tv-date-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="tvDateDialogTitle" aria-hidden="true">
   <div class="tv-date-dialog-card">
     <div class="tv-date-dialog-head">
@@ -535,7 +578,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=137"></script>
+<script src="sports-info.js?v=138"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -735,12 +778,15 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=137;
+const APP_BUILD=138;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
 const WEATHER_CONFIG={ttl:10*60*1000,locationTtl:3*60*1000,geoTimeout:16000,geoBestWait:9000,goodAccuracy:120};
 const WEATHER_STATE={loadedAt:0,promise:null,data:null,weatherKey:"",location:null,locationLoadedAt:0,locationPromise:null};
+const PERSONAL_CALENDAR_FILE="personal-calendar.enc.json";
+const PERSONAL_CALENDAR_KEY_STORAGE="personalCalendarPassphraseV1";
+const PERSONAL_CALENDAR_STATE={envelope:null,data:null,loadedAt:0,locked:false,promise:null,error:""};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
  sports:{loadedAt:0,promise:null},
@@ -2074,6 +2120,112 @@ async function loadSportsInfo({force=false}={}){
  })();
  return state.promise;
 }
+function personalCalendarB64Bytes(value){
+ const binary=atob(String(value||"")),out=new Uint8Array(binary.length);
+ for(let i=0;i<binary.length;i++)out[i]=binary.charCodeAt(i);
+ return out;
+}
+async function personalCalendarKey(passphrase,kdf){
+ const base=await crypto.subtle.importKey("raw",new TextEncoder().encode(passphrase),"PBKDF2",false,["deriveKey"]);
+ return crypto.subtle.deriveKey(
+  {name:"PBKDF2",hash:"SHA-256",salt:personalCalendarB64Bytes(kdf.salt),iterations:Number(kdf.iterations)||210000},
+  base,{name:"AES-GCM",length:256},false,["decrypt"]
+ );
+}
+async function decryptPersonalCalendar(envelope,passphrase){
+ const key=await personalCalendarKey(passphrase,envelope.kdf||{});
+ const plain=await crypto.subtle.decrypt(
+  {name:"AES-GCM",iv:personalCalendarB64Bytes(envelope.cipher&&envelope.cipher.nonce),additionalData:new TextEncoder().encode("horarios-familia-calendar-v1")},
+  key,personalCalendarB64Bytes(envelope.cipher&&envelope.cipher.data)
+ );
+ return JSON.parse(new TextDecoder().decode(plain));
+}
+function personalCalendarPassphrase(){
+ try{return localStorage.getItem(PERSONAL_CALENDAR_KEY_STORAGE)||""}catch(_){return ""}
+}
+function setPersonalCalendarPassphrase(value){
+ try{
+  if(value)localStorage.setItem(PERSONAL_CALENDAR_KEY_STORAGE,value);
+  else localStorage.removeItem(PERSONAL_CALENDAR_KEY_STORAGE);
+ }catch(_){}
+}
+function openCalendarSyncDialog(){
+ const dlg=qs("#calendarSyncDialog"),input=qs("#calendarSyncPassphrase");
+ if(!dlg||!input)return;
+ input.value=personalCalendarPassphrase();
+ dlg.classList.remove("hidden");dlg.setAttribute("aria-hidden","false");
+ setTimeout(()=>input.focus(),30);
+}
+function closeCalendarSyncDialog(){
+ const dlg=qs("#calendarSyncDialog");if(!dlg)return;
+ dlg.classList.add("hidden");dlg.setAttribute("aria-hidden","true");
+}
+function personalAgendaEventsFor(iso){
+ return PERSONAL_CALENDAR_STATE.data&&PERSONAL_CALENDAR_STATE.data.days&&Array.isArray(PERSONAL_CALENDAR_STATE.data.days[iso])?PERSONAL_CALENDAR_STATE.data.days[iso]:[];
+}
+function agendaOwnerHtml(owner,events){
+ if(!events.length)return "";
+ const cls=owner==="Carlos"?"owner-carlos":"owner-sandrinha",label=owner==="Carlos"?"CARLOS":"SANDRINHA";
+ const items=events.map(e=>{
+  const time=e.time?'<span class="agenda-event-time">'+esc(e.time)+'</span> ':"";
+  const location=e.location?' <span class="agenda-event-location">📍 '+esc(e.location)+'</span>':"";
+  return '<span class="agenda-event">'+time+esc(e.title||"(Sem título)")+location+'</span>';
+ }).join('<span aria-hidden="true"> · </span>');
+ return '<div class="personal-agenda-group"><span class="agenda-owner '+cls+'">'+label+'</span><span class="agenda-events">'+items+'</span></div>';
+}
+function renderPersonalAgenda(iso=statsIso()){
+ const row=qs("#globalPersonalAgenda");if(!row)return;
+ const env=PERSONAL_CALENDAR_STATE.envelope;
+ if(env&&env.configured&&PERSONAL_CALENDAR_STATE.locked){
+  row.innerHTML='<div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" data-calendar-unlock>Ligar</button></div>';
+  row.classList.remove("hidden");
+  const button=row.querySelector("[data-calendar-unlock]");if(button)button.addEventListener("click",openCalendarSyncDialog);
+  return;
+ }
+ const events=personalAgendaEventsFor(iso);
+ if(!events.length){row.classList.add("hidden");row.innerHTML="";return}
+ const carlos=events.filter(e=>e.owner==="Carlos"),sandrinha=events.filter(e=>e.owner==="Sandrinha");
+ row.innerHTML='<strong>Agenda pessoal</strong><div class="personal-agenda-groups">'+agendaOwnerHtml("Carlos",carlos)+agendaOwnerHtml("Sandrinha",sandrinha)+'</div>';
+ row.classList.remove("hidden");
+}
+async function unlockPersonalCalendar(passphrase){
+ if(!PERSONAL_CALENDAR_STATE.envelope||!PERSONAL_CALENDAR_STATE.envelope.configured)return false;
+ try{
+  const data=await decryptPersonalCalendar(PERSONAL_CALENDAR_STATE.envelope,passphrase);
+  PERSONAL_CALENDAR_STATE.data=data;PERSONAL_CALENDAR_STATE.locked=false;PERSONAL_CALENDAR_STATE.error="";
+  setPersonalCalendarPassphrase(passphrase);renderPersonalAgenda(statsIso());return true;
+ }catch(_){
+  PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=true;PERSONAL_CALENDAR_STATE.error="Código inválido";
+  renderPersonalAgenda(statsIso());return false;
+ }
+}
+async function loadPersonalCalendar({force=false}={}){
+ const now=Date.now();
+ if(!force&&PERSONAL_CALENDAR_STATE.loadedAt&&now-PERSONAL_CALENDAR_STATE.loadedAt<5*60*1000)return PERSONAL_CALENDAR_STATE.data;
+ if(PERSONAL_CALENDAR_STATE.promise)return PERSONAL_CALENDAR_STATE.promise;
+ PERSONAL_CALENDAR_STATE.promise=(async()=>{
+  try{
+   const r=await fetch(PERSONAL_CALENDAR_FILE+"?ts="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store","Pragma":"no-cache"}});
+   if(!r.ok)throw new Error("calendar HTTP "+r.status);
+   const envelope=await r.json();
+   PERSONAL_CALENDAR_STATE.envelope=envelope;PERSONAL_CALENDAR_STATE.loadedAt=Date.now();PERSONAL_CALENDAR_STATE.error="";
+   if(!envelope.configured){
+    PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=false;renderPersonalAgenda(statsIso());return null;
+   }
+   const passphrase=personalCalendarPassphrase();
+   if(!passphrase){
+    PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=true;renderPersonalAgenda(statsIso());return null;
+   }
+   await unlockPersonalCalendar(passphrase);
+   return PERSONAL_CALENDAR_STATE.data;
+  }catch(err){
+   PERSONAL_CALENDAR_STATE.error=String(err&&err.message||err);
+   renderPersonalAgenda(statsIso());return PERSONAL_CALENDAR_STATE.data;
+  }finally{PERSONAL_CALENDAR_STATE.promise=null}
+ })();
+ return PERSONAL_CALENDAR_STATE.promise;
+}
+
 function renderGlobalFamilyBanner(iso){
  const events=familyEventsFor(iso);
  qsa("[data-global-family-banner]").forEach(el=>{
@@ -3113,6 +3265,7 @@ function renderActiveView(){
  const iso=statsIso();
  syncStatsControls();
  updateWeatherStrip(iso);
+ renderPersonalAgenda(iso);
  if(view==="today")renderToday();
  else if(view==="overview")renderOverview();
  else if(view==="sports"){applyAdaptiveTheme(iso);renderGlobalFamilyBanner(iso);renderSportsAgenda(iso)}
@@ -3171,7 +3324,21 @@ qs("#goTodayBtn").addEventListener("click",()=>{
  renderActiveView();
 });
 
+qs("#calendarSyncCancel").addEventListener("click",closeCalendarSyncDialog);
+qs("#calendarSyncClear").addEventListener("click",()=>{
+ setPersonalCalendarPassphrase("");PERSONAL_CALENDAR_STATE.data=null;PERSONAL_CALENDAR_STATE.locked=!!(PERSONAL_CALENDAR_STATE.envelope&&PERSONAL_CALENDAR_STATE.envelope.configured);closeCalendarSyncDialog();renderPersonalAgenda(statsIso());
+});
+qs("#calendarSyncSave").addEventListener("click",async()=>{
+ const input=qs("#calendarSyncPassphrase"),value=(input&&input.value||"").trim();
+ if(!value)return;
+ const ok=await unlockPersonalCalendar(value);
+ if(ok)closeCalendarSyncDialog();else{input.select();input.focus()}
+});
+qs("#calendarSyncPassphrase").addEventListener("keydown",e=>{if(e.key==="Enter")qs("#calendarSyncSave").click();if(e.key==="Escape")closeCalendarSyncDialog()});
+
 show("today");
+loadPersonalCalendar({force:true});
+setInterval(()=>loadPersonalCalendar({force:true}),5*60*1000);
 setTimeout(maybeCelebrateFamilyEvents,450);
 
 /* Só é necessário recalcular a geometria quando muda o breakpoint que altera
@@ -3255,6 +3422,7 @@ async function refreshCurrentView({force=false}={}){
  await Promise.allSettled([
   loadDailyInfo({force}),
   loadSportsInfo({force}),
+  loadPersonalCalendar({force}),
   historyTask
  ]);
  renderActiveView();

@@ -1,9 +1,9 @@
-const BUILD=137;
+const BUILD=138;
 const C='horarios-familia-2026-27-v'+BUILD;
-const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD,'sports-info.js?v='+BUILD];
+const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD,'personal-calendar.enc.json?v='+BUILD,'sports-info.js?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([
   '/index.html','/manifest.webmanifest','/daily-info.json','/calendar-info.json',
-  '/sports-info.json','/sports-info.js','/history-info.json','/version.json'
+  '/sports-info.json','/sports-info.js','/history-info.json','/personal-calendar.enc.json','/version.json'
 ]);
 
 function canonicalCacheKey(url){
