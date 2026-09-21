@@ -11,8 +11,8 @@ android {
         applicationId 'pt.horariosfamilia.r2a.stable'
         minSdk 23
         targetSdk 35
-        versionCode 2
-        versionName '1.6.0-stable'
+        versionCode 3
+        versionName '1.7.0-stable'
     }
 
     compileOptions {
