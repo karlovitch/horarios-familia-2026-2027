@@ -1,0 +1,98 @@
+name: Criar APK R2A DRM Probe
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "android-r2a-drm-probe/**"
+      - ".github/workflows/build-r2a-drm-probe.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Obter repositorio
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Instalar Android SDK
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-37.0" "build-tools;37.0.0"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Criar icone
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          mkdir -p android-r2a-drm-probe/app/src/main/res/drawable
+          python - <<'PY'
+          from PIL import Image, ImageDraw, ImageFont
+          img=Image.new("RGBA",(512,512),(24,28,38,255))
+          d=ImageDraw.Draw(img)
+          d.rounded_rectangle((42,42,470,470), radius=92, fill=(242,244,248,255))
+          d.rounded_rectangle((92,110,420,360), radius=34, fill=(35,40,54,255))
+          d.ellipse((340,270,390,320), fill=(242,244,248,255))
+          try:
+              font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",74)
+              small=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",34)
+          except:
+              font=ImageFont.load_default()
+              small=font
+          for txt,y,f in [("DRM",168,font),("PROBE",382,small)]:
+              bbox=d.textbbox((0,0),txt,font=f)
+              d.text(((512-(bbox[2]-bbox[0]))/2,y),txt,font=f,fill=(242,244,248,255))
+          img.save("android-r2a-drm-probe/app/src/main/res/drawable/app_icon.png")
+          PY
+
+      - name: Compilar APK
+        run: gradle -p android-r2a-drm-probe :app:assembleRelease --no-daemon --stacktrace
+
+      - name: Assinar APK
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: |
+          mkdir -p .signing
+          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.pk8?format=TEXT" | base64 -d > .signing/testkey.pk8
+          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.x509.pem?format=TEXT" | base64 -d > .signing/testkey.x509.pem
+          "$ANDROID_HOME/build-tools/37.0.0/zipalign" -f 4             android-r2a-drm-probe/app/build/outputs/apk/release/app-release-unsigned.apk             R2A-DRM-Probe-aligned.apk
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" sign             --key .signing/testkey.pk8             --cert .signing/testkey.x509.pem             --out R2A-DRM-Probe.apk             R2A-DRM-Probe-aligned.apk
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose R2A-DRM-Probe.apk
+
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: R2A-DRM-Probe
+          path: R2A-DRM-Probe.apk
+          if-no-files-found: error
+
+      - name: Publicar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: r2a-drm-probe-v1
+          target_commitish: main
+          name: R2A DRM Probe
+          body: |
+            Sonda temporaria para instalar na DIGI R2A.
+            Consulta diretamente Android MediaDrm/Widevine, nivel de seguranca,
+            HDCP e decoder seguro e grava o relatorio em Download/R2A_DRM_PROBE.txt.
+          make_latest: false
+          overwrite_files: true
+          files: R2A-DRM-Probe.apk
