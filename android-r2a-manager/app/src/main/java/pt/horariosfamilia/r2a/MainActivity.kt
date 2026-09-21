@@ -8,6 +8,7 @@ import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
+import android.util.Base64
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -17,11 +18,9 @@ import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import io.github.muntashirakon.adb.AbsAdbConnectionManager
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.nio.charset.StandardCharsets
-import java.util.concurrent.TimeUnit
+import com.flyfishxu.kadb.Kadb
+import com.flyfishxu.kadb.cert.KadbCert
+import com.flyfishxu.kadb.cert.KadbPrivateKeyStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -45,6 +44,7 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        KadbCert.configure(PreferenceKeyStore(this))
         setContentView(buildUi())
     }
 
@@ -85,7 +85,7 @@ class MainActivity : Activity() {
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
         pairStatusView = TextView(this).apply {
-            text = "Emparelhamento ainda não efetuado."
+            text = "A R2A já mostra «R2A-Diagnostico» nos dispositivos sincronizados. Podes testar a ligação diretamente."
             textSize = 13f
             setPadding(dp(6), dp(2), dp(6), dp(8))
         }
@@ -194,34 +194,50 @@ class MainActivity : Activity() {
             toast("Indica a porta de emparelhamento e o código de 6 dígitos mostrado na R2A.")
             return
         }
+        val connectPort = connectPortField.text.toString().trim().toIntOrNull()
         saveFields()
         pairStatusView.text = "A emparelhar… mantém o código visível na TV."
         busy(true, "A emparelhar com a R2A…")
         scope.launch {
             val result = runCatching {
-                val manager = R2AAdbManager.getInstance(applicationContext)
-                manager.setTimeout(15, TimeUnit.SECONDS)
-                val ok = manager.pair(host, pairPort, code)
-                if (!ok) throw IOException("A biblioteca ADB devolveu falha de emparelhamento.")
-                "Emparelhamento concluído com o backend libadb. Agora toca em «2. TESTAR LIGAÇÃO»."
+                try {
+                    Kadb.pair(host, pairPort, code, "R2A-Diagnostico")
+                    "Emparelhamento concluído. A seguir toca em «2. TESTAR LIGAÇÃO»."
+                } catch (pairError: Throwable) {
+                    val raw = pairError.message.orEmpty()
+                    if (raw.contains("Could not exchange peer info", ignoreCase = true) && connectPort != null) {
+                        val verified = runCatching {
+                            Kadb.create(host, connectPort, 6000, 12000).use { kadb ->
+                                kadb.shell("echo R2A_PAIRING_VERIFIED").allOutput.trim()
+                            }
+                        }.getOrNull()
+                        if (verified == "R2A_PAIRING_VERIFIED") {
+                            "A R2A registou a chave apesar do erro final de «peer info». Ligação ADB verificada com sucesso. O dispositivo está emparelhado."
+                        } else {
+                            throw pairError
+                        }
+                    } else {
+                        throw pairError
+                    }
+                }
             }
             showResult("EMPARELHAMENTO ADB", result)
         }
     }
 
     private fun testConnection() {
-        runWithDevice("TESTE DE LIGAÇÃO") { manager ->
-            val echo = safeShell(manager, "echo R2A_MANAGER_OK")
-            val model = safeShell(manager, "getprop ro.product.manufacturer; getprop ro.product.model; getprop ro.build.version.release")
+        runWithDevice("TESTE DE LIGAÇÃO") { kadb ->
+            val echo = kadb.shell("echo R2A_MANAGER_OK").allOutput.trim()
+            val model = kadb.shell("getprop ro.product.manufacturer; getprop ro.product.model; getprop ro.build.version.release").allOutput.trim()
             "Resposta: " + echo + "\n\nDispositivo:\n" + model
         }
     }
 
     private fun fullDiagnostic() {
-        runWithDevice("DIAGNÓSTICO COMPLETO") { manager ->
+        runWithDevice("DIAGNÓSTICO COMPLETO") { kadb ->
             val sb = StringBuilder()
             sb.append(reportHeader("DIAGNÓSTICO COMPLETO"))
-            section(sb, "IDENTIFICAÇÃO", safeShell(manager,
+            section(sb, "IDENTIFICAÇÃO", safeShell(kadb,
                 "echo Fabricante: \$(getprop ro.product.manufacturer); " +
                 "echo Modelo: \$(getprop ro.product.model); " +
                 "echo Dispositivo: \$(getprop ro.product.device); " +
@@ -229,65 +245,65 @@ class MainActivity : Activity() {
                 "echo SDK: \$(getprop ro.build.version.sdk); " +
                 "echo Patch: \$(getprop ro.build.version.security_patch); " +
                 "echo Build: \$(getprop ro.build.display.id)"))
-            section(sb, "ECRÃ", safeShell(manager, "wm size; wm density"))
-            section(sb, "CPU / ABI", safeShell(manager, "getprop ro.product.cpu.abi; getprop ro.product.cpu.abilist"))
-            section(sb, "BOOT / BUILD", safeShell(manager,
+            section(sb, "ECRÃ", safeShell(kadb, "wm size; wm density"))
+            section(sb, "CPU / ABI", safeShell(kadb, "getprop ro.product.cpu.abi; getprop ro.product.cpu.abilist"))
+            section(sb, "BOOT / BUILD", safeShell(kadb,
                 "echo verifiedbootstate=\$(getprop ro.boot.verifiedbootstate); " +
                 "echo build_tags=\$(getprop ro.build.tags); " +
                 "echo build_type=\$(getprop ro.build.type)"))
-            section(sb, "GOOGLE / PLAY STORE", safeShell(manager,
+            section(sb, "GOOGLE / PLAY STORE", safeShell(kadb,
                 "pm list packages | grep -E 'com.google.android.gms|com.android.vending|com.google.android.gsf'"))
-            section(sb, "NETFLIX", netflixBlock(manager))
-            section(sb, "DRM / WIDEVINE", drmBlock(manager))
-            section(sb, "PROPRIEDADES NETFLIX/DRM", safeShell(manager,
+            section(sb, "NETFLIX", netflixBlock(kadb))
+            section(sb, "DRM / WIDEVINE", drmBlock(kadb))
+            section(sb, "PROPRIEDADES NETFLIX/DRM", safeShell(kadb,
                 "getprop | grep -i -E 'netflix|widevine|drm' | head -120"))
-            section(sb, "CODECS (amostra)", safeShell(manager,
+            section(sb, "CODECS (amostra)", safeShell(kadb,
                 "dumpsys media.codec 2>/dev/null | grep -i -E 'video/avc|video/hevc|video/x-vnd.on2.vp9|video/av01' | head -120"))
             sb.append("\nINTERPRETAÇÃO\n")
-            sb.append(interpretNetflix(manager))
+            sb.append(interpretNetflix(kadb))
             sb.toString()
         }
     }
 
     private fun netflixDiagnostic() {
-        runWithDevice("NETFLIX / DRM") { manager ->
+        runWithDevice("NETFLIX / DRM") { kadb ->
             val sb = StringBuilder()
             sb.append(reportHeader("DIAGNÓSTICO NETFLIX / DRM"))
-            section(sb, "NETFLIX INSTALADA", netflixBlock(manager))
-            section(sb, "DRM / WIDEVINE", drmBlock(manager))
-            section(sb, "PROPRIEDADES DO SISTEMA", safeShell(manager,
+            section(sb, "NETFLIX INSTALADA", netflixBlock(kadb))
+            section(sb, "DRM / WIDEVINE", drmBlock(kadb))
+            section(sb, "PROPRIEDADES DO SISTEMA", safeShell(kadb,
                 "getprop | grep -i -E 'netflix|widevine|drm' | head -160"))
-            section(sb, "DISPLAY", safeShell(manager, "wm size; wm density"))
-            section(sb, "INDICADORES GOOGLE", safeShell(manager,
+            section(sb, "DISPLAY", safeShell(kadb, "wm size; wm density"))
+            section(sb, "INDICADORES GOOGLE", safeShell(kadb,
                 "pm list packages | grep -E 'com.google.android.gms|com.android.vending|com.google.android.gsf'; " +
                 "echo build_tags=\$(getprop ro.build.tags); echo verifiedbootstate=\$(getprop ro.boot.verifiedbootstate)"))
             sb.append("\nINTERPRETAÇÃO\n")
-            sb.append(interpretNetflix(manager))
+            sb.append(interpretNetflix(kadb))
             sb.toString()
         }
     }
 
-    private fun netflixBlock(manager: AbsAdbConnectionManager): String {
-        val packages = safeShell(manager, "pm list packages | grep -i netflix")
-        val tv = safeShell(manager,
+    private fun netflixBlock(kadb: Kadb): String {
+        val packages = safeShell(kadb, "pm list packages | grep -i netflix")
+        val tv = safeShell(kadb,
             "dumpsys package com.netflix.ninja 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName|firstInstallTime|lastUpdateTime' | head -30")
-        val mobile = safeShell(manager,
+        val mobile = safeShell(kadb,
             "dumpsys package com.netflix.mediaclient 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName|firstInstallTime|lastUpdateTime' | head -30")
         return "Pacotes:\n" + packages + "\n\ncom.netflix.ninja:\n" + tv + "\n\ncom.netflix.mediaclient:\n" + mobile
     }
 
-    private fun drmBlock(manager: AbsAdbConnectionManager): String {
-        val a = safeShell(manager,
+    private fun drmBlock(kadb: Kadb): String {
+        val a = safeShell(kadb,
             "dumpsys media.drm 2>/dev/null | grep -i -E 'widevine|securityLevel|security level|vendor|version' | head -160")
-        val b = safeShell(manager,
+        val b = safeShell(kadb,
             "getprop | grep -i -E 'widevine|drm' | head -120")
         return "dumpsys media.drm:\n" + a + "\n\ngetprop:\n" + b
     }
 
-    private fun interpretNetflix(manager: AbsAdbConnectionManager): String {
-        val pkgs = safeShell(manager, "pm list packages | grep -i netflix")
-        val drm = drmBlock(manager)
-        val props = safeShell(manager, "getprop | grep -i netflix")
+    private fun interpretNetflix(kadb: Kadb): String {
+        val pkgs = safeShell(kadb, "pm list packages | grep -i netflix")
+        val drm = drmBlock(kadb)
+        val props = safeShell(kadb, "getprop | grep -i netflix")
         val hasTvNetflix = pkgs.contains("com.netflix.ninja")
         val hasAnyNetflix = pkgs.contains("netflix", ignoreCase = true)
         val low = drm.lowercase(Locale.ROOT)
@@ -307,12 +323,12 @@ class MainActivity : Activity() {
     }
 
     private fun remoteCommand(title: String, command: String) {
-        runWithDevice(title.uppercase(Locale.ROOT)) { manager ->
-            safeShell(manager, command).ifBlank { "Comando enviado." }
+        runWithDevice(title.uppercase(Locale.ROOT)) { kadb ->
+            safeShell(kadb, command).ifBlank { "Comando enviado." }
         }
     }
 
-    private fun runWithDevice(title: String, block: (AbsAdbConnectionManager) -> String) {
+    private fun runWithDevice(title: String, block: (Kadb) -> String) {
         val host = hostOrWarn() ?: return
         val port = connectPortField.text.toString().trim().toIntOrNull()
         if (port == null || port !in 1..65535) {
@@ -323,38 +339,15 @@ class MainActivity : Activity() {
         busy(true, "A ligar à R2A…")
         scope.launch {
             val result = runCatching {
-                val manager = R2AAdbManager.getInstance(applicationContext)
-                manager.setTimeout(15, TimeUnit.SECONDS)
-                runCatching { manager.disconnect() }
-                val connected = manager.connect(host, port)
-                if (!connected && !manager.isConnected) {
-                    throw IOException("Não foi possível estabelecer a ligação ADB à R2A.")
-                }
-                block(manager)
+                Kadb.create(host, port, 6000, 12000).use { kadb -> block(kadb) }
             }
             showResult(title, result)
         }
     }
 
-    private fun safeShell(manager: AbsAdbConnectionManager, command: String): String {
-        return runCatching {
-            val stream = manager.openStream("shell:" + command)
-            val output = ByteArrayOutputStream()
-            try {
-                val input = stream.openInputStream()
-                val buffer = ByteArray(4096)
-                while (true) {
-                    val count = try { input.read(buffer) } catch (e: IOException) {
-                        if (output.size() > 0) break else throw e
-                    }
-                    if (count <= 0) break
-                    output.write(buffer, 0, count)
-                }
-            } finally {
-                runCatching { stream.close() }
-            }
-            output.toString(StandardCharsets.UTF_8.name()).trim()
-        }.getOrElse { "[erro ao executar] " + (it.message ?: it.javaClass.simpleName) }
+    private fun safeShell(kadb: Kadb, command: String): String {
+        return runCatching { kadb.shell(command).allOutput.trim() }
+            .getOrElse { "[erro ao executar] " + (it.message ?: it.javaClass.simpleName) }
     }
 
     private fun section(sb: StringBuilder, title: String, body: String) {
@@ -374,13 +367,13 @@ class MainActivity : Activity() {
                 val message = result.getOrNull().orEmpty()
                 resultView.text = title + "\n\n" + message
                 if (title == "EMPARELHAMENTO ADB") {
-                    pairStatusView.text = "✓ Emparelhado. Agora toca em «2. TESTAR LIGAÇÃO»."
+                    pairStatusView.text = "✓ Emparelhamento/ligação ADB confirmado."
                 }
             } else {
                 val error = result.exceptionOrNull()
                 val raw = error?.message ?: error?.javaClass?.simpleName ?: "desconhecido"
                 val hint = if (title == "EMPARELHAMENTO ADB") {
-                    "Gera um NOVO código na R2A antes de repetir. A v1.2 usa um backend ADB diferente (libadb-android), mantendo o IP e a porta de ligação já preenchidos."
+                    "Se «R2A-Diagnostico» continuar visível nos dispositivos sincronizados da box, toca primeiro em «2. TESTAR LIGAÇÃO». Só gera um novo código se esse teste também falhar."
                 } else {
                     "Confirma que a Depuração sem fios continua ativada e que a porta de LIGAÇÃO ADB é a mostrada no ecrã principal da R2A."
                 }
@@ -438,5 +431,23 @@ class MainActivity : Activity() {
         super.onDestroy()
     }
 
+    private class PreferenceKeyStore(context: Context) : KadbPrivateKeyStore {
+        private val prefs = context.getSharedPreferences("r2a_adb_identity", Context.MODE_PRIVATE)
 
+        override fun readPrivateKeyPem(): ByteArray? {
+            val encoded = prefs.getString("private_key_pem", null) ?: return null
+            return runCatching { Base64.decode(encoded, Base64.DEFAULT) }.getOrNull()
+        }
+
+        override fun writePrivateKeyPemAtomic(privateKeyPem: ByteArray) {
+            val encoded = Base64.encodeToString(privateKeyPem, Base64.NO_WRAP)
+            if (!prefs.edit().putString("private_key_pem", encoded).commit()) {
+                throw IllegalStateException("Não foi possível guardar a identidade ADB.")
+            }
+        }
+
+        override fun clear() {
+            prefs.edit().remove("private_key_pem").commit()
+        }
+    }
 }
