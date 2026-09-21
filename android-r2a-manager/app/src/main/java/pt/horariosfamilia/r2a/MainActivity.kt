@@ -57,7 +57,7 @@ class MainActivity : Activity() {
         scroll.addView(root)
 
         root.addView(TextView(this).apply {
-            text = "R2A — Diagnóstico e Gestão v1.5"
+            text = "R2A — Diagnóstico e Gestão v1.5 Stable"
             textSize = 24f
             setTypeface(typeface, Typeface.BOLD)
         })
