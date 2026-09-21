@@ -1,0 +1,85 @@
+name: Criar APK de Emparelhamento
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "android-pairing/**"
+      - "icon-512.png"
+      - ".github/workflows/build-android-pairing.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Instalar plataforma Android 35
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Preparar ícone e banner
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          mkdir -p android-pairing/app/src/main/res/drawable
+          cp icon-512.png android-pairing/app/src/main/res/drawable/app_icon.png
+          python - <<'PY'
+          from PIL import Image
+          src=Image.open("icon-512.png").convert("RGB")
+          banner=Image.new("RGB",(320,180),(247,248,250))
+          icon=src.resize((160,160),Image.Resampling.LANCZOS)
+          banner.paste(icon,(80,10))
+          banner.save("android-pairing/app/src/main/res/drawable/tv_banner.png",optimize=True)
+          PY
+
+      - name: Compilar APK
+        run: gradle -p android-pairing :app:assembleDebug --no-daemon
+
+      - name: Preparar APK
+        run: cp android-pairing/app/build/outputs/apk/debug/app-debug.apk Emparelhar-Agenda-Horarios-Familia.apk
+
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Emparelhar-Agenda-Horarios-Familia
+          path: Emparelhar-Agenda-Horarios-Familia.apk
+          if-no-files-found: error
+
+      - name: Publicar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: agenda-pairing-v1
+          target_commitish: main
+          name: Horários Família — Emparelhar Agenda
+          body: |
+            Utilitário de emparelhamento da Agenda pessoal.
+
+            - Compatível com Android TV, telemóveis e tablets.
+            - Não contém nem guarda o código da agenda dentro da APK.
+            - Em Android TV envia o código diretamente para a app Horários Família.
+            - Em telemóveis/tablets abre a ligação segura de emparelhamento no browser/PWA.
+          make_latest: false
+          overwrite_files: true
+          files: Emparelhar-Agenda-Horarios-Familia.apk
