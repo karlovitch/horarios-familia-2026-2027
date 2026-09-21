@@ -3,6 +3,8 @@ package pt.horariosfamilia.pair;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -27,6 +29,8 @@ public class MainActivity extends Activity {
 
     private EditText codeInput;
     private TextView statusText;
+    private Button pairButton;
+    private Button openButton;
 
     private int dp(float value) {
         return Math.round(value * getResources().getDisplayMetrics().density);
@@ -89,7 +93,7 @@ public class MainActivity extends Activity {
         inputLp.topMargin = dp(24);
         root.addView(codeInput, inputLp);
 
-        Button pairButton = new Button(this);
+        pairButton = new Button(this);
         pairButton.setText("Emparelhar este dispositivo");
         pairButton.setTextSize(17);
         pairButton.setAllCaps(false);
@@ -101,12 +105,13 @@ public class MainActivity extends Activity {
         btnLp.topMargin = dp(18);
         root.addView(pairButton, btnLp);
 
-        Button openButton = new Button(this);
+        openButton = new Button(this);
         openButton.setText("Abrir Horários Família");
         openButton.setTextSize(16);
         openButton.setAllCaps(false);
         openButton.setFocusable(true);
-        openButton.setOnClickListener(v -> openWeb(WEB_URL));
+        openButton.setVisibility(View.GONE);
+        openButton.setOnClickListener(v -> openHorariosFamilia());
         LinearLayout.LayoutParams openLp = new LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             dp(54));
@@ -136,35 +141,73 @@ public class MainActivity extends Activity {
             : codeInput.getText().toString().trim();
 
         if (key.length() < 20) {
-            statusText.setText("O código parece demasiado curto. Confirma o código da Agenda pessoal.");
+            showError("O código parece demasiado curto. Confirma o código da Agenda pessoal.");
             codeInput.requestFocus();
             return;
         }
 
-        try {
-            Intent tv = new Intent();
-            tv.setClassName(TV_PACKAGE, TV_ACTIVITY);
-            tv.putExtra("agendaKey", key);
-            tv.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(tv);
-            statusText.setText("Código enviado para a app Horários Família desta box.");
+        if (sendKeyToNativeApp(key)) {
             codeInput.setText("");
+            codeInput.setVisibility(View.GONE);
+            pairButton.setVisibility(View.GONE);
+            showSuccess("✅ Agenda ligada neste dispositivo");
+            openButton.setVisibility(View.VISIBLE);
+            openButton.requestFocus();
             return;
-        } catch (ActivityNotFoundException ignored) {
-        } catch (Exception ex) {
-            statusText.setText("A app principal não aceitou o emparelhamento. Vou tentar pelo browser.");
         }
 
         String pairUrl = WEB_URL + "#agendaKey=" + Uri.encode(key);
         if (openWeb(pairUrl)) {
-            statusText.setText(
-                "Ligação de emparelhamento aberta. Quando a página carregar, " +
-                "a chave é guardada localmente e removida do endereço.");
             codeInput.setText("");
+            showSuccess("✅ Emparelhamento enviado para este dispositivo");
+            openButton.setVisibility(View.VISIBLE);
         } else {
-            statusText.setText(
-                "Não encontrei a app Horários Família nem um browser capaz de abrir a ligação.");
+            showError("Não encontrei a app Horários Família nem um browser capaz de abrir a ligação.");
         }
+    }
+
+    private boolean sendKeyToNativeApp(String key) {
+        try {
+            PackageManager pm = getPackageManager();
+            pm.getPackageInfo(TV_PACKAGE, 0);
+
+            Intent pairing = new Intent("pt.horariosfamilia.tv.PAIR_AGENDA");
+            pairing.setComponent(new ComponentName(
+                TV_PACKAGE,
+                "pt.horariosfamilia.tv.AgendaPairingReceiver"));
+            pairing.putExtra("agendaKey", key);
+            sendBroadcast(pairing);
+            return true;
+        } catch (Exception ignored) {
+            return false;
+        }
+    }
+
+    private void openHorariosFamilia() {
+        try {
+            Intent launch = getPackageManager().getLaunchIntentForPackage(TV_PACKAGE);
+            if (launch != null) {
+                launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(launch);
+                return;
+            }
+        } catch (Exception ignored) {
+        }
+        openWeb(WEB_URL);
+    }
+
+    private void showSuccess(String message) {
+        statusText.setText(message + "\n\nA chave ficou guardada localmente. Agora podes abrir Horários Família.");
+        statusText.setTextColor(Color.rgb(22, 101, 52));
+        statusText.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        statusText.setTextSize(18);
+    }
+
+    private void showError(String message) {
+        statusText.setText("⚠ " + message);
+        statusText.setTextColor(Color.rgb(153, 27, 27));
+        statusText.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        statusText.setTextSize(16);
     }
 
     private boolean openWeb(String url) {

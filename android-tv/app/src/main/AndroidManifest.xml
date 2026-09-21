@@ -14,6 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HorariosTV"
         android:usesCleartextTraffic="false">
+        <receiver
+            android:name=".AgendaPairingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="pt.horariosfamilia.tv.PAIR_AGENDA" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|uiMode"
