@@ -60,13 +60,39 @@ function Ensure-GitHubCli {
 }
 
 function Ensure-GitHubLogin([string]$Gh) {
-    & $Gh auth status --hostname github.com *> $null
-    if ($LASTEXITCODE -eq 0) { return }
+    # "gh auth status" devolve codigo diferente de zero e escreve no stderr
+    # quando ainda nao existe sessao. Isso e esperado e nao deve terminar o script.
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        & $Gh auth status --hostname github.com 1>$null 2>$null
+        $authStatus = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+
+    if ($authStatus -eq 0) { return }
 
     Write-Step "E necessario iniciar sessao no GitHub. O browser vai abrir."
     & $Gh auth login --hostname github.com --git-protocol https --web
     if ($LASTEXITCODE -ne 0) {
         throw "Nao foi possivel autenticar no GitHub."
+    }
+
+    # Confirmacao final depois do login.
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        & $Gh auth status --hostname github.com 1>$null 2>$null
+        $authStatus = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+
+    if ($authStatus -ne 0) {
+        throw "O login terminou, mas o GitHub CLI continua sem uma sessao valida."
     }
 }
 
