@@ -8,11 +8,11 @@ android {
     compileSdkMinor 0
 
     defaultConfig {
-        applicationId 'pt.horariosfamilia.r2a'
+        applicationId 'pt.horariosfamilia.r2a.stable'
         minSdk 23
         targetSdk 35
-        versionCode 6
-        versionName '1.5.0'
+        versionCode 1
+        versionName '1.5.0-stable'
     }
 
     compileOptions {
