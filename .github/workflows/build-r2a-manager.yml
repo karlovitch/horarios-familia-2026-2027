@@ -1,0 +1,100 @@
+name: Criar APK R2A Diagnostico
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "android-r2a-manager/**"
+      - ".github/workflows/build-r2a-manager.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Obter repositorio
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Instalar plataforma Android 35
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Criar icone
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          mkdir -p android-r2a-manager/app/src/main/res/drawable
+          python - <<'PY'
+          from PIL import Image, ImageDraw, ImageFont
+          img=Image.new("RGBA",(512,512),(30,34,48,255))
+          d=ImageDraw.Draw(img)
+          d.rounded_rectangle((44,44,468,468), radius=84, fill=(245,247,250,255))
+          d.rounded_rectangle((86,126,426,340), radius=38, fill=(38,43,60,255))
+          d.ellipse((352,275,392,315), fill=(245,247,250,255))
+          try:
+              font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",86)
+              small=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",38)
+          except:
+              font=ImageFont.load_default()
+              small=font
+          bbox=d.textbbox((0,0),"R2A",font=font)
+          d.text(((512-(bbox[2]-bbox[0]))/2,162),"R2A",font=font,fill=(245,247,250,255))
+          bbox2=d.textbbox((0,0),"DIAG",font=small)
+          d.text(((512-(bbox2[2]-bbox2[0]))/2,372),"DIAG",font=small,fill=(38,43,60,255))
+          img.save("android-r2a-manager/app/src/main/res/drawable/app_icon.png")
+          PY
+
+      - name: Compilar APK
+        run: gradle -p android-r2a-manager :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Preparar APK
+        run: cp android-r2a-manager/app/build/outputs/apk/debug/app-debug.apk R2A-Diagnostico-Gestao.apk
+
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: R2A-Diagnostico-Gestao
+          path: R2A-Diagnostico-Gestao.apk
+          if-no-files-found: error
+
+      - name: Publicar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: r2a-diagnostico-v1
+          target_commitish: main
+          name: R2A - Diagnostico e Gestao
+          body: |
+            APK para telemovel Android destinada a diagnosticar e gerir a box DIGI R2A por ADB via Wi-Fi.
+
+            Inclui:
+            - emparelhamento Wireless debugging por IP, porta e codigo;
+            - ligacao ADB direta sem PC;
+            - diagnostico do modelo, Android, display, Google/Play Store, DRM/Widevine e codecs;
+            - diagnostico Netflix, versao instalada e indicadores de certificacao;
+            - abrir/fechar Netflix remotamente;
+            - reiniciar a box;
+            - relatorio copiavel.
+
+            A app nao declara certificacao oficial Netflix apenas com base no Widevine.
+          make_latest: false
+          overwrite_files: true
+          files: R2A-Diagnostico-Gestao.apk
