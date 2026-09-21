@@ -19,6 +19,8 @@ public class MainActivity extends Activity {
     private static final String BASE_URL = "https://karlovitch.github.io/horarios-familia-2026-2027/";
     private static final int LOCATION_REQUEST = 41;
     private WebView webView;
+    private SharedPreferences prefs;
+    private String pendingAgendaKey;
     private String pendingGeoOrigin;
     private GeolocationPermissions.Callback pendingGeoCallback;
 
@@ -32,7 +34,13 @@ public class MainActivity extends Activity {
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         );
 
-        SharedPreferences prefs = getSharedPreferences("tv", MODE_PRIVATE);
+        prefs = getSharedPreferences("tv", MODE_PRIVATE);
+        String requestedAgendaKey = getIntent().getStringExtra("agendaKey");
+        if (requestedAgendaKey != null && !requestedAgendaKey.trim().isEmpty()) {
+            prefs.edit().putString("agendaKey", requestedAgendaKey.trim()).apply();
+        }
+        pendingAgendaKey = prefs.getString("agendaKey", "");
+
         String requestedProfile = getIntent().getStringExtra("profile");
         if (requestedProfile != null && !requestedProfile.trim().isEmpty()) {
             prefs.edit().putString("profile", requestedProfile.trim()).apply();
@@ -56,7 +64,25 @@ public class MainActivity extends Activity {
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         s.setUserAgentString(s.getUserAgentString() + " HorariosFamiliaTV/1.0");
 
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if (pendingAgendaKey != null && !pendingAgendaKey.isEmpty()) {
+                    final String expected = org.json.JSONObject.quote(pendingAgendaKey);
+                    view.evaluateJavascript(
+                        "(function(){try{return localStorage.getItem('personalCalendarPassphraseV1')===" +
+                        expected + ";}catch(e){return false;}})()",
+                        value -> {
+                            if ("true".equals(value)) {
+                                prefs.edit().remove("agendaKey").apply();
+                                pendingAgendaKey = "";
+                            }
+                        }
+                    );
+                }
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
@@ -75,7 +101,10 @@ public class MainActivity extends Activity {
         });
 
         String encoded = Uri.encode(profile);
-        webView.loadUrl(BASE_URL + "?tv=1&shell=1&profile=" + encoded);
+        String pairingFragment = (pendingAgendaKey != null && !pendingAgendaKey.isEmpty())
+            ? "#agendaKey=" + Uri.encode(pendingAgendaKey)
+            : "";
+        webView.loadUrl(BASE_URL + "?tv=1&shell=1&profile=" + encoded + pairingFragment);
         webView.requestFocus();
     }
 

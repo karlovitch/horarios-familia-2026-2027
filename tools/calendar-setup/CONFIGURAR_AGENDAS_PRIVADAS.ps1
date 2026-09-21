@@ -196,6 +196,15 @@ $sandrinhaUrl = Read-SecretIcalUrl "Sandrinha"
 Write-Step "A gerar um codigo privado para desencriptar a Agenda pessoal..."
 $passphrase = New-AgendaPassphrase
 
+try {
+    $localAgendaDir = Join-Path $env:LOCALAPPDATA "HorariosFamilia"
+    New-Item -ItemType Directory -Force -Path $localAgendaDir | Out-Null
+    $secureAgendaKey = ConvertTo-SecureString $passphrase -AsPlainText -Force
+    $secureAgendaKey | ConvertFrom-SecureString | Set-Content -Encoding UTF8 (Join-Path $localAgendaDir "agenda-key.dpapi")
+} catch {
+    Write-Warning "Nao foi possivel guardar a copia local protegida do codigo. A configuracao pode continuar."
+}
+
 Write-Step "A criar os tres GitHub Actions Secrets..."
 Set-RepoSecret $Gh "CARLOS_CALENDAR_ICS_URL" $carlosUrl
 Set-RepoSecret $Gh "SANDRINHA_CALENDAR_ICS_URL" $sandrinhaUrl

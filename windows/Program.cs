@@ -7,10 +7,13 @@ namespace HorariosFamilia.Windows;
 internal static class Program
 {
     [STAThread]
-    private static void Main()
+    private static void Main(string[] args)
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new MainForm());
+        var agendaKey = args
+            .FirstOrDefault(a => a.StartsWith("--agenda-key=", StringComparison.OrdinalIgnoreCase))
+            ?.Substring("--agenda-key=".Length);
+        Application.Run(new MainForm(agendaKey));
     }
 }
 
@@ -21,13 +24,15 @@ internal sealed class MainForm : Form
     private const string TrustedPathPrefix = "/horarios-familia-2026-2027/";
 
     private readonly WebView2 _webView = new() { Dock = DockStyle.Fill };
+    private string? _initialAgendaKey;
     private bool _fullScreen;
     private FormBorderStyle _previousBorderStyle;
     private FormWindowState _previousWindowState;
     private Rectangle _previousBounds;
 
-    public MainForm()
+    public MainForm(string? initialAgendaKey = null)
     {
+        _initialAgendaKey = string.IsNullOrWhiteSpace(initialAgendaKey) ? null : initialAgendaKey.Trim();
         Text = "Horários Família";
         StartPosition = FormStartPosition.CenterScreen;
         ClientSize = new Size(1280, 820);
@@ -97,8 +102,15 @@ internal sealed class MainForm : Form
             return;
 
         var stamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        var fragment = "";
+        if (!string.IsNullOrWhiteSpace(_initialAgendaKey))
+        {
+            fragment = "#agendaKey=" + Uri.EscapeDataString(_initialAgendaKey);
+            _initialAgendaKey = null;
+        }
+
         _webView.CoreWebView2.Navigate(
-            BaseUrl + "?windows=1&shell=1&native=1&__fresh=" + stamp);
+            BaseUrl + "?windows=1&shell=1&native=1&__fresh=" + stamp + fragment);
     }
 
     private async Task SignalForegroundAsync()

@@ -1,0 +1,18 @@
+EMPARELHAR AGENDA PESSOAL EM TODAS AS APPS
+==========================================
+
+Executa EMPARELHAR_AGENDA_TODAS_APPS.cmd.
+
+O script pede/recupera o código da agenda uma única vez e:
+- guarda-o localmente protegido pelo Windows (DPAPI);
+- emparelha o browser/PWA do Windows;
+- descarrega a app Windows mais recente e abre-a já emparelhada;
+- cria/atualiza um atalho "Horarios Familia" no Ambiente de Trabalho;
+- opcionalmente configura Android/Android TV por ADB;
+- em telemóveis/tablets Android ligados por ADB abre a ligação de emparelhamento no browser/PWA.
+
+SEGURANÇA
+---------
+A chave não é embutida no site, APK ou EXE.
+A ligação usa o fragmento da URL (#...), que não é enviado ao GitHub Pages.
+A app apaga o fragmento do endereço depois de guardar a chave localmente.

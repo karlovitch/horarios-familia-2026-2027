@@ -9,7 +9,7 @@
     <RootNamespace>HorariosFamilia.Windows</RootNamespace>
     <AssemblyName>HorariosFamilia</AssemblyName>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Company>Horários Família</Company>
     <Product>Horários Família</Product>
     <Description>Aplicação Windows dos Horários Família 2026–2027</Description>
