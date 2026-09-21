@@ -32,7 +32,7 @@ jobs:
         run: |
           SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -1)"
           yes | "$SDKMANAGER" --licenses >/dev/null || true
-          "$SDKMANAGER" "platforms;android-37.0" "build-tools;37.0.0"
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -72,9 +72,9 @@ jobs:
           mkdir -p .signing
           curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.pk8?format=TEXT" | base64 -d > .signing/testkey.pk8
           curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.x509.pem?format=TEXT" | base64 -d > .signing/testkey.x509.pem
-          "$ANDROID_HOME/build-tools/37.0.0/zipalign" -f 4             android-r2a-drm-probe/app/build/outputs/apk/release/app-release-unsigned.apk             R2A-DRM-Probe-aligned.apk
-          "$ANDROID_HOME/build-tools/37.0.0/apksigner" sign             --key .signing/testkey.pk8             --cert .signing/testkey.x509.pem             --out R2A-DRM-Probe.apk             R2A-DRM-Probe-aligned.apk
-          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose R2A-DRM-Probe.apk
+          "$ANDROID_HOME/build-tools/35.0.0/zipalign" -f 4             android-r2a-drm-probe/app/build/outputs/apk/release/app-release-unsigned.apk             R2A-DRM-Probe-aligned.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" sign             --key .signing/testkey.pk8             --cert .signing/testkey.x509.pem             --out R2A-DRM-Probe.apk             R2A-DRM-Probe-aligned.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose R2A-DRM-Probe.apk
 
       - name: Guardar artefacto
         uses: actions/upload-artifact@v4
