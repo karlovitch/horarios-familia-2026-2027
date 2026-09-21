@@ -1,0 +1,33 @@
+CONFIGURAR AGENDAS PRIVADAS — HORÁRIOS FAMÍLIA
+=================================================
+
+1. Faz duplo clique em:
+   CONFIGURAR_AGENDAS_PRIVADAS.cmd
+
+2. O assistente verifica/instala o GitHub CLI e pede autenticação no GitHub.
+
+3. O browser abre o Google Calendar. Para cada pessoa:
+   Definições > escolher calendário > Integrar calendário >
+   Endereço secreto em formato iCal.
+
+4. Cola no assistente primeiro o endereço de Carlos e depois o da Sandrinha.
+
+5. O assistente:
+   - gera automaticamente um código privado forte;
+   - cria CARLOS_CALENDAR_ICS_URL;
+   - cria SANDRINHA_CALENDAR_ICS_URL;
+   - cria PERSONAL_CALENDAR_PASSPHRASE;
+   - executa a primeira sincronização;
+   - confirma se terminou com sucesso;
+   - copia o código da agenda para a área de transferência;
+   - abre a aplicação.
+
+6. Na app, escolhe "Agenda pessoal - Ligar" e introduz o código.
+   Repete apenas este último passo em cada dispositivo.
+
+SEGURANÇA
+---------
+- O script não grava os endereços secretos iCal no repositório.
+- O conteúdo das agendas é publicado apenas em formato AES-GCM encriptado.
+- Não partilhes os endereços iCal secretos.
+- Guarda o código da agenda num local seguro.
