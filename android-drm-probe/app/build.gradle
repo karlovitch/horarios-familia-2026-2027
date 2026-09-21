@@ -1,0 +1,15 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'pt.horariosfamilia.r2adrmprobe'
+    compileSdk 37
+    defaultConfig {
+        applicationId 'pt.horariosfamilia.r2adrmprobe'
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
+
+dependencies { }
