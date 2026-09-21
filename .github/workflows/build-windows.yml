@@ -1,0 +1,70 @@
+name: Criar EXE Windows
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "windows/**"
+      - "icon-512.png"
+      - ".github/workflows/build-windows.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Python para gerar o ícone
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar ícone Windows
+        shell: pwsh
+        run: |
+          python -m pip install --disable-pip-version-check pillow
+          python -c "from PIL import Image; im=Image.open('icon-512.png').convert('RGBA'); im.save('windows/app.ico', format='ICO', sizes=[(16,16),(24,24),(32,32),(48,48),(64,64),(128,128),(256,256)])"
+
+      - name: Restaurar dependências
+        run: dotnet restore windows/HorariosFamilia.Windows.csproj
+
+      - name: Compilar EXE portátil
+        shell: pwsh
+        run: |
+          dotnet publish windows/HorariosFamilia.Windows.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o windows/publish
+          Copy-Item windows/publish/HorariosFamilia.exe HorariosFamilia-Windows.exe
+
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: HorariosFamilia-Windows
+          path: HorariosFamilia-Windows.exe
+          if-no-files-found: error
+
+      - name: Publicar EXE
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: windows-v1
+          target_commitish: main
+          name: Horários Família — Windows
+          body: |
+            Aplicação Windows dos Horários Família 2026–2027.
+
+            - EXE portátil para Windows 64-bit.
+            - Conteúdo e funcionalidades web atualizam-se automaticamente.
+            - F5/Ctrl+R força a atualização.
+            - F11 ativa o ecrã inteiro.
+            - Requer Microsoft Edge WebView2 Runtime, normalmente já incluído no Windows 10/11.
+          make_latest: true
+          files: HorariosFamilia-Windows.exe
