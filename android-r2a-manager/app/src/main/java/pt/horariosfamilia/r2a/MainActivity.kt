@@ -398,10 +398,10 @@ class MainActivity : Activity() {
             val command =
                 "rm -f /sdcard/Download/R2A_DRM_PROBE.txt /storage/emulated/0/Download/R2A_DRM_PROBE.txt 2>/dev/null; " +
                 "monkey -p pt.horariosfamilia.r2a.drmprobe -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; " +
-                "i=0; while [ \\$i -lt 20 ]; do " +
+                "i=0; while [ \$i -lt 20 ]; do " +
                 "if [ -s /sdcard/Download/R2A_DRM_PROBE.txt ]; then cat /sdcard/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
                 "if [ -s /storage/emulated/0/Download/R2A_DRM_PROBE.txt ]; then cat /storage/emulated/0/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
-                "sleep 1; i=\\$((i+1)); done; echo __R2A_PROBE_NOT_FOUND__"
+                "sleep 1; i=\$((i+1)); done; echo __R2A_PROBE_NOT_FOUND__"
             val report = safeShell(manager, command, 30000L)
             if (report.contains("__R2A_PROBE_NOT_FOUND__")) {
                 "A Sonda DRM não produziu o ficheiro esperado. Confirma que a APK «R2A DRM Probe» está instalada na box e volta a tentar."
