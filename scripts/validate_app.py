@@ -116,6 +116,8 @@ required_index_tokens = {
     "faixa meteorológica disponível": 'data-weather-strip',
     "meteorologia global": 'id="globalWeatherStrip"',
     "agenda pessoal global": 'id="globalPersonalAgenda"',
+    "agenda pessoal visível durante carregamento": 'disabled>A carregar…</button>',
+    "agenda pessoal começa bloqueada": 'PERSONAL_CALENDAR_STATE={envelope:null,data:null,loadedAt:0,locked:true',
     "agenda pessoal encriptada": 'personal-calendar.enc.json',
     "fallback direto encriptado da agenda": "raw.githubusercontent.com/karlovitch/horarios-familia-2026-2027/main/personal-calendar.enc.json",
     "erro da agenda visível e repetível": "data-calendar-retry",

@@ -1,4 +1,4 @@
-const BUILD=139;
+const BUILD=140;
 const C='horarios-familia-2026-27-v'+BUILD;
 const CORE=['./?v='+BUILD,'index.html?v='+BUILD,'manifest.webmanifest?v='+BUILD,'favicon-64.png?v='+BUILD,'icon-192.png?v='+BUILD,'icon-512.png?v='+BUILD,'icon-maskable-512.png?v='+BUILD,'apple-touch-icon.png?v='+BUILD,'version.json?v='+BUILD,'personal-calendar.enc.json?v='+BUILD,'sports-info.js?v='+BUILD];
 const NETWORK_FIRST_PATHS=new Set([

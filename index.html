@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=139">
-<link rel="icon" href="favicon-64.png?v=139" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=139" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=139" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=139">
+<link rel="manifest" href="manifest.webmanifest?v=140">
+<link rel="icon" href="favicon-64.png?v=140" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=140" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=140" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=140">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -489,7 +489,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 </nav>
 <div id="sportsTabRow" class="sports-tab-row hidden" aria-hidden="true"><button class="sports-tab-btn" data-view="sports" type="button">⚽ 🏒 🏎️ Desporto</button></div>
 <div id="globalWeatherStrip" class="weather-strip global-weather-row" data-weather-strip aria-live="polite">🌡️ A obter previsão…</div>
-<div id="globalPersonalAgenda" class="personal-agenda-row hidden" data-personal-agenda aria-live="polite"></div>
+<div id="globalPersonalAgenda" class="personal-agenda-row" data-personal-agenda aria-live="polite"><div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" disabled>A carregar…</button></div></div>
 <div id="globalFamilyBanner" class="family-banner global-family-row hidden" data-global-family-banner></div>
 <section id="overview" class="screen">
 <div class="today-page-nav top-date-nav" aria-label="Navegação diária">
@@ -578,7 +578,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=139"></script>
+<script src="sports-info.js?v=140"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -778,7 +778,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=139;
+const APP_BUILD=140;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -787,7 +787,7 @@ const WEATHER_STATE={loadedAt:0,promise:null,data:null,weatherKey:"",location:nu
 const PERSONAL_CALENDAR_FILE="personal-calendar.enc.json";
 const PERSONAL_CALENDAR_RAW_URL="https://raw.githubusercontent.com/karlovitch/horarios-familia-2026-2027/main/personal-calendar.enc.json";
 const PERSONAL_CALENDAR_KEY_STORAGE="personalCalendarPassphraseV1";
-const PERSONAL_CALENDAR_STATE={envelope:null,data:null,loadedAt:0,locked:false,promise:null,error:""};
+const PERSONAL_CALENDAR_STATE={envelope:null,data:null,loadedAt:0,locked:true,promise:null,error:""};
 const DATA_LOAD_STATE={
  daily:{loadedAt:0,promise:null},
  sports:{loadedAt:0,promise:null},
@@ -2177,6 +2177,11 @@ function agendaOwnerHtml(owner,events){
 function renderPersonalAgenda(iso=statsIso()){
  const row=qs("#globalPersonalAgenda");if(!row)return;
  const env=PERSONAL_CALENDAR_STATE.envelope;
+ if(!env&&!PERSONAL_CALENDAR_STATE.error){
+  row.innerHTML='<div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" disabled>A carregar…</button></div>';
+  row.classList.remove("hidden");
+  return;
+ }
  if(env&&env.configured&&PERSONAL_CALENDAR_STATE.locked){
   row.innerHTML='<div class="agenda-lock"><strong>🔒 Agenda pessoal</strong><span>Carlos + Sandrinha</span><button type="button" data-calendar-unlock>Ligar</button></div>';
   row.classList.remove("hidden");
