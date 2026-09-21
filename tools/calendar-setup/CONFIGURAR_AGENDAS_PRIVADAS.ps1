@@ -75,12 +75,22 @@ function Ensure-GitHubLogin([string]$Gh) {
     if ($authStatus -eq 0) { return }
 
     Write-Step "E necessario iniciar sessao no GitHub. O browser vai abrir."
-    & $Gh auth login --hostname github.com --git-protocol https --web
-    if ($LASTEXITCODE -ne 0) {
-        throw "Nao foi possivel autenticar no GitHub."
+
+    # Nao exigimos Git for Windows: para criar Secrets e executar Actions,
+    # o GitHub CLI usa a API do GitHub. Algumas versoes de gh podem devolver
+    # codigo de erro depois de autenticar se tentarem configurar o Git local.
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "Continue"
+        & $Gh auth login --hostname github.com --web
+        $loginExit = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $previousErrorAction
     }
 
-    # Confirmacao final depois do login.
+    # O resultado decisivo e a sessao autenticada, nao o codigo do comando
+    # anterior, porque esse comando pode falhar apenas na configuracao local do Git.
     $previousErrorAction = $ErrorActionPreference
     try {
         $ErrorActionPreference = "Continue"
@@ -92,7 +102,11 @@ function Ensure-GitHubLogin([string]$Gh) {
     }
 
     if ($authStatus -ne 0) {
-        throw "O login terminou, mas o GitHub CLI continua sem uma sessao valida."
+        throw "Nao foi possivel autenticar no GitHub."
+    }
+
+    if ($loginExit -ne 0) {
+        Write-Host "Autenticacao concluida. O aviso sobre Git local pode ser ignorado para esta configuracao." -ForegroundColor Yellow
     }
 }
 
