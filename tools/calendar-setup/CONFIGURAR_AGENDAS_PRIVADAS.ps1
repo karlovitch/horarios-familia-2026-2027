@@ -42,7 +42,9 @@ function Ensure-GitHubCli {
         throw "Nao encontrei o winget. Instala o GitHub CLI na pagina que foi aberta e volta a executar este script."
     }
 
-    & winget install --id GitHub.cli -e --source winget --accept-source-agreements --accept-package-agreements
+    # Envia a saída do winget apenas para o ecrã. Assim, o texto da instalação
+    # não entra no valor devolvido por esta função (que tem de ser apenas gh.exe).
+    & winget install --id GitHub.cli -e --source winget --accept-source-agreements --accept-package-agreements | Out-Host
     if ($LASTEXITCODE -ne 0) {
         throw "A instalacao automatica do GitHub CLI falhou."
     }
