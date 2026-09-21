@@ -6,7 +6,7 @@
     <application
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
-        android:label="R2A Diagnóstico"
+        android:label="R2A Diagnóstico Stable"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
