@@ -39,6 +39,7 @@ class MainActivity : Activity() {
     private lateinit var resultView: TextView
     private lateinit var progress: ProgressBar
     private lateinit var statusView: TextView
+    private lateinit var pairStatusView: TextView
     private val prefs by lazy { getSharedPreferences("r2a_manager", Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +84,12 @@ class MainActivity : Activity() {
         root.addView(pairCodeField)
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
+        pairStatusView = TextView(this).apply {
+            text = "Emparelhamento ainda não efetuado."
+            textSize = 13f
+            setPadding(dp(6), dp(2), dp(6), dp(8))
+        }
+        root.addView(pairStatusView)
         root.addView(button("2. TESTAR LIGAÇÃO") { testConnection() })
         root.addView(button("3. DIAGNÓSTICO COMPLETO") { fullDiagnostic() })
         root.addView(button("4. DIAGNÓSTICO NETFLIX / DRM") { netflixDiagnostic() })
@@ -103,6 +110,7 @@ class MainActivity : Activity() {
         row2.addView(button("Limpar", 1f) {
             resultView.text = ""
             statusView.text = "Pronto."
+            pairStatusView.text = "Emparelhamento ainda não efetuado."
         })
         root.addView(row2)
 
@@ -187,6 +195,7 @@ class MainActivity : Activity() {
             return
         }
         saveFields()
+        pairStatusView.text = "A emparelhar… mantém o código visível na TV."
         busy(true, "A emparelhar com a R2A…")
         scope.launch {
             val result = runCatching {
@@ -336,11 +345,23 @@ class MainActivity : Activity() {
         runOnUiThread {
             busy(false, if (result.isSuccess) "Concluído." else "Falhou.")
             if (result.isSuccess) {
-                resultView.text = title + "\n\n" + result.getOrNull().orEmpty()
+                val message = result.getOrNull().orEmpty()
+                resultView.text = title + "\n\n" + message
+                if (title == "EMPARELHAMENTO ADB") {
+                    pairStatusView.text = "✓ Emparelhado. Agora toca em «2. TESTAR LIGAÇÃO»."
+                }
             } else {
                 val error = result.exceptionOrNull()
-                resultView.text = title + "\n\nERRO: " + (error?.message ?: error?.javaClass?.simpleName ?: "desconhecido") +
-                    "\n\nSe a box mostrar um pedido de autorização ADB, aceita-o e repete o teste. Em Wireless debugging moderno, usa a porta de LIGAÇÃO, não a porta de EMPARELHAMENTO."
+                val raw = error?.message ?: error?.javaClass?.simpleName ?: "desconhecido"
+                val hint = if (title == "EMPARELHAMENTO ADB" && raw.contains("connection abort", ignoreCase = true)) {
+                    "A R2A encerrou a sessão durante a negociação. Volta à TV, gera um NOVO código de sincronização e uma NOVA porta de emparelhamento e tenta novamente. Esta versão usa Conscrypt próprio para o TLS do pairing."
+                } else {
+                    "Se a box mostrar um pedido de autorização ADB, aceita-o e repete o teste. Em Wireless debugging moderno, usa a porta de LIGAÇÃO, não a porta de EMPARELHAMENTO."
+                }
+                resultView.text = title + "\n\nERRO: " + raw + "\n\n" + hint
+                if (title == "EMPARELHAMENTO ADB") {
+                    pairStatusView.text = "✗ Emparelhamento falhou. Vê a explicação abaixo."
+                }
             }
         }
     }
