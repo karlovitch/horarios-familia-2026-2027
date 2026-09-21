@@ -57,7 +57,7 @@ class MainActivity : Activity() {
         scroll.addView(root)
 
         root.addView(TextView(this).apply {
-            text = "R2A — Diagnóstico e Gestão v1.3"
+            text = "R2A — Diagnóstico e Gestão v1.4"
             textSize = 24f
             setTypeface(typeface, Typeface.BOLD)
         })
@@ -85,7 +85,7 @@ class MainActivity : Activity() {
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
         pairStatusView = TextView(this).apply {
-            text = "Backend ADB alternativo. Faz um novo emparelhamento apenas depois de remover o registo antigo «R2A-Diagnostico» na box."
+            text = "Emparelhamento já efetuado. Usa diretamente «2. TESTAR LIGAÇÃO»; a app tenta a porta guardada e, se necessário, deteção automática."
             textSize = 13f
             setPadding(dp(6), dp(2), dp(6), dp(8))
         }
@@ -211,9 +211,10 @@ class MainActivity : Activity() {
 
     private fun testConnection() {
         runWithDevice("TESTE DE LIGAÇÃO") { manager ->
+            busy(true, "Ligação ADB estabelecida. A testar comando…")
             val echo = safeShell(manager, "echo R2A_MANAGER_OK")
             val model = safeShell(manager, "getprop ro.product.manufacturer; getprop ro.product.model; getprop ro.build.version.release")
-            "Resposta: " + echo + "\n\nDispositivo:\n" + model
+            "Ligação ADB: OK\nResposta: " + echo + "\n\nDispositivo:\n" + model
         }
     }
 
@@ -320,16 +321,29 @@ class MainActivity : Activity() {
             return
         }
         saveFields()
-        busy(true, "A ligar à R2A…")
+        busy(true, "A ligar à R2A em " + host + ":" + port + "…")
         scope.launch {
             val result = runCatching {
-                val manager = R2AAdbManager.getInstance(applicationContext)
-                manager.setTimeout(15, TimeUnit.SECONDS)
-                runCatching { manager.disconnect() }
-                val connected = manager.connect(host, port)
-                if (!connected && !manager.isConnected) {
-                    throw IOException("Não foi possível estabelecer a ligação ADB à R2A.")
+                var manager = R2AAdbManager.getInstance(applicationContext)
+                manager.setTimeout(8, TimeUnit.SECONDS)
+
+                var connected = manager.isConnected
+                if (!connected) {
+                    connected = runCatching { manager.connect(host, port) }.getOrDefault(false)
                 }
+
+                if (!connected) {
+                    busy(true, "Ligação direta falhou. A procurar a R2A automaticamente…")
+                    manager = R2AAdbManager.recreate(applicationContext)
+                    manager.setTimeout(8, TimeUnit.SECONDS)
+                    connected = runCatching { manager.connectTls(applicationContext, 6000) }.getOrDefault(false)
+                }
+
+                if (!connected && !manager.isConnected) {
+                    throw IOException("Não foi possível estabelecer a ligação ADB por porta direta nem por deteção automática.")
+                }
+
+                busy(true, "Ligação ADB estabelecida.")
                 block(manager)
             }
             showResult(title, result)
@@ -338,22 +352,32 @@ class MainActivity : Activity() {
 
     private fun safeShell(manager: AbsAdbConnectionManager, command: String): String {
         return runCatching {
-            val stream = manager.openStream("shell:" + command)
+            val marker = "__R2A_END__"
+            val stream = manager.openStream("shell:" + command + "; echo " + marker)
             val output = ByteArrayOutputStream()
             try {
                 val input = stream.openInputStream()
                 val buffer = ByteArray(4096)
-                while (true) {
-                    val count = try { input.read(buffer) } catch (e: IOException) {
-                        if (output.size() > 0) break else throw e
+                val deadline = System.currentTimeMillis() + 8000L
+                while (System.currentTimeMillis() < deadline) {
+                    val available = runCatching { input.available() }.getOrElse { break }
+                    if (available > 0) {
+                        val count = input.read(buffer, 0, minOf(buffer.size, available))
+                        if (count > 0) {
+                            output.write(buffer, 0, count)
+                            val current = output.toString(StandardCharsets.UTF_8.name())
+                            if (current.contains(marker)) break
+                        }
+                    } else {
+                        if (stream.isClosed) break
+                        Thread.sleep(40)
                     }
-                    if (count <= 0) break
-                    output.write(buffer, 0, count)
                 }
             } finally {
                 runCatching { stream.close() }
             }
-            output.toString(StandardCharsets.UTF_8.name()).trim()
+            val text = output.toString(StandardCharsets.UTF_8.name()).replace(marker, "").trim()
+            if (text.isBlank()) "(sem resposta ao comando em 8 s)" else text
         }.getOrElse { "[erro ao executar] " + (it.message ?: it.javaClass.simpleName) }
     }
 
@@ -380,7 +404,7 @@ class MainActivity : Activity() {
                 val error = result.exceptionOrNull()
                 val raw = error?.message ?: error?.javaClass?.simpleName ?: "desconhecido"
                 val hint = if (title == "EMPARELHAMENTO ADB") {
-                    "Gera um NOVO código na R2A antes de repetir. A v1.2 usa um backend ADB diferente (libadb-android), mantendo o IP e a porta de ligação já preenchidos."
+                    "Gera um NOVO código na R2A antes de repetir. O emparelhamento já está guardado. Não voltes a emparelhar a menos que a app indique explicitamente que é necessário."
                 } else {
                     "Confirma que a Depuração sem fios continua ativada e que a porta de LIGAÇÃO ADB é a mostrada no ecrã principal da R2A."
                 }
