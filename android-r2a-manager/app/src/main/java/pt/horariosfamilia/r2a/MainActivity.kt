@@ -57,7 +57,7 @@ class MainActivity : Activity() {
         scroll.addView(root)
 
         root.addView(TextView(this).apply {
-            text = "R2A — Diagnóstico e Gestão v1.5 Stable"
+            text = "R2A — Diagnóstico e Gestão v1.6 Stable"
             textSize = 24f
             setTypeface(typeface, Typeface.BOLD)
         })
@@ -85,7 +85,7 @@ class MainActivity : Activity() {
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
         pairStatusView = TextView(this).apply {
-            text = "Emparelhamento preservado. Diagnóstico v1.5 distingue comando sem saída de timeout e usa testes Netflix/DRM mais diretos."
+            text = "Emparelhamento preservado. A v1.6 consegue executar e recolher automaticamente o relatório da Sonda DRM instalada na R2A."
             textSize = 13f
             setPadding(dp(6), dp(2), dp(6), dp(8))
         }
@@ -93,6 +93,7 @@ class MainActivity : Activity() {
         root.addView(button("2. TESTAR LIGAÇÃO") { testConnection() })
         root.addView(button("3. DIAGNÓSTICO COMPLETO") { fullDiagnostic() })
         root.addView(button("4. DIAGNÓSTICO NETFLIX / DRM") { netflixDiagnostic() })
+        root.addView(button("5. EXECUTAR/LER SONDA DRM") { runAndReadDrmProbe() })
 
         val row1 = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
@@ -389,6 +390,25 @@ class MainActivity : Activity() {
             !value.contains("(comando concluído sem saída)", true) &&
             !value.contains("TIMEOUT", true) &&
             !value.startsWith("[erro", true)
+    }
+
+    private fun runAndReadDrmProbe() {
+        runWithDevice("SONDA DRM") { manager ->
+            busy(true, "A abrir a Sonda DRM na R2A e a aguardar o relatório…")
+            val command =
+                "rm -f /sdcard/Download/R2A_DRM_PROBE.txt /storage/emulated/0/Download/R2A_DRM_PROBE.txt 2>/dev/null; " +
+                "monkey -p pt.horariosfamilia.r2a.drmprobe -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; " +
+                "i=0; while [ \\$i -lt 20 ]; do " +
+                "if [ -s /sdcard/Download/R2A_DRM_PROBE.txt ]; then cat /sdcard/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
+                "if [ -s /storage/emulated/0/Download/R2A_DRM_PROBE.txt ]; then cat /storage/emulated/0/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
+                "sleep 1; i=\\$((i+1)); done; echo __R2A_PROBE_NOT_FOUND__"
+            val report = safeShell(manager, command, 30000L)
+            if (report.contains("__R2A_PROBE_NOT_FOUND__")) {
+                "A Sonda DRM não produziu o ficheiro esperado. Confirma que a APK «R2A DRM Probe» está instalada na box e volta a tentar."
+            } else {
+                report
+            }
+        }
     }
 
     private fun remoteCommand(title: String, command: String) {
