@@ -64,26 +64,38 @@ jobs:
           PY
 
       - name: Compilar APK
-        run: gradle -p android-r2a-manager :app:assembleDebug --no-daemon --stacktrace
+        run: gradle -p android-r2a-manager :app:assembleRelease --no-daemon --stacktrace
+
+      - name: Assinar APK com chave de desenvolvimento fixa
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: |
+          mkdir -p .signing
+          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.pk8?format=TEXT" | base64 -d > .signing/testkey.pk8
+          curl -fsSL "https://android.googlesource.com/platform/build/+/refs/heads/master/target/product/security/testkey.x509.pem?format=TEXT" | base64 -d > .signing/testkey.x509.pem
+          "$ANDROID_HOME/build-tools/37.0.0/zipalign" -f 4             android-r2a-manager/app/build/outputs/apk/release/app-release-unsigned.apk             R2A-Diagnostico-Gestao-Stable-aligned.apk
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" sign             --key .signing/testkey.pk8             --cert .signing/testkey.x509.pem             --out R2A-Diagnostico-Gestao-Stable.apk             R2A-Diagnostico-Gestao-Stable-aligned.apk
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --verbose R2A-Diagnostico-Gestao-Stable.apk
 
       - name: Preparar APK
-        run: cp android-r2a-manager/app/build/outputs/apk/debug/app-debug.apk R2A-Diagnostico-Gestao.apk
+        run: test -f R2A-Diagnostico-Gestao-Stable.apk
 
       - name: Guardar artefacto
         uses: actions/upload-artifact@v4
         with:
-          name: R2A-Diagnostico-Gestao
-          path: R2A-Diagnostico-Gestao.apk
+          name: R2A-Diagnostico-Gestao-Stable
+          path: R2A-Diagnostico-Gestao-Stable.apk
           if-no-files-found: error
 
       - name: Publicar APK
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: r2a-diagnostico-v1
+          tag_name: r2a-diagnostico-stable-v1
           target_commitish: main
-          name: R2A - Diagnostico e Gestao
+          name: R2A - Diagnostico e Gestao Stable
           body: |
-            APK para telemovel Android destinada a diagnosticar e gerir a box DIGI R2A por ADB via Wi-Fi.
+            APK Stable para telemovel Android destinada a diagnosticar e gerir a box DIGI R2A por ADB via Wi-Fi.
+            Usa package id dedicado e assinatura de desenvolvimento fixa para permitir atualizacoes futuras sem conflitos.
 
             Inclui:
             - emparelhamento Wireless debugging por IP, porta e codigo;
@@ -97,4 +109,4 @@ jobs:
             A app nao declara certificacao oficial Netflix apenas com base no Widevine.
           make_latest: false
           overwrite_files: true
-          files: R2A-Diagnostico-Gestao.apk
+          files: R2A-Diagnostico-Gestao-Stable.apk
