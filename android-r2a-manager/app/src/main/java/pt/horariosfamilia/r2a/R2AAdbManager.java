@@ -59,6 +59,17 @@ public class R2AAdbManager extends AbsAdbConnectionManager {
         return INSTANCE;
     }
 
+    public static synchronized R2AAdbManager recreate(@NonNull Context context) throws Exception {
+        if (INSTANCE != null) {
+            try {
+                INSTANCE.disconnect();
+            } catch (Throwable ignored) {
+            }
+        }
+        INSTANCE = new R2AAdbManager(context.getApplicationContext());
+        return INSTANCE;
+    }
+
     private PrivateKey privateKey;
     private Certificate certificate;
 
