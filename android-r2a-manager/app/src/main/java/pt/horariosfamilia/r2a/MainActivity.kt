@@ -57,7 +57,7 @@ class MainActivity : Activity() {
         scroll.addView(root)
 
         root.addView(TextView(this).apply {
-            text = "R2A — Diagnóstico e Gestão v1.4"
+            text = "R2A — Diagnóstico e Gestão v1.5"
             textSize = 24f
             setTypeface(typeface, Typeface.BOLD)
         })
@@ -85,7 +85,7 @@ class MainActivity : Activity() {
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
         pairStatusView = TextView(this).apply {
-            text = "Emparelhamento já efetuado. Usa diretamente «2. TESTAR LIGAÇÃO»; a app tenta a porta guardada e, se necessário, deteção automática."
+            text = "Emparelhamento preservado. Diagnóstico v1.5 distingue comando sem saída de timeout e usa testes Netflix/DRM mais diretos."
             textSize = 13f
             setPadding(dp(6), dp(2), dp(6), dp(8))
         }
@@ -110,7 +110,7 @@ class MainActivity : Activity() {
         row2.addView(button("Limpar", 1f) {
             resultView.text = ""
             statusView.text = "Pronto."
-            pairStatusView.text = "Emparelhamento ainda não efetuado."
+            pairStatusView.text = "Emparelhamento preservado. Usa diretamente «2. TESTAR LIGAÇÃO»."
         })
         root.addView(row2)
 
@@ -221,7 +221,7 @@ class MainActivity : Activity() {
     private fun fullDiagnostic() {
         runWithDevice("DIAGNÓSTICO COMPLETO") { manager ->
             val sb = StringBuilder()
-            sb.append(reportHeader("DIAGNÓSTICO COMPLETO"))
+            sb.append(reportHeader("DIAGNÓSTICO COMPLETO v1.5"))
             section(sb, "IDENTIFICAÇÃO", safeShell(manager,
                 "echo Fabricante: \$(getprop ro.product.manufacturer); " +
                 "echo Modelo: \$(getprop ro.product.model); " +
@@ -229,21 +229,22 @@ class MainActivity : Activity() {
                 "echo Android: \$(getprop ro.build.version.release); " +
                 "echo SDK: \$(getprop ro.build.version.sdk); " +
                 "echo Patch: \$(getprop ro.build.version.security_patch); " +
-                "echo Build: \$(getprop ro.build.display.id)"))
-            section(sb, "ECRÃ", safeShell(manager, "wm size; wm density"))
-            section(sb, "CPU / ABI", safeShell(manager, "getprop ro.product.cpu.abi; getprop ro.product.cpu.abilist"))
+                "echo Build: \$(getprop ro.build.display.id); " +
+                "echo Fingerprint: \$(getprop ro.build.fingerprint)", 6000L))
+            section(sb, "ECRÃ / HDMI", displayBlock(manager))
+            section(sb, "CPU / ABI", safeShell(manager,
+                "getprop ro.product.cpu.abi; getprop ro.product.cpu.abilist", 4000L))
             section(sb, "BOOT / BUILD", safeShell(manager,
                 "echo verifiedbootstate=\$(getprop ro.boot.verifiedbootstate); " +
                 "echo build_tags=\$(getprop ro.build.tags); " +
-                "echo build_type=\$(getprop ro.build.type)"))
-            section(sb, "GOOGLE / PLAY STORE", safeShell(manager,
-                "pm list packages | grep -E 'com.google.android.gms|com.android.vending|com.google.android.gsf'"))
+                "echo build_type=\$(getprop ro.build.type); " +
+                "echo first_api=\$(getprop ro.product.first_api_level)", 4000L))
+            section(sb, "GOOGLE / PLAY STORE", googleBlock(manager))
             section(sb, "NETFLIX", netflixBlock(manager))
             section(sb, "DRM / WIDEVINE", drmBlock(manager))
+            section(sb, "CODECS / HDR", codecsBlock(manager))
             section(sb, "PROPRIEDADES NETFLIX/DRM", safeShell(manager,
-                "getprop | grep -i -E 'netflix|widevine|drm' | head -120"))
-            section(sb, "CODECS (amostra)", safeShell(manager,
-                "dumpsys media.codec 2>/dev/null | grep -i -E 'video/avc|video/hevc|video/x-vnd.on2.vp9|video/av01' | head -120"))
+                "getprop | grep -i -E 'netflix|widevine|drm' | head -160", 6000L))
             sb.append("\nINTERPRETAÇÃO\n")
             sb.append(interpretNetflix(manager))
             sb.toString()
@@ -253,15 +254,14 @@ class MainActivity : Activity() {
     private fun netflixDiagnostic() {
         runWithDevice("NETFLIX / DRM") { manager ->
             val sb = StringBuilder()
-            sb.append(reportHeader("DIAGNÓSTICO NETFLIX / DRM"))
+            sb.append(reportHeader("DIAGNÓSTICO NETFLIX / DRM v1.5"))
             section(sb, "NETFLIX INSTALADA", netflixBlock(manager))
             section(sb, "DRM / WIDEVINE", drmBlock(manager))
+            section(sb, "CODECS / HDR", codecsBlock(manager))
+            section(sb, "DISPLAY / HDMI", displayBlock(manager))
+            section(sb, "INDICADORES GOOGLE", googleBlock(manager))
             section(sb, "PROPRIEDADES DO SISTEMA", safeShell(manager,
-                "getprop | grep -i -E 'netflix|widevine|drm' | head -160"))
-            section(sb, "DISPLAY", safeShell(manager, "wm size; wm density"))
-            section(sb, "INDICADORES GOOGLE", safeShell(manager,
-                "pm list packages | grep -E 'com.google.android.gms|com.android.vending|com.google.android.gsf'; " +
-                "echo build_tags=\$(getprop ro.build.tags); echo verifiedbootstate=\$(getprop ro.boot.verifiedbootstate)"))
+                "getprop | grep -i -E 'netflix|widevine|drm|hdr|dolby' | head -200", 7000L))
             sb.append("\nINTERPRETAÇÃO\n")
             sb.append(interpretNetflix(manager))
             sb.toString()
@@ -269,42 +269,126 @@ class MainActivity : Activity() {
     }
 
     private fun netflixBlock(manager: AbsAdbConnectionManager): String {
-        val packages = safeShell(manager, "pm list packages | grep -i netflix")
-        val tv = safeShell(manager,
-            "dumpsys package com.netflix.ninja 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName|firstInstallTime|lastUpdateTime' | head -30")
-        val mobile = safeShell(manager,
-            "dumpsys package com.netflix.mediaclient 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName|firstInstallTime|lastUpdateTime' | head -30")
-        return "Pacotes:\n" + packages + "\n\ncom.netflix.ninja:\n" + tv + "\n\ncom.netflix.mediaclient:\n" + mobile
+        val tvPath = safeShell(manager, "pm path com.netflix.ninja", 4000L)
+        val mobilePath = safeShell(manager, "pm path com.netflix.mediaclient", 4000L)
+        val tvInfo = if (commandHasPositiveOutput(tvPath)) {
+            safeShell(manager,
+                "dumpsys package com.netflix.ninja 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName=|firstInstallTime=|lastUpdateTime=' | head -30",
+                12000L)
+        } else "(não executado: pacote Android TV não confirmado)"
+        val mobileInfo = if (commandHasPositiveOutput(mobilePath)) {
+            safeShell(manager,
+                "dumpsys package com.netflix.mediaclient 2>/dev/null | grep -E 'versionName=|versionCode=|installerPackageName=|firstInstallTime=|lastUpdateTime=' | head -30",
+                12000L)
+        } else "(não executado: pacote móvel não confirmado)"
+        val props = safeShell(manager, "getprop | grep -i netflix | head -80", 5000L)
+        return "com.netflix.ninja (Android TV):\n" + tvPath +
+            "\n\nDetalhes Android TV:\n" + tvInfo +
+            "\n\ncom.netflix.mediaclient (móvel):\n" + mobilePath +
+            "\n\nDetalhes móvel:\n" + mobileInfo +
+            "\n\nPropriedades Netflix:\n" + props
     }
 
     private fun drmBlock(manager: AbsAdbConnectionManager): String {
-        val a = safeShell(manager,
-            "dumpsys media.drm 2>/dev/null | grep -i -E 'widevine|securityLevel|security level|vendor|version' | head -160")
-        val b = safeShell(manager,
-            "getprop | grep -i -E 'widevine|drm' | head -120")
-        return "dumpsys media.drm:\n" + a + "\n\ngetprop:\n" + b
+        val props = safeShell(manager,
+            "getprop | grep -i -E 'widevine|drm|mediadrm' | head -140", 6000L)
+        val services = safeShell(manager,
+            "service list 2>/dev/null | grep -i -E 'drm|media' | head -100", 6000L)
+        val libs = safeShell(manager,
+            "for d in /vendor/lib/mediadrm /vendor/lib64/mediadrm /vendor/lib/drm /vendor/lib64/drm /odm/lib/mediadrm /odm/lib64/mediadrm; do [ -d \"\$d\" ] && ls \"\$d\"; done 2>/dev/null | grep -i -E 'widevine|drm' | head -80",
+            6000L)
+        val dump = safeShell(manager,
+            "dumpsys media.drm 2>/dev/null | grep -i -E 'widevine|security.?level|vendor|version|oemcrypto' | head -180",
+            18000L)
+        return "Propriedades:\n" + props +
+            "\n\nServiços DRM/media:\n" + services +
+            "\n\nBibliotecas DRM:\n" + libs +
+            "\n\ndumpsys media.drm:\n" + dump
+    }
+
+    private fun codecsBlock(manager: AbsAdbConnectionManager): String {
+        val xml = safeShell(manager,
+            "grep -h -i -E 'video/(avc|hevc|x-vnd.on2.vp9|av01|dolby-vision)|hdr|dolby' /vendor/etc/media_codecs*.xml /odm/etc/media_codecs*.xml /system/etc/media_codecs*.xml 2>/dev/null | head -180",
+            10000L)
+        val props = safeShell(manager,
+            "getprop | grep -i -E 'codec|hevc|vp9|av1|hdr|dolby|display' | head -180",
+            7000L)
+        return "Ficheiros media_codecs*.xml:\n" + xml + "\n\nPropriedades codec/display:\n" + props
+    }
+
+    private fun displayBlock(manager: AbsAdbConnectionManager): String {
+        val basic = safeShell(manager, "wm size; wm density", 4000L)
+        val sf = safeShell(manager,
+            "dumpsys SurfaceFlinger 2>/dev/null | grep -i -E 'Display|HDR|Dolby|color mode|active mode' | head -120",
+            12000L)
+        return basic + "\n\nSurfaceFlinger (amostra):\n" + sf
+    }
+
+    private fun googleBlock(manager: AbsAdbConnectionManager): String {
+        val packages = safeShell(manager,
+            "pm path com.android.vending; pm path com.google.android.gms; pm path com.google.android.gsf",
+            5000L)
+        val integrity = safeShell(manager,
+            "echo verifiedbootstate=\$(getprop ro.boot.verifiedbootstate); " +
+            "echo build_tags=\$(getprop ro.build.tags); " +
+            "echo build_type=\$(getprop ro.build.type); " +
+            "echo fingerprint=\$(getprop ro.build.fingerprint)",
+            5000L)
+        return "Pacotes Google:\n" + packages + "\n\nIndicadores de integridade/build:\n" + integrity
     }
 
     private fun interpretNetflix(manager: AbsAdbConnectionManager): String {
-        val pkgs = safeShell(manager, "pm list packages | grep -i netflix")
+        val tvPath = safeShell(manager, "pm path com.netflix.ninja", 4000L)
+        val mobilePath = safeShell(manager, "pm path com.netflix.mediaclient", 4000L)
         val drm = drmBlock(manager)
-        val props = safeShell(manager, "getprop | grep -i netflix")
-        val hasTvNetflix = pkgs.contains("com.netflix.ninja")
-        val hasAnyNetflix = pkgs.contains("netflix", ignoreCase = true)
+        val props = safeShell(manager, "getprop | grep -i netflix | head -80", 5000L)
+
+        val tvState = commandState(tvPath)
+        val mobileState = commandState(mobilePath)
         val low = drm.lowercase(Locale.ROOT)
-        val l1Hint = low.contains("securitylevel") && low.contains("l1") ||
-            low.contains("security level") && low.contains("l1")
-        val netflixProps = props.isNotBlank()
+        val l1Hint = Regex("""security.?level[^\n]*l1|\bl1\b[^\n]*widevine|widevine[^\n]*\bl1\b""").containsMatchIn(low)
+        val l3Hint = Regex("""security.?level[^\n]*l3|\bl3\b[^\n]*widevine|widevine[^\n]*\bl3\b""").containsMatchIn(low)
+        val drmIndeterminate = drm.contains("TIMEOUT", true) || drm.contains("[erro", true)
+        val netflixProps = commandHasPositiveOutput(props)
 
         return buildString {
-            append("• App Netflix: ")
-            append(if (hasTvNetflix) "com.netflix.ninja detetada (versão Android TV)." else if (hasAnyNetflix) "foi detetado um pacote Netflix." else "não foi detetada.")
+            append("• Netflix Android TV: ")
+            append(when (tvState) {
+                "FOUND" -> "com.netflix.ninja está instalada."
+                "ABSENT" -> "com.netflix.ninja não foi encontrada."
+                else -> "não foi possível determinar com segurança."
+            })
+            append("\n• Netflix móvel: ")
+            append(when (mobileState) {
+                "FOUND" -> "com.netflix.mediaclient está instalada."
+                "ABSENT" -> "com.netflix.mediaclient não foi encontrada."
+                else -> "não foi possível determinar com segurança."
+            })
             append("\n• Widevine: ")
-            append(if (l1Hint) "o relatório contém uma referência compatível com L1; confirmar no bloco DRM." else "não foi possível confirmar L1 automaticamente.")
-            append("\n• Propriedades específicas Netflix: ")
-            append(if (netflixProps) "existem propriedades do sistema com referência a Netflix." else "não foram encontradas propriedades evidentes.")
-            append("\n• Certificação Netflix: NÃO é declarada por esta app. Mesmo com Widevine L1, a autorização de HD/Full HD/4K depende também da certificação/ESN e das políticas da Netflix.")
+            append(when {
+                l1Hint -> "foram encontrados indicadores explícitos de L1; confirmar no bloco DRM."
+                l3Hint -> "foram encontrados indicadores explícitos de L3; confirmar no bloco DRM."
+                drmIndeterminate -> "o teste ficou incompleto; nível L1/L3 não determinado."
+                else -> "o firmware não expôs explicitamente o nível L1/L3 aos comandos usados."
+            })
+            append("\n• Integração Netflix no firmware: ")
+            append(if (netflixProps) "existem propriedades específicas Netflix." else "não foram obtidas propriedades específicas Netflix.")
+            append("\n• Certificação Netflix: estes testes não equivalem à certificação oficial Netflix/ESN. Widevine, presença da app e certificação são verificações diferentes.")
         }
+    }
+
+    private fun commandState(value: String): String {
+        if (value.contains("TIMEOUT", true) || value.startsWith("[erro", true)) return "UNKNOWN"
+        if (value.contains("package:", true)) return "FOUND"
+        if (value.contains("(comando concluído sem saída)", true)) return "ABSENT"
+        return if (value.isBlank()) "ABSENT" else "UNKNOWN"
+    }
+
+    private fun commandHasPositiveOutput(value: String): Boolean {
+        return value.isNotBlank() &&
+            !value.contains("(comando concluído sem saída)", true) &&
+            !value.contains("TIMEOUT", true) &&
+            !value.startsWith("[erro", true)
     }
 
     private fun remoteCommand(title: String, command: String) {
@@ -350,15 +434,20 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun safeShell(manager: AbsAdbConnectionManager, command: String): String {
+    private fun safeShell(
+        manager: AbsAdbConnectionManager,
+        command: String,
+        timeoutMs: Long = 8000L
+    ): String {
         return runCatching {
-            val marker = "__R2A_END__"
+            val marker = "__R2A_END_" + System.nanoTime() + "__"
             val stream = manager.openStream("shell:" + command + "; echo " + marker)
             val output = ByteArrayOutputStream()
+            var completed = false
             try {
                 val input = stream.openInputStream()
                 val buffer = ByteArray(4096)
-                val deadline = System.currentTimeMillis() + 8000L
+                val deadline = System.currentTimeMillis() + timeoutMs
                 while (System.currentTimeMillis() < deadline) {
                     val available = runCatching { input.available() }.getOrElse { break }
                     if (available > 0) {
@@ -366,18 +455,28 @@ class MainActivity : Activity() {
                         if (count > 0) {
                             output.write(buffer, 0, count)
                             val current = output.toString(StandardCharsets.UTF_8.name())
-                            if (current.contains(marker)) break
+                            if (current.contains(marker)) {
+                                completed = true
+                                break
+                            }
                         }
                     } else {
                         if (stream.isClosed) break
-                        Thread.sleep(40)
+                        Thread.sleep(35)
                     }
                 }
             } finally {
                 runCatching { stream.close() }
             }
-            val text = output.toString(StandardCharsets.UTF_8.name()).replace(marker, "").trim()
-            if (text.isBlank()) "(sem resposta ao comando em 8 s)" else text
+            val text = output.toString(StandardCharsets.UTF_8.name())
+                .replace(marker, "")
+                .trim()
+            when {
+                completed && text.isBlank() -> "(comando concluído sem saída)"
+                completed -> text
+                text.isNotBlank() -> text + "\n(TIMEOUT após " + (timeoutMs / 1000) + " s; saída parcial)"
+                else -> "(TIMEOUT após " + (timeoutMs / 1000) + " s; sem saída)"
+            }
         }.getOrElse { "[erro ao executar] " + (it.message ?: it.javaClass.simpleName) }
     }
 
