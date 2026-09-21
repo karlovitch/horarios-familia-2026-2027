@@ -57,7 +57,7 @@ class MainActivity : Activity() {
         scroll.addView(root)
 
         root.addView(TextView(this).apply {
-            text = "R2A — Diagnóstico e Gestão v1.6 Stable"
+            text = "R2A — Diagnóstico e Gestão v1.7 Stable"
             textSize = 24f
             setTypeface(typeface, Typeface.BOLD)
         })
@@ -85,7 +85,7 @@ class MainActivity : Activity() {
 
         root.addView(button("1. EMPARELHAR ADB") { pairDevice() })
         pairStatusView = TextView(this).apply {
-            text = "Emparelhamento preservado. A v1.6 consegue executar e recolher automaticamente o relatório da Sonda DRM instalada na R2A."
+            text = "Emparelhamento preservado. A v1.7 acrescenta diagnóstico específico de certificação Netflix/ESN e limpa a leitura da Sonda DRM."
             textSize = 13f
             setPadding(dp(6), dp(2), dp(6), dp(8))
         }
@@ -94,6 +94,7 @@ class MainActivity : Activity() {
         root.addView(button("3. DIAGNÓSTICO COMPLETO") { fullDiagnostic() })
         root.addView(button("4. DIAGNÓSTICO NETFLIX / DRM") { netflixDiagnostic() })
         root.addView(button("5. EXECUTAR/LER SONDA DRM") { runAndReadDrmProbe() })
+        root.addView(button("6. CERTIFICAÇÃO NETFLIX / ESN") { netflixCertificationDiagnostic() })
 
         val row1 = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
@@ -222,7 +223,7 @@ class MainActivity : Activity() {
     private fun fullDiagnostic() {
         runWithDevice("DIAGNÓSTICO COMPLETO") { manager ->
             val sb = StringBuilder()
-            sb.append(reportHeader("DIAGNÓSTICO COMPLETO v1.5"))
+            sb.append(reportHeader("DIAGNÓSTICO COMPLETO v1.7"))
             section(sb, "IDENTIFICAÇÃO", safeShell(manager,
                 "echo Fabricante: \$(getprop ro.product.manufacturer); " +
                 "echo Modelo: \$(getprop ro.product.model); " +
@@ -255,7 +256,7 @@ class MainActivity : Activity() {
     private fun netflixDiagnostic() {
         runWithDevice("NETFLIX / DRM") { manager ->
             val sb = StringBuilder()
-            sb.append(reportHeader("DIAGNÓSTICO NETFLIX / DRM v1.5"))
+            sb.append(reportHeader("DIAGNÓSTICO NETFLIX / DRM v1.7"))
             section(sb, "NETFLIX INSTALADA", netflixBlock(manager))
             section(sb, "DRM / WIDEVINE", drmBlock(manager))
             section(sb, "CODECS / HDR", codecsBlock(manager))
@@ -263,6 +264,7 @@ class MainActivity : Activity() {
             section(sb, "INDICADORES GOOGLE", googleBlock(manager))
             section(sb, "PROPRIEDADES DO SISTEMA", safeShell(manager,
                 "getprop | grep -i -E 'netflix|widevine|drm|hdr|dolby' | head -200", 7000L))
+            section(sb, "CERTIFICAÇÃO NETFLIX / ESN", netflixCertificationBlock(manager))
             sb.append("\nINTERPRETAÇÃO\n")
             sb.append(interpretNetflix(manager))
             sb.toString()
@@ -392,16 +394,95 @@ class MainActivity : Activity() {
             !value.startsWith("[erro", true)
     }
 
+    private fun netflixCertificationDiagnostic() {
+        runWithDevice("CERTIFICAÇÃO NETFLIX / ESN") { manager ->
+            val sb = StringBuilder()
+            sb.append(reportHeader("DIAGNÓSTICO CERTIFICAÇÃO NETFLIX / ESN v1.7"))
+            val block = netflixCertificationBlock(manager)
+            section(sb, "SINAIS DE CERTIFICAÇÃO / INTEGRAÇÃO", block)
+            section(sb, "WIDEVINE DA SONDA", safeShell(manager,
+                "for f in /sdcard/Download/R2A_DRM_PROBE.txt /storage/emulated/0/Download/R2A_DRM_PROBE.txt; do " +
+                "if [ -s \"\$f\" ]; then grep -E 'Widevine suportado:|securityLevel \\(propriedade Widevine\\):|HDCP ligado:|HDCP máximo:' \"\$f\" | head -20; break; fi; done",
+                5000L))
+            sb.append("\nINTERPRETAÇÃO\n")
+            sb.append(interpretNetflixCertification(block))
+            sb.toString()
+        }
+    }
+
+    private fun netflixCertificationBlock(manager: AbsAdbConnectionManager): String {
+        val props = safeShell(manager,
+            "getprop | grep -i -E 'netflix|esn' | head -160", 6000L)
+
+        val packages = safeShell(manager,
+            "pm list packages 2>/dev/null | grep -i netflix | head -80", 6000L)
+
+        val features = safeShell(manager,
+            "pm list features 2>/dev/null | grep -i netflix | head -80", 5000L)
+
+        val settings = safeShell(manager,
+            "(settings list global 2>/dev/null; settings list system 2>/dev/null; settings list secure 2>/dev/null) " +
+            "| grep -i -E 'netflix|esn' | head -160", 8000L)
+
+        val files = safeShell(manager,
+            "for d in /vendor/etc /odm/etc /product/etc /system/etc /system_ext/etc; do " +
+            "[ -d \"\$d\" ] && find \"\$d\" -maxdepth 3 -type f \\( -iname '*netflix*' -o -iname '*esn*' \\) 2>/dev/null; " +
+            "done | head -160", 10000L)
+
+        val fileHints = safeShell(manager,
+            "for d in /vendor/etc /odm/etc /product/etc /system/etc /system_ext/etc; do " +
+            "[ -d \"\$d\" ] && grep -R -i -l -E 'netflix|netflixesn|netflix_esn' \"\$d\" 2>/dev/null; " +
+            "done | head -120", 12000L)
+
+        val esnCandidates = safeShell(manager,
+            "{ getprop; settings list global 2>/dev/null; settings list system 2>/dev/null; settings list secure 2>/dev/null; } " +
+            "| grep -i -E '(^|[^a-z])esn([^a-z]|$)|netflix.*esn|esn.*netflix' | head -100", 8000L)
+
+        return "Propriedades Netflix/ESN:\n" + props +
+            "\n\nPacotes Netflix:\n" + packages +
+            "\n\nFeatures Netflix:\n" + features +
+            "\n\nSettings Netflix/ESN:\n" + settings +
+            "\n\nFicheiros com nome Netflix/ESN:\n" + files +
+            "\n\nFicheiros com referências Netflix:\n" + fileHints +
+            "\n\nCandidatos ESN acessíveis:\n" + esnCandidates
+    }
+
+    private fun interpretNetflixCertification(block: String): String {
+        val low = block.lowercase(Locale.ROOT)
+        val incomplete = low.contains("timeout") || low.contains("[erro")
+        val hasPackage = Regex("""package:[^\n]*netflix""").containsMatchIn(low)
+        val hasEsn = Regex("""netflix[^\n]{0,80}esn|esn[^\n]{0,80}netflix|\besn\s*[=:][^\n]+""").containsMatchIn(low)
+        val hasNetflixFiles = low.contains("/netflix") || low.contains("netflix.xml") || low.contains("netflixconfig")
+        val hasNetflixProps = low.contains("persist.sys.topnetflix") ||
+            low.contains("persist.sys.wakeupfromnetflix") ||
+            Regex("""\[[^\]]*netflix[^\]]*\]""").containsMatchIn(low)
+
+        return buildString {
+            append("• ESN Netflix: ")
+            append(if (hasEsn) "foi encontrado pelo menos um candidato acessível; isto é um forte sinal de integração, mas não prova por si só certificação/ativação atual."
+            else if (incomplete) "não foi possível concluir porque parte da pesquisa ficou incompleta."
+            else "não foi encontrado nos locais acessíveis por ADB.")
+            append("\n• Componentes Netflix: ")
+            append(if (hasPackage) "existem pacotes Netflix instalados."
+            else "não foram encontrados pacotes Netflix instalados.")
+            append("\n• Integração no firmware: ")
+            append(if (hasNetflixFiles || hasNetflixProps) "existem sinais de integração Netflix no firmware."
+            else "não foram encontrados sinais adicionais além do DRM genérico.")
+            append("\n• Widevine/HDCP: a certificação Netflix é independente do facto de a box ter Widevine L1 e HDCP adequados.")
+            append("\n• Conclusão: ausência de ESN acessível é compatível com uma box não certificada, mas não é prova definitiva; o teste final continua a ser a aceitação da app/serviço Netflix para este modelo.")
+        }
+    }
+
     private fun runAndReadDrmProbe() {
         runWithDevice("SONDA DRM") { manager ->
             busy(true, "A abrir a Sonda DRM na R2A e a aguardar o relatório…")
             val command =
                 "rm -f /sdcard/Download/R2A_DRM_PROBE.txt /storage/emulated/0/Download/R2A_DRM_PROBE.txt 2>/dev/null; " +
                 "monkey -p pt.horariosfamilia.r2a.drmprobe -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; " +
-                "i=0; while [ \$i -lt 20 ]; do " +
-                "if [ -s /sdcard/Download/R2A_DRM_PROBE.txt ]; then cat /sdcard/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
-                "if [ -s /storage/emulated/0/Download/R2A_DRM_PROBE.txt ]; then cat /storage/emulated/0/Download/R2A_DRM_PROBE.txt; exit 0; fi; " +
-                "sleep 1; i=\$((i+1)); done; echo __R2A_PROBE_NOT_FOUND__"
+                "found=0; i=0; while [ \$i -lt 20 ]; do " +
+                "if [ -s /sdcard/Download/R2A_DRM_PROBE.txt ]; then cat /sdcard/Download/R2A_DRM_PROBE.txt; found=1; break; fi; " +
+                "if [ -s /storage/emulated/0/Download/R2A_DRM_PROBE.txt ]; then cat /storage/emulated/0/Download/R2A_DRM_PROBE.txt; found=1; break; fi; " +
+                "sleep 1; i=\$((i+1)); done; [ \$found -eq 1 ] || echo __R2A_PROBE_NOT_FOUND__"
             val report = safeShell(manager, command, 30000L)
             if (report.contains("__R2A_PROBE_NOT_FOUND__")) {
                 "A Sonda DRM não produziu o ficheiro esperado. Confirma que a APK «R2A DRM Probe» está instalada na box e volta a tentar."
