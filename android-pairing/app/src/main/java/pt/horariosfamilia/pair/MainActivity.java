@@ -169,12 +169,13 @@ public class MainActivity extends Activity {
     private boolean sendKeyToNativeApp(String key) {
         try {
             PackageManager pm = getPackageManager();
-            pm.getPackageInfo(TV_PACKAGE, 0);
+            ComponentName receiver = new ComponentName(
+                TV_PACKAGE,
+                "pt.horariosfamilia.tv.AgendaPairingReceiver");
+            pm.getReceiverInfo(receiver, PackageManager.MATCH_DISABLED_COMPONENTS);
 
             Intent pairing = new Intent("pt.horariosfamilia.tv.PAIR_AGENDA");
-            pairing.setComponent(new ComponentName(
-                TV_PACKAGE,
-                "pt.horariosfamilia.tv.AgendaPairingReceiver"));
+            pairing.setComponent(receiver);
             pairing.putExtra("agendaKey", key);
             sendBroadcast(pairing);
             return true;
