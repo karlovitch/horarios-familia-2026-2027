@@ -1,28 +1,17 @@
 {
-  "date": "2026-09-21",
+  "date": "2026-09-22",
   "un_days": [],
   "european_days": [],
   "portugal_days": [],
   "local_days": [],
-  "saint_hagiographies": [
-    {
-      "name": "s mateus apostolo e evangelista.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/21/s--mateus--apostolo-e-evangelista.html"
-    },
-    {
-      "name": "s efigenia.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/21/s--efigenia.html"
-    }
-  ],
-  "liturgical_day": "Segunda-feira da semana XXV",
-  "saints": [
-    "S. Mateus, apóstolo e evangelista – FESTA"
-  ],
-  "gospel": "Mt 9, 9-13",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-21",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-21",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2222/o.mp3",
-  "updated_at": "2026-09-21T10:55:41+01:00",
+  "saint_hagiographies": [],
+  "liturgical_day": "Terça-feira da semana XXV",
+  "saints": [],
+  "gospel": "Lc 8, 19-21",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-22",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-22",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2223/o.mp3",
+  "updated_at": "2026-09-22T10:17:57+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
