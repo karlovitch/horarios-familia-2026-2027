@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T10:17:57+01:00",
+  "generated_at": "2026-09-23T10:18:24+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -3971,22 +3971,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s pio de pietrelcina presbitero.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/09/23/s--pio-de-pietrelcina--presbitero.html"
-        },
-        {
-          "name": "s lino papa.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/09/23/s--lino--papa.html"
-        }
-      ],
-      "liturgical_day": "Quarta-feira da semana XXV",
-      "saints": [
-        "S. Pio de Pietrelcina, presbítero – MO"
-      ],
-      "gospel": "Lc 9, 1-6",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-23"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-23",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-23",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2224/o.mp3"
     },
     "2026-09-24": {
       "date": "2026-09-24",
