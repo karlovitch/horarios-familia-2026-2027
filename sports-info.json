@@ -1504,7 +1504,12 @@
       "stream_url": "https://www.rtp.pt/play/direto/rtp1",
       "match_url": "https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
-      "flashscore_mid": "MH4bvpgD"
+      "flashscore_mid": "MH4bvpgD",
+      "status": "scheduled",
+      "espn_event_id": "401861044",
+      "espn_league": "uefa.nations",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-09-25",
@@ -1595,7 +1600,8 @@
       "location": "Portugal · estádio/localidade a confirmar",
       "channel": "Canal 11",
       "match_url": "https://www.sofascore.com/football/match/gibraltar-u21-portugal-u21/Vvcsykac",
-      "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458"
+      "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
+      "flashscore_mid": "n3JEkOqg"
     },
     {
       "date": "2026-10-01",
