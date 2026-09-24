@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T10:18:24+01:00",
+  "generated_at": "2026-09-24T10:18:17+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -3989,7 +3989,9 @@
       "liturgical_day": "Quinta-feira da semana XXV",
       "saints": [],
       "gospel": "Lc 9, 7-9",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-24"
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-24",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-24",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2225/o.mp3"
     },
     "2026-09-25": {
       "date": "2026-09-25",
