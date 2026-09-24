@@ -1505,14 +1505,12 @@
       "match_url": "https://www.sofascore.com/pt/football/match/portugal-wales/cUbseUb",
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "flashscore_mid": "MH4bvpgD",
-      "status": "live",
+      "status": "finished",
       "espn_event_id": "401861044",
       "espn_league": "uefa.nations",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0,
-      "period": "1H",
-      "period_start": 1790275629,
-      "status_updated_at": 1790276318
+      "period": "1H"
     },
     {
       "date": "2026-09-25",
