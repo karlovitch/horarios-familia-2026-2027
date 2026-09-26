@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T09:06:03.677896+00:00",
+  "generated_at": "2026-09-26T08:51:03.936040+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -36744,7 +36744,128 @@
       ]
     },
     "09-26": {
-      "world": [],
+      "world": [
+        {
+          "year": "46 a.C.",
+          "text": "Júlio César dedica um templo a Vênus Genetrix , cumprindo um voto que fez na Batalha de Farsalos .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1087",
+          "text": "Guilherme II é coroado rei da Inglaterra, e reina até 1100.",
+          "source_url": "https://pt.wikipedia.org/wiki/Guilherme_II_de_Inglaterra"
+        },
+        {
+          "year": "1212",
+          "text": "A Bula Dourada da Sicília é emitida para confirmar o título real hereditário na Boêmia para a dinastia Premíslida .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1371",
+          "text": "Guerras sérvio-turcas: os turcos otomanos lutam contra um exército sérvio na Batalha de Maritsa .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1423",
+          "text": "Guerra dos Cem Anos : um exército francês derrota os ingleses na Batalha de La Brossinière .",
+          "source_url": "https://pt.wikipedia.org/wiki/Batalha_de_La_Brossini%C3%A8re"
+        },
+        {
+          "year": "1493",
+          "text": "O Papa Alexandre VI emite a bula papal Dudum siquidem aos espanhóis, estendendo a concessão de novas terras que fez em Inter cætera .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1580",
+          "text": "Francis Drake encerra sua circum-navegação da Terra.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1687",
+          "text": "Guerra Moreana : o Partenon em Atenas, usado como depósito de pólvora pela guarnição otomana, é parcialmente destruído após ser bombardeado durante o Cerco da Acrópole por forças venezianas .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1688",
+          "text": "O conselho da cidade de Amsterdã vota a favor da invasão da Inglaterra por Guilherme de Orange, que se tornou a Revolução Gloriosa .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1777",
+          "text": "Revolução Americana : tropas britânicas ocupam a Filadélfia.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1789",
+          "text": "George Washington nomeia o primeiro Gabinete dos Estados Unidos .",
+          "source_url": "https://pt.wikipedia.org/wiki/Governo_dos_Estados_Unidos"
+        },
+        {
+          "year": "1799",
+          "text": "Guerra da 2ª Coalizão : as tropas francesas derrotam as forças austro-russas, levando ao colapso da campanha de Suvorov. [ 1 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1810",
+          "text": "Um novo Ato de Sucessão à Coroa Sueca é adotado pelo Riksdag dos Estados, e Jean Baptiste Bernadotte se torna herdeiro do trono sueco.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1905",
+          "text": "Albert Einstein publica o terceiro de seus artigos do Annus Mirabilis , introduzindo a teoria da relatividade especial .",
+          "source_url": "https://pt.wikipedia.org/wiki/Artigos_de_Annus_mirabilis"
+        },
+        {
+          "year": "1907",
+          "text": "Independência da Nova Zelândia .",
+          "source_url": "https://pt.wikipedia.org/wiki/Nova_Zel%C3%A2ndia"
+        },
+        {
+          "year": "1918",
+          "text": "Primeira Guerra Mundial : início da Ofensiva Meuse-Argonne , que duraria até a rendição total das forças alemãs.",
+          "source_url": "https://pt.wikipedia.org/wiki/Primeira_Guerra_Mundial"
+        },
+        {
+          "year": "1923",
+          "text": "O governo alemão aceita a Ocupação do Ruhr .",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1934",
+          "text": "É lançado o transatlântico RMS Queen Mary .",
+          "source_url": "https://pt.wikipedia.org/wiki/Transatl%C3%A2ntico"
+        },
+        {
+          "year": "1942",
+          "text": "Holocausto : O alto funcionário da SS August Frank emite um memorando detalhando como os judeus deveriam ser \"evacuados\".",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1950",
+          "text": "Guerra da Coreia : Tropas das Nações Unidas recapturam Seul das forças norte-coreanas .",
+          "source_url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_da_Coreia_do_Norte"
+        },
+        {
+          "year": "1954",
+          "text": "A balsa ferroviária japonesa Tōya Maru afunda durante um tufão no estreito de Tsugaru , Japão, matando 1 172 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1959",
+          "text": "O tufão Vera , o tufão mais forte a atingir o Japão na história registrada, atinge o continente, matando 4 580 pessoas e deixando quase 1,6 milhão de desabrigados.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        },
+        {
+          "year": "1969",
+          "text": "É lançado Abbey Road , último álbum gravado pelos Beatles .",
+          "source_url": "https://pt.wikipedia.org/wiki/Abbey_Road"
+        },
+        {
+          "year": "1973",
+          "text": "O Concorde faz sua primeira travessia ininterrupta do Atlântico em um tempo recorde.",
+          "source_url": "https://pt.wikipedia.org/wiki/26_de_setembro"
+        }
+      ],
       "portugal": []
     },
     "09-27": {
