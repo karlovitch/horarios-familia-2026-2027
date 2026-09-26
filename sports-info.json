@@ -1581,7 +1581,12 @@
       "match_url": "https://www.sofascore.com/pt-pt/football/match/portugal-norway/AObseUb",
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1",
-      "flashscore_mid": "UycFdR8s"
+      "flashscore_mid": "UycFdR8s",
+      "status": "scheduled",
+      "espn_event_id": "401861073",
+      "espn_league": "uefa.nations",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-09-27",
