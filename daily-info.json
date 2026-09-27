@@ -1,27 +1,17 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "un_days": [],
-  "european_days": [
-    "Dia Europeu das Línguas"
-  ],
+  "european_days": [],
   "portugal_days": [],
   "local_days": [],
-  "saint_hagiographies": [
-    {
-      "name": "ss cosme e damiao martires.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/26/ss--cosme-e-damiao--martires.html"
-    }
-  ],
-  "liturgical_day": "Sábado da semana XXV",
-  "saints": [
-    "Santa Maria no Sábado – MF",
-    "Santos Cosme e Damião, mártires – MF"
-  ],
-  "gospel": "Lc 9, 43b-45",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-26",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-26",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2227/o.mp3",
-  "updated_at": "2026-09-26T10:21:00+01:00",
+  "saint_hagiographies": [],
+  "liturgical_day": "DOMINGO XXVI DO TEMPO COMUM",
+  "saints": [],
+  "gospel": "Mt 21, 28-32",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-27",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-27",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2228/o.mp3",
+  "updated_at": "2026-09-27T10:59:44+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
