@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T08:51:03.936040+00:00",
+  "generated_at": "2026-09-28T10:10:05.191945+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -36994,7 +36994,128 @@
       "portugal": []
     },
     "09-28": {
-      "world": [],
+      "world": [
+        {
+          "year": "48 a.C.",
+          "text": "Pompeu é assassinado por ordem do rei Ptolomeu ao chegar ao Egito.",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1066",
+          "text": "Início da Conquista Normanda : Guilherme da Normandia desembarca em Inglaterra com 7 000 homens.",
+          "source_url": "https://pt.wikipedia.org/wiki/Haroldo_III_da_Noruega"
+        },
+        {
+          "year": "1106",
+          "text": "O rei Henrique I da Inglaterra derrota seu irmão, Roberto Curthose.",
+          "source_url": "https://pt.wikipedia.org/wiki/Guilherme_I_de_Inglaterra"
+        },
+        {
+          "year": "1213",
+          "text": "A rainha consorte Gertrudes de Merânia é assassinada por um grupo de senhores húngaros.",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1238",
+          "text": "O rei Jaime I de Aragão conquista Valência dos mouros. Pouco depois, se proclama rei de Valência .",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1322",
+          "text": "Luís IV, Sacro Imperador Romano-Germânico , derrota Frederico, o Belo na Batalha de Mühldorf .",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1538",
+          "text": "Guerra Otomano-Veneziana: a Marinha otomana obtém uma vitória decisiva sobre uma frota da Liga Sagrada na Batalha de Preveza .",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1542",
+          "text": "João Rodrigues Cabrilho , de Portugal, chega ao que é hoje San Diego, Califórnia .",
+          "source_url": "https://pt.wikipedia.org/wiki/Era_dos_Descobrimentos"
+        },
+        {
+          "year": "1781",
+          "text": "Revolução Americana: forças americanas apoiadas por uma frota francesa começam o Cerco de Yorktown .",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1821",
+          "text": "Parte da Nova Espanha passa a pertencer ao Primeiro Império Mexicano .",
+          "source_url": "https://pt.wikipedia.org/wiki/M%C3%A9xico"
+        },
+        {
+          "year": "1864",
+          "text": "É fundada a Associação Internacional dos Trabalhadores , conhecida como Primeira Internacional , em Londres, Inglaterra.",
+          "source_url": "https://pt.wikipedia.org/wiki/Associa%C3%A7%C3%A3o_Internacional_dos_Trabalhadores"
+        },
+        {
+          "year": "1868",
+          "text": "A Batalha de Alcolea faz com que a rainha Isabel II da Espanha fuja para a França.",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1871",
+          "text": "O Parlamento brasileiro aprova uma lei que libera todas as crianças nascidas de escravos e todos os escravos pertencentes ao governo.",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1885",
+          "text": "Lei dos Sexagenários libertação de todos os escravos com mais de 60 anos.",
+          "source_url": "https://pt.wikipedia.org/wiki/Lei_dos_Sexagen%C3%A1rios"
+        },
+        {
+          "year": "1889",
+          "text": "A Conferência Geral de Pesos e Medidas (CGPM) define o comprimento de um metro.",
+          "source_url": "https://pt.wikipedia.org/wiki/Sistema_Internacional_de_Unidades"
+        },
+        {
+          "year": "1905",
+          "text": "A Teoria da Relatividade de Einstein é publicada no Annalen der Physik .",
+          "source_url": "https://pt.wikipedia.org/wiki/Relatividade_geral"
+        },
+        {
+          "year": "1912",
+          "text": "O Pacto do Ulster é assinado por cerca de 500 000 unionistas do Ulster em oposição ao Terceiro Projeto de Lei do Governo Interno Irlandês.",
+          "source_url": "https://pt.wikipedia.org/wiki/Lealismo_do_Ulster"
+        },
+        {
+          "year": "1914",
+          "text": "Inaugurado o Forte de Copacabana , foi considerado, à época, a mais moderna praça de guerra da América do Sul e um marco para a engenharia militar de seu tempo.",
+          "source_url": "https://pt.wikipedia.org/wiki/Forte_de_Copacabana"
+        },
+        {
+          "year": "1918",
+          "text": "Primeira Guerra Mundial: começa a Quinta Batalha de Ypres .",
+          "source_url": "https://pt.wikipedia.org/wiki/Terceira_Batalha_de_Ypres"
+        },
+        {
+          "year": "1919",
+          "text": "Início das rebeliões raciais em Omaha, Nebraska.",
+          "source_url": "https://pt.wikipedia.org/wiki/Rebeli%C3%A3o_Racial_de_Omaha_em_1919"
+        },
+        {
+          "year": "1924",
+          "text": "A primeira circunavegação aérea é concluída por uma equipe do Exército dos Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1928",
+          "text": "Alexander Fleming percebe um mofo que mata bactérias crescendo em seu laboratório, descobrindo o que mais tarde ficou conhecido como penicilina .",
+          "source_url": "https://pt.wikipedia.org/wiki/28_de_setembro"
+        },
+        {
+          "year": "1941",
+          "text": "Segunda Guerra Mundial: começa a revolta contra a ocupação búlgara no norte da Grécia.",
+          "source_url": "https://pt.wikipedia.org/wiki/Cronologia_da_Segunda_Guerra_Mundial_%281941%29"
+        },
+        {
+          "year": "1950",
+          "text": "Indonésia é admitida como Estado-Membro da ONU .",
+          "source_url": "https://pt.wikipedia.org/wiki/Estados-membros_das_Na%C3%A7%C3%B5es_Unidas"
+        }
+      ],
       "portugal": []
     },
     "09-29": {
