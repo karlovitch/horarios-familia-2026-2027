@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T01:54:18.091764+00:00",
+  "generated_at": "2026-09-29T01:07:47.811462+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 11
+      "events_found": 12
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -1614,7 +1614,12 @@
       "channel": "Canal 11",
       "match_url": "https://www.sofascore.com/football/match/gibraltar-u21-portugal-u21/Vvcsykac",
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
-      "flashscore_mid": "n3JEkOqg"
+      "flashscore_mid": "n3JEkOqg",
+      "status": "scheduled",
+      "espn_event_id": "732430",
+      "espn_league": "uefa.euro_u21_qual",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-01",
@@ -1717,7 +1722,8 @@
       "location": "Portugal · estádio/localidade a confirmar",
       "channel": "Canal 11",
       "match_url": "https://www.zerozero.pt/jogo/2026-10-06-portugal-chequia/10781803",
-      "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458"
+      "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
+      "flashscore_mid": "M1qtyPUa"
     },
     {
       "date": "2026-10-09",
@@ -2772,11 +2778,11 @@
       "sport": "Futebol",
       "home": "Athletic Club",
       "away": "Real Madrid",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
+      "competition": "La Liga",
+      "location": "San Mamés",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-12-09",
