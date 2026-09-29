@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T10:10:05.191945+00:00",
+  "generated_at": "2026-09-29T10:08:03.630503+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -37119,7 +37119,128 @@
       "portugal": []
     },
     "09-29": {
-      "world": [],
+      "world": [
+        {
+          "year": "522 a.C.",
+          "text": "Dario I mata o usurpador magiar Esmérdis , assumindo a posição de rei do Império Aquemênida .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "61 a.C.",
+          "text": "Pompeu celebra seu terceiro triunfo , por suas vitórias sobre piratas e pelo fim das Guerras Mitridáticas na celebração do seu aniversário de 45 anos.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1011",
+          "text": "Os dinamarqueses capturam Cantuária após um cerco, levando Alfege , arcebispo da Cantuária, como prisioneiro.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1227",
+          "text": "O Papa Gregório IX excomunga Frederico II da Germânia por não ter participado das Cruzadas.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1364",
+          "text": "As forças inglesas derrotam os franceses na Bretanha, terminando a Guerra da Sucessão Bretã .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1717",
+          "text": "Um sismo atinge Antigua Guatemala , destruindo grande parte da arquitetura da cidade.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1829",
+          "text": "A Metropolitan Police Service de Londres é fundada.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1832",
+          "text": "Cerco do Porto : Dá-se a grande ofensiva miguelista de modo a tomar a cidade, que é repelida.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1850",
+          "text": "A hierarquia Católica Apostólica Romana é restabelecida na Inglaterra e em Gales pelo papa Pio IX .",
+          "source_url": "https://pt.wikipedia.org/wiki/Igreja_Cat%C3%B3lica_na_Inglaterra_e_no_Pa%C3%ADs_de_Gales"
+        },
+        {
+          "year": "1864",
+          "text": "O Tratado de Lisboa define as fronteiras entre Espanha e Portugal e abole o microestado Couto Misto .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1885",
+          "text": "O primeiro bonde elétrico público do mundo é inaugurado em Blackpool , Inglaterra. [ 1 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1907",
+          "text": "A pedra angular da Catedral Nacional de Washington é colocada na capital dos Estados Unidos , com a presença do presidente Theodore Roosevelt .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1911",
+          "text": "Itália declara guerra ao Império Otomano .",
+          "source_url": "https://pt.wikipedia.org/wiki/Primeira_Guerra_Mundial"
+        },
+        {
+          "year": "1932",
+          "text": "Último dia da Batalha de Boquerón entre Paraguai e Bolívia durante a Guerra do Chaco . [ 3 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerra_do_Chaco"
+        },
+        {
+          "year": "1940",
+          "text": "Dois Avro Ansons colidem no ar sobre Nova Gales do Sul, na Austrália, ficando um preso em cima do outro e pousam em segurança.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1941",
+          "text": "Segunda Guerra Mundial : as forças alemãs, com a ajuda de colaboradores ucranianos locais, iniciam o massacre de Babi Yar por dois dias.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1949",
+          "text": "O Partido Comunista da China escreve o Programa Comum para a futura República Popular da China.",
+          "source_url": "https://pt.wikipedia.org/wiki/Ideologia_do_Partido_Comunista_da_China"
+        },
+        {
+          "year": "1954",
+          "text": "É assinada a convenção que cria a CERN ( Organização Europeia para a Pesquisa Nuclear ).",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1957",
+          "text": "O desastre de Kyshtym é o terceiro pior acidente nuclear já registrado.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1964",
+          "text": "A primeira história da personagem Mafalda , criada pelo cartunista Quino , é publicada no periódico argentino Primera Plana.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1971",
+          "text": "Omã junta-se à Liga Árabe .",
+          "source_url": "https://pt.wikipedia.org/wiki/Emirados_%C3%81rabes_Unidos"
+        },
+        {
+          "year": "1972",
+          "text": "Relações entre China e Japão : o Japão estabelece relações diplomáticas com a República Popular da China depois de romper vínculos oficiais com a República da China .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1987",
+          "text": "Vigilância Sanitária constata a contaminação das vítimas do acidente radioativo de Goiânia .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_setembro"
+        },
+        {
+          "year": "1990",
+          "text": "A Catedral Nacional de Washington é concluída.",
+          "source_url": "https://pt.wikipedia.org/wiki/Capit%C3%B3lio_dos_Estados_Unidos"
+        }
+      ],
       "portugal": [
         {
           "year": "1983",
