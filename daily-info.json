@@ -1,32 +1,17 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "un_days": [],
   "european_days": [],
   "portugal_days": [],
   "local_days": [],
-  "saint_hagiographies": [
-    {
-      "name": "sao miguel arcanjo.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/29/sao-miguel-arcanjo.html"
-    },
-    {
-      "name": "san gabriel arcanjo.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/29/san-gabriel-arcanjo.html"
-    },
-    {
-      "name": "san rafael arcanjo.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/09/29/san-rafael-arcanjo.html"
-    }
-  ],
-  "liturgical_day": "Terça-feira da semana XXVI",
-  "saints": [
-    "Santos Miguel, Gabriel e Rafael, Arcanjos – FESTA"
-  ],
-  "gospel": "Jo 1, 47-51",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-29",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-29",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2230/o.mp3",
-  "updated_at": "2026-09-29T11:40:34+01:00",
+  "saint_hagiographies": [],
+  "liturgical_day": "",
+  "saints": [],
+  "gospel": "",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-30",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-30",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2231/o.mp3",
+  "updated_at": "2026-09-30T11:29:03+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",

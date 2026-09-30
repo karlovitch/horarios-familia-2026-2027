@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T11:40:34+01:00",
+  "generated_at": "2026-09-30T11:29:03+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4102,18 +4102,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s jeronimo presbitero e doutor da igreja.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/09/30/s--jeronimo---presbitero-e-doutor-da-igreja.html"
-        }
-      ],
-      "liturgical_day": "Quarta-feira da semana XXVI",
-      "saints": [
-        "S. Jerónimo, presbítero e doutor da Igreja – MO"
-      ],
-      "gospel": "Lc 9, 57-62",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-30"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-9-30",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-09-30",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2231/o.mp3"
     },
     "2026-10-01": {
       "date": "2026-10-01",
