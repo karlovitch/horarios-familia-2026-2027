@@ -1615,11 +1615,13 @@
       "match_url": "https://www.sofascore.com/football/match/gibraltar-u21-portugal-u21/Vvcsykac",
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
       "flashscore_mid": "n3JEkOqg",
-      "status": "scheduled",
+      "status": "live",
       "espn_event_id": "732430",
       "espn_league": "uefa.euro_u21_qual",
       "home_score": 0,
-      "away_score": 0
+      "away_score": 0,
+      "period": "1H",
+      "status_updated_at": 1790794122
     },
     {
       "date": "2026-10-01",
