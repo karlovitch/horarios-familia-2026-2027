@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T11:29:03+01:00",
+  "generated_at": "2026-10-01T11:56:49+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4118,18 +4118,13 @@
         "Dia Nacional da Água"
       ],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s teresa do menino jesus virgem carmelita doutora da igreja .html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/01/s--teresa-do-menino-jesus--virgem-carmelita--doutora-da-igreja--.html"
-        }
-      ],
-      "liturgical_day": "Quinta-feira da semana XXVI",
-      "saints": [
-        "S. Teresa do Menino Jesus, virgem e doutora da Igreja – MO"
-      ],
-      "gospel": "Lc 10, 1-12",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-1"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-1",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-01",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2232/o.mp3"
     },
     "2026-10-02": {
       "date": "2026-10-02",
