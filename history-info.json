@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T10:01:03.763643+00:00",
+  "generated_at": "2026-10-01T10:30:03.559825+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -37385,7 +37385,128 @@
       "portugal": []
     },
     "10-01": {
-      "world": [],
+      "world": [
+        {
+          "year": "331 a.C.",
+          "text": "Alexandre, o Grande , derrota Dario III da Pérsia na Batalha de Gaugamela .",
+          "source_url": "https://pt.wikipedia.org/wiki/Batalha_de_Gaugamela"
+        },
+        {
+          "year": "1202",
+          "text": "480 navios partem de Veneza para a Quarta Cruzada .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1273",
+          "text": "Rodolfo I de Habsburgo é eleito Rei dos Romanos .",
+          "source_url": "https://pt.wikipedia.org/wiki/Casa_de_Habsburgo"
+        },
+        {
+          "year": "1588",
+          "text": "Ocorre a coroação do Xá Abas I da Pérsia .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1645",
+          "text": "Combate entre cristãos e turcos perto da cidade de Chania , na ilha de Creta .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1661",
+          "text": "O iatismo tem a sua primeira apresentação na Inglaterra , numa disputa onde o rei Carlos II de Inglaterra ( r. 1660–1685) vence o seu irmão Jaime II .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1670",
+          "text": "O exército russo derrota os boiardos, exército formado pela aristocracia russa, na Batalha de Simbirsk .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1688",
+          "text": "Guilherme III, Príncipe de Orange assume os governos da Irlanda , Inglaterra e da Escócia (como \"Guilherme II\").",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1730",
+          "text": "Ahmed III é forçado a abdicar como sultão otomano .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1746",
+          "text": "\"Bonnie Prince Charlie\" ( Carlos Eduardo Stuart ), exilado jacobita e pretendente ao trono inglês e da Irlanda , foge da França para a Escócia .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1752",
+          "text": "Benjamin Franklin realiza a famosa experiência com a pipa , para provar a eletricidade nos raios.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1768",
+          "text": "Tropas inglesas, comandadas pelo general Thomas Gage desembarcam em Boston .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1774",
+          "text": "Marquês de Pombal publica decreto que extingue a Inquisição portuguesa .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1777",
+          "text": "É assinado o Tratado de Santo Ildefonso , entre Portugal e Espanha , com o objetivo de encerrar a disputa pela posse da colônia sul-americana do Sacramento .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1791",
+          "text": "Primeira sessão da nova Assembleia Nacional Legislativa da França.",
+          "source_url": "https://pt.wikipedia.org/wiki/Assembleia_Nacional_Constituinte_%28Fran%C3%A7a%29"
+        },
+        {
+          "year": "1800",
+          "text": "É assinado o Tratado de Santo Ildefonso entre França e Espanha, pelo qual esta entrega a Luisiana à França.",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerra_das_Laranjas"
+        },
+        {
+          "year": "1814",
+          "text": "Início do Congresso de Viena , onde é redesenhado o mapa político da Europa após o fim das Guerras Napoleônicas .",
+          "source_url": "https://pt.wikipedia.org/wiki/Pr%C3%BAssia"
+        },
+        {
+          "year": "1827",
+          "text": "Guerra Russo-Persa : O exército russo sob o comando de Ivan Paskevich invade Yerevan , encerrando um milênio de dominação muçulmana da Armênia .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1843",
+          "text": "É fundado em Londres o jornal tabloide News of the World .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1887",
+          "text": "O Baluchistão é anexado pelo Império Britânico .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1890",
+          "text": "O Congresso dos Estados Unidos cria o Parque Nacional de Yosemite .",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1895",
+          "text": "É fundado o jornal gaúcho Correio do Povo .",
+          "source_url": "https://pt.wikipedia.org/wiki/Correio_do_Povo"
+        },
+        {
+          "year": "1908",
+          "text": "Henry Ford lança o Ford T , o primeiro carro popular da história.",
+          "source_url": "https://pt.wikipedia.org/wiki/1_de_outubro"
+        },
+        {
+          "year": "1915",
+          "text": "A Metamorfose , escrita por Franz Kafka , é publicada no jornal alemão Die Weißen Blätter .",
+          "source_url": "https://pt.wikipedia.org/wiki/Franz_Kafka"
+        }
+      ],
       "portugal": [
         {
           "year": "1833",
