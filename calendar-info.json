@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T11:56:49+01:00",
+  "generated_at": "2026-10-02T11:29:56+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4132,18 +4132,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "ss anjos da guarda.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/02/ss--anjos-da-guarda.html"
-        }
-      ],
-      "liturgical_day": "Sexta-feira da semana XXVI",
-      "saints": [
-        "Santos Anjos da Guarda – MO"
-      ],
-      "gospel": "Mt 18, 1-5. 10 (próprio)",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-2"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-2",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-02",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2233/o.mp3"
     },
     "2026-10-03": {
       "date": "2026-10-03",
