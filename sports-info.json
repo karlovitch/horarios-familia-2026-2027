@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T01:07:47.811462+00:00",
+  "generated_at": "2026-10-02T02:33:16.004024+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 12
+      "events_found": 13
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -1767,7 +1767,8 @@
       "location": "Parque Desportivo Comendador Joaquim de Almeida Freitas, Moreira de Cónegos, Portugal",
       "channel": "V+",
       "match_url": "https://www.zerozero.pt/jogo/2026-10-09-moreirense-gil-vicente/12278043",
-      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
+      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "flashscore_mid": "z3PvErW6"
     },
     {
       "date": "2026-10-10",
@@ -2811,11 +2812,11 @@
       "sport": "Futebol",
       "home": "Arsenal",
       "away": "Real Madrid",
-      "competition": "UEFA Champions League",
-      "location": "Emirates Stadium, Londres, Reino Unido",
+      "competition": "Champions League",
+      "location": "Emirates Stadium",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-12-10",
