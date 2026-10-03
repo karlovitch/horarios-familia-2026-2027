@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T02:33:16.004024+00:00",
+  "generated_at": "2026-10-03T13:28:21.579243+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -2158,19 +2158,7 @@
     },
     {
       "date": "2026-11-01",
-      "start": "2026-11-01T20:00:00Z",
-      "entity": "Formula 1",
-      "sport": "Automobilismo",
-      "title": "Corrida · GP de Cidade do México",
-      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
-      "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026",
-      "source_url": "https://www.formula1.com/en/racing/2026"
-    },
-    {
-      "date": "2026-11-01",
-      "start": null,
+      "start": "2026-11-01T15:15:00Z",
       "entity": "Real Madrid",
       "sport": "Futebol",
       "home": "Racing de Santander",
@@ -2183,7 +2171,7 @@
     },
     {
       "date": "2026-11-01",
-      "start": null,
+      "start": "2026-11-01T15:15:00Z",
       "entity": "Real Madrid",
       "sport": "Futebol",
       "home": "R. Racing Club",
@@ -2193,6 +2181,18 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+    },
+    {
+      "date": "2026-11-01",
+      "start": "2026-11-01T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Cidade do México",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-02",
