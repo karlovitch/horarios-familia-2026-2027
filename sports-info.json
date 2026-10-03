@@ -1716,7 +1716,12 @@
       "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
       "stream_url": "https://www.rtp.pt/play/direto/rtp1",
-      "flashscore_mid": "Ei1jt6O0"
+      "flashscore_mid": "Ei1jt6O0",
+      "status": "scheduled",
+      "espn_event_id": "401861126",
+      "espn_league": "uefa.nations",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-06",
@@ -1805,7 +1810,8 @@
       "location": "Estádio do Marítimo, Funchal, Portugal",
       "channel": "Transmissão a confirmar",
       "match_url": "https://www.zerozero.pt/jogo/2026-10-10-maritimo-fc-porto/12278041",
-      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "flashscore_mid": "SxMWF41f"
     },
     {
       "date": "2026-10-10",
@@ -1818,7 +1824,8 @@
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "flashscore_mid": "2mAGw9Ti"
     },
     {
       "date": "2026-10-10",
@@ -1831,7 +1838,8 @@
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "2mAGw9Ti"
     },
     {
       "date": "2026-10-11",
