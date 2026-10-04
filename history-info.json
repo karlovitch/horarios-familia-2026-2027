@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T10:30:03.559825+00:00",
+  "generated_at": "2026-10-04T10:07:00.617240+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -37782,7 +37782,128 @@
       ]
     },
     "10-04": {
-      "world": [],
+      "world": [
+        {
+          "year": "23",
+          "text": "Rebeldes saqueiam a capital chinesa Chang'an durante uma rebelião camponesa .",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1209",
+          "text": "Otão IV é coroado Imperador do Sacro Império Romano pelo Papa Inocêncio III",
+          "source_url": "https://pt.wikipedia.org/wiki/Papa_Inoc%C3%AAncio_III"
+        },
+        {
+          "year": "1227",
+          "text": "Assassinato do califa Abu Maomé Aladil de Marrocos.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1302",
+          "text": "A guerra bizantino-veneziana chega ao fim.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1363",
+          "text": "Batalha do Lago Poyang : em uma das maiores batalhas navais da história, os rebeldes de Zhu Yuanzhang derrotam o rival Chen Youliang.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1511",
+          "text": "Formação da Santa Liga de Aragão, Estados Papais e Veneza contra a França.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1535",
+          "text": "A Bíblia de Coverdale é impressa, com traduções para o inglês por William Tyndale e Myles Coverdale .",
+          "source_url": "https://pt.wikipedia.org/wiki/Tradu%C3%A7%C3%A3o_da_B%C3%ADblia"
+        },
+        {
+          "year": "1582",
+          "text": "O calendário gregoriano é introduzido pelo Papa Gregório XIII .",
+          "source_url": "https://pt.wikipedia.org/wiki/Calend%C3%A1rio_gregoriano"
+        },
+        {
+          "year": "1602",
+          "text": "Guerra dos Oitenta Anos e Guerra Anglo-Espanhola : uma frota de galés espanholas é derrotada por galeões ingleses e holandeses no Canal da Mancha .",
+          "source_url": "https://pt.wikipedia.org/wiki/Invenc%C3%ADvel_Armada"
+        },
+        {
+          "year": "1636",
+          "text": "Guerra dos Trinta Anos : o Exército Sueco derrota os exércitos da Saxônia e do Sacro Império Romano na Batalha de Wittstock .",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerra_dos_Trinta_Anos"
+        },
+        {
+          "year": "1693",
+          "text": "Guerra dos Nove Anos : as tropas piemontesas são derrotadas pelos franceses.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1777",
+          "text": "Guerra Revolucionária Americana : tropas sob o comando de George Washington são repelidas por tropas britânicas sob a liderança de William Howe.",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerra_de_Independ%C3%AAncia_dos_Estados_Unidos"
+        },
+        {
+          "year": "1795",
+          "text": "Napoleão se destaca pela supressão de manifestantes contrarrevolucionários que ameaçam a Convenção Nacional.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1824",
+          "text": "O México adota uma nova constituição e se torna uma república federal.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1830",
+          "text": "A Revolução Belga toma forma legal quando o governo provisório se separa do Reino Unido dos Países Baixos .",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1852",
+          "text": "Após 18 meses presos e ​acusados de alta traição com base em documentos falsos, começa em Colônia o julgamento dos 11 membros da Liga dos Comunistas que participaram das revoluções de 1848 nos Estados alemães .",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1853",
+          "text": "A Guerra da Crimeia começa quando o Império Otomano declara guerra ao Império Russo.",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1883",
+          "text": "Primeira viagem do Expresso do Oriente .",
+          "source_url": "https://pt.wikipedia.org/wiki/Expresso_do_Oriente"
+        },
+        {
+          "year": "1910",
+          "text": "Início da revolução republicana em Portugal depõe o rei D. Manuel II .",
+          "source_url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_de_Portugal"
+        },
+        {
+          "year": "1917",
+          "text": "Primeira Guerra Mundial : a Batalha de Broodseinde é travada entre os exércitos britânico e alemão na Flandres.",
+          "source_url": "https://pt.wikipedia.org/wiki/T%C3%A1ticas_da_Frente_Ocidental%2C_1917"
+        },
+        {
+          "year": "1927",
+          "text": "Gutzon Borglum começa a esculpir o Monte Rushmore .",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1936",
+          "text": "A União Britânica de Fascistas e várias organizações antifascistas se enfrentam violentamente na Batalha de Cable Street .",
+          "source_url": "https://pt.wikipedia.org/wiki/4_de_outubro"
+        },
+        {
+          "year": "1942",
+          "text": "O Cruzeiro é instituído por Getúlio Vargas como a moeda oficial do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Estado_Novo_%28Brasil%29"
+        },
+        {
+          "year": "1957",
+          "text": "O Sputnik 1 se torna o primeiro satélite artificial a orbitar a Terra.",
+          "source_url": "https://pt.wikipedia.org/wiki/Sat%C3%A9lite_artificial"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
