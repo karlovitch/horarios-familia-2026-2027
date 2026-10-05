@@ -1735,7 +1735,8 @@
       "channel": "Canal 11",
       "match_url": "https://www.zerozero.pt/jogo/2026-10-06-portugal-chequia/10781803",
       "source_url": "https://www.fpf.pt/pt/selecoes/futebol-masculino/selecao-sub-21/competicoes/competicao/competition/26458",
-      "flashscore_mid": "M1qtyPUa"
+      "flashscore_mid": "M1qtyPUa",
+      "status": "scheduled"
     },
     {
       "date": "2026-10-09",
