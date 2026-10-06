@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T12:27:35+01:00",
+  "generated_at": "2026-10-06T12:15:48+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4190,18 +4190,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s bruno da calabria presbitero fundador da ordem dos cartuxos.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/06/s--bruno-da-calabria--presbitero--fundador-da-ordem-dos-cartuxos.html"
-        }
-      ],
-      "liturgical_day": "Terça-feira da semana XXVII",
-      "saints": [
-        "S. Bruno, presbítero – MF"
-      ],
-      "gospel": "Lc 10, 38-42",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-6"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-6",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-06",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2237/o.mp3"
     },
     "2026-10-07": {
       "date": "2026-10-07",
