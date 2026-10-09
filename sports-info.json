@@ -1819,7 +1819,12 @@
       "channel": "Transmissão a confirmar",
       "match_url": "https://www.zerozero.pt/jogo/2026-10-10-maritimo-fc-porto/12278041",
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
-      "flashscore_mid": "SxMWF41f"
+      "flashscore_mid": "SxMWF41f",
+      "status": "scheduled",
+      "espn_event_id": "401885424",
+      "espn_league": "por.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-10",
@@ -1833,7 +1838,12 @@
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "2mAGw9Ti"
+      "flashscore_mid": "2mAGw9Ti",
+      "status": "scheduled",
+      "espn_event_id": "401882848",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-10",
@@ -1847,7 +1857,12 @@
       "channel": "DAZN Portugal",
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "2mAGw9Ti"
+      "flashscore_mid": "2mAGw9Ti",
+      "status": "scheduled",
+      "espn_event_id": "401882848",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-11",
