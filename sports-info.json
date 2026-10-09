@@ -1777,14 +1777,12 @@
       "match_url": "https://www.zerozero.pt/jogo/2026-10-09-moreirense-gil-vicente/12278043",
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
       "flashscore_mid": "z3PvErW6",
-      "status": "live",
+      "status": "finished",
       "espn_event_id": "401885423",
       "espn_league": "por.1",
       "home_score": 0,
-      "away_score": 0,
-      "period": "2H",
-      "period_start": 1791571889,
-      "status_updated_at": 1791572237
+      "away_score": 1,
+      "period": "2H"
     },
     {
       "date": "2026-10-10",
