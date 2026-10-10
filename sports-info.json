@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T01:28:03.785475+00:00",
+  "generated_at": "2026-10-10T22:03:53.945394+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -43,12 +43,12 @@
     {
       "url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "ok": true,
-      "events_found": 38
+      "events_found": 37
     },
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 14
+      "events_found": 13
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -1821,14 +1821,12 @@
       "match_url": "https://www.zerozero.pt/jogo/2026-10-10-maritimo-fc-porto/12278041",
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
       "flashscore_mid": "SxMWF41f",
-      "status": "live",
+      "status": "finished",
       "espn_event_id": "401885424",
       "espn_league": "por.1",
       "home_score": 1,
       "away_score": 2,
-      "period": "2H",
-      "period_start": 1791655527,
-      "status_updated_at": 1791658335
+      "period": "2H"
     },
     {
       "date": "2026-10-10",
@@ -1843,10 +1841,10 @@
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "flashscore_mid": "2mAGw9Ti",
-      "status": "scheduled",
+      "status": "finished",
       "espn_event_id": "401882848",
       "espn_league": "esp.1",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0
     },
     {
@@ -1862,10 +1860,10 @@
       "match_url": "https://www.sofascore.com/football/match/real-madrid-villarreal/ugbsEgb",
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "flashscore_mid": "2mAGw9Ti",
-      "status": "scheduled",
+      "status": "finished",
       "espn_event_id": "401882848",
       "espn_league": "esp.1",
-      "home_score": 0,
+      "home_score": 1,
       "away_score": 0
     },
     {
