@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T12:19:15+01:00",
+  "generated_at": "2026-10-10T11:36:06+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4249,12 +4249,12 @@
       "portugal_days": [],
       "local_days": [],
       "saint_hagiographies": [],
-      "liturgical_day": "Sábado da semana XXVII",
-      "saints": [
-        "Santa Maria no Sábado – MF"
-      ],
-      "gospel": "Lc 11, 27-28",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-10"
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-10",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-10",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2241/o.mp3"
     },
     "2026-10-11": {
       "date": "2026-10-11",

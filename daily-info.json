@@ -1,17 +1,19 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "un_days": [],
-  "european_days": [],
+  "european_days": [
+    "Dia Europeu contra a Pena de Morte"
+  ],
   "portugal_days": [],
   "local_days": [],
   "saint_hagiographies": [],
   "liturgical_day": "",
   "saints": [],
   "gospel": "",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-9",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-09",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2240/o.mp3",
-  "updated_at": "2026-10-09T12:19:15+01:00",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-10",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-10",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2241/o.mp3",
+  "updated_at": "2026-10-10T11:36:06+01:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",
