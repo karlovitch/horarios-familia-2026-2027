@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T00:52:52.304624+00:00",
+  "generated_at": "2026-10-11T18:17:41.494205+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 14
+      "events_found": 13
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
