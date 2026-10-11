@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T22:03:53.945394+00:00",
+  "generated_at": "2026-10-11T00:52:52.304624+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 13
+      "events_found": 14
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -1879,6 +1879,19 @@
       "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
+      "date": "2026-10-12",
+      "start": "2026-10-12T08:30:00Z",
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "El calendario del Real Madrid en octubre",
+      "away": "Próximos eventos",
+      "competition": "Champions League",
+      "location": "Ciudad Real Madrid",
+      "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+    },
+    {
       "date": "2026-10-13",
       "start": "2026-10-12T23:00:00Z",
       "entity": "Seleção Nacional de Portugal · Hóquei em Patins",
@@ -1956,7 +1969,8 @@
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "flashscore_mid": "dlbkuM4d"
     },
     {
       "date": "2026-10-18",
@@ -1969,7 +1983,8 @@
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "dlbkuM4d"
     },
     {
       "date": "2026-10-20",
