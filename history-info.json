@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T10:08:03.320393+00:00",
+  "generated_at": "2026-10-12T11:21:00.835158+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -38889,7 +38889,128 @@
       ]
     },
     "10-12": {
-      "world": [],
+      "world": [
+        {
+          "year": "539 a.C.",
+          "text": "O exército de Ciro, o Grande da Pérsia (atual Irã), toma a cidade de Babilônia (atual Iraque), conquistando o Império Babilônico . [ 1 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_da_arquitetura"
+        },
+        {
+          "year": "1279",
+          "text": "O ramo do budismo Nichiren Shoshu é fundado no Japão .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1307",
+          "text": "O rei Filipe IV de França manda prender 140 cavaleiros templários .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1398",
+          "text": "No Tratado de Salynas , a Lituânia cede a Samogícia aos Cavaleiros Teutônicos .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1492",
+          "text": "Cristóvão Colombo chega à ilha de São Salvador , nas Bahamas , convencido de que atingira a Índia .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1654",
+          "text": "A explosão de Delft devasta a cidade nos Países Baixos , matando mais de 100 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1799",
+          "text": "A francesa Jeanne Geneviève Labrosse torna-se a primeira mulher a saltar de um balão com um paraquedas.",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1807",
+          "text": "O imperador da França, Napoleão I , dá ordem a Junot para entrar em Espanha .",
+          "source_url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_VI_de_Portugal"
+        },
+        {
+          "year": "1808",
+          "text": "O príncipe-regente D. João Maria de Bragança funda o Banco do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Jo%C3%A3o_VI_de_Portugal"
+        },
+        {
+          "year": "1809",
+          "text": "Tentativa de assassinato de Napoleão no Palácio de Schönbrunn , em Viena .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1822",
+          "text": "O Brasil oficialmente declara sua independência de Portugal e Pedro de Alcântara de Bragança é coroado Imperador do Brasil com o nome régio de Pedro I do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Reino_Unido_de_Portugal%2C_Brasil_e_Algarves"
+        },
+        {
+          "year": "1825",
+          "text": "Guerra da Cisplatina : Batalha de Sarandi do Império do Brasil contra rebeldes separatistas na Província da Cisplatina (hoje Uruguai ).",
+          "source_url": "https://pt.wikipedia.org/wiki/Bento_Gon%C3%A7alves_da_Silva"
+        },
+        {
+          "year": "1835",
+          "text": "Diogo Feijó assume a regência do Império do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Cronologia_do_Imp%C3%A9rio_do_Brasil"
+        },
+        {
+          "year": "1847",
+          "text": "O alemão Werner von Siemens funda a empresa de eletrônica que leva seu sobrenome .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1856",
+          "text": "Um terremoto de magnitude 7,7-8,3 ao largo da ilha grega de Creta causa grandes danos até o Egito e Malta , 500 corpos foram recuperados na cidade de Heraklion . [ 3 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1876",
+          "text": "Criação da Escola de Minas de Ouro Preto pelo cientista francês Claude Henri Gorceix a pedido do então imperador Dom Pedro II .",
+          "source_url": "https://pt.wikipedia.org/wiki/Escola_de_Minas_de_Ouro_Preto"
+        },
+        {
+          "year": "1884",
+          "text": "Convite dos governos francês e alemão para Portugal participar na Conferência de Berlim .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1908",
+          "text": "Encerrada a segunda expedição pela Amazônia de Marechal Rondon .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1909",
+          "text": "Na cidade de Curitiba , Paraná , é fundado o clube de futebol Coritiba Foot Ball Club",
+          "source_url": "https://pt.wikipedia.org/wiki/Coritiba_Foot_Ball_Club"
+        },
+        {
+          "year": "1917",
+          "text": "Primeira Guerra Mundial : A Primeira Batalha de Passchendaele ocorre resultando na maior perda de vidas em um único dia na história da Nova Zelândia.",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1928",
+          "text": "Um pulmão de aço é usado pela primeira vez no Children's Hospital, em Boston, Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1931",
+          "text": "Inauguração do Monumento do Cristo Redentor , no Rio de Janeiro .",
+          "source_url": "https://pt.wikipedia.org/wiki/Cristo_Redentor"
+        },
+        {
+          "year": "1933",
+          "text": "A cidadela militar estadunidese de Alcatraz se torna a Penitenciária Federal de Alcatraz .",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        },
+        {
+          "year": "1936",
+          "text": "Três protótipos do primeiro Fusca ficam prontos para testes na Alemanha.",
+          "source_url": "https://pt.wikipedia.org/wiki/12_de_outubro"
+        }
+      ],
       "portugal": [
         {
           "year": "1798",
