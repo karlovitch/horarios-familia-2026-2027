@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T11:21:00.835158+00:00",
+  "generated_at": "2026-10-14T09:03:00.757056+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -39171,7 +39171,128 @@
       ]
     },
     "10-14": {
-      "world": [],
+      "world": [
+        {
+          "year": "1066",
+          "text": "A conquista normanda da Inglaterra começa com a Batalha de Hastings .",
+          "source_url": "https://pt.wikipedia.org/wiki/Lista_de_monarcas_da_Inglaterra"
+        },
+        {
+          "year": "1586",
+          "text": "Maria Stuart , rainha deposta da Escócia, é julgada por conspiração contra a sua prima, a rainha Elizabeth I da Inglaterra.",
+          "source_url": "https://pt.wikipedia.org/wiki/Carlos_I_de_Inglaterra"
+        },
+        {
+          "year": "1656",
+          "text": "A Colônia da Baía de Massachusetts , colônia britânica na América do Norte, promulga a primeira legislação punitiva contra a Sociedade Religiosa de Amigos ( Quakers ).",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1535",
+          "text": "Guerra Luso-Espanhola : início do conflito armado pela posse da chamada Banda Oriental na costa norte do Rio da Prata .",
+          "source_url": "https://pt.wikipedia.org/wiki/Rio_Grande_do_Norte"
+        },
+        {
+          "year": "1758",
+          "text": "Guerra dos Sete Anos : Frederico, o Grande sofre uma rara derrota na Batalha de Hochkirch .",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1773",
+          "text": "O primeiro ministério da educação registrado, a Comissão de Educação Nacional , é formado na República das Duas Nações .",
+          "source_url": "https://pt.wikipedia.org/wiki/Guatemala"
+        },
+        {
+          "year": "1774",
+          "text": "Revolução Americana : O Primeiro Congresso Continental denuncia os Atos Intoleráveis do Parlamento Britânico e exige concessões da metrópole britânica.",
+          "source_url": "https://pt.wikipedia.org/wiki/Declara%C3%A7%C3%A3o_de_Independ%C3%AAncia_dos_Estados_Unidos"
+        },
+        {
+          "year": "1805",
+          "text": "Guerra da Terceira Coalizão : um corpo francês derrota uma tentativa austríaca de escapar do cerco em Ulm.",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerras_Napole%C3%B4nicas"
+        },
+        {
+          "year": "1806",
+          "text": "Guerra da Quarta Coalizão : Napoleão derrota decisivamente a Prússia na Batalha de Jena–Auerstedt .",
+          "source_url": "https://pt.wikipedia.org/wiki/Guerras_Napole%C3%B4nicas"
+        },
+        {
+          "year": "1808",
+          "text": "A República de Ragusa é anexada pela França.",
+          "source_url": "https://pt.wikipedia.org/wiki/Rep%C3%BAblica_de_Ragusa"
+        },
+        {
+          "year": "1884",
+          "text": "O inventor estadunidense George Eastman recebe uma patente do governo dos Estados Unidos por seu novo filme em rolo.",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1888",
+          "text": "O francês Louis Le Prince filma o primeiro filme, Roundhay Garden Scene .",
+          "source_url": "https://pt.wikipedia.org/wiki/Louis_Le_Prince"
+        },
+        {
+          "year": "1910",
+          "text": "O aviador britânico Claude Grahame-White pousa sua aeronave na Executive Avenue, perto da Casa Branca em Washington, D.C, Estados Unidos.",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1915",
+          "text": "Primeira Guerra Mundial: a Bulgária se junta às Potências Centrais .",
+          "source_url": "https://pt.wikipedia.org/wiki/Pot%C3%AAncias_Centrais"
+        },
+        {
+          "year": "1920",
+          "text": "A Finlândia e a Rússia Soviética assinam o Tratado de Tartu , trocando alguns territórios.",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1922",
+          "text": "A Grécia assina o Armistício de Mudanya , que põe fim à Guerra de independência turca . As restantes partes tinham assinado a 11 de outubro .",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1926",
+          "text": "O livro infantil Ursinho Pooh , de A. A. Milne, é publicado pela primeira vez.",
+          "source_url": "https://pt.wikipedia.org/wiki/Ursinho_Pooh"
+        },
+        {
+          "year": "1933",
+          "text": "A Alemanha Nazista se retira da Liga das Nações e da Conferência Mundial para o Desarmamento .",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1938",
+          "text": "O primeiro voo do avião de combate Curtiss P-40 Warhawk .",
+          "source_url": "https://pt.wikipedia.org/wiki/Curtiss_P-40"
+        },
+        {
+          "year": "1939",
+          "text": "Segunda Guerra Mundial: o submarino alemão U-47 afunda o navio de guerra britânico HMS Royal Oak em seu porto em Scapa Flow, na Escócia.",
+          "source_url": "https://pt.wikipedia.org/wiki/Cronologia_da_Segunda_Guerra_Mundial_%281939%29"
+        },
+        {
+          "year": "1942",
+          "text": "Segunda Guerra Mundial: Ataque Doolittle , quando 4 pilotos da força aérea dos Estados Unidos , prisioneiros de guerra, são sumariamente executados pelos japoneses .",
+          "source_url": "https://pt.wikipedia.org/wiki/Crimes_de_guerra_do_Jap%C3%A3o_Imperial"
+        },
+        {
+          "year": "1944",
+          "text": "Segunda Guerra Mundial: vinculado a uma conspiração para assassinar Adolf Hitler, o marechal de campo Erwin Rommel é forçado a cometer suicídio.",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1947",
+          "text": "Charles \"Chuck\" Yeager quebra a barreira do som no avião experimental Bell X-1 .",
+          "source_url": "https://pt.wikipedia.org/wiki/14_de_outubro"
+        },
+        {
+          "year": "1952",
+          "text": "Fundação da Conferência Nacional dos Bispos do Brasil (CNBB), uma instituição permanente que reúne os bispos católicos do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Confer%C3%AAncia_Nacional_dos_Bispos_do_Brasil"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
