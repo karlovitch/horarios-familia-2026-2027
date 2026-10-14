@@ -1932,14 +1932,12 @@
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
       "flashscore_mid": "xt5Mx0jU",
-      "status": "live",
+      "status": "finished",
       "espn_event_id": "401915408",
       "espn_league": "uefa.champions",
-      "home_score": 2,
+      "home_score": 3,
       "away_score": 2,
-      "period": "2H",
-      "period_start": 1792008409,
-      "status_updated_at": 1792010369
+      "period": "2H"
     },
     {
       "date": "2026-10-14",
@@ -1954,14 +1952,12 @@
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "flashscore_mid": "4j50U1OM",
-      "status": "live",
+      "status": "finished",
       "espn_event_id": "401915414",
       "espn_league": "uefa.champions",
       "home_score": 3,
-      "away_score": 1,
-      "period": "2H",
-      "period_start": 1792008237,
-      "status_updated_at": 1792010370
+      "away_score": 4,
+      "period": "2H"
     },
     {
       "date": "2026-10-14",
