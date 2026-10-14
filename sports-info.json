@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T03:38:17.431826+00:00",
+  "generated_at": "2026-10-14T01:24:54.628204+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1916,7 +1916,8 @@
       "location": "Assunção, Paraguai",
       "channel": "Transmissão em Portugal a confirmar",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
+      "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
+      "status": "awaiting_final"
     },
     {
       "date": "2026-10-14",
@@ -2022,7 +2023,8 @@
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "OC3pYqPc"
     },
     {
       "date": "2026-10-23",
