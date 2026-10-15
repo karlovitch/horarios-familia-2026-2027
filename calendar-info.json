@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T10:30:25+01:00",
+  "generated_at": "2026-10-15T10:08:18+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4318,18 +4318,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s teresa de jesus virgem doutora da igreja carmelita descalc.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/15/s--teresa-de-jesus--virgem--doutora-da-igreja--carmelita-descalc.html"
-        }
-      ],
-      "liturgical_day": "Quinta-feira da semana XXVIII",
-      "saints": [
-        "S. Teresa de Jesus, virgem e doutora da Igreja – MO"
-      ],
-      "gospel": "Lc 11, 47-54",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-15"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-15",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-15",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2246/o.mp3"
     },
     "2026-10-16": {
       "date": "2026-10-16",
