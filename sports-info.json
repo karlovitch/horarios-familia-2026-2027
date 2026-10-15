@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T20:39:41.313797+00:00",
+  "generated_at": "2026-10-15T01:38:53.390890+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -1970,7 +1970,8 @@
       "location": "Assunção, Paraguai",
       "channel": "Transmissão em Portugal a confirmar",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins"
+      "source_url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
+      "status": "awaiting_final"
     },
     {
       "date": "2026-10-18",
