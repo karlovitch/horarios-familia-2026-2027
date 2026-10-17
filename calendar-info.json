@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T10:01:10+01:00",
+  "generated_at": "2026-10-17T09:32:53+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4346,18 +4346,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s inacio de antioquia bispo martir em roma.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/17/s--inacio-de-antioquia--bispo--martir-em-roma.html"
-        }
-      ],
-      "liturgical_day": "Sábado da semana XXVIII",
-      "saints": [
-        "S. Inácio de Antioquia, bispo e mártir – MO"
-      ],
-      "gospel": "Lc 12, 8-12",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-17"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-17",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-17",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2248/o.mp3"
     },
     "2026-10-18": {
       "date": "2026-10-18",
