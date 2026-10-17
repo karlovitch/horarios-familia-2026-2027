@@ -1985,7 +1985,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "dlbkuM4d"
+      "flashscore_mid": "dlbkuM4d",
+      "status": "scheduled",
+      "espn_event_id": "401882839",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-18",
@@ -1999,7 +2004,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "dlbkuM4d"
+      "flashscore_mid": "dlbkuM4d",
+      "status": "scheduled",
+      "espn_event_id": "401882839",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-20",
@@ -2076,7 +2086,8 @@
       "location": "Estádio Cidade de Barcelos, Barcelos, Portugal",
       "channel": "Sport TV 1",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos"
+      "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
+      "flashscore_mid": "Cns1phNp"
     },
     {
       "date": "2026-10-24",
