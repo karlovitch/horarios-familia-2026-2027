@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T08:37:03.245837+00:00",
+  "generated_at": "2026-10-17T08:04:00.380148+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -39707,6 +39707,11 @@
         {
           "year": "1931",
           "text": "O gângster estadunidense Al Capone é condenado por sonegação de imposto de renda.",
+          "source_url": "https://pt.wikipedia.org/wiki/17_de_outubro"
+        },
+        {
+          "year": "1850",
+          "text": "Começam os tumultos, que levam a um massacre em Alepo.",
           "source_url": "https://pt.wikipedia.org/wiki/17_de_outubro"
         }
       ],
