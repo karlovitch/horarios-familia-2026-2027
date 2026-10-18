@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T09:32:53+01:00",
+  "generated_at": "2026-10-18T09:50:21+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4365,10 +4365,12 @@
       ],
       "local_days": [],
       "saint_hagiographies": [],
-      "liturgical_day": "DOMINGO XXIX DO TEMPO COMUM",
+      "liturgical_day": "",
       "saints": [],
-      "gospel": "Mt 22, 15-21",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-18"
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-18",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-18",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2249/o.mp3"
     },
     "2026-10-19": {
       "date": "2026-10-19",
