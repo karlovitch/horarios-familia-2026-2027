@@ -2124,7 +2124,8 @@
       "location": "Barcelona, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "flashscore_mid": "6ZoODtBL"
     },
     {
       "date": "2026-10-25",
@@ -2137,7 +2138,8 @@
       "location": "Spotify Camp Nou",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "6ZoODtBL"
     },
     {
       "date": "2026-10-28",
