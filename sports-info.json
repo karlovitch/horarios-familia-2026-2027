@@ -1986,11 +1986,13 @@
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "flashscore_mid": "dlbkuM4d",
-      "status": "scheduled",
+      "status": "live",
       "espn_event_id": "401882839",
       "espn_league": "esp.1",
       "home_score": 0,
-      "away_score": 0
+      "away_score": 0,
+      "period": "1H",
+      "status_updated_at": 1792350009
     },
     {
       "date": "2026-10-18",
@@ -2005,11 +2007,13 @@
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "flashscore_mid": "dlbkuM4d",
-      "status": "scheduled",
+      "status": "live",
       "espn_event_id": "401882839",
       "espn_league": "esp.1",
       "home_score": 0,
-      "away_score": 0
+      "away_score": 0,
+      "period": "1H",
+      "status_updated_at": 1792350010
     },
     {
       "date": "2026-10-20",
