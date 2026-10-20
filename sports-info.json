@@ -2044,7 +2044,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "OC3pYqPc"
+      "flashscore_mid": "OC3pYqPc",
+      "status": "scheduled",
+      "espn_event_id": "401915313",
+      "espn_league": "uefa.champions",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-23",
