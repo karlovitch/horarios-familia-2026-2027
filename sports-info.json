@@ -2026,11 +2026,14 @@
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
       "flashscore_mid": "jP6EvMLH",
-      "status": "scheduled",
+      "status": "live",
       "espn_event_id": "401915398",
       "espn_league": "uefa.champions",
       "home_score": 0,
-      "away_score": 0
+      "away_score": 1,
+      "period": "2H",
+      "period_start": 1792526540,
+      "status_updated_at": 1792527397
     },
     {
       "date": "2026-10-21",
