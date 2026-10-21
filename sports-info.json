@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T17:18:38.648062+00:00",
+  "generated_at": "2026-10-21T20:42:11.075728+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -43,12 +43,12 @@
     {
       "url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "ok": true,
-      "events_found": 35
+      "events_found": 34
     },
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 12
+      "events_found": 11
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -57,13 +57,671 @@
     },
     {
       "url": "https://api.jolpi.ca/ergast/f1/2026.json",
-      "ok": false,
-      "fallback": "Formula1.com",
-      "events_found": 45,
-      "error": "Expecting value: line 1 column 1 (char 0)"
+      "ok": true,
+      "events_found": 115
     }
   ],
   "events": [
+    {
+      "date": "2026-03-06",
+      "start": "2026-03-06T01:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-06",
+      "start": "2026-03-06T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-07",
+      "start": "2026-03-07T01:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-07",
+      "start": "2026-03-07T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-08",
+      "start": "2026-03-08T04:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Australian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Albert Park Grand Prix Circuit, Melbourne, Austrália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-13",
+      "start": "2026-03-13T03:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-13",
+      "start": "2026-03-13T07:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-14",
+      "start": "2026-03-14T03:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-14",
+      "start": "2026-03-14T07:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-15",
+      "start": "2026-03-15T07:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Chinese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Shanghai International Circuit, Shanghai, China",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-27",
+      "start": "2026-03-27T02:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-27",
+      "start": "2026-03-27T06:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-28",
+      "start": "2026-03-28T02:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-28",
+      "start": "2026-03-28T06:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-03-29",
+      "start": "2026-03-29T05:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Japanese",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Suzuka Circuit, Suzuka, Japão",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-01",
+      "start": "2026-05-01T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-01",
+      "start": "2026-05-01T20:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-02",
+      "start": "2026-05-02T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-02",
+      "start": "2026-05-02T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-03",
+      "start": "2026-05-03T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Miami",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Miami International Autodrome, Miami, Estados Unidos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-22",
+      "start": "2026-05-22T16:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-22",
+      "start": "2026-05-22T20:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-23",
+      "start": "2026-05-23T16:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-23",
+      "start": "2026-05-23T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-05-24",
+      "start": "2026-05-24T20:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Canadian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Gilles Villeneuve, Montreal, Canadá",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-05",
+      "start": "2026-06-05T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-05",
+      "start": "2026-06-05T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-06",
+      "start": "2026-06-06T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-06",
+      "start": "2026-06-06T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-07",
+      "start": "2026-06-07T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Monaco",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Monaco, Monte Carlo, Mónaco",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-12",
+      "start": "2026-06-12T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-12",
+      "start": "2026-06-12T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-13",
+      "start": "2026-06-13T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-13",
+      "start": "2026-06-13T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-14",
+      "start": "2026-06-14T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Barcelona",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Barcelona-Catalunya, Barcelona, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-26",
+      "start": "2026-06-26T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-26",
+      "start": "2026-06-26T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-27",
+      "start": "2026-06-27T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-27",
+      "start": "2026-06-27T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-06-28",
+      "start": "2026-06-28T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Austrian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Red Bull Ring, Spielberg, Áustria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-03",
+      "start": "2026-07-03T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-03",
+      "start": "2026-07-03T15:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-04",
+      "start": "2026-07-04T11:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-04",
+      "start": "2026-07-04T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-05",
+      "start": "2026-07-05T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de British",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Silverstone Circuit, Silverstone, Reino Unido",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-17",
+      "start": "2026-07-17T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-17",
+      "start": "2026-07-17T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-18",
+      "start": "2026-07-18T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-18",
+      "start": "2026-07-18T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-19",
+      "start": "2026-07-19T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Belgian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit de Spa-Francorchamps, Spa, Bélgica",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-24",
+      "start": "2026-07-24T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-24",
+      "start": "2026-07-24T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-25",
+      "start": "2026-07-25T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-25",
+      "start": "2026-07-25T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-07-26",
+      "start": "2026-07-26T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Hungarian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Hungaroring, Budapest, Hungria",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
     {
       "date": "2026-08-01",
       "start": "2026-08-01T20:15:00+01:00",
@@ -159,6 +817,54 @@
       "match_url": null
     },
     {
+      "date": "2026-08-21",
+      "start": "2026-08-21T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-21",
+      "start": "2026-08-21T14:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação Sprint · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-22",
+      "start": "2026-08-22T10:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Sprint · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-08-22",
+      "start": "2026-08-22T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
       "date": "2026-08-22",
       "start": "2026-08-22T21:30:00+02:00",
       "entity": "Real Madrid",
@@ -173,6 +879,18 @@
       "status": "finished",
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/results",
       "match_url": null
+    },
+    {
+      "date": "2026-08-23",
+      "start": "2026-08-23T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Dutch",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Circuit Park Zandvoort, Zandvoort, Países Baixos",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-08-23",
@@ -272,6 +990,30 @@
     },
     {
       "date": "2026-09-04",
+      "start": "2026-09-04T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-04",
+      "start": "2026-09-04T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-04",
       "start": "2026-09-04T20:15:00+01:00",
       "entity": "FC Porto",
       "sport": "Futebol",
@@ -301,6 +1043,42 @@
       "status": "finished",
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/results",
       "match_url": null
+    },
+    {
+      "date": "2026-09-05",
+      "start": "2026-09-05T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-05",
+      "start": "2026-09-05T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-06",
+      "start": "2026-09-06T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Italian",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Autodromo Nazionale di Monza, Monza, Itália",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-06",
@@ -352,6 +1130,30 @@
     },
     {
       "date": "2026-09-11",
+      "start": "2026-09-11T11:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 1 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-11",
+      "start": "2026-09-11T15:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 2 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-11",
       "start": "2026-09-11T22:00:00+01:00",
       "entity": "Óquei Clube de Barcelos",
       "sport": "Hóquei em Patins",
@@ -365,6 +1167,30 @@
       "status": "finished",
       "source_url": "https://www.zerozero.pt/equipa/oc-barcelos?epoca_id=156",
       "match_url": null
+    },
+    {
+      "date": "2026-09-12",
+      "start": "2026-09-12T10:30:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Treino Livre 3 · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-09-12",
+      "start": "2026-09-12T14:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Qualificação · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-12",
@@ -413,6 +1239,18 @@
       "status": "finished",
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/results",
       "match_url": null
+    },
+    {
+      "date": "2026-09-13",
+      "start": "2026-09-13T13:00:00Z",
+      "entity": "Formula 1",
+      "sport": "Automobilismo",
+      "title": "Corrida · GP de Spanish",
+      "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
+      "location": "Madring, Madrid, Espanha",
+      "channel": "DAZN 5",
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-13",
@@ -634,24 +1472,24 @@
       "start": "2026-09-24T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP do Azerbaijão",
+      "title": "Treino Livre 1 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-24",
       "start": "2026-09-24T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP do Azerbaijão",
+      "title": "Treino Livre 2 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-24",
@@ -679,24 +1517,24 @@
       "start": "2026-09-25T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP do Azerbaijão",
+      "title": "Treino Livre 3 · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-25",
       "start": "2026-09-25T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP do Azerbaijão",
+      "title": "Qualificação · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-25",
@@ -723,12 +1561,12 @@
       "start": "2026-09-26T11:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP do Azerbaijão",
+      "title": "Corrida · GP de Azerbaijão",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Baku City Circuit, Baku, Azerbaijão",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/azerbaijan",
-      "source_url": "https://www.formula1.com/en/racing/2026/azerbaijan"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-09-27",
@@ -812,10 +1650,10 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 1 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-02",
@@ -824,10 +1662,10 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 2 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-03",
@@ -836,10 +1674,10 @@
       "sport": "Automobilismo",
       "title": "Treino Livre 3 · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-03",
@@ -848,10 +1686,10 @@
       "sport": "Automobilismo",
       "title": "Qualificação · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-04",
@@ -860,10 +1698,10 @@
       "sport": "Automobilismo",
       "title": "Corrida · GP do Barém na Malásia",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Sepang International Circuit, Sepang, Malásia",
+      "location": "Sepang International Circuit, Kuala Lumpur, Malásia",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/bahrain",
-      "source_url": "https://www.formula1.com/en/racing/2026/bahrain"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-04",
@@ -907,24 +1745,24 @@
       "start": "2026-10-09T08:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP de Singapura",
+      "title": "Treino Livre 1 · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-09",
       "start": "2026-10-09T12:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação Sprint · GP de Singapura",
+      "title": "Qualificação Sprint · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-09",
@@ -951,24 +1789,24 @@
       "start": "2026-10-10T09:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Sprint · GP de Singapura",
+      "title": "Sprint · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-10",
       "start": "2026-10-10T13:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP de Singapura",
+      "title": "Qualificação · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-10",
@@ -1033,12 +1871,12 @@
       "start": "2026-10-11T12:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP de Singapura",
+      "title": "Corrida · GP de Singapore",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Marina Bay Street Circuit, Singapura",
+      "location": "Marina Bay Street Circuit, Marina Bay, Singapura",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/singapore",
-      "source_url": "https://www.formula1.com/en/racing/2026/singapore"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-12",
@@ -1208,47 +2046,50 @@
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "flashscore_mid": "OC3pYqPc",
-      "status": "scheduled",
+      "status": "live",
       "espn_event_id": "401915313",
       "espn_league": "uefa.champions",
-      "home_score": 0,
-      "away_score": 0
+      "home_score": 2,
+      "away_score": 0,
+      "period": "2H",
+      "period_start": 1792613104,
+      "status_updated_at": 1792615318
     },
     {
       "date": "2026-10-23",
       "start": "2026-10-23T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP dos Estados Unidos",
+      "title": "Treino Livre 1 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-23",
       "start": "2026-10-23T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP dos Estados Unidos",
+      "title": "Treino Livre 2 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-24",
       "start": "2026-10-24T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP dos Estados Unidos",
+      "title": "Treino Livre 3 · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-24",
@@ -1269,24 +2110,24 @@
       "start": "2026-10-24T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP dos Estados Unidos",
+      "title": "Qualificação · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-25",
       "start": "2026-10-25T20:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP dos Estados Unidos",
+      "title": "Corrida · GP de Estados Unidos",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Circuit of the Americas, Austin, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-states",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-states"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-25",
@@ -1348,36 +2189,36 @@
       "start": "2026-10-30T18:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP da Cidade do México",
+      "title": "Treino Livre 1 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-30",
       "start": "2026-10-30T22:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP da Cidade do México",
+      "title": "Treino Livre 2 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-31",
       "start": "2026-10-31T17:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP da Cidade do México",
+      "title": "Treino Livre 3 · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-10-31",
@@ -1397,12 +2238,12 @@
       "start": "2026-10-31T21:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP da Cidade do México",
+      "title": "Qualificação · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-01",
@@ -1435,12 +2276,12 @@
       "start": "2026-11-01T20:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP da Cidade do México",
+      "title": "Corrida · GP de Cidade do México",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
-      "location": "Autódromo Hermanos Rodríguez, Cidade do México, México",
+      "location": "Autódromo Hermanos Rodríguez, Mexico City, México",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/mexico",
-      "source_url": "https://www.formula1.com/en/racing/2026/mexico"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-02",
@@ -1516,8 +2357,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-06",
@@ -1528,8 +2369,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-07",
@@ -1540,8 +2381,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-07",
@@ -1552,8 +2393,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-07",
@@ -1603,8 +2444,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Autódromo José Carlos Pace, São Paulo, Brasil",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/brazil",
-      "source_url": "https://www.formula1.com/en/racing/2026/brazil"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-08",
@@ -1708,8 +2549,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-20",
@@ -1720,8 +2561,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-21",
@@ -1732,8 +2573,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-21",
@@ -1744,8 +2585,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-21",
@@ -1795,8 +2636,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Las Vegas Strip Street Circuit, Las Vegas, Estados Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/las-vegas",
-      "source_url": "https://www.formula1.com/en/racing/2026/las-vegas"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-22",
@@ -1881,48 +2722,48 @@
       "start": "2026-11-27T13:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 1 · GP do Qatar",
+      "title": "Treino Livre 1 · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-27",
       "start": "2026-11-27T17:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 2 · GP do Qatar",
+      "title": "Treino Livre 2 · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-28",
       "start": "2026-11-28T14:30:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Treino Livre 3 · GP do Qatar",
+      "title": "Treino Livre 3 · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-28",
       "start": "2026-11-28T18:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Qualificação · GP do Qatar",
+      "title": "Qualificação · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-28",
@@ -1942,12 +2783,12 @@
       "start": "2026-11-29T16:00:00Z",
       "entity": "Formula 1",
       "sport": "Automobilismo",
-      "title": "Corrida · GP do Qatar",
+      "title": "Corrida · GP de Qatar",
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Lusail International Circuit, Lusail, Qatar",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/qatar",
-      "source_url": "https://www.formula1.com/en/racing/2026/qatar"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-11-29",
@@ -2023,8 +2864,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-04",
@@ -2035,8 +2876,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-05",
@@ -2047,8 +2888,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-05",
@@ -2059,8 +2900,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-05",
@@ -2084,8 +2925,8 @@
       "competition": "Campeonato do Mundo de Fórmula 1 da FIA 2026",
       "location": "Yas Marina Circuit, Abu Dhabi, Emirados Árabes Unidos",
       "channel": "DAZN 5",
-      "match_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
-      "source_url": "https://www.formula1.com/en/racing/2026/united-arab-emirates"
+      "match_url": "https://www.formula1.com/en/racing/2026",
+      "source_url": "https://www.formula1.com/en/racing/2026"
     },
     {
       "date": "2026-12-06",
