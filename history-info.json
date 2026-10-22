@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T08:54:04.646696+00:00",
+  "generated_at": "2026-10-22T08:57:05.051962+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -40280,7 +40280,128 @@
       "portugal": []
     },
     "10-22": {
-      "world": [],
+      "world": [
+        {
+          "year": "1383",
+          "text": "O rei Fernando morre sem um herdeiro masculino ao trono português, provocando um período de guerra civil e desordem.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1633",
+          "text": "A China da dinastia Ming derrota a Companhia Holandesa das Índias Orientais .",
+          "source_url": "https://pt.wikipedia.org/wiki/Companhia_Holandesa_das_%C3%8Dndias_Orientais"
+        },
+        {
+          "year": "1536",
+          "text": "É publicada em Évora e na presença de D. João III a bula Cum ad nil magis , promulgada pelo Papa Paulo III , que fundava a Inquisição portuguesa .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1685",
+          "text": "Luís XIV da França revoga o Édito de Nantes com o Édito de Fontainebleau .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1707",
+          "text": "Quatro navios da marinha britânica encalham nas Ilhas Scilly por causa de uma navegação mal feita. Em resposta, o primeiro Ato de Longitude é promulgado em 1714.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1721",
+          "text": "O Império Russo é proclamado pelo czar Pedro I após a derrota sueca na Grande Guerra do Norte .",
+          "source_url": "https://pt.wikipedia.org/wiki/Imp%C3%A9rio_Russo"
+        },
+        {
+          "year": "1739",
+          "text": "Começa a Guerra da Orelha de Jenkins com o primeiro ataque a La Guaira , na atual Venezuela .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1784",
+          "text": "A Rússia funda uma colônia na Ilha Kodiak , no Alasca.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1797",
+          "text": "André-Jacques Garnerin faz o primeiro salto de paraquedas registrado, de mil metros acima de Paris.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1807",
+          "text": "Acordo secreto com o Reino Unido prevê mudança da corte portuguesa para o Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Brasil"
+        },
+        {
+          "year": "1836",
+          "text": "Sam Houston toma posse como o primeiro presidente da República do Texas .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1844",
+          "text": "O Dia do Grande Desapontamento : religiosos estadunidenses inspirados em profecias bíblicas esperavam o retorno de Jesus Cristo neste dia.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1859",
+          "text": "Espanha declara guerra ao Marrocos .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1866",
+          "text": "Um plebiscito ratifica a anexação do Vêneto e Mântua à Itália, ocorrida três dias antes, em 19 de outubro.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1879",
+          "text": "Usando um filamento de fio carbonizado, o inventor estadunidense Thomas Edison testa a primeira lâmpada incandescente elétrica (dura 13 horas e meia antes de queimar).",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1884",
+          "text": "O Observatório Real da Grã-Bretanha é adotado como o meridiano principal da longitude.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1895",
+          "text": "Em Paris, um trem expresso descarrila após ultrapassar a parada de segurança, atravessando quase 30 metros do saguão antes de colidir com uma parede e cair 10 metros na estrada abaixo.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1907",
+          "text": "Uma corrida ao caixa da Knickerbocker Trust Company produzem eventos que desencadearão o Pânico financeiro de 1907 .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1909",
+          "text": "A aviadora francesa Élise Deroche é a primeira mulher a fazer um voo sozinha.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1910",
+          "text": "Hawley Harvey Crippen (o primeiro criminoso a ser preso com a ajuda do rádio) é condenado por envenenar sua esposa.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1912",
+          "text": "Início da Guerra do Contestado , em razão do início da construção da Estrada de Ferro que ligaria São Paulo ao Rio Grande do Sul .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1923",
+          "text": "A tentativa de golpe de Estado monarquista Leonardopoulos-Gargalidis falha na Grécia, desacreditando a monarquia e abrindo caminho para o estabelecimento da Segunda República Helênica .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1930",
+          "text": "O túmulo da Beata Maria de Araújo é profanado e os restos mortais da mesma tiveram destino ignorado, e até hoje nunca foram encontrados.",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        },
+        {
+          "year": "1938",
+          "text": "A primeira cópia xerográfica é feita, nos Estados Unidos .",
+          "source_url": "https://pt.wikipedia.org/wiki/22_de_outubro"
+        }
+      ],
       "portugal": [
         {
           "year": "s/d",
