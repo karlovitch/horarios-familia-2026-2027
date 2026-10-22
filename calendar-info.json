@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T10:21:29+01:00",
+  "generated_at": "2026-10-22T10:24:00+01:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4420,18 +4420,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s joao paulo ii papa.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/10/22/s--joao-paulo-ii--papa.html"
-        }
-      ],
-      "liturgical_day": "Quinta-feira da semana XXIX",
-      "saints": [
-        "S. João Paulo II, papa – MF"
-      ],
-      "gospel": "Lc 12, 49-53",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-22"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-22",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-22",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2253/o.mp3"
     },
     "2026-10-23": {
       "date": "2026-10-23",
