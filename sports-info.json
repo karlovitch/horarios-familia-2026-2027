@@ -2144,7 +2144,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "6ZoODtBL"
+      "flashscore_mid": "6ZoODtBL",
+      "status": "scheduled",
+      "espn_event_id": "401882832",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-25",
@@ -2158,7 +2163,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "6ZoODtBL"
+      "flashscore_mid": "6ZoODtBL",
+      "status": "scheduled",
+      "espn_event_id": "401882832",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-10-28",
@@ -2235,7 +2245,8 @@
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "flashscore_mid": "vBGNTTsS"
     },
     {
       "date": "2026-10-31",
