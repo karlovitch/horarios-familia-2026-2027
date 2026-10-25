@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T20:42:11.075728+00:00",
+  "generated_at": "2026-10-25T22:02:09.335197+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -43,12 +43,12 @@
     {
       "url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "ok": true,
-      "events_found": 34
+      "events_found": 33
     },
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 11
+      "events_found": 10
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2146,11 +2146,11 @@
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
       "flashscore_mid": "6ZoODtBL",
-      "status": "scheduled",
+      "status": "finished",
       "espn_event_id": "401882832",
       "espn_league": "esp.1",
-      "home_score": 0,
-      "away_score": 0
+      "home_score": 1,
+      "away_score": 2
     },
     {
       "date": "2026-10-25",
@@ -2165,11 +2165,11 @@
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "flashscore_mid": "6ZoODtBL",
-      "status": "scheduled",
+      "status": "finished",
       "espn_event_id": "401882832",
       "espn_league": "esp.1",
-      "home_score": 0,
-      "away_score": 0
+      "home_score": 1,
+      "away_score": 2
     },
     {
       "date": "2026-10-28",
