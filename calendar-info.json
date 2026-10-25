@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T09:52:19+01:00",
+  "generated_at": "2026-10-25T09:08:33+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4465,10 +4465,12 @@
       "portugal_days": [],
       "local_days": [],
       "saint_hagiographies": [],
-      "liturgical_day": "DOMINGO XXX DO TEMPO COMUM",
+      "liturgical_day": "",
       "saints": [],
-      "gospel": "Mt 22, 34-40",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-25"
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-25",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-25",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2256/o.mp3"
     },
     "2026-10-26": {
       "date": "2026-10-26",
