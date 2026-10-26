@@ -68,14 +68,6 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   },
   {
     "date": "2026-10-27",
-    "end": "20:00",
-    "kind": "formacao",
-    "title": "Formação 43 — Inteligência Artificial",
-    "mode": "Assíncrona",
-    "timeNote": "Sessão assíncrona: conclusão até às 20:00; início flexível"
-  },
-  {
-    "date": "2026-10-27",
     "kind": "avaliacao",
     "title": "Teste — 8.º B",
     "turma": "8.º B"
@@ -85,6 +77,14 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "kind": "avaliacao",
     "title": "Teste — 9.º B",
     "turma": "9.º B"
+  },
+  {
+    "date": "2026-10-27",
+    "start": "18:00",
+    "end": "20:00",
+    "kind": "formacao",
+    "title": "Formação 43 — Inteligência Artificial",
+    "mode": "Síncrona (online)"
   },
   {
     "date": "2026-10-28",
@@ -100,14 +100,6 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "title": "Reunião 9.º A — Naysa Kasmas",
     "location": "Videoconferência",
     "turma": "9.º A"
-  },
-  {
-    "date": "2026-10-28",
-    "start": "18:00",
-    "end": "20:00",
-    "kind": "formacao",
-    "title": "Formação 43 — Inteligência Artificial",
-    "mode": "Online"
   },
   {
     "date": "2026-10-28",
