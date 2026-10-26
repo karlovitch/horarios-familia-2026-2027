@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=147">
-<link rel="icon" href="favicon-64.png?v=147" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=147" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=147" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=147">
+<link rel="manifest" href="manifest.webmanifest?v=148">
+<link rel="icon" href="favicon-64.png?v=148" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=148" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=148" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=148">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -581,8 +581,8 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=147"></script>
-<script src="carlos-professional-events.js?v=147"></script>
+<script src="sports-info.js?v=148"></script>
+<script src="carlos-professional-events.js?v=148"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -782,7 +782,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=147;
+const APP_BUILD=148;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -3026,7 +3026,7 @@ function renderOverviewWeek(referenceIso){
   const iso=isoForWeekday(referenceIso,idx+1);
   h+='<div class="overview-week-day">'+d+'<br><small>'+iso.slice(8,10)+'/'+iso.slice(5,7)+'</small></div>';
   for(const p of people){
-   const i=D[p],reason=noClassReason(iso),special=(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all")?"Reuniões de Avaliação Intercalar":"";
+   const i=D[p],reason=noClassReason(iso),special=carlosFirstSemesterMeetings(p,iso)||((p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all")?"Reuniões de Avaliação Intercalar":"");
    h+='<div class="overview-week-cell">';
    if(reason)h+='<div class="overview-week-special">'+esc(reason)+'</div>';
    else if(special)h+='<div class="overview-week-special">'+esc(special)+'</div>';
@@ -3076,10 +3076,14 @@ function renderOverview(){
  for(const p of PEOPLE){
   const i=D[p],isActive=(iso===isoLocalDate())&&!!activeEvent(p,d);
   h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';
-  if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
+  const semesterMeetings=carlosFirstSemesterMeetings(p,iso);
+  if(semesterMeetings)h+='<div class="lane-message">'+esc(semesterMeetings)+'</div>';
+  else{
+   if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
   for(const e of i.days[d]||[]){
    const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
    h+='<div class="block'+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
+  }
   }
   if(p==="Carlos")h+=carlosTimedTimelineHtml(iso);
   h+='</div>';
@@ -3133,6 +3137,9 @@ function renderTodayRestBanner(iso){
  el.textContent="😄 "+text;el.classList.remove("hidden");
 }
 const INTERCALARY_MEETINGS={"2026-11-13":"all"};
+function carlosFirstSemesterMeetings(p,iso){
+ return p==="Carlos"&&iso>="2027-01-25"&&iso<="2027-01-29"?"Reuniões de Avaliação do 1.º Semestre":"";
+}
 function renderTodayTimeline(iso,d){
  const timeline=qs("#todayTimeline"),reason=noClassReason(iso),dt=dateFromIso(iso),weekend=(dt.getUTCDay()===0||dt.getUTCDay()===6);
  timeline.classList.remove("compact-overview");
@@ -3146,6 +3153,8 @@ function renderTodayTimeline(iso,d){
    h+='<div class="lane-message">'+esc(reason)+'</div>';
   }else if(weekend){
    h+='<div class="lane-message">Fim de semana — sem aulas.</div>';
+  }else if(carlosFirstSemesterMeetings(p,iso)){
+   h+='<div class="lane-message">'+esc(carlosFirstSemesterMeetings(p,iso))+'</div>';
   }else if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all"){
    h+='<div class="lane-message">Reuniões de Avaliação Intercalar</div>';
   }else{
@@ -3191,6 +3200,8 @@ function personSpecialMessage(p,iso){
  if(reason)return reason;
  const dt=dateFromIso(iso),dow=dt.getUTCDay();
  if(dow===0||dow===6)return "Fim de semana — sem aulas.";
+ const semesterMeetings=carlosFirstSemesterMeetings(p,iso);
+ if(semesterMeetings)return semesterMeetings;
  if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all")return "Reuniões de Avaliação Intercalar";
  return "";
 }
