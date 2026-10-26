@@ -43,19 +43,19 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-26",
     "kind": "avaliacao",
-    "title": "Teste — 10.º G",
+    "title": "Teste de História A — 10.º G",
     "turma": "10.º G"
   },
   {
     "date": "2026-10-26",
     "kind": "avaliacao",
-    "title": "Teste — 10.º H",
+    "title": "Teste de História A — 10.º H",
     "turma": "10.º H"
   },
   {
     "date": "2026-10-26",
     "kind": "avaliacao",
-    "title": "Teste — 10.º I",
+    "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
   },
   {
@@ -230,19 +230,19 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-12-07",
     "kind": "avaliacao",
-    "title": "Teste — 10.º G",
+    "title": "Teste de História A — 10.º G",
     "turma": "10.º G"
   },
   {
     "date": "2026-12-07",
     "kind": "avaliacao",
-    "title": "Teste — 10.º H",
+    "title": "Teste de História A — 10.º H",
     "turma": "10.º H"
   },
   {
     "date": "2026-12-07",
     "kind": "avaliacao",
-    "title": "Teste — 10.º I",
+    "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
   },
   {
@@ -302,19 +302,19 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2027-02-15",
     "kind": "avaliacao",
-    "title": "Teste — 10.º G",
+    "title": "Teste de História A — 10.º G",
     "turma": "10.º G"
   },
   {
     "date": "2027-02-15",
     "kind": "avaliacao",
-    "title": "Teste — 10.º H",
+    "title": "Teste de História A — 10.º H",
     "turma": "10.º H"
   },
   {
     "date": "2027-02-15",
     "kind": "avaliacao",
-    "title": "Teste — 10.º I",
+    "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
   },
   {
@@ -338,19 +338,19 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2027-04-12",
     "kind": "avaliacao",
-    "title": "Teste — 10.º G",
+    "title": "Teste de História A — 10.º G",
     "turma": "10.º G"
   },
   {
     "date": "2027-04-12",
     "kind": "avaliacao",
-    "title": "Teste — 10.º H",
+    "title": "Teste de História A — 10.º H",
     "turma": "10.º H"
   },
   {
     "date": "2027-04-12",
     "kind": "avaliacao",
-    "title": "Teste — 10.º I",
+    "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
   },
   {
@@ -410,19 +410,19 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2027-05-24",
     "kind": "avaliacao",
-    "title": "Teste — 10.º G",
+    "title": "Teste de História A — 10.º G",
     "turma": "10.º G"
   },
   {
     "date": "2027-05-24",
     "kind": "avaliacao",
-    "title": "Teste — 10.º H",
+    "title": "Teste de História A — 10.º H",
     "turma": "10.º H"
   },
   {
     "date": "2027-05-24",
     "kind": "avaliacao",
-    "title": "Teste — 10.º I",
+    "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
   }
 ];
@@ -452,7 +452,7 @@ function carlosLessonAssessment(iso, turma){
 function carlosLessonAssessmentHtml(iso,turma){
  const evaluation=carlosLessonAssessment(iso,turma);
  if(!evaluation)return "";
- const label=evaluation.title.startsWith("QA")?"Questão de aula":evaluation.title.startsWith("Apresentação")?"Apresentação oral":"Teste de História";
+ const label=evaluation.title.startsWith("QA")?"Questão de aula":evaluation.title.startsWith("Apresentação")?"Apresentação oral":(/^10\.º /.test(turma)?"Teste de História A":"Teste de História");
  return '<span class="carlos-lesson-eval" title="'+esc(evaluation.title)+'">'+esc(label)+'</span>';
 }
 
