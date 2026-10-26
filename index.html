@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=142">
-<link rel="icon" href="favicon-64.png?v=142" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=142" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=142" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=142">
+<link rel="manifest" href="manifest.webmanifest?v=143">
+<link rel="icon" href="favicon-64.png?v=143" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=143" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=143" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=143">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -499,6 +499,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 </div>
 <div class="screen-head"><div><h2>Vista de conjunto</h2><p>Os blocos estão colocados proporcionalmente à hora real.</p></div><button id="goTodayBtn" class="today-jump" type="button">Ir para hoje</button></div>
 <div id="activeSummary" class="active-summary hidden" aria-live="polite"></div>
+<div id="overviewCarlosEvents" class="carlos-calendar-panel hidden" aria-live="polite"></div>
 <div id="overviewDays" class="day-tabs"></div>
 <div class="timeline-scroll"><div id="timeline" class="timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
@@ -512,6 +513,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 <button id="todayNextPage" class="today-page-arrow" type="button" data-top-shift="1" aria-label="Dia seguinte">›</button>
 </div>
 <div class="screen-head today-screen-head"><div><h2 id="todayHeading">Hoje</h2><p id="todayDay"></p></div></div>
+<div id="todayCarlosEvents" class="carlos-calendar-panel hidden" aria-live="polite"></div>
 <div class="timeline-scroll"><div id="todayTimeline" class="timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
 
@@ -542,6 +544,7 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 </div>
 <div class="screen-head person-title"><div><h2 id="personName"></h2><p>Horário individual</p></div></div>
 <div class="person-mode-tabs"><button id="personDayMode" class="person-mode-btn active" type="button">Dia</button><button id="personWeekMode" class="person-mode-btn" type="button">Semana completa</button></div>
+<div id="personCarlosEvents" class="carlos-calendar-panel hidden" aria-live="polite"></div>
 <div id="personDays" class="day-tabs"></div>
 <div class="timeline-scroll"><div id="personTimeline" class="timeline person-timeline"></div></div>
 <div class="stats-controls schedule-date-controls bottom-date-controls"><strong>Consultar data:</strong><button class="stats-step" type="button" data-stats-shift="-1" aria-label="Dia anterior">‹</button><input class="stats-date-input" type="date" min="2026-01-01" max="2027-12-31"><button class="stats-step" type="button" data-stats-shift="1" aria-label="Dia seguinte">›</button><button class="stats-today" type="button">Hoje</button></div>
@@ -578,7 +581,8 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=142"></script>
+<script src="sports-info.js?v=143"></script>
+<script src="carlos-professional-events.js?v=143"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -778,7 +782,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1230;
 const MS_DAY=86400000;
-const APP_BUILD=142;
+const APP_BUILD=143;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -3055,6 +3059,7 @@ function renderOverviewTabs(active,referenceIso){
 function renderOverview(){
  const iso=statsIso();applyAdaptiveTheme(iso);renderCountdowns();renderGlobalFamilyBanner(iso);
  const d=weekdayFromIso(iso);
+ renderCarlosEventsPanel("overviewCarlosEvents",iso,overviewMode==="week"||!SCHOOL_DAYS.includes(d));
  selectedDay=d;
  const activeTab=overviewMode==="week"?"Semana":(SCHOOL_DAYS.includes(d)?d:"Semana");
  renderOverviewTabs(activeTab,iso);
@@ -3076,6 +3081,7 @@ function renderOverview(){
    const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
    h+='<div class="block'+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(e.place?'<em>'+esc(e.place)+'</em>':'')+'</div>';
   }
+  if(p==="Carlos")h+=carlosTimedTimelineHtml(iso);
   h+='</div>';
  }
  if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
@@ -3126,11 +3132,7 @@ function renderTodayRestBanner(iso){
  if(!text){el.classList.add("hidden");el.textContent="";return}
  el.textContent="😄 "+text;el.classList.remove("hidden");
 }
-const INTERCALARY_MEETINGS={
- "2026-11-11":"afternoon",
- "2026-11-12":"all",
- "2026-11-13":"all"
-};
+const INTERCALARY_MEETINGS={"2026-11-13":"all"};
 function renderTodayTimeline(iso,d){
  const timeline=qs("#todayTimeline"),reason=noClassReason(iso),dt=dateFromIso(iso),weekend=(dt.getUTCDay()===0||dt.getUTCDay()===6);
  timeline.classList.remove("compact-overview");
@@ -3157,6 +3159,7 @@ function renderTodayTimeline(iso,d){
     h+='<div class="block" style="top:'+timelineY(toMin(st))+'px;height:'+Math.max(timelineDur(st,en),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+st+'–'+en+'</strong><span>Reuniões de Avaliação Intercalar</span></div>';
    }
   }
+  if(p==="Carlos")h+=carlosTimedTimelineHtml(iso);
   h+='</div>';
  }
  if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
@@ -3173,6 +3176,7 @@ function renderToday(){
  qs("#todayHeading").textContent=isToday?"Hoje":weekday.charAt(0).toUpperCase()+weekday.slice(1);
  qs("#todayDay").textContent=isToday?pretty:fullDate;
  qs("#todayPageDate").textContent=pretty;
+ renderCarlosEventsPanel("todayCarlosEvents",iso);
  renderTodayTimeline(iso,d);
 }
 function weekdayFromIso(iso){return WEEK[dateFromIso(iso).getUTCDay()]}
@@ -3204,6 +3208,7 @@ function renderPersonDayTimeline(p,iso){
   }
   if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
  }
+ if(p==="Carlos")h+=carlosTimedTimelineHtml(iso);
  h+='</div>';
  if(iso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line" style="top:'+timelineY(n)+'px"></div>'}
  tl.style.gridTemplateColumns=isMobileTimeline()?"44px minmax(0,1fr)":"64px minmax(0,1fr)";
@@ -3227,6 +3232,7 @@ function renderPersonWeekTimeline(p,iso){
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[dayIso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
   }
+  if(p==="Carlos")h+=carlosTimedTimelineHtml(dayIso);
   if(dayIso===isoLocalDate()){const n=Math.max(START,Math.min(END,nowMin()));h+=pastShadeTimelineHtml()+'<div class="now-line contained" style="top:'+timelineY(n)+'px"></div>'}
   h+='</div>';
  });
@@ -3240,6 +3246,7 @@ function renderPerson(){
  qs("#personDayMode").classList.toggle("active",personMode==="day");
  qs("#personWeekMode").classList.toggle("active",personMode==="week");
  const days=qs("#personDays");
+ renderCarlosEventsPanel("personCarlosEvents",iso,personMode==="week",p==="Carlos");
  if(personMode==="week"){
   days.classList.add("hidden");
   renderPersonWeekTimeline(p,iso);
