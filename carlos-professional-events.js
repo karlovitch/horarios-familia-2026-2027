@@ -426,3 +426,62 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "turma": "10.º I"
   }
 ];
+
+/* Vista pública apenas para compromissos profissionais, separada da agenda pessoal privada. */
+const CARLOS_PROFESSIONAL_EVENTS = window.__CARLOS_PROFESSIONAL_EVENTS__;
+const CARLOS_PROFESSIONAL_CSS = `
+.carlos-calendar-panel{margin:0 0 12px;padding:10px 12px;background:var(--secondary);border:1px solid var(--border);border-left:5px solid #1E4F57;border-radius:12px;line-height:1.35}
+.carlos-calendar-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:7px}
+.carlos-calendar-head strong{font-size:.91rem}.carlos-calendar-head small{font-size:.72rem;color:var(--muted)}
+.carlos-calendar-day{margin-top:7px}.carlos-calendar-day-title{font-weight:850;font-size:.78rem;margin-bottom:3px;color:var(--primary);text-transform:capitalize}
+.carlos-calendar-item{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--border);padding:6px 0}
+.carlos-calendar-kind{flex:0 0 72px;border-radius:999px;padding:3px 5px;text-align:center;font-size:.66rem;font-weight:850;color:#fff;background:#1E4F57}
+.carlos-calendar-kind.kind-reuniao{background:#A64D30}.carlos-calendar-kind.kind-formacao{background:#7050A1}
+.carlos-calendar-details{min-width:0;flex:1}.carlos-calendar-details strong{display:block;font-size:.8rem}.carlos-calendar-details small{display:block;color:var(--muted);font-size:.74rem;margin-top:1px}
+.carlos-calendar-conflict{margin:5px 0;padding:5px 7px;border-radius:7px;border:1px solid #E5B64E;font-size:.72rem;font-weight:750}
+.carlos-timed-block{border:2px solid rgba(255,255,255,.85)!important;box-shadow:0 1px 5px rgba(0,0,0,.2)!important;z-index:5}
+@media(max-width:600px){.carlos-calendar-panel{padding:8px 9px}.carlos-calendar-kind{flex-basis:63px;font-size:.6rem}}
+`;
+const CARLOS_STYLE_NODE=document.createElement("style");CARLOS_STYLE_NODE.textContent=CARLOS_PROFESSIONAL_CSS;document.head.appendChild(CARLOS_STYLE_NODE);
+function carlosEventsFor(iso){return CARLOS_PROFESSIONAL_EVENTS.filter(e=>e.date===iso)}
+function carlosMinute(time){const [h,m]=String(time||"0:00").split(":").map(Number);return h*60+m}
+function carlosEventsOverlap(a,b){
+ if(!a.start||!b.start)return false;
+ const ae=carlosMinute(a.end)+(a.endNextDay?1440:0),be=carlosMinute(b.end)+(b.endNextDay?1440:0);
+ return carlosMinute(a.start)<be&&carlosMinute(b.start)<ae;
+}
+function renderCarlosEventsPanel(id,iso,week=false,visible=true){
+ const host=qs("#"+id);if(!host)return;
+ if(!visible){host.classList.add("hidden");host.innerHTML="";return}
+ const dates=week?Array.from({length:5},(_,i)=>isoForWeekday(iso,i+1)):[iso];
+ const groups=dates.map(date=>({date,items:carlosEventsFor(date)})).filter(group=>group.items.length);
+ if(!groups.length){host.classList.add("hidden");host.innerHTML="";return}
+ let html='<div class="carlos-calendar-head"><strong>Compromissos de Carlos</strong><small>'+(week?"Semana selecionada":"Data selecionada")+'</small></div>';
+ for(const {date,items} of groups){
+  const label=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"numeric",month:"long",timeZone:"UTC"}).format(dateFromIso(date));
+  html+='<div class="carlos-calendar-day"><div class="carlos-calendar-day-title">'+esc(label)+'</div>';
+  for(const e of items){
+   const type=e.kind==="avaliacao"?"Avaliação":e.kind==="reuniao"?"Reunião":"Formação";
+   const when=e.start?e.start+"–"+e.end+(e.endNextDay?" (dia seguinte)":""):"Hora não indicada";
+   const details=[when,e.mode||"",e.location||""].filter(Boolean).join(" · ");
+   html+='<div class="carlos-calendar-item"><span class="carlos-calendar-kind kind-'+e.kind+'">'+type+'</span><div class="carlos-calendar-details"><strong>'+esc(e.title)+'</strong><small>'+esc(details)+'</small></div></div>';
+  }
+  if(items.some((e,i)=>items.slice(i+1).some(other=>carlosEventsOverlap(e,other))))
+   html+='<div class="carlos-calendar-conflict">Atenção: existem compromissos com horários sobrepostos neste dia.</div>';
+  html+='</div>';
+ }
+ host.innerHTML=html;host.classList.remove("hidden");
+}
+function carlosTimedTimelineHtml(iso){
+ const events=carlosEventsFor(iso).filter(e=>e.start&&e.end&&carlosMinute(e.start)<END&&(carlosMinute(e.end)+(e.endNextDay?1440:0))>START);
+ let html="";
+ for(const e of events){
+  const others=events.filter(x=>carlosEventsOverlap(e,x)),idx=Math.max(0,others.indexOf(e)),count=others.length;
+  const left=count>1?"calc("+(100*idx/count)+"% + 4px)":"5px";
+  const right=count>1?"calc("+(100*(count-idx-1)/count)+"% + 4px)":"5px";
+  const st=Math.max(START,carlosMinute(e.start)),en=Math.min(END,carlosMinute(e.end)+(e.endNextDay?1440:0));
+  const color=e.kind==="reuniao"?"#A64D30":"#7050A1";
+  html+='<div class="block carlos-timed-block" style="top:'+timelineY(st)+'px;height:'+Math.max(timelineY(en)-timelineY(st),14)+'px;left:'+left+';right:'+right+';background:'+color+';color:#fff"><strong>'+esc(e.start+"–"+e.end)+'</strong><span>'+esc(e.title)+'</span>'+(e.location?'<em>'+esc(e.location)+'</em>':"")+'</div>';
+ }
+ return html;
+}
