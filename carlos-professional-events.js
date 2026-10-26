@@ -3,7 +3,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-14",
     "start": "17:30",
-    "end": "19:30",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
     "mode": "Online"
@@ -19,7 +19,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-20",
     "start": "19:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
     "mode": "Assíncrona"
@@ -27,7 +27,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-21",
     "start": "17:00",
-    "end": "19:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
     "mode": "Online"
@@ -61,7 +61,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-26",
     "start": "18:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 64 — Fenomenologia mitológica e religiosa",
     "mode": "Online"
@@ -80,11 +80,11 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   },
   {
     "date": "2026-10-27",
-    "start": "20:00",
-    "end": "22:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
-    "mode": "Assíncrona"
+    "mode": "Assíncrona",
+    "timeNote": "Sessão assíncrona: conclusão até às 20:00; início flexível"
   },
   {
     "date": "2026-10-28",
@@ -103,7 +103,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-10-28",
     "start": "18:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 64 — Fenomenologia mitológica e religiosa",
     "mode": "Online"
@@ -111,7 +111,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-11-02",
     "start": "18:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 64 — Fenomenologia mitológica e religiosa",
     "mode": "Online"
@@ -137,7 +137,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-11-04",
     "start": "18:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 64 — Fenomenologia mitológica e religiosa",
     "mode": "Online"
@@ -145,7 +145,7 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   {
     "date": "2026-11-09",
     "start": "18:00",
-    "end": "21:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 64 — Fenomenologia mitológica e religiosa",
     "mode": "Online"
@@ -196,12 +196,11 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   },
   {
     "date": "2026-11-17",
-    "start": "20:00",
-    "end": "00:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
     "mode": "Assíncrona",
-    "endNextDay": true
+    "timeNote": "Sessão assíncrona: conclusão até às 20:00; início flexível"
   },
   {
     "date": "2026-11-18",
@@ -213,11 +212,11 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   },
   {
     "date": "2026-11-24",
-    "start": "20:00",
-    "end": "22:00",
+    "end": "20:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
-    "mode": "Assíncrona"
+    "mode": "Assíncrona",
+    "timeNote": "Sessão assíncrona: conclusão até às 20:00; início flexível"
   },
   {
     "date": "2026-11-25",
@@ -440,10 +439,22 @@ const CARLOS_PROFESSIONAL_CSS = `
 .carlos-calendar-details{min-width:0;flex:1}.carlos-calendar-details strong{display:block;font-size:.8rem}.carlos-calendar-details small{display:block;color:var(--muted);font-size:.74rem;margin-top:1px}
 .carlos-calendar-conflict{margin:5px 0;padding:5px 7px;border-radius:7px;border:1px solid #E5B64E;font-size:.72rem;font-weight:750}
 .carlos-timed-block{border:2px solid rgba(255,255,255,.85)!important;box-shadow:0 1px 5px rgba(0,0,0,.2)!important;z-index:5}
-@media(max-width:600px){.carlos-calendar-panel{padding:8px 9px}.carlos-calendar-kind{flex-basis:63px;font-size:.6rem}}
+.carlos-lesson-eval{display:block!important;margin:4px 0 1px!important;padding:4px 5px;border-radius:5px;background:#FDE68A;color:#1F2A44;font-weight:900;letter-spacing:.02em;font-size:.83em;line-height:1.1;text-transform:uppercase;overflow-wrap:anywhere}
+.overview-week-event .carlos-lesson-eval{font-size:.53rem;margin:2px 0!important;padding:2px 3px;line-height:1.05}
+@media(max-width:600px){.carlos-calendar-panel{padding:8px 9px}.carlos-calendar-kind{flex-basis:63px;font-size:.6rem}.carlos-lesson-eval{padding:3px 4px;font-size:.76em}}
 `;
 const CARLOS_STYLE_NODE=document.createElement("style");CARLOS_STYLE_NODE.textContent=CARLOS_PROFESSIONAL_CSS;document.head.appendChild(CARLOS_STYLE_NODE);
 function carlosEventsFor(iso){return CARLOS_PROFESSIONAL_EVENTS.filter(e=>e.date===iso)}
+function carlosLessonAssessment(iso, turma){
+ return carlosEventsFor(iso).find(e=>e.kind==="avaliacao"&&e.turma===turma)||null;
+}
+function carlosLessonAssessmentHtml(iso,turma){
+ const evaluation=carlosLessonAssessment(iso,turma);
+ if(!evaluation)return "";
+ const label=evaluation.title.startsWith("QA")?"Questão de aula":evaluation.title.startsWith("Apresentação")?"Apresentação oral":"Teste de História";
+ return '<span class="carlos-lesson-eval" title="'+esc(evaluation.title)+'">'+esc(label)+'</span>';
+}
+
 function carlosMinute(time){const [h,m]=String(time||"0:00").split(":").map(Number);return h*60+m}
 function carlosEventsOverlap(a,b){
  if(!a.start||!b.start)return false;
@@ -454,16 +465,16 @@ function renderCarlosEventsPanel(id,iso,week=false,visible=true){
  const host=qs("#"+id);if(!host)return;
  if(!visible){host.classList.add("hidden");host.innerHTML="";return}
  const dates=week?Array.from({length:5},(_,i)=>isoForWeekday(iso,i+1)):[iso];
- const groups=dates.map(date=>({date,items:carlosEventsFor(date)})).filter(group=>group.items.length);
+ const groups=dates.map(date=>({date,items:carlosEventsFor(date).filter(e=>e.kind!=="avaliacao")})).filter(group=>group.items.length);
  if(!groups.length){host.classList.add("hidden");host.innerHTML="";return}
- let html='<div class="carlos-calendar-head"><strong>Compromissos de Carlos</strong><small>'+(week?"Semana selecionada":"Data selecionada")+'</small></div>';
+ let html='<div class="carlos-calendar-head"><strong>Reuniões e formações de Carlos</strong><small>'+(week?"Semana selecionada":"Data selecionada")+'</small></div>';
  for(const {date,items} of groups){
   const label=new Intl.DateTimeFormat("pt-PT",{weekday:"long",day:"numeric",month:"long",timeZone:"UTC"}).format(dateFromIso(date));
   html+='<div class="carlos-calendar-day"><div class="carlos-calendar-day-title">'+esc(label)+'</div>';
   for(const e of items){
    const type=e.kind==="avaliacao"?"Avaliação":e.kind==="reuniao"?"Reunião":"Formação";
-   const when=e.start?e.start+"–"+e.end+(e.endNextDay?" (dia seguinte)":""):"Hora não indicada";
-   const details=[when,e.mode||"",e.location||""].filter(Boolean).join(" · ");
+   const when=e.start?e.start+"–"+e.end+(e.endNextDay?" (dia seguinte)":""):(e.end?"Até às "+e.end:"Hora não indicada");
+   const details=[when,e.mode||"",e.location||"",e.timeNote||""].filter(Boolean).join(" · ");
    html+='<div class="carlos-calendar-item"><span class="carlos-calendar-kind kind-'+e.kind+'">'+type+'</span><div class="carlos-calendar-details"><strong>'+esc(e.title)+'</strong><small>'+esc(details)+'</small></div></div>';
   }
   if(items.some((e,i)=>items.slice(i+1).some(other=>carlosEventsOverlap(e,other))))
