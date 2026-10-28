@@ -2198,7 +2198,8 @@
       "channel": "Sport TV",
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "flashscore_mid": "0flvQjJE"
+      "flashscore_mid": "0flvQjJE",
+      "status": "scheduled"
     },
     {
       "date": "2026-10-30",
@@ -2326,7 +2327,8 @@
       "location": "Atenas, Grécia",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026"
+      "source_url": "https://www.realmadrid.com/pt-PT/noticias/futebol/primeira-equipa/atualidade/calendarios-del-real-madrid-en-la-primera-fase-de-la-champions-2026-27-29-08-2026",
+      "flashscore_mid": "8nfvNJGd"
     },
     {
       "date": "2026-11-04",
@@ -2339,7 +2341,8 @@
       "location": "Allwyn Arena",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "8nfvNJGd"
     },
     {
       "date": "2026-11-04",
@@ -2352,7 +2355,8 @@
       "location": "ALLWYN Arena",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "8nfvNJGd"
     },
     {
       "date": "2026-11-04",
@@ -2365,7 +2369,8 @@
       "location": "Estádio do Dragão, Porto, Portugal",
       "channel": "Transmissão a confirmar",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "flashscore_mid": "6Zinb7I7"
     },
     {
       "date": "2026-11-06",
