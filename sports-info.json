@@ -2202,7 +2202,9 @@
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
       "flashscore_mid": "0flvQjJE",
-      "status": "scheduled"
+      "status": "finished",
+      "home_score": 4,
+      "away_score": 1
     },
     {
       "date": "2026-10-30",
