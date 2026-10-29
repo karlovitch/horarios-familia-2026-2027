@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T10:33:49+00:00",
+  "generated_at": "2026-10-29T10:52:55+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4521,10 +4521,12 @@
       "portugal_days": [],
       "local_days": [],
       "saint_hagiographies": [],
-      "liturgical_day": "Quinta-feira da semana XXX",
+      "liturgical_day": "",
       "saints": [],
-      "gospel": "Lc 13, 31-35",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-29"
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-10-29",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-10-29",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2260/o.mp3"
     },
     "2026-10-30": {
       "date": "2026-10-30",
