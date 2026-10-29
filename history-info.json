@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T08:57:05.051962+00:00",
+  "generated_at": "2026-10-29T10:24:04.246407+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -41262,7 +41262,128 @@
       ]
     },
     "10-29": {
-      "world": [],
+      "world": [
+        {
+          "year": "539 a.C.",
+          "text": "O xá Ciro, o Grande da Pérsia entra em Babilônia , a capital do Império Neobabilônico e permite que os judeus retornem à sua terra.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1268",
+          "text": "Conradino é executado junto com seu companheiro Frederico I, Margrave de Baden, pelo rei Carlos I da Sicília .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1467",
+          "text": "Batalha de Brustem : Carlos, Duque da Borgonha , derrota o príncipe-bispo de Liège .",
+          "source_url": "https://pt.wikipedia.org/wiki/Batalha_de_Brustem"
+        },
+        {
+          "year": "1591",
+          "text": "Eleito o Papa Inocêncio IX .",
+          "source_url": "https://pt.wikipedia.org/wiki/Papa_Inoc%C3%AAncio_IX"
+        },
+        {
+          "year": "1618",
+          "text": "O aventureiro, escritor e cortesão inglês Walter Raleigh é decapitado por supostamente conspirar contra Jaime VI da Escócia e I da Inglaterra e Irlanda .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1658",
+          "text": "Segunda Guerra do Norte : as forças navais da República dos Sete Países Baixos derrotam os suecos na Batalha do Sund .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1665",
+          "text": "As forças portuguesas derrotam o Reino do Congo e decapitam o rei António I do Congo , também conhecido como Nvita a Nkanga.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1675",
+          "text": "O matemático alemão Gottfried Wilhelm Leibniz faz o primeiro uso do s longo (∫) como um símbolo da integral no cálculo .",
+          "source_url": "https://pt.wikipedia.org/wiki/Gottfried_Leibniz"
+        },
+        {
+          "year": "1787",
+          "text": "A ópera Don Giovanni , do músico austríaco Mozart , tem sua primeira apresentação em Praga .",
+          "source_url": "https://pt.wikipedia.org/wiki/Don_Giovanni"
+        },
+        {
+          "year": "1810",
+          "text": "Fundação da Real Biblioteca, hoje Biblioteca Nacional do Brasil , a depositária do patrimônio bibliográfico e documental do Brasil .",
+          "source_url": "https://pt.wikipedia.org/wiki/Biblioteca_Nacional_do_Brasil"
+        },
+        {
+          "year": "1840",
+          "text": "Termina o Bloqueio francês do rio da Prata .",
+          "source_url": ""
+        },
+        {
+          "year": "1863",
+          "text": "Dezoito países se reúnem em Genebra , Suiça e concordam em formar a Cruz Vermelha Internacional .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1888",
+          "text": "É assinada a Convenção de Constantinopla , garantindo a passagem marítima gratuita através do Canal de Suez durante a guerra e a paz.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1901",
+          "text": "Leon Czolgosz , o assassino do presidente dos Estados Unidos William McKinley , é executado por eletrocussão.",
+          "source_url": "https://pt.wikipedia.org/wiki/Leon_Czolgosz"
+        },
+        {
+          "year": "1914",
+          "text": "O Império Otomano entra na Primeira Guerra Mundial .",
+          "source_url": "https://pt.wikipedia.org/wiki/Entrada_do_Imp%C3%A9rio_Otomano_na_Primeira_Guerra_Mundial"
+        },
+        {
+          "year": "1918",
+          "text": "A Frota de Alto-Mar da Alemanha é incapacitada quando os marinheiros se amotinam na noite de 29 a 30, uma ação que desencadearia a Revolução Alemã de 1918-19 que eventualmente derrubaria a monarquia e proclamaria a república naquele país.",
+          "source_url": ""
+        },
+        {
+          "year": "1923",
+          "text": "Proclamação oficial da República da Turquia , sucessora do Império Otomano , oficialmente extinto em 1 de novembro de 1922.",
+          "source_url": "https://pt.wikipedia.org/wiki/Imp%C3%A9rio_Otomano"
+        },
+        {
+          "year": "1955",
+          "text": "O encouraçado soviético Novorossiysk atinge uma mina da Segunda Guerra Mundial no porto de Sebastopol, o navio emborcou e afundou, causando a morte de 617 pessoas.",
+          "source_url": ""
+        },
+        {
+          "year": "1956",
+          "text": "Início da Guerra do Suez : Israel invade a Península do Sinai e força as tropas do Egito para o outro lado do Canal de Suez .",
+          "source_url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_de_Israel"
+        },
+        {
+          "year": "1961",
+          "text": "Síria deixa de fazer parte da República Árabe Unida .",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1964",
+          "text": "A República Unida da Tanganica e Zanzibar é renomeada República Unida da Tanzânia .",
+          "source_url": "https://pt.wikipedia.org/wiki/Tanz%C3%A2nia"
+        },
+        {
+          "year": "1967",
+          "text": "A Feira Mundial de Montreal, Expo 67 , fecha com mais de 50 milhões de visitantes.",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        },
+        {
+          "year": "1969",
+          "text": "O primeiro link de computador para computador é estabelecido na ARPANET , a precursora da Internet .",
+          "source_url": "https://pt.wikipedia.org/wiki/Internet"
+        },
+        {
+          "year": "1972",
+          "text": "Três autores, sobreviventes, do massacre de Munique são libertados da prisão em troca dos reféns do voo 615 da Lufthansa sequestrado. [ 1 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/29_de_outubro"
+        }
+      ],
       "portugal": [
         {
           "year": "1748",
