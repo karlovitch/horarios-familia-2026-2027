@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T00:32:18.242668+00:00",
+  "generated_at": "2026-10-30T15:51:35.652020+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 11
+      "events_found": 12
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2229,6 +2229,19 @@
       "channel": "DAZN 5",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-10-31",
+      "start": "2026-10-31T14:30:00Z",
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Los mejores goles de Mbappé con el Real Madrid",
+      "away": "Próximos eventos",
+      "competition": "La Liga",
+      "location": "Ciudad Real Madrid",
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-10-31",
