@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T15:51:35.652020+00:00",
+  "generated_at": "2026-10-31T15:00:11.351740+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -2241,7 +2241,26 @@
       "location": "Ciudad Real Madrid",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "status": "live",
+      "period": "1H",
+      "status_updated_at": 1793458797
+    },
+    {
+      "date": "2026-10-31",
+      "start": "2026-10-31T14:30:00Z",
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Minuto de silencio en la Ciudad Real Madrid",
+      "away": "Próximos eventos",
+      "competition": "La Liga",
+      "location": "Ciudad Real Madrid",
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "status": "live",
+      "period": "1H",
+      "status_updated_at": 1793458811
     },
     {
       "date": "2026-10-31",
