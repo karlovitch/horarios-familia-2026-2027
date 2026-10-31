@@ -2298,7 +2298,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "v7xU0FlU"
+      "flashscore_mid": "v7xU0FlU",
+      "status": "scheduled",
+      "espn_event_id": "401882819",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-01",
@@ -2454,7 +2459,8 @@
       "location": "Local a confirmar",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "flashscore_mid": "4SrapZ2c"
     },
     {
       "date": "2026-11-07",
@@ -2467,7 +2473,8 @@
       "location": "Estadio de Mestalla",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "4SrapZ2c"
     },
     {
       "date": "2026-11-08",
