@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T19:07:16.563260+00:00",
+  "generated_at": "2026-11-01T22:45:38.117664+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 10
+      "events_found": 11
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2348,6 +2348,19 @@
       "channel": "DAZN 5",
       "match_url": "https://www.formula1.com/en/racing/2026",
       "source_url": "https://www.formula1.com/en/racing/2026"
+    },
+    {
+      "date": "2026-11-02",
+      "start": "2026-11-02T09:30:00Z",
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Minuto de silencio antes del Racing-Real Madrid",
+      "away": "Próximos eventos",
+      "competition": "Champions League",
+      "location": "Ciudad Real Madrid",
+      "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2026-11-02",
