@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T11:20:01.163332+00:00",
+  "generated_at": "2026-11-06T11:27:04.460420+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -42466,6 +42466,11 @@
         {
           "year": "2024",
           "text": "Donald Trump é reeleito presidente dos Estados Unidos e Partido Republicano recupera maioria no Senado .",
+          "source_url": "https://pt.wikipedia.org/wiki/6_de_novembro"
+        },
+        {
+          "year": "2016",
+          "text": "Guerra Civil Síria : As Forças Democráticas Sírias (FDS) lançam uma ofensiva para capturar a cidade de Raca do Estado Islâmico do Iraque e do Levante .",
           "source_url": "https://pt.wikipedia.org/wiki/6_de_novembro"
         }
       ],
