@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T22:29:32.618253+00:00",
+  "generated_at": "2026-11-10T02:50:57.365525+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 10
+      "events_found": 11
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2682,7 +2682,8 @@
       "channel": "RTP 1",
       "match_url": null,
       "source_url": "https://www.fpf.pt/pt/News/Todas-as-not%C3%ADcias/Not%C3%ADcia/news/55056",
-      "stream_url": "https://www.rtp.pt/play/direto/rtp1"
+      "stream_url": "https://www.rtp.pt/play/direto/rtp1",
+      "flashscore_mid": "x20Nf5wf"
     },
     {
       "date": "2026-11-20",
@@ -3292,6 +3293,19 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+    },
+    {
+      "date": "2027-01-17",
+      "start": null,
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Málaga",
+      "away": "Real Madrid",
+      "competition": "La Liga",
+      "location": "Estadio La Rosaleda",
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2027-01-19",
