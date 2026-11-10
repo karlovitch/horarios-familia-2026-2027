@@ -197,11 +197,12 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
   },
   {
     "date": "2026-11-17",
-    "end": "20:00",
+    "start": "18:00",
+    "end": "22:00",
     "kind": "formacao",
     "title": "Formação 43 — Inteligência Artificial",
     "mode": "Assíncrona",
-    "timeNote": "Sessão assíncrona: conclusão até às 20:00; início flexível"
+    "timeNote": "Sessão assíncrona de 4 horas, das 18:00 às 22:00"
   },
   {
     "date": "2026-11-18",
