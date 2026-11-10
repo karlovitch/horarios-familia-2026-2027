@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T12:50:58+00:00",
+  "generated_at": "2026-11-10T12:38:09+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4692,18 +4692,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s leao magno papa e doutor da igreja.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/11/10/s--leao-magno--papa-e-doutor-da-igreja.html"
-        }
-      ],
-      "liturgical_day": "Terça-feira da semana XXXII",
-      "saints": [
-        "S. Leão Magno, papa e doutor da Igreja – MO"
-      ],
-      "gospel": "Lc 17, 7-10",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-10"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-10",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-10",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2288/o.mp3"
     },
     "2026-11-11": {
       "date": "2026-11-11",
