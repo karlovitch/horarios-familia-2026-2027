@@ -170,14 +170,6 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "turma": "9.º A"
   },
   {
-    "date": "2026-11-11",
-    "start": "18:00",
-    "end": "22:00",
-    "kind": "formacao",
-    "title": "Formação 64 — Fenomenologia mitológica e religiosa",
-    "mode": "Presencial"
-  },
-  {
     "date": "2026-11-12",
     "start": "08:30",
     "end": "10:00",
@@ -194,6 +186,14 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "title": "Reunião intercalar — 9.º B",
     "location": "Sala A.20D",
     "turma": "9.º B"
+  },
+  {
+    "date": "2026-11-17",
+    "start": "18:00",
+    "end": "20:00",
+    "kind": "formacao",
+    "title": "Formação 64 — Fenomenologia mitológica e religiosa",
+    "mode": "Presencial"
   },
   {
     "date": "2026-11-17",
