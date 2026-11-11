@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T12:38:09+00:00",
+  "generated_at": "2026-11-11T11:51:40+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4708,22 +4708,13 @@
         "Dia Nacional das Raças Autóctones"
       ],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "s bartolomeu abade de grottaferrata.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/11/11/s--bartolomeu--abade-de-grottaferrata.html"
-        },
-        {
-          "name": "s martinho bispo de tours .html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/11/11/s--martinho--bispo-de-tours-.html"
-        }
-      ],
-      "liturgical_day": "Quarta-feira da semana XXXII",
-      "saints": [
-        "S. Martinho de Tours, bispo – MO"
-      ],
-      "gospel": "Lc 17, 11-19",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-11"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-11",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-11",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2289/o.mp3"
     },
     "2026-11-12": {
       "date": "2026-11-12",
