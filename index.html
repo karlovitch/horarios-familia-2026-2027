@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=152">
-<link rel="icon" href="favicon-64.png?v=152" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=152" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=152" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=152">
+<link rel="manifest" href="manifest.webmanifest?v=153">
+<link rel="icon" href="favicon-64.png?v=153" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=153" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=153" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=153">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -581,8 +581,8 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=152"></script>
-<script src="carlos-professional-events.js?v=152"></script>
+<script src="sports-info.js?v=153"></script>
+<script src="carlos-professional-events.js?v=153"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -611,6 +611,8 @@ Sexta:[["09:00","10:30","Aulas",""],["11:00","12:00","Aulas",""],["14:00","15:00
 };
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 function lessonsForDay(p,d,iso){
+ // O horário semanal apenas se transforma em aulas nos dias letivos efetivos.
+ if(iso&&!isEffectiveSchoolDay(p,ymdDay(iso)))return [];
  const items=D[p].days[d]||[];
  if(p!=="Carlos"||d!=="Terça"||!iso||iso>="2026-11-03")return items;
  return items.map(e=>e.title==="9.º B"&&e.start==="14:20"&&e.end==="15:50"?{...e,start:"14:25",end:"15:55"}:e);
@@ -787,7 +789,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1320;
 const MS_DAY=86400000;
-const APP_BUILD=152;
+const APP_BUILD=153;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -3031,10 +3033,9 @@ function renderOverviewWeek(referenceIso){
   const iso=isoForWeekday(referenceIso,idx+1);
   h+='<div class="overview-week-day">'+d+'<br><small>'+iso.slice(8,10)+'/'+iso.slice(5,7)+'</small></div>';
   for(const p of people){
-   const i=D[p],reason=noClassReason(iso),special=carlosFirstSemesterMeetings(p,iso)||((p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all")?"Reuniões de Avaliação Intercalar":"");
+   const i=D[p],reason=personSpecialMessage(p,iso);
    h+='<div class="overview-week-cell">';
    if(reason)h+='<div class="overview-week-special">'+esc(reason)+'</div>';
-   else if(special)h+='<div class="overview-week-special">'+esc(special)+'</div>';
    else{
     const ev=lessonsForDay(p,d,iso);
     if(!ev.length)h+='<div class="overview-week-empty">Sem horário.</div>';
@@ -3081,8 +3082,8 @@ function renderOverview(){
  for(const p of PEOPLE){
   const i=D[p],isActive=(iso===isoLocalDate())&&!!activeEvent(p,d);
   h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';
-  const semesterMeetings=carlosFirstSemesterMeetings(p,iso);
-  if(semesterMeetings)h+='<div class="lane-message">'+esc(semesterMeetings)+'</div>';
+  const special=personSpecialMessage(p,iso);
+  if(special)h+='<div class="lane-message">'+esc(special)+'</div>';
   else{
    if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
   for(const e of lessonsForDay(p,d,iso)){
@@ -3149,22 +3150,16 @@ function carlosFirstSemesterMeetings(p,iso){
  return iso>="2027-01-25"&&iso<="2027-01-29"?"Reuniões de Avaliação do 1.º Semestre":"";
 }
 function renderTodayTimeline(iso,d){
- const timeline=qs("#todayTimeline"),reason=noClassReason(iso),dt=dateFromIso(iso),weekend=(dt.getUTCDay()===0||dt.getUTCDay()===6);
+ const timeline=qs("#todayTimeline");
  timeline.classList.remove("compact-overview");
  let h='<div class="time-axis">';
  for(let m=START;m<=END;m+=60)h+='<div class="time-label'+(m===END?' end-label':'')+'" style="top:'+timelineY(m)+'px">'+minToTime(m)+'</div>';
  h+='</div>';
  for(const p of ["Leonor","Margarida","Sandra","Carlos"]){
-  const i=D[p],isActive=(iso===isoLocalDate())&&!reason&&!weekend&&!!activeEvent(p,d);
+  const i=D[p],special=personSpecialMessage(p,iso),isActive=(iso===isoLocalDate())&&!special&&!!activeEvent(p,d);
   h+='<div class="lane '+(isActive?"active-person":"")+'"><div class="lane-head" style="background:'+i.color+';color:'+i.textColor+'">'+displayName(p)+(isActive?'<span class="live-badge">Agora</span>':'')+'</div>';
-  if(reason){
-   h+='<div class="lane-message">'+esc(reason)+'</div>';
-  }else if(weekend){
-   h+='<div class="lane-message">Fim de semana — sem aulas.</div>';
-  }else if(carlosFirstSemesterMeetings(p,iso)){
-   h+='<div class="lane-message">'+esc(carlosFirstSemesterMeetings(p,iso))+'</div>';
-  }else if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all"){
-   h+='<div class="lane-message">Reuniões de Avaliação Intercalar</div>';
+  if(special){
+   h+='<div class="lane-message">'+esc(special)+'</div>';
   }else{
    if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
    for(const e of lessonsForDay(p,d,iso)){
@@ -3211,6 +3206,15 @@ function personSpecialMessage(p,iso){
  const semesterMeetings=carlosFirstSemesterMeetings(p,iso);
  if(semesterMeetings)return semesterMeetings;
  if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="all")return "Reuniões de Avaliação Intercalar";
+ const cfg=SCHOOL_CALENDARS[p],day=ymdDay(iso);
+ if(day<cfg.yearStart)return "Ano letivo ainda não iniciado — sem aulas.";
+ if(day>cfg.yearEnd)return "Ano letivo terminado — sem aulas.";
+ const onBreak=cfg.breaks.some(([start,end])=>iso>=start&&iso<=end);
+ if(onBreak){
+  if(iso>="2026-12-16"&&iso<="2027-01-03")return "Interrupção letiva de Natal — sem aulas.";
+  return "Interrupção letiva — sem aulas.";
+ }
+ if(!isEffectiveSchoolDay(p,day))return "Dia não letivo — sem aulas.";
  return "";
 }
 function renderPersonDayTimeline(p,iso){
