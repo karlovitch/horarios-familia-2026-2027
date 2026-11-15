@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T04:16:43.849081+00:00",
+  "generated_at": "2026-11-15T17:35:29.893949+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 12
+      "events_found": 13
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2678,6 +2678,19 @@
     },
     {
       "date": "2026-11-17",
+      "start": "2026-11-17T14:00:00Z",
+      "entity": "Real Madrid",
+      "sport": "Futebol",
+      "home": "Emotivo homenaje a Jesús de Miguel en el Valencia-Real Madrid",
+      "away": "Próximos eventos",
+      "competition": "La Liga",
+      "location": "Ciudad Real Madrid",
+      "channel": "DAZN Portugal",
+      "match_url": null,
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+    },
+    {
+      "date": "2026-11-17",
       "start": "2026-11-17T19:45:00Z",
       "entity": "Seleção Nacional A",
       "sport": "Futebol",
@@ -3124,7 +3137,7 @@
     },
     {
       "date": "2026-12-06",
-      "start": null,
+      "start": "2026-12-06T15:15:00Z",
       "entity": "Real Madrid",
       "sport": "Futebol",
       "home": "Athletic Club",
