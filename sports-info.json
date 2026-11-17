@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T17:35:29.893949+00:00",
+  "generated_at": "2026-11-17T02:13:37.088460+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 13
+      "events_found": 14
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -2849,7 +2849,8 @@
       "location": "De Kuip, Roterdão, Países Baixos",
       "channel": "Transmissão a confirmar",
       "match_url": null,
-      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std"
+      "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
+      "flashscore_mid": "6grtKluR"
     },
     {
       "date": "2026-11-24",
@@ -2862,7 +2863,8 @@
       "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
+      "flashscore_mid": "6PURSlmI"
     },
     {
       "date": "2026-11-24",
@@ -2875,7 +2877,8 @@
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
+      "flashscore_mid": "6PURSlmI"
     },
     {
       "date": "2026-11-26",
@@ -3344,7 +3347,7 @@
       "away": "LASK",
       "competition": "Champions League",
       "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
-      "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
+      "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -3355,11 +3358,11 @@
       "sport": "Futebol",
       "home": "Real Madrid",
       "away": "Real Betis",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Estádio Santiago Bernabéu, Madrid, Espanha",
+      "competition": "La Liga",
+      "location": "Estadio Santiago Bernabéu, Madrid, Espanha",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2027-01-27",
