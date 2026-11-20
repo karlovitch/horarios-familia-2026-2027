@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T13:03:09+00:00",
+  "generated_at": "2026-11-20T12:52:23+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4846,7 +4846,9 @@
       "liturgical_day": "Sexta-feira da semana XXXIII",
       "saints": [],
       "gospel": "Lc 19, 45-48",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-20"
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-20",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-20",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2298/o.mp3"
     },
     "2026-11-21": {
       "date": "2026-11-21",
