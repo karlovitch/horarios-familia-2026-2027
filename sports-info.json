@@ -2875,7 +2875,12 @@
       "channel": "Transmissão a confirmar",
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
-      "flashscore_mid": "6grtKluR"
+      "flashscore_mid": "6grtKluR",
+      "status": "scheduled",
+      "espn_event_id": "401915294",
+      "espn_league": "uefa.champions",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-24",
@@ -2889,7 +2894,12 @@
       "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "6PURSlmI"
+      "flashscore_mid": "6PURSlmI",
+      "status": "scheduled",
+      "espn_event_id": "401915298",
+      "espn_league": "uefa.champions",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-24",
@@ -2903,7 +2913,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "6PURSlmI"
+      "flashscore_mid": "6PURSlmI",
+      "status": "scheduled",
+      "espn_event_id": "401915298",
+      "espn_league": "uefa.champions",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-26",
