@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T22:40:33.807673+00:00",
+  "generated_at": "2026-11-24T06:24:32.028573+00:00",
   "timezone_note": "Horas apresentadas na app no fuso horário local do dispositivo. Durante jogos de futebol, o resultado/estado é atualizado a partir do Flashscore; resultados finais ficam guardados.",
   "sources": [
     "https://www.zerozero.pt/equipa/fc-porto/agenda",
@@ -48,7 +48,7 @@
     {
       "url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
       "ok": true,
-      "events_found": 13
+      "events_found": 14
     },
     {
       "url": "https://www.zerozero.pt/competicao/mundial-hoquei-patins",
@@ -3419,7 +3419,7 @@
       "away": "Real Madrid",
       "competition": "Champions League",
       "location": "Stamford Bridge",
-      "channel": "SPORT TV / DAZN / LiveMode (Portugal; operador do jogo a confirmar)",
+      "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
@@ -3443,11 +3443,11 @@
       "sport": "Futebol",
       "home": "Rayo Vallecano",
       "away": "Real Madrid",
-      "competition": "LALIGA EA SPORTS",
-      "location": "Local a confirmar",
+      "competition": "La Liga",
+      "location": "Estadio de Vallecas",
       "channel": "DAZN Portugal",
       "match_url": null,
-      "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches"
+      "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino"
     },
     {
       "date": "2027-02-07",
