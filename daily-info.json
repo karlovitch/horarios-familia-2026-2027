@@ -1,30 +1,17 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "un_days": [],
   "european_days": [],
-  "portugal_days": [
-    "Dia Nacional da Cultura Científica"
-  ],
+  "portugal_days": [],
   "local_days": [],
-  "saint_hagiographies": [
-    {
-      "name": "s crisogono martir de aquileia.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/11/24/s--crisogono--martir-de--aquileia.html"
-    },
-    {
-      "name": "ss andre d ng lc presbitero e companheiros martires.html",
-      "url": "https://www.vaticannews.va/pt/santo-do-dia/11/24/ss--andre--d_ng-lc--presbitero-e-companheiros--martires.html"
-    }
-  ],
-  "liturgical_day": "Terça-feira da semana XXXIV",
-  "saints": [
-    "Santos André Dung-Lac, presbítero, e companheiros, mártires – MO"
-  ],
-  "gospel": "Lc 21, 5-11",
-  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-24",
-  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-24",
-  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2302/o.mp3",
-  "updated_at": "2026-11-24T14:51:41+00:00",
+  "saint_hagiographies": [],
+  "liturgical_day": "",
+  "saints": [],
+  "gospel": "",
+  "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-25",
+  "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-25",
+  "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2303/o.mp3",
+  "updated_at": "2026-11-25T14:19:56+00:00",
   "sources": {
     "un": "https://unric.org/pt/pesquisa-interativa-de-dias-internacionais/",
     "europe": "https://eurocid.mne.gov.pt/artigos/efemerides",

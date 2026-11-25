@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T14:51:41+00:00",
+  "generated_at": "2026-11-25T14:19:56+00:00",
   "dates": {
     "2026-01-01": {
       "date": "2026-01-01",
@@ -4928,18 +4928,13 @@
       "european_days": [],
       "portugal_days": [],
       "local_days": [],
-      "saint_hagiographies": [
-        {
-          "name": "bb luis e maria beltrame quattrocchi conjuges.html",
-          "url": "https://www.vaticannews.va/pt/santo-do-dia/11/25/bb--luis-e-maria-beltrame-quattrocchi--conjuges.html"
-        }
-      ],
-      "liturgical_day": "Quarta-feira da semana XXXIV",
-      "saints": [
-        "S. Catarina de Alexandria, virgem e mártir – MF"
-      ],
-      "gospel": "Lc 21, 12-19",
-      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-25"
+      "saint_hagiographies": [],
+      "liturgical_day": "",
+      "saints": [],
+      "gospel": "",
+      "liturgy_url": "https://liturgia.pt/liturgiadiaria/dia.php?data=2026-11-25",
+      "passo_page_url": "https://passo-a-rezar.net/reprodutor/2026-11-25",
+      "passo_audio_url": "https://rezando.es/public/passoarezar/oraciones/2303/o.mp3"
     },
     "2026-11-26": {
       "date": "2026-11-26",
