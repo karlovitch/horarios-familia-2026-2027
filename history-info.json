@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T13:36:03.278384+00:00",
+  "generated_at": "2026-11-25T13:28:01.163978+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -45051,7 +45051,128 @@
       ]
     },
     "11-25": {
-      "world": [],
+      "world": [
+        {
+          "year": "571 a.C.",
+          "text": "Sérvio Túlio , rei de Roma, comemora um triunfo por sua vitória sobre os etruscos .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1034",
+          "text": "Rei Malcolm II da Escócia morre. Seu neto, Duncano , herda o trono.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1120",
+          "text": "Naufrágio do Barco Branco , onde morre Guilherme Adelino, Duque da Normandia , herdeiro do Rei Henrique I de Inglaterra .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1177",
+          "text": "Rei Balduíno IV de Jerusalém e Reinaldo de Châtillon derrotam o Sultão Saladino do Egito e Síria na Batalha de Monte Gisardo .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1491",
+          "text": "O cerco de Granada, a última fortaleza moura na Espanha, termina com o Tratado de Granada .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1487",
+          "text": "Elizabeth de York é coroada Rainha da Inglaterra . [ 1 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/Henrique_VII_de_Inglaterra"
+        },
+        {
+          "year": "1510",
+          "text": "Conquista portuguesa de Goa : as forças navais portuguesas sob o comando de Afonso de Albuquerque e mercenários locais que trabalham para o corsário Timoja conquistam Goa do sultanato de Bijapur , resultando em 451 anos de domínio colonial português.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1783",
+          "text": "Guerra Revolucionária Americana : as últimas tropas britânicas deixam a cidade de Nova York três meses após a assinatura do Tratado de Paris .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1795",
+          "text": "Partições da Polônia : Rei e Grão-Duque Estanislau II Augusto , o último rei da Polônia independente e também último grão-duque da Lituânia, é forçado a abdicar e é exilado na Rússia.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1875",
+          "text": "O Reino Unido adquire o controle do Canal do Suez , por meio da compra de 176 602 ações ao Egito .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1889",
+          "text": "O governo britânico entrega uma nota ao governo português protestando pela decisão de Portugal de considerar os territórios entre Angola e Moçambique como dependentes da soberania portuguesa.",
+          "source_url": "https://pt.wikipedia.org/wiki/1889"
+        },
+        {
+          "year": "1897",
+          "text": "A Espanha concede autonomia política e administrativa a Porto Rico .",
+          "source_url": "https://pt.wikipedia.org/wiki/Porto_Rico"
+        },
+        {
+          "year": "1905",
+          "text": "O príncipe Carl da Dinamarca chega à Noruega para se tornar o rei Haakon VII da Noruega. [ 2 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1915",
+          "text": "Albert Einstein apresenta as equações de campo da relatividade geral para a Academia de Ciências da Prússia .",
+          "source_url": "https://pt.wikipedia.org/wiki/David_Hilbert"
+        },
+        {
+          "year": "1918",
+          "text": "Voivodina , antiga terra da coroa austro-húngara, proclama sua separação da Áustria-Hungria para se juntar ao Reino da Sérvia .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1925",
+          "text": "Em Portugal é extinto o Ministério do Trabalho .",
+          "source_url": "https://pt.wikipedia.org/wiki/Lista_de_ministros_do_Trabalho_de_Portugal"
+        },
+        {
+          "year": "1935",
+          "text": "Estado de Sítio é aprovado pelo Congresso Nacional do Brasil . [ 3 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/Estado_de_s%C3%ADtio_no_Brasil"
+        },
+        {
+          "year": "1936",
+          "text": "Em Berlim, Alemanha e Japão assinam o Pacto Anticomintern , concordando em consultar medidas \"para salvaguardar seus interesses comuns\" no caso de um ataque não provocado da União Soviética contra qualquer nação. O pacto é renovado no mesmo dia, cinco anos depois, com signatários adicionais.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1941",
+          "text": "Segunda Guerra Mundial: a Croácia adere ao Pacto Anticomintern . A Dinamarca é forçada a assiná-lo.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1943",
+          "text": "Segunda Guerra Mundial: aprovação pelo comando supremo aliado do plano da Operação Shingle que prevê um desembarque no setor de Anzio , de detrás das linhas alemãs.",
+          "source_url": "https://pt.wikipedia.org/wiki/Cronologia_da_Segunda_Guerra_Mundial"
+        },
+        {
+          "year": "1947",
+          "text": "A Nova Zelândia ratifica o Estatuto de Westminster e, portanto, torna-se independente do controle legislativo do Reino Unido.",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1952",
+          "text": "A peça de mistério e assassinato de Agatha Christie , The Mousetrap , estreia em Londres após uma estreia em Nottingham, Reino Unido. Ao longo dos anos se tornará a peça há mais tempo encenada na história do teatro. [ 4 ]",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1958",
+          "text": "O Sudão Francês ganha autonomia como membro autônomo da Comunidade Francesa .",
+          "source_url": "https://pt.wikipedia.org/wiki/25_de_novembro"
+        },
+        {
+          "year": "1960",
+          "text": "As irmãs Mirabal da República Dominicana são assassinadas.",
+          "source_url": "https://pt.wikipedia.org/wiki/Irm%C3%A3s_Mirabal"
+        }
+      ],
       "portugal": [
         {
           "year": "1845",
