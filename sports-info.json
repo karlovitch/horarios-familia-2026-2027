@@ -2993,7 +2993,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "KvqfbGTO"
+      "flashscore_mid": "KvqfbGTO",
+      "status": "scheduled",
+      "espn_event_id": "401882789",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-28",
@@ -3007,7 +3012,12 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "KvqfbGTO"
+      "flashscore_mid": "KvqfbGTO",
+      "status": "scheduled",
+      "espn_event_id": "401882789",
+      "espn_league": "esp.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-28",
