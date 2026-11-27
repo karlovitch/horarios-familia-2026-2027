@@ -247,24 +247,6 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "turma": "10.º I"
   },
   {
-    "date": "2026-12-15",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 8.º B",
-    "turma": "8.º B"
-  },
-  {
-    "date": "2026-12-15",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 9.º B",
-    "turma": "9.º B"
-  },
-  {
-    "date": "2026-12-16",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 9.º A",
-    "turma": "9.º A"
-  },
-  {
     "date": "2027-01-11",
     "kind": "avaliacao",
     "title": "Apresentação Oral — 10.º G",
@@ -353,24 +335,6 @@ window.__CARLOS_PROFESSIONAL_EVENTS__ = [
     "kind": "avaliacao",
     "title": "Teste de História A — 10.º I",
     "turma": "10.º I"
-  },
-  {
-    "date": "2027-04-13",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 8.º B",
-    "turma": "8.º B"
-  },
-  {
-    "date": "2027-04-13",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 9.º B",
-    "turma": "9.º B"
-  },
-  {
-    "date": "2027-04-14",
-    "kind": "avaliacao",
-    "title": "Apresentação Oral — 9.º A",
-    "turma": "9.º A"
   },
   {
     "date": "2027-05-10",
