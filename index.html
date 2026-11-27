@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1F2A44">
 <meta name="description" content="Horários da família 2026-2027">
-<link rel="manifest" href="manifest.webmanifest?v=158">
-<link rel="icon" href="favicon-64.png?v=158" type="image/png" sizes="64x64">
-<link rel="shortcut icon" href="icon-192.png?v=158" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=158" sizes="180x180">
-<meta name="msapplication-TileImage" content="icon-512.png?v=158">
+<link rel="manifest" href="manifest.webmanifest?v=159">
+<link rel="icon" href="favicon-64.png?v=159" type="image/png" sizes="64x64">
+<link rel="shortcut icon" href="icon-192.png?v=159" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=159" sizes="180x180">
+<meta name="msapplication-TileImage" content="icon-512.png?v=159">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horários">
@@ -479,6 +479,8 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
 
 
 .block .margarida-lesson-eval,.overview-week-event .margarida-lesson-eval{display:block;font-weight:800;font-size:.88em;line-height:1;margin-top:1px;color:#FFD2A8;overflow-wrap:normal}.block .margarida-lesson-eval.is-presentation,.overview-week-event .margarida-lesson-eval.is-presentation{color:#A8DAFF}.has-margarida-eval{border-color:#F5C78B!important}.has-margarida-eval.medium-block{padding:1px!important;font-size:.58rem!important;line-height:1!important}.has-margarida-eval.medium-block strong,.has-margarida-eval.medium-block em{font-size:inherit!important;line-height:1!important}.has-margarida-eval.medium-block span,.has-margarida-eval.medium-block em{margin-top:0!important}.overview-week-event.has-margarida-eval{padding:1px 2px;line-height:1}
+
+.block .margarida-lesson-eval.leonor-eval,.overview-week-event .margarida-lesson-eval.leonor-eval{color:#833500}
 </style>
 </head>
 <body>
@@ -583,8 +585,8 @@ html[data-dayphase="night"] .feature-read-more{color:color-mix(in srgb,var(--act
   </div>
 </div>
 <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
-<script src="sports-info.js?v=158"></script>
-<script src="carlos-professional-events.js?v=158"></script>
+<script src="sports-info.js?v=159"></script>
+<script src="carlos-professional-events.js?v=159"></script>
 <script>
 const D={
 Carlos:{color:"#1E4F57",textColor:"#FFFFFF",days:{
@@ -613,16 +615,17 @@ Sexta:[["09:00","10:30","Português",""],["11:00","12:00","Matemática",""],["14
 };
 for(const p of Object.keys(D))for(const d of Object.keys(D[p].days))D[p].days[d]=D[p].days[d].map(x=>({start:x[0],end:x[1],title:x[2],place:x[3],special:x[4]||""}));
 const MARGARIDA_ASSESSMENTS=[["2026-11-30","08:20","09:50","PORTUGUÊS","Teste"],["2026-12-03","08:20","09:50","PORTUGUÊS","Apresentação oral"],["2026-12-04","13:30","15:50","BIOLOGIA E GEOLOGIA","Teste"],["2026-12-07","11:45","13:15","INGLÊS","Teste"],["2026-12-09","08:20","09:50","INGLÊS","Teste"],["2026-12-11","15:50","18:15","FÍSICO-QUÍMICA A","Teste"],["2026-12-14","10:05","11:35","MATEMÁTICA A","Apresentação do projeto"],["2027-01-21","11:45","13:15","MATEMÁTICA A","Teste"]];
-function margaridaLessonAssessment(p,iso,e){
- if(p!=="Margarida")return "";
- const assessment=MARGARIDA_ASSESSMENTS.find(([date,start,end,subject])=>date===iso&&subject===e.title&&e.start<end&&e.end>start);
+const LEONOR_ASSESSMENTS=[["2026-12-02","14:00","15:00","Inglês","Teste"],["2026-12-04","09:00","10:30","Português","Teste"]];
+function familyLessonAssessment(p,iso,e){
+ const assessments=p==="Margarida"?MARGARIDA_ASSESSMENTS:p==="Leonor"?LEONOR_ASSESSMENTS:[];
+ const assessment=assessments.find(([date,start,end,subject])=>date===iso&&subject===e.title&&e.start<end&&e.end>start);
  return assessment?assessment[4]:"";
 }
-function margaridaLessonAssessmentHtml(p,iso,e){
- const label=margaridaLessonAssessment(p,iso,e);
+function familyLessonAssessmentHtml(p,iso,e){
+ const label=familyLessonAssessment(p,iso,e);
  if(!label)return "";
  const short=label==="Apresentação do projeto"?"Apres. projeto":label==="Apresentação oral"?"Apres. oral":label;
- return '<span class="margarida-lesson-eval '+(label==="Teste"?"is-test":"is-presentation")+'" title="'+esc(label)+'">'+esc(short)+'</span>';
+ return '<span class="margarida-lesson-eval '+(label==="Teste"?"is-test":"is-presentation")+(p==="Leonor"?" leonor-eval":"")+'" title="'+esc(label)+'">'+esc(short)+'</span>';
 }
 function lessonsForDay(p,d,iso){
  // O horário semanal apenas se transforma em aulas nos dias letivos efetivos.
@@ -803,7 +806,7 @@ const MARGARIDA_FRIDAY_SESSIONS=[
 ];
 const SCHOOL_DAYS=["Segunda","Terça","Quarta","Quinta","Sexta"], WEEK=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"], PEOPLE=["Leonor","Margarida","Sandra","Carlos"], DISPLAY_NAMES={Leonor:"Leonor",Margarida:"Margarida",Sandra:"Sandrinha",Carlos:"Carlos"}, START=450,END=1320;
 const MS_DAY=86400000;
-const APP_BUILD=158;
+const APP_BUILD=159;
 document.getElementById("appVersion").textContent="· v"+APP_BUILD;
 const DATA_TTL={daily:5*60*1000,sports:4*60*1000,history:12*60*60*1000};
 const UI_REFRESH={nowLine:10000,scheduleState:60000,sportsClock:1000,sportsData:60000};
@@ -3054,7 +3057,7 @@ function renderOverviewWeek(referenceIso){
     const ev=lessonsForDay(p,d,iso);
     if(!ev.length)h+='<div class="overview-week-empty">Sem horário.</div>';
     for(const e of ev){
-      h+='<div class="overview-week-event'+(margaridaLessonAssessment(p,iso,e)?" has-margarida-eval":"")+'" style="top:'+overviewWeekTop(e.start)+'%;height:'+overviewWeekHeight(e.start,e.end)+'%;background:'+i.color+';color:'+i.textColor+'"><b>'+e.start+'–'+e.end+'</b><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<span>'+esc(e.place)+'</span>':'')+margaridaLessonAssessmentHtml(p,iso,e)+'</div>';
+      h+='<div class="overview-week-event'+(familyLessonAssessment(p,iso,e)?" has-margarida-eval":"")+'" style="top:'+overviewWeekTop(e.start)+'%;height:'+overviewWeekHeight(e.start,e.end)+'%;background:'+i.color+';color:'+i.textColor+'"><b>'+e.start+'–'+e.end+'</b><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<span>'+esc(e.place)+'</span>':'')+familyLessonAssessmentHtml(p,iso,e)+'</div>';
     }
     if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="overview-week-event" style="top:'+overviewWeekTop("14:00")+'%;height:'+overviewWeekHeight("14:00","18:30")+'%;background:'+i.color+';color:'+i.textColor+'"><b>14:00–18:30</b><span>Reuniões de Avaliação Intercalar</span></div>';
    }
@@ -3102,7 +3105,7 @@ function renderOverview(){
    if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
   for(const e of lessonsForDay(p,d,iso)){
    const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-   h+='<div class="block'+(margaridaLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+margaridaLessonAssessmentHtml(p,iso,e)+'</div>';
+   h+='<div class="block'+(familyLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+familyLessonAssessmentHtml(p,iso,e)+'</div>';
   }
   }
   if(p==="Carlos")h+=carlosTimedTimelineHtml(iso);
@@ -3178,7 +3181,7 @@ function renderTodayTimeline(iso,d){
    if(p==="Margarida"&&d==="Sexta"){for(const s of MARGARIDA_FRIDAY_SESSIONS)h+='<div class="session-outline" style="top:'+timelineY(toMin(s.start))+'px;height:'+Math.max(timelineDur(s.start,s.end),18)+'px"></div>';}
    for(const e of lessonsForDay(p,d,iso)){
     const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-    h+='<div class="block'+(margaridaLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+margaridaLessonAssessmentHtml(p,iso,e)+'</div>';
+    h+='<div class="block'+(familyLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+' '+((iso===isoLocalDate()&&current(e,d))?"current-block":"")+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+familyLessonAssessmentHtml(p,iso,e)+'</div>';
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon"){
     const st="14:00",en="18:30";
@@ -3241,7 +3244,7 @@ function renderPersonDayTimeline(p,iso){
  else{
   for(const e of lessonsForDay(p,d,iso)){
    const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-   h+='<div class="block'+(margaridaLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+margaridaLessonAssessmentHtml(p,iso,e)+'</div>';
+   h+='<div class="block'+(familyLessonAssessment(p,iso,e)?" has-margarida-eval":"")+sizeClass+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(iso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+familyLessonAssessmentHtml(p,iso,e)+'</div>';
   }
   if(p==="Carlos"&&INTERCALARY_MEETINGS[iso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
  }
@@ -3265,7 +3268,7 @@ function renderPersonWeekTimeline(p,iso){
   else{
    for(const e of lessonsForDay(p,d,dayIso)){
     const mins=toMin(e.end)-toMin(e.start),sizeClass=mins<=30?" short-block":(mins<=45?" medium-block":"");
-    h+='<div class="block'+(margaridaLessonAssessment(p,dayIso,e)?" has-margarida-eval":"")+sizeClass+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(dayIso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+margaridaLessonAssessmentHtml(p,dayIso,e)+'</div>';
+    h+='<div class="block'+(familyLessonAssessment(p,dayIso,e)?" has-margarida-eval":"")+sizeClass+'" style="top:'+timelineY(toMin(e.start))+'px;height:'+Math.max(timelineDur(e.start,e.end),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>'+e.start+'–'+e.end+'</strong><span>'+esc(e.title)+'</span>'+(p==="Carlos"?carlosLessonAssessmentHtml(dayIso,e.title):"")+(e.place?'<em>'+esc(e.place)+'</em>':'')+familyLessonAssessmentHtml(p,dayIso,e)+'</div>';
    }
    if(p==="Carlos"&&INTERCALARY_MEETINGS[dayIso]==="afternoon")h+='<div class="block" style="top:'+timelineY(toMin("14:00"))+'px;height:'+Math.max(timelineDur("14:00","18:30"),12)+'px;background:'+i.color+';color:'+i.textColor+'"><strong>14:00–18:30</strong><span>Reuniões de Avaliação Intercalar</span></div>';
   }
