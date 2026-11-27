@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T13:06:03.738294+00:00",
+  "generated_at": "2026-11-27T13:03:05.336080+00:00",
   "dates": {
     "01-01": {
       "world": [
@@ -45343,7 +45343,128 @@
       ]
     },
     "11-27": {
-      "world": [],
+      "world": [
+        {
+          "year": "1095",
+          "text": "O Papa Urbano II declara a Primeira Cruzada no Concílio de Clermont .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1809",
+          "text": "O Logro da rua Berners foi praticado por Theodore Hook na cidade de Westminster, Londres.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1830",
+          "text": "Santa Catarina Labouré experiência uma aparição mariana .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1835",
+          "text": "James Pratt e John Smith são enforcados em Londres; eles são os dois últimos a serem executados por sodomia na Inglaterra .",
+          "source_url": "https://pt.wikipedia.org/wiki/James_Pratt_e_John_Smith"
+        },
+        {
+          "year": "1838",
+          "text": "Uma força naval francesa bombardeia Veracruz , México , iniciando a Guerra dos Pastéis .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1856",
+          "text": "O Golpe de 1856 leva ao Luxemburgo a adoção unilateral de uma nova constituição reacionária.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1863",
+          "text": "Guerra civil americana : o líder da cavalaria confederada John Hunt Morgan e vários de seus homens escapam da Penitenciária de Ohio e retornam em segurança para o sul .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1895",
+          "text": "No clube sueco-norueguês de Paris, Alfred Nobel assina sua última vontade e testamento, reservando sua propriedade para criar o Prêmio Nobel depois de sua morte.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1896",
+          "text": "O poema sinfônico Also sprach Zarathustra de Richard Strauss é apresentado pela primeira vez em Francoforte , Alemanha .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1910",
+          "text": "Revolta da Chibata : A anistia foi aprovada pela Câmara . Às 19 horas, os amotinados aceitaram oficialmente as disposições relativas à anistia, encerrando a revolta.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1912",
+          "text": "A Espanha declara um protetorado sobre a costa norte de Marrocos .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1918",
+          "text": "A Makhnovtchina é estabelecida no que é hoje parte da atual Ucrânia .",
+          "source_url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_da_Ucr%C3%A2nia"
+        },
+        {
+          "year": "1935",
+          "text": "No Rio de Janeiro , a Intentona Comunista , tentativa de golpe contra o governo de Getúlio Vargas , é deflagrada e derrotada horas depois.",
+          "source_url": "https://pt.wikipedia.org/wiki/Intentona_Comunista"
+        },
+        {
+          "year": "1942",
+          "text": "Segunda Guerra Mundial: em Toulon , a marinha francesa afunda seus navios e submarinos para mantê-los fora das mãos nazistas.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1945",
+          "text": "Reino da Noruega é admitido como Estado-Membro da ONU .",
+          "source_url": "https://pt.wikipedia.org/wiki/Estados-membros_das_Na%C3%A7%C3%B5es_Unidas"
+        },
+        {
+          "year": "1971",
+          "text": "O veículo orbital Marte 2 do programa espacial soviético lança um módulo aterrissador . Funciona mal e se espatifa, mas é o primeiro objeto artificial a atingir a superfície de Marte.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1979",
+          "text": "Extinção do Movimento Democrático Brasileiro (MDB).",
+          "source_url": "https://pt.wikipedia.org/wiki/Movimento_Democr%C3%A1tico_Brasileiro_%281966%29"
+        },
+        {
+          "year": "1983",
+          "text": "Voo Avianca 011 : um Boeing 747 cai perto do Aeroporto de Barajas , em Madri, matando 181 pessoas.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1985",
+          "text": "Cometa Halley , o mais famoso dos cometas, atinge o ponto mais próximo ao Planeta Terra .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1989",
+          "text": "Voo Avianca 203 : um Boeing 727 explode no ar sobre a Colômbia, matando todas as 107 pessoas a bordo e três no chão. O Cartel de Medellín assumirá a responsabilidade pelo ataque.",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "1992",
+          "text": "Pela segunda vez no ano, as forças armadas venezuelanas tentam depor o presidente Carlos Andrés Pérez na Venezuela .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        },
+        {
+          "year": "2001",
+          "text": "Uma atmosfera de hidrogênio é descoberta no planeta extra-solar Osíris pelo Telescópio Espacial Hubble , a primeira atmosfera detectada em um planeta extra-solar. Osíris orbita uma estrela localizada na Constelação de Pégaso .",
+          "source_url": ""
+        },
+        {
+          "year": "2004",
+          "text": "O Papa João Paulo II devolve as relíquias de São João Crisóstomo à Igreja Ortodoxa .",
+          "source_url": "https://pt.wikipedia.org/wiki/Maria_Madalena"
+        },
+        {
+          "year": "2006",
+          "text": "A Câmara dos Comuns do Canadá aprova uma moção introduzida pelo Primeiro-ministro Stephen Harper reconhecendo a província francófona de Quebeque como uma nação dentro do Canadá .",
+          "source_url": "https://pt.wikipedia.org/wiki/27_de_novembro"
+        }
+      ],
       "portugal": [
         {
           "year": "1955",
