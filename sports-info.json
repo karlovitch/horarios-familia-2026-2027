@@ -3056,7 +3056,12 @@
       "channel": "Sport TV",
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/gil-vicente/jogos",
-      "flashscore_mid": "tbeuicug"
+      "flashscore_mid": "tbeuicug",
+      "status": "scheduled",
+      "espn_event_id": "401885390",
+      "espn_league": "por.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-29",
@@ -3070,7 +3075,12 @@
       "channel": "Transmissão a confirmar",
       "match_url": null,
       "source_url": "https://www.zerozero.pt/equipa/fc-porto/agenda?agenda_zz=0&date=2026-09-19&grp=&id_compet=0&id_equipa=9&op=std",
-      "flashscore_mid": "U103og9U"
+      "flashscore_mid": "U103og9U",
+      "status": "scheduled",
+      "espn_event_id": "401885387",
+      "espn_league": "por.1",
+      "home_score": 0,
+      "away_score": 0
     },
     {
       "date": "2026-11-29",
@@ -3084,7 +3094,8 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.laliga.com/en-ES/clubs/real-madrid/next-matches",
-      "flashscore_mid": "KvqfbGTO"
+      "flashscore_mid": "KvqfbGTO",
+      "status": "scheduled"
     },
     {
       "date": "2026-11-29",
@@ -3098,7 +3109,8 @@
       "channel": "DAZN Portugal",
       "match_url": null,
       "source_url": "https://www.realmadrid.com/es-ES/futbol/primer-equipo-masculino",
-      "flashscore_mid": "KvqfbGTO"
+      "flashscore_mid": "KvqfbGTO",
+      "status": "scheduled"
     },
     {
       "date": "2026-12-02",
